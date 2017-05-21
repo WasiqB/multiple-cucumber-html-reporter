@@ -13,7 +13,8 @@
   "main": "lib/generate-report.js",
   "scripts": {
     "test": "node ./test/test.js",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine"
+    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine",
+    "coveralls": "istanbul cover jasmine-node --captureExceptions spec/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
@@ -29,12 +30,14 @@
     "chalk": "1.1.3",
     "find": "0.2.7",
     "fs-extra": "2.1.2",
+    "js-base64": "2.1.9",
     "jsonfile": "2.4.0",
     "lodash": "4.17.4",
     "opn": "5.0.0",
     "uuid": "3.0.1"
   },
   "devDependencies": {
+    "coveralls": "^2.13.1",
     "istanbul": "0.4.5",
     "jasmine": "2.6.0"
   }

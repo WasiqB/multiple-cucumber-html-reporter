@@ -8,3 +8,6 @@ node_js:
 
 script:
   - npm run unit.test.coverage
+
+after_script:
+  - npm run coveralls
