@@ -1,0 +1,10 @@
+sudo: required
+dist: trusty
+
+language: node_js
+
+node_js:
+  - "stable"
+
+script:
+  - npm run unit.test.coverage

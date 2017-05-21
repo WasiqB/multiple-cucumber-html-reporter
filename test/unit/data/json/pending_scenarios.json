@@ -1,0 +1,106 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Chrome",
+        "version": "56"
+      },
+      "device": "Samsung S7",
+      "platform": {
+        "name": "Android",
+        "version": "7.1"
+      }
+    },
+    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "elements": [
+      {
+        "id": "pending-scenario's-specified;johnny-wants-to-see-pending-scenario's",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Johnny wants to see pending scenario's",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 404591
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "Johnny visits the Angular homepage",
+            "result": {
+              "status": "pending"
+            },
+            "line": 6,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "he clicks on the first link",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "he expects that something happens",
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 163044
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 134014
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "pending_scenarios_specified.1494777618477",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Pending scenario's specified",
+    "tags": [],
+    "uri": "pending_scenarios_specified.1494777618477"
+  }
+]
