@@ -1,5 +1,9 @@
 Multiple Cucumber HTML Reporter
 ===============================
+[![dependencies Status](https://david-dm.org/wswebcreation/multiple-cucumber-html-reporter/status.svg)](https://david-dm.org/wswebcreation/multiple-cucumber-html-reporter) [![Build Status](https://travis-ci.org/wswebcreation/multiple-cucumber-html-reporter.svg?branch=master)](https://travis-ci.org/wswebcreation/multiple-cucumber-html-reporter)
+
+[![NPM](https://nodei.co/npm/multiple-cucumber-html-reporter.png)](https://nodei.co/npm/multiple-cucumber-html-reporter/)
+
 Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the JSON output to a beautiful report. The difference between all the other reporting modules on the market is that this module has:
 
 - a quick overview of all tested features and scenario's
@@ -8,7 +12,7 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a feature(s) overview with metadata of the used browser(s) / devices
 
 
-![Snapshot - Features overview] (./docs/images/features-overview.jpg "Snapshot - Features overview")
+![Snapshot - Features overview](./docs/images/features-overview.jpg "Snapshot - Features overview")
 
 A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/)
 
@@ -142,11 +146,11 @@ cucumberJSON[0].metadata = metadata;
 >If no correct value is provided the `?`-icon with the text `not known` is shown
 
 ### Metadata example features overview
-![Snapshot - Features overview browser / device info] (./docs/images/overview-metadata.jpg "Snapshot - Features overview browser / device info")
+![Snapshot - Features overview browser / device info](./docs/images/overview-metadata.jpg "Snapshot - Features overview browser / device info")
 
 ### Metadata example scenario with and without known data
-![Snapshot - Scenario browser / device info] (./docs/images/scenario-metadata.jpg "Snapshot - Scenario browser / device info")
-![Snapshot - Scenario browser / device info not known] (./docs/images/scenario-no-metadata.jpg "Snapshot - Scenario browser / device info not known")
+![Snapshot - Scenario browser / device info](./docs/images/scenario-metadata.jpg "Snapshot - Scenario browser / device info")
+![Snapshot - Scenario browser / device info not known](./docs/images/scenario-no-metadata.jpg "Snapshot - Scenario browser / device info not known")
 
 ## FAQ
 ### Only 1 report is shown in the features overview table
