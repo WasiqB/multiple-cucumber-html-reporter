@@ -211,3 +211,11 @@ The Changelog can be found [here](./CHANGELOG.md)
 ## Contributing
 How to contribute can be found [here](./docs/CONTRIBUTING.md)
 
+## Credits
+In the search for a reporting tools for Cucumber I found a few tools that helped me a lot:
+
+- [cucumber-html-repository](https://github.com/gkushang/cucumber-html-reporter)
+- [cucumber-html-report](https://github.com/leinonen/cucumber-html-report)
+- [cucumber-protractor-report](https://github.com/JesterXL/cucumber-protractor-report)
+- [grunt-protractor-cucumber-html-report](https://github.com/robhil/grunt-protractor-cucumber-html-report)
+
