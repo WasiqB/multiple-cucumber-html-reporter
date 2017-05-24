@@ -499,7 +499,7 @@
             "line": 19,
             "embeddings": [
               {
-                "data": "Ly8gdGVzdGRhdGEgdG8gYmUgcHJpbnRlZA==",
+                "data": "// testdata to be printed",
                 "mime_type": "text/plain"
               },
               {
@@ -520,6 +520,16 @@
               "duration": 27341587
             },
             "line": 20,
+            "embeddings": [
+              {
+                "data": "U3VzcGVuZGlzc2UgbGVjdHVzIGxlbw==",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "Suspendisse lectus leo",
+                "mime_type": "text/plain"
+              }
+            ],
             "match": {
               "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
             }
@@ -533,6 +543,16 @@
               "duration": 58807667
             },
             "line": 21,
+            "embeddings": [
+              {
+                "data": "The first not encoded line",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "And the second not encoded line",
+                "mime_type": "text/plain"
+              }
+            ],
             "match": {
               "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
             }
