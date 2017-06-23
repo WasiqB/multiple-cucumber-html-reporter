@@ -54,8 +54,8 @@
                         </td>
                         <td class="text-center">
                             <% if (feature.tags) { %>
-                            <% const amount = feature.tags.length; %>
-                            <% const tags = _.reduce(feature.tags, (tags, tag) => tags + tag.name + ' ', ''); %>
+                            <% var amount = feature.tags.length; %>
+                            <% var tags = _.reduce(feature.tags, (tags, tag) => tags + tag.name + ' ', ''); %>
                             <% if (amount > 0 ){ %>
                             <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg" data-toggle="tooltip" data-placement="top"
                                title="<%= tags.trim() %>">
@@ -65,8 +65,8 @@
                             <% } %>
                         </td>
                         <td class="text-center">
-                            <% let statusIcon; %>
-                            <% let status; %>
+                            <% var statusIcon; %>
+                            <% var status; %>
                             <% if (feature.isFailed) { %>
                             <% status = 'Failed'; %>
                             <% statusIcon = 'exclamation-circle failed-color'; %>
@@ -82,8 +82,8 @@
                             </i>
                         </td>
                         <td class="text-center">
-                            <% let deviceType; %>
-                            <% let deviceIcon; %>
+                            <% var deviceType; %>
+                            <% var deviceIcon; %>
                             <% if (['android','ios'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1 ) { %>
                             <% deviceType = 'Mobile / Tablet'; %>
                             <% deviceIcon = 'mobile'; %>
@@ -99,7 +99,7 @@
                             </i>
                         </td>
                         <td>
-                            <% let device; %>
+                            <% var device; %>
                             <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
                             <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
                             <% } else { %>
@@ -108,7 +108,7 @@
                             <%= device %>
                         </td>
                         <td>
-                            <% let platformName; %>
+                            <% var platformName; %>
                             <% if (feature.metadata.platform.name.toLowerCase() === 'ios' || feature.metadata.platform.name.toLowerCase() === 'osx') { %>
                             <% platformName = 'apple'; %>
                             <% } else if (feature.metadata.platform.name.toLowerCase() === 'android') { %>
@@ -125,7 +125,7 @@
                             <%= feature.metadata.platform.version %>
                         </td>
                         <td>
-                            <% let browserIcon; %>
+                            <% var browserIcon; %>
                             <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
                             <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
                             <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>

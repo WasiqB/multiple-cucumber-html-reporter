@@ -4,7 +4,7 @@
         <div class="x_title">
             <div class="tags">
                 <% if (scenario.tags) { %>
-                <% const amount = scenario.tags.length; %>
+                <% var amount = scenario.tags.length; %>
                 <% if (amount > 0 ){ %>
                 <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg"></i>
                 <% _.each(scenario.tags, (tag) => {%>

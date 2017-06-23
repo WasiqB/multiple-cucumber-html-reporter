@@ -18,7 +18,7 @@
                     <i class="fa fa-mobile fa-lg"></i>
                 </span>
                 <span class="meta-data-data">
-                    <% let deviceType; %>
+                    <% var deviceType; %>
                     <% if (['android','ios'].indexOf(metadata.platform.name.toLowerCase()) > -1 ) { %>
                     <% deviceType = 'mobile'; %>
                     <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(metadata.platform.name.toLowerCase()) > -1) { %>
@@ -38,7 +38,7 @@
             <li>
                 <span class="meta-data-title">OS</span>
                 <span class="meta-data-data">
-                    <% let platformName; %>
+                    <% var platformName; %>
                     <% if (metadata.platform.name.toLowerCase() === 'ios' || metadata.platform.name.toLowerCase() === 'osx') { %>
                     <% platformName = 'apple'; %>
                     <% } else if (metadata.platform.name.toLowerCase() === 'android') { %>
@@ -59,7 +59,7 @@
             <li>
                 <span class="meta-data-title">Browser</span>
                 <span class="meta-data-data">
-                    <% let browserIcon; %>
+                    <% var browserIcon; %>
                     <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(metadata.browser.name.toLowerCase()) > -1) { %>
                     <% browserIcon = metadata.browser.name.toLowerCase(); %>
                     <% } else if (metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
