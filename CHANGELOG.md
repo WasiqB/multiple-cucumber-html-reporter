@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.1.2...v0.1.3) (2017-06-23)
+
+### Bug Fixes
+
+* **fix:** fix templates to work with node 4.4.5 by removing blockbindings
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.1.1...v0.1.2) (2017-05-26)
 
