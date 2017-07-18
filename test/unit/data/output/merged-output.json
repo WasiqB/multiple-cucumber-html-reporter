@@ -356,11 +356,17 @@
           {
             "arguments": [],
             "keyword": "Before ",
+            "name": "Prepare some data",
             "result": {
               "status": "passed",
               "duration": 78145
             },
-            "hidden": true,
+            "embeddings": [
+              {
+                "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
+                "mime_type": "text/plain"
+              }
+            ],
             "match": {
               "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
