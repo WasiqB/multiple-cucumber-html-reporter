@@ -126,15 +126,15 @@
                 <% } %>
 
                 <% if (step.result.error_message) { %>
-                <a href="#error<%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">+ Show Error</a>
+                <a href="#error<%= scenarioIndex %><%= stepIndex %>-error" data-toggle="collapse">+ Show Error</a>
                 <% } %>
 
                 <% if (step.text) { %>
-                <a href="#info<%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">+ Show Info</a>
+                <a href="#info<%= scenarioIndex %><%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
                 <% } %>
 
                 <% if (step.image) { %>
-                <a href="#info<%= scenarioIndex %><%= stepIndex %>" data-toggle="collapse">Screenshot +</a>
+                <a href="#info<%= scenarioIndex %><%= stepIndex %>-image" data-toggle="collapse">Screenshot +</a>
                 <% } %>
 
                 <% } %>
@@ -142,19 +142,23 @@
 
             <% if(step.result) { %>
             <% if (step.result.error_message) { %>
-            <div id="error<%= scenarioIndex %><%= stepIndex %>" class="scenario-step-collapse collapse">
+            <div id="error<%= scenarioIndex %><%= stepIndex %>-error" class="scenario-step-collapse collapse">
                 <pre class=info><%= step.result.error_message.replace(/</g, '(').replace(/>/g, ')') %></pre>
             </div>
             <% } %>
 
             <% if (step.text) { %>
-            <div id="info<%= scenarioIndex %><%= stepIndex %>" class="scenario-step-collapse collapse">
-                <pre class=info><%= step.text %></pre>
+            <div id="info<%= scenarioIndex %><%= stepIndex %>-text" class="scenario-step-collapse collapse">
+                <pre class=info><% try { %>
+<%= JSON.stringify(step.text, undefined, 2) %>
+<% } catch (error) { %>
+<%= step.text %>
+<% } %></pre>
             </div>
             <% } %>
 
             <% if (step.image) { %>
-            <div id="info<%= scenarioIndex %><%= stepIndex %>" class="scenario-step-collapse collapse">
+            <div id="info<%= scenarioIndex %><%= stepIndex %>-image" class="scenario-step-collapse collapse">
                 <a class="screenshot" href="<%= step.image %>" target="_blank">
                     <img class="screenshot" style="height:100%;width:100%;" id="my_images" src="<%= step.image %>"/>
                 </a>
