@@ -418,14 +418,13 @@ ul.panel_toolbox li .step {
 /* media */
 @media (max-width: 1200px) {
     .x_title h2 {
-        width: 62%;
-        font-size: 17px;
+        width: 70%;
     }
 }
 
-@media (max-width: 1270px) and (min-width: 192px) {
-    .x_title h2 small {
-        display: none;
+@media (max-width: 640px){
+    .x_title h2 {
+        width: 100%;
     }
 }
 
