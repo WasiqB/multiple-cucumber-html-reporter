@@ -1,22 +1,11 @@
 [
   {
-    "metadata": {
-      "browser": {
-        "name": "Safari",
-        "version": "10"
-      },
-      "device": "iPhone 7",
-      "platform": {
-        "name": "iOS",
-        "version": "10.1.2"
-      }
-    },
     "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
     "elements": [
       {
-        "id": "undefined-scenario's-specified;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenario's-specified-v1;timmy-wants-to-see-undefined-scenario's",
         "keyword": "Scenario",
-        "line": 5,
+        "line": 7,
         "name": "Timmy wants to see undefined scenario's",
         "steps": [
           {
@@ -24,11 +13,11 @@
             "keyword": "Before ",
             "result": {
               "status": "passed",
-              "duration": 407006
+              "duration": 664231
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
           },
           {
@@ -38,7 +27,7 @@
             "result": {
               "status": "undefined"
             },
-            "line": 6
+            "line": 8
           },
           {
             "arguments": [],
@@ -47,7 +36,7 @@
             "result": {
               "status": "undefined"
             },
-            "line": 7
+            "line": 9
           },
           {
             "arguments": [],
@@ -56,18 +45,18 @@
             "result": {
               "status": "undefined"
             },
-            "line": 8
+            "line": 10
           },
           {
             "arguments": [],
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 457497
+              "duration": 694199
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
             }
           },
           {
@@ -75,11 +64,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 119361
+              "duration": 159344
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
             }
           }
         ],
@@ -104,16 +93,27 @@
         "type": "scenario"
       }
     ],
-    "id": "undefined_scenarios_specified.1494777183356",
+    "id": "undefined-scenario's-specified-v1",
     "keyword": "Feature",
-    "line": 1,
-    "name": "Undefined scenario's specified",
+    "line": 2,
+    "name": "Undefined scenario's specified V1",
     "tags": [
       {
         "name": "@undefined",
         "line": 1
       }
     ],
-    "uri": "undefined_scenarios_specified.1494777183356"
+    "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/undefined.feature",
+    "metadata": {
+      "browser": {
+        "name": "Safari",
+        "version": "10"
+      },
+      "device": "iPhone 7",
+      "platform": {
+        "name": "iOS",
+        "version": "10.1.2"
+      }
+    }
   }
 ]
