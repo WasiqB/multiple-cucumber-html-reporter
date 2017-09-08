@@ -7,7 +7,7 @@ CHANGELOG
 ### Features
 
 * **feature:** added support for CucumberJS 3, the only thing that has changes for reporting is that the `embedding.mime_type` has been changed to `embedding.media.type`.
-* **feature:** metadata is not also an option, see the readme
+* **feature:** `metadata` is now also an option, see the readme
 
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.2.0...v0.2.1) (2017-07-26)
