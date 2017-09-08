@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+<a name="1.0.0"></a>
+## [1.0.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.2.1...v1.0.0) (2017-09-08)
+
+### Features
+
+* **feature:** added support for CucumberJS 3, the only thing that has changes for reporting is that the `embedding.mime_type` has been changed to `embedding.media.type`.
+* **feature:** metadata is not also an option, see the readme
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.2.0...v0.2.1) (2017-07-26)
 
