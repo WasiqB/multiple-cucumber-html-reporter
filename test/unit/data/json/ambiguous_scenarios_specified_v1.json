@@ -1,20 +1,9 @@
 [
   {
-    "metadata": {
-      "browser": {
-        "name": "Firefox",
-        "version": "53"
-      },
-      "device": "Virtual Machine",
-      "platform": {
-        "name": "Ubuntu",
-        "version": "16.04"
-      }
-    },
     "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
     "elements": [
       {
-        "id": "ambiguous-scenario's-specified;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenario's-specified-v1;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
         "keyword": "Scenario",
         "line": 5,
         "name": "Ambiguous Johnny wants to see ambiguous scenario's",
@@ -24,11 +13,11 @@
             "keyword": "Before ",
             "result": {
               "status": "passed",
-              "duration": 509203
+              "duration": 1352242
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
           },
           {
@@ -37,11 +26,11 @@
             "name": "Ambiguous Johnny visits the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 962741
+              "duration": 1930520
             },
             "line": 6,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -62,7 +51,7 @@
             },
             "line": 8,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }
           },
           {
@@ -70,11 +59,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 148006
+              "duration": 349939
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
             }
           },
           {
@@ -82,11 +71,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 132276
+              "duration": 263324
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
             }
           }
         ],
@@ -94,11 +83,22 @@
         "type": "scenario"
       }
     ],
-    "id": "ambiguous_scenarios_specified.1494784175006",
+    "id": "ambiguous-scenario's-specified-v1",
     "keyword": "Feature",
     "line": 1,
-    "name": "Ambiguous scenario's specified",
+    "name": "Ambiguous scenario's specified V1",
     "tags": [],
-    "uri": "ambiguous_scenarios_specified.1494784175006"
+    "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/ambiguous.feature",
+    "metadata": {
+      "browser": {
+        "name": "Firefox",
+        "version": "53"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "Ubuntu",
+        "version": "16.04"
+      }
+    }
   }
 ]

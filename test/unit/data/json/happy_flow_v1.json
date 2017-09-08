@@ -11,12 +11,11 @@
         "version": "10"
       }
     },
-    "description": "    A happy flow should generate a passed report\n    So a reviewer can judge what went correct",
     "elements": [
       {
-        "id": "angular-homepage;as-a-visitor-i-want-to-be-greeted",
+        "id": "happy-flow-v1;as-a-visitor-i-want-to-be-greeted",
         "keyword": "Scenario",
-        "line": 6,
+        "line": 8,
         "name": "As a visitor I want to be greeted",
         "steps": [
           {
@@ -24,11 +23,11 @@
             "keyword": "Before ",
             "result": {
               "status": "passed",
-              "duration": 491746
+              "duration": 1156242
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
           },
           {
@@ -37,11 +36,11 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 3487461111
+              "duration": 2089982528
             },
             "line": 5,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -50,11 +49,11 @@
             "name": "I submit the name \"Julie\"",
             "result": {
               "status": "passed",
-              "duration": 2605574261
+              "duration": 1089208055
             },
             "line": 9,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -63,11 +62,11 @@
             "name": "I am greeted as \"Hello Julie!\"",
             "result": {
               "status": "passed",
-              "duration": 75534915
+              "duration": 72073517
             },
             "line": 10,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }
           },
           {
@@ -75,11 +74,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 235558
+              "duration": 388915
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
             }
           },
           {
@@ -87,11 +86,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 167725
+              "duration": 272056
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
             }
           }
         ],
@@ -120,7 +119,7 @@
         "type": "scenario"
       },
       {
-        "id": "angular-homepage;validate-todo-list",
+        "id": "happy-flow-v1;validate-todo-list",
         "keyword": "Scenario",
         "line": 13,
         "name": "Validate todo list",
@@ -128,19 +127,13 @@
           {
             "arguments": [],
             "keyword": "Before ",
-            "name": "Prepare some data",
             "result": {
               "status": "passed",
-              "duration": 78145
+              "duration": 92054
             },
-            "embeddings": [
-              {
-                "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
-                "mime_type": "text/plain"
-              }
-            ],
+            "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
           },
           {
@@ -149,11 +142,11 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 779454156
+              "duration": 761518668
             },
             "line": 5,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -162,11 +155,11 @@
             "name": "I count 2 todo's",
             "result": {
               "status": "passed",
-              "duration": 1025549355
+              "duration": 845462162
             },
             "line": 14,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -175,11 +168,11 @@
             "name": "the last todo should hold \"build an AngularJS app\"",
             "result": {
               "status": "passed",
-              "duration": 65549520
+              "duration": 49743712
             },
             "line": 15,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }
           },
           {
@@ -187,11 +180,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 80997
+              "duration": 86318
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
             }
           },
           {
@@ -199,11 +192,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 45433
+              "duration": 43346
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
             }
           }
         ],
@@ -236,7 +229,7 @@
         "type": "scenario"
       },
       {
-        "id": "angular-homepage;add-a-todo",
+        "id": "happy-flow-v1;add-a-todo",
         "keyword": "Scenario",
         "line": 18,
         "name": "Add a todo",
@@ -246,11 +239,11 @@
             "keyword": "Before ",
             "result": {
               "status": "passed",
-              "duration": 37353
+              "duration": 30389
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
             }
           },
           {
@@ -259,34 +252,24 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 687743564
+              "duration": 458947811
             },
             "line": 5,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "name": "I add the todo with value:",
+            "name": "I add the todo \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 1256056822
+              "duration": 9420511774
             },
             "line": 19,
-            "embeddings": [
-              {
-                "data": "// testdata to be printed",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "ew0KICAgICJ2YWx1ZSI6ICJ3cml0ZSBhIHByb3RyYWN0b3IgdGVzdCINCn0=",
-                "mime_type": "text/plain"
-              }
-            ],
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:157"
             }
           },
           {
@@ -295,21 +278,11 @@
             "name": "I should have 3 todo's",
             "result": {
               "status": "passed",
-              "duration": 27341587
+              "duration": 848834826
             },
             "line": 20,
-            "embeddings": [
-              {
-                "data": "U3VzcGVuZGlzc2UgbGVjdHVzIGxlbw==",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "Suspendisse lectus leo",
-                "mime_type": "text/plain"
-              }
-            ],
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }
           },
           {
@@ -318,21 +291,11 @@
             "name": "the last todo should hold \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 58807667
+              "duration": 48083312
             },
             "line": 21,
-            "embeddings": [
-              {
-                "data": "The first not encoded line",
-                "mime_type": "text/plain"
-              },
-              {
-                "data": "And the second not encoded line",
-                "mime_type": "text/plain"
-              }
-            ],
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }
           },
           {
@@ -340,11 +303,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 53934
+              "duration": 74273
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
             }
           },
           {
@@ -352,11 +315,11 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 30175
+              "duration": 44882
             },
             "hidden": true,
             "match": {
-              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
             }
           }
         ],
@@ -389,10 +352,10 @@
         "type": "scenario"
       }
     ],
-    "id": "happy_flow.1494823257420",
+    "id": "happy-flow-v1",
     "keyword": "Feature",
-    "line": 1,
-    "name": "Happy flow",
+    "line": 2,
+    "name": "Happy flow V1",
     "tags": [
       {
         "name": "@example",
@@ -407,6 +370,6 @@
         "line": 1
       }
     ],
-    "uri": "happy_flow.1494823257420"
+    "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.feature"
   }
 ]

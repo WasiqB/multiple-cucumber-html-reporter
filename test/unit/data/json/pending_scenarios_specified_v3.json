@@ -1,0 +1,81 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Chrome",
+        "version": "56"
+      },
+      "device": "Samsung S7",
+      "platform": {
+        "name": "Android",
+        "version": "7.1"
+      }
+    },
+    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "keyword": "Feature",
+    "name": "Pending scenario's specified V3",
+    "line": 1,
+    "id": "pending-scenario's-specified-v3",
+    "tags": [],
+    "uri": "e2e-tests/features/pending.feature",
+    "elements": [
+      {
+        "id": "pending-scenario's-specified-v3;johnny-wants-to-see-pending-scenario's",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Johnny wants to see pending scenario's",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Johnny visits the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:4"
+            },
+            "result": {
+              "status": "pending",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "he clicks on the first link",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:9"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "he expects that something happens",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:14"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
