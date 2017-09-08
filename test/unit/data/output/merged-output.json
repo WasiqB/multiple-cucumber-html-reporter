@@ -252,6 +252,204 @@
   {
     "metadata": {
       "browser": {
+        "name": "Edge",
+        "version": "14"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "Windows",
+        "version": "10"
+      }
+    },
+    "elements": [
+      {
+        "id": "testing-embeddings-part-1",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Validate todo list",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "name": "Prepare some data",
+            "result": {
+              "status": "passed",
+              "duration": 78145
+            },
+            "embeddings": [
+              {
+                "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
+                "mime_type": "text/plain"
+              }
+            ],
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I do nothing",
+            "result": {
+              "status": "passed",
+              "duration": 779454156
+            },
+            "line": 5,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 80997
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 45433
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "id": "testing-embeddings-2",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Testing embeddings part 2",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 37353
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I add embeddings:",
+            "result": {
+              "status": "passed",
+              "duration": 1256056822
+            },
+            "line": 19,
+            "embeddings": [
+              {
+                "data": "// testdata to be printed",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "ew0KICAgICJ2YWx1ZSI6ICJ3cml0ZSBhIHByb3RyYWN0b3IgdGVzdCINCn0=",
+                "mime_type": "text/plain"
+              }
+            ],
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:155"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should also have other embeddings",
+            "result": {
+              "status": "passed",
+              "duration": 27341587
+            },
+            "line": 20,
+            "embeddings": [
+              {
+                "data": "U3VzcGVuZGlzc2UgbGVjdHVzIGxlbw==",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "Suspendisse lectus leo",
+                "mime_type": "text/plain"
+              }
+            ],
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I am embedded",
+            "result": {
+              "status": "passed",
+              "duration": 58807667
+            },
+            "line": 21,
+            "embeddings": [
+              {
+                "data": "The first not encoded line",
+                "mime_type": "text/plain"
+              },
+              {
+                "data": "And the second not encoded line",
+                "mime_type": "text/plain"
+              }
+            ],
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:171"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 53934
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:206"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 30175
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+            }
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "testing_embeddings.1494823257420",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Testing embeddings",
+    "uri": "testing_embeddings.1494823257420"
+  },
+  {
+    "metadata": {
+      "browser": {
         "name": "Chrome",
         "version": "58"
       },

@@ -20,7 +20,7 @@ A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-h
 Install this module locally with the following command:
 
 ``` bash
-npm install multiple-cucumber-html-reporter 
+npm install multiple-cucumber-html-reporter
 ```
 
 Save to dependencies or dev-dependencies:
@@ -31,7 +31,7 @@ npm install multiple-cucumber-html-reporter --save-dev
 ```
 
 ## Compatibility
-Multiple Cucumber HTML Reporter works with CucumberJS 1.3.3 or lower. We are currently working on the support for CucumberJS 2.1.0 or higher.
+Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2 and 3**.
 
 ## Usage
 Multiple Cucumber HTML Reporter transforms the Cucumber JSON output to a beautiful report. In order to let this happen add the piece of code that is placed below to CucumberJS `AfterFeatures`-hook.
@@ -41,12 +41,23 @@ const report = require('multiple-cucumber-html-reporter');
 
 report.generate({
 	jsonDir: './path-to-your-json-output/',
-	reportPath: './path-where-the-report-needs-to-be/'
+	reportPath: './path-where-the-report-needs-to-be/',
+	metadata:{
+        browser: {
+            name: 'chrome',
+            version: '60'
+        },
+        device: 'Local test machine',
+        platform: {
+            name: 'ubuntu',
+            version: '16.04'
+        }
+    }
 });
 ```
-> **IMPORTANT:** 
+> **IMPORTANT:**
 
-> Make sure that, when you generate the JSON files with Cucumber, each file will have a **UNIQUE** name. If you don't provide a unique name Cucumber will **override** the JSON files. 
+> Make sure that, when you generate the JSON files with Cucumber, each file will have a **UNIQUE** name. If you don't provide a unique name Cucumber will **override** the JSON files.
 
 > **Advice** is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
 
@@ -82,11 +93,34 @@ This module will first merge all the JSON-files to 1 file and then enrich it wit
 - `merged-output.json`
 - `enriched-output.json`
 
+### `metadata`
+- **Type:** `JSON`
+- **Mandatory:** No
+
+Print more data to your report, such as browser name + version, platform name + version and your environment. The values need to meet some predefined data, see [Metadata](#metadata) for more info.
+Data can be passed like below.
+
+> **If you provide the metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will be leading**
+
+```js
+metadata:{
+    browser: {
+        name: 'chrome',
+        version: '60'
+    },
+    device: 'Local test machine',
+    platform: {
+        name: 'ubuntu',
+        version: '16.04'
+    }
+}
+```
+
 ## Metadata
 The report can also show on which browser / device a feature has been executed. It is shown on the featurs overview in the table as well as on the feature overview in a container.
 
 ### Adding metadata to the Cucumber JSON
- 
+
 To be able to see this you will need to add the following to the Cucumber JSON before you save it.
 
 
@@ -154,7 +188,7 @@ cucumberJSON[0].metadata = metadata;
 
 ## FAQ
 ### Only 1 report is shown in the features overview table
-It could be that the name of the Cucumber JSON file that has been saved is not unique (enough). 
+It could be that the name of the Cucumber JSON file that has been saved is not unique (enough).
 
 My advice is to use for example:
 

@@ -14,6 +14,24 @@ describe('collect-jsons.js', () => {
             })).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './test/unit/data/output/merged-output.json')));
         });
 
+        it('should return an output from the merged found json files and add the provided metadata', () => {
+            expect(collectJSONS({
+                jsonDir: './test/unit/data/collect-json',
+                reportPath: reportPath,
+                metadata:{
+                    browser: {
+                        name: 'chrome',
+                        version: '1'
+                    },
+                    device: 'Local test machine',
+                    platform: {
+                        name: 'Ubuntu',
+                        version: '16.04'
+                    }
+                }
+            })).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './test/unit/data/output/provided-metadata.json')));
+        });
+
         it('should save an output from the merged found json files', () => {
             expect(collectJSONS({
                 jsonDir: './test/unit/data/json',
