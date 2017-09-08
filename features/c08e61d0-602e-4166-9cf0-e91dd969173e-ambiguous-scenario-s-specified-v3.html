@@ -444,14 +444,13 @@ ul.panel_toolbox li .step {
 /* media */
 @media (max-width: 1200px) {
     .x_title h2 {
-        width: 62%;
-        font-size: 17px;
+        width: 70%;
     }
 }
 
-@media (max-width: 1270px) and (min-width: 192px) {
-    .x_title h2 small {
-        display: none;
+@media (max-width: 640px){
+    .x_title h2 {
+        width: 100%;
     }
 }
 
@@ -477,7 +476,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Pending scenario's specified</small>
+                <small>Ambiguous scenario's specified V3</small>
             </p>
         </div>
     </nav>
@@ -492,10 +491,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
             </div>
             <h1>Feature:
-                <small>Pending scenario's specified</small>
+                <small>Ambiguous scenario's specified V3</small>
             </h1>
-            <p>  The scenario's have scripted pending steps
-  So the report should hold pending steps</p>
+            <p>  The scenario's have been scripted twice
+  So the report should hold ambiguous steps</p>
         </div>
 
         <div class="clearfix"></div>
@@ -555,17 +554,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         <td class="percentage">0.00 %</td>
                     </tr>
                     
+                    
+                    
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
-                                <i class="fa fa-minus-circle pending-color"></i>
-                                Pending
+                            <p data-toggle="tooltip" data-placement="left"
+                               title="Scenario has double step implementation and failed because of that.">
+                                <i class="fa fa-flash ambiguous-color"></i>
+                                Ambiguous
                             </p>
                         </td>
                         <td class="percentage">100.00 %</td>
                     </tr>
-                    
-                    
                     
                     
                 </table>
@@ -602,14 +602,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-mobile fa-lg">
-                        <span>mobile</span>
+                    <i class="fa fa-desktop fa-lg">
+                        <span>desktop</span>
                     </i>
                 </span>
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Samsung S7</span>
+                <span class="meta-data-data">Virtual Machine</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -618,10 +618,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-android fa-lg">
-                        <span>android</span>
+                    <i class="fa fa-linux fa-lg">
+                        <span>linux</span>
                     </i>
-                    7.1
+                    16.04
                 </span>
             </li>
             <li>
@@ -631,10 +631,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-chrome fa-lg">
-                        <span>chrome</span>
+                    <i class="fa fa-firefox fa-lg">
+                        <span>firefox</span>
                     </i>
-                    56
+                    53
                 </span>
             </li>
         </ul>
@@ -656,7 +656,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
             </div>
             <h2>Scenario:
-                <small>Johnny wants to see pending scenario's</small>
+                <small>Ambiguous Johnny wants to see ambiguous scenario's</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -665,21 +665,22 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </a>
                 </li>
                 
-                
                 <li>
-                    <span class="step pending-background" data-toggle="tooltip" title="Scenario is pending">
-                        1
-                    </span>
-                </li>
-                
-                
-                <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                    <span class="step ambiguous-background" data-toggle="tooltip" data-placement="top"
+                          title="Scenario has double step implementation and failed because of that.">
                         2
                     </span>
                 </li>
                 
                 
+                
+                
+                
+                <li>
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
+                        1
+                    </span>
+                </li>
                 
                 
             </ul>
@@ -690,21 +691,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
-                    <i class="fa fa-minus-circle fa-2x pending-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Johnny visits the Angular homepage
+                    Ambiguous Johnny visits the Angular homepage
                 </div>
 
                 
@@ -738,15 +736,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top"
+                     title="Step has double step implementation and failed because of that.">
+                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">When </span>
-                    he clicks on the first link
+                    he clicks on the second button
                 </div>
 
                 
@@ -780,15 +779,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top"
+                     title="Step has double step implementation and failed because of that.">
+                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something happens
+                    he expects that something really ambiguous happens
                 </div>
 
                 
@@ -812,9 +812,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-            
-
             
             
 
@@ -863,9 +860,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         data: [
                             0.00,
                             0.00,
+                            0.00,
+                            0.00,
                             100.00,
-                            0.00,
-                            0.00,
                             0.00
                         ],
                         backgroundColor: [
