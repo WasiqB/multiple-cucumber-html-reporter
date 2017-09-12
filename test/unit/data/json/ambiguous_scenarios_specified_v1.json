@@ -1,12 +1,12 @@
 [
   {
-    "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
     "elements": [
       {
-        "id": "ambiguous-scenario's-specified-v1;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenarios-specified-v1;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Ambiguous Johnny wants to see ambiguous scenario's",
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
         "steps": [
           {
             "arguments": [],
@@ -83,10 +83,10 @@
         "type": "scenario"
       }
     ],
-    "id": "ambiguous-scenario's-specified-v1",
+    "id": "ambiguous-scenarios-specified-v1",
     "keyword": "Feature",
     "line": 1,
-    "name": "Ambiguous scenario's specified V1",
+    "name": "Ambiguous scenarios specified V1",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/ambiguous.feature",
     "metadata": {

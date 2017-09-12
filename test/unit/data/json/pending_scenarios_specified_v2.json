@@ -11,19 +11,19 @@
         "version": "7.1"
       }
     },
-    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "description": "  The scenarios have scripted pending steps\n  So the report should hold pending steps",
     "keyword": "Feature",
     "line": 1,
-    "name": "Pending scenario's specified V2",
+    "name": "Pending scenarios specified V2",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/pending.feature",
     "elements": [
       {
         "keyword": "Scenario",
         "line": 5,
-        "name": "Johnny wants to see pending scenario's",
+        "name": "Johnny wants to see pending scenarios",
         "tags": [],
-        "id": "pending-scenario's-specified-v2;johnny-wants-to-see-pending-scenario's",
+        "id": "pending-scenarios-specified-v2;johnny-wants-to-see-pending-scenarios",
         "steps": [
           {
             "arguments": [],
@@ -76,6 +76,6 @@
         ]
       }
     ],
-    "id": "pending-scenario's-specified-v2"
+    "id": "pending-scenarios-specified-v2"
   }
 ]

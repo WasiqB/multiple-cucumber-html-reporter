@@ -11,19 +11,19 @@
         "version": "16.04"
       }
     },
-    "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
     "keyword": "Feature",
-    "name": "Ambiguous scenario's specified V3",
+    "name": "Ambiguous scenarios specified V3",
     "line": 1,
-    "id": "ambiguous-scenario's-specified-v3",
+    "id": "ambiguous-scenarios-specified-v3",
     "tags": [],
     "uri": "e2e-tests/features/ambiguous.feature",
     "elements": [
       {
-        "id": "ambiguous-scenario's-specified-v3;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenarios-specified-v3;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Ambiguous Johnny wants to see ambiguous scenario's",
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
         "tags": [],
         "type": "scenario",
         "steps": [

@@ -6,7 +6,7 @@ Multiple Cucumber HTML Reporter
 
 Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the JSON output to a beautiful report. The difference between all the other reporting modules on the market is that this module has:
 
-- a quick overview of all tested features and scenario's
+- a quick overview of all tested features and scenarios
 - a features overview that can hold multiple runs of the same feature / runs of the same feature on different browsers / devices
 - a features overview that can be searched / filtered / sorted
 - a feature(s) overview with metadata of the used browser(s) / devices
