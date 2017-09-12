@@ -11,13 +11,13 @@
         "version": "16.04"
       }
     },
-    "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
     "elements": [
       {
-        "id": "ambiguous-scenario's-specified-v1;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenarios-specified-v1;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Ambiguous Johnny wants to see ambiguous scenario's",
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
         "steps": [
           {
             "arguments": [],
@@ -94,10 +94,10 @@
         "type": "scenario"
       }
     ],
-    "id": "ambiguous-scenario's-specified-v1",
+    "id": "ambiguous-scenarios-specified-v1",
     "keyword": "Feature",
     "line": 1,
-    "name": "Ambiguous scenario's specified V1",
+    "name": "Ambiguous scenarios specified V1",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/ambiguous.feature"
   },
@@ -113,19 +113,19 @@
         "version": "16.04"
       }
     },
-    "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
     "keyword": "Feature",
     "line": 1,
-    "name": "Ambiguous scenario's specified V2",
+    "name": "Ambiguous scenarios specified V2",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/ambiguous.feature",
     "elements": [
       {
         "keyword": "Scenario",
         "line": 5,
-        "name": "Ambiguous Johnny wants to see ambiguous scenario's",
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
         "tags": [],
-        "id": "ambiguous-scenario's-specified-v2;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenarios-specified-v2;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
         "steps": [
           {
             "arguments": [],
@@ -173,7 +173,7 @@
         ]
       }
     ],
-    "id": "ambiguous-scenario's-specified-v2"
+    "id": "ambiguous-scenarios-specified-v2"
   },
   {
     "metadata": {
@@ -187,19 +187,19 @@
         "version": "16.04"
       }
     },
-    "description": "  The scenario's have been scripted twice\n  So the report should hold ambiguous steps",
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
     "keyword": "Feature",
-    "name": "Ambiguous scenario's specified V3",
+    "name": "Ambiguous scenarios specified V3",
     "line": 1,
-    "id": "ambiguous-scenario's-specified-v3",
+    "id": "ambiguous-scenarios-specified-v3",
     "tags": [],
     "uri": "e2e-tests/features/ambiguous.feature",
     "elements": [
       {
-        "id": "ambiguous-scenario's-specified-v3;ambiguous-johnny-wants-to-see-ambiguous-scenario's",
+        "id": "ambiguous-scenarios-specified-v3;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Ambiguous Johnny wants to see ambiguous scenario's",
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -459,7 +459,7 @@
         "version": "10"
       }
     },
-    "description": "    Failed scenario's should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
+    "description": "    Failed scenarios should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
     "elements": [
       {
         "id": "failure-report-v1;check-an-incorrect-to-do-amount",
@@ -595,7 +595,7 @@
         "version": "10"
       }
     },
-    "description": "    Failed scenario's should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
+    "description": "    Failed scenarios should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
     "keyword": "Feature",
     "line": 2,
     "name": "Failure report V2",
@@ -707,7 +707,7 @@
         "version": "10"
       }
     },
-    "description": "    Failed scenario's should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
+    "description": "    Failed scenarios should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
     "keyword": "Feature",
     "name": "Failure report V3",
     "line": 2,
@@ -1792,7 +1792,7 @@
         "version": "not known"
       }
     },
-    "description": "  No elements have been founds\n  So the report should hold no scenario's and steps",
+    "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
     "id": "no_elements.1494777183356",
     "keyword": "Feature",
     "line": 1,
@@ -1812,13 +1812,13 @@
         "version": "7.1"
       }
     },
-    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "description": "  The scenarios have scripted pending steps\n  So the report should hold pending steps",
     "elements": [
       {
-        "id": "pending-scenario's-specified-v1;johnny-wants-to-see-pending-scenario's",
+        "id": "pending-scenarios-specified-v1;johnny-wants-to-see-pending-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Johnny wants to see pending scenario's",
+        "name": "Johnny wants to see pending scenarios",
         "steps": [
           {
             "arguments": [],
@@ -1897,10 +1897,10 @@
         "type": "scenario"
       }
     ],
-    "id": "pending-scenario's-specified-v1",
+    "id": "pending-scenarios-specified-v1",
     "keyword": "Feature",
     "line": 1,
-    "name": "Pending scenario's specified V1",
+    "name": "Pending scenarios specified V1",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/pending.feature"
   },
@@ -1916,19 +1916,19 @@
         "version": "7.1"
       }
     },
-    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "description": "  The scenarios have scripted pending steps\n  So the report should hold pending steps",
     "keyword": "Feature",
     "line": 1,
-    "name": "Pending scenario's specified V2",
+    "name": "Pending scenarios specified V2",
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/pending.feature",
     "elements": [
       {
         "keyword": "Scenario",
         "line": 5,
-        "name": "Johnny wants to see pending scenario's",
+        "name": "Johnny wants to see pending scenarios",
         "tags": [],
-        "id": "pending-scenario's-specified-v2;johnny-wants-to-see-pending-scenario's",
+        "id": "pending-scenarios-specified-v2;johnny-wants-to-see-pending-scenarios",
         "steps": [
           {
             "arguments": [],
@@ -1981,7 +1981,7 @@
         ]
       }
     ],
-    "id": "pending-scenario's-specified-v2"
+    "id": "pending-scenarios-specified-v2"
   },
   {
     "metadata": {
@@ -1995,19 +1995,19 @@
         "version": "7.1"
       }
     },
-    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "description": "  The scenarios have scripted pending steps\n  So the report should hold pending steps",
     "keyword": "Feature",
-    "name": "Pending scenario's specified V3",
+    "name": "Pending scenarios specified V3",
     "line": 1,
-    "id": "pending-scenario's-specified-v3",
+    "id": "pending-scenarios-specified-v3",
     "tags": [],
     "uri": "e2e-tests/features/pending.feature",
     "elements": [
       {
-        "id": "pending-scenario's-specified-v3;johnny-wants-to-see-pending-scenario's",
+        "id": "pending-scenarios-specified-v3;johnny-wants-to-see-pending-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Johnny wants to see pending scenario's",
+        "name": "Johnny wants to see pending scenarios",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -2074,7 +2074,7 @@
         "version": "10.12"
       }
     },
-    "description": "  The scenario's have been skipped\n  So the report should hold skipped scenario's",
+    "description": "  The scenarios have been skipped\n  So the report should hold skipped scenarios",
     "elements": [
       {
         "id": "angular-homepage;as-a-visitor-i-want-to-be-greeted",
@@ -2338,7 +2338,7 @@
     "id": "skipped_scenarios.1494823563764",
     "keyword": "Feature",
     "line": 1,
-    "name": "Skipped scenario's specified",
+    "name": "Skipped scenarios specified",
     "tags": [],
     "uri": "skipped_scenarios.1494823563764"
   },
@@ -2354,13 +2354,13 @@
         "version": "10.1.2"
       }
     },
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "elements": [
       {
-        "id": "undefined-scenario's-specified-v1;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v1;timmy-wants-to-see-undefined-scenarios",
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "steps": [
           {
             "arguments": [],
@@ -2447,10 +2447,10 @@
         "type": "scenario"
       }
     ],
-    "id": "undefined-scenario's-specified-v1",
+    "id": "undefined-scenarios-specified-v1",
     "keyword": "Feature",
     "line": 2,
-    "name": "Undefined scenario's specified V1",
+    "name": "Undefined scenarios specified V1",
     "tags": [
       {
         "name": "@undefined",
@@ -2471,10 +2471,10 @@
         "version": "10.1.2"
       }
     },
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "keyword": "Feature",
     "line": 2,
-    "name": "Undefined scenario's specified V2",
+    "name": "Undefined scenarios specified V2",
     "tags": [
       {
         "line": 1,
@@ -2486,7 +2486,7 @@
       {
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "tags": [
           {
             "line": 1,
@@ -2505,7 +2505,7 @@
             "name": "@nothing"
           }
         ],
-        "id": "undefined-scenario's-specified-v2;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v2;timmy-wants-to-see-undefined-scenarios",
         "steps": [
           {
             "arguments": [],
@@ -2549,7 +2549,7 @@
         ]
       }
     ],
-    "id": "undefined-scenario's-specified-v2"
+    "id": "undefined-scenarios-specified-v2"
   },
   {
     "metadata": {
@@ -2563,11 +2563,11 @@
         "version": "10.1.2"
       }
     },
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "keyword": "Feature",
-    "name": "Undefined scenario's specified V3",
+    "name": "Undefined scenarios specified V3",
     "line": 2,
-    "id": "undefined-scenario's-specified-v3",
+    "id": "undefined-scenarios-specified-v3",
     "tags": [
       {
         "name": "@undefined",
@@ -2577,10 +2577,10 @@
     "uri": "e2e-tests/features/undefined.feature",
     "elements": [
       {
-        "id": "undefined-scenario's-specified-v3;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "tags": [
           {
             "name": "@undefined",

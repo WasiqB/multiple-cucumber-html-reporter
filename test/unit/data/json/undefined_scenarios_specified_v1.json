@@ -1,12 +1,12 @@
 [
   {
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "elements": [
       {
-        "id": "undefined-scenario's-specified-v1;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v1;timmy-wants-to-see-undefined-scenarios",
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "steps": [
           {
             "arguments": [],
@@ -93,10 +93,10 @@
         "type": "scenario"
       }
     ],
-    "id": "undefined-scenario's-specified-v1",
+    "id": "undefined-scenarios-specified-v1",
     "keyword": "Feature",
     "line": 2,
-    "name": "Undefined scenario's specified V1",
+    "name": "Undefined scenarios specified V1",
     "tags": [
       {
         "name": "@undefined",

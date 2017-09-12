@@ -11,19 +11,19 @@
         "version": "7.1"
       }
     },
-    "description": "  The scenario's have scripted pending steps\n  So the report should hold pending steps",
+    "description": "  The scenarios have scripted pending steps\n  So the report should hold pending steps",
     "keyword": "Feature",
-    "name": "Pending scenario's specified V3",
+    "name": "Pending scenarios specified V3",
     "line": 1,
-    "id": "pending-scenario's-specified-v3",
+    "id": "pending-scenarios-specified-v3",
     "tags": [],
     "uri": "e2e-tests/features/pending.feature",
     "elements": [
       {
-        "id": "pending-scenario's-specified-v3;johnny-wants-to-see-pending-scenario's",
+        "id": "pending-scenarios-specified-v3;johnny-wants-to-see-pending-scenarios",
         "keyword": "Scenario",
         "line": 5,
-        "name": "Johnny wants to see pending scenario's",
+        "name": "Johnny wants to see pending scenarios",
         "tags": [],
         "type": "scenario",
         "steps": [

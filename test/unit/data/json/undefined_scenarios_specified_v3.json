@@ -11,11 +11,11 @@
         "version": "10.1.2"
       }
     },
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "keyword": "Feature",
-    "name": "Undefined scenario's specified V3",
+    "name": "Undefined scenarios specified V3",
     "line": 2,
-    "id": "undefined-scenario's-specified-v3",
+    "id": "undefined-scenarios-specified-v3",
     "tags": [
       {
         "name": "@undefined",
@@ -25,10 +25,10 @@
     "uri": "e2e-tests/features/undefined.feature",
     "elements": [
       {
-        "id": "undefined-scenario's-specified-v3;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "tags": [
           {
             "name": "@undefined",

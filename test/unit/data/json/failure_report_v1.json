@@ -1,6 +1,6 @@
 [
   {
-    "description": "    Failed scenario's should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
+    "description": "    Failed scenarios should have attached screenshots and stacktrace\n    So a reviewer can judge what went wrong",
     "elements": [
       {
         "id": "failure-report-v1;check-an-incorrect-to-do-amount",

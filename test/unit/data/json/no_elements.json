@@ -11,7 +11,7 @@
         "version": "not known"
       }
     },
-    "description": "  No elements have been founds\n  So the report should hold no scenario's and steps",
+    "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
     "id": "no_elements.1494777183356",
     "keyword": "Feature",
     "line": 1,

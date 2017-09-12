@@ -11,10 +11,10 @@
         "version": "10.1.2"
       }
     },
-    "description": "  No scenario's have scripted steps\n  So the report should hold undefined steps",
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
     "keyword": "Feature",
     "line": 2,
-    "name": "Undefined scenario's specified V2",
+    "name": "Undefined scenarios specified V2",
     "tags": [
       {
         "line": 1,
@@ -26,7 +26,7 @@
       {
         "keyword": "Scenario",
         "line": 7,
-        "name": "Timmy wants to see undefined scenario's",
+        "name": "Timmy wants to see undefined scenarios",
         "tags": [
           {
             "line": 1,
@@ -45,7 +45,7 @@
             "name": "@nothing"
           }
         ],
-        "id": "undefined-scenario's-specified-v2;timmy-wants-to-see-undefined-scenario's",
+        "id": "undefined-scenarios-specified-v2;timmy-wants-to-see-undefined-scenarios",
         "steps": [
           {
             "arguments": [],
@@ -89,6 +89,6 @@
         ]
       }
     ],
-    "id": "undefined-scenario's-specified-v2"
+    "id": "undefined-scenarios-specified-v2"
   }
 ]

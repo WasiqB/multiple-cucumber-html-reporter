@@ -11,7 +11,7 @@
         "version": "10.12"
       }
     },
-    "description": "  The scenario's have been skipped\n  So the report should hold skipped scenario's",
+    "description": "  The scenarios have been skipped\n  So the report should hold skipped scenarios",
     "elements": [
       {
         "id": "angular-homepage;as-a-visitor-i-want-to-be-greeted",
@@ -275,7 +275,7 @@
     "id": "skipped_scenarios.1494823563764",
     "keyword": "Feature",
     "line": 1,
-    "name": "Skipped scenario's specified",
+    "name": "Skipped scenarios specified",
     "tags": [],
     "uri": "skipped_scenarios.1494823563764"
   }
