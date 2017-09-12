@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.0.0...v1.0.1) (2017-09-12)
+
+### Bug Fixes
+
+* **fix:** fixed typos, see [PR 9](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/9), tnx to [achingbrain](https://github.com/achingbrain)
+
 <a name="1.0.0"></a>
 ## [1.0.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v0.2.1...v1.0.0) (2017-09-08)
 
