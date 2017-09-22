@@ -34,6 +34,11 @@ npm install multiple-cucumber-html-reporter --save-dev
 Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2 and 3**.
 
 ## Usage
+> **If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/wswebcreation/protractor-multiple-cucumber-html-reporter-plugin).**
+
+> **It privides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.**
+
+
 Multiple Cucumber HTML Reporter transforms the Cucumber JSON output to a beautiful report. In order to let this happen add the piece of code that is placed below to CucumberJS `AfterFeatures`-hook.
 
 ```javascript
@@ -92,6 +97,21 @@ This module will first merge all the JSON-files to 1 file and then enrich it wit
 
 - `merged-output.json`
 - `enriched-output.json`
+
+### `disableLog`
+- **Type:** `boolean`
+- **Mandatory:** No
+- **Default:** `false`
+
+This will disable the log so will **NOT** see this.
+
+```shell
+=====================================================================================
+    Multiple Cucumber HTML report generated in:
+
+    /Users/wswebcreation/multiple-cucumber-html-reporter/.tmp/index.html
+========================================================================
+```
 
 ### `metadata`
 - **Type:** `JSON`

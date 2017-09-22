@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+<a name="1.1.0"></a>
+## [1.1.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.0.1...v1.1.0) (2017-09-22)
+
+### Features
+
+* **feature:** add option to disable the log when a report has been generated
+* **feature:** defaulted the dropdown to 50 and updated the options to `[50, 100, 150, "All"]`
+* **feature:** added *created by* to templates
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.0.0...v1.0.1) (2017-09-12)
 
