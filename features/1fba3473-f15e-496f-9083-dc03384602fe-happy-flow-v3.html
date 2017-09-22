@@ -62,13 +62,14 @@ nav .navbar-text {
 }
 
 /* Table */
-table{
+table {
     width: 100%;
 }
 
-table.chart tr th:first-of-type{
+table.chart tr th:first-of-type {
     width: 33.333%;
 }
+
 .table > thead > tr > th {
     background: #F5F7FA;
 }
@@ -399,7 +400,7 @@ ul.quick-list li i {
     color: #757679;
 }
 
-/* Features / Scenario's */
+/* Features / Scenarios */
 ul.panel_toolbox li .step {
     border-radius: 50%;
     color: #ffffff;
@@ -448,7 +449,7 @@ ul.panel_toolbox li .step {
     }
 }
 
-@media (max-width: 640px){
+@media (max-width: 640px) {
     .x_title h2 {
         width: 100%;
     }
@@ -463,6 +464,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
     background-color: #E74C3C;
 }
+
+.created-by {
+    padding: 50px 0;
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
@@ -476,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Skipped scenario's specified</small>
+                <small>Happy flow V3</small>
             </p>
         </div>
     </nav>
@@ -488,13 +495,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                <i class="fa fa-tags fa-lg"></i>
+                <span class="tag">@example</span><span class="tag">@happy-flow</span><span class="tag">@angular</span>
+                
                 
             </div>
             <h1>Feature:
-                <small>Skipped scenario's specified</small>
+                <small>Happy flow V3</small>
             </h1>
-            <p>  The scenario's have been skipped
-  So the report should hold skipped scenario's</p>
+            <p></p>
         </div>
 
         <div class="clearfix"></div>
@@ -503,7 +512,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="col-md-8 col-xs-12">
                 <div class="x_panel fixed_height_320">
                     <div class="x_title">
-    <h2>Scenario's</h2>
+    <h2>Scenarios</h2>
     <ul class="nav navbar-right panel_toolbox">
         <li>
             <a class="collapse-link">
@@ -542,7 +551,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">100.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -554,16 +563,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         <td class="percentage">0.00 %</td>
                     </tr>
                     
-                    
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
-                                <i class="fa fa-arrow-circle-right skipped-color"></i>
-                                Skipped
-                            </p>
-                        </td>
-                        <td class="percentage">100.00 %</td>
-                    </tr>
                     
                     
                     
@@ -608,7 +607,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">MacBook Pro</span>
+                <span class="meta-data-data">Virtual Machine</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -617,10 +616,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-apple fa-lg">
-                        <span>apple</span>
+                    <i class="fa fa-windows fa-lg">
+                        <span>windows</span>
                     </i>
-                    10.12
+                    10
                 </span>
             </li>
             <li>
@@ -630,10 +629,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-safari fa-lg">
-                        <span>safari</span>
+                    <i class="fa fa-edge fa-lg">
+                        <span>edge</span>
                     </i>
-                    10
+                    14
                 </span>
             </li>
         </ul>
@@ -652,6 +651,19 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@visitor</span>
+                
+                <span class="tag">@julie</span>
+                
+                
                 
             </div>
             <h2>Scenario:
@@ -666,13 +678,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                
+                
                 <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
                         3
                     </span>
                 </li>
-                
-                
                 
                 
             </ul>
@@ -683,14 +695,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -731,8 +740,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -773,8 +782,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -813,9 +822,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
             
             
-
-            
-            
         </div>
     </div>
 </div>
@@ -825,6 +831,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="x_title">
             <div class="tags">
                 
+                
+                
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@todo</span>
+                
+                <span class="tag">@count</span>
+                
+                <span class="tag">@validate</span>
                 
                 
                 
@@ -841,13 +862,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                
+                
                 <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
                         3
                     </span>
                 </li>
-                
-                
                 
                 
             </ul>
@@ -858,14 +879,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -906,8 +924,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -948,8 +966,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -988,9 +1006,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
             
             
-
-            
-            
         </div>
     </div>
 </div>
@@ -1000,6 +1015,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="x_title">
             <div class="tags">
                 
+                
+                
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@todo</span>
+                
+                <span class="tag">@count</span>
+                
+                <span class="tag">@add</span>
                 
                 
                 
@@ -1016,13 +1046,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                
+                
                 <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
                         4
                     </span>
                 </li>
-                
-                
                 
                 
             </ul>
@@ -1033,14 +1063,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -1081,8 +1108,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -1123,8 +1150,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -1165,8 +1192,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
@@ -1197,9 +1224,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-            
-
             
             
 
@@ -1246,10 +1270,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            0.00,
-                            0.00,
-                            0.00,
                             100.00,
+                            0.00,
+                            0.00,
+                            0.00,
                             0.00,
                             0.00
                         ],
@@ -1289,5 +1313,14 @@ $('body').tooltip({
 });
         });
     </script>
+
+        <div class="created-by">
+            <p>Created by wswebcreation. Find me on:</p>
+            <a href="http://www.wswebcreation.nl/" target="_blank"><i class="fa fa-rss-square fa-2x"></i></a>
+            <a href="https://github.com/wswebcreation/" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+            <a href="http://nl.linkedin.com/in/wimselles" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="http://stackoverflow.com/users/5911978/wswebcreation" target="_blank"><i class="fa fa-stack-overflow fa-2x"></i></a>
+        </div>
+
 </body>
 </html>

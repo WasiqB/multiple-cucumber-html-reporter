@@ -62,13 +62,14 @@ nav .navbar-text {
 }
 
 /* Table */
-table{
+table {
     width: 100%;
 }
 
-table.chart tr th:first-of-type{
+table.chart tr th:first-of-type {
     width: 33.333%;
 }
+
 .table > thead > tr > th {
     background: #F5F7FA;
 }
@@ -399,7 +400,7 @@ ul.quick-list li i {
     color: #757679;
 }
 
-/* Features / Scenario's */
+/* Features / Scenarios */
 ul.panel_toolbox li .step {
     border-radius: 50%;
     color: #ffffff;
@@ -448,7 +449,7 @@ ul.panel_toolbox li .step {
     }
 }
 
-@media (max-width: 640px){
+@media (max-width: 640px) {
     .x_title h2 {
         width: 100%;
     }
@@ -463,6 +464,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
     background-color: #E74C3C;
 }
+
+.created-by {
+    padding: 50px 0;
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
@@ -476,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Ambiguous scenario's specified V1</small>
+                <small>Skipped scenarios specified</small>
             </p>
         </div>
     </nav>
@@ -491,10 +498,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
             </div>
             <h1>Feature:
-                <small>Ambiguous scenario's specified V1</small>
+                <small>Skipped scenarios specified</small>
             </h1>
-            <p>  The scenario's have been scripted twice
-  So the report should hold ambiguous steps</p>
+            <p>  The scenarios have been skipped
+  So the report should hold skipped scenarios</p>
         </div>
 
         <div class="clearfix"></div>
@@ -503,7 +510,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="col-md-8 col-xs-12">
                 <div class="x_panel fixed_height_320">
                     <div class="x_title">
-    <h2>Scenario's</h2>
+    <h2>Scenarios</h2>
     <ul class="nav navbar-right panel_toolbox">
         <li>
             <a class="collapse-link">
@@ -531,7 +538,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">1</div>
+                <div class="total">3</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -555,17 +562,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </tr>
                     
                     
-                    
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
-                               title="Scenario has double step implementation and failed because of that.">
-                                <i class="fa fa-flash ambiguous-color"></i>
-                                Ambiguous
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
+                                <i class="fa fa-arrow-circle-right skipped-color"></i>
+                                Skipped
                             </p>
                         </td>
                         <td class="percentage">100.00 %</td>
                     </tr>
+                    
                     
                     
                 </table>
@@ -609,7 +615,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Virtual Machine</span>
+                <span class="meta-data-data">MacBook Pro</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -618,10 +624,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-linux fa-lg">
-                        <span>linux</span>
+                    <i class="fa fa-apple fa-lg">
+                        <span>apple</span>
                     </i>
-                    16.04
+                    10.12
                 </span>
             </li>
             <li>
@@ -631,10 +637,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-firefox fa-lg">
-                        <span>firefox</span>
+                    <i class="fa fa-safari fa-lg">
+                        <span>safari</span>
                     </i>
-                    53
+                    10
                 </span>
             </li>
         </ul>
@@ -656,7 +662,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
             </div>
             <h2>Scenario:
-                <small>Ambiguous Johnny wants to see ambiguous scenario's</small>
+                <small>As a visitor I want to be greeted</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -665,28 +671,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </a>
                 </li>
                 
-                <li>
-                    <span class="step ambiguous-background" data-toggle="tooltip" data-placement="top"
-                          title="Scenario has double step implementation and failed because of that.">
-                        1
-                    </span>
-                </li>
-                
                 
                 
                 <li>
                     <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
-                        1
+                        3
                     </span>
                 </li>
                 
                 
-                
-                <li>
-                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        1
-                    </span>
-                </li>
                 
                 
             </ul>
@@ -703,15 +696,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Ambiguous Johnny visits the Angular homepage
+                    I visit the Angular homepage
                 </div>
 
                 
@@ -745,16 +738,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top"
-                     title="Step has double step implementation and failed because of that.">
-                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
-                    <span class="keyword highlight">When </span>
-                    he clicks on the second button
+                    <span class="keyword highlight">Given </span>
+                    I submit the name "Julie"
                 </div>
 
                 
@@ -796,7 +788,399 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something happens
+                    I am greeted as "Hello Julie!"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+            <div class="tags">
+                
+                
+                
+                
+            </div>
+            <h2>Scenario:
+                <small>Validate todo list</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                        3
+                    </span>
+                </li>
+                
+                
+                
+                
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content" style="display: none;">
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I visit the Angular homepage
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I count 2 todo's
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Then </span>
+                    the last todo should hold "build an AngularJS app"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+            <div class="tags">
+                
+                
+                
+                
+            </div>
+            <h2>Scenario:
+                <small>Add a todo</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                        4
+                    </span>
+                </li>
+                
+                
+                
+                
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content" style="display: none;">
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I visit the Angular homepage
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I add the todo "write a protractor test"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Then </span>
+                    I should have 3 todo's
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">And </span>
+                    the last todo should hold "write a protractor test"
                 </div>
 
                 
@@ -872,8 +1256,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             0.00,
                             0.00,
                             0.00,
-                            0.00,
                             100.00,
+                            0.00,
                             0.00
                         ],
                         backgroundColor: [
@@ -912,5 +1296,14 @@ $('body').tooltip({
 });
         });
     </script>
+
+        <div class="created-by">
+            <p>Created by wswebcreation. Find me on:</p>
+            <a href="http://www.wswebcreation.nl/" target="_blank"><i class="fa fa-rss-square fa-2x"></i></a>
+            <a href="https://github.com/wswebcreation/" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+            <a href="http://nl.linkedin.com/in/wimselles" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="http://stackoverflow.com/users/5911978/wswebcreation" target="_blank"><i class="fa fa-stack-overflow fa-2x"></i></a>
+        </div>
+
 </body>
 </html>

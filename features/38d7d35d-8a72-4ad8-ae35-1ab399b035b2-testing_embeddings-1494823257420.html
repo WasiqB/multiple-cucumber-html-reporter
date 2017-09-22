@@ -62,13 +62,14 @@ nav .navbar-text {
 }
 
 /* Table */
-table{
+table {
     width: 100%;
 }
 
-table.chart tr th:first-of-type{
+table.chart tr th:first-of-type {
     width: 33.333%;
 }
+
 .table > thead > tr > th {
     background: #F5F7FA;
 }
@@ -399,7 +400,7 @@ ul.quick-list li i {
     color: #757679;
 }
 
-/* Features / Scenario's */
+/* Features / Scenarios */
 ul.panel_toolbox li .step {
     border-radius: 50%;
     color: #ffffff;
@@ -448,7 +449,7 @@ ul.panel_toolbox li .step {
     }
 }
 
-@media (max-width: 640px){
+@media (max-width: 640px) {
     .x_title h2 {
         width: 100%;
     }
@@ -463,6 +464,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
     background-color: #E74C3C;
 }
+
+.created-by {
+    padding: 50px 0;
+    text-align: center;
+}
+
     </style>
 </head>
 <body>
@@ -476,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Pending scenario's specified V1</small>
+                <small>Testing embeddings</small>
             </p>
         </div>
     </nav>
@@ -486,15 +493,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="page-title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h1>Feature:
-                <small>Pending scenario's specified V1</small>
+                <small>Testing embeddings</small>
             </h1>
-            <p>  The scenario's have scripted pending steps
-  So the report should hold pending steps</p>
+            <p></p>
         </div>
 
         <div class="clearfix"></div>
@@ -503,7 +506,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="col-md-8 col-xs-12">
                 <div class="x_panel fixed_height_320">
                     <div class="x_title">
-    <h2>Scenario's</h2>
+    <h2>Scenarios</h2>
     <ul class="nav navbar-right panel_toolbox">
         <li>
             <a class="collapse-link">
@@ -531,7 +534,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">1</div>
+                <div class="total">2</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -542,7 +545,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">100.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -552,16 +555,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             </p>
                         </td>
                         <td class="percentage">0.00 %</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
-                                <i class="fa fa-minus-circle pending-color"></i>
-                                Pending
-                            </p>
-                        </td>
-                        <td class="percentage">100.00 %</td>
                     </tr>
                     
                     
@@ -601,14 +594,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-mobile fa-lg">
-                        <span>mobile</span>
+                    <i class="fa fa-desktop fa-lg">
+                        <span>desktop</span>
                     </i>
                 </span>
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Samsung S7</span>
+                <span class="meta-data-data">Virtual Machine</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -617,10 +610,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-android fa-lg">
-                        <span>android</span>
+                    <i class="fa fa-windows fa-lg">
+                        <span>windows</span>
                     </i>
-                    7.1
+                    10
                 </span>
             </li>
             <li>
@@ -630,10 +623,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-chrome fa-lg">
-                        <span>chrome</span>
+                    <i class="fa fa-edge fa-lg">
+                        <span>edge</span>
                     </i>
-                    56
+                    14
                 </span>
             </li>
         </ul>
@@ -650,12 +643,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="x_title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h2>Scenario:
-                <small>Johnny wants to see pending scenario's</small>
+                <small>Validate todo list</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -665,20 +655,170 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </li>
                 
                 
-                <li>
-                    <span class="step pending-background" data-toggle="tooltip" title="Scenario is pending">
-                        1
-                    </span>
-                </li>
+                
                 
                 
                 <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
                         2
                     </span>
                 </li>
                 
                 
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content" style="display: none;">
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Before </span>
+                    Prepare some data
+                </div>
+
+                
+                
+
+                
+
+                
+                <a href="#info00-text" data-toggle="collapse">+ Show Info</a>
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+            <div id="info00-text" class="scenario-step-collapse collapse">
+                <pre class=info>
+[
+  {
+    "data": {
+      "x": "1",
+      "y": "1",
+      "url": "http://url.com"
+    },
+    "event": "start",
+    "show": 1,
+    "id": 50
+  },
+  {
+    "data": {
+      "x": "2",
+      "y": "3",
+      "url": "http://example.com"
+    },
+    "event": "stop",
+    "show": 2,
+    "id": 51
+  }
+]
+</pre>
+            </div>
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I do nothing
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+            <div class="tags">
+                
+            </div>
+            <h2>Scenario:
+                <small>Testing embeddings part 2</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li>
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
+                        3
+                    </span>
+                </li>
                 
                 
             </ul>
@@ -695,15 +835,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
-                    <i class="fa fa-minus-circle fa-2x pending-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Johnny visits the Angular homepage
+                    I add embeddings:
                 </div>
 
                 
@@ -711,6 +851,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 
 
+                
+                <a href="#info11-text" data-toggle="collapse">+ Show Info</a>
                 
 
                 
@@ -721,6 +863,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
             
 
+            
+            <div id="info11-text" class="scenario-step-collapse collapse">
+                <pre class=info>
+"// testdata to be printed<br>  {\r\n    \"value\": \"write a protractor test\"\r\n}"
+</pre>
+            </div>
             
 
             
@@ -737,57 +885,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">When </span>
-                    he clicks on the first link
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something happens
+                    I should also have other embeddings
                 </div>
 
                 
@@ -795,6 +901,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 
 
+                
+                <a href="#info12-text" data-toggle="collapse">+ Show Info</a>
                 
 
                 
@@ -805,6 +913,62 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
             
 
+            
+            <div id="info12-text" class="scenario-step-collapse collapse">
+                <pre class=info>
+"Suspendisse lectus leo<br>  Suspendisse lectus leo"
+</pre>
+            </div>
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">And </span>
+                    I am embedded
+                </div>
+
+                
+                
+
+                
+
+                
+                <a href="#info13-text" data-toggle="collapse">+ Show Info</a>
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+            <div id="info13-text" class="scenario-step-collapse collapse">
+                <pre class=info>
+"The first not encoded line<br>  And the second not encoded line"
+</pre>
+            </div>
             
 
             
@@ -860,9 +1024,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            0.00,
-                            0.00,
                             100.00,
+                            0.00,
+                            0.00,
                             0.00,
                             0.00,
                             0.00
@@ -903,5 +1067,14 @@ $('body').tooltip({
 });
         });
     </script>
+
+        <div class="created-by">
+            <p>Created by wswebcreation. Find me on:</p>
+            <a href="http://www.wswebcreation.nl/" target="_blank"><i class="fa fa-rss-square fa-2x"></i></a>
+            <a href="https://github.com/wswebcreation/" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+            <a href="http://nl.linkedin.com/in/wimselles" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+            <a href="http://stackoverflow.com/users/5911978/wswebcreation" target="_blank"><i class="fa fa-stack-overflow fa-2x"></i></a>
+        </div>
+
 </body>
 </html>
