@@ -166,6 +166,16 @@ cucumberJSON[0].metadata = metadata;
 // Now save the file to the disk
 ```
 
+### `metadata.app.name`
+- **Type:** `string`
+
+**e.g.:** The version of the app.
+
+### `metadata.app.version`
+- **Type:** `string`
+
+**e.g.:** The version of the app.
+
 ### `metadata.browser.name`
 - **Type:** `string`
 - **Possible values:** `internet explorer | edge | chrome | firefox | safari`
@@ -203,7 +213,8 @@ cucumberJSON[0].metadata = metadata;
 ![Snapshot - Features overview browser / device info](./docs/images/overview-metadata.jpg "Snapshot - Features overview browser / device info")
 
 ### Metadata example scenario with and without known data
-![Snapshot - Scenario browser / device info](./docs/images/scenario-metadata.jpg "Snapshot - Scenario browser / device info")
+![Snapshot - Scenario browser / device info](./docs/images/scenario-browser-metadata.jpg "Snapshot - Scenario browser / device info")
+![Snapshot - Scenario app / device info](./docs/images/scenario-app-metadata.jpg "Snapshot - Scenario app / device info")
 ![Snapshot - Scenario browser / device info not known](./docs/images/scenario-no-metadata.jpg "Snapshot - Scenario browser / device info not known")
 
 ## FAQ

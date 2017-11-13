@@ -810,6 +810,164 @@
   },
   {
     "metadata": {
+      "app": {
+        "name": "Greetings app",
+        "version": "1.02"
+      },
+      "device": "Google Pixel 2",
+      "platform": {
+        "name": "Android",
+        "version": "8"
+      }
+    },
+    "keyword": "Feature",
+    "name": "Happy flow app",
+    "line": 2,
+    "id": "happy-flow-app",
+    "uri": "e2e-tests/features/app.feature",
+    "elements": [
+      {
+        "id": "happy-flow-app;as-a-visitor-i-want-to-be-greeted",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "As a visitor I want to be greeted",
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the app",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2230
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I submit the name \"Julie\"",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1070
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I am greeted as \"Hello Julie!\"",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "metadata": {
+      "app": {
+        "name": "Greetings app",
+        "version": "1.02"
+      },
+      "device": "iPhone X",
+      "platform": {
+        "name": "iOS",
+        "version": "11.1"
+      }
+    },
+    "keyword": "Feature",
+    "name": "Happy flow app",
+    "line": 2,
+    "id": "happy-flow-app",
+    "uri": "e2e-tests/features/app.feature",
+    "elements": [
+      {
+        "id": "happy-flow-app;as-a-visitor-i-want-to-be-greeted",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "As a visitor I want to be greeted",
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the app",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2230
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I submit the name \"Julie\"",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1070
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I am greeted as \"Hello Julie!\"",
+            "match": {
+              "location": "e2e-tests/features/app.steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "metadata": {
       "browser": {
         "name": "Edge",
         "version": "14"

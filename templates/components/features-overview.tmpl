@@ -27,7 +27,12 @@
                         </th>
                         <th>Device</th>
                         <th>OS</th>
+                        <% if(+suite.app > 0) { %>
+                        <th>App</th>
+                        <% } %>
+                        <% if(+suite.browser > 0) { %>
                         <th>Browser</th>
+                        <% } %>
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
@@ -124,7 +129,16 @@
                             <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
                             <%= feature.metadata.platform.version %>
                         </td>
+                        <% if(+suite.app > 0) { %>
                         <td>
+                            <% if(feature.metadata.app) { %>
+                            <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
+                            <% } %>
+                        </td>
+                        <% } %>
+                        <% if(+suite.browser > 0) { %>
+                        <td>
+                            <% if(feature.metadata.browser) { %>
                             <% var browserIcon; %>
                             <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
                             <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
@@ -135,7 +149,9 @@
                             <% }%>
                             <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
                             <%= feature.metadata.browser.version %>
+                            <% } %>
                         </td>
+                        <% } %>
                         <td><%= feature.scenarios.total %></td>
                         <td><%= feature.scenarios.passed %></td>
                         <td><%= feature.scenarios.failed %></td>

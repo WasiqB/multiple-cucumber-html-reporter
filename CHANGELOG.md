@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.2.0"></a>
+## [1.2.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.1.0...v1.2.0) (2017-11-13)
+
+### Features
+
+* **feature:** add `app` as a metadata and update the docs
+
 <a name="1.1.0"></a>
 ## [1.1.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.0.1...v1.1.0) (2017-09-22)
 

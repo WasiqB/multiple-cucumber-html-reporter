@@ -56,6 +56,15 @@
                     <%= metadata.platform.version %>
                 </span>
             </li>
+            <% if (metadata.app) { %>
+            <li>
+                <span class="meta-data-title">App</span>
+                <span class="meta-data-data">
+                    <%= metadata.app.name %> V: <%= metadata.app.version %>
+                </span>
+            </li>
+            <% } %>
+            <% if (metadata.browser) { %>
             <li>
                 <span class="meta-data-title">Browser</span>
                 <span class="meta-data-data">
@@ -73,6 +82,7 @@
                     <%= metadata.browser.version %>
                 </span>
             </li>
+            <% } %>
         </ul>
     </div>
 </div>
