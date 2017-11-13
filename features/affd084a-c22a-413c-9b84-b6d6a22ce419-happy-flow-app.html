@@ -483,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Pending scenarios specified V1</small>
+                <small>Happy flow app</small>
             </p>
         </div>
     </nav>
@@ -493,15 +493,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="page-title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h1>Feature:
-                <small>Pending scenarios specified V1</small>
+                <small>Happy flow app</small>
             </h1>
-            <p>  The scenarios have scripted pending steps
-  So the report should hold pending steps</p>
+            <p></p>
         </div>
 
         <div class="clearfix"></div>
@@ -549,7 +545,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">100.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -559,16 +555,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             </p>
                         </td>
                         <td class="percentage">0.00 %</td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
-                                <i class="fa fa-minus-circle pending-color"></i>
-                                Pending
-                            </p>
-                        </td>
-                        <td class="percentage">100.00 %</td>
                     </tr>
                     
                     
@@ -615,7 +601,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Samsung S7</span>
+                <span class="meta-data-data">Google Pixel 2</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -627,25 +613,22 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <i class="fa fa-android fa-lg">
                         <span>android</span>
                     </i>
-                    7.1
+                    8
                 </span>
             </li>
+            
             <li>
-                <span class="meta-data-title">Browser</span>
+                <span class="meta-data-title">App</span>
                 <span class="meta-data-data">
-                    
-                    
-                    
-                    
-                    <i class="fa fa-chrome fa-lg">
-                        <span>chrome</span>
-                    </i>
-                    56
+                    Greetings app V: 1.02
                 </span>
             </li>
+            
+            
         </ul>
     </div>
 </div>
+
                 </div>
             </div>
         </div>
@@ -657,12 +640,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="x_title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h2>Scenario:
-                <small>Johnny wants to see pending scenarios</small>
+                <small>As a visitor I want to be greeted</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -672,20 +652,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </li>
                 
                 
-                <li>
-                    <span class="step pending-background" data-toggle="tooltip" title="Scenario is pending">
-                        1
-                    </span>
-                </li>
+                
                 
                 
                 <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
-                        2
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
+                        3
                     </span>
                 </li>
-                
-                
                 
                 
             </ul>
@@ -696,21 +670,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
-                    <i class="fa fa-minus-circle fa-2x pending-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Johnny visits the Angular homepage
+                    I open the app
                 </div>
 
                 
@@ -744,15 +715,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
-                    <span class="keyword highlight">When </span>
-                    he clicks on the first link
+                    <span class="keyword highlight">Given </span>
+                    I submit the name "Julie"
                 </div>
 
                 
@@ -786,15 +757,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something happens
+                    I am greeted as "Hello Julie!"
                 </div>
 
                 
@@ -818,9 +789,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-            
-
             
             
 
@@ -867,9 +835,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            0.00,
-                            0.00,
                             100.00,
+                            0.00,
+                            0.00,
                             0.00,
                             0.00,
                             0.00

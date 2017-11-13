@@ -483,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Undefined scenarios specified V1</small>
+                <small>Pending scenarios specified V3</small>
             </p>
         </div>
     </nav>
@@ -495,16 +495,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
-                <i class="fa fa-tag fa-lg"></i>
-                <span class="tag">@undefined</span>
-                
                 
             </div>
             <h1>Feature:
-                <small>Undefined scenarios specified V1</small>
+                <small>Pending scenarios specified V3</small>
             </h1>
-            <p>  No scenarios have scripted steps
-  So the report should hold undefined steps</p>
+            <p>  The scenarios have scripted pending steps
+  So the report should hold pending steps</p>
         </div>
 
         <div class="clearfix"></div>
@@ -564,18 +561,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         <td class="percentage">0.00 %</td>
                     </tr>
                     
-                    
-                    
-                    
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
-                                <i class="fa fa-question-circle not-defined-color"></i>
-                                Not defined
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
+                                <i class="fa fa-minus-circle pending-color"></i>
+                                Pending
                             </p>
                         </td>
                         <td class="percentage">100.00 %</td>
                     </tr>
+                    
+                    
+                    
                     
                 </table>
             </td>
@@ -618,7 +615,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">iPhone 7</span>
+                <span class="meta-data-data">Samsung S7</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -627,12 +624,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-apple fa-lg">
-                        <span>apple</span>
+                    <i class="fa fa-android fa-lg">
+                        <span>android</span>
                     </i>
-                    10.1.2
+                    7.1
                 </span>
             </li>
+            
+            
             <li>
                 <span class="meta-data-title">Browser</span>
                 <span class="meta-data-data">
@@ -640,15 +639,17 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-safari fa-lg">
-                        <span>safari</span>
+                    <i class="fa fa-chrome fa-lg">
+                        <span>chrome</span>
                     </i>
-                    10
+                    56
                 </span>
             </li>
+            
         </ul>
     </div>
 </div>
+
                 </div>
             </div>
         </div>
@@ -662,21 +663,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
-                <i class="fa fa-tags fa-lg"></i>
-                
-                <span class="tag">@undefined</span>
-                
-                <span class="tag">@timmy</span>
-                
-                <span class="tag">@angular</span>
-                
-                <span class="tag">@nothing</span>
-                
-                
                 
             </div>
             <h2>Scenario:
-                <small>Timmy wants to see undefined scenarios</small>
+                <small>Johnny wants to see pending scenarios</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -686,15 +676,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </li>
                 
                 
-                
-                
+                <li>
+                    <span class="step pending-background" data-toggle="tooltip" title="Scenario is pending">
+                        1
+                    </span>
+                </li>
                 
                 
                 <li>
-                    <span class="step not-defined-background" data-toggle="tooltip" title="Scenario has nop step implementation.">
-                        3
+                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
+                        2
                     </span>
                 </li>
+                
+                
+                
                 
             </ul>
             <div class="clearfix"></div>
@@ -704,38 +700,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-
-            
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step has no implmentation.">
-                    <i class="fa fa-question-circle fa-2x not-defined-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
+                    <i class="fa fa-minus-circle fa-2x pending-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Timmy visits the Angular homepage
+                    Johnny visits the Angular homepage
                 </div>
 
                 
-                
-                <pre class="info">
-    // With Callbacks
-    this.Then(/^Timmy visits the Angular homepage$/, function(callback) {
-        // Write code here that turns the phrase above into concrete actions
-        callback(null, 'pending');
-    });
-
-    // With Promises
-    this.Then(/^Timmy visits the Angular homepage$/, function() {
-        // Write code here that turns the phrase above into concrete actions
-        return Promise.resolve('pending');
-    });
-</pre>
                 
 
                 
@@ -766,32 +745,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step has no implmentation.">
-                    <i class="fa fa-question-circle fa-2x not-defined-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">When </span>
-                    he doesn't do anything
+                    he clicks on the first link
                 </div>
 
                 
-                
-                <pre class="info">
-    // With Callbacks
-    this.Then(/^he doesn't do anything$/, function(callback) {
-        // Write code here that turns the phrase above into concrete actions
-        callback(null, 'pending');
-    });
-
-    // With Promises
-    this.Then(/^he doesn't do anything$/, function() {
-        // Write code here that turns the phrase above into concrete actions
-        return Promise.resolve('pending');
-    });
-</pre>
                 
 
                 
@@ -822,32 +787,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step has no implmentation.">
-                    <i class="fa fa-question-circle fa-2x not-defined-color"></i>
+                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    nothing has been done
+                    he expects that something happens
                 </div>
 
                 
-                
-                <pre class="info">
-    // With Callbacks
-    this.Then(/^nothing has been done$/, function(callback) {
-        // Write code here that turns the phrase above into concrete actions
-        callback(null, 'pending');
-    });
-
-    // With Promises
-    this.Then(/^nothing has been done$/, function() {
-        // Write code here that turns the phrase above into concrete actions
-        return Promise.resolve('pending');
-    });
-</pre>
                 
 
                 
@@ -868,9 +819,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
 
             
-            
-            
-
             
             
 
@@ -919,10 +867,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         data: [
                             0.00,
                             0.00,
+                            100.00,
                             0.00,
                             0.00,
-                            0.00,
-                            100.00
+                            0.00
                         ],
                         backgroundColor: [
                             "#26B99A",

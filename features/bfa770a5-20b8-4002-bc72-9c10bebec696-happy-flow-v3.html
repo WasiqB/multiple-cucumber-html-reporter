@@ -483,7 +483,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Ambiguous scenarios specified V1</small>
+                <small>Happy flow V3</small>
             </p>
         </div>
     </nav>
@@ -495,13 +495,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                <i class="fa fa-tags fa-lg"></i>
+                <span class="tag">@example</span><span class="tag">@happy-flow</span><span class="tag">@angular</span>
+                
                 
             </div>
             <h1>Feature:
-                <small>Ambiguous scenarios specified V1</small>
+                <small>Happy flow V3</small>
             </h1>
-            <p>  The scenarios have been scripted twice
-  So the report should hold ambiguous steps</p>
+            <p></p>
         </div>
 
         <div class="clearfix"></div>
@@ -538,7 +540,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">1</div>
+                <div class="total">3</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -549,7 +551,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">100.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -562,17 +564,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </tr>
                     
                     
-                    
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left"
-                               title="Scenario has double step implementation and failed because of that.">
-                                <i class="fa fa-flash ambiguous-color"></i>
-                                Ambiguous
-                            </p>
-                        </td>
-                        <td class="percentage">100.00 %</td>
-                    </tr>
                     
                     
                 </table>
@@ -625,12 +616,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-linux fa-lg">
-                        <span>linux</span>
+                    <i class="fa fa-windows fa-lg">
+                        <span>windows</span>
                     </i>
-                    16.04
+                    10
                 </span>
             </li>
+            
+            
             <li>
                 <span class="meta-data-title">Browser</span>
                 <span class="meta-data-data">
@@ -638,15 +631,17 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-firefox fa-lg">
-                        <span>firefox</span>
+                    <i class="fa fa-edge fa-lg">
+                        <span>edge</span>
                     </i>
-                    53
+                    14
                 </span>
             </li>
+            
         </ul>
     </div>
 </div>
+
                 </div>
             </div>
         </div>
@@ -660,10 +655,23 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 
                 
                 
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@visitor</span>
+                
+                <span class="tag">@julie</span>
+                
+                
                 
             </div>
             <h2>Scenario:
-                <small>Ambiguous Johnny wants to see ambiguous scenarios</small>
+                <small>As a visitor I want to be greeted</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -672,26 +680,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </a>
                 </li>
                 
-                <li>
-                    <span class="step ambiguous-background" data-toggle="tooltip" data-placement="top"
-                          title="Scenario has double step implementation and failed because of that.">
-                        1
-                    </span>
-                </li>
                 
-                
-                
-                <li>
-                    <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped">
-                        1
-                    </span>
-                </li>
                 
                 
                 
                 <li>
                     <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        1
+                        3
                     </span>
                 </li>
                 
@@ -701,6 +696,45 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         </div>
 
         <div class="x_content" style="display: none;">
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I visit the Angular homepage
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
             
 
             
@@ -718,7 +752,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Ambiguous Johnny visits the Angular homepage
+                    I submit the name "Julie"
                 </div>
 
                 
@@ -752,58 +786,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top"
-                     title="Step has double step implementation and failed because of that.">
-                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">When </span>
-                    he clicks on the second button
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
-                    <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something happens
+                    I am greeted as "Hello Julie!"
                 </div>
 
                 
@@ -830,6 +821,413 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             
             
 
+            
+            
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+            <div class="tags">
+                
+                
+                
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@todo</span>
+                
+                <span class="tag">@count</span>
+                
+                <span class="tag">@validate</span>
+                
+                
+                
+            </div>
+            <h2>Scenario:
+                <small>Validate todo list</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li>
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
+                        3
+                    </span>
+                </li>
+                
+                
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content" style="display: none;">
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I visit the Angular homepage
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I count 2 todo's
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Then </span>
+                    the last todo should hold "build an AngularJS app"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+            <div class="tags">
+                
+                
+                
+                <i class="fa fa-tags fa-lg"></i>
+                
+                <span class="tag">@example</span>
+                
+                <span class="tag">@happy-flow</span>
+                
+                <span class="tag">@angular</span>
+                
+                <span class="tag">@todo</span>
+                
+                <span class="tag">@count</span>
+                
+                <span class="tag">@add</span>
+                
+                
+                
+            </div>
+            <h2>Scenario:
+                <small>Add a todo</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                </li>
+                
+                
+                
+                
+                
+                <li>
+                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
+                        4
+                    </span>
+                </li>
+                
+                
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content" style="display: none;">
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I visit the Angular homepage
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Given </span>
+                    I add the todo "write a protractor test"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">Then </span>
+                    I should have 3 todo's
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
+            
+            
+
+            
+            
+
+            
+            <div class="scenario-step-container">
+                
+                
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                </div>
+                
+                
+
+                <div class="text">
+                    <span class="keyword highlight">And </span>
+                    the last todo should hold "write a protractor test"
+                </div>
+
+                
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+            
+            
+
+            
+
+            
+            
+
+            
             
             
 
@@ -876,11 +1274,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            0.00,
-                            0.00,
-                            0.00,
-                            0.00,
                             100.00,
+                            0.00,
+                            0.00,
+                            0.00,
+                            0.00,
                             0.00
                         ],
                         backgroundColor: [
