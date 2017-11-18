@@ -1,0 +1,224 @@
+<% // scenario steps %>
+<% var stepResult = ""; %> 
+<% if(scenario.steps) { %>    
+    <% scenario.steps.forEach(function(step,stepIndex) { %>            
+        <% if(step.result.status === 'failed' || step.result.status === 'ambiguous' || step.result.status === 'skipped'
+        || step.result.status === 'pending') { %>
+            <% stepResult = "failed"; %>        
+        <% } %>
+        <% }); %>
+    <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+    <div class="x_content" style="">
+    <% }else { %>
+    <div class="x_content" style="display: none;">
+    <% } %>   
+        <% scenario.steps.forEach(function(step,stepIndex) { %>            
+            <% if(!step.hidden || step.image || step.text || step.output || step.result.status === 'failed') { %>
+                <div class="scenario-step-container">
+                    <% if(options.showExecutionTime){ %>
+                        <div><%=step.result.duration %> </div>
+                    <% } %>
+                    <% if(step.result) { %>
+                        <% if(step.result.status === 'passed') { %>
+                            <div class="label" title="Success">
+                                <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                            </div>
+                        <% } else if(step.result.status === 'failed') { %>
+                            <div class="label" data-toggle="tooltip" data-placement="top" title="Step failed">
+                                <i class="fa fa-exclamation-circle fa-2x failed-color"></i>
+                            </div>
+                        <% } else if(step.result.status === 'skipped') { %>
+                            <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                                <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
+                            </div> 
+                        <% } else if(step.result.status === 'pending') { %>
+                            <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
+                                <i class="fa fa-minus-circle fa-2x pending-color"></i>
+                            </div>
+                        <% } else if(step.result.status === 'ambiguous') { %>
+                            <div class="label" data-toggle="tooltip" data-placement="top"
+                                    title="Step has double step implementation and failed because of that.">
+                                <i class="fa fa-flash fa-2x ambiguous-color"></i>
+                            </div>
+                        <% } else { %>
+                            <div class="label" data-toggle="tooltip" data-placement="top" title="Step has no implmentation.">
+                                <i class="fa fa-question-circle fa-2x not-defined-color"></i>
+                            </div>
+                        <% } %>
+                    <% } %>
+    
+                    <span class="keyword highlight scenarioStepKeyword"><%= step.keyword %></span>
+                    <span class="scenarioStepName" ><%= step.name %></span>
+    
+                    <% if(step.result) { %>
+                        <% if(step.result.status === 'undefined') { %>
+                            <a href="#undefined<%= scenarioIndex %><%= stepIndex %>-undefined" data-toggle="collapse"> + Show Implementation</a>
+                        <% } %>
+    
+
+                        <% if (step.result.error_message) { %>
+                        <a class="skipped-color extraInfo" href="#error<%= scenarioIndex %><%= stepIndex %>-error" data-toggle="collapse">+ Show Error</a>
+                        <% } %>
+        
+                        <% if (((String)(step.output).indexOf("Show Developer View") == -1) && step.output) { %>
+                        <a class="skipped-color extraInfo"  href="#info<%= scenarioIndex %>-<%= stepIndex %>-output" data-toggle="collapse">+ Show Info</a>
+                        <% } %>
+        
+                        <% if (step.text) { %>
+                            <a href="#info<%= scenarioIndex %><%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
+                        <% } %>
+
+                        <% if (step.image) { %>
+                        <a class="skipped-color extraInfo"  href="#info<%= scenarioIndex %><%= stepIndex %>-image" data-toggle="collapse">Screenshot +</a>
+                        <% } %>
+        
+                        <% if (step.rows) { %>
+                        <a class="skipped-color extraInfo"  href="#info<%= scenarioIndex %><%= stepIndex %>-data" data-toggle="collapse"> +StepData</a>
+                        <% } %>
+
+                    <% } %>
+                </div>
+
+                <% if(step.result) { %>
+                    <% if(step.result.status === 'undefined'){%>
+                        <% if(step.result.status === 'undefined' && options.expandStepsNotPassed) { %>
+                            <div id="undefined<%= scenarioIndex %><%= stepIndex %>-undefined" class="scenario-step-collapse collapse in">
+                        <% }else { %>
+                            <div id="undefined<%= scenarioIndex %><%= stepIndex %>-undefined" class="scenario-step-collapse collapse in">
+                        <% } %>    
+                                <pre class="info">
+                                    // With Callbacks
+                                    this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function(<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>callback) {
+                                        // Write code here that turns the phrase above into concrete actions
+                                        callback(null, 'pending');
+                                    });
+            
+                                    // With Promises
+                                    this.Then(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, function(<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>) {
+                                        // Write code here that turns the phrase above into concrete actions
+                                        return Promise.resolve('pending');
+                                    });
+                                </pre>
+                            </div>
+                    <% } %>
+
+                    <% if (step.result.error_message) { %>
+                            <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+                                <div id="error<%= scenarioIndex %><%= stepIndex %>-error" class="scenario-step-collapse collapse in">
+                            <% }else { %>
+                                <div id="error<%= scenarioIndex %><%= stepIndex %>-error" class="scenario-step-collapse collapse">
+                            <% } %>  
+
+                            <pre class="error" style="display: inline-block;"><%= step.result.error_message.replace(/</g, '(').replace(/>/g, ')') %></pre>
+                        </div>
+                    <% } %>
+
+                    <% if (((String)(step.output).indexOf("Show Developer View") == -1)  && step.output) { %>
+                            <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+                                <div id="info<%= scenarioIndex %>-<%= stepIndex %>-output" class="scenario-step-collapse collapse in">
+                            <% }else { %>
+                                <div id="info<%= scenarioIndex %>-<%= stepIndex %>-output" class="scenario-step-collapse collapse">
+                            <% } %>  
+                        
+                            <div class="infoBlock" style="display: inline-block; line-height:normal;"> 
+                                <%=step.output %>   
+                            </div>
+                        </div>
+                    <% } %>
+        
+                    <% if (step.image) { %>
+                        <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+                            <div id="info<%= scenarioIndex %><%= stepIndex %>-image" class="scenario-step-collapse collapse in">
+                        <% }else { %>
+                            <div id="info<%= scenarioIndex %><%= stepIndex %>-image" class="scenario-step-collapse collapse">
+                        <% } %>  
+                        
+                            <a class="screenshot" href="<%= step.image %>" target="_blank">
+                                <img class="screenshot" style="height:100%;width:100%;" id="my_images" src="<%= step.image %>"/>
+                            </a>
+                        </div>
+                    <% } %>
+
+                    <% if (step.text) { %>
+                        <div id="info<%= scenarioIndex %><%= stepIndex %>-text" class="scenario-step-collapse collapse">
+                            <pre class=info><% try { %>
+<%= JSON.stringify(step.text, undefined, 2) %>
+<% } catch (error) { %>
+<%= step.text %>
+<% } %>
+                        </pre>
+                        </div>
+                    <% } %>
+                <% } %>
+
+                <% // paint the step parameters table %>
+                <% if(step.arguments ) { %>
+                    <% for( var i = 0; i < step.arguments.length; i++ ) { %>
+                        <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+                            <div class="scenario-scroll-bar collapse in">
+                        <% }else { %>
+                            <div class="scenario-scroll-bar collapse">
+                        <% } %> 
+                        
+                            <% if(step.arguments[i]["rows"]) { %>
+                            <table class="custom_class">
+                                <% var rows = step.arguments[i]["rows"]; %>
+                                <tr>
+                                    <% var cells = rows[1]["cells"]; %>
+                                    <% for( var k = 0; k < cells.length; k++ ) { %>
+                                    <th><%= cells[k] %></th>
+                                    <% } %>
+                                </tr>
+                                <% for( var j = 1; j < rows.length; j++ ) { %>
+                                <tr>
+                                    <% var cells = rows[j]["cells"]; %>
+                                    <% for( var k = 0; k < cells.length; k++ ) { %>
+                                    <td><%= cells[k] %></td>
+                                    <% } %>
+                                </tr>
+                                <% } %>
+                            </table>
+                            <% } %>
+                        </div>
+                        <% if(step.arguments[i]["content"]) { %>
+                            <div class="tableContainer"><%= step.arguments[i]["content"].replace(/</g, '(').replace(/>/g, ')') %></div>
+                        <% } %>
+                    <% } %>
+                <% } %>
+
+                <% if(step.rows) { %>
+                    <% var rows = step["rows"]; %>
+                    <% if(rows.length > 1) { %>
+                        <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+                            <div id="info<%= scenarioIndex %><%= stepIndex %>-data" class="scenario-step-collapse collapse in" >
+                        <% }else { %>
+                            <div id="info<%= scenarioIndex %><%= stepIndex %>-data" class="scenario-step-collapse collapse" >
+                        <% } %> 
+                    
+                        <div class="tableContainer" style="display: inline-block;">
+                            <table class="custom_class" style="border: 1px solid black;border-collapse: collapse;">
+                                
+                                <tr>
+                                    <% var cells = rows[0]["cells"]; %>
+                                    <% for( var k = 0; k < cells.length; k++ ) { %>
+                                    <th><%= cells[k] %></th>
+                                    <% } %>
+                                </tr>
+                                <% for( var j = 1; j < rows.length; j++ ) { %> 
+                                    <tr>
+                                    <% var cells = rows[j]["cells"]; %>
+                                    <% for( var k = 0; k < cells.length; k++ ) { %>
+                                    <td><%= cells[k] %></td>
+                                    <% } %>
+                                </tr> 
+                                <% } %>
+                            </table>
+                        </div>
+                    </div>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% }); %>
+    </div>
+    <% } %>
+

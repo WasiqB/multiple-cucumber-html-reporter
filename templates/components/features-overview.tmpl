@@ -18,21 +18,46 @@
                        width="100%">
                     <thead>
                     <tr>
-                        <th>Featurename</th>
+                        <th>Feature Name</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <th class="text-center">
-                            <i class="fa fa-desktop fa-lg"></i>
-                            <i class="fa fa-mobile fa-lg"></i>
-                        </th>
-                        <th>Device</th>
-                        <th>OS</th>
-                        <% if(+suite.app > 0) { %>
-                        <th>App</th>
-                        <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <th>Browser</th>
-                        <% } %>
+                        <% if(showExecutionTime){ %>
+                        <th>Time</th>
+                        <% }%>
+                        <% var device = ""; %>
+                        <% var deviceType = ""; %>
+                        <% var platform = ""; %>
+                        <% var browser = ""; %>
+
+                        <% _.each(suite.features, function(feature, featureIndex) { %>
+                            <% var featureMetadaDevice = feature.metadata.device ? feature.metadata.device.toLowerCase() : ""; %>
+                            <% var featureMetadataPlatform = feature.metadata.platform ? feature.metadata.platform.name.toLowerCase() : ""; %>
+                            <% var featureMetadataBrowser = feature.metadata.browser ? feature.metadata.browser.name.toLowerCase() : ""; %>
+
+                            <% if (device == "" && (!(['not known'].indexOf(featureMetadaDevice) > -1) | !disableMetadataIfnotPresent)) { %>                                
+                                <% device = feature.metadata.device.toLowerCase(); %>
+                                <th class="text-center">
+                                    <i class="fa fa-desktop fa-lg"></i>
+                                    <i class="fa fa-mobile fa-lg"></i>
+                                </th>
+                            <% } %>
+
+
+                            <% if (deviceType == "" && (!(['not known'].indexOf(featureMetadaDevice) > -1) | !disableMetadataIfnotPresent)) { %>
+                                <th>Device</th>
+                                <% deviceType = feature.metadata.device.toLowerCase(); %>
+                            <% } %>
+                            
+                            <% if (platform == "" && (!(['not known'].indexOf(featureMetadataPlatform) > -1) | !disableMetadataIfnotPresent )) { %>
+                                <th>OS</th>
+                                <% platform = feature.metadata.platform.name.toLowerCase(); %>
+                            <% } %>
+                            
+                            <% if (browser == "" && (!(['not known'].indexOf(featureMetadataBrowser) > -1) | !disableMetadataIfnotPresent)) { %>
+                                <th>Browser</th>
+                                <% browser = feature.metadata.browser.name.toLowerCase(); %>
+                            <% } %>
+                        <% }); %>
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
@@ -53,6 +78,9 @@
 
                     <tbody>
                     <% _.each(suite.features, function(feature, featureIndex) { %>
+                        <% var featureMetadaDevice = feature.metadata.device ? feature.metadata.device.toLowerCase() : ""; %>
+                        <% var featureMetadataPlatform = feature.metadata.platform ? feature.metadata.platform.name.toLowerCase() : ""; %>
+                        <% var featureMetadataBrowser = feature.metadata.browser ? feature.metadata.browser.name.toLowerCase() : ""; %>
                     <tr>
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
@@ -86,72 +114,72 @@
                                 <span><%= statusIcon %></span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            <% var deviceType; %>
-                            <% var deviceIcon; %>
-                            <% if (['android','ios'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1 ) { %>
-                            <% deviceType = 'Mobile / Tablet'; %>
-                            <% deviceIcon = 'mobile'; %>
-                            <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1) { %>
-                            <% deviceType = 'Desktop'; %>
-                            <% deviceIcon = 'desktop'; %>
-                            <% } else { %>
-                            <% deviceType = 'Not known'; %>
-                            <% deviceIcon = 'question-circle not-defined-color'; %>
-                            <% } %>
-                            <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
-                                <span><%= deviceIcon %></span>
-                            </i>
-                        </td>
-                        <td>
-                            <% var device; %>
-                            <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
-                            <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
-                            <% } else { %>
-                            <% device = feature.metadata.device; %>
-                            <% } %>
-                            <%= device %>
-                        </td>
-                        <td>
-                            <% var platformName; %>
-                            <% if (feature.metadata.platform.name.toLowerCase() === 'ios' || feature.metadata.platform.name.toLowerCase() === 'osx') { %>
-                            <% platformName = 'apple'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'android') { %>
-                            <% platformName = 'android'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'windows') { %>
-                            <% platformName = 'windows'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'ubuntu' ||
-                            feature.metadata.platform.name.toLowerCase() === 'linux') { %>
-                            <% platformName = 'linux'; %>
-                            <% } else { %>
-                            <% platformName = 'question-circle not-defined-color'; %>
-                            <% } %>
-                            <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
-                            <%= feature.metadata.platform.version %>
-                        </td>
-                        <% if(+suite.app > 0) { %>
-                        <td>
-                            <% if(feature.metadata.app) { %>
-                            <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
-                            <% } %>
-                        </td>
+                        <% if(showExecutionTime){ %>
+                            <td><%= feature.time %></td>
+                        <% }   %>
+                        <% if (!disableMetadataIfnotPresent) { %>
+                            <td class="text-center">
+                                <% var deviceType; %>
+                                <% var deviceIcon; %>
+                                <% if (['android','ios'].indexOf(featureMetadataPlatform) > -1 ) { %>
+                                <% deviceType = 'Mobile / Tablet'; %>
+                                <% deviceIcon = 'mobile'; %>
+                                <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(featureMetadataPlatform) > -1) { %>
+                                <% deviceType = 'Desktop'; %>
+                                <% deviceIcon = 'desktop'; %>
+                                <% } else { %>
+                                <% deviceType = 'Not known'; %>
+                                <% deviceIcon = 'question-circle not-defined-color'; %>
+                                <% } %>
+                                <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
+                                    <span><%= deviceIcon %></span>
+                                </i>
+                            </td>
                         <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <td>
-                            <% if(feature.metadata.browser) { %>
-                            <% var browserIcon; %>
-                            <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
-                            <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
-                            <% browserIcon= "internet-explorer"; %>
-                            <% } else { %>
-                            <% browserIcon = 'question-circle not-defined-color'; %>
-                            <% }%>
-                            <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
-                            <%= feature.metadata.browser.version %>
-                            <% } %>
-                        </td>
+                        <% if (!disableMetadataIfnotPresent) { %>   
+                            <td>
+                                <% var device; %>
+                                <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
+                                <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
+                                <% } else { %>
+                                <% device = feature.metadata.device; %>
+                                <% } %>
+                                <%= device %>
+                            </td>
                         <% } %>
+                        <% if (!disableMetadataIfnotPresent) { %>   
+                            <td>
+                                <% var platformName; %>
+                                <% if (featureMetadataPlatform === 'ios' || featureMetadataPlatform === 'osx') { %>
+                                <% platformName = 'apple'; %>
+                                <% } else if (featureMetadataPlatform === 'android') { %>
+                                <% platformName = 'android'; %>
+                                <% } else if (featureMetadataPlatform === 'windows') { %>
+                                <% platformName = 'windows'; %>
+                                <% } else if (featureMetadataPlatform === 'ubuntu' || featureMetadataPlatform === 'linux') { %>
+                                <% platformName = 'linux'; %>
+                                <% } else { %>
+                                <% platformName = 'question-circle not-defined-color'; %>
+                                <% } %>
+                                <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
+                                <%= feature.metadata.platform.version %>
+                            </td>
+                        <% } %>
+                        <% if (!disableMetadataIfnotPresent) { %>   
+                            <td>
+                                <% var browserIcon; %>
+                                <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(featureMetadaDevice) > -1) { %>
+                                <% browserIcon = featureMetadataBrowser; %>
+                                <% } else if (featureMetadataBrowser === 'internet explorer'){ %>
+                                <% browserIcon= "internet-explorer"; %>
+                                <% } else { %>
+                                <% browserIcon = 'question-circle not-defined-color'; %>
+                                <% }%>
+                                <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= featureMetadataBrowser %></span></i>
+                                <%= feature.metadata.browser ? feature.metadata.browser.version : 'undefined' %>
+                            </td>
+                        <% } %>
+                        
                         <td><%= feature.scenarios.total %></td>
                         <td><%= feature.scenarios.passed %></td>
                         <td><%= feature.scenarios.failed %></td>

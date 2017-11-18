@@ -1,0 +1,21 @@
+</td>
+</tr>
+<% var stepResult = ""; %> 
+<% if(scenario.steps) { %>
+    <% scenario.steps.forEach(function(step,stepIndex) { %>            
+        <% if(step.result.status === 'failed' || step.result.status === 'ambiguous' || step.result.status === 'skipped'
+        || step.result.status === 'pending') { %>
+            <% stepResult = "failed"; %>     
+        <% } %>
+        <% }); %>
+<% } %>
+
+<tr style="border-spacing:0;">
+<td colspan="12" class="hiddenRow collapsed" style="line-height:0px;height:0px;margin:0;padding:0;">
+        <% if(stepResult == "failed" && options.expandStepsNotPassed) { %>
+            <div class="accordian-body collapse in hiddenRow" id="demo1-<%= scenarioIndex %>-<%= scenarioIndex %>" style="line-height:0px;height:0px;margin:0;padding:0;"> 
+        <% }else { %>
+            <div class="accordian-body collapse hiddenRow" id="demo1-<%= scenarioIndex %>-<%= scenarioIndex %>" style="line-height:0px;height:0px;margin:0;padding:0;"> 
+        <% } %>  
+                    <div class="x_panel" style="height: auto;display: block;">                                                            
+                        <div class="x_title">                                

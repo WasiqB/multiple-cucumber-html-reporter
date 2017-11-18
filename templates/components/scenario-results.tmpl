@@ -1,0 +1,51 @@
+<div style="display:flex;flex-direction: row;"> 
+        <% if (scenario.ambiguous) { %>
+            <li style="display:flex; text-align: center;">
+                <span class="step ambiguous-background scenarioOutlineCircle" data-toggle="tooltip" data-placement="top"
+                        title="Scenario has double step implementation and failed because of that.">
+                    <p><%= scenario.ambiguous %> </p>
+                </span>
+            </li>
+        <% } %>
+
+        <% if (scenario.pending) { %>
+            <li style="display:flex; text-align: center;">
+                <span class="pending-background scenarioOutlineCircle" data-toggle="tooltip" title="Scenario is pending">
+                    <p> <%= scenario.pending %> </p>
+                </span>
+            </li>
+        <% } %>
+
+        <% if (scenario.skipped) { %>
+            <li style="display:flex; text-align: center;">
+                <span class="skipped-background scenarioOutlineCircle" data-toggle="tooltip" title="Scenario is skipped">
+                    <p><%= scenario.skipped %> </p>
+                </span>
+            </li>
+        <% } %>
+        
+        <% if (scenario.failed) { %>
+            <li style="display:flex; text-align: center;">
+                <span class="failed-background scenarioOutlineCircle" data-toggle="tooltip" title="Scenario failed">
+                    <p><%= scenario.failed %> </p>
+                </span>
+            </li>
+        <% } %>
+
+        <% if (scenario.passed) { %>
+                <li style="display:flex; text-align: center;">
+                    <span class="passed-background scenarioOutlineCircle" data-toggle="tooltip" title="Scenario passed">
+                    <p><%= scenario.passed %> </p>
+                    
+                    </span>
+                </li>
+        <% } %>
+
+        <% if (scenario.notdefined) { %>
+            <li style="display:flex; text-align: center;">
+                <span class="not-defined-background scenarioOutlineCircle" data-toggle="tooltip" title="Scenario has nop step implementation.">
+                    <p><%= scenario.notdefined %> </p>
+                </span>
+            </li>
+        <% } %>
+    </div>   

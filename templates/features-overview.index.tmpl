@@ -33,8 +33,8 @@
     </head>
     <body>
 
-        <nav class="navbar">
-            <div class="container-fluid">
+.        <nav class="navbar reportTitle">
+            <div class="container-fluid title">
                 <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
             </div>
         </nav>
@@ -43,19 +43,19 @@
 
             <div class="row">
                 <div class="col-md-6 col-xs-12">
-                    <div class="x_panel fixed_height_320">
+                    <div class="x_panel fixed_height_320" style="border:2px solid;" >
                         <%= featuresOverviewChart %>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-xs-12">
-                    <div class="x_panel fixed_height_320">
+                    <div class="x_panel fixed_height_320"  style="border:2px solid;">
                         <%= featuresScenariosOverviewChart %>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row title">
                 <%= featuresOverview %>
             </div>
         </div>

@@ -1,0 +1,11 @@
+    <div class="scenario-step-container">
+            <div class="tableContainer responsive" style="display: inline-block;">
+                <table class="custom_class"  id="scenariosOutlineTable-<%=scenarioIndex%>"</table>>
+                    <tr>
+                        <% var cells = scenario.examples[0]; %>
+                        <th></th>
+                        <% for( var k = 0; k < cells.length; k++ ) { %>
+                        <th><%= cells[k] %></th>
+                        <% } %>
+                        <th</th>
+                    </tr>
