@@ -28,6 +28,7 @@ describe('generate-report.js', () => {
                 jsonDir: './test/unit/data/json',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
+                reportName: 'You can adjust this report name',
                 customData: {
                     title: 'Run info',
                     data: [
