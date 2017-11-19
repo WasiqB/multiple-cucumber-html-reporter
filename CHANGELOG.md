@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.3.0"></a>
+## [1.3.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.2.0...v1.3.0) (2017-11-19)
+
+### Features
+
+* **feature:** add the possibility to add a custom datablock to the features overview
+
 <a name="1.2.0"></a>
 ## [1.2.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.1.0...v1.2.0) (2017-11-13)
 

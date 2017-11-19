@@ -7,12 +7,37 @@ const REPORT_PATH = './.tmp/';
 
 describe('generate-report.js', () => {
     describe('Happy flows', () => {
-        it('should create a report from the merged found json files', () => {
+        it('should create a report from the merged found json files without provided custom data', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
                 jsonDir: './test/unit/data/json',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true
+            });
+
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
+                .toEqual(true, 'Index file exists');
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'merged-output.json')}`).isFile())
+                .toEqual(true, 'merged-output.json file exists');
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'enriched-output.json')}`).isFile())
+                .toEqual(true, 'temp-output.json file exists');
+        });
+        it('should create a report from the merged found json files with custom data', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/json',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                customData: {
+                    title: 'Run info',
+                    data: [
+                        {label: 'Project', value: 'Custom project'},
+                        {label: 'Release', value: '1.2.3'},
+                        {label: 'Cycle', value: 'B11221.34321'},
+                        {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
+                        {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
+                    ]
+                }
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
