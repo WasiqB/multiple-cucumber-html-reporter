@@ -57,6 +57,16 @@ report.generate({
             name: 'ubuntu',
             version: '16.04'
         }
+    },
+    customData: {
+        title: 'Run info',
+        data: [
+            {label: 'Project', value: 'Custom project'},
+            {label: 'Release', value: '1.2.3'},
+            {label: 'Cycle', value: 'B11221.34321'},
+            {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
+            {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
+        ]
     }
 });
 ```
@@ -113,6 +123,12 @@ This will disable the log so will **NOT** see this.
 ========================================================================
 ```
 
+### `reportName`
+- **Type:** `string`
+- **Mandatory:** No
+
+You can change the report name to a name you want
+
 ### `metadata`
 - **Type:** `JSON`
 - **Mandatory:** No
@@ -134,6 +150,48 @@ metadata:{
         version: '16.04'
     }
 }
+```
+
+See [metadata](#metadata-1) for more info
+
+### `customData`
+- **Type:** `object`
+- **Mandatory:** No
+
+You can add a custom data block to the report like this
+
+![Snapshot - Features overview custom data](./docs/images/custom-data.jpg "Snapshot - Features overview custom data")
+
+```js
+customData: {
+    title: 'Run info',
+    data: [
+        {label: 'Project', value: 'Custom project'},
+        {label: 'Release', value: '1.2.3'},
+        {label: 'Cycle', value: 'B11221.34321'},
+        {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
+        {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
+    ]
+}
+```
+
+#### `customData.title`
+- **Type:** `string`
+- **Mandatory:** No
+- **Default:** `Custom data title`
+
+Select a title for the custom data block. If not provided it will be defaulted.
+
+#### `customData.data`
+- **Type:** `array`
+- **Mandatory:** yes
+
+The data you want to add. This needs to be in the format
+
+```js
+data: [
+    {label: 'your label', value: 'the represented value'}
+]
 ```
 
 ## Metadata
