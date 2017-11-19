@@ -24,38 +24,86 @@
                         <% if(showExecutionTime){ %>
                         <th>Time</th>
                         <% }%>
+                        <% var isMetadata = false; %>
                         <% var device = ""; %>
+                        <% var deviceHeaderPainted = false; %>
+                        <% var isDeviceData = false; %>
                         <% var deviceType = ""; %>
+                        <% var deviceTypeHeaderPainted = false; %>
+                        <% var isDeviceTypeData = false; %>
                         <% var platform = ""; %>
+                        <% var platformHeaderPainted = false; %>
+                        <% var isPlatformData = false; %>
                         <% var browser = ""; %>
+                        <% var browserHeaderPainted = false; %>
+                        <% var isBrowserData = false; %>
+                        <% var app = "";%>
+                        <% var appHeaderPainted = false; %>
+                        <% var isAppData = false; %>
+                        
+                        <% var suiteFeaturesLength = suite.features.length; %>
+                        <% for(var i = 0; i < suiteFeaturesLength; i++) { %>
+                            <% var feature = suite.features[i]; %>
+                            <% device = typeof feature.metadata.device !== 'undefined' ? feature.metadata.device.toLowerCase() : ""; %>
+                            <% platform = typeof feature.metadata.platform !== 'undefined' ? feature.metadata.platform.name.toLowerCase() : ""; %>
+                            <% browser = typeof feature.metadata.browser !== 'undefined' ? feature.metadata.browser.name.toLowerCase() : ""; %>
+                            <% app = typeof feature.metadata.app !== 'undefined' ? feature.metadata.app.name : "";%>
+                            <% if(device != "" && device != "not known"){ %>
+                                <%    isMetadata = true; %>
+                                <%    isDeviceData = true; %>
+                            <%} %>
+
+                            <% if(platform != "" && platform != "not known"){ %>
+                                <%    isMetadata = true; %>
+                                <%    isPlatformData = true; %>
+                            <%} %>
+
+                            <% if(browser != "" && browser != "not known"){ %>
+                                <%    isMetadata = true; %>
+                                <%    isBrowserData = true; %>
+                            <%} %>
+
+                            <% if(app != "" && app != "not known"){ %>
+                                <%    isMetadata = true; %>
+                                <%    isAppData = true; %>
+                            <%} %>
+                        <% } %>
 
                         <% _.each(suite.features, function(feature, featureIndex) { %>
-                            <% var featureMetadaDevice = feature.metadata.device ? feature.metadata.device.toLowerCase() : ""; %>
-                            <% var featureMetadataPlatform = feature.metadata.platform ? feature.metadata.platform.name.toLowerCase() : ""; %>
-                            <% var featureMetadataBrowser = feature.metadata.browser ? feature.metadata.browser.name.toLowerCase() : ""; %>
+                            <% var featureMetadaDevice = typeof feature.metadata.device !== 'undefined' ? feature.metadata.device.toLowerCase() : ""; %>
+                            <% var featureMetadataPlatform = typeof feature.metadata.platform !== 'undefined' ? feature.metadata.platform.name.toLowerCase() : ""; %>
+                            <% var featureMetadataBrowser =  typeof feature.metadata.browser !== 'undefined' ? feature.metadata.browser.name.toLowerCase() : ""; %>
+                            <% var featureMetadataApp = typeof feature.metadata.app !== 'undefined' ? feature.metadata.app.name : "";%>
 
-                            <% if (device == "" && (!(['not known'].indexOf(featureMetadaDevice) > -1) | !disableMetadataIfnotPresent)) { %>                                
-                                <% device = feature.metadata.device.toLowerCase(); %>
+                            <% if (!deviceTypeHeaderPainted && (isMetadata || !disableMetadataIfnotPresent)) { %>                                
+                                <% device = featureMetadaDevice; %>
+                                <% deviceTypeHeaderPainted = true; %>
                                 <th class="text-center">
                                     <i class="fa fa-desktop fa-lg"></i>
                                     <i class="fa fa-mobile fa-lg"></i>
                                 </th>
                             <% } %>
 
-
-                            <% if (deviceType == "" && (!(['not known'].indexOf(featureMetadaDevice) > -1) | !disableMetadataIfnotPresent)) { %>
+                            <% if (!deviceHeaderPainted  && (isMetadata || !disableMetadataIfnotPresent)) { %>
                                 <th>Device</th>
+                                <% deviceHeaderPainted = true; %>
                                 <% deviceType = feature.metadata.device.toLowerCase(); %>
                             <% } %>
                             
-                            <% if (platform == "" && (!(['not known'].indexOf(featureMetadataPlatform) > -1) | !disableMetadataIfnotPresent )) { %>
+                            <% if (!platformHeaderPainted && (isMetadata || !disableMetadataIfnotPresent)) { %>
                                 <th>OS</th>
+                                <% platformHeaderPainted = true; %>
                                 <% platform = feature.metadata.platform.name.toLowerCase(); %>
                             <% } %>
                             
-                            <% if (browser == "" && (!(['not known'].indexOf(featureMetadataBrowser) > -1) | !disableMetadataIfnotPresent)) { %>
+                            <% if(!appHeaderPainted && (isAppData || !disableMetadataIfnotPresent)) { %>
+                                <th>App</th>
+                                <% appHeaderPainted = true; %>
+                            <% } %>
+
+                            <% if (!browserHeaderPainted && (isMetadata || !disableMetadataIfnotPresent)) { %>
                                 <th>Browser</th>
-                                <% browser = feature.metadata.browser.name.toLowerCase(); %>
+                                <% browserHeaderPainted = true; %>
                             <% } %>
                         <% }); %>
                         <th>Total</th>
@@ -78,9 +126,9 @@
 
                     <tbody>
                     <% _.each(suite.features, function(feature, featureIndex) { %>
-                        <% var featureMetadaDevice = feature.metadata.device ? feature.metadata.device.toLowerCase() : ""; %>
-                        <% var featureMetadataPlatform = feature.metadata.platform ? feature.metadata.platform.name.toLowerCase() : ""; %>
-                        <% var featureMetadataBrowser = feature.metadata.browser ? feature.metadata.browser.name.toLowerCase() : ""; %>
+                        <% var featureMetadaDevice = typeof feature.metadata.device !== 'undefined' ? feature.metadata.device.toLowerCase() : ""; %>
+                        <% var featureMetadataPlatform = typeof feature.metadata.platform !== 'undefined' ? feature.metadata.platform.name.toLowerCase() : ""; %>
+                        <% var featureMetadataBrowser = typeof feature.metadata.browser !== 'undefined' ? feature.metadata.browser.name.toLowerCase() : ""; %>                                                        
                     <tr>
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
@@ -117,7 +165,7 @@
                         <% if(showExecutionTime){ %>
                             <td><%= feature.time %></td>
                         <% }   %>
-                        <% if (!disableMetadataIfnotPresent) { %>
+                        <% if (isMetadata || !disableMetadataIfnotPresent) { %>
                             <td class="text-center">
                                 <% var deviceType; %>
                                 <% var deviceIcon; %>
@@ -136,7 +184,7 @@
                                 </i>
                             </td>
                         <% } %>
-                        <% if (!disableMetadataIfnotPresent) { %>   
+                        <% if (isMetadata || !disableMetadataIfnotPresent) { %>   
                             <td>
                                 <% var device; %>
                                 <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
@@ -147,7 +195,7 @@
                                 <%= device %>
                             </td>
                         <% } %>
-                        <% if (!disableMetadataIfnotPresent) { %>   
+                        <% if (isMetadata || !disableMetadataIfnotPresent) { %>   
                             <td>
                                 <% var platformName; %>
                                 <% if (featureMetadataPlatform === 'ios' || featureMetadataPlatform === 'osx') { %>
@@ -165,10 +213,19 @@
                                 <%= feature.metadata.platform.version %>
                             </td>
                         <% } %>
-                        <% if (!disableMetadataIfnotPresent) { %>   
+
+                        <% if(isMetadata || !disableMetadataIfnotPresent) { %>
+                            <td>
+                                <% if(feature.metadata.app) { %>
+                                <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
+                                <% } %>
+                            </td>
+                        <% } %>
+                        
+                        <% if (isMetadata || !disableMetadataIfnotPresent) { %>   
                             <td>
                                 <% var browserIcon; %>
-                                <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(featureMetadaDevice) > -1) { %>
+                                <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(featureMetadataBrowser) > -1) { %>
                                 <% browserIcon = featureMetadataBrowser; %>
                                 <% } else if (featureMetadataBrowser === 'internet explorer'){ %>
                                 <% browserIcon= "internet-explorer"; %>

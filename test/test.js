@@ -11,5 +11,6 @@ test.generate({
     showExecutionTime: true,
     saveCollectedJSON:true,
     expandStepsNotPassed: true,
-    navigateToFeatureIfThereIsOnlyOne:true
+    navigateToFeatureIfThereIsOnlyOne:true,
+    openReportInBrowser:true
 });
