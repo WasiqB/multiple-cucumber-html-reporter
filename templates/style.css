@@ -492,6 +492,7 @@ div.scenarioBlock{
     display:flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 h1.scenarioName,
@@ -525,6 +526,7 @@ h2.scenarioTime{
     background-color: #525D76;
     line-height: normal;
     margin-left: auto;
+    margin-right:0;
     margin-bottom: 0;
 }
 
@@ -533,7 +535,7 @@ h2.scenarioTime{
     flex-direction: row;
     line-height: normal;
     text-align: right; 
-    margin-left: auto;
+    /* margin-left: auto; */
     margin-right: 0px;
     margin-top:auto;
     margin-bottom: 0;
