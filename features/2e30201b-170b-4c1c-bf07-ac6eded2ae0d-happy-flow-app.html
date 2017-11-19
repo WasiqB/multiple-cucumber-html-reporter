@@ -140,7 +140,7 @@ table.tile_info td i {
 }
 
 table.tile_info td:first-child {
-    width: 83%;
+    width: 65%;
 }
 
 td span {
@@ -365,7 +365,8 @@ ul.quick-list {
     display: inline-block;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     padding-left: 10px;
     list-style: none;
     margin: 0;
@@ -376,22 +377,26 @@ ul.quick-list li {
     overflow: hidden;
 }
 
-ul.quick-list li .meta-data-title {
+ul.quick-list li .meta-data-title,
+table.quick-list td.meta-data-title {
     display: inline-block;
     min-width: 75px;
     font-weight: bold;
 }
 
-ul.quick-list li span {
+ul.quick-list li span,
+table.quick-list td {
     line-height: 28px;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     border-bottom: 1px solid #efefef;
     padding: 0.5em 0;
 }
 
-ul.quick-list li:last-child {
+ul.quick-list li:last-child,
+table.quick-list tr:last-child {
     border-bottom: none;
 }
 
@@ -483,7 +488,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Happy flow V3</small>
+                <small>Happy flow app</small>
             </p>
         </div>
     </nav>
@@ -493,15 +498,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="page-title">
             <div class="tags">
                 
-                
-                
-                <i class="fa fa-tags fa-lg"></i>
-                <span class="tag">@example</span><span class="tag">@happy-flow</span><span class="tag">@angular</span>
-                
-                
             </div>
             <h1>Feature:
-                <small>Happy flow V3</small>
+                <small>Happy flow app</small>
             </h1>
             <p></p>
         </div>
@@ -540,7 +539,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">3</div>
+                <div class="total">1</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -600,14 +599,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-desktop fa-lg">
-                        <span>desktop</span>
+                    <i class="fa fa-mobile fa-lg">
+                        <span>mobile</span>
                     </i>
                 </span>
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Virtual Machine</span>
+                <span class="meta-data-data">iPhone X</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -616,27 +615,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-windows fa-lg">
-                        <span>windows</span>
+                    <i class="fa fa-apple fa-lg">
+                        <span>apple</span>
                     </i>
-                    10
+                    11.1
                 </span>
             </li>
-            
             
             <li>
-                <span class="meta-data-title">Browser</span>
+                <span class="meta-data-title">App</span>
                 <span class="meta-data-data">
-                    
-                    
-                    
-                    
-                    <i class="fa fa-edge fa-lg">
-                        <span>edge</span>
-                    </i>
-                    14
+                    Greetings app V: 1.02
                 </span>
             </li>
+            
             
         </ul>
     </div>
@@ -652,22 +644,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
     <div class="x_panel" style="height: auto;">
         <div class="x_title">
             <div class="tags">
-                
-                
-                
-                <i class="fa fa-tags fa-lg"></i>
-                
-                <span class="tag">@example</span>
-                
-                <span class="tag">@happy-flow</span>
-                
-                <span class="tag">@angular</span>
-                
-                <span class="tag">@visitor</span>
-                
-                <span class="tag">@julie</span>
-                
-                
                 
             </div>
             <h2>Scenario:
@@ -710,7 +686,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    I visit the Angular homepage
+                    I open the app
                 </div>
 
                 
@@ -795,416 +771,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 <div class="text">
                     <span class="keyword highlight">Then </span>
                     I am greeted as "Hello Julie!"
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            
-        </div>
-    </div>
-</div>
-
-<div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel" style="height: auto;">
-        <div class="x_title">
-            <div class="tags">
-                
-                
-                
-                <i class="fa fa-tags fa-lg"></i>
-                
-                <span class="tag">@example</span>
-                
-                <span class="tag">@happy-flow</span>
-                
-                <span class="tag">@angular</span>
-                
-                <span class="tag">@todo</span>
-                
-                <span class="tag">@count</span>
-                
-                <span class="tag">@validate</span>
-                
-                
-                
-            </div>
-            <h2>Scenario:
-                <small>Validate todo list</small>
-            </h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li>
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-down"></i>
-                    </a>
-                </li>
-                
-                
-                
-                
-                
-                <li>
-                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        3
-                    </span>
-                </li>
-                
-                
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="x_content" style="display: none;">
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I visit the Angular homepage
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I count 2 todo's
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Then </span>
-                    the last todo should hold "build an AngularJS app"
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            
-        </div>
-    </div>
-</div>
-
-<div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel" style="height: auto;">
-        <div class="x_title">
-            <div class="tags">
-                
-                
-                
-                <i class="fa fa-tags fa-lg"></i>
-                
-                <span class="tag">@example</span>
-                
-                <span class="tag">@happy-flow</span>
-                
-                <span class="tag">@angular</span>
-                
-                <span class="tag">@todo</span>
-                
-                <span class="tag">@count</span>
-                
-                <span class="tag">@add</span>
-                
-                
-                
-            </div>
-            <h2>Scenario:
-                <small>Add a todo</small>
-            </h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li>
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-down"></i>
-                    </a>
-                </li>
-                
-                
-                
-                
-                
-                <li>
-                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        4
-                    </span>
-                </li>
-                
-                
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="x_content" style="display: none;">
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I visit the Angular homepage
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I add the todo "write a protractor test"
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Then </span>
-                    I should have 3 todo's
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">And </span>
-                    the last todo should hold "write a protractor test"
                 </div>
 
                 

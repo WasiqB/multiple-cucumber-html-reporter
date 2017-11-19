@@ -144,7 +144,7 @@ table.tile_info td i {
 }
 
 table.tile_info td:first-child {
-    width: 83%;
+    width: 65%;
 }
 
 td span {
@@ -369,7 +369,8 @@ ul.quick-list {
     display: inline-block;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     padding-left: 10px;
     list-style: none;
     margin: 0;
@@ -380,22 +381,26 @@ ul.quick-list li {
     overflow: hidden;
 }
 
-ul.quick-list li .meta-data-title {
+ul.quick-list li .meta-data-title,
+table.quick-list td.meta-data-title {
     display: inline-block;
     min-width: 75px;
     font-weight: bold;
 }
 
-ul.quick-list li span {
+ul.quick-list li span,
+table.quick-list td {
     line-height: 28px;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     border-bottom: 1px solid #efefef;
     padding: 0.5em 0;
 }
 
-ul.quick-list li:last-child {
+ul.quick-list li:last-child,
+table.quick-list tr:last-child {
     border-bottom: none;
 }
 
@@ -480,14 +485,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
         <nav class="navbar">
             <div class="container-fluid">
-                <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
+                <p class="navbar-text">You can adjust this report name</p>
             </div>
         </nav>
 
         <div class="main_conainer">
 
             <div class="row">
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-lg-4 col-xs-12">
                     <div class="x_panel fixed_height_320">
                         <div class="x_title">
     <h2>Features</h2>
@@ -540,7 +545,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">15.00 %</td>
                     </tr>
-
+                    
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left"
@@ -551,7 +556,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">15.00 %</td>
                     </tr>
-
+                    
                 </table>
             </td>
         </tr>
@@ -560,7 +565,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </div>
                 </div>
 
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-6 col-lg-4 col-xs-12">
                     <div class="x_panel fixed_height_320">
                         <div class="x_title">
     <h2>Scenarios</h2>
@@ -613,7 +618,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">10.71 %</td>
                     </tr>
-
+                    
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
@@ -623,8 +628,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">10.71 %</td>
                     </tr>
-
-
+                    
+                    
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
@@ -634,8 +639,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">10.71 %</td>
                     </tr>
-
-
+                    
+                    
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left"
@@ -646,8 +651,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">10.71 %</td>
                     </tr>
-
-
+                    
+                    
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
@@ -657,7 +662,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">10.71 %</td>
                     </tr>
-
+                    
                 </table>
             </td>
         </tr>
@@ -666,6 +671,61 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                     </div>
                 </div>
+
+                
+                <div class="col-lg-4 col-xs-12">
+                    <div class="x_panel fixed_height_320">
+                        
+<div class="x_title">
+    <h2>Run info</h2>
+    <ul class="nav navbar-right panel_toolbox">
+        <li>
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <div class="dashboard-widget-content">
+        <table class="quick-list">
+            
+                
+                <tr>
+                    <td class="meta-data-title">Project</td>
+                    <td class="meta-data-data">Custom project</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Release</td>
+                    <td class="meta-data-data">1.2.3</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Cycle</td>
+                    <td class="meta-data-data">B11221.34321</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Execution Start Time</td>
+                    <td class="meta-data-data">Nov 19th 2017, 02:31 PM EST</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Execution End Time</td>
+                    <td class="meta-data-data">Nov 19th 2017, 02:56 PM EST</td>
+                </tr>
+                
+            
+        </table>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+                
             </div>
 
             <div class="row">
@@ -698,1695 +758,1695 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </th>
                         <th>Device</th>
                         <th>OS</th>
-
+                        
                         <th>App</th>
-
-
+                        
+                        
                         <th>Browser</th>
-
+                        
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
-
+                        
                         <th>Pending</th>
-
-
+                        
+                        
                         <th>Skip</th>
-
-
+                        
+                        
                         <th>Undefined</th>
-
-
+                        
+                        
                         <th>Ambiguous</th>
-
+                        
                     </tr>
                     </thead>
 
                     <tbody>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/915ccf58-5c2a-48f6-98a8-7428aa1700f1-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/43db8ffb-9dc6-4909-ba81-59124cdfcd2f-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-flash ambiguous-color fa-lg" data-toggle="tooltip" data-placement="top" title="Ambiguous">
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-linux fa-lg"><span>linux</span></i>
                             16.04
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
                             53
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/d8572aac-06b0-4ac9-b78b-a87382912cce-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/45348dbf-293e-4e5d-b26a-2e4142953be2-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-flash ambiguous-color fa-lg" data-toggle="tooltip" data-placement="top" title="Ambiguous">
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-linux fa-lg"><span>linux</span></i>
                             16.04
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
                             53
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/7695413e-d8a4-44ce-904f-e28d33070e2b-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/97b769c6-2784-4db4-b3d4-9d16072e6013-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-flash ambiguous-color fa-lg" data-toggle="tooltip" data-placement="top" title="Ambiguous">
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-linux fa-lg"><span>linux</span></i>
                             16.04
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
                             53
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/5e197554-b13a-47d5-8b88-8c676eb7660a-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/fcb29d8c-5dd5-4d19-ba70-8eb4db0570fa-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
-
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-edge fa-lg"><span>edge</span></i>
                             14
-
+                            
                         </td>
-
+                        
                         <td>2</td>
                         <td>2</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/212b4ae7-fb7c-4b20-ac5d-f39a01880085-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/3643722f-76c0-4f56-a557-99eb7acb6c74-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@skip">
                                 <span>@skip</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             58
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/07748a82-e730-4d68-90b2-703b7b616968-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/d1a5fdd4-ba95-43d4-babe-40f063779b6c-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@skip">
                                 <span>@skip</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             58
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/dd63f123-543b-42b6-a595-37805955a66b-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/5943c192-0973-4cda-889c-53c5f6af7e28-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@skip">
                                 <span>@skip</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             58
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/affd084a-c22a-413c-9b84-b6d6a22ce419-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/7218d31d-9fe8-4a3c-a6cb-f4516054e5c4-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
-
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Google Pixel 2
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-android fa-lg"><span>android</span></i>
                             8
                         </td>
-
+                        
                         <td>
-
+                            
                             Greetings app <br>V: 1.02
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>1</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/47e5b763-e9da-4811-ac78-1966b9be9e7a-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/2e30201b-170b-4c1c-bf07-ac6eded2ae0d-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
-
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             iPhone X
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-apple fa-lg"><span>apple</span></i>
                             11.1
                         </td>
-
+                        
                         <td>
-
+                            
                             Greetings app <br>V: 1.02
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>1</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/fb89fca5-68c2-45e0-b1ce-5253d6be9123-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/79d49962-afda-4b1f-accb-7c43bbe4114c-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@example @happy-flow @angular">
                                 <span>@example @happy-flow @angular</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-edge fa-lg"><span>edge</span></i>
                             14
-
+                            
                         </td>
-
+                        
                         <td>3</td>
                         <td>3</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/aff18728-d357-490f-8091-62e8867f8310-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/38b7be95-8d32-43de-8b4d-23d97dd04e64-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@example @happy-flow @angular">
                                 <span>@example @happy-flow @angular</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-edge fa-lg"><span>edge</span></i>
                             14
-
+                            
                         </td>
-
+                        
                         <td>3</td>
                         <td>3</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/bfa770a5-20b8-4002-bc72-9c10bebec696-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/08709829-1f06-41ca-bcf5-fb17dec32830-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@example @happy-flow @angular">
                                 <span>@example @happy-flow @angular</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Virtual Machine
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-windows fa-lg"><span>windows</span></i>
                             10
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-edge fa-lg"><span>edge</span></i>
                             14
-
+                            
                         </td>
-
+                        
                         <td>3</td>
                         <td>3</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/be291334-f415-4257-ab21-5fa81221e334-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/54112f81-6445-4f62-ae45-9dd36f2a73ca-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
                                 <span>question-circle not-defined-color</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
                             not known
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-question-circle not-defined-color fa-lg"><span>not known</span></i>
                             not known
-
+                            
                         </td>
-
+                        
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/be372275-d4a3-4598-9f83-e39f50c88112-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/05466f05-0635-4709-95a3-ba29e882362c-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Samsung S7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-android fa-lg"><span>android</span></i>
                             7.1
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             56
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/a5444e74-675d-4e59-9ac3-423c53b421cf-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/f17337ae-9bf2-4af7-bbe2-6e25a0b42c22-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Samsung S7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-android fa-lg"><span>android</span></i>
                             7.1
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             56
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/3e105348-5c2b-4c2e-b13b-b899f623cac0-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/f8b03356-6c7d-48d0-89d2-021414fbd43e-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             Samsung S7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-android fa-lg"><span>android</span></i>
                             7.1
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
                             56
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/9b46def4-e87c-4b2c-b015-1d5881fb4099-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/ae841863-96b4-44e8-b30a-764fceb974dc-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
                                 <span>desktop</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             MacBook Pro
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-apple fa-lg"><span>apple</span></i>
                             10.12
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-safari fa-lg"><span>safari</span></i>
                             10
-
+                            
                         </td>
-
+                        
                         <td>3</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>3</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/25dd1b44-4066-4b5a-8dde-af6eb2c5fe5d-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/7c6454a2-c253-4855-b278-88282e3b9835-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@undefined">
                                 <span>@undefined</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             iPhone 7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-apple fa-lg"><span>apple</span></i>
                             10.1.2
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-safari fa-lg"><span>safari</span></i>
                             10
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/45489302-12c5-4ce5-98f1-02439c67592b-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/55aba6c6-d163-4806-91fe-dbc847670618-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@undefined">
                                 <span>@undefined</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             iPhone 7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-apple fa-lg"><span>apple</span></i>
                             10.1.2
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-safari fa-lg"><span>safari</span></i>
                             10
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     <tr>
                         <td>
-                            <a href=".tmp/features/a992ed87-4119-43fc-b571-a700d0515028-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/7b97aa8f-8b78-4a33-9e2e-2aa8fe0f35de-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
                                title="@undefined">
                                 <span>@undefined</span>
                             </i>
-
-
+                            
+                            
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
                         <td class="text-center">
-
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
                                 <span>mobile</span>
                             </i>
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             iPhone 7
                         </td>
                         <td>
-
-
-
-
+                            
+                            
+                            
+                            
                             <i class="fa fa-apple fa-lg"><span>apple</span></i>
                             10.1.2
                         </td>
-
+                        
                         <td>
-
+                            
                         </td>
-
-
+                        
+                        
                         <td>
-
-
-
-
-
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-safari fa-lg"><span>safari</span></i>
                             10
-
+                            
                         </td>
-
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
-
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>0</td>
-
-
+                        
+                        
                         <td>1</td>
-
-
+                        
+                        
                         <td>0</td>
-
+                        
                     </tr>
-
+                    
                     </tbody>
 
                 </table>

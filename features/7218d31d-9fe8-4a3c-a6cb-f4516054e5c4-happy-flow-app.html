@@ -140,7 +140,7 @@ table.tile_info td i {
 }
 
 table.tile_info td:first-child {
-    width: 83%;
+    width: 65%;
 }
 
 td span {
@@ -365,7 +365,8 @@ ul.quick-list {
     display: inline-block;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     padding-left: 10px;
     list-style: none;
     margin: 0;
@@ -376,22 +377,26 @@ ul.quick-list li {
     overflow: hidden;
 }
 
-ul.quick-list li .meta-data-title {
+ul.quick-list li .meta-data-title,
+table.quick-list td.meta-data-title {
     display: inline-block;
     min-width: 75px;
     font-weight: bold;
 }
 
-ul.quick-list li span {
+ul.quick-list li span,
+table.quick-list td {
     line-height: 28px;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     border-bottom: 1px solid #efefef;
     padding: 0.5em 0;
 }
 
-ul.quick-list li:last-child {
+ul.quick-list li:last-child,
+table.quick-list tr:last-child {
     border-bottom: none;
 }
 
@@ -483,7 +488,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Ambiguous scenarios specified V3</small>
+                <small>Happy flow app</small>
             </p>
         </div>
     </nav>
@@ -493,15 +498,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="page-title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h1>Feature:
-                <small>Ambiguous scenarios specified V3</small>
+                <small>Happy flow app</small>
             </h1>
-            <p>  The scenarios have been scripted twice
-  So the report should hold ambiguous steps</p>
+            <p></p>
         </div>
 
         <div class="clearfix"></div>
@@ -549,7 +550,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">100.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -562,17 +563,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </tr>
                     
                     
-                    
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left"
-                               title="Scenario has double step implementation and failed because of that.">
-                                <i class="fa fa-flash ambiguous-color"></i>
-                                Ambiguous
-                            </p>
-                        </td>
-                        <td class="percentage">100.00 %</td>
-                    </tr>
                     
                     
                 </table>
@@ -609,14 +599,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-desktop fa-lg">
-                        <span>desktop</span>
+                    <i class="fa fa-mobile fa-lg">
+                        <span>mobile</span>
                     </i>
                 </span>
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Virtual Machine</span>
+                <span class="meta-data-data">Google Pixel 2</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -625,27 +615,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-linux fa-lg">
-                        <span>linux</span>
+                    <i class="fa fa-android fa-lg">
+                        <span>android</span>
                     </i>
-                    16.04
+                    8
                 </span>
             </li>
-            
             
             <li>
-                <span class="meta-data-title">Browser</span>
+                <span class="meta-data-title">App</span>
                 <span class="meta-data-data">
-                    
-                    
-                    
-                    
-                    <i class="fa fa-firefox fa-lg">
-                        <span>firefox</span>
-                    </i>
-                    53
+                    Greetings app V: 1.02
                 </span>
             </li>
+            
             
         </ul>
     </div>
@@ -662,12 +645,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="x_title">
             <div class="tags">
                 
-                
-                
-                
             </div>
             <h2>Scenario:
-                <small>Ambiguous Johnny wants to see ambiguous scenarios</small>
+                <small>As a visitor I want to be greeted</small>
             </h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -676,20 +656,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     </a>
                 </li>
                 
-                <li>
-                    <span class="step ambiguous-background" data-toggle="tooltip" data-placement="top"
-                          title="Scenario has double step implementation and failed because of that.">
-                        2
-                    </span>
-                </li>
-                
                 
                 
                 
                 
                 <li>
                     <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        1
+                        3
                     </span>
                 </li>
                 
@@ -713,7 +686,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
                 <div class="text">
                     <span class="keyword highlight">Given </span>
-                    Ambiguous Johnny visits the Angular homepage
+                    I open the app
                 </div>
 
                 
@@ -747,16 +720,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top"
-                     title="Step has double step implementation and failed because of that.">
-                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
-                    <span class="keyword highlight">When </span>
-                    he clicks on the second button
+                    <span class="keyword highlight">Given </span>
+                    I submit the name "Julie"
                 </div>
 
                 
@@ -790,16 +762,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             <div class="scenario-step-container">
                 
                 
-                <div class="label" data-toggle="tooltip" data-placement="top"
-                     title="Step has double step implementation and failed because of that.">
-                    <i class="fa fa-flash fa-2x ambiguous-color"></i>
+                <div class="label" title="Success">
+                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                 </div>
                 
                 
 
                 <div class="text">
                     <span class="keyword highlight">Then </span>
-                    he expects that something really ambiguous happens
+                    I am greeted as "Hello Julie!"
                 </div>
 
                 
@@ -869,11 +840,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            0.00,
-                            0.00,
-                            0.00,
-                            0.00,
                             100.00,
+                            0.00,
+                            0.00,
+                            0.00,
+                            0.00,
                             0.00
                         ],
                         backgroundColor: [

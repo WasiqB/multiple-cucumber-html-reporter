@@ -140,7 +140,7 @@ table.tile_info td i {
 }
 
 table.tile_info td:first-child {
-    width: 83%;
+    width: 65%;
 }
 
 td span {
@@ -365,7 +365,8 @@ ul.quick-list {
     display: inline-block;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     padding-left: 10px;
     list-style: none;
     margin: 0;
@@ -376,22 +377,26 @@ ul.quick-list li {
     overflow: hidden;
 }
 
-ul.quick-list li .meta-data-title {
+ul.quick-list li .meta-data-title,
+table.quick-list td.meta-data-title {
     display: inline-block;
     min-width: 75px;
     font-weight: bold;
 }
 
-ul.quick-list li span {
+ul.quick-list li span,
+table.quick-list td {
     line-height: 28px;
 }
 
-ul.quick-list li {
+ul.quick-list li,
+table.quick-list tr {
     border-bottom: 1px solid #efefef;
     padding: 0.5em 0;
 }
 
-ul.quick-list li:last-child {
+ul.quick-list li:last-child,
+table.quick-list tr:last-child {
     border-bottom: none;
 }
 
@@ -483,7 +488,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </a>
             </div>
             <p class="navbar-text">Feature:
-                <small>Happy flow app</small>
+                <small>No elements</small>
             </p>
         </div>
     </nav>
@@ -493,11 +498,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <div class="page-title">
             <div class="tags">
                 
+                
+                
+                
             </div>
             <h1>Feature:
-                <small>Happy flow app</small>
+                <small>No elements</small>
             </h1>
-            <p></p>
+            <p>  No elements have been found
+  So the report should hold no scenarios and steps</p>
         </div>
 
         <div class="clearfix"></div>
@@ -534,7 +543,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">1</div>
+                <div class="total">0</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -545,7 +554,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">100.00 %</td>
+                        <td class="percentage">0 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -554,7 +563,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">0 %</td>
                     </tr>
                     
                     
@@ -594,14 +603,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-mobile fa-lg">
-                        <span>mobile</span>
+                    <i class="fa fa-question-circle not-defined-color fa-lg">
+                        <span>question-circle not-defined-color</span>
                     </i>
                 </span>
             </li>
             <li>
                 <span class="meta-data-title">Device</span>
-                <span class="meta-data-data">Google Pixel 2</span>
+                <span class="meta-data-data">not known</span>
             </li>
             <li>
                 <span class="meta-data-title">OS</span>
@@ -610,20 +619,27 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     
                     
-                    <i class="fa fa-android fa-lg">
-                        <span>android</span>
+                    <i class="fa fa-question-circle not-defined-color fa-lg">
+                        <span>question-circle not-defined-color</span>
                     </i>
-                    8
+                    not known
                 </span>
             </li>
+            
             
             <li>
-                <span class="meta-data-title">App</span>
+                <span class="meta-data-title">Browser</span>
                 <span class="meta-data-data">
-                    Greetings app V: 1.02
+                    
+                    
+                    
+                    
+                    <i class="fa fa-question-circle not-defined-color fa-lg">
+                        <span>not known</span>
+                    </i>
+                    not known
                 </span>
             </li>
-            
             
         </ul>
     </div>
@@ -635,172 +651,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
         <div class="row">
             
-<div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel" style="height: auto;">
-        <div class="x_title">
-            <div class="tags">
-                
-            </div>
-            <h2>Scenario:
-                <small>As a visitor I want to be greeted</small>
-            </h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li>
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-down"></i>
-                    </a>
-                </li>
-                
-                
-                
-                
-                
-                <li>
-                    <span class="step passed-background" data-toggle="tooltip" title="Scenario passed">
-                        3
-                    </span>
-                </li>
-                
-                
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="x_content" style="display: none;">
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I open the app
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Given </span>
-                    I submit the name "Julie"
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            <div class="scenario-step-container">
-                
-                
-                <div class="label" title="Success">
-                    <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
-                </div>
-                
-                
-
-                <div class="text">
-                    <span class="keyword highlight">Then </span>
-                    I am greeted as "Hello Julie!"
-                </div>
-
-                
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
-
-            
-            
-
-            
-
-            
-            
-
-            
-            
-            
-
-            
-            
-
-            
-            
-        </div>
-    </div>
-</div>
-
         </div>
     </div>
 
@@ -835,12 +685,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     ],
                     datasets: [{
                         data: [
-                            100.00,
-                            0.00,
-                            0.00,
-                            0.00,
-                            0.00,
-                            0.00
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
                         ],
                         backgroundColor: [
                             "#26B99A",
