@@ -7,6 +7,12 @@ test.generate({
     jsonDir: './test/unit/data/json/',
     reportPath: './.tmp/',
     reportName: 'You can adjust this report name',
+    featuresFolder: './test/unit/data/features-scenarios-outline',
+    disableMetadataIfnotPresent: true,
+    showExecutionTime: true,
+    saveCollectedJSON:true,
+    expandStepsNotPassed: true,
+    navigateToFeatureIfThereIsOnlyOne:true,
     customData: {
         title: 'Run info',
         data: [
