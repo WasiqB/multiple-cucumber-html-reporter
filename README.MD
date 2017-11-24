@@ -36,9 +36,9 @@ Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2 and 3**.
 ## Usage
 > **If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/wswebcreation/protractor-multiple-cucumber-html-reporter-plugin).**
 
-> **It privides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.**
+> **It provides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.**
 
-
+### cucumber-js 2.x and lower
 Multiple Cucumber HTML Reporter transforms the Cucumber JSON output to a beautiful report. In order to let this happen add the piece of code that is placed below to CucumberJS `AfterFeatures`-hook.
 
 ```javascript
@@ -70,11 +70,18 @@ report.generate({
     }
 });
 ```
+
+### cucumber-js 3.x
+Since cucumber-js 3.x the `AfterFeatures` hook is not supported anymore. To use Multiple Cucumber HTML Reporter it must be run in a separate node executable after the cucumber-js process finishes.
+
+
 > **IMPORTANT:**
 
 > Make sure that, when you generate the JSON files with Cucumber, each file will have a **UNIQUE** name. If you don't provide a unique name Cucumber will **override** the JSON files.
 
 > **Advice** is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
+
+> 
 
 ## Options
 ### `jsonDir`
