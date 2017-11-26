@@ -1,0 +1,9 @@
+<tr data-toggle="collapse" data-target="#demo1-<%= scenarioIndex %>-<%= scenarioIndex %>" class="accordion-toggle" aria-expanded="true">
+
+
+    <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+    <% var cells = rows[rowIndex]; %>
+    <% for( var k = 0; k < cells.length; k++ ) { %>
+    <td><%= cells[k] %></td>
+    <% } %>
+    <td >

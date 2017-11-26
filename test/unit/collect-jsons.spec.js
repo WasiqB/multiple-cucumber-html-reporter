@@ -10,7 +10,8 @@ describe('collect-jsons.js', () => {
         it('should return an output from the merged found json files', () => {
             expect(collectJSONS({
                 jsonDir: './test/unit/data/json',
-                reportPath: reportPath
+                reportPath: reportPath,
+                featuresFolder: './test/unit/data/features-scenarios-outline'
             })).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './test/unit/data/output/merged-output.json')));
         });
 
@@ -18,6 +19,7 @@ describe('collect-jsons.js', () => {
             expect(collectJSONS({
                 jsonDir: './test/unit/data/collect-json',
                 reportPath: reportPath,
+                featuresFolder: './test/unit/data/features-scenarios-outline',
                 metadata:{
                     browser: {
                         name: 'chrome',
@@ -36,6 +38,7 @@ describe('collect-jsons.js', () => {
             expect(collectJSONS({
                 jsonDir: './test/unit/data/json',
                 reportPath: reportPath,
+                featuresFolder: './test/unit/data/features-scenarios-outline',
                 saveCollectedJSON: true
             })).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './test/unit/data/output/merged-output.json')));
         });
@@ -45,6 +48,7 @@ describe('collect-jsons.js', () => {
         it('should throw an error when the json folder does not exist', () => {
             expect(() => collectJSONS({
                 jsonDir: './test/unit/data/bla',
+                featuresFolder: './test/unit/data/features-scenarios-outline',
                 reportPath: reportPath
             })).toThrow(new Error(`There were issues reading JSON-files from './test/unit/data/bla'.`));
         });

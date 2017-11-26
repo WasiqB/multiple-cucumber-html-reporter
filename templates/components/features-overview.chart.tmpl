@@ -13,18 +13,18 @@
     <table class="chart">
         <tr>
             <th>
-                <p>Chart</p>
+                <p class ="chart">Chart</p>
             </th>
             <th>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="progress">Progress</p>
                 </div>
             </th>
         </tr>
-        <tr>
+        <tr style="border:2px solid;">
             <td class="chart">
                 <canvas id="feature-chart"></canvas>
                 <div class="total"><%= suite.featureCount.total%></div>
@@ -38,7 +38,7 @@
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage"><%= suite.featureCount.passedPercentage %> %</td>
+                        <td class="percentage" style="text-align: center;"><%= suite.featureCount.passedPercentage %> %</td>
                     </tr>
                     <tr>
                         <td>
@@ -47,7 +47,7 @@
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage"><%= suite.featureCount.failedPercentage %> %</td>
+                        <td class="percentage" style="text-align: center;"><%= suite.featureCount.failedPercentage %> %</td>
                     </tr>
                     <%if(suite.featureCount.ambiguous > 0){%>
                     <tr>
@@ -58,7 +58,7 @@
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage"><%= suite.featureCount.ambiguousPercentage %> %</td>
+                        <td class="percentage" style="text-align: center;"><%= suite.featureCount.ambiguousPercentage %> %</td>
                     </tr>
                     <%}%>
                 </table>

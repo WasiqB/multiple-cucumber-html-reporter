@@ -1,0 +1,264 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "line": 12,
+        "name": "Move a file to another folder",
+        "description": "",
+        "id": "scenarios-outline;move-a-file-to-another-folder;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 125852054,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I move the file /src/main/resources/test.docx to the folder destinationFolder in less than 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "/src/main/resources/test.docx",
+                  "offset": 16
+                },
+                {
+                  "val": "destinationFolder",
+                  "offset": 60
+                },
+                {
+                  "val": "5",
+                  "offset": 91
+                }
+              ],
+              "location": "FileOperationsStepsDefs.iMoveTheFileFileNameToTheFolderDestinationFolderInLessThanTimeoutSeconds(String,String,Integer)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1755938,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "It is moved again to the origin folder",
+            "match": {
+              "location": "FileOperationsStepsDefs.itIsMovedAgainToTheOriginFolder()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@File_Operations"
+          },
+          {
+            "name": "@File_Moving"
+          }
+        ]
+      },
+      {
+        "line": 13,
+        "name": "Move a file to another folder",
+        "description": "",
+        "id": "scenarios-outline;move-a-file-to-another-folder;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 1927733,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I move the file /src/main/resources/test.docx to the folder destinationFolder1 in less than 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "/src/main/resources/test.docx",
+                  "offset": 16
+                },
+                {
+                  "val": "destinationFolder1",
+                  "offset": 60
+                },
+                {
+                  "val": "5",
+                  "offset": 92
+                }
+              ],
+              "location": "FileOperationsStepsDefs.iMoveTheFileFileNameToTheFolderDestinationFolderInLessThanTimeoutSeconds(String,String,Integer)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1138122,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "It is moved again to the origin folder",
+            "match": {
+              "location": "FileOperationsStepsDefs.itIsMovedAgainToTheOriginFolder()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@File_Operations"
+          },
+          {
+            "name": "@File_Moving"
+          }
+        ]
+      },
+      {
+        "line": 22,
+        "name": "Copy a file to another folder",
+        "description": "",
+        "id": "scenarios-outline;copy-a-file-to-another-folder;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "error_message": "java.nio.file.NoSuchFileException: /mnt/ARCHIVING/GIT/serenity-automation/resources/destinationFolder\n\tat sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)\n\tat sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)\n\tat sun.nio.fs.UnixFileSystemProvider.createDirectory(UnixFileSystemProvider.java:384)\n\tat java.nio.file.Files.createDirectory(Files.java:674)\n\tat com.serenity.ui.StepsDef.FileOperationsStepsDefs.iCopyTheFileFileNameToTheFolderDestinationFolderInLessThanTimeoutSeconds(FileOperationsStepsDefs.java:77)\n\tat ✽.I copy the file /resources/test.docx to the folder destinationFolder in less than 5 seconds(src/test/resources/features/ui/FileOperations.feature:17)\n",
+              "duration": 3251287,
+              "status": "failed"
+            },
+            "line": 17,
+            "name": "I copy the file /resources/test.docx to the folder destinationFolder in less than 5 seconds",
+            "match": {
+              "arguments": [
+                {
+                  "val": "/resources/test.docx",
+                  "offset": 16
+                },
+                {
+                  "val": "destinationFolder",
+                  "offset": 51
+                },
+                {
+                  "val": "5",
+                  "offset": 82
+                }
+              ],
+              "location": "FileOperationsStepsDefs.iCopyTheFileFileNameToTheFolderDestinationFolderInLessThanTimeoutSeconds(String,String,Integer)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 18,
+            "name": "It is deleted from the destination folder",
+            "match": {
+              "location": "FileOperationsStepsDefs.itIsDeletedFromTheDestinationFolder()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@File_Operations"
+          },
+          {
+            "name": "@File_Copying"
+          }
+        ]
+      },
+      {
+        "line": 25,
+        "name": "Compare two pdf files and return a pdf with the results",
+        "description": "",
+        "id": "scenarios-outline;compare-two-pdf-files-and-return-a-pdf-with-the-results",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 4790606,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I have the pdf file: document1.pdf in the resources folder",
+            "match": {
+              "arguments": [
+                {
+                  "val": "document1.pdf",
+                  "offset": 21
+                }
+              ],
+              "location": "FileOperationsStepsDefs.iHaveThePdfPdf(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 728642,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "the pdf: document2.pdf in the resources folder",
+            "match": {
+              "arguments": [
+                {
+                  "val": "document2.pdf",
+                  "offset": 9
+                }
+              ],
+              "location": "FileOperationsStepsDefs.thePdfPdf(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "java.lang.RuntimeException: java.io.FileNotFoundException: /mnt/ARCHIVING/GIT/serenity-automation/resources/comparison_results.pdf (No such file or directory)\n\tat de.redsix.pdfcompare.CompareResult.writeTo(CompareResult.java:61)\n\tat com.serenity.ui.StepsDef.FileOperationsStepsDefs.iCompareThem(FileOperationsStepsDefs.java:125)\n\tat ✽.I compare them(src/test/resources/features/ui/FileOperations.feature:28)\nCaused by: java.io.FileNotFoundException: /mnt/ARCHIVING/GIT/serenity-automation/resources/comparison_results.pdf (No such file or directory)\n\tat java.io.FileOutputStream.open0(Native Method)\n\tat java.io.FileOutputStream.open(FileOutputStream.java:270)\n\tat java.io.FileOutputStream.\u003cinit\u003e(FileOutputStream.java:213)\n\tat java.io.FileOutputStream.\u003cinit\u003e(FileOutputStream.java:162)\n\tat org.apache.pdfbox.pdmodel.PDDocument.save(PDDocument.java:1249)\n\tat org.apache.pdfbox.pdmodel.PDDocument.save(PDDocument.java:1237)\n\tat de.redsix.pdfcompare.CompareResult.writeTo(CompareResult.java:59)\n\tat com.serenity.ui.StepsDef.FileOperationsStepsDefs.iCompareThem(FileOperationsStepsDefs.java:125)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:498)\n\tat cucumber.runtime.Utils$1.call(Utils.java:40)\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\n\tat cucumber.runtime.Utils.invoke(Utils.java:34)\n\tat cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:37)\n\tat cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:40)\n\tat cucumber.api.TestStep.executeStep(TestStep.java:78)\n\tat cucumber.api.TestStep.run(TestStep.java:61)\n\tat cucumber.api.TestCase.run(TestCase.java:28)\n\tat cucumber.runner.Runner.runPickle(Runner.java:80)\n\tat cucumber.runtime.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:140)\n\tat cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:68)\n\tat cucumber.runtime.junit.FeatureRunner.runChild(FeatureRunner.java:23)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat cucumber.runtime.junit.FeatureRunner.run(FeatureRunner.java:73)\n\tat cucumber.api.junit.Cucumber.runChild(Cucumber.java:99)\n\tat cucumber.api.junit.Cucumber.runChild(Cucumber.java:41)\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\n\tat cucumber.api.junit.Cucumber$1.evaluate(Cucumber.java:108)\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)\n\tat com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)\n\tat com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)\n\tat com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)\n",
+              "duration": 1009332388,
+              "status": "failed"
+            },
+            "line": 28,
+            "name": "I compare them",
+            "match": {
+              "location": "FileOperationsStepsDefs.iCompareThem()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 29,
+            "name": "a pdf is created in the folder: src/main/resources with the result of the comparison",
+            "match": {
+              "arguments": [
+                {
+                  "val": "src/main/resources",
+                  "offset": 32
+                }
+              ],
+              "location": "FileOperationsStepsDefs.aPdfIsCreatedInTheResultsFolderWithTheResultOfTheComparison(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@File_Operations"
+          },
+          {
+            "name": "@pdfCompare"
+          }
+        ]
+      }
+    ],
+    "name": "Scenarios outline",
+    "description": "",
+    "id": "scenarios-outline",
+    "keyword": "Feature",
+    "uri": "src/test/resources/features/ui/FileOperations.feature"
+  }
+]

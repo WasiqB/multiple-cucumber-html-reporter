@@ -256,7 +256,7 @@ table td.chart .total {
     padding: 0 5px 6px;
     position: relative;
     width: 100%;
-    float: left;
+    /* float: left; */
     clear: both;
     margin-top: 5px;
 }
@@ -394,10 +394,15 @@ ul.panel_toolbox li .step {
 
 .scenario-step-container {
     margin-bottom: 10px;
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: auto;
+    align-items: baseline;
 }
 
 .scenario-step-container .label {
-    display: inline-block;
+    display: flex;
     text-align: center;
     width: 30px;
 }
@@ -409,6 +414,8 @@ ul.panel_toolbox li .step {
 .scenario-step-container .text .keyword.highlight {
     font-size: 1.2em;
     font-weight: 700;
+    display:flex;
+    margin-right: auto;
 }
 
 .scenario-scroll-bar {
@@ -447,4 +454,289 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 .created-by {
     padding: 50px 0;
     text-align: center;
+}
+
+tr .accordion-toggle > tr > td .hiddenRow .collapsed {
+    display:block;visibility:visible;
+}
+
+.hiddenRow  .collapsed {
+    display:none; visibility:hidden;
+}
+
+.tags {
+    text-align:left;
+    display: flex;
+    flex-direction: column;
+    /* line-height: normal; */
+}
+
+span.tag{
+    display: block;
+    float: left;
+    clear: left;
+    color:black;
+    /* line-height: normal; */
+    font-size: normal;
+    /* vertical-align: normal; */
+}
+
+.hiddenRow a.collapsed{
+    visibility: visible;
+    display: initial;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div.scenarioBlock{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1.scenarioName,
+div.scenarioName {
+    display: inline-block;
+    color: #525D76;
+    background-color: white;
+    margin-top:auto;
+    text-align: end;
+    align-items: baseline;
+}
+
+div.scenarioName > h2.scenarioType{
+    font-size: 24px;
+    font-weight: 400;
+    vertical-align:text-bottom;
+    color: #525D76;
+    background-color: white;
+}
+
+h2.scenarioType > small{
+    background-color: white;
+    color: #525D76;
+    margin-left: 5px;
+}
+
+h2.scenarioTime{
+    display:flex;
+    margin-left: auto;
+    color: white;
+    background-color: #525D76;
+    line-height: normal;
+    margin-left: auto;
+    margin-right:0;
+    margin-bottom: 0;
+}
+
+.scenarioResultsContainer{
+    display: flex;
+    flex-direction: row;
+    line-height: normal;
+    text-align: right; 
+    /* margin-left: auto; */
+    margin-right: 0px;
+    margin-top:auto;
+    margin-bottom: 0;
+    vertical-align:bottom;
+    padding-left: 5px;
+}
+
+ul > li.scenarioOutlineToolBox{
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    display: flex;
+    order: 1;
+}
+
+span.scenarioOutlineCircle {
+    display: flex;
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    background-color: black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1px;
+    margin-bottom: 2px;
+    line-height: normal;
+}
+span.scenarioOutlineCircle > p{
+    font-size: 13px;
+    background:#1ABB9C;
+    margin:0;
+    color:black;
+}
+
+table.custom_class {
+    border:solid 5px #006CFF;
+    margin:0px;
+    padding:0px;
+    border-spacing:0px;
+    border-collapse:collapse;
+    line-height:22px;
+    font-size:13px;
+    font-family:Arial, Verdana, Tahoma, Helvetica, sans-serif;
+    font-weight:400;
+    text-decoration:none;
+    color:#0018ff; 
+    white-space:pre-wrap;
+    display: table;
+    width:auto;
+    border:"1";
+    table-layout: fixed;
+}
+table.custom_class th {
+  padding: 5px;
+  background-color:#98dcff;
+  border:solid 2px #006CFF;
+  resize: both; 
+  overflow: auto;
+}
+table.custom_class td {
+  padding: 10px;
+  border:solid 1px #006CFF;
+  white-space: nowrap; 
+  resize: both; 
+  overflow: auto;
+}
+table.custom_class tr {
+    margin:0;
+    padding:1px;
+}
+
+div.tableContainer{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 1px 1px;
+    display: inline-block;
+    overflow-x:auto;
+}
+
+span.error{
+    white-space: normal;
+}
+
+table#features-table td{
+    border:solid 1px
+}
+
+table#features-table th{
+    border:solid 2px;
+    background-color: #BEBEBE;
+}
+
+div.scenarioIcon{
+    display:flex;
+    flex: 1;
+}
+
+div.scenarioStep{
+    display:flex;
+    align-items: flex-start;
+}
+
+span.scenarioStepKeyword{
+    display:flex;
+    margin-right: auto;
+    margin-left:5px;
+    margin-right:5px;
+    color: #73879C;
+    line-height: 1.471;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+p2.scenarioStepName,
+span.scenarioStepName{
+    display:flex;
+    margin-left:5px;
+    margin-right:5px;
+    color: #73879C;
+}
+
+.borderSolid{
+    height: auto; 
+    border:2px solid;
+    background-color:white;
+}
+
+a.borderSolidBackIcon{
+    border-right:2px solid;
+    border-color: black;
+}
+
+span.scenarioOutlineCircle > p{
+    background: inherit;
+}
+
+.scenarioOutlineHeaderTitle{
+    background-color:white; 
+    color:#5A738E; 
+}
+
+.reportTitle{
+    border-bottom:2px solid; 
+    margin-left: 18px; 
+    margin-right: 18px;
+}
+
+.title{
+    border:2px solid; 
+    margin-left: 0px; 
+    margin-right: 0px;
+}
+
+tr.featureCount{
+    border:2px solid; 
+    border-right:2px solid;
+}
+
+tr.chart{
+    border:2px solid; 
+    border-right:2px solid;
+}
+
+h2.scenarioTitle{
+    background-color:white; 
+    color:#5A738E;
+}
+
+p.progress{
+    text-align: right; 
+    padding-right:7px;
+    margin-bottom:0px;
+    background-color:white;
+    border:none;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+
+p.chart{
+    padding-left:50px;
+}
+
+.borderMetadata{
+    height: auto; 
+    /* height: 320px; */
+    border:2px solid;
+    background-color:white;
+    margin-bottom: 20px;
+    padding-bottom: 22px;
+}
+
+a.extraInfo{
+    margin-left: 5px;
+}
+
+div.infoBlock{
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+
+i.fa{
+    /* line-height: normal; */
 }

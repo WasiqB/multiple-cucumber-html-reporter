@@ -30,14 +30,14 @@
 <body>
 
     <nav class="navbar">
-        <div class="container-fluid">
+        <div class="container-fluid borderSolid">
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" onclick="history.back(-1)">
+                <a class="navbar-brand borderSolidBackIcon" href="#" onclick="history.back(-1)">
                     <i class="fa fa-arrow-left"><span>Back</span></i>
                 </a>
             </div>
-            <p class="navbar-text">Feature:
+            <p class="navbar-text scenarioOutlineHeaderTitle" >Feature:
                 <small><%= feature.name %></small>
             </p>
         </div>
@@ -54,8 +54,8 @@
                 <% _.each(feature.tags, (tag) => {%><span class="tag"><%= tag.name %></span><%});%>
                 <% } %>
                 <% } %>
-            </div>
-            <h1>Feature:
+            </div >
+            <h1 class= "scenarioName">Feature:
                 <small><%= feature.name %></small>
             </h1>
             <p><%= feature.description %></p>
@@ -64,20 +64,28 @@
         <div class="clearfix"></div>
 
         <div class="row">
-            <div class="col-md-8 col-xs-12">
-                <div class="x_panel fixed_height_320">
+
+                <% if (!disableMetadataIfnotPresent) { %>
+                    <div class="col-md-8 col-xs-12">
+                <% }else{ %>
+                    <div class="col-xs-12">
+                <% } %>
+
+                <div class="x_panel fixed_height_320 borderSolid">
                     <%= featureScenariosOverviewChart %>
                 </div>
             </div>
-            <div class="col-md-4 col-xs-12">
-                <div class="x_panel fixed_height_320">
-                    <%= featureMetadataOverview %>
+            <% if (!disableMetadataIfnotPresent) { %>
+                <div class="col-md-4 col-xs-12">
+                    <div class="x_panel fixed_height_320 borderMetadata">
+                        <%= featureMetadataOverview %>
+                    </div>
                 </div>
-            </div>
+            <% } %>
         </div>
 
         <div class="row">
-            <%= scenarioTemplate %>
+            <%= scenarioOutlineTemplate.get(feature.id) %>
         </div>
     </div>
 
@@ -135,6 +143,39 @@
             <%= genericScript %>
         });
     </script>
+
+    <script >
+        $(document).ready(function () {
+            
+            var elements = document.querySelectorAll('table[id^="scenariosOutlineTable-"]');
+            elements.forEach(table =>{
+                
+                var rows = table.rows, rowcount = rows.length, r,
+                    cells, cellcount, c, cell;
+                for( r=0; r<rowcount; r++) {
+                    cells = rows[r].cells;
+                    cellcount = cells.length;
+                    for( c=0; c<cellcount; c++) {
+                        cell = cells[c];
+                        // now do something.
+                        
+                        var divs = cell.getElementsByTagName("div");
+                            if(divs.length > 0){
+                               
+                                var lis = divs[0].getElementsByTagName("li");
+                                for(z = 0; z < lis.length; z++){
+                                    var errors = lis[z].getElementsByClassName("failed-background");
+                                    if(errors.length > 0){
+
+                                        divs[0].style.height = "";
+                                    }
+                                }
+                            }
+                    }
+                }
+            });
+        });
+    </script> 
 
         <div class="created-by">
             <p>Created by wswebcreation. Find me on:</p>

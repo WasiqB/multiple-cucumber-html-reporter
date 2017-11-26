@@ -11,6 +11,7 @@ describe('generate-report.js', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
                 jsonDir: './test/unit/data/json',
+                featuresFolder: './test/unit/data/features-scenarios-outline',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true
             });

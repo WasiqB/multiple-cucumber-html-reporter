@@ -33,37 +33,29 @@
     </head>
     <body>
 
-        <nav class="navbar">
-            <div class="container-fluid">
-                <p class="navbar-text"><%= suite.reportName %></p>
+.        <nav class="navbar reportTitle">
+            <div class="container-fluid title">
+                <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
             </div>
         </nav>
 
         <div class="main_conainer">
 
             <div class="row">
-                <div class="col-md-6 col-lg-<% if (suite.customData) { %>4<% } else { %>6<% } %> col-xs-12">
-                    <div class="x_panel fixed_height_320">
+                <div class="col-md-6 col-xs-12">
+                    <div class="x_panel fixed_height_320" style="border:2px solid;" >
                         <%= featuresOverviewChart %>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-<% if (suite.customData) { %>4<% } else { %>6<% } %> col-xs-12">
-                    <div class="x_panel fixed_height_320">
+                <div class="col-md-6 col-xs-12">
+                    <div class="x_panel fixed_height_320"  style="border:2px solid;">
                         <%= featuresScenariosOverviewChart %>
                     </div>
                 </div>
-
-                <% if (suite.customData) { %>
-                <div class="col-lg-<% if (suite.customData) { %>4<% } else { %>6<% } %> col-xs-12">
-                    <div class="x_panel fixed_height_320">
-                        <%= customDataOverview %>
-                    </div>
-                </div>
-                <% } %>
             </div>
 
-            <div class="row">
+            <div class="row title">
                 <%= featuresOverview %>
             </div>
         </div>
