@@ -257,7 +257,7 @@ cucumberJSON[0].metadata = metadata;
 ### `metadata.app.name`
 - **Type:** `string`
 
-**e.g.:** The version of the app.
+**e.g.:** The name of the app.
 
 ### `metadata.app.version`
 - **Type:** `string`
