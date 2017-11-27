@@ -9,9 +9,9 @@ test.generate({
     reportName: 'You can adjust this report name',
     customMetadata: true,
     metadata: [
-        {name: 'env', value: 'CBND'},
-        {name: 'env', value: 'CBND'},
-        {name: 'env', value: 'CBND'}
+        {name: 'Environment v.', value: '12.3'},
+        {name: 'Plugin v.', value: '32.1'},
+        {name: 'Variable set', value: 'Foo'}
     ],
     customData: {
         title: 'Run info',
