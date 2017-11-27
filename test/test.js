@@ -4,9 +4,15 @@ const test = require('../lib/generate-report');
 
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/json/',
+    jsonDir: './reports/',
     reportPath: './.tmp/',
     reportName: 'You can adjust this report name',
+    customMetadata: true,
+    metadata: [
+        {name: 'env', value: 'CBND'},
+        {name: 'env', value: 'CBND'},
+        {name: 'env', value: 'CBND'}
+    ],
     customData: {
         title: 'Run info',
         data: [

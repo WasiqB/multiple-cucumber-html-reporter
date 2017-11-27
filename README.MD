@@ -143,7 +143,7 @@ You can change the report name to a name you want
 Print more data to your report, such as browser name + version, platform name + version and your environment. The values need to meet some predefined data, see [Metadata](#metadata) for more info.
 Data can be passed like below.
 
-> **If you provide the metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will be leading**
+> **If you provide the metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence**
 
 ```js
 metadata:{
@@ -160,6 +160,25 @@ metadata:{
 ```
 
 See [metadata](#metadata-1) for more info
+
+### `customMetadata`
+- **Type:** `boolean`
+- **Mandatory:** No
+
+It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many variables are used.
+
+Adding the metadata is done in the same way as with normal metadata. The metadata is formed as a list of key-value pairs to preserve order:
+
+```js
+metadata: [
+        {name: 'Environment v.', value: '12.3'},
+        {name: 'Plugin v.', value: '32.1'},
+        {name: 'Variable set', value: 'Foo'}
+    ]
+```
+
+>**IMPORTANT:**
+> This does not work correctly if features have different sets of metadata. Try to avoid this situation.
 
 ### `customData`
 - **Type:** `object`
@@ -257,7 +276,7 @@ cucumberJSON[0].metadata = metadata;
 ### `metadata.device`
 - **Type:** `string`
 
-**e.g.:** A name that represents the type of device. For example, if you run it on a virtual machine, you can place it here `Vitrual Machine`, or the name of the mobile, like for example `iPhone 7 Plus`.
+**e.g.:** A name that represents the type of device. For example, if you run it on a virtual machine, you can place it here `Virtual Machine`, or the name of the mobile, like for example `iPhone 7 Plus`.
 
 > If no correct value is provided the `?`-icon with the text `not known` is shown
 
