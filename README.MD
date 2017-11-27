@@ -165,7 +165,8 @@ See [metadata](#metadata-1) for more info
 - **Type:** `boolean`
 - **Mandatory:** No
 
-It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many variables are used.
+It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many (10+) variables are used.
+The columns will be in the order defined by the order of the list.
 
 Adding the metadata is done in the same way as with normal metadata. The metadata is formed as a list of key-value pairs to preserve order:
 
@@ -176,6 +177,9 @@ metadata: [
         {name: 'Variable set', value: 'Foo'}
     ]
 ```
+
+On the features overview page the custom metadata is shown like:
+![Snapshot - Features overview custom metadata](./docs/images/features-custom-metadata.jpg "Snapshot - Features overview custom metadata")
 
 >**IMPORTANT:**
 > This does not work correctly if features have different sets of metadata. Try to avoid this situation.
