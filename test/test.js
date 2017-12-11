@@ -4,15 +4,9 @@ const test = require('../lib/generate-report');
 
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './reports/',
+    jsonDir: './test/unit/data/json/',
     reportPath: './.tmp/',
     reportName: 'You can adjust this report name',
-    customMetadata: true,
-    metadata: [
-        {name: 'Environment v.', value: '12.3'},
-        {name: 'Plugin v.', value: '32.1'},
-        {name: 'Variable set', value: 'Foo'}
-    ],
     customData: {
         title: 'Run info',
         data: [
