@@ -1,9 +1,9 @@
 [
   {
     "metadata": [
-      { "name": "browser", "value": "firefox" },
-      { "name": "browser version", "value": "53" },
-      { "name": "device", "value": "Virtual Machine" },
+      { "name": "Backend version", "value": "5.1" },
+      { "name": "Client API version", "value": "17.10 GA" },
+      { "name": "Test Configuration", "value": "Config B" },
       { "name": "platform", "value": "Ubuntu" },
       { "name": "platform version", "value": "16.04" }
     ],

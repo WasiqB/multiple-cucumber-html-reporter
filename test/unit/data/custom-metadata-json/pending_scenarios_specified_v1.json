@@ -92,9 +92,9 @@
     "tags": [],
     "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/pending.feature",
     "metadata": [
-      { "name": "browser", "value": "Chrome" },
-      { "name": "browser version", "value": "56" },
-      { "name": "device", "value": "Samsung S7" },
+      { "name": "Backend version", "value": "5.2.1" },
+      { "name": "Client API version", "value": "17.10" },
+      { "name": "Test Configuration", "value": "Config C" },
       { "name": "platform", "value": "Android" },
       { "name": "platform version", "value": "7.1" }
     ]

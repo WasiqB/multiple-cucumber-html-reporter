@@ -1,9 +1,9 @@
 [
   {
     "metadata": [
-      { "name": "browser", "value": "Safari" },
-      { "name": "browser version", "value": "10" },
-      { "name": "device", "value": "MacBook Pro" },
+      { "name": "Backend version", "value": "4.0 R11" },
+      { "name": "Client API version", "value": "17.10" },
+      { "name": "Test Configuration", "value": "Config A" },
       { "name": "platform", "value": "OSX" },
       { "name": "platform version", "value": "10.12" }
     ],

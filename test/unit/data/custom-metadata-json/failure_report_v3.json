@@ -1,9 +1,9 @@
 [
   {
     "metadata": [
-      { "name": "browser", "value": "Chrome" },
-      { "name": "browser version", "value": "58" },
-      { "name": "device", "value": "Virtual Machine" },
+      { "name": "Backend version", "value": "4.0 R11" },
+      { "name": "Client API version", "value": "18.5" },
+      { "name": "Test Configuration", "value": "Config A" },
       { "name": "platform", "value": "Windows" },
       { "name": "platform version", "value": "10" }
     ],
