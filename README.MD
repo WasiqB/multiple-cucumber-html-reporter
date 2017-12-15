@@ -14,14 +14,14 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
-A sample can be found [here](https://wswebcreation.github.io/browsers-multiple-cucumber-html-reporter/)
+A sample can be found [here](https://wswebcreation.github.io/browsers/)
 
 But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](#custommetadata).
-This nice feature has been created by [LennDG][https://github.com/LennDG]
+This nice feature has been created by [LennDG](https://github.com/LennDG)
 
 ![Snapshot - Features overview](./docs/images/custom-metadata-features-overview.jpg "Snapshot - Custom metadata features overview")
 
-A sample can be found [here](https://wswebcreation.github.io/custom-metadata-multiple-cucumber-html-reporter/)
+A sample can be found [here](https://wswebcreation.github.io/custom-metadata/)
 
 ## Install
 Install this module locally with the following command:
