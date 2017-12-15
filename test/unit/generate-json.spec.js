@@ -48,6 +48,17 @@ describe('generate-report.js', () => {
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'enriched-output.json')}`).isFile())
                 .toEqual(true, 'temp-output.json file exists');
         });
+        it('should create a report from the merged found json files with custom metadata', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/custom-metadata-json/',
+                reportPath: REPORT_PATH,
+                customMetadata: true
+            });
+
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
+                .toEqual(true, 'Index file exists');
+        });
     });
 
     describe('failures', () => {
