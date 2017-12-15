@@ -12,9 +12,16 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a feature(s) overview with metadata of the used browser(s) / devices
 
 
-![Snapshot - Features overview](./docs/images/features-overview.jpg "Snapshot - Features overview")
+![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
-A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/)
+A sample can be found [here](https://wswebcreation.github.io/browsers-multiple-cucumber-html-reporter/)
+
+But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](#custommetadata).
+This nice feature has been created by [LennDG][https://github.com/LennDG]
+
+![Snapshot - Features overview](./docs/images/custom-metadata-features-overview.jpg "Snapshot - Custom metadata features overview")
+
+A sample can be found [here](https://wswebcreation.github.io/custom-metadata-multiple-cucumber-html-reporter/)
 
 ## Install
 Install this module locally with the following command:
@@ -81,7 +88,7 @@ Since cucumber-js 3.x the `AfterFeatures` hook is not supported anymore. To use 
 
 > **Advice** is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
 
-> 
+>
 
 ## Options
 ### `jsonDir`
