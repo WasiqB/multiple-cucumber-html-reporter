@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.4.0"></a>
+## [1.4.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.3.0...v1.4.0) (2017-12-15)
+
+### Features
+
+* **feature:** Ability to define custom metadata **Big thanks to [LennDG][https://github.com/LennDG]**
+
 <a name="1.3.0"></a>
 ## [1.3.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.2.0...v1.3.0) (2017-11-19)
 
