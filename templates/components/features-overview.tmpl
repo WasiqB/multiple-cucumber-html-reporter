@@ -75,6 +75,9 @@
                             <% if (feature.isFailed) { %>
                             <% status = 'Failed'; %>
                             <% statusIcon = 'exclamation-circle failed-color'; %>
+                            <% } else if (feature.isSkipped) { %>
+                            <% status = 'Skipped'; %>
+                            <% statusIcon = 'arrow-circle-right skipped-color'; %>
                             <% } else if (feature.isAmbiguous) { %>
                             <% status = 'Ambiguous'; %>
                             <% statusIcon = 'flash ambiguous-color'; %>

@@ -101,17 +101,21 @@
                         labels: [
                             "Passed",
                             "Failed",
+                            "Skipped",
                             "Ambiguous"
                         ],
                         datasets: [{
                             data: [
                                 <%= suite.featureCount.passedPercentage %>,
                                 <%= suite.featureCount.failedPercentage %>,
-                                <%= suite.featureCount.ambiguousPercentage %>],
+                                <%= suite.featureCount.skippedPercentage %>,
+                                <%= suite.featureCount.ambiguousPercentage %>
+                            ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
-                                "#b73122"
+                                "#3498DB",
+                                "#b73122"                                
                             ]
                         }]
                     },
