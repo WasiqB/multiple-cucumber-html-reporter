@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.0...v1.4.1) (2018-01-01)
+
+### Bugfix
+
+* **fix:** fix: correctly show the skipped features on the report home page **Big thanks to [kevinkuszyk](https://github.com/kevinkuszyk)**
+
 <a name="1.4.0"></a>
 ## [1.4.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.3.0...v1.4.0) (2017-12-15)
 
