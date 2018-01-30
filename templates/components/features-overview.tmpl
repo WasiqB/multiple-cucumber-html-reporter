@@ -143,8 +143,10 @@
                         <td>
                             <% if(feature.metadata.browser) { %>
                             <% var browserIcon; %>
-                            <% if (['firefox', 'safari', 'chrome', 'edge'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
+                            <% if (['firefox', 'safari', 'chrome'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
                             <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
+                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge'){ %>
+                            <% browserIcon= "edge"; %>
                             <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
                             <% browserIcon= "internet-explorer"; %>
                             <% } else { %>
