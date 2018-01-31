@@ -13,6 +13,7 @@
   "main": "lib/generate-report.js",
   "scripts": {
     "test": "node ./test/test.js",
+    "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
