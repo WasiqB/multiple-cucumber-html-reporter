@@ -143,6 +143,13 @@ This will disable the log so will **NOT** see this.
 
 You can change the report name to a name you want
 
+### `displayDuration`
+- **Type:** `boolean`
+- **Mandatory:** No
+
+If set to true the duration of steps, scenarios and features is displayed on the Feature page in an easily readable format.
+This expects the durations in the report to be in milliseconds, which might result in incorrect durations when using a version of Cucumber that does not report in milliseconds (like v.1).
+
 ### `metadata`
 - **Type:** `JSON`
 - **Mandatory:** No
