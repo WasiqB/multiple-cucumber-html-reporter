@@ -1,0 +1,299 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "microsoftedge",
+        "version": "14"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "Windows",
+        "version": "10"
+      }
+    },
+    "keyword": "Feature",
+    "name": "Happy flow V3",
+    "line": 2,
+    "id": "happy-flow-v3",
+    "tags": [
+      {
+        "name": "@example",
+        "line": 1
+      },
+      {
+        "name": "@happy-flow",
+        "line": 1
+      },
+      {
+        "name": "@angular",
+        "line": 1
+      }
+    ],
+    "uri": "e2e-tests/features/example.feature",
+    "elements": [
+      {
+        "id": "happy-flow-v3;as-a-visitor-i-want-to-be-greeted",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "As a visitor I want to be greeted",
+        "tags": [
+          {
+            "name": "@example",
+            "line": 1
+          },
+          {
+            "name": "@happy-flow",
+            "line": 1
+          },
+          {
+            "name": "@angular",
+            "line": 1
+          },
+          {
+            "name": "@visitor",
+            "line": 7
+          },
+          {
+            "name": "@julie",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I visit the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2230
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I submit the name \"Julie\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1070
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I am greeted as \"Hello Julie!\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "happy-flow-v3;validate-todo-list",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Validate todo list",
+        "tags": [
+          {
+            "name": "@example",
+            "line": 1
+          },
+          {
+            "name": "@happy-flow",
+            "line": 1
+          },
+          {
+            "name": "@angular",
+            "line": 1
+          },
+          {
+            "name": "@todo",
+            "line": 12
+          },
+          {
+            "name": "@count",
+            "line": 12
+          },
+          {
+            "name": "@validate",
+            "line": 12
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I visit the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 663
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "I count 2 todo's",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 824
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the last todo should hold \"build an AngularJS app\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "happy-flow-v3;add-a-todo",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Add a todo",
+        "tags": [
+          {
+            "name": "@example",
+            "line": 1
+          },
+          {
+            "name": "@happy-flow",
+            "line": 1
+          },
+          {
+            "name": "@angular",
+            "line": 1
+          },
+          {
+            "name": "@todo",
+            "line": 17
+          },
+          {
+            "name": "@count",
+            "line": 17
+          },
+          {
+            "name": "@add",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I visit the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 502
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I add the todo \"write a protractor test\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1029
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should have 3 todo's",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the last todo should hold \"write a protractor test\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
