@@ -16,9 +16,11 @@
         <h2>Scenario:
                 <small><%= scenario.name %></small>
             </h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li>
-            <a class="collapse-link">
+            
+
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
                         <i class="fa fa-chevron-down"></i>
                     </a>
           </li>
@@ -62,11 +64,17 @@
                                   <span class="step not-defined-background" data-toggle="tooltip" title="Scenario has nop step implementation.">
                         <%= scenario.notdefined %>
                     </span>
-                                </li>
-                                <% } %>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
+                </li>
+                <% } %>
+                <% if (suite.displayDuration) { %>
+                    <li>
+                        <span style="font-size:1.2em"> Duration:</span>
+                        <span style=padding-right:5em><%= scenario.time %></span>
+                    </li>
+                <% } %>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
 
       <div class="x_content" style="display: none;">
         <% _.each(scenario.steps, function(step, stepIndex) { %>
@@ -101,10 +109,17 @@
                             <% } %>
                               <% } %>
 
-                                <div class="text">
-                                  <span class="keyword highlight"><%= step.keyword %></span>
-                                  <%= step.name %>
-                                </div>
+                <div class="text">
+                    <span class="keyword highlight"><%= step.keyword %></span>
+                    <%= step.name %>
+                    <% if(suite.displayDuration) { %>
+                        <% if (step.time) { %>
+                            <span class="duration"><%= step.time %></span>
+                        <% } else { %>
+                            <span class="duration">0s</span>
+                        <% } %>
+                    <% } %>
+                </div>
 
                                 <% if(step.result) { %>
                                   <% if(step.result.status === 'undefined') { %>

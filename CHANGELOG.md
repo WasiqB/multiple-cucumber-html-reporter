@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.5.0"></a>
+## [1.5.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.3...v1.5.0) (2018-02-21)
+
+### Features
+
+* **feature:** Add support for duration display in a readable format **Big thanks to [LennDG](https://github.com/LennDG)**
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.2...v1.4.3) (2018-02-19)
 
@@ -118,6 +125,3 @@ CHANGELOG
 ### Features
 
 * **initial:** initial version of `Multiple Cucumer HTML Reporter`
-
-
-
