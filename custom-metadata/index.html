@@ -153,6 +153,7 @@ td span {
 
 table.tile_info td.percentage {
     text-align: right;
+    
 }
 
 /* chart in table */
@@ -436,6 +437,11 @@ ul.panel_toolbox li .step {
     display: inline;
 }
 
+.scenario-step-container .duration {
+    position: relative;
+    float: right;
+}
+
 .scenario-step-container .text .keyword.highlight {
     font-size: 1.2em;
     font-weight: 700;
@@ -523,7 +529,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="feature-chart"></canvas>
-                <div class="total">6</div>
+                <div class="total">7</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -534,7 +540,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">50.00 %</td>
+                        <td class="percentage">42.86 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -543,8 +549,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">16.67 %</td>
+                        <td class="percentage">14.29 %</td>
                     </tr>
+                    
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left"
+                               title="Scenario skipped">
+                                <i class="fa fa-arrow-circle-right skipped-color"></i>
+                                Skipped
+                            </p>
+                        </td>
+                        <td class="percentage">14.29 %</td>
+                    </tr>
+                    
                     
                     <tr>
                         <td>
@@ -554,7 +572,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage">33.33 %</td>
+                        <td class="percentage">28.57 %</td>
                     </tr>
                     
                 </table>
@@ -596,7 +614,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">8</div>
+                <div class="total">9</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -607,7 +625,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">0.00 %</td>
+                        <td class="percentage">11.11 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -616,7 +634,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">12.50 %</td>
+                        <td class="percentage">11.11 %</td>
                     </tr>
                     
                     <tr>
@@ -626,7 +644,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Pending
                             </p>
                         </td>
-                        <td class="percentage">12.50 %</td>
+                        <td class="percentage">11.11 %</td>
                     </tr>
                     
                     
@@ -637,7 +655,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Skipped
                             </p>
                         </td>
-                        <td class="percentage">37.50 %</td>
+                        <td class="percentage">33.33 %</td>
                     </tr>
                     
                     
@@ -649,7 +667,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage">25.00 %</td>
+                        <td class="percentage">22.22 %</td>
                     </tr>
                     
                     
@@ -660,12 +678,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Not defined
                             </p>
                         </td>
-                        <td class="percentage">12.50 %</td>
+                        <td class="percentage">11.11 %</td>
                     </tr>
                     
                 </table>
             </td>
         </tr>
+        
     </table>
 </div>
 
@@ -732,7 +751,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/ddd272dc-e086-4c17-a486-5f9bfae4109b-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/9d77f549-acf7-4784-982d-7c3aa546343d-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -792,7 +811,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e8151d7c-f7b9-4c20-95ad-bde1425b20c8-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/69261c9c-1b72-4597-a637-ebf99056ddba-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -852,7 +871,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/57b31d00-23ba-4111-a122-f7531df457c4-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/4accb9c9-f7e1-41cb-a429-1f12f5daa6e9-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -917,7 +936,59 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/81025a71-ddce-4405-addd-87c5756a6213-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/27acd5f4-7dc1-432a-9dfb-d76f089ee4d1-google-com.html">Multiple json and plain text attachments</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                        <td>
+                            
+                        </td>
+                        
+                        <td>
+                            
+                        </td>
+                        
+                        <td>
+                            
+                        </td>
+                        
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/a38578cd-e736-410f-88b6-72e4a9c2e360-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -977,7 +1048,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/7a030421-feb9-47d4-a281-92bca621ef13-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/86cdcbba-7bb1-420c-a1fa-f9a42f323b01-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -993,8 +1064,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                             
                             
-                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
-                                <span>check-circle passed-color</span>
+                            <i class="fa fa-arrow-circle-right skipped-color fa-lg" data-toggle="tooltip" data-placement="top" title="Skipped">
+                                <span>arrow-circle-right skipped-color</span>
                             </i>
                         </td>
                         
@@ -1037,7 +1108,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/897d2f88-fcee-405a-bdf3-98b0cfe3ff31-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/4fe798bb-6c85-4740-852d-417d76bb5ee2-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1144,17 +1215,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         labels: [
                             "Passed",
                             "Failed",
+                            "Skipped",
                             "Ambiguous"
                         ],
                         datasets: [{
                             data: [
-                                50.00,
-                                16.67,
-                                33.33],
+                                42.86,
+                                14.29,
+                                14.29,
+                                28.57
+                            ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
-                                "#b73122"
+                                "#3498DB",
+                                "#b73122"                                
                             ]
                         }]
                     },
@@ -1180,12 +1255,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         ],
                         datasets: [{
                             data: [
-                                0.00,
-                                12.50,
-                                12.50,
-                                37.50,
-                                25.00,
-                                12.50,
+                                11.11,
+                                11.11,
+                                11.11,
+                                33.33,
+                                22.22,
+                                11.11,
                             ],
                             backgroundColor: [
                                 "#26B99A",

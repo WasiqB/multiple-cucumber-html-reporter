@@ -153,6 +153,7 @@ td span {
 
 table.tile_info td.percentage {
     text-align: right;
+    
 }
 
 /* chart in table */
@@ -436,6 +437,11 @@ ul.panel_toolbox li .step {
     display: inline;
 }
 
+.scenario-step-container .duration {
+    position: relative;
+    float: right;
+}
+
 .scenario-step-container .text .keyword.highlight {
     font-size: 1.2em;
     font-weight: 700;
@@ -534,7 +540,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">65.00 %</td>
+                        <td class="percentage">60.00 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -545,6 +551,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         <td class="percentage">15.00 %</td>
                     </tr>
+                    
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left"
+                               title="Scenario skipped">
+                                <i class="fa fa-arrow-circle-right skipped-color"></i>
+                                Skipped
+                            </p>
+                        </td>
+                        <td class="percentage">5.00 %</td>
+                    </tr>
+                    
                     
                     <tr>
                         <td>
@@ -666,6 +684,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                 </table>
             </td>
         </tr>
+        
     </table>
 </div>
 
@@ -764,6 +783,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         
                         <th>Browser</th>
                         
+                        
+                        <th>Duration</th>
+                        
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
@@ -786,7 +808,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/3af23409-843c-4d8e-be69-2f8668040f46-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/b0550668-3d3c-443d-a4a9-939e0676ee4e-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -849,6 +871,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:32:10.520</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -868,7 +893,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/aaf80013-cb4d-48b0-88f9-0f021b715e1f-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/4a35c7fb-210a-4956-bcff-3a6711f3e254-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -931,6 +956,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.002</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -950,7 +978,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e320d1a1-bea7-4340-a49a-1cc819af4320-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/eeb066e6-14a4-4b5d-b51f-fca14f2cb85d-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1013,6 +1041,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.003</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -1032,7 +1063,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/82475688-9e8c-465a-8e1b-20dc5f2ce31e-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/b783ea70-5778-450d-be54-f4751c6232cd-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
                             
@@ -1091,6 +1122,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>13:22:18.377</td>
+                        
                         <td>2</td>
                         <td>2</td>
                         <td>0</td>
@@ -1110,7 +1144,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/a8312626-d9a3-4e51-97df-3e81718b9828-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/3e165b08-65ba-4861-832f-e20d7c2202d2-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1178,6 +1212,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>06:18:51.101</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
@@ -1197,7 +1234,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/cbf7596a-c19e-4a97-949e-e53f70178bf9-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/0ce5fb8b-9816-482b-951b-20e3b2f288a4-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1265,6 +1302,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:05.020</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
@@ -1284,7 +1324,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/04efbb25-d4d1-44f6-9e3a-49993b9ca0a8-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/d103dc59-73cf-41c6-8b63-744862eac486-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1352,6 +1392,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:03.922</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>1</td>
@@ -1371,7 +1414,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/08f8f038-81b5-43a0-96d7-534dd7e93a38-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/8e82c359-00cb-499c-bfd9-032cff975545-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -1425,6 +1468,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:03.358</td>
+                        
                         <td>1</td>
                         <td>1</td>
                         <td>0</td>
@@ -1444,7 +1490,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/5df0fc1b-835f-41d9-b3d6-b457ce3a444b-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/68436ee6-3dbe-400d-a15a-2bfe08935016-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -1498,6 +1544,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:03.358</td>
+                        
                         <td>1</td>
                         <td>1</td>
                         <td>0</td>
@@ -1517,7 +1566,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/28a80d8d-3387-4006-b3a7-4ea47d42f55e-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/8a8f02f3-f20d-49f8-a86e-722e42df9508-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1585,6 +1634,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>12:46:06.365</td>
+                        
                         <td>3</td>
                         <td>3</td>
                         <td>0</td>
@@ -1604,7 +1656,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/555a8808-05e6-4c4f-9435-9bb256334128-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/c303d892-5595-43b6-b29f-644fa12669fa-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1672,6 +1724,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:07.873</td>
+                        
                         <td>3</td>
                         <td>3</td>
                         <td>0</td>
@@ -1691,7 +1746,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/2aa043c4-44c0-4247-b036-4e1d4f5ba51f-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/8b4b748c-221d-4f84-9f98-48699db95c66-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1754,10 +1809,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                             
                             
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
+                            <i class="fa fa-edge fa-lg"><span>microsoftedge</span></i>
                             14
                             
                         </td>
+                        
+                        
+                        <td>00:00:06.502</td>
                         
                         <td>3</td>
                         <td>3</td>
@@ -1778,7 +1836,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/83b66ef7-8418-4ebe-bf54-76458bbd25d9-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/4ba06c14-e353-4abe-838b-2fadcecc178d-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
                             
@@ -1841,6 +1899,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.000</td>
+                        
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
@@ -1860,7 +1921,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/8738e5b7-53c4-446a-9949-5bfad328422c-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/a83fd965-a4b5-4d02-acab-b8f21b22effc-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1923,6 +1984,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.000</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -1942,7 +2006,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d3ffc039-df3e-4dc7-9be4-1eb906a7aefe-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/96b14ada-77f5-412e-8f39-6e37f4a0e7cc-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2005,6 +2069,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.000</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -2024,7 +2091,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/3fea2cbd-e230-4b5c-af54-e79e4ad39b3e-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/303f3282-602d-4665-ac65-fb92343e3e62-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2087,6 +2154,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.003</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -2106,7 +2176,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f60a6554-7bc0-446a-a51e-fe42cce7a730-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/64c94aa6-9b93-459d-b709-4d0ac70ef5f9-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -2122,8 +2192,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                             
                             
-                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
-                                <span>check-circle passed-color</span>
+                            <i class="fa fa-arrow-circle-right skipped-color fa-lg" data-toggle="tooltip" data-placement="top" title="Skipped">
+                                <span>arrow-circle-right skipped-color</span>
                             </i>
                         </td>
                         <td class="text-center">
@@ -2169,11 +2239,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
+                        
+                        <td>00:00:00.000</td>
                         
                         <td>3</td>
+                        <td>0</td>
+                        <td>0</td>
+                        
+                        <td>3</td>
                         
                         
                         <td>0</td>
@@ -2188,7 +2261,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/bb6317c7-5fea-4f1b-a3ec-8123df205088-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/f806c1b9-d144-456a-a721-e58289be0de3-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -2256,6 +2329,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.000</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -2275,7 +2351,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/dcef3046-bf0f-4980-893e-9f9010eef2d7-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/99374500-d3a0-4edb-aff4-6120c4befac3-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2343,6 +2419,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                         </td>
                         
+                        
+                        <td>00:00:00.000</td>
+                        
                         <td>1</td>
                         <td>0</td>
                         <td>0</td>
@@ -2362,7 +2441,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/26c2a521-5035-431e-ae77-19a9e98757c4-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/76f8a3be-f8cf-46f8-9368-43e82e4928e2-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2429,6 +2508,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             10
                             
                         </td>
+                        
+                        
+                        <td>00:00:00.000</td>
                         
                         <td>1</td>
                         <td>0</td>
@@ -2491,17 +2573,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         labels: [
                             "Passed",
                             "Failed",
+                            "Skipped",
                             "Ambiguous"
                         ],
                         datasets: [{
                             data: [
-                                65.00,
+                                60.00,
                                 15.00,
-                                15.00],
+                                5.00,
+                                15.00
+                            ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
-                                "#b73122"
+                                "#3498DB",
+                                "#b73122"                                
                             ]
                         }]
                     },
