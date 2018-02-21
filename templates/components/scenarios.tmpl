@@ -16,6 +16,8 @@
             <h2>Scenario:
                 <small><%= scenario.name %></small>
             </h2>
+            
+
             <ul class="nav navbar-right panel_toolbox">
                 <li>
                     <a class="collapse-link">
@@ -65,6 +67,12 @@
                     </span>
                 </li>
                 <% } %>
+                <% if (suite.displayDuration) { %>
+                    <li>
+                        <span style="font-size:1.2em"> Duration:</span>
+                        <span style=padding-right:5em><%= scenario.time %></span>
+                    </li>
+                <% } %>
             </ul>
             <div class="clearfix"></div>
         </div>
@@ -106,6 +114,13 @@
                 <div class="text">
                     <span class="keyword highlight"><%= step.keyword %></span>
                     <%= step.name %>
+                    <% if(suite.displayDuration) { %>
+                        <% if (step.time) { %>
+                            <span class="duration"><%= step.time %></span>
+                        <% } else { %>
+                            <span class="duration">0s</span>
+                        <% } %>
+                    <% } %>
                 </div>
 
                 <% if(step.result) { %>

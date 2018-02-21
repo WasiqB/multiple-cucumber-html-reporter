@@ -97,5 +97,11 @@
                 </table>
             </td>
         </tr>
+        <% if (!overviewPage && suite.displayDuration) { %>
+            <tr>
+                <th> Total duration:</th>
+                <tr><td><%= feature.time %></td></tr>
+            </tr>
+        <% } %>
     </table>
 </div>

@@ -11,6 +11,10 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a features overview that can be searched / filtered / sorted
 - a feature(s) overview with metadata of the used browser(s) / devices
 
+> **NEW**
+
+> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration``](#displayDuration) for more info 
+
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
@@ -142,6 +146,15 @@ This will disable the log so will **NOT** see this.
 - **Mandatory:** No
 
 You can change the report name to a name you want
+
+### `displayDuration`
+- **Type:** `boolean`
+- **Mandatory:** No
+
+If set to true the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
+This expects the durations in the report to be in milliseconds, which might result in incorrect durations when using a version of Cucumber that does not report in milliseconds (like v.1), see all examples with `V1` behind the name of the feature.
+
+> **NOTE: Only the duration of a feature can be shown in the features overview. A total duration over all features CAN NOT be given because the module doesn't know if all features have been run in parallel**
 
 ### `metadata`
 - **Type:** `JSON`

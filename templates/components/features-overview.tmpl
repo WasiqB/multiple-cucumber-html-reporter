@@ -33,6 +33,9 @@
                         <% if(+suite.browser > 0) { %>
                         <th>Browser</th>
                         <% } %>
+                        <% if (suite.displayDuration) { %>
+                        <th>Duration</th>
+                        <% } %>
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
@@ -156,6 +159,9 @@
                             <%= feature.metadata.browser.version %>
                             <% } %>
                         </td>
+                        <% } %>
+                        <% if (suite.displayDuration) { %>
+                        <td><%= feature.time %></td>
                         <% } %>
                         <td><%= feature.scenarios.total %></td>
                         <td><%= feature.scenarios.passed %></td>
