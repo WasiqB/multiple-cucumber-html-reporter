@@ -13,7 +13,7 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **NEW**
 
-> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration``](#displayDuration) for more info 
+> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info 
 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")

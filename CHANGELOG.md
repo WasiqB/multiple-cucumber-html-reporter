@@ -1,6 +1,28 @@
 CHANGELOG
 =========
 
+<a name="1.5.0"></a>
+## [1.5.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.3...v1.5.0) (2018-02-21)
+
+### Features
+
+* **feature:** Add support for duration display in a readable format **Big thanks to [LennDG](https://github.com/LennDG)**
+
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.2...v1.4.3) (2018-02-19)
+
+### Bugfix
+
+* **fix:** fix of attaching multiple json and text attachments to the same step **Big thanks to [rjktcby](https://github.com/rjktcby)**
+
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.1...v1.4.2) (2018-02-01)
+
+### Bugfix
+
+* **fix:** show edge icon for tests run with microsoft edge **Big thanks to [kevinkuszyk](https://github.com/kevinkuszyk)**
+=========
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.0...v1.4.1) (2018-01-01)
 
@@ -103,6 +125,3 @@ CHANGELOG
 ### Features
 
 * **initial:** initial version of `Multiple Cucumer HTML Reporter`
-
-
-
