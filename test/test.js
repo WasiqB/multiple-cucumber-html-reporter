@@ -10,6 +10,8 @@ test.generate({
     jsonDir: './test/unit/data/json/',
     reportPath: './.tmp/browsers/',
     reportName: 'You can adjust this report name',
+    customMetadata: true,
+    displayDuration: true,
     customData: {
         title: 'Run info',
         data: [
