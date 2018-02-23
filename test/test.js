@@ -32,7 +32,8 @@ test.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/embedded-array-json/',
     reportPath: './.tmp/embedded-array/',
-    customStyle: path.join(__dirname, './my.css'),
+    customStyle: path.join(__dirname, './custom.css'),
+    overrideStyle: path.join(__dirname, './my.css'),
     customMetadata: false,
     customData: {
         title: 'Run info',
