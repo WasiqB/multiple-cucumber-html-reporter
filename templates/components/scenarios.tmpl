@@ -16,7 +16,7 @@
         <h2>Scenario:
                 <small><%= scenario.name %></small>
             </h2>
-            
+
 
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -192,8 +192,7 @@
                           <% if (!_.isEmpty(step.attachments)) { %>
                             <% _.each(step.attachments, function(attachment, attachmentIndex) { %>
                               <div id="info<%= scenarioIndex %><%= stepIndex %>-attachment<%= attachmentIndex %>" class="scenario-step-collapse collapse">
-                                <object class="attachment" style="height:100%;width:100%;" type="<%= attachment.type %>" id="my_attachments_<%= attachmentIndex %>" data="<%= attachment.data %>">
-                                </object>
+                                  <object class="attachment-object" type="<%= attachment.type %>" id="my_attachments_<%= attachmentIndex %>" data="<%= attachment.data %>"></object>
                               </div>
                               <% }); %>
                                 <% } %>
