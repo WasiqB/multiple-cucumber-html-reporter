@@ -13,7 +13,7 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **NEW**
 
-> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info 
+> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info
 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
@@ -155,6 +155,19 @@ If set to true the duration of steps, scenarios and features is displayed on the
 This expects the durations in the report to be in milliseconds, which might result in incorrect durations when using a version of Cucumber that does not report in milliseconds (like v.1), see all examples with `V1` behind the name of the feature.
 
 > **NOTE: Only the duration of a feature can be shown in the features overview. A total duration over all features CAN NOT be given because the module doesn't know if all features have been run in parallel**
+
+### `customStyle`
+- **Type:** `path`
+- **Mandatory:** No
+
+If you need add some custom style to your report.
+
+### `overrideStyle`
+- **Type:** `path`
+- **Mandatory:** No
+
+If you need replace default style for your report.
+
 
 ### `metadata`
 - **Type:** `JSON`
@@ -391,4 +404,3 @@ In the search for a reporting tools for Cucumber I found a few tools that helped
 - [cucumber-html-report](https://github.com/leinonen/cucumber-html-report)
 - [cucumber-protractor-report](https://github.com/JesterXL/cucumber-protractor-report)
 - [grunt-protractor-cucumber-html-report](https://github.com/robhil/grunt-protractor-cucumber-html-report)
-
