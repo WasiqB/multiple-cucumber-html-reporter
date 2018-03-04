@@ -1,6 +1,6 @@
 {
   "name": "multiple-cucumber-html-reporter",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Generate beautifull cucumberjs reports for multiple instances (browsers / devices)",
   "keywords": [
     "cucumber",
@@ -33,6 +33,7 @@
     "js-base64": "2.1.9",
     "jsonfile": "2.4.0",
     "lodash": "4.17.4",
+    "moment": "^2.20.1",
     "opn": "5.0.0",
     "uuid": "3.0.1"
   },

@@ -123,6 +123,7 @@ td span {
 
 table.tile_info td.percentage {
     text-align: right;
+    
 }
 
 /* chart in table */
@@ -404,6 +405,11 @@ ul.panel_toolbox li .step {
 
 .scenario-step-container .text {
     display: inline;
+}
+
+.scenario-step-container .duration {
+    position: relative;
+    float: right;
 }
 
 .scenario-step-container .text .keyword.highlight {
