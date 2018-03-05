@@ -123,7 +123,7 @@ td span {
 
 table.tile_info td.percentage {
     text-align: right;
-    
+
 }
 
 /* chart in table */
@@ -378,6 +378,11 @@ table.quick-list tr:last-child {
 ul.quick-list li i {
     padding-right: 10px;
     color: #757679;
+}
+
+.screenshot{
+    height: 100%;
+    width: 100%;
 }
 
 /* Features / Scenarios */

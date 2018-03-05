@@ -107,10 +107,10 @@
                         ],
                         datasets: [{
                             data: [
-                                <%= suite.featureCount.passedPercentage %>,
-                                <%= suite.featureCount.failedPercentage %>,
-                                <%= suite.featureCount.skippedPercentage %>,
-                                <%= suite.featureCount.ambiguousPercentage %>
+                                <%= suite.featureCount.passed %>,
+                                <%= suite.featureCount.failed %>,
+                                <%= suite.featureCount.skipped %>,
+                                <%= suite.featureCount.ambiguous %>
                             ],
                             backgroundColor: [
                                 "#26B99A",
@@ -142,12 +142,12 @@
                         ],
                         datasets: [{
                             data: [
-                                <%= suite.scenarios.passedPercentage %>,
-                                <%= suite.scenarios.failedPercentage %>,
-                                <%= suite.scenarios.pendingPercentage %>,
-                                <%= suite.scenarios.skippedPercentage %>,
-                                <%= suite.scenarios.ambiguousPercentage %>,
-                                <%= suite.scenarios.notdefinedPercentage %>,
+                                <%= suite.scenarios.passed %>,
+                                <%= suite.scenarios.failed %>,
+                                <%= suite.scenarios.pending %>,
+                                <%= suite.scenarios.skipped %>,
+                                <%= suite.scenarios.ambiguous %>,
+                                <%= suite.scenarios.notdefined %>,
                             ],
                             backgroundColor: [
                                 "#26B99A",
