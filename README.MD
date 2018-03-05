@@ -13,7 +13,11 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **NEW**
 
-> Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info
+- Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info
+- Tnx to [yoghi](https://github.com/yoghi) it is now possible: 
+    - to embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
+    - to override the style by adding your own stylesheet, See [`overrideStyle`](#overrideStyle) for more info 
+    - to add some custom styles by adding your own style sheet that will be loaded after the default stylessheet See [`customstyle`](#customstyle) for more info
 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
@@ -160,13 +164,13 @@ This expects the durations in the report to be in milliseconds, which might resu
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need add some custom style to your report.
+If you need add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
 
 ### `overrideStyle`
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need replace default style for your report.
+If you need replace default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
 
 
 ### `metadata`

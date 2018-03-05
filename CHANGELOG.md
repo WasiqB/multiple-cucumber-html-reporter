@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+<a name="1.6.0"></a>
+## [1.6.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.5.0...v1.6.0) (2018-03-05)
+
+### Features
+**Big thanks to [LennDG](https://github.com/yoghi)**
+
+* **feature:** Add support for:
+    * embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
+    * override the style by adding your own stylesheet
+    * add some custom styles by adding your own style sheet
+* **feature:** Presenting total number of passed/failed tests in tooltip in addition to percentage, see issue [29](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/29)
+
+
 <a name="1.5.0"></a>
 ## [1.5.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.3...v1.5.0) (2018-02-21)
 
