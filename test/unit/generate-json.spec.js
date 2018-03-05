@@ -59,6 +59,20 @@ describe('generate-report.js', () => {
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
                 .toEqual(true, 'Index file exists');
         });
+
+        it('should create a report from the merged found json files and with array of embedded items', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/embedded-array-json/',
+                reportName: 'Embedded array of various mimeType',
+                reportPath: REPORT_PATH,
+                customStyle: path.join(__dirname, '../my.css'),
+                customMetadata: false
+            });
+
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
+                .toEqual(true, 'Index file exists');
+        });
     });
 
     describe('failures', () => {
