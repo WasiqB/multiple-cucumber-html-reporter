@@ -13,10 +13,7 @@
                     <% } %>
                       <% } %>
         </div>
-        <h2>Scenario:
-                <small><%= scenario.name %></small>
-            </h2>
-
+        <h2>Scenario: <small><%= scenario.name %></small></h2>
 
             <ul class="nav navbar-right panel_toolbox">
                 <li>
@@ -77,6 +74,11 @@
         </div>
 
       <div class="x_content" style="display: none;">
+
+        <div class="scenario-step-container">
+          <%= scenario.description %>
+        </div>
+
         <% _.each(scenario.steps, function(step, stepIndex) { %>
 
           <% if(!step.hidden || step.image || step.text || step.attachment || step.result.status === 'failed') { %>
