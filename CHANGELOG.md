@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.0...v1.6.1) (2018-03-12)
+
+### Bugfix
+* **fix:** Fix for issue number [33](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/33) *Wrong passed/failed tool-tip in features box*
+
 <a name="1.6.0"></a>
 ## [1.6.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.5.0...v1.6.0) (2018-03-05)
 
