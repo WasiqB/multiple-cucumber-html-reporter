@@ -1,7 +1,7 @@
 Multiple Cucumber HTML Reporter
 ===============================
 [![Join the chat at https://gitter.im/wswebcreation/protractor-cucumber-typescript-boilerplate](https://badges.gitter.im/wswebcreation/multiple-cucumber-html-reporter.svg)](https://gitter.im/wswebcreation/multiple-cucumber-html-reporter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![dependencies Status](https://david-dm.org/wswebcreation/multiple-cucumber-html-reporter/status.svg)](https://david-dm.org/wswebcreation/multiple-cucumber-html-reporter) [![Build Status](https://travis-ci.org/wswebcreation/multiple-cucumber-html-reporter.svg?branch=master)](https://travis-ci.org/wswebcreation/multiple-cucumber-html-reporter) [![Coverage Status](https://coveralls.io/repos/github/wswebcreation/multiple-cucumber-html-reporter/badge.svg?branch=master)](https://coveralls.io/github/wswebcreation/multiple-cucumber-html-reporter?branch=master)
-[![NPM License](https://img.shields.io/npm/l/multiple-cucumber-html-reporter-plugin.svg)](https://github.com/wswebcreation/multiple-cucumber-html-reporter-plugin/blob/master/LICENSE)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 [![NPM](https://nodei.co/npm/multiple-cucumber-html-reporter.png)](https://nodei.co/npm/multiple-cucumber-html-reporter/)
 
