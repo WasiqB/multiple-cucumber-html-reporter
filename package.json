@@ -22,6 +22,7 @@
     "url": "git+https://github.com/wswebcreation/multiple-cucumber-html-reporter.git"
   },
   "author": "wswebcreation",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues"
   },
