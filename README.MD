@@ -12,20 +12,24 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a features overview that can be searched / filtered / sorted
 - a feature(s) overview with metadata of the used browser(s) / devices
 
+# Important
+
+> **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
+
 > **NEW**
 
-- Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](#displayDuration) for more info
+- Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](./README.MD#displayDuration) for more info
 - Tnx to [yoghi](https://github.com/yoghi) it is now possible: 
     - to embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
-    - to override the style by adding your own stylesheet, See [`overrideStyle`](#overrideStyle) for more info 
-    - to add some custom styles by adding your own style sheet that will be loaded after the default stylessheet See [`customstyle`](#customstyle) for more info
-
+    - to override the style by adding your own stylesheet, See [`overrideStyle`](./README.MD#overrideStyle) for more info 
+    - to add some custom styles by adding your own style sheet that will be loaded after the default stylessheet See [`customstyle`](./README.MD#customstyle) for more info
+- By default the duration is now calculated based on **nanoseconds** because that is the default of Cucumber. See remark above and [`durationInMS`](./README.MD#durationinms) 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
 A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/browsers/index.html)
 
-But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](#custommetadata).
+But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](./README.MD#custommetadata).
 This nice feature has been created by [LennDG](https://github.com/LennDG)
 
 ![Snapshot - Features overview](./docs/images/custom-metadata-features-overview.jpg "Snapshot - Custom metadata features overview")
@@ -156,10 +160,18 @@ You can change the report name to a name you want
 - **Type:** `boolean`
 - **Mandatory:** No
 
-If set to true the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
-This expects the durations in the report to be in milliseconds, which might result in incorrect durations when using a version of Cucumber that does not report in milliseconds (like v.1), see all examples with `V1` behind the name of the feature.
+If set to `true` the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
+This expects the durations in the report to be in **nanoseconds**, which might result in incorrect durations when using a version of Cucumber(JS 2 and 3) that does not report in nanoseconds but in milliseconds. This can be changed to milliseconds by adding the parameter `durationInMS: true`, see below
 
 > **NOTE: Only the duration of a feature can be shown in the features overview. A total duration over all features CAN NOT be given because the module doesn't know if all features have been run in parallel**
+
+### `durationInMS`
+- **Type:** `boolean`
+- **Default:** `false`
+- **Mandatory:** No
+
+If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanaseconds**. 
+This parameter relies on `displayDuration: true`
 
 ### `customStyle`
 - **Type:** `path`
@@ -178,7 +190,7 @@ If you need replace default style for your report. Add it like this `overrideSty
 - **Type:** `JSON`
 - **Mandatory:** No
 
-Print more data to your report, such as browser name + version, platform name + version and your environment. The values need to meet some predefined data, see [Metadata](#metadata) for more info.
+Print more data to your report, such as browser name + version, platform name + version and your environment. The values need to meet some predefined data, see [Metadata](./README.MD#metadata) for more info.
 Data can be passed like below.
 
 > **If you provide the metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence**
@@ -197,7 +209,7 @@ metadata:{
 }
 ```
 
-See [metadata](#metadata-1) for more info
+See [metadata](./README.MD#metadata-1) for more info
 
 ### `customMetadata`
 - **Type:** `boolean`

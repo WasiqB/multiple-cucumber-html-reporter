@@ -12,7 +12,8 @@ describe('generate-report.js', () => {
             multiCucumberHTMLReporter.generate({
                 jsonDir: './test/unit/data/json',
                 reportPath: REPORT_PATH,
-                saveCollectedJSON: true
+                saveCollectedJSON: true,
+                displayDuration: true
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
@@ -38,7 +39,9 @@ describe('generate-report.js', () => {
                         {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
                         {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
                     ]
-                }
+                },
+                displayDuration: true,
+                durationInMS: true
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())

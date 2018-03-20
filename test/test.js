@@ -13,6 +13,7 @@ test.generate({
   reportName: 'You can adjust this report name',
   customMetadata: false,
   displayDuration: true,
+  // durationInMS: true,
   customData: {
     title: 'Run info',
     data: [
