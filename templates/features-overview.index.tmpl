@@ -87,7 +87,8 @@
             $(document).ready(function () {
                 $('#features-table').dataTable({
                     "order": [[0, "asc"]],
-                    "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]]
+                    "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]],
+                    "stateSave": true
                 });
 
                 var featureOptions = {
