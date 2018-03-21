@@ -1,12 +1,17 @@
 CHANGELOG
 =========
 
+<a name="1.8.0"></a>
+## [1.8.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.7.0...v1.8.0) (2018-03-21)
+
+### Feature
+* **feature:** It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
+
 <a name="1.7.0"></a>
 ## [1.7.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.1...v1.7.0) (2018-03-20)
 
 ### Feature
 * **feature:** Feature implementation for issue number [32](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/32) *Wrong format duration*.
-
 
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.0...v1.6.1) (2018-03-12)

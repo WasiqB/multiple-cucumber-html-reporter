@@ -18,6 +18,7 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **NEW**
 
+- It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
 - Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](./README.MD#displayDuration) for more info
 - Tnx to [yoghi](https://github.com/yoghi) it is now possible: 
     - to embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
