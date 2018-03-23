@@ -29,6 +29,7 @@
         <!-- Custom Theme Style -->
         <style type="text/css">
             <%= styles %>
+            <%= customStyle %>
         </style>
     </head>
     <body>
@@ -86,7 +87,8 @@
             $(document).ready(function () {
                 $('#features-table').dataTable({
                     "order": [[0, "asc"]],
-                    "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]]
+                    "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]],
+                    "stateSave": true
                 });
 
                 var featureOptions = {
@@ -106,16 +108,16 @@
                         ],
                         datasets: [{
                             data: [
-                                <%= suite.featureCount.passedPercentage %>,
-                                <%= suite.featureCount.failedPercentage %>,
-                                <%= suite.featureCount.skippedPercentage %>,
-                                <%= suite.featureCount.ambiguousPercentage %>
+                                <%= suite.featureCount.passed %>,
+                                <%= suite.featureCount.failed %>,
+                                <%= suite.featureCount.skipped %>,
+                                <%= suite.featureCount.ambiguous %>
                             ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
                                 "#3498DB",
-                                "#b73122"                                
+                                "#b73122"
                             ]
                         }]
                     },
@@ -141,12 +143,12 @@
                         ],
                         datasets: [{
                             data: [
-                                <%= suite.scenarios.passedPercentage %>,
-                                <%= suite.scenarios.failedPercentage %>,
-                                <%= suite.scenarios.pendingPercentage %>,
-                                <%= suite.scenarios.skippedPercentage %>,
-                                <%= suite.scenarios.ambiguousPercentage %>,
-                                <%= suite.scenarios.notdefinedPercentage %>,
+                                <%= suite.scenarios.passed %>,
+                                <%= suite.scenarios.failed %>,
+                                <%= suite.scenarios.pending %>,
+                                <%= suite.scenarios.skipped %>,
+                                <%= suite.scenarios.ambiguous %>,
+                                <%= suite.scenarios.notdefined %>,
                             ],
                             backgroundColor: [
                                 "#26B99A",

@@ -12,7 +12,8 @@ describe('generate-report.js', () => {
             multiCucumberHTMLReporter.generate({
                 jsonDir: './test/unit/data/json',
                 reportPath: REPORT_PATH,
-                saveCollectedJSON: true
+                saveCollectedJSON: true,
+                displayDuration: true
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
@@ -38,7 +39,9 @@ describe('generate-report.js', () => {
                         {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
                         {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
                     ]
-                }
+                },
+                displayDuration: true,
+                durationInMS: true
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
@@ -54,6 +57,20 @@ describe('generate-report.js', () => {
                 jsonDir: './test/unit/data/custom-metadata-json/',
                 reportPath: REPORT_PATH,
                 customMetadata: true
+            });
+
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
+                .toEqual(true, 'Index file exists');
+        });
+
+        it('should create a report from the merged found json files and with array of embedded items', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/embedded-array-json/',
+                reportName: 'Embedded array of various mimeType',
+                reportPath: REPORT_PATH,
+                customStyle: path.join(__dirname, '../my.css'),
+                customMetadata: false
             });
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())

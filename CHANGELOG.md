@@ -1,6 +1,38 @@
 CHANGELOG
 =========
 
+=======
+<a name="1.8.0"></a>
+## [1.8.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.7.0...v1.8.0) (2018-03-21)
+
+### Feature
+* **feature:** It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
+
+<a name="1.7.0"></a>
+## [1.7.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.1...v1.7.0) (2018-03-20)
+
+### Feature
+* **feature:** Feature implementation for issue number [32](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/32) *Wrong format duration*.
+
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.0...v1.6.1) (2018-03-12)
+
+### Bugfix
+* **fix:** Fix for issue number [33](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/33) *Wrong passed/failed tool-tip in features box*
+
+<a name="1.6.0"></a>
+## [1.6.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.5.0...v1.6.0) (2018-03-05)
+
+### Features
+**Big thanks to [LennDG](https://github.com/yoghi)**
+
+* **feature:** Add support for:
+    * embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
+    * override the style by adding your own stylesheet
+    * add some custom styles by adding your own style sheet
+* **feature:** Presenting total number of passed/failed tests in tooltip in addition to percentage, see issue [29](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/29)
+
+
 <a name="1.5.0"></a>
 ## [1.5.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.3...v1.5.0) (2018-02-21)
 
