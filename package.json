@@ -11,6 +11,7 @@
     "json to html"
   ],
   "main": "lib/generate-report.js",
+  "license": "MIT",
   "scripts": {
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
