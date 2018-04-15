@@ -150,6 +150,11 @@ This will disable the log so will **NOT** see this.
     /Users/wswebcreation/multiple-cucumber-html-reporter/.tmp/index.html
 ========================================================================
 ```
+### `pageTitle`
+- **Type:** `string`
+- **Mandatory:** No
+
+You can change the report title on HTML head Tag
 
 ### `reportName`
 - **Type:** `string`
@@ -157,6 +162,12 @@ This will disable the log so will **NOT** see this.
 
 You can change the report name to a name you want
 
+### `pageFooter`
+- **Type:** `string`
+- **Mandatory:** No
+
+You can customise Page Footer if required
+ 
 ### `displayDuration`
 - **Type:** `boolean`
 - **Mandatory:** No
