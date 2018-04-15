@@ -2,6 +2,12 @@ CHANGELOG
 =========
 
 =======
+<a name="1.9.0"></a>
+## [1.9.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.8.0...v1.9.0) (2018-04-15)
+
+### Feature
+* **feature:** A custom [`pageTitle`](./README.MD#pageTitle) and a custom [`pageFooter`](./README.MD#pageFooter) can be added, tnx to [muthukumarse](https://github.com/muthukumarse)
+
 <a name="1.8.0"></a>
 ## [1.8.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.7.0...v1.8.0) (2018-03-21)
 

@@ -25,6 +25,7 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
     - to override the style by adding your own stylesheet, See [`overrideStyle`](./README.MD#overrideStyle) for more info 
     - to add some custom styles by adding your own style sheet that will be loaded after the default stylessheet See [`customstyle`](./README.MD#customstyle) for more info
 - By default the duration is now calculated based on **nanoseconds** because that is the default of Cucumber. See remark above and [`durationInMS`](./README.MD#durationinms) 
+- A custom [`pageTitle`](./README.MD#pageTitle) and a custom [`pageFooter`](./README.MD#pageFooter) can be added, tnx to [muthukumarse](https://github.com/muthukumarse)
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
@@ -153,8 +154,9 @@ This will disable the log so will **NOT** see this.
 ### `pageTitle`
 - **Type:** `string`
 - **Mandatory:** No
+- **Default:** Multiple Cucumber HTML Reporter
 
-You can change the report title on HTML head Tag
+You can change the report title in the HTML head Tag
 
 ### `reportName`
 - **Type:** `string`
@@ -166,7 +168,7 @@ You can change the report name to a name you want
 - **Type:** `string`
 - **Mandatory:** No
 
-You can customise Page Footer if required
+You can customise Page Footer if required. You just need to provide a html string like `<div><p>A custom footer in html</p></div>`
  
 ### `displayDuration`
 - **Type:** `boolean`
