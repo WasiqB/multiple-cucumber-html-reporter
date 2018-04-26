@@ -2,6 +2,16 @@ CHANGELOG
 =========
 
 =======
+<a name="1.10.0"></a>
+## [1.10.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.9.0...v1.10.0) (2018-04-26)
+
+### Feature
+* **feature:** Add support for multiple screenshots in scenario steps [44](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/44), tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
+
+### Bugfix
+* **fix:** Screenshots in the steps are stretched, now they are shown on their `max-width | max-height` showing proper images
+
+
 <a name="1.9.0"></a>
 ## [1.9.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.8.0...v1.9.0) (2018-04-15)
 
@@ -30,7 +40,7 @@ CHANGELOG
 ## [1.6.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.5.0...v1.6.0) (2018-03-05)
 
 ### Features
-**Big thanks to [LennDG](https://github.com/yoghi)**
+**Big thanks to [Stefano Tamagnini](https://github.com/yoghi)**
 
 * **feature:** Add support for:
     * embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
