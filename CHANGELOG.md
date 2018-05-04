@@ -2,6 +2,12 @@ CHANGELOG
 =========
 
 =======
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.0...v1.10.1) (2018-05-04)
+
+### Bugfix
+* **fix:** Empty .json files might be skipped instead of making reporter crash [47](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/47), **tnx to [lennt](https://github.com/lenntt)**
+
 <a name="1.10.0"></a>
 ## [1.10.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.9.0...v1.10.0) (2018-04-26)
 
