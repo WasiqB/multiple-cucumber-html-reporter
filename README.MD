@@ -54,10 +54,12 @@ npm install multiple-cucumber-html-reporter --save-dev
 ```
 
 ## Compatibility
-Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2 and 3**.
+Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2, 3 and 4**.
 
 ## Usage
 > **If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/wswebcreation/protractor-multiple-cucumber-html-reporter-plugin).**
+
+> **If you are using [webdriver.io](http://webdriver.io/) please check [WEBDRIVER.IO.MD](./docs/WEBDRIVER.IO.MD) for usage.**
 
 > **It provides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.**
 
