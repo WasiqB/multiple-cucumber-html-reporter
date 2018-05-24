@@ -303,7 +303,7 @@ To be able to see this you will need to add the following to the Cucumber JSON b
 // This represents the Cucumber JSON file that has be retrieved
 const cucumberJSON;
 
-const metadata = "metadata": {
+const metadata = {
 	"browser": {
 		"name": "chrome",
 		"version": "58"
