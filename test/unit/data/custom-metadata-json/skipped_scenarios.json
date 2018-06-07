@@ -14,6 +14,7 @@
         "keyword": "Scenario",
         "line": 6,
         "name": "As a visitor I want to be greeted",
+        "description": "A very very complex scenario \n with many data \n many rows",
         "steps": [
           {
             "arguments": [],
