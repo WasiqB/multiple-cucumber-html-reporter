@@ -1,6 +1,41 @@
 CHANGELOG
 =========
 
+=======
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.0...v1.10.1) (2018-05-04)
+
+### Bugfix
+* **fix:** Empty .json files might be skipped instead of making reporter crash [47](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/47), **tnx to [lennt](https://github.com/lenntt)**
+
+<a name="1.10.0"></a>
+## [1.10.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.9.0...v1.10.0) (2018-04-26)
+
+### Feature
+* **feature:** Add support for multiple screenshots in scenario steps [44](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/44), tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
+
+### Bugfix
+* **fix:** Screenshots in the steps are stretched, now they are shown on their `max-width | max-height` showing proper images
+
+
+<a name="1.9.0"></a>
+## [1.9.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.8.0...v1.9.0) (2018-04-15)
+
+### Feature
+* **feature:** A custom [`pageTitle`](./README.MD#pageTitle) and a custom [`pageFooter`](./README.MD#pageFooter) can be added, tnx to [muthukumarse](https://github.com/muthukumarse)
+
+<a name="1.8.0"></a>
+## [1.8.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.7.0...v1.8.0) (2018-03-21)
+
+### Feature
+* **feature:** It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
+
+<a name="1.7.0"></a>
+## [1.7.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.1...v1.7.0) (2018-03-20)
+
+### Feature
+* **feature:** Feature implementation for issue number [32](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/32) *Wrong format duration*.
+
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.6.0...v1.6.1) (2018-03-12)
 
@@ -11,7 +46,7 @@ CHANGELOG
 ## [1.6.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.5.0...v1.6.0) (2018-03-05)
 
 ### Features
-**Big thanks to [LennDG](https://github.com/yoghi)**
+**Big thanks to [Stefano Tamagnini](https://github.com/yoghi)**
 
 * **feature:** Add support for:
     * embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
@@ -40,7 +75,6 @@ CHANGELOG
 ### Bugfix
 
 * **fix:** show edge icon for tests run with microsoft edge **Big thanks to [kevinkuszyk](https://github.com/kevinkuszyk)**
-=========
 
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.4.0...v1.4.1) (2018-01-01)
