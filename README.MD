@@ -401,29 +401,17 @@ To fix this see the part about **Metadata** and check the **possible values**.
 ### How to attach Screenshots to HTML report
 You can attach screenshots at any time to a Cucumber JSON file. Just create a Cucumber `scenario`-hook that will handle this. You can add them during running or when a `scenario` failed.
 
-Depending on the framework you are using, you can add a screenshot to the report like this
-
-```javascript
-return driver.takeScreenshot()
-	.then(function (buffer) {
-    	const decodedImage = new Buffer(screenshot.replace(/^data:image\/png;base64,/, ''), 'base64');
-        scenario.attach(decodedImage, 'image/png');
-  }
-```
+> Check the framework you are using to attach screenshots to the JSON file.
 
 ### How to attach Plain Text to HTML report
 You can attach plain-text / data at any time to a Cucumber JSON file to help debug / review the results. You can add them during running or when a `scenario` failed.
 
-```javascript
-scenario.attach('place here what you want to show in the report');
-```
+> Check the framework you are using to attach plain text to the JSON file.
 
 ### How to attach pretty JSON to HTML report
 You can attach JSON at any time to a Cucumber JSON file. You can add them during running or when a `scenario` failed.
 
-```javascript
-scenario.attach(JSON.stringify(yourJsonObject));
-```
+> Check the framework you are using to attach JSON data to the JSON file.
 
 ## Changelog
 The Changelog can be found [here](./CHANGELOG.md)
