@@ -56,7 +56,7 @@ describe('collect-jsons.js', () => {
                 jsonDir: './test/unit/data/no-jsons',
                 reportPath: reportPath
             });
-            expect(console.log).toHaveBeenCalledWith(chalk.yellow(`No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`))
+            expect(console.log).toHaveBeenCalledWith(chalk.yellow(`WARNING: No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`))
         });
     });
 });
