@@ -3,6 +3,11 @@ webdriver.io
 
 Follow the installation instructions as mentioned in [Install](../README.MD#install)
 
+## Using wdio-cucumber-framework version 2.2.0 or higher?
+If you are using the latest version of `wdio-cucumber-framework` version `2.2.0` or higher, you can now use a new reporter called [wdio-multiple-cucumber-html-reporter](https://github.com/wswebcreation/wdio-multiple-cucumber-html-reporter).
+It works nicely with this reporter.
+
+## Using wdio-cucumber-framework version lower than 2.2.0?
 > **NOTE: THIS INSTRUCTION ONLY WORKS WITH `CucumberJS` V2 AND THUS `wdio-cucumber-framework` V1.1.1. I'M WORKING ON A SOLUTION FOR THE LATEST VERSION OF `CucumberJS` V4 AND THUS `wdio-cucumber-framework` > V2.0.0**
 
 > **THIS REPORT WORKS BASED ON EXTRA PROVIDED BROWSER INFO IN THE REPORT. PLEASE FOLLOWING THE INSTRUCTIONS BELOW / IN THE README.MD TO ADD THAT INFO. IF YOU DON'T YOU MAY GET ERRORS GENERATING THE REPORT**
