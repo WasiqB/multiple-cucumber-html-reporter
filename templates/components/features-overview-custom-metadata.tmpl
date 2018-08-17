@@ -33,7 +33,7 @@
                         <% if(+suite.scenarios.skipped > 0) { %>
                         <th>Skip</th>
                         <% } %>
-                        <% if(+suite.scenarios.notdefined > 0) { %>
+                        <% if(+suite.scenarios.notDefined > 0) { %>
                         <th>Undefined</th>
                         <% } %>
                         <% if(+suite.scenarios.ambiguous > 0) { %>
@@ -100,8 +100,8 @@
                         <% if(+suite.scenarios.pending > 0) { %>
                         <td><%= feature.scenarios.pending %></td>
                         <% } %>
-                        <% if(+suite.scenarios.notdefined > 0) { %>
-                        <td><%= feature.scenarios.notdefined %></td>
+                        <% if(+suite.scenarios.notDefined > 0) { %>
+                        <td><%= feature.scenarios.notDefined %></td>
                         <% } %>
                         <% if(+suite.scenarios.ambiguous > 0) { %>
                         <td><%= feature.scenarios.ambiguous %></td>
