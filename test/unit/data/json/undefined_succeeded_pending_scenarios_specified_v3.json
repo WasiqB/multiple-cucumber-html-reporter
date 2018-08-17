@@ -11,11 +11,11 @@
         "version": "10.1.2"
       }
     },
-    "description": "  Scenarios have undefined, pending and succeeded steps.\n  So the report should hold all steps and status should be undefined",
+    "description": "  Scenarios have undefined, pending and passed steps.\n  So the report should hold all steps and status should be undefined",
     "keyword": "Feature",
-    "name": "Undefined, pending, succeeded scenarios specified V3",
+    "name": "Undefined, pending, passed scenarios specified V3",
     "line": 2,
-    "id": "undefined-pending-succeeded-scenarios-specified-v3",
+    "id": "undefined-pending-passed-scenarios-specified-v3",
     "tags": [
       {
         "name": "@undefined",
@@ -33,7 +33,7 @@
     "uri": "e2e-tests/features/undefined.feature",
     "elements": [
       {
-        "id": "undefined-pending-succeeded-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
+        "id": "undefined-pending-passed-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
         "keyword": "Scenario",
         "line": 7,
         "name": "Timmy wants to see undefined scenarios",
@@ -86,7 +86,7 @@
         ]
       },
       {
-        "id": "undefined-pending-succeeded-scenarios-specified-v3;johnny-wants-to-see-pending-scenarios",
+        "id": "undefined-pending-passed-scenarios-specified-v3;johnny-wants-to-see-pending-scenarios",
         "keyword": "Scenario",
         "line": 5,
         "name": "Johnny wants to see pending scenarios",
@@ -147,7 +147,7 @@
         ]
       },
       {
-        "id": "undefined-pending-succeeded-scenarios-specified-v3;add-a-todo",
+        "id": "undefined-pending-passed-scenarios-specified-v3;add-a-todo",
         "keyword": "Scenario",
         "line": 18,
         "name": "Add a todo",
