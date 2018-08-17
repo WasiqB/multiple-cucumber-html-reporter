@@ -45,7 +45,7 @@
                         <% if(+suite.scenarios.skipped > 0) { %>
                         <th>Skip</th>
                         <% } %>
-                        <% if(+suite.scenarios.notdefined > 0) { %>
+                        <% if(+suite.scenarios.notDefined > 0) { %>
                         <th>Undefined</th>
                         <% } %>
                         <% if(+suite.scenarios.ambiguous > 0) { %>
@@ -78,12 +78,18 @@
                             <% if (feature.isFailed) { %>
                             <% status = 'Failed'; %>
                             <% statusIcon = 'exclamation-circle failed-color'; %>
-                            <% } else if (feature.isSkipped) { %>
-                            <% status = 'Skipped'; %>
-                            <% statusIcon = 'arrow-circle-right skipped-color'; %>
                             <% } else if (feature.isAmbiguous) { %>
                             <% status = 'Ambiguous'; %>
                             <% statusIcon = 'flash ambiguous-color'; %>
+                            <% } else if (feature.isNotdefined) { %>
+                            <% status = 'Not Defined'; %>
+                            <% statusIcon = 'question-circle not-defined-color'; %>
+                            <% } else if (feature.isPending) { %>
+                            <% status = 'Pending'; %>
+                            <% statusIcon = 'minus-circle pending-color'; %>
+                            <% } else if (feature.isSkipped) { %>
+                            <% status = 'Skipped'; %>
+                            <% statusIcon = 'arrow-circle-right skipped-color'; %>
                             <% } else { %>
                             <% status = 'Passed'; %>
                             <% statusIcon = 'check-circle passed-color'; %>
@@ -172,8 +178,8 @@
                         <% if(+suite.scenarios.pending > 0) { %>
                         <td><%= feature.scenarios.pending %></td>
                         <% } %>
-                        <% if(+suite.scenarios.notdefined > 0) { %>
-                        <td><%= feature.scenarios.notdefined %></td>
+                        <% if(+suite.scenarios.notDefined > 0) { %>
+                        <td><%= feature.scenarios.notDefined %></td>
                         <% } %>
                         <% if(+suite.scenarios.ambiguous > 0) { %>
                         <td><%= feature.scenarios.ambiguous %></td>

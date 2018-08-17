@@ -4,3 +4,4 @@ coverage/
 node_modules/
 reports/
 .DS_Store
+package-lock.json

@@ -113,21 +113,27 @@
                         labels: [
                             "Passed",
                             "Failed",
-                            "Skipped",
-                            "Ambiguous"
+                            "Ambiguous",
+                            "Not Defined",
+                            "Pending",
+                            "Skipped"
                         ],
                         datasets: [{
                             data: [
                                 <%= suite.featureCount.passed %>,
                                 <%= suite.featureCount.failed %>,
-                                <%= suite.featureCount.skipped %>,
-                                <%= suite.featureCount.ambiguous %>
+                                <%= suite.featureCount.ambiguous %>,
+                                <%= suite.featureCount.notDefined %>,
+                                <%= suite.featureCount.pending %>,
+                                <%= suite.featureCount.skipped %>
                             ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
-                                "#3498DB",
-                                "#b73122"
+                                "#b73122",
+                                "#F39C12",
+                                "#FFD119",
+                                "#3498DB"
                             ]
                         }]
                     },
@@ -146,27 +152,27 @@
                         labels: [
                             "Passed",
                             "Failed",
-                            "Pending",
-                            "Skipped",
                             "Ambiguous",
-                            "Not defined"
+                            "Not Defined",
+                            "Pending",
+                            "Skipped"
                         ],
                         datasets: [{
                             data: [
                                 <%= suite.scenarios.passed %>,
                                 <%= suite.scenarios.failed %>,
-                                <%= suite.scenarios.pending %>,
-                                <%= suite.scenarios.skipped %>,
                                 <%= suite.scenarios.ambiguous %>,
-                                <%= suite.scenarios.notdefined %>,
+                                <%= suite.scenarios.notDefined %>,
+                                <%= suite.scenarios.pending %>,
+                                <%= suite.scenarios.skipped %>
                             ],
                             backgroundColor: [
                                 "#26B99A",
                                 "#E74C3C",
-                                "#FFD119",
-                                "#3498DB",
                                 "#b73122",
-                                "#F39C12"
+                                "#F39C12",
+                                "#FFD119",
+                                "#3498DB"
                             ]
                         }]
                     },

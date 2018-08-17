@@ -48,6 +48,29 @@
                             </p>
                         </td>
                         <td class="percentage"><%= scenarios.failedPercentage %> %</td>
+                    <% if (scenarios.ambiguous > 0) { %>
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left"
+                               title="Scenario has double step implementation and failed because of that.">
+                                <i class="fa fa-flash ambiguous-color"></i>
+                                Ambiguous
+                            </p>
+                        </td>
+                        <td class="percentage"><%= scenarios.ambiguousPercentage %> %</td>
+                    </tr>
+                    <% } %>
+                    <% if (scenarios.notDefined > 0) { %>
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
+                                <i class="fa fa-question-circle not-defined-color"></i>
+                                Not defined
+                            </p>
+                        </td>
+                        <td class="percentage"><%= scenarios.notdefinedPercentage %> %</td>
+                    </tr>
+                    <% } %>
                     </tr>
                     <% if (scenarios.pending > 0) { %>
                     <tr>
@@ -69,29 +92,6 @@
                             </p>
                         </td>
                         <td class="percentage"><%= scenarios.skippedPercentage %> %</td>
-                    </tr>
-                    <% } %>
-                    <% if (scenarios.ambiguous > 0) { %>
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left"
-                               title="Scenario has double step implementation and failed because of that.">
-                                <i class="fa fa-flash ambiguous-color"></i>
-                                Ambiguous
-                            </p>
-                        </td>
-                        <td class="percentage"><%= scenarios.ambiguousPercentage %> %</td>
-                    </tr>
-                    <% } %>
-                    <% if (scenarios.notdefined > 0) { %>
-                    <tr>
-                        <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
-                                <i class="fa fa-question-circle not-defined-color"></i>
-                                Not defined
-                            </p>
-                        </td>
-                        <td class="percentage"><%= scenarios.notdefinedPercentage %> %</td>
                     </tr>
                     <% } %>
                 </table>
