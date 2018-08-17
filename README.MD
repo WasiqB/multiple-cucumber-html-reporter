@@ -18,6 +18,10 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **NEW**
 
+- **1.11.0:** This release has been made possible by
+    - [Stefano Tamagnini](https://github.com/yoghi): He added the possibility to add a scenario description (Click [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/embedded-array) and open the `As a visitor I want to be greeted` scenario)
+    - [David de Kanter](https://github.com/daviddekanter): He added the possibility to set the status of a feature file to `undefined` if 1 or multiple scenario's in a feature don't have a step implementation
+    - [Yaron Assa](https://github.com/yaronassa): He added support for html-embeddings (Click [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/embedded-array) and open the `Add a todo` scenario)
 - **1.10.0:** There is now support for multiple screenshots in scenario steps, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
 - **1.9.0:** A custom [`pageTitle`](./README.MD#pageTitle) and a custom [`pageFooter`](./README.MD#pageFooter) can be added, tnx to [muthukumarse](https://github.com/muthukumarse)
 - **1.8.0:** It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)

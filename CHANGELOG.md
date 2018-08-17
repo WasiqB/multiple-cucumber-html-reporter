@@ -1,7 +1,17 @@
 CHANGELOG
 =========
 
-=======
+<a name="1.11.0"></a>
+## [1.11.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.2...v1.11.0) (2018-08-17)
+
+### Feature
+* **feature:** Add scenario description [53](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/53), tnx to [Stefano Tamagnini](https://github.com/yoghi)
+* **feature:** Add status of a feature file to `undefined` if 1 or multiple scenario's in a feature don't have a step implementation [58](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/58), tnx to [David de Kanter](https://github.com/daviddekanter)
+* **feature:** Add support to for html-embeddings [59](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/59), tnx to [Yaron Assa](https://github.com/yaronassa)
+
+### Refactor
+* **refactor:** Update undefined code examples
+
 <a name="1.10.2"></a>
 ## [1.10.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.1...v1.10.2) (2018-07-03)
 
