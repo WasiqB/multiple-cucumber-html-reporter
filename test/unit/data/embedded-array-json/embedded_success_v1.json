@@ -296,12 +296,35 @@
           {
             "arguments": [],
             "keyword": "And ",
+            "name": "I should have an HTML",
+            "result": {
+              "status": "passed",
+              "duration": 848834826
+            },
+            "embeddings": [
+              {
+                "data": "<H1>This is an HTML</H1><div><ul><li>1st</li><li>2nd</li></ul></div>",
+                "mime_type": "text/html"
+              },
+              {
+                "data": "<H1>This is a 2nd HTML</H1><div><ul><li>3rd</li><li>4th</li></ul></div>",
+                "mime_type": "text/html"
+              }
+            ],
+            "line": 21,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
             "name": "the last todo should hold \"write a protractor test\"",
             "result": {
               "status": "passed",
               "duration": 48083312
             },
-            "line": 21,
+            "line": 22,
             "match": {
               "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:163"
             }

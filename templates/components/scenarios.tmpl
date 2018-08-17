@@ -148,21 +148,25 @@
                                             <a href="#info<%= scenarioIndex %><%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
                                             <% } %>
 
-                                              <% if (step.image) { %>
-                                                <a href="#info<%= scenarioIndex %><%= stepIndex %>-image" data-toggle="collapse">Screenshot +</a>
-                                                <% } %>
+                                             <% if (step.html) { %>
+                                            <a href="#info<%= scenarioIndex %><%= stepIndex %>-html" data-toggle="collapse">+ Show Info</a>
+                                            <% } %>
 
-                                                  <% if (!_.isEmpty(step.attachments)) { %>
-                                                    <span>[</span>
-                                                    <% _.each(step.attachments, function(attachment, attachmentIndex) { %>
-                                                      <a href="#info<%= scenarioIndex %><%= stepIndex %>-attachment<%= attachmentIndex %>" data-toggle="collapse">Attachment</a>
-                                                      <% if ( attachmentIndex < ( _.size(step.attachments) - 1 ) ) { %>
-                                                        <span>  ,</span>
-                                                        <% } %>
-                                                          <% }); %>
-                                                            <span>]</span>
+                                                  <% if (step.image) { %>
+                                                    <a href="#info<%= scenarioIndex %><%= stepIndex %>-image" data-toggle="collapse">Screenshot +</a>
+                                                    <% } %>
+
+                                                      <% if (!_.isEmpty(step.attachments)) { %>
+                                                        <span>[</span>
+                                                        <% _.each(step.attachments, function(attachment, attachmentIndex) { %>
+                                                          <a href="#info<%= scenarioIndex %><%= stepIndex %>-attachment<%= attachmentIndex %>" data-toggle="collapse">Attachment</a>
+                                                          <% if ( attachmentIndex < ( _.size(step.attachments) - 1 ) ) { %>
+                                                            <span>  ,</span>
                                                             <% } %>
-                                                              <% } %>
+                                                              <% }); %>
+                                                                <span>]</span>
+                                                                <% } %>
+                                                                  <% } %>
             </div>
 
             <% if(step.result) { %>
@@ -181,6 +185,12 @@
 <% } %></pre>
                     </div>
                     <% } %>
+
+                     <% if (step.html) { %>
+                                        <div id="info<%= scenarioIndex %><%= stepIndex %>-html" class="scenario-step-collapse collapse">
+                                          <div class=info><%= step.html.join('<br/>') %></div>
+                                        </div>
+                                        <% } %>
 
                       <% if (step.image) { %>
                         <div id="info<%= scenarioIndex %><%= stepIndex %>-image" class="scenario-step-collapse collapse">
