@@ -2,6 +2,12 @@ CHANGELOG
 =========
 
 =======
+<a name="1.10.2"></a>
+## [1.10.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.1...v1.10.2) (2018-07-03)
+
+### Bugfix
+* **fix:** Remove error thrown if no json files are found [54](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/54), **tnx to [daviddekanter](https://github.com/daviddekanter)**
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.0...v1.10.1) (2018-05-04)
 

@@ -4,6 +4,7 @@ const jsonFile = require('jsonfile');
 const path = require('path');
 const collectJSONS = require('../../lib/collect-jsons');
 const reportPath = path.resolve(process.cwd(), './.tmp/test');
+const chalk = require('chalk');
 
 describe('collect-jsons.js', () => {
     describe('Happy flows', () => {
@@ -49,11 +50,13 @@ describe('collect-jsons.js', () => {
             })).toThrow(new Error(`There were issues reading JSON-files from './test/unit/data/bla'.`));
         });
 
-        it('should throw an error when no json files could be found', () => {
-            expect(() => collectJSONS({
+        it('should print a console message when no json files could be found', () => {
+            spyOn(console, 'log');
+            collectJSONS({
                 jsonDir: './test/unit/data/no-jsons',
                 reportPath: reportPath
-            })).toThrow(new Error(`No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`));
+            });
+            expect(console.log).toHaveBeenCalledWith(chalk.yellow(`WARNING: No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`))
         });
     });
 });
