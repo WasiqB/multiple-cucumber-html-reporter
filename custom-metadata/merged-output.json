@@ -571,6 +571,7 @@
         "keyword": "Scenario",
         "line": 6,
         "name": "As a visitor I want to be greeted",
+        "description": "A very very complex scenario \n with many data \n many rows",
         "steps": [
           {
             "arguments": [],
@@ -929,6 +930,90 @@
             "result": {
               "status": "passed",
               "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "google.com;i-open-google",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "I open google",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/steps.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 616
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I open url 'https://www.google.com/?hl=en'",
+            "match": {
+              "location": "src/steps.js:322"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1193
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "I see input with value 'Google Search'",
+            "match": {
+              "location": "src/steps.js:418"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1214
+            },
+            "embeddings": [
+              {
+                "data": "{\"some\":\"json\"}",
+                "media": {
+                  "type": "application/json"
+                }
+              },
+              {
+                "data": "{\"other\":\"json\"}",
+                "media": {
+                  "type": "application/json"
+                }
+              },
+              {
+                "data": "Some plain text message",
+                "media": {
+                  "type": "text/plain"
+                }
+              },
+              {
+                "data": "{\"yet another json\":5}",
+                "media": {
+                  "type": "application/json"
+                }
+              }
+            ]
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/steps.js:629"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 295
             }
           }
         ]
