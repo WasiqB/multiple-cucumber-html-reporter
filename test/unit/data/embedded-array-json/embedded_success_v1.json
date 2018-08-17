@@ -17,6 +17,7 @@
         "keyword": "Scenario",
         "line": 8,
         "name": "As a visitor I want to be greeted",
+        "description": "Narrator scenario",
         "steps": [
           {
             "arguments": [],
@@ -123,6 +124,7 @@
         "keyword": "Scenario",
         "line": 13,
         "name": "Validate todo list",
+        "description": "Narrator scenario with \n a capo",
         "steps": [
           {
             "arguments": [],
