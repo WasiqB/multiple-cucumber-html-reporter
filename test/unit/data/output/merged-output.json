@@ -2800,5 +2800,233 @@
         ]
       }
     ]
+  },
+  {
+    "metadata": {
+      "browser": {
+        "name": "Safari",
+        "version": "10"
+      },
+      "device": "iPhone 7",
+      "platform": {
+        "name": "iOS",
+        "version": "10.1.2"
+      }
+    },
+    "description": "  Scenarios have undefined, pending and passed steps.\n  So the report should hold all steps and status should be undefined",
+    "keyword": "Feature",
+    "name": "Undefined, pending, passed scenarios specified V3",
+    "line": 2,
+    "id": "undefined-pending-passed-scenarios-specified-v3",
+    "tags": [
+      {
+        "name": "@undefined",
+        "line": 1
+      },
+      {
+        "name": "@pending",
+        "line": 1
+      },
+      {
+        "name": "@happy-flow",
+        "line": 1
+      }
+    ],
+    "uri": "e2e-tests/features/undefined.feature",
+    "elements": [
+      {
+        "id": "undefined-pending-passed-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Timmy wants to see undefined scenarios",
+        "tags": [
+          {
+            "name": "@undefined",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "Timmy visits the Angular homepage",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "he doesn't do anything",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "nothing has been done",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "undefined-pending-passed-scenarios-specified-v3;johnny-wants-to-see-pending-scenarios",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Johnny wants to see pending scenarios",
+        "tags": [
+          {
+            "name": "@pending",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Johnny visits the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:4"
+            },
+            "result": {
+              "status": "pending",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "he clicks on the first link",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:9"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "he expects that something happens",
+            "match": {
+              "location": "e2e-tests/features/pending.steps.ts:14"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "undefined-pending-passed-scenarios-specified-v3;add-a-todo",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Add a todo",
+        "tags": [
+          {
+            "name": "@happy-flow",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I visit the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 502
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I add the todo \"write a protractor test\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1029
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I should have 3 todo's",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the last todo should hold \"write a protractor test\"",
+            "match": {
+              "location": "e2e-tests/features/example.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
