@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.0...v1.11.1) (2018-08-18)
+
+### Fix
+* **fix:** this release fixes issue [60](https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues/60). Now all assets are included in the module so stricter CI's should not have any problems using the assets
+
 <a name="1.11.0"></a>
 ## [1.11.0](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.10.2...v1.11.0) (2018-08-17)
 
