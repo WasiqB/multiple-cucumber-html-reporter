@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+<a name="1.11.2"></a>
+## [1.11.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.1...v1.11.2) (2018-08-18)
+
+### Fix
+* **fix:** fix correct module path
+
 <a name="1.11.1"></a>
 ## [1.11.1](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.0...v1.11.1) (2018-08-18)
 
