@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<a name="1.11.3"></a>
+## [1.11.3](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.2...v1.11.3) (2018-10-02)
+
+### Fix
+* **fix:** Update template condition to not suppress output for hidden steps w/html embed, related to [59](https://github.com/wswebcreation/multiple-cucumber-html-reporter/pull/59), tnx to [Yaron Assa](https://github.com/yaronassa)
+* **fix:** Replaced json.parse with json.stringify at line 329 of `generate-report.js` for step embeddings, tnx to [Marius](https://github.com/CTMarius)
+
 <a name="1.11.2"></a>
 ## [1.11.2](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.1...v1.11.2) (2018-08-18)
 
