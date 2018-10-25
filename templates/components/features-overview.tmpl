@@ -19,7 +19,9 @@
                     <thead>
                     <tr>
                         <th>Feature name</th>
+                        <% if (suite.showFeatureFolder) { %>
                         <th>Feature folder</th>
+                        <% } %>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
                         <th class="text-center">
@@ -61,9 +63,13 @@
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
                         </td>
-                        <td>
-                            <%= feature.folder %>
-                        </td>
+                        
+                        <% if (suite.showFeatureFolder) { %>
+                            <td>
+                                <%= feature.folder %>
+                            </td>
+                        <% } %>
+                        
                         <td class="text-center">
                             <% if (feature.tags) { %>
                             <% var amount = feature.tags.length; %>
