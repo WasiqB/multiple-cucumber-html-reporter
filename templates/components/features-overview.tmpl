@@ -19,6 +19,7 @@
                     <thead>
                     <tr>
                         <th>Feature name</th>
+                        <th>Feature folder</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
                         <th class="text-center">
@@ -59,6 +60,9 @@
                     <tr>
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
+                        </td>
+                        <td>
+                            <%= feature.folder %>
                         </td>
                         <td class="text-center">
                             <% if (feature.tags) { %>
