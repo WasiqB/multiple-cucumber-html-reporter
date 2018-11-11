@@ -58,5 +58,14 @@ describe('collect-jsons.js', () => {
             });
             expect(console.log).toHaveBeenCalledWith(chalk.yellow(`WARNING: No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`))
         });
+
+        it('should return an empty array when no json files could be found', () => {
+            const results = collectJSONS({
+                jsonDir: './test/unit/data/no-jsons',
+                reportPath: reportPath
+            });
+            expect(Array.isArray(results)).toBeTruthy();
+            expect(results.length).toBe(0);
+        });
     });
 });
