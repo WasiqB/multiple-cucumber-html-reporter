@@ -417,8 +417,8 @@ You can attach JSON at any time to a Cucumber JSON file. You can add them during
 
 > Check the framework you are using to attach JSON data to the JSON file.
 
-## Changelog
-The Changelog can be found [here](./CHANGELOG.md)
+## Changelog and Releases
+The Changelog and releases can be found [here](https://github.com/wswebcreation/multiple-cucumber-html-reporter/releases)
 
 ## Contributing
 How to contribute can be found [here](./docs/CONTRIBUTING.md)
