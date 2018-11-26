@@ -169,20 +169,20 @@
                         <% if (suite.displayDuration) { %>
                         <td><%= feature.time %></td>
                         <% } %>
-                        <td><%= feature.scenarios.total %></td>
-                        <td><%= feature.scenarios.passed %></td>
-                        <td><%= feature.scenarios.failed %></td>
+                        <td class="text-right <%= !feature.scenarios.total ? 'none' : '' %>"><%= feature.scenarios.total %></td>
+                        <td class="text-right <%= !feature.scenarios.passed ? 'none' : '' %>"><%= feature.scenarios.passed %></td>
+                        <td class="text-right <%= !feature.scenarios.failed ? 'none' : '' %>"><%= feature.scenarios.failed %></td>
                         <% if(+suite.scenarios.skipped > 0) { %>
-                        <td><%= feature.scenarios.skipped %></td>
+                        <td class="text-right <%= !feature.scenarios.skipped ? 'none' : '' %>"><%= feature.scenarios.skipped %></td>
                         <% } %>
                         <% if(+suite.scenarios.pending > 0) { %>
-                        <td><%= feature.scenarios.pending %></td>
+                        <td class="text-right <%= !feature.scenarios.pending ? 'none' : '' %>"><%= feature.scenarios.pending %></td>
                         <% } %>
                         <% if(+suite.scenarios.notDefined > 0) { %>
-                        <td><%= feature.scenarios.notDefined %></td>
+                        <td class="text-right <%= !feature.scenarios.notDefined ? 'none' : '' %>"><%= feature.scenarios.notDefined %></td>
                         <% } %>
                         <% if(+suite.scenarios.ambiguous > 0) { %>
-                        <td><%= feature.scenarios.ambiguous %></td>
+                        <td class="text-right <%= !feature.scenarios.ambiguous ? 'none' : '' %>"><%= feature.scenarios.ambiguous %></td>
                         <% } %>
                     </tr>
                     <% }); %>
