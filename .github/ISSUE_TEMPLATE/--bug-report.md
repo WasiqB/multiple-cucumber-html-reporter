@@ -11,8 +11,8 @@ about: Create a report to help us improve.
  - Platform name and version: [e.g. Windows 10]
  - Cucucmber version: [e.g. 4.2.0]
 
-**Config of protractor + multiple-cucumber-html-reporter**
-An example of how you configured the reporter in your webdriver.io config
+**Config of multiple-cucumber-html-reporter**
+An example of how you configured the reporter in your config
 
 **Describe the bug**
 A clear and concise description of what the bug is.
