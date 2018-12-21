@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+> **NOTE:** All changes can now be found on the [releases](https://github.com/wswebcreation/multiple-cucumber-html-reporter/releases)
+
+
 <a name="1.11.3"></a>
 ## [1.11.3](https://github.com/wswebcreation/multiple-cucumber-html-reporter/compare/v1.11.2...v1.11.3) (2018-10-02)
 
