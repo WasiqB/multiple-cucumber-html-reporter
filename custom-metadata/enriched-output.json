@@ -7,7 +7,7 @@
   "browser": 1,
   "name": "",
   "version": "version",
-  "time": "2018-08-17T08:30:11.818Z",
+  "time": "2018-12-21T08:49:01.957Z",
   "features": [
     {
       "metadata": [
@@ -124,7 +124,7 @@
           "time": "00:00:00.001"
         }
       ],
-      "id": "84046776-23c9-4e0f-8ece-089db04c26c9-ambiguous-scenarios-specified-v1",
+      "id": "9c07370e-a45d-4f86-9c55-917c9abb0f50-ambiguous-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Ambiguous scenarios specified V1",
@@ -249,7 +249,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "52a0fe5c-b595-4bd8-b2e5-19c4ebd4bced-ambiguous-scenarios-specified-v2",
+      "id": "de181191-a205-4874-9ca5-32c5dcf22147-ambiguous-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -304,7 +304,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "42fceaac-eb9e-42db-860a-583dde8d8619-failure-report-v3",
+      "id": "6ea7babd-8147-441b-b418-54d01282b800-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -453,7 +453,7 @@
       "keyword": "Feature",
       "name": "Multiple json and plain text attachments",
       "line": 1,
-      "id": "2948d678-27ad-4cd4-97d0-0ee7a843f6d5-google-com",
+      "id": "65a488f7-992d-450e-9336-38eeb659b204-google-com",
       "tags": [],
       "uri": "features/google.feature",
       "elements": [
@@ -530,16 +530,10 @@
               ],
               "attachments": [],
               "text": [
-                {
-                  "some": "json"
-                },
-                {
-                  "other": "json"
-                },
+                "\"{\\\"some\\\":\\\"json\\\"}\"",
+                "\"{\\\"other\\\":\\\"json\\\"}\"",
                 "Some plain text message",
-                {
-                  "yet another json": 5
-                }
+                "\"{\\\"yet another json\\\":5}\""
               ],
               "time": "00:00:00.000"
             },
@@ -708,7 +702,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "5e58c30d-37d1-41d4-9243-482b81a52dbe-pending-scenarios-specified-v1",
+      "id": "481f357e-2a5e-4a89-a737-dee0fdd4cfdd-pending-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Pending scenarios specified V1",
@@ -1049,7 +1043,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "5bdf71a5-4279-472e-a931-8b20d700d8f3-skipped_scenarios-1494823563764",
+      "id": "8e109021-49b2-43df-81ed-999f29215290-skipped_scenarios-1494823563764",
       "keyword": "Feature",
       "line": 1,
       "name": "Skipped scenarios specified",
@@ -1108,7 +1102,7 @@
       "keyword": "Feature",
       "name": "Undefined scenarios specified V3",
       "line": 2,
-      "id": "bda2aee5-64d6-43d7-9bf6-bb26899852e0-undefined-scenarios-specified-v3",
+      "id": "8a6fa153-6aa3-4cf0-9eeb-1d7a1b9fbb43-undefined-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
@@ -1263,16 +1257,10 @@
               ],
               "attachments": [],
               "text": [
-                {
-                  "some": "json"
-                },
-                {
-                  "other": "json"
-                },
+                "\"{\\\"some\\\":\\\"json\\\"}\"",
+                "\"{\\\"other\\\":\\\"json\\\"}\"",
                 "Some plain text message",
-                {
-                  "yet another json": 5
-                }
+                "\"{\\\"yet another json\\\":5}\""
               ],
               "time": "00:00:00.000"
             },

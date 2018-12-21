@@ -14,13 +14,13 @@
       }
     ]
   },
-  "style": "/Users/wimselles/contributions/multiple-cucumber-html-reporter/test/my.css",
-  "customStyle": "/Users/wimselles/contributions/multiple-cucumber-html-reporter/test/custom.css",
+  "style": "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/my.css",
+  "customStyle": "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/custom.css",
   "displayDuration": false,
   "browser": 5,
   "name": "",
   "version": "version",
-  "time": "2018-08-17T08:30:11.754Z",
+  "time": "2018-12-21T08:49:01.860Z",
   "features": [
     {
       "metadata": {
@@ -449,7 +449,7 @@
           "time": "00:00:11.625"
         }
       ],
-      "id": "2246783c-973e-43fd-b237-d837007cda35-happy-flow-v1",
+      "id": "f2d8a40c-15db-4e0f-9f09-b737ce27cd92-happy-flow-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Happy flow V1",
@@ -721,7 +721,7 @@
       "keyword": "Feature",
       "name": "Failure report Multi Attachment V3",
       "line": 2,
-      "id": "2d836bf0-7e0d-419d-ba3d-79c2864da226-failure-report-multi-attachment-v3",
+      "id": "e7debf31-4105-479b-b152-96205c0c07a2-failure-report-multi-attachment-v3",
       "tags": [
         {
           "name": "@skip",
@@ -877,7 +877,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "16d01702-de5e-42e6-bad0-919d40837477-failure-report-v3",
+      "id": "7ac0e2b8-8690-401a-bfdb-bff0fc813448-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -1246,7 +1246,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "cbd45527-79f3-4a73-a260-b77bddf0cbc6-happy-flow-v2",
+      "id": "b564d5cb-1dab-4dac-aacc-16097e815cf1-happy-flow-v2",
       "scenarios": {
         "passed": 3,
         "failed": 0,
@@ -1289,7 +1289,7 @@
       "keyword": "Feature",
       "name": "Happy flow V3",
       "line": 2,
-      "id": "d30ce0ae-4ae1-48d0-910b-c080f905f971-happy-flow-v3",
+      "id": "c245fe08-8ae7-4cdd-8bd5-48d092b20e27-happy-flow-v3",
       "tags": [
         {
           "name": "@example",
