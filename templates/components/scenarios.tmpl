@@ -201,9 +201,7 @@
                       <% if (step.image) { %>
                         <div id="info<%= scenarioIndex %><%= stepIndex %>-image" class="scenario-step-collapse collapse">
                           <% for( var i = 0; i < step.image.length; i++ ) { %>
-                            <a class="screenshot" href="<%= step.image[i] %>" target="_blank">
                                 <img class="screenshot" src="<%= step.image[i] %>"/>
-                            </a>
                           <% } %>
                         </div>
                         <% } %>
