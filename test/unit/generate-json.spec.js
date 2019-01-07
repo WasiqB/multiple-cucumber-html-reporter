@@ -76,6 +76,18 @@ describe('generate-report.js', () => {
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
                 .toEqual(true, 'Index file exists');
         });
+
+        it('should parse files without creating a report - without provided custom data', () => {
+            fs.removeSync(REPORT_PATH);
+            const suite = multiCucumberHTMLReporter.parse({
+                jsonDir: './test/unit/data/json',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                displayDuration: true,
+                disableLog: true
+            });
+            expect(suite.features.length).toEqual(21,'Feature Array Length');
+        });
     });
 
     describe('failures', () => {
