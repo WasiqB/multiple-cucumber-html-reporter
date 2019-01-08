@@ -79,6 +79,7 @@ describe('generate-report.js', () => {
 
         it('should parse files without creating a report - without provided custom data', () => {
             fs.removeSync(REPORT_PATH);
+            
             const suite = multiCucumberHTMLReporter.parse({
                 jsonDir: './test/unit/data/json',
                 reportPath: REPORT_PATH,
@@ -86,17 +87,22 @@ describe('generate-report.js', () => {
                 displayDuration: true,
                 disableLog: true
             });
+            const one_second = 1*1000*1000;
             expect(suite.features.length).toEqual(21,'Feature Array Length');
+            expect(suite.features[0].duration).toBeGreaterThan(one_second);
+            expect(suite.totalTime).toBeGreaterThan(10*one_second); // sum of duration?
         });
     });
 
     describe('failures', () => {
         it('should throw an error when no options are provided', () => {
-            expect(() => multiCucumberHTMLReporter.generate()).toThrowError('Options need to be provided.');
+            expect(() => multiCucumberHTMLReporter.generate())
+                .toThrowError('Options need to be provided.');
         });
 
         it('should throw an error when the json folder does not exist', () => {
-            expect(() => multiCucumberHTMLReporter.generate({})).toThrowError(`A path which holds the JSON files should be provided.`);
+            expect(() => multiCucumberHTMLReporter.generate({}))
+                .toThrowError('A path which holds the JSON files should be provided in {jsonDir: .. }');
         });
 
         it('should throw an error when the report folder is not provided', () => {
