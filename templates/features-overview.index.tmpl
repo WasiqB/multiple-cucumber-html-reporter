@@ -8,6 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     	<title><%= pageTitle %></title>
 
+        <!-- openGraph preview -->
+        <meta property="og:title" content="<%= pageTitle %>" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="<%= ogDescription %>" />
+        <meta property="og:image" content="<%= ogServer %>/result-preview.svg"/>
+        <meta property="og:url" content="<%= ogServer %>/index.html"/>
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

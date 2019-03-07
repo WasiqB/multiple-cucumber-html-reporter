@@ -295,6 +295,11 @@ data: [
 ]
 ```
 
+### `ogServerUrl`
+- **Type:** `string`
+- **Mandatory:** No
+Url used in the open graph HTML metadata of the test report. It's useful to share test report over chat or social network.
+
 ## Metadata
 The report can also show on which browser / device a feature has been executed. It is shown on the featurs overview in the table as well as on the feature overview in a container.
 

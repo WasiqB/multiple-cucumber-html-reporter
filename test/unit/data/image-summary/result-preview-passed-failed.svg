@@ -1,0 +1,46 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <style>
+        circle {
+            fill: none;
+            stroke-width: 6;
+            stroke: gold;
+
+        }
+        .failed {
+            stroke: #E74C3C;
+        }
+        .skipped {
+            stroke: #3498DB;
+            stroke-dasharray: 0 100 0 0;
+        }
+        .passed {
+            stroke: #1ABB9C;
+            stroke-dasharray: 0 0 90.91 9.09;
+        }
+        .not-defined {
+            stroke: #F39C12;
+            stroke-dasharray: 0 90.91 0 9.09;
+        }
+        .pending {
+            stroke: #FFD119;
+            stroke-dasharray: 0 90.91 0 9.09;
+        }
+        .ambiguous {
+            stroke: #E74C3C;
+            stroke-dasharray: 0 90.91 0 9.09;
+        }
+
+    </style>
+        <circle r="25%" cx="50%" cy="50%" class="failed">
+        </circle>
+        <circle r="25%" cx="50%" cy="50%" class="skipped">
+        </circle>
+        <circle r="25%" cx="50%" cy="50%" class="passed">
+        </circle>
+        <circle r="25%" cx="50%" cy="50%" class="not-defined">
+        </circle>
+        <circle r="25%" cx="50%" cy="50%" class="pending">
+        </circle>
+        <circle r="25%" cx="50%" cy="50%" class="ambiguous">
+        </circle>
+</svg>
