@@ -298,7 +298,13 @@ data: [
 ### `ogServerUrl`
 - **Type:** `string`
 - **Mandatory:** No
-Url used in the open graph HTML metadata of the test report. It's useful to share test report over chat or social network.
+
+Url used in the open graph HTML metadata of the test report.
+
+[OpenGraph protocol](http://ogp.me/) enable smart preview of test report on chat or social network.
+This URL has to be the public URL of the test report's directory. Then you can post your ogServerUrl/index.html on your favorite chat room to share the report with a smart preview.
+
+
 
 ## Metadata
 The report can also show on which browser / device a feature has been executed. It is shown on the featurs overview in the table as well as on the feature overview in a container.
