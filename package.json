@@ -13,6 +13,7 @@
   "main": "lib/generate-report.js",
   "license": "MIT",
   "scripts": {
+    "release": "np",
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine",
@@ -41,6 +42,7 @@
   "devDependencies": {
     "coveralls": "^2.13.1",
     "istanbul": "0.4.5",
-    "jasmine": "2.6.0"
+    "jasmine": "2.6.0",
+    "np": "^5.0.2"
   }
 }
