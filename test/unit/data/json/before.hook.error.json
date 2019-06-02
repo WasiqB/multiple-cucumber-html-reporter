@@ -1,0 +1,75 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Before Error",
+    "line": 1,
+    "id": "before-error",
+    "tags": [],
+    "uri": "e2e/demo.feature",
+    "elements": [
+      {
+        "id": "before-error;demo-scenario",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "demo scenario",
+        "tags": [
+          {
+            "name": "@debug",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "e2e/steps/common.steps.ts:31"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 3000000,
+              "error_message": "Error: blabla\n    at World.<anonymous> (e2e/steps/common.steps.ts:32:10)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "TODO",
+            "match": {
+              "location": "e2e/steps/common.steps.ts:95"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e/steps/common.steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 426000000
+            },
+            "embeddings": [
+            ]
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules/lib/somewhere.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
