@@ -28,11 +28,147 @@
   },
   "style": "style.css",
   "displayDuration": true,
-  "browser": 18,
+  "browser": 20,
   "name": "",
   "version": "version",
-  "time": "2018-12-21T08:49:01.512Z",
+  "time": "2019-06-03T10:13:48.625Z",
   "features": [
+    {
+      "metadata": {
+        "browser": {
+          "name": "not known",
+          "version": "not known"
+        },
+        "device": "not known",
+        "platform": {
+          "name": "not known",
+          "version": "not known"
+        }
+      },
+      "keyword": "Feature",
+      "name": "After Error",
+      "line": 1,
+      "id": "4a6a0218-c578-4855-877b-c86438338119-after-error",
+      "tags": [],
+      "uri": "src\\test.feature",
+      "elements": [
+        {
+          "id": "after-error;login",
+          "keyword": "Scenario",
+          "line": 3,
+          "name": "Login",
+          "tags": [
+            {
+              "name": "@Test",
+              "line": 2
+            }
+          ],
+          "type": "scenario",
+          "steps": [
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 4,
+              "name": "i am on agendaodonto login page",
+              "match": {
+                "location": "src\\demo.steps.ts:26"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 2836000000
+              },
+              "time": "19:46:40.000"
+            },
+            {
+              "arguments": [],
+              "keyword": "When ",
+              "line": 5,
+              "name": "I enter with valid credentials",
+              "match": {
+                "location": "src\\demo.steps.ts:30"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 575000000
+              },
+              "time": "15:43:20.000"
+            },
+            {
+              "arguments": [],
+              "keyword": "Then ",
+              "line": 6,
+              "name": "I see the homepage",
+              "match": {
+                "location": "src\\demo.steps.ts:34"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1000000
+              },
+              "time": "00:16:40.000"
+            },
+            {
+              "keyword": "After",
+              "hidden": true,
+              "match": {
+                "location": "src\\demo.steps.ts:22"
+              },
+              "result": {
+                "status": "failed",
+                "duration": 1000000,
+                "error_message": "Error: This is a error created by miself\n    at World.<anonymous> (E:\\Projetos\\protractor-test\\src\\demo.steps.ts:23:11)"
+              },
+              "time": "00:16:40.000"
+            },
+            {
+              "keyword": "After",
+              "hidden": true,
+              "match": {
+                "location": "node_modules\\lib\\resultsCapturer.js:26"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1000000
+              }
+            }
+          ],
+          "passed": 3,
+          "failed": 1,
+          "notDefined": 0,
+          "skipped": 0,
+          "pending": 0,
+          "ambiguous": 0,
+          "duration": 3413000000,
+          "time": "12:03:20.000"
+        }
+      ],
+      "scenarios": {
+        "passed": 0,
+        "failed": 1,
+        "notDefined": 0,
+        "skipped": 0,
+        "pending": 0,
+        "ambiguous": 0,
+        "passedPercentage": "0.00",
+        "failedPercentage": "100.00",
+        "notdefinedPercentage": "0.00",
+        "skippedPercentage": "0.00",
+        "pendingPercentage": "0.00",
+        "ambiguousPercentage": "0.00",
+        "total": 1
+      },
+      "duration": 3413000000,
+      "time": "12:03:20.000",
+      "isFailed": true,
+      "isAmbiguous": false,
+      "isSkipped": false,
+      "isNotdefined": false,
+      "isPending": false,
+      "app": 0,
+      "browser": 0,
+      "failed": null,
+      "totalTime": null
+    },
     {
       "metadata": {
         "browser": {
@@ -137,7 +273,7 @@
           "time": "00:32:10.520"
         }
       ],
-      "id": "533278f8-56c3-4589-93f7-b2b15782f688-ambiguous-scenarios-specified-v1",
+      "id": "99922a58-5f57-4e82-91fa-9f4e4c7e5247-ambiguous-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Ambiguous scenarios specified V1",
@@ -251,7 +387,7 @@
           "time": "00:00:00.002"
         }
       ],
-      "id": "8d110908-c3c9-4cb4-839d-97bd1ceb2e1f-ambiguous-scenarios-specified-v2",
+      "id": "7d5cbac5-277b-48b3-85a5-8dda4d154491-ambiguous-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -295,7 +431,7 @@
       "keyword": "Feature",
       "name": "Ambiguous scenarios specified V3",
       "line": 1,
-      "id": "27086dfc-78a5-4e0c-8f2f-00f7283261b3-ambiguous-scenarios-specified-v3",
+      "id": "de3d7370-5758-48a9-a765-117b473501a8-ambiguous-scenarios-specified-v3",
       "tags": [],
       "uri": "e2e-tests/features/ambiguous.feature",
       "elements": [
@@ -386,6 +522,125 @@
       "app": 0,
       "browser": 0,
       "ambiguous": null,
+      "totalTime": null
+    },
+    {
+      "metadata": {
+        "browser": {
+          "name": "not known",
+          "version": "not known"
+        },
+        "device": "not known",
+        "platform": {
+          "name": "not known",
+          "version": "not known"
+        }
+      },
+      "keyword": "Feature",
+      "name": "Before Error",
+      "line": 1,
+      "id": "6a1634f1-f3f9-4ee0-b20c-db1797d7bcc6-before-error",
+      "tags": [],
+      "uri": "e2e/demo.feature",
+      "elements": [
+        {
+          "id": "before-error;demo-scenario",
+          "keyword": "Scenario",
+          "line": 3,
+          "name": "demo scenario",
+          "tags": [
+            {
+              "name": "@debug",
+              "line": 2
+            }
+          ],
+          "type": "scenario",
+          "steps": [
+            {
+              "keyword": "Before",
+              "hidden": true,
+              "match": {
+                "location": "e2e/steps/common.steps.ts:31"
+              },
+              "result": {
+                "status": "failed",
+                "duration": 3000000,
+                "error_message": "Error: blabla\n    at World.<anonymous> (e2e/steps/common.steps.ts:32:10)"
+              },
+              "time": "00:50:00.000"
+            },
+            {
+              "arguments": [],
+              "keyword": "Given ",
+              "line": 4,
+              "name": "TODO",
+              "match": {
+                "location": "e2e/steps/common.steps.ts:95"
+              },
+              "result": {
+                "status": "skipped"
+              }
+            },
+            {
+              "keyword": "After",
+              "hidden": true,
+              "match": {
+                "location": "e2e/steps/common.steps.ts:34"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 426000000
+              },
+              "embeddings": [],
+              "attachments": []
+            },
+            {
+              "keyword": "After",
+              "hidden": true,
+              "match": {
+                "location": "node_modules/lib/somewhere.js:26"
+              },
+              "result": {
+                "status": "passed",
+                "duration": 1000000
+              }
+            }
+          ],
+          "passed": 0,
+          "failed": 1,
+          "notDefined": 0,
+          "skipped": 1,
+          "pending": 0,
+          "ambiguous": 0,
+          "duration": 3000000,
+          "time": "00:50:00.000"
+        }
+      ],
+      "scenarios": {
+        "passed": 0,
+        "failed": 1,
+        "notDefined": 0,
+        "skipped": 0,
+        "pending": 0,
+        "ambiguous": 0,
+        "passedPercentage": "0.00",
+        "failedPercentage": "100.00",
+        "notdefinedPercentage": "0.00",
+        "skippedPercentage": "0.00",
+        "pendingPercentage": "0.00",
+        "ambiguousPercentage": "0.00",
+        "total": 1
+      },
+      "duration": 3000000,
+      "time": "00:50:00.000",
+      "isFailed": true,
+      "isAmbiguous": false,
+      "isSkipped": false,
+      "isNotdefined": false,
+      "isPending": false,
+      "app": 0,
+      "browser": 0,
+      "failed": null,
       "totalTime": null
     },
     {
@@ -620,7 +875,7 @@
           "time": "12:50:06.076"
         }
       ],
-      "id": "d3720df1-204f-4179-bbc7-14ffd0eea504-testing_embeddings-1494823257420",
+      "id": "a8f1054f-cd48-43f7-85a7-4b1cc4130bb4-testing_embeddings-1494823257420",
       "keyword": "Feature",
       "line": 1,
       "name": "Testing embeddings",
@@ -789,7 +1044,7 @@
           "time": "06:18:51.101"
         }
       ],
-      "id": "df0d361e-eb80-4529-934a-f93b755db788-failure-report-v1",
+      "id": "3dae34fd-0b73-4c77-8a0d-4beb33861a7d-failure-report-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Failure report V1",
@@ -950,7 +1205,7 @@
           "time": "00:00:05.020"
         }
       ],
-      "id": "c0559017-507b-4039-a6cd-2dd5d7cccdc8-failure-report-v2",
+      "id": "45806434-a6dc-4f47-a1f5-841cf4a5c1aa-failure-report-v2",
       "scenarios": {
         "passed": 0,
         "failed": 1,
@@ -994,7 +1249,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "482258c1-50e4-4258-9ba7-7d5c9d96f506-failure-report-v3",
+      "id": "7aea1257-0d9e-4ca8-acad-8165cb3724d0-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -1143,7 +1398,7 @@
       "keyword": "Feature",
       "name": "Happy flow app",
       "line": 2,
-      "id": "8d854c63-3537-4b04-a028-fe8e31ce65a4-happy-flow-app",
+      "id": "e82e405e-e3f9-44e0-8e84-6343d77d34f9-happy-flow-app",
       "uri": "e2e-tests/features/app.feature",
       "elements": [
         {
@@ -1259,7 +1514,7 @@
       "keyword": "Feature",
       "name": "Happy flow app",
       "line": 2,
-      "id": "95853a0a-09fb-41f8-971c-699fbbfac712-happy-flow-app",
+      "id": "77844361-ca92-442d-8547-843671ac30ad-happy-flow-app",
       "uri": "e2e-tests/features/app.feature",
       "elements": [
         {
@@ -1747,7 +2002,7 @@
           "time": "17:26:17.723"
         }
       ],
-      "id": "a983b552-0441-46b4-9d2e-7f64fd5d4466-happy-flow-v1",
+      "id": "0f086ae5-f537-4f45-9998-b84c61e225a3-happy-flow-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Happy flow V1",
@@ -2127,7 +2382,7 @@
           "time": "00:00:01.527"
         }
       ],
-      "id": "1123ff6c-1ab3-4269-9978-ce0c672c5da1-happy-flow-v2",
+      "id": "28caa977-e624-4e72-ac57-deaeeca1ce5b-happy-flow-v2",
       "scenarios": {
         "passed": 3,
         "failed": 0,
@@ -2170,7 +2425,7 @@
       "keyword": "Feature",
       "name": "Happy flow V3",
       "line": 2,
-      "id": "43905eb4-7333-414e-94e2-fc7ae92c56a8-happy-flow-v3",
+      "id": "8ecd0439-868c-4ec0-813b-06001294a225-happy-flow-v3",
       "tags": [
         {
           "name": "@example",
@@ -2525,7 +2780,7 @@
         }
       },
       "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
-      "id": "ec7ca473-6ea0-4e01-a9b7-7ac2c7cde120-no_elements-1494777183356",
+      "id": "d9c1247e-b327-4fbf-8b43-33537ee547c9-no_elements-1494777183356",
       "keyword": "Feature",
       "line": 1,
       "name": "No elements",
@@ -2661,7 +2916,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "3c227e2f-4c73-4028-9fce-645225bd5891-pending-scenarios-specified-v1",
+      "id": "ffea38ff-aba0-44f6-ba5c-647f07f4401f-pending-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Pending scenarios specified V1",
@@ -2778,7 +3033,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "dcbef83d-152c-4259-8cba-6bc07473a516-pending-scenarios-specified-v2",
+      "id": "120ca07f-8c75-4725-9aba-102e0a8b87e8-pending-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -2821,7 +3076,7 @@
       "keyword": "Feature",
       "name": "Pending scenarios specified V3",
       "line": 1,
-      "id": "5032ffde-61fa-416d-8d41-257d00ffb28d-pending-scenarios-specified-v3",
+      "id": "af29ae5c-0de8-4f12-a086-51b17c66e4a8-pending-scenarios-specified-v3",
       "tags": [],
       "uri": "e2e-tests/features/pending.feature",
       "elements": [
@@ -3216,7 +3471,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "78980d34-581c-49f8-bd78-06e0028277f7-skipped_scenarios-1494823563764",
+      "id": "a539b574-a18e-4d77-867d-8d5d480e1262-skipped_scenarios-1494823563764",
       "keyword": "Feature",
       "line": 1,
       "name": "Skipped scenarios specified",
@@ -3361,7 +3616,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "d1f3d9c8-9108-4c17-999b-ba831e32f798-undefined-scenarios-specified-v1",
+      "id": "f485c5a8-4c4e-46f7-8a26-3c12b51c1bdb-undefined-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Undefined scenarios specified V1",
@@ -3496,7 +3751,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "8d2c555d-cfe7-4120-868a-81f7573db1a5-undefined-scenarios-specified-v2",
+      "id": "f1bb0201-64df-4e38-931a-4058dce6365a-undefined-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -3539,7 +3794,7 @@
       "keyword": "Feature",
       "name": "Undefined scenarios specified V3",
       "line": 2,
-      "id": "6085b347-c853-41aa-be01-c92671210790-undefined-scenarios-specified-v3",
+      "id": "0177b92d-13e6-4e01-b931-eaa41ad826ef-undefined-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
@@ -3664,7 +3919,7 @@
       "keyword": "Feature",
       "name": "Undefined, pending, passed scenarios specified V3",
       "line": 2,
-      "id": "1a7ebf6e-0321-4cc5-9ee4-1de675afe685-undefined-pending-passed-scenarios-specified-v3",
+      "id": "1bbccdd8-5764-4197-9daa-648eebf9b8e3-undefined-pending-passed-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
@@ -3934,34 +4189,34 @@
   ],
   "featureCount": {
     "ambiguous": 3,
-    "failed": 3,
+    "failed": 5,
     "passed": 6,
     "notDefined": 4,
     "pending": 3,
     "skipped": 1,
-    "total": 21,
-    "ambiguousPercentage": "14.29",
-    "failedPercentage": "14.29",
-    "notdefinedPercentage": "19.05",
-    "pendingPercentage": "14.29",
-    "skippedPercentage": "4.76",
-    "passedPercentage": "28.57"
+    "total": 23,
+    "ambiguousPercentage": "13.04",
+    "failedPercentage": "21.74",
+    "notdefinedPercentage": "17.39",
+    "pendingPercentage": "13.04",
+    "skippedPercentage": "4.35",
+    "passedPercentage": "26.09"
   },
   "reportName": "You can adjust this report name",
   "scenarios": {
-    "failed": 3,
+    "failed": 5,
     "ambiguous": 3,
     "notDefined": 4,
     "pending": 4,
     "skipped": 3,
     "passed": 14,
-    "total": 31,
-    "ambiguousPercentage": "9.68",
-    "failedPercentage": "9.68",
-    "notdefinedPercentage": "12.90",
-    "passedPercentage": "45.16",
-    "pendingPercentage": "12.90",
-    "skippedPercentage": "9.68"
+    "total": 33,
+    "ambiguousPercentage": "9.09",
+    "failedPercentage": "15.15",
+    "notdefinedPercentage": "12.12",
+    "passedPercentage": "42.42",
+    "pendingPercentage": "12.12",
+    "skippedPercentage": "9.09"
   },
   "totalTime": 0
 }
