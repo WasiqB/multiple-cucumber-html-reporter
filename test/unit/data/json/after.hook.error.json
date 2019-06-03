@@ -1,0 +1,89 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "After Error",
+    "line": 1,
+    "id": "after-error",
+    "tags": [],
+    "uri": "src\\test.feature",
+    "elements": [
+      {
+        "id": "after-error;login",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Login",
+        "tags": [
+          {
+            "name": "@Test",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "i am on agendaodonto login page",
+            "match": {
+              "location": "src\\demo.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2836000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I enter with valid credentials",
+            "match": {
+              "location": "src\\demo.steps.ts:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 575000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I see the homepage",
+            "match": {
+              "location": "src\\demo.steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src\\demo.steps.ts:22"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1000000,
+              "error_message": "Error: This is a error created by miself\n    at World.<anonymous> (E:\\Projetos\\protractor-test\\src\\demo.steps.ts:23:11)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\lib\\resultsCapturer.js:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
