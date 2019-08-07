@@ -1,6 +1,9 @@
 webdriver.io
 ============
 
+> **NOTE:<br>**
+> If you are using WebdriverIO V4 follow the instructions below, if you are using WebdriverIO V5, please check [here](https://github.com/wswebcreation/wdio-cucumberjs-json-reporter).
+
 Follow the installation instructions as mentioned in [Install](../README.MD#install)
 
 ## Using wdio-cucumber-framework version 2.2.0 or higher?
