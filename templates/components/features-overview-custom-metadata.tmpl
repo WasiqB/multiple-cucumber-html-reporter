@@ -24,6 +24,9 @@
                         <% _.each(suite.features[0].metadata, function(metadatum, metadatumIndex) { %>
                         <th><%= metadatum.name %></th>
                         <%});%>
+                        <% if (suite.displayDuration) { %>
+                        <th>Duration</th>
+                        <% } %>
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
@@ -91,6 +94,9 @@
                             <%=metadatum.value%>
                         </td>
                         <% }); %>
+                        <% if (suite.displayDuration) { %>
+                        <td><%= feature.time %></td>
+                        <% } %>
                         <td><%= feature.scenarios.total %></td>
                         <td><%= feature.scenarios.passed %></td>
                         <td><%= feature.scenarios.failed %></td>
