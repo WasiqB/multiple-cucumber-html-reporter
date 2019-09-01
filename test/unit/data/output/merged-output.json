@@ -586,7 +586,7 @@
                 "mime_type": "text/plain"
               },
               {
-                "data": "And the second not encoded line",
+                "data": "And the second not encoded line\nA new line",
                 "mime_type": "text/plain"
               }
             ],
