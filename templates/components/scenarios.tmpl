@@ -113,7 +113,9 @@
 
                 <div class="text">
                     <span class="keyword highlight"><%= step.keyword %></span>
-                    <%= step.name %>
+                    <% if(step.name) { %>
+                        <%= step.name.replace(/</g, '&lt;').replace(/>/g, '&gt;') %>
+                    <% } %>
                     <% if(suite.displayDuration) { %>
                         <% if (step.time) { %>
                             <span class="duration"><%= step.time %></span>
