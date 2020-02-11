@@ -29,20 +29,20 @@
   },
   "homepage": "https://github.com/wswebcreation/multiple-cucumber-html-reporter#readme",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "find": "^0.3.0",
     "fs-extra": "^8.1.0",
     "js-base64": "^2.5.1",
     "jsonfile": "^5.0.0",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "open": "^6.4.0",
-    "uuid": "^3.2.1"
+    "open": "^7.0.2",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.5",
+    "coveralls": "^3.0.9",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.4.0",
-    "np": "^5.0.3"
+    "jasmine": "^3.5.0",
+    "np": "^6.0.0"
   }
 }
