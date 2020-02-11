@@ -115,6 +115,16 @@
                     <span class="keyword highlight"><%= step.keyword %></span>
                     <% if(step.name) { %>
                         <%= step.name.replace(/</g, '&lt;').replace(/>/g, '&gt;') %>
+                        <% if(step.restWireData) { %>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="collapse" data-target="#<%= step.id%>">REST Query</button>
+                            <div id="<%= step.id%>" class="collapse">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <pre><%= step.restWireData %></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
                     <% } %>
                     <% if(suite.displayDuration) { %>
                         <% if (step.time) { %>
