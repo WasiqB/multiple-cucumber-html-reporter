@@ -194,6 +194,12 @@ This expects the durations in the report to be in **nanoseconds**, which might r
 If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanaseconds**.
 This parameter relies on `displayDuration: true`
 
+### `useCDN`
+- **Type:** `boolean`
+- **Mandatory:** No
+
+If you prefer, you can use CDN for assets.
+
 ### `customStyle`
 - **Type:** `path`
 - **Mandatory:** No
