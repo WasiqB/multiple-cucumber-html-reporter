@@ -129,6 +129,12 @@ The directory in which the report needs to be saved, relative from where the scr
 
 **N.B.:** If you use a npm script from the command line, like for example `npm run generate-report` the `reportPath` will be relative from the path where the script is executed. Executing it from the root of your project will also save the report in the `reportPath` in the root of you project.
 
+### `staticFilePath`
+- **Type:** `boolean`
+- **Mandatory:** No
+
+If true each feature will get a static filename for the html. Use this feature only if you are not running multiple instances of the same tests.
+
 ### `openReportInBrowser`
 - **Type:** `boolean`
 - **Mandatory:** No
