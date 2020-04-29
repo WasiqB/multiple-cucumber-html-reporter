@@ -136,22 +136,16 @@
                                     <% if(step.result.status === 'undefined') { %>
                                         <pre class="info">
 // With Callbacks
-<%=step.keyword%>(
-/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/,
-(<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>callback) => {
-// Write code here that turns the phrase above into concrete actions
-callback(null, 'pending');
-}
-);
+<%=step.keyword%>(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, (<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>callback) => {
+    // Write code here that turns the phrase above into concrete actions
+    callback(null, 'pending');
+});
 
 // With Promises
-<%=step.keyword%>(
-/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/,
-(<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>) => {
-// Write code here that turns the phrase above into concrete actions
-return Promise.resolve('pending');
-}
-);
+<%=step.keyword%>(/^<%= step.name.replace(/"[^"]*"/g, '"\(\[\^\"\]\*\)"') %>$/, (<% for (var i=1; i<(step.name.split('"').length / 2); i++) { %>arg<%= i %>, <% } %>) => {
+    // Write code here that turns the phrase above into concrete actions
+    return Promise.resolve('pending');
+});
                                         </pre>
                                     <% } %>
 
