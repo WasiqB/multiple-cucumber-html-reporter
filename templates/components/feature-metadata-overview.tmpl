@@ -71,7 +71,8 @@
                     <% var browserIcon; %>
                     <% if (['firefox', 'safari', 'chrome'].indexOf(metadata.browser.name.toLowerCase()) > -1) { %>
                     <% browserIcon = metadata.browser.name.toLowerCase(); %>
-                    <% } else if (metadata.browser.name.toLowerCase() === 'edge' || metadata.browser.name.toLowerCase() === 'microsoftedge'){ %>
+                    <% } else if (metadata.browser.name.toLowerCase() === 'edge' || metadata.browser.name.toLowerCase() === 'microsoftedge' ||
+                    metadata.browser.name.toLowerCase() === 'msedge'){ %>
                     <% browserIcon= "edge"; %>
                     <% } else if (metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
                     <% browserIcon= "internet-explorer"; %>
