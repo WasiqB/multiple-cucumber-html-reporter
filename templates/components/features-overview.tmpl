@@ -154,7 +154,8 @@
                             <% var browserIcon; %>
                             <% if (['firefox', 'safari', 'chrome'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
                             <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge'){ %>
+                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge' ||
+                            feature.metadata.browser.name.toLowerCase() === 'msedge'){ %>
                             <% browserIcon= "edge"; %>
                             <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
                             <% browserIcon= "internet-explorer"; %>
