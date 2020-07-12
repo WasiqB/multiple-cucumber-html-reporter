@@ -1,0 +1,11 @@
+{
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"javascript.preferences.quoteStyle": "single",
+	"prettier.singleQuote": true,
+	"prettier.printWidth": 120,
+	"prettier.useTabs": true,
+	"prettier.trailingComma": "none",
+	"prettier.arrowParens": "avoid",
+	"prettier.bracketSpacing": false
+}
