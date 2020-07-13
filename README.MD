@@ -16,22 +16,6 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 > **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
 
-> **NEW**
-
-- **1.11.0:** This release has been made possible by
-    - [Stefano Tamagnini](https://github.com/yoghi): He added the possibility to add a scenario description (Click [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/embedded-array) and open the `As a visitor I want to be greeted` scenario)
-    - [David de Kanter](https://github.com/daviddekanter): He added the possibility to set the status of a feature file to `undefined` if 1 or multiple scenario's in a feature don't have a step implementation
-    - [Yaron Assa](https://github.com/yaronassa): He added support for html-embeddings (Click [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/embedded-array) and open the `Add a todo` scenario)
-- **1.10.0:** There is now support for multiple screenshots in scenario steps, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
-- **1.9.0:** A custom [`pageTitle`](./README.MD#pageTitle) and a custom [`pageFooter`](./README.MD#pageFooter) can be added, tnx to [muthukumarse](https://github.com/muthukumarse)
-- **1.8.0:** It now saves the sort state of columns in the Features overview, tnx to [Brian-Dawson-Nerdery](https://github.com/Brian-Dawson-Nerdery)
-- **1.7.0:** Duration time can now be displayed tnx to [LennDG](https://github.com/LennDG). See [`displayDuration`](./README.MD#displayDuration) for more info
-- **1.7.0:** By default the duration is now calculated based on **nanoseconds** because that is the default of Cucumber. See remark above and [`durationInMS`](./README.MD#durationinms)
-- **1.6.0:** Tnx to [Stefano Tamagnini](https://github.com/yoghi) it is now possible:
-    - to embedded attachments with custom mimeType (ogg, video, pdf, ecc... )
-    - to override the style by adding your own stylesheet, See [`overrideStyle`](./README.MD#overrideStyle) for more info
-    - to add some custom styles by adding your own style sheet that will be loaded after the default stylessheet See [`customstyle`](./README.MD#customstyle) for more info
-
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
 A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/browsers/index.html)
