@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "debug test.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/test/test.js"
+        },
+        {
+            "type": "node",
+            "name": "debug current spec file",
+            "request": "launch",
+            "args": [
+              "${file}"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine",
+            "sourceMaps": true,
+            "runtimeArgs": [
+              "--nolazy",
+              "--inspect-brk"
+            ]
+          }
+    ]
+}
