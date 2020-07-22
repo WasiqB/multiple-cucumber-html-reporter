@@ -21,17 +21,19 @@
                         <th>Feature name</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <th class="text-center">
-                            <i class="fa fa-desktop fa-lg"></i>
-                            <i class="fa fa-mobile fa-lg"></i>
-                        </th>
-                        <th>Device</th>
-                        <th>OS</th>
-                        <% if(+suite.app > 0) { %>
-                        <th>App</th>
-                        <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <th>Browser</th>
+                        <% if (!suite.hideMetadata) { %>
+                            <th class="text-center">
+                                <i class="fa fa-desktop fa-lg"></i>
+                                <i class="fa fa-mobile fa-lg"></i>
+                            </th>
+                            <th>Device</th>
+                            <th>OS</th>
+                            <% if(+suite.app > 0) { %>
+                            <th>App</th>
+                            <% } %>
+                            <% if(+suite.browser > 0) { %>
+                            <th>Browser</th>
+                            <% } %>
                         <% } %>
                         <% if (suite.displayReportTime) { %>
                         <th>Date</th>
@@ -101,74 +103,76 @@
                                 <span><%= statusIcon %></span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            <% var deviceType; %>
-                            <% var deviceIcon; %>
-                            <% if (['android','ios'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1 ) { %>
-                            <% deviceType = 'Mobile / Tablet'; %>
-                            <% deviceIcon = 'mobile'; %>
-                            <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1) { %>
-                            <% deviceType = 'Desktop'; %>
-                            <% deviceIcon = 'desktop'; %>
-                            <% } else { %>
-                            <% deviceType = 'Not known'; %>
-                            <% deviceIcon = 'question-circle not-defined-color'; %>
+                        <% if (!suite.hideMetadata) { %>
+                            <td class="text-center">
+                                <% var deviceType; %>
+                                <% var deviceIcon; %>
+                                <% if (['android','ios'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1 ) { %>
+                                <% deviceType = 'Mobile / Tablet'; %>
+                                <% deviceIcon = 'mobile'; %>
+                                <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1) { %>
+                                <% deviceType = 'Desktop'; %>
+                                <% deviceIcon = 'desktop'; %>
+                                <% } else { %>
+                                <% deviceType = 'Not known'; %>
+                                <% deviceIcon = 'question-circle not-defined-color'; %>
+                                <% } %>
+                                <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
+                                    <span><%= deviceIcon %></span>
+                                </i>
+                            </td>
+                            <td>
+                                <% var device; %>
+                                <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
+                                <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
+                                <% } else { %>
+                                <% device = feature.metadata.device; %>
+                                <% } %>
+                                <%= device %>
+                            </td>
+                            <td>
+                                <% var platformName; %>
+                                <% if (feature.metadata.platform.name.toLowerCase() === 'ios' || feature.metadata.platform.name.toLowerCase() === 'osx') { %>
+                                <% platformName = 'apple'; %>
+                                <% } else if (feature.metadata.platform.name.toLowerCase() === 'android') { %>
+                                <% platformName = 'android'; %>
+                                <% } else if (feature.metadata.platform.name.toLowerCase() === 'windows') { %>
+                                <% platformName = 'windows'; %>
+                                <% } else if (feature.metadata.platform.name.toLowerCase() === 'ubuntu' ||
+                                feature.metadata.platform.name.toLowerCase() === 'linux') { %>
+                                <% platformName = 'linux'; %>
+                                <% } else { %>
+                                <% platformName = 'question-circle not-defined-color'; %>
+                                <% } %>
+                                <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
+                                <%= feature.metadata.platform.version %>
+                            </td>
+                            <% if(+suite.app > 0) { %>
+                            <td>
+                                <% if(feature.metadata.app) { %>
+                                <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
+                                <% } %>
+                            </td>
                             <% } %>
-                            <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
-                                <span><%= deviceIcon %></span>
-                            </i>
-                        </td>
-                        <td>
-                            <% var device; %>
-                            <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
-                            <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
-                            <% } else { %>
-                            <% device = feature.metadata.device; %>
+                            <% if(+suite.browser > 0) { %>
+                            <td>
+                                <% if(feature.metadata.browser) { %>
+                                <% var browserIcon; %>
+                                <% if (['firefox', 'safari', 'chrome'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
+                                <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
+                                <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge' ||
+                                feature.metadata.browser.name.toLowerCase() === 'msedge'){ %>
+                                <% browserIcon= "edge"; %>
+                                <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
+                                <% browserIcon= "internet-explorer"; %>
+                                <% } else { %>
+                                <% browserIcon = 'question-circle not-defined-color'; %>
+                                <% }%>
+                                <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
+                                <%= feature.metadata.browser.version %>
+                                <% } %>
+                            </td>
                             <% } %>
-                            <%= device %>
-                        </td>
-                        <td>
-                            <% var platformName; %>
-                            <% if (feature.metadata.platform.name.toLowerCase() === 'ios' || feature.metadata.platform.name.toLowerCase() === 'osx') { %>
-                            <% platformName = 'apple'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'android') { %>
-                            <% platformName = 'android'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'windows') { %>
-                            <% platformName = 'windows'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'ubuntu' ||
-                            feature.metadata.platform.name.toLowerCase() === 'linux') { %>
-                            <% platformName = 'linux'; %>
-                            <% } else { %>
-                            <% platformName = 'question-circle not-defined-color'; %>
-                            <% } %>
-                            <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
-                            <%= feature.metadata.platform.version %>
-                        </td>
-                        <% if(+suite.app > 0) { %>
-                        <td>
-                            <% if(feature.metadata.app) { %>
-                            <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
-                            <% } %>
-                        </td>
-                        <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <td>
-                            <% if(feature.metadata.browser) { %>
-                            <% var browserIcon; %>
-                            <% if (['firefox', 'safari', 'chrome'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
-                            <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge' ||
-                            feature.metadata.browser.name.toLowerCase() === 'msedge'){ %>
-                            <% browserIcon= "edge"; %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
-                            <% browserIcon= "internet-explorer"; %>
-                            <% } else { %>
-                            <% browserIcon = 'question-circle not-defined-color'; %>
-                            <% }%>
-                            <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
-                            <%= feature.metadata.browser.version %>
-                            <% } %>
-                        </td>
                         <% } %>
                         <% if (suite.displayReportTime) { %>
                         <td><%= feature.metadata.reportTime%></td>

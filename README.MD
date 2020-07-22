@@ -184,8 +184,16 @@ This expects the durations in the report to be in **nanoseconds**, which might r
 If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanaseconds**.
 This parameter relies on `displayDuration: true`
 
+### `hideMetadata`
+- **Type:** `boolean`
+- **Default:** `false`
+- **Mandatory:** No
+
+If set to `true` metadata Devicetype, Device, OS, App, Browser are not being displayed in the Features overview.
+
 ### `displayReportTime`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If set to `true` the date and time at which the JSON-files were generated, is displayed on the Features overview.
