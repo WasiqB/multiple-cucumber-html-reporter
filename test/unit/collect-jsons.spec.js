@@ -40,6 +40,24 @@ describe('collect-jsons.js', () => {
                 saveCollectedJSON: true
             })).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './test/unit/data/output/merged-output.json')));
         });
+
+        it('should collect the creation date of json files', () => {
+            // Given 
+            const options = {
+                jsonDir: './test/unit/data/json',
+                reportPath: reportPath,
+                displayReportTime: true
+            }
+
+            // When
+            const collectedJSONs = collectJSONS(options)
+
+            // Then
+            collectedJSONs.forEach(json => {
+                expect(json.metadata.reportTime).toBeDefined();
+                expect(json.metadata.reportTime.length).toBe('YYYY/MM/DD HH:mm:ss'.length);
+            })
+        });
     });
 
     describe('failures', () => {

@@ -25,6 +25,20 @@ describe('generate-report.js', () => {
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'enriched-output.json')}`).isFile())
                 .toEqual(true, 'temp-output.json file exists');
         });
+        it('should create a report with the report time', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/json',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                displayDuration: true,
+                displayReportTime: true
+            });
+
+            expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
+                .toEqual(true, 'Index file exists');
+            expect(fs.readFileSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`)).toContain('>Date</th>');
+        });
         it('should create a report from the merged found json files with custom data with static file paths', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
