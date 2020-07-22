@@ -58,6 +58,7 @@ test.generate({
     customMetadata: false,
     displayDuration: true,
     displayReportTime: true,
+    hideMetadata: true,
     durationInMS: true,
     customData: {
         title: 'Run info',
