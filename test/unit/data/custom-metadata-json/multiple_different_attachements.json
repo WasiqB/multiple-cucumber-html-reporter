@@ -1,5 +1,12 @@
 [
   {
+    "metadata": [
+      { "name": "Backend version", "value": "5.1.1" },
+      { "name": "Client API version", "value": "17.5" },
+      { "name": "Test Configuration", "value": "Config D" },
+      { "name": "platform", "value": "iOS" },
+      { "name": "platform version", "value": "10.1.2" }
+    ],
     "keyword": "Feature",
     "name": "Multiple json and plain text attachments",
     "line": 1,
