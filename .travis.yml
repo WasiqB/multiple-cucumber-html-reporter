@@ -4,7 +4,9 @@ dist: trusty
 language: node_js
 
 node_js:
-  - "stable"
+  - 10
+  - 12
+  - 14
 
 script:
   - npm run unit.test.coverage
