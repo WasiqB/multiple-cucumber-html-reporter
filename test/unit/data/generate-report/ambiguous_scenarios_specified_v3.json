@@ -1,0 +1,76 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Firefox",
+        "version": "53"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "Ubuntu",
+        "version": "16.04"
+      }
+    },
+    "description": "  The scenarios have been scripted twice\n  So the report should hold ambiguous steps",
+    "keyword": "Feature",
+    "name": "Ambiguous scenarios specified V3",
+    "line": 1,
+    "id": "ambiguous-scenarios-specified-v3",
+    "tags": [],
+    "uri": "e2e-tests/features/ambiguous.feature",
+    "elements": [
+      {
+        "id": "ambiguous-scenarios-specified-v3;ambiguous-johnny-wants-to-see-ambiguous-scenarios",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Ambiguous Johnny wants to see ambiguous scenarios",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "Ambiguous Johnny visits the Angular homepage",
+            "match": {
+              "location": "e2e-tests/features/ambiguous.steps.ts:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "he clicks on the second button",
+            "result": {
+              "status": "ambiguous"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "he expects that something really ambiguous happens",
+            "result": {
+              "status": "ambiguous"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

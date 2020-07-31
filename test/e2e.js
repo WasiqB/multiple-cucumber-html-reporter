@@ -1,12 +1,12 @@
 'use strict';
 const path = require('path');
 
-const test = require('../lib/generate-report');
+const e2e = require('../lib/generate-report');
 
 /**
  * Generate a report for browsers
  */
-test.generate({
+e2e.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/json/',
     reportPath: './.tmp/browsers/',
@@ -29,7 +29,7 @@ test.generate({
 /**
  * Generate a report with array of embedded data
  */
-test.generate({
+e2e.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/embedded-array-json/',
     reportPath: './.tmp/embedded-array/',
@@ -50,7 +50,7 @@ test.generate({
 /**
  * Generate a report for browsers with report time
  */
-test.generate({
+e2e.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/json/',
     reportPath: './.tmp/browsers-with-report-time/',
@@ -76,7 +76,7 @@ test.generate({
  * Generate a report with custom metadata
  * NOTE: must be last, if you use customMetadata you cannot reuse generator
  */
-test.generate({
+e2e.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/custom-metadata-json/',
     reportPath: './.tmp/custom-metadata/',

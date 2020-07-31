@@ -1,14 +1,14 @@
 [
   {
-    "metadata":{
+    "metadata": {
       "browser": {
-        "name": "chrome",
-        "version": "1"
+        "name": "not known",
+        "version": "not known"
       },
-      "device": "Local test machine",
+      "device": "not known",
       "platform": {
-        "name": "Ubuntu",
-        "version": "16.04"
+        "name": "not known",
+        "version": "not known"
       }
     },
     "description": "  No elements have been found\n  So the report should hold no scenarios and steps",

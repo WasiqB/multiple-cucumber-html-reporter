@@ -1,0 +1,94 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Safari",
+        "version": "10"
+      },
+      "device": "iPhone 7",
+      "platform": {
+        "name": "iOS",
+        "version": "10.1.2"
+      }
+    },
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
+    "keyword": "Feature",
+    "name": "Undefined scenarios specified V3",
+    "line": 2,
+    "id": "undefined-scenarios-specified-v3",
+    "tags": [
+      {
+        "name": "@undefined",
+        "line": 1
+      }
+    ],
+    "uri": "e2e-tests/features/undefined.feature",
+    "elements": [
+      {
+        "id": "undefined-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Timmy wants to see undefined scenarios",
+        "tags": [
+          {
+            "name": "@undefined",
+            "line": 1
+          },
+          {
+            "name": "@timmy",
+            "line": 6
+          },
+          {
+            "name": "@angular",
+            "line": 6
+          },
+          {
+            "name": "@nothing",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "Timmy visits the Angular homepage",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "he doesn't do anything",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "nothing has been done",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
