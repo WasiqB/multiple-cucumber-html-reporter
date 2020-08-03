@@ -1,157 +1,193 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Return an empty array when no json files could be found 1`] = `Array []`;
-
-exports[`Return an output from the merged found json files 1`] = `
+exports[`Collect the creation date of json files 1`] = `
 Array [
   Object {
-    "color": "Red",
-    "fruit": "Apple",
+    "foo": "foo",
     "metadata": Object {
-      "browser": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-      "device": "not known",
-      "platform": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-    },
-    "size": "Large",
-  },
-  Object {
-    "metadata": Object {
-      "browser": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-      "device": "not known",
-      "platform": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-    },
-    "quiz": Object {
-      "maths": Object {
-        "q1": Object {
-          "answer": "12",
-          "options": Array [
-            "10",
-            "11",
-            "12",
-            "13",
-          ],
-          "question": "5 + 7 = ?",
-        },
-        "q2": Object {
-          "answer": "4",
-          "options": Array [
-            "1",
-            "2",
-            "3",
-            "4",
-          ],
-          "question": "12 - 8 = ?",
-        },
-      },
-      "sport": Object {
-        "q1": Object {
-          "answer": "Huston Rocket",
-          "options": Array [
-            "New York Bulls",
-            "Los Angeles Kings",
-            "Golden State Warriros",
-            "Huston Rocket",
-          ],
-          "question": "Which one is correct team name in NBA?",
-        },
-      },
+      "foo-bar": true,
+      "reportTime": "2020/02/17 01:23:34",
     },
   },
   Object {
-    "color": "Red",
-    "fruit": "Apple",
+    "bar": "bar",
     "metadata": Object {
-      "browser": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-      "device": "not known",
-      "platform": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-    },
-    "size": "Large",
-  },
-  Object {
-    "metadata": Object {
-      "browser": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-      "device": "not known",
-      "platform": Object {
-        "name": "not known",
-        "version": "not known",
-      },
-    },
-    "quiz": Object {
-      "maths": Object {
-        "q1": Object {
-          "answer": "12",
-          "options": Array [
-            "10",
-            "11",
-            "12",
-            "13",
-          ],
-          "question": "5 + 7 = ?",
-        },
-        "q2": Object {
-          "answer": "4",
-          "options": Array [
-            "1",
-            "2",
-            "3",
-            "4",
-          ],
-          "question": "12 - 8 = ?",
-        },
-      },
-      "sport": Object {
-        "q1": Object {
-          "answer": "Huston Rocket",
-          "options": Array [
-            "New York Bulls",
-            "Los Angeles Kings",
-            "Golden State Warriros",
-            "Huston Rocket",
-          ],
-          "question": "Which one is correct team name in NBA?",
-        },
-      },
+      "foo-bar": false,
+      "reportTime": "2020/02/17 12:34:56",
     },
   },
 ]
 `;
 
-exports[`Return an output from the merged found json files and add the provided metadata 1`] = `
+exports[`Empty file data should become an empty array 1`] = `Array []`;
+
+exports[`Parse the after feature hook and add it as the last scenario step 1`] = `
+Array [
+  Object {
+    "elements": Array [
+      Object {
+        "after": Array [
+          Object {
+            "afterFoo": "afterFoo",
+          },
+        ],
+        "steps": Array [
+          Object {
+            "foo": "foo",
+          },
+          Object {
+            "afterFoo": "afterFoo",
+          },
+        ],
+        "type": "scenario",
+      },
+      Object {
+        "steps": Array [
+          Object {
+            "fooFooBar": "fooFooBar",
+          },
+        ],
+        "type": "scenario",
+      },
+    ],
+  },
+  Object {
+    "elements": Array [
+      Object {
+        "steps": Array [
+          Object {
+            "bar": "bar",
+          },
+        ],
+        "type": "scenario",
+      },
+      Object {
+        "after": Array [
+          Object {
+            "afterBar": "afterBar",
+          },
+        ],
+        "steps": Array [
+          Object {
+            "barBar": "barBar",
+          },
+          Object {
+            "afterBar": "afterBar",
+          },
+        ],
+        "type": "scenario",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Parse the before feature hook and add it as the first scenario step 1`] = `
+Array [
+  Object {
+    "elements": Array [
+      Object {
+        "before": Array [
+          Object {
+            "beforeFoo": "beforeFoo",
+          },
+        ],
+        "steps": Array [
+          Object {
+            "beforeFoo": "beforeFoo",
+          },
+          Object {
+            "foo": "foo",
+          },
+        ],
+        "type": "scenario",
+      },
+      Object {
+        "steps": Array [
+          Object {
+            "fooFooBar": "fooFooBar",
+          },
+        ],
+        "type": "scenario",
+      },
+    ],
+  },
+  Object {
+    "elements": Array [
+      Object {
+        "steps": Array [
+          Object {
+            "bar": "bar",
+          },
+        ],
+        "type": "scenario",
+      },
+      Object {
+        "before": Array [
+          Object {
+            "beforeBar": "beforeBar",
+          },
+        ],
+        "steps": Array [
+          Object {
+            "beforeBar": "beforeBar",
+          },
+          Object {
+            "barBar": "barBar",
+          },
+        ],
+        "type": "scenario",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Parse the elements without before and after elements as scenarios in the feature 1`] = `
+Array [
+  Object {
+    "description": "",
+    "elements": Array [
+      Object {
+        "foo": "foo",
+      },
+    ],
+    "keyword": "Feature",
+    "line": 1,
+    "name": "With one elements",
+    "tags": Array [],
+    "type": "feature",
+    "uri": "Can not be determined",
+  },
+  Object {
+    "description": "",
+    "elements": Array [
+      Object {
+        "fooFoo": "foo-foo",
+      },
+      Object {
+        "bar": "bar",
+      },
+    ],
+    "keyword": "Feature",
+    "line": 1,
+    "name": "With two elements",
+    "tags": Array [],
+    "type": "feature",
+    "uri": "Can not be determined",
+  },
+]
+`;
+
+exports[`Return an empty array when no json files could be found 1`] = `Array []`;
+
+exports[`Return an output from the merged found json files 1`] = `
 Array [
   Object {
     "foo": "bar",
-    "metadata": Object {
-      "browser": Object {
-        "name": "chrome",
-        "version": "1",
-      },
-      "device": "Local test machine",
-      "platform": Object {
-        "name": "Ubuntu",
-        "version": "16.04",
-      },
-    },
+  },
+  Object {
+    "bar": "foo",
   },
 ]
 `;

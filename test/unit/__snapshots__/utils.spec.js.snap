@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findJsonFiles should be able to find all json files 1`] = `
+Array [
+  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_1.json",
+  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_2.json",
+  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_3.json",
+]
+`;
+
+exports[`findJsonFiles should return an empty array when no json files could be found 1`] = `Array []`;
+
+exports[`formatToLocalIso should be able to format time to local ISO 1`] = `"2020/02/17 16:27:43"`;

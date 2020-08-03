@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseFeatureHooks should be able add a before hook 1`] = `
+Array [
+  Object {
+    "arguments": Array [],
+    "embeddings": Array [],
+    "keyword": "before",
+    "line": "",
+    "match": Object {
+      "location": "can not be determined",
+    },
+    "name": "Hook",
+    "result": Object {
+      "status": "passed",
+    },
+  },
+]
+`;
+
+exports[`parseFeatureHooks should be able add an after hook 1`] = `
+Array [
+  Object {
+    "arguments": Array [
+      Object {
+        "foo": "bar",
+      },
+    ],
+    "embeddings": Array [
+      Object {
+        "bar": "foo",
+      },
+    ],
+    "keyword": "after",
+    "line": "",
+    "match": Object {
+      "location": "something",
+    },
+    "name": "Hook",
+    "result": Object {
+      "foo-bar": true,
+    },
+  },
+]
+`;
+
+exports[`parseFeatureHooks should be able add multiple before hooks 1`] = `
+Array [
+  Object {
+    "arguments": Array [],
+    "embeddings": Array [],
+    "keyword": "before",
+    "line": "",
+    "match": Object {
+      "location": "can not be determined",
+    },
+    "name": "Hook",
+    "result": Object {
+      "status": "passed",
+    },
+  },
+  Object {
+    "arguments": Array [],
+    "embeddings": Array [],
+    "keyword": "before",
+    "line": "",
+    "match": Object {
+      "location": "something",
+    },
+    "name": "Hook",
+    "result": Object {
+      "status": "failed",
+    },
+  },
+]
+`;
+
+exports[`parseMetadata should be able add the default metadata 1`] = `
+Object {
+  "foo": "bar",
+  "metadata": Object {
+    "browser": Object {
+      "name": "not known",
+      "version": "not known",
+    },
+    "device": "not known",
+    "platform": Object {
+      "name": "not known",
+      "version": "not known",
+    },
+  },
+}
+`;
+
+exports[`parseMetadata should be able add the provided metadata 1`] = `
+Object {
+  "foo": "bar",
+  "metadata": Object {
+    "metadata": Object {
+      "foo": "bar",
+    },
+  },
+}
+`;
+
+exports[`parseMetadata should not add metadata if it is already there 1`] = `
+Object {
+  "foo": "bar",
+  "metadata": Object {
+    "fooBar": "fooBar",
+  },
+}
+`;
