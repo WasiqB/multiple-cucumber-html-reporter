@@ -41,7 +41,7 @@ test('Return an output from the merged found json files', () => {
 });
 
 test('Save an output from the merged found JSON files', () => {
-    const resolveMock = '/resolveMock'
+    const resolveMock = '/resolveMock';
     const reportPath = './.tmp/test';
     const resolveSpy = path.resolve.mockReturnValueOnce(resolveMock);
     const ensureDirSyncSpy = fs.ensureDirSync;

@@ -2,9 +2,10 @@
 
 exports[`findJsonFiles should be able to find all json files 1`] = `
 Array [
-  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_1.json",
-  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_2.json",
-  "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/unit/data/collect-jsons/example_3.json",
+  "/resolveMock/1.json",
+  "/resolveMock/2.json",
+  "/resolveMock/3.json",
+  "/resolveMock/6.json",
 ]
 `;
 
