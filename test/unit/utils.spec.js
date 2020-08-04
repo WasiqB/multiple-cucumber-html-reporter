@@ -63,9 +63,11 @@ describe('findJsonFiles', () => {
 });
 
 describe('formatToLocalIso', () => {
-    jest.mock('moment',
-        () => () => jest.requireActual('moment')('2020-02-17T15:27:43.843Z')
-    );
+    // jest.mock('moment',
+    //     () => () => jest.requireActual('moment')('2020-02-17T15:27:43.843Z')
+    // );
+
+    Date.now = jest.fn(() => new Date('2020-02-17T15:27:43.843Z'));
 
     it('should be able to format time to local ISO', () => {
         expect(formatToLocalIso('2020-02-17T15:27:43.843Z')).toMatchSnapshot();
