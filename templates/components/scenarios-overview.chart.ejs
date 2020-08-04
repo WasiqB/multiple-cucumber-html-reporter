@@ -38,7 +38,7 @@
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage"><%= scenarios.passedPercentage %> %</td>
+                        <td class="percentage"><%= scenarios.passed.percentage %> %</td>
                     </tr>
                     <tr>
                         <td>
@@ -47,8 +47,8 @@
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage"><%= scenarios.failedPercentage %> %</td>
-                        <% if (scenarios.ambiguous > 0) { %>
+                        <td class="percentage"><%= scenarios.failed.percentage %> %</td>
+                        <% if (scenarios.ambiguous.count > 0) { %>
                     <tr>
                         <td>
                             <p data-toggle="tooltip" data-placement="left"
@@ -57,10 +57,10 @@
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage"><%= scenarios.ambiguousPercentage %> %</td>
+                        <td class="percentage"><%= scenarios.ambiguous.percentage %> %</td>
                     </tr>
                     <% } %>
-                    <% if (scenarios.notDefined > 0) { %>
+                    <% if (scenarios.notDefined.count > 0) { %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left"
@@ -69,11 +69,11 @@
                                     Not defined
                                 </p>
                             </td>
-                            <td class="percentage"><%= scenarios.notdefinedPercentage %> %</td>
+                            <td class="percentage"><%= scenarios.notDefined.percentage %> %</td>
                         </tr>
                     <% } %>
                     </tr>
-                    <% if (scenarios.pending > 0) { %>
+                    <% if (scenarios.pending.count > 0) { %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
@@ -81,10 +81,10 @@
                                     Pending
                                 </p>
                             </td>
-                            <td class="percentage"><%= scenarios.pendingPercentage %> %</td>
+                            <td class="percentage"><%= scenarios.pending.percentage %> %</td>
                         </tr>
                     <% } %>
-                    <% if (scenarios.skipped > 0) { %>
+                    <% if (scenarios.skipped.count > 0) { %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
@@ -92,7 +92,7 @@
                                     Skipped
                                 </p>
                             </td>
-                            <td class="percentage"><%= scenarios.skippedPercentage %> %</td>
+                            <td class="percentage"><%= scenarios.skipped.percentage %> %</td>
                         </tr>
                     <% } %>
                 </table>

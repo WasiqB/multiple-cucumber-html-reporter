@@ -31,17 +31,17 @@
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
-                        <% if(+suite.scenarios.pending > 0) { %>
-                        <th>Pending</th>
+                        <% if(+suite.totalScenariosCount.pending.count > 0) { %>
+                            <th>Pending</th>
                         <% } %>
-                        <% if(+suite.scenarios.skipped > 0) { %>
-                        <th>Skip</th>
+                        <% if(+suite.totalScenariosCount.skipped.count > 0) { %>
+                            <th>Skip</th>
                         <% } %>
-                        <% if(+suite.scenarios.notDefined > 0) { %>
-                        <th>Undefined</th>
+                        <% if(+suite.totalScenariosCount.notDefined.count > 0) { %>
+                            <th>Undefined</th>
                         <% } %>
-                        <% if(+suite.scenarios.ambiguous > 0) { %>
-                        <th>Ambiguous</th>
+                        <% if(+suite.totalScenariosCount.ambiguous.count > 0) { %>
+                            <th>Ambiguous</th>
                         <% } %>
                     </tr>
                     </thead>
@@ -100,20 +100,20 @@
                             <% if (suite.displayDuration) { %>
                                 <td><%= feature.time %></td>
                             <% } %>
-                            <td><%= feature.scenarios.total %></td>
-                            <td><%= feature.scenarios.passed %></td>
-                            <td><%= feature.scenarios.failed %></td>
-                            <% if(+suite.scenarios.skipped > 0) { %>
-                                <td><%= feature.scenarios.skipped %></td>
+                            <td><%= feature.totalFeatureScenariosCount.total %></td>
+                            <td><%= feature.totalFeatureScenariosCount.passed.count %></td>
+                            <td><%= feature.totalFeatureScenariosCount.failed.count %></td>
+                            <% if(+suite.totalScenariosCount.skipped.count > 0) { %>
+                                <td><%= feature.totalFeatureScenariosCount.skipped.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.pending > 0) { %>
-                                <td><%= feature.scenarios.pending %></td>
+                            <% if(+suite.totalScenariosCount.pending.count > 0) { %>
+                                <td><%= feature.totalFeatureScenariosCount.pending.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.notDefined > 0) { %>
-                                <td><%= feature.scenarios.notDefined %></td>
+                            <% if(+suite.totalScenariosCount.notDefined.count > 0) { %>
+                                <td><%= feature.totalFeatureScenariosCount.notDefined.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.ambiguous > 0) { %>
-                                <td><%= feature.scenarios.ambiguous %></td>
+                            <% if(+suite.totalScenariosCount.ambiguous.count > 0) { %>
+                                <td><%= feature.totalFeatureScenariosCount.ambiguous.count %></td>
                             <% } %>
                         </tr>
                     <% }); %>

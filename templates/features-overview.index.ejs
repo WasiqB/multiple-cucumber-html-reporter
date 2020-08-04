@@ -51,7 +51,6 @@
     <!-- Custom Theme Style -->
     <style type="text/css">
         <%- styles %>
-        <%- customStyle %>
     </style>
 </head>
 <body>
@@ -73,7 +72,7 @@
 
         <div class="col-md-6 col-lg-<% if (suite.customData) { %>4<% } else { %>6<% } %> col-xs-12">
             <div class="x_panel fixed_height_320">
-                <%- include('components/scenarios-overview.chart.ejs', {overviewPage: true, scenarios: suite.scenarios}) %>
+                <%- include('components/scenarios-overview.chart.ejs', {overviewPage: true, scenarios: suite.totalScenariosCount}) %>
             </div>
         </div>
 
@@ -156,12 +155,12 @@
                 ],
                 datasets: [{
                     data: [
-                        <%= suite.featureCount.passed %>,
-                        <%= suite.featureCount.failed %>,
-                        <%= suite.featureCount.ambiguous %>,
-                        <%= suite.featureCount.notDefined %>,
-                        <%= suite.featureCount.pending %>,
-                        <%= suite.featureCount.skipped %>
+                        <%= suite.totalFeaturesCount.passed.count %>,
+                        <%= suite.totalFeaturesCount.failed.count %>,
+                        <%= suite.totalFeaturesCount.ambiguous.count %>,
+                        <%= suite.totalFeaturesCount.notDefined.count %>,
+                        <%= suite.totalFeaturesCount.pending.count %>,
+                        <%= suite.totalFeaturesCount.skipped.count %>
                     ],
                     backgroundColor: [
                         "#26B99A",
@@ -195,12 +194,12 @@
                 ],
                 datasets: [{
                     data: [
-                        <%= suite.scenarios.passed %>,
-                        <%= suite.scenarios.failed %>,
-                        <%= suite.scenarios.ambiguous %>,
-                        <%= suite.scenarios.notDefined %>,
-                        <%= suite.scenarios.pending %>,
-                        <%= suite.scenarios.skipped %>
+                        <%= suite.totalScenariosCount.passed.count %>,
+                        <%= suite.totalScenariosCount.failed.count %>,
+                        <%= suite.totalScenariosCount.ambiguous.count %>,
+                        <%= suite.totalScenariosCount.notDefined.count %>,
+                        <%= suite.totalScenariosCount.pending.count %>,
+                        <%= suite.totalScenariosCount.skipped.count %>
                     ],
                     backgroundColor: [
                         "#26B99A",

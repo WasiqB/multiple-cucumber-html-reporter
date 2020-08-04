@@ -41,7 +41,6 @@
     <!-- Custom Theme Style -->
     <style type="text/css">
         <%- styles %>
-        <%- customStyle %>
     </style>
 </head>
 <body>
@@ -83,7 +82,7 @@
     <div class="row">
         <div class="<% if(suite.hideMetadata) { %>col-lg-12<% } else { %>col-md-8 col-xs-12<% } %>">
             <div class="x_panel fixed_height_320">
-                <%- include('components/scenarios-overview.chart.ejs', {overviewPage: false, scenarios: feature.scenarios }) %>
+                <%- include('components/scenarios-overview.chart.ejs', {overviewPage: false, scenarios: feature.totalFeatureScenariosCount }) %>
             </div>
         </div>
         <% if (!suite.hideMetadata) { %>
@@ -146,12 +145,12 @@
                 ],
                 datasets: [{
                     data: [
-                        <%= feature.scenarios.passed %>,
-                        <%= feature.scenarios.failed %>,
-                        <%= feature.scenarios.pending %>,
-                        <%= feature.scenarios.skipped %>,
-                        <%= feature.scenarios.ambiguous %>,
-                        <%= feature.scenarios.notDefined %>
+                        <%= feature.totalFeatureScenariosCount.passed.count %>,
+                        <%= feature.totalFeatureScenariosCount.failed.count %>,
+                        <%= feature.totalFeatureScenariosCount.pending.count %>,
+                        <%= feature.totalFeatureScenariosCount.skipped.count %>,
+                        <%= feature.totalFeatureScenariosCount.ambiguous.count %>,
+                        <%= feature.totalFeatureScenariosCount.notDefined.count %>
                     ],
                     backgroundColor: [
                         "#26B99A",

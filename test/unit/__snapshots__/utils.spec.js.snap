@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`calculatePercentage should be able to calculate the correct percentage 1`] = `"50.00"`;
+
+exports[`calculatePercentage should be able to calculate the correct percentage 2`] = `"42.86"`;
+
+exports[`escapeHtml should escape data in the string 1`] = `"&lt;p&gt;Hello&lt;/p&gt;"`;
+
+exports[`escapeHtml should not escape data in the string 1`] = `"nothing to escape"`;
+
+exports[`escapeHtml should not escape data in the string 2`] = `2`;
+
+exports[`escapeHtml should not escape data in the string 3`] = `true`;
+
+exports[`escapeHtml should not escape data in the string 4`] = `
+Object {
+  "foo": "foo",
+}
+`;
+
 exports[`findJsonFiles should be able to find all json files 1`] = `
 Array [
   "/resolveMock/1.json",
@@ -10,5 +28,9 @@ Array [
 `;
 
 exports[`findJsonFiles should return an empty array when no json files could be found 1`] = `Array []`;
+
+exports[`formatDuration should be able determine the proper  duration 1`] = `"00:01:33.399"`;
+
+exports[`formatDuration should be able determine the proper  duration 2`] = `"00:00:01.993"`;
 
 exports[`formatToLocalIso should be able to format time to local ISO 1`] = `"2020/02/17 16:27:43"`;

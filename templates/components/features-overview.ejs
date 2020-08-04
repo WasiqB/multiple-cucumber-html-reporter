@@ -45,16 +45,16 @@
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
-                        <% if(+suite.scenarios.pending > 0) { %>
+                        <% if(+suite.totalScenariosCount.pending.count > 0) { %>
                             <th>Pending</th>
                         <% } %>
-                        <% if(+suite.scenarios.skipped > 0) { %>
+                        <% if(+suite.totalScenariosCount.skipped.count > 0) { %>
                             <th>Skip</th>
                         <% } %>
-                        <% if(+suite.scenarios.notDefined > 0) { %>
+                        <% if(+suite.totalScenariosCount.notDefined.count > 0) { %>
                             <th>Undefined</th>
                         <% } %>
-                        <% if(+suite.scenarios.ambiguous > 0) { %>
+                        <% if(+suite.totalScenariosCount.ambiguous.count > 0) { %>
                             <th>Ambiguous</th>
                         <% } %>
                     </tr>
@@ -184,20 +184,20 @@
                             <% if (suite.displayDuration) { %>
                                 <td><%= feature.time %></td>
                             <% } %>
-                            <td class="text-right <%= !feature.scenarios.total ? 'none' : '' %>"><%= feature.scenarios.total %></td>
-                            <td class="text-right <%= !feature.scenarios.passed ? 'none' : '' %>"><%= feature.scenarios.passed %></td>
-                            <td class="text-right <%= !feature.scenarios.failed ? 'none' : '' %>"><%= feature.scenarios.failed %></td>
-                            <% if(+suite.scenarios.skipped > 0) { %>
-                                <td class="text-right <%= !feature.scenarios.skipped ? 'none' : '' %>"><%= feature.scenarios.skipped %></td>
+                            <td class="text-right <%= !feature.totalFeatureScenariosCount.total ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.total %></td>
+                            <td class="text-right <%= !feature.totalFeatureScenariosCount.passed.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.passed.count %></td>
+                            <td class="text-right <%= !feature.totalFeatureScenariosCount.failed.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.failed.count %></td>
+                            <% if(+suite.totalScenariosCount.skipped.count > 0) { %>
+                                <td class="text-right <%= !feature.totalFeatureScenariosCount.skipped.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.skipped.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.pending > 0) { %>
-                                <td class="text-right <%= !feature.scenarios.pending ? 'none' : '' %>"><%= feature.scenarios.pending %></td>
+                            <% if(+suite.totalScenariosCount.pending.count > 0) { %>
+                                <td class="text-right <%= !feature.totalFeatureScenariosCount.pending.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.pending.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.notDefined > 0) { %>
-                                <td class="text-right <%= !feature.scenarios.notDefined ? 'none' : '' %>"><%= feature.scenarios.notDefined %></td>
+                            <% if(+suite.totalScenariosCount.notDefined.count > 0) { %>
+                                <td class="text-right <%= !feature.totalFeatureScenariosCount.notDefined.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.notDefined.count %></td>
                             <% } %>
-                            <% if(+suite.scenarios.ambiguous > 0) { %>
-                                <td class="text-right <%= !feature.scenarios.ambiguous ? 'none' : '' %>"><%= feature.scenarios.ambiguous %></td>
+                            <% if(+suite.totalScenariosCount.ambiguous.count > 0) { %>
+                                <td class="text-right <%= !feature.totalFeatureScenariosCount.ambiguous.count ? 'none' : '' %>"><%= feature.totalFeatureScenariosCount.ambiguous.count %></td>
                             <% } %>
                         </tr>
                     <% }); %>

@@ -27,7 +27,7 @@
         <tr>
             <td class="chart">
                 <canvas id="feature-chart"></canvas>
-                <div class="total"><%= suite.featureCount.total %></div>
+                <div class="total"><%= suite.totalFeaturesCount.total %></div>
             </td>
             <td>
                 <table class="tile_info">
@@ -38,7 +38,7 @@
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage"><%= suite.featureCount.passedPercentage %> %</td>
+                        <td class="percentage"><%= suite.totalFeaturesCount.passed.percentage %> %</td>
                     </tr>
                     <tr>
                         <td>
@@ -47,9 +47,9 @@
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage"><%= suite.featureCount.failedPercentage %> %</td>
+                        <td class="percentage"><%= suite.totalFeaturesCount.failed.percentage %> %</td>
                     </tr>
-                    <% if(suite.featureCount.ambiguous > 0){ %>
+                    <% if(suite.totalFeaturesCount.ambiguous.count > 0){ %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left"
@@ -58,10 +58,10 @@
                                     Ambiguous
                                 </p>
                             </td>
-                            <td class="percentage"><%= suite.featureCount.ambiguousPercentage %> %</td>
+                            <td class="percentage"><%= suite.totalFeaturesCount.ambiguous.percentage %> %</td>
                         </tr>
                     <% } %>
-                    <% if(suite.featureCount.notDefined > 0){ %>
+                    <% if(suite.totalFeaturesCount.notDefined.count > 0){ %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left"
@@ -70,10 +70,10 @@
                                     Not Defined
                                 </p>
                             </td>
-                            <td class="percentage"><%= suite.featureCount.notdefinedPercentage %> %</td>
+                            <td class="percentage"><%= suite.totalFeaturesCount.notDefined.percentage %> %</td>
                         </tr>
                     <% } %>
-                    <% if(suite.featureCount.pending > 0){ %>
+                    <% if(suite.totalFeaturesCount.pending.count > 0){ %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left"
@@ -82,10 +82,10 @@
                                     Pending
                                 </p>
                             </td>
-                            <td class="percentage"><%= suite.featureCount.pendingPercentage %> %</td>
+                            <td class="percentage"><%= suite.totalFeaturesCount.pending.percentage %> %</td>
                         </tr>
                     <% } %>
-                    <% if(suite.featureCount.skipped > 0){ %>
+                    <% if(suite.totalFeaturesCount.skipped.count > 0){ %>
                         <tr>
                             <td>
                                 <p data-toggle="tooltip" data-placement="left"
@@ -94,7 +94,7 @@
                                     Skipped
                                 </p>
                             </td>
-                            <td class="percentage"><%= suite.featureCount.skippedPercentage %> %</td>
+                            <td class="percentage"><%= suite.totalFeaturesCount.skipped.percentage %> %</td>
                         </tr>
                     <% } %>
 
