@@ -63,7 +63,9 @@ describe('findJsonFiles', () => {
 });
 
 describe('formatToLocalIso', () => {
-    jest.mock('moment', () => () => ({format: () => '2020/02/17 16:27:43'}));
+    jest.mock('moment',
+        () => () => jest.requireActual('moment')('2020-02-17T15:27:43.843Z')
+    );
 
     it('should be able to format time to local ISO', () => {
         expect(formatToLocalIso('2020-02-17T15:27:43.843Z')).toMatchSnapshot();
@@ -185,7 +187,7 @@ describe('getCustomStyleSheet', () => {
     it('should log an error when the file content could not be accessed', () => {
         const fileName = './file.txt';
         const error = 'Access error';
-        fs.accessSync.mockImplementationOnce(()=> {
+        fs.accessSync.mockImplementationOnce(() => {
             throw new Error(error);
         });
         jest.spyOn(global.console, 'log');
@@ -200,7 +202,7 @@ describe('getCustomStyleSheet', () => {
         const fileName = './file.txt';
         const error = 'Read error';
         fs.accessSync;
-        fs.readFileSync.mockImplementationOnce(()=> {
+        fs.readFileSync.mockImplementationOnce(() => {
             throw new Error(error);
         });
         jest.spyOn(global.console, 'log');
@@ -237,7 +239,7 @@ describe('getStyleSheet', () => {
     it('should log an error when the file content could not be accessed', () => {
         const fileName = 'foo.css';
         const error = 'Access error';
-        fs.accessSync.mockImplementationOnce(()=> {
+        fs.accessSync.mockImplementationOnce(() => {
             throw new Error(error);
         });
         jest.spyOn(global.console, 'log');
@@ -252,7 +254,7 @@ describe('getStyleSheet', () => {
         const fileName = 'foo.css';
         const error = 'Read error';
         fs.accessSync;
-        fs.readFileSync.mockImplementationOnce(()=> {
+        fs.readFileSync.mockImplementationOnce(() => {
             throw new Error(error);
         });
         jest.spyOn(global.console, 'log');

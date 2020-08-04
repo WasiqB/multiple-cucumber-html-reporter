@@ -6,6 +6,7 @@ const collectJSONS = require('../../lib/collect-jsons');
 const REPORT_PATH = join(process.cwd(), './.tmp/');
 
 jest.mock('../../lib/utils');
+jest.mock('../../lib/collect-jsons');
 
 let createReportFoldersSpy, collectJSONSSpy;
 
