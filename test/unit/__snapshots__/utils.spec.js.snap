@@ -33,4 +33,4 @@ exports[`formatDuration should be able determine the proper  duration 1`] = `"00
 
 exports[`formatDuration should be able determine the proper  duration 2`] = `"00:00:01.993"`;
 
-exports[`formatToLocalIso should be able to format time to local ISO 1`] = `"2020/02/17 16:27:43"`;
+exports[`formatToLocalIso should be able to format time to local ISO 1`] = `"2020/02/17 15:27:43"`;

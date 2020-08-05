@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "release": "np",
-    "test.unit": "jest",
+    "test.unit": "TZ=UTC jest",
     "test.e2e": "node test/e2e.js",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
