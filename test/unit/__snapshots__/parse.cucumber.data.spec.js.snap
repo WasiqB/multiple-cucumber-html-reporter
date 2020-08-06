@@ -111,3 +111,297 @@ Object {
   },
 }
 `;
+
+exports[`parseScenarioSteps should be able to parse HTML embeddings 1`] = `
+Object {
+  "steps": Array [
+    Object {
+      "attachments": Array [],
+      "embeddings": Array [
+        Object {
+          "data": "<H1>This is a HTML list</H1><div><ul><li>1st</li><li>2nd</li></ul></div>",
+          "mime_type": "text/html",
+        },
+        Object {
+          "data": "PEgxPlRoaXMgaXMgYSAybmQgSFRNTCBsaXN0PC9IMT48ZGl2Pjx1bD48bGk+M3JkPC9saT48bGk+NHRoPC9saT48L3VsPjwvZGl2Pg==",
+          "media": Object {
+            "type": "text/html",
+          },
+        },
+      ],
+      "html": Array [
+        "<H1>This is a HTML list</H1><div><ul><li>1st</li><li>2nd</li></ul></div>",
+        "<H1>This is a 2nd HTML list</H1><div><ul><li>3rd</li><li>4th</li></ul></div>",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parseScenarioSteps should be able to parse JSON embeddings 1`] = `
+Object {
+  "steps": Array [
+    Object {
+      "attachments": Array [],
+      "embeddings": Array [
+        Object {
+          "data": "[{\\"fruit\\": \\"Apple\\", \\"size\\": \\"Large\\", \\"color\\": \\"Red\\"}]",
+          "mime_type": "application/json",
+        },
+        Object {
+          "data": Array [
+            Object {
+              "color": "Orange",
+              "fruit": "Orange",
+              "size": "Small",
+            },
+          ],
+          "media": Object {
+            "type": "application/json",
+          },
+        },
+      ],
+      "json": Array [
+        Array [
+          Object {
+            "color": "Red",
+            "fruit": "Apple",
+            "size": "Large",
+          },
+        ],
+        Array [
+          Object {
+            "color": "Orange",
+            "fruit": "Orange",
+            "size": "Small",
+          },
+        ],
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parseScenarioSteps should be able to parse image embeddings 1`] = `
+Object {
+  "steps": Array [
+    Object {
+      "attachments": Array [],
+      "embeddings": Array [
+        Object {},
+        Object {},
+      ],
+      "image": Array [
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parseScenarioSteps should be able to parse plain text embeddings 1`] = `
+Object {
+  "steps": Array [
+    Object {
+      "attachments": Array [],
+      "embeddings": Array [
+        Object {
+          "data": "Hello, I am a plain text string",
+          "mime_type": "text/plain",
+        },
+        Object {
+          "data": "SGVsbG8sIEkgYW0gYSBzZWNvbmQgcGxhaW4gdGV4dCBzdHJpbmc=",
+          "media": Object {
+            "type": "text/plain",
+          },
+        },
+      ],
+      "text": Array [
+        "Hello, I am a plain text string",
+        "Hello, I am a second plain text string",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parseScenarioSteps should be able to parse the doc_string data 1`] = `
+Object {
+  "ambiguous": 0,
+  "duration": 4060535948,
+  "failed": 0,
+  "id": "create_api_validate_all_planet_and_response",
+  "keyword": "Scenario",
+  "notDefined": 0,
+  "passed": 1,
+  "pending": 0,
+  "skipped": 0,
+  "steps": Array [
+    Object {
+      "doc_string": Object {
+        "content_type": "",
+        "value": "17:30:35.402 request:
+1 > GET https://swapi.co/api/planets
+1 > Accept-Encoding: gzip,deflate",
+      },
+      "id": "testid-create_api_validate_all_planet_and_response-method-get",
+      "keyword": "Given",
+      "name": "method get",
+      "restWireData": "17:30:35.402 request:<br />1  GET https://swapi.co/api/planets<br />1  Accept-Encoding: gzip,deflate",
+      "result": Object {
+        "duration": 4060535948,
+        "status": "passed",
+      },
+      "time": "00:00:00.001",
+    },
+  ],
+  "time": "00:00:00.000",
+  "type": "scenario",
+}
+`;
+
+exports[`parseScenarioSteps should be able to parse unknown embeddings 1`] = `
+Object {
+  "steps": Array [
+    Object {
+      "attachments": Array [
+        Object {
+          "data": "data:text/plain;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=",
+          "type": "text/plain",
+        },
+        Object {
+          "data": "data:foo/type;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+          "type": "foo/type",
+        },
+        Object {
+          "data": "data:bar/type;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+          "type": "bar/type",
+        },
+      ],
+      "embeddings": Array [
+        Object {},
+        Object {},
+        Object {},
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parseScenarioSteps should log steps to the report for passed and failed steps 1`] = `
+Object {
+  "ambiguous": 1,
+  "duration": 8000000,
+  "failed": 1,
+  "keyword": "Scenario",
+  "notDefined": 1,
+  "passed": 3,
+  "pending": 1,
+  "skipped": 1,
+  "steps": Array [
+    Object {
+      "hidden": false,
+      "keyword": "Before",
+      "result": Object {
+        "duration": 1000000,
+        "status": "passed",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "hidden": false,
+      "keyword": "Before",
+      "result": Object {
+        "duration": 1000000,
+        "status": "passed",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "hidden": false,
+      "keyword": "Before",
+      "result": Object {
+        "duration": 1000000,
+        "status": "passed",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "keyword": "Given",
+      "result": Object {
+        "duration": 1000000,
+        "status": "undefined",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "keyword": "When",
+      "result": Object {
+        "duration": 1000000,
+        "status": "pending",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "keyword": "Then",
+      "result": Object {
+        "duration": 1000000,
+        "error_message": "Error: blabla
+    at World.<anonymous> (e2e/steps/common.steps.ts:32:10)",
+        "status": "failed",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "keyword": "And",
+      "result": Object {
+        "duration": 1000000,
+        "status": "skipped",
+      },
+      "time": "00:00:00.001",
+    },
+    Object {
+      "hidden": false,
+      "keyword": "After",
+      "result": Object {
+        "duration": 1000000,
+        "status": "ambiguous",
+      },
+      "time": "00:00:00.001",
+    },
+  ],
+  "time": "00:00:00.000",
+  "type": "scenario",
+}
+`;
+
+exports[`parseScenarioSteps should not log steps to the report under certain conditions 1`] = `
+Object {
+  "ambiguous": 0,
+  "duration": 0,
+  "failed": 0,
+  "keyword": "Scenario",
+  "notDefined": 0,
+  "passed": 0,
+  "pending": 0,
+  "skipped": 0,
+  "steps": Array [
+    Object {
+      "hidden": false,
+      "keyword": "After",
+    },
+    Object {
+      "attachments": Array [],
+      "hidden": true,
+      "keyword": "After",
+      "result": Object {
+        "duration": 3000000,
+        "status": "passed",
+      },
+    },
+  ],
+  "time": "00:00:00.000",
+  "type": "scenario",
+}
+`;

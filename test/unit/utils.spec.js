@@ -91,8 +91,34 @@ describe('createReportFolders', () => {
 
 describe('calculatePercentage', () => {
     it('should be able to calculate the correct percentage', () => {
-        expect(calculatePercentage(5, 10)).toMatchSnapshot();
-        expect(calculatePercentage(3, 7)).toMatchSnapshot();
+        const obj = {
+            ambiguous: {
+                count: 6,
+                percentage: 0
+            },
+            failed: {
+                count: 5,
+                percentage: 0
+            },
+            passed: {
+                count: 30,
+                percentage: 0
+            },
+            notDefined: {
+                count: 1,
+                percentage: 0
+            },
+            pending: {
+                count: 4,
+                percentage: 0
+            },
+            skipped: {
+                count: 5,
+                percentage: 0
+            },
+            total: 51,
+        }
+        expect(calculatePercentage(obj)).toMatchSnapshot();
     });
 });
 
@@ -210,6 +236,58 @@ describe('getCustomStyleSheet', () => {
 
         expect(console.log).toHaveBeenCalledWith(
             chalk.yellow(`WARNING: Custom stylesheet: '${fileName}' could not be loaded due to 'Error: ${error}'.`)
+        );
+    });
+});
+
+describe('getStyleSheet', () => {
+    it('should be able to get the generic js content', () => {
+        const readFileSyncSpy = fs.readFileSync;
+        const joinSpy = path.join;
+
+        getStyleSheet();
+
+        expect(readFileSyncSpy).toHaveBeenCalled();
+        expect(joinSpy).toHaveBeenCalled();
+    });
+
+    it('should return file content when a filename is provided', () => {
+        const fileContent = 'File content';
+        const fileName = 'foo.css';
+        const accessSyncSpy = fs.accessSync;
+        const readFileSyncSpy = fs.readFileSync.mockReturnValue(fileContent);
+
+        expect(getStyleSheet(fileName)).toEqual(fileContent);
+        expect(accessSyncSpy).toHaveBeenCalledWith(fileName, 4);
+        expect(readFileSyncSpy).toHaveBeenCalledWith(fileName, 'utf-8');
+    });
+
+    it('should log an error when the file content could not be accessed', () => {
+        const fileName = 'foo.css';
+        const error = 'Access error';
+        fs.accessSync.mockImplementationOnce(()=> {
+            throw new Error(error);
+        });
+        jest.spyOn(global.console, 'log');
+        getStyleSheet(fileName);
+
+        expect(console.log).toHaveBeenCalledWith(
+            chalk.yellow(`WARNING: Override stylesheet: '${fileName}' could not be loaded due to 'Error: ${error}'. The default will be loaded.`)
+        );
+    });
+
+    it('should log an error when the file content could not be read', () => {
+        const fileName = 'foo.css';
+        const error = 'Read error';
+        fs.accessSync;
+        fs.readFileSync.mockImplementationOnce(()=> {
+            throw new Error(error);
+        });
+        jest.spyOn(global.console, 'log');
+        getStyleSheet(fileName);
+
+        expect(console.log).toHaveBeenCalledWith(
+            chalk.yellow(`WARNING: Override stylesheet: '${fileName}' could not be loaded due to 'Error: ${error}'. The default will be loaded.`)
         );
     });
 });

@@ -1,8 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`calculatePercentage should be able to calculate the correct percentage 1`] = `"50.00"`;
-
-exports[`calculatePercentage should be able to calculate the correct percentage 2`] = `"42.86"`;
+exports[`calculatePercentage should be able to calculate the correct percentage 1`] = `
+Object {
+  "ambiguous": Object {
+    "count": 6,
+    "percentage": "11.76",
+  },
+  "failed": Object {
+    "count": 5,
+    "percentage": "9.80",
+  },
+  "notDefined": Object {
+    "count": 1,
+    "percentage": "1.96",
+  },
+  "passed": Object {
+    "count": 30,
+    "percentage": "58.82",
+  },
+  "pending": Object {
+    "count": 4,
+    "percentage": "7.84",
+  },
+  "skipped": Object {
+    "count": 5,
+    "percentage": "9.80",
+  },
+  "total": 51,
+}
+`;
 
 exports[`escapeHtml should escape data in the string 1`] = `"&lt;p&gt;Hello&lt;/p&gt;"`;
 
