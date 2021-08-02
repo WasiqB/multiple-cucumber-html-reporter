@@ -66,6 +66,13 @@
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
                         </td>
                         <td class="text-center">
+                            <% for(const el of feature.elements) { %>
+                            <% if(el.tags.length > 0) { %>
+                            <% for(const tag of el.tags) { %>
+                            <% if(feature.tags.filter(t=>t.name==tag.name)==0)feature.tags.push(tag) %>
+                            <% } %>
+                            <% } %>
+                            <% } %>
                             <% if (feature.tags) { %>
                             <% var amount = feature.tags.length; %>
                             <% var tags = _.reduce(feature.tags, (tags, tag) => tags + tag.name + ' ', ''); %>
