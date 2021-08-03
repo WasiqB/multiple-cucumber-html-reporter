@@ -1,0 +1,29 @@
+<div>
+    <div class="x_title">
+        <h2>Attachments</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <% _.each(attachments, function(attachment, attachmentIndex) { %>
+        <div class="x_content">
+            <% if (attachment.mime_type.match('video.*')) { %>
+                <video src="<%= attachment.src %>"
+                    <% if (!_.isEmpty(attachment.controls)) { %> controls="controls" <% } %>
+                    <% if (!_.isEmpty(attachment.autoplay)) { %> autoplay="autoplay" <% } %>
+                    <% if (!_.isEmpty(attachment.loop)) { %> loop="loop" <% } %>
+                    <% if (!_.isEmpty(attachment.muted)) { %> muted="muted" <% } %>
+                    <% if (!_.isEmpty(attachment.height)) { %> height="<%= attachment.height %>" <% } %>
+                    <% if (!_.isEmpty(attachment.width)) { %> width="<%= attachment.width %>" <% } %>
+                />
+            <% } %>
+        </div>
+
+    <% }); %>
+</div>

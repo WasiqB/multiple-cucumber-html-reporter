@@ -93,6 +93,16 @@
             <% } %>
         </div>
 
+        <% if (feature.attachments) { %>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="x_panel">
+                        <%= featureAttachments %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
         <div class="row">
             <%= scenarioTemplate %>
         </div>
