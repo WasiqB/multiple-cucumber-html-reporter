@@ -67,9 +67,9 @@
                         </td>
                         <td class="text-center">
                             <% _.each(feature.elements, function(element, elementIndex) { %>
-                            <% if(element.tags.length > 0) { %>
+                            <% if(element.tags && element.tags.length > 0) { %>
                             <% _.each(element.tags, function(tag, tagIndex) { %>
-                            <% if(feature.tags.filter(t=>t.name==tag.name)==0) feature.tags.push(tag) %>
+                            <% if(feature.tags && feature.tags.filter(t=>t.name==tag.name)==0) feature.tags.push(tag) %>
                             <% }) %>
                             <% } %>
                             <% }) %>
