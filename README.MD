@@ -14,7 +14,6 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a feature(s) overview with metadata of the used browser(s) / devices
 
 # Important
-
 > **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
