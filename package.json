@@ -13,11 +13,14 @@
   "main": "lib/generate-report.js",
   "license": "MIT",
   "scripts": {
-    "release": "np",
+    "release": "release-it --github.release",
+    "release.ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
+    "release.patch": "npm run release -- patch",
+    "release.minor": "npm run release -- minor",
+    "release.major": "npm run release -- major",
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine"
   },
   "repository": {
     "type": "git",
@@ -40,9 +43,8 @@
     "uuid": "^3.4.0"
   },
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "istanbul": "^0.4.5",
     "jasmine": "^3.5.0",
-    "np": "^6.3.2"
+    "release-it": "^14.11.8"
   }
 }
