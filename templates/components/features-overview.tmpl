@@ -69,7 +69,7 @@
                             <% _.each(feature.elements, function(element, elementIndex) { %>
                             <% if(element.tags && element.tags.length > 0) { %>
                             <% _.each(element.tags, function(tag, tagIndex) { %>
-                            <% if(feature.tags && feature.tags.filter(t=>t.name==tag.name)==0) feature.tags.push(tag) %>
+                            <% if(feature.tags && feature.tags.filter(t=>t.name==tag.name).length==0) feature.tags.push(tag) %>
                             <% }) %>
                             <% } %>
                             <% }) %>
