@@ -79,10 +79,17 @@
                     <% } else { %>
                     <% browserIcon = 'question-circle not-defined-color'; %>
                     <% } %>
+                    <% if (metadata.browser.name.toLowerCase().includes('headless')) { %>
+                                            <svg class="headless" width="20" height="20">
+                                               <title id="ghost"><%= metadata.browser.name %></title>
+                                            </svg>
+                                           <span style="vertical-align: bottom"><%=metadata.browser.version %></span>
+                    <% } else { %>
                     <i class="fa fa-<%= browserIcon %> fa-lg">
                         <span><%= metadata.browser.name.toLowerCase() %></span>
                     </i>
                     <%= metadata.browser.version %>
+                    <% } %>
                 </span>
             </li>
             <% } %>

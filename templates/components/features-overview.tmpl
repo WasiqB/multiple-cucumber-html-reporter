@@ -175,8 +175,19 @@
                                 <% } else { %>
                                 <% browserIcon = 'question-circle not-defined-color'; %>
                                 <% }%>
-                                <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
+                                <% if (feature.metadata.browser.name.toLowerCase().includes('headless')) { %>
+                                            <svg class="headless" width="20" height="20">
+                                               <title id="ghost"><%= feature.metadata.browser.name %></title>
+                                            </svg>
+                                           <span style="vertical-align: bottom">
+                                               <%= feature.metadata.browser.version %>
+                                           </span>
+                                <% } else { %>
+                                <i class="fa fa-<%= browserIcon %> fa-lg">
+                                    <span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
                                 <%= feature.metadata.browser.version %>
+                                <% } %>
+
                                 <% } %>
                             </td>
                             <% } %>
