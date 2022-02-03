@@ -53,7 +53,7 @@
                 </a>
             </div>
             <p class="navbar-text">Feature path:
-                <small><%= Array.from(feature.uri.split('\\')).slice(-2).join('/') %></small>
+                <small><%= Array.from(feature.uri.replaceAll('\\','/').split('/')).slice(-2).join('/') %></small>
             </p>
         </div>
     </nav>
