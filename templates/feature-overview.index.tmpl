@@ -73,7 +73,9 @@
             <h1>Feature:
                 <small><%= feature.name %></small>
             </h1>
-            <p><%= feature.description %></p>
+            <p><% if (feature.description && feature.description.length > 0) { %>
+                <strong>Description: </strong> <%= feature.description %> </p>
+            <% } %>
         </div>
 
         <div class="clearfix"></div>
@@ -92,7 +94,7 @@
             </div>
             <% } %>
         </div>
-        <div class="dropdown pull-right dropup">
+        <div class="dropdown pull-right dropup" >
             <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown" style="margin-bottom: 15px;">
                 Filter By<span class="caret" style="margin-left: 5px"></span></button>
             <ul class="dropdown-menu">
@@ -151,6 +153,7 @@
     <script>
         var hideResult;
         var showAll;
+        var checkStatus;
         $(document).ready(function () {
 
             var scenarioOptions = {
