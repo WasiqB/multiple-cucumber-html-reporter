@@ -76,6 +76,11 @@
             <p><% if (feature.description && feature.description.length > 0) { %>
                 <strong>Description: </strong> <%= feature.description %> </p>
             <% } %>
+           <p><strong>File name:</strong>
+                <%= Array.from(feature.uri.replaceAll('\\','/').split('/')).pop() %>
+            </p>
+            <p><strong>Relative path:</strong>
+                <%= Array.from(feature.uri.replaceAll('\\','/').split('/')).slice(-2).join('/') %></p>
         </div>
 
         <div class="clearfix"></div>
