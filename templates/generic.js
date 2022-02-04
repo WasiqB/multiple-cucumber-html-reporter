@@ -19,3 +19,20 @@ $('.x_title').on('click', function () {
 $('body').tooltip({
     selector: '[data-toggle="tooltip"]'
 });
+
+$('#passed').on('click', () => hideResult('passed'));
+$('#failed').on('click', () => hideResult('failed'))
+$('#pending').on('click', () => hideResult('pending'))
+$('#skipped').on('click', () => hideResult('skipped'))
+$('#not_defined').on('click', () => hideResult('not-defined'))
+$('#ambiguous').on('click', () => hideResult('ambiguous'))
+$('#clear').on('click', () => showAll())
+
+function hideResult(stepResult) {
+    $('span[class*=step]').closest('div.x_panel[style]').hide();
+    $('span[class*=' + stepResult + ']').closest('div.x_panel[style]').show();
+}
+
+function showAll() {
+    $('span[class*=step]').closest('div.x_panel[style]').show();
+}

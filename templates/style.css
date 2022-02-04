@@ -22,6 +22,10 @@ nav.navbar {
     margin-bottom: 10px;
 }
 
+filter-i {
+    margin-left: 5px;
+}
+
 nav .navbar-brand {
     border-right: 1px solid #D9DEE4;
     color: #5A738E;
