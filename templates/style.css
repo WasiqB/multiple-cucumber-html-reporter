@@ -37,6 +37,7 @@ nav .navbar-text {
     margin-bottom: 0;
     margin-top: 0;
     padding: 15px 0;
+    float: right;
 }
 
 /* Table */
@@ -249,10 +250,6 @@ table td.chart .total {
     height: 320px;
 }
 
-.x_title h2 small {
-    margin-left: 10px;
-}
-
 .x_title span {
     color: #BDBDBD;
 }
@@ -305,7 +302,9 @@ table td.chart .total {
 }
 
 .page-title h1 {
-    margin: 9px 0;
+    margin: 9px 0 9px 13px;
+    font-size: 30px;
+
 }
 
 .page-title .title_right {
