@@ -11,10 +11,10 @@
         
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
-                
+
                 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                
+
                 <!--[if lt IE 9]>
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
@@ -53,6 +53,10 @@ nav.navbar {
     margin-bottom: 10px;
 }
 
+filter-i {
+    margin-left: 5px;
+}
+
 nav .navbar-brand {
     border-right: 1px solid #D9DEE4;
     color: #5A738E;
@@ -64,6 +68,7 @@ nav .navbar-text {
     margin-bottom: 0;
     margin-top: 0;
     padding: 15px 0;
+    float: right;
 }
 
 /* Table */
@@ -276,10 +281,6 @@ table td.chart .total {
     height: 320px;
 }
 
-.x_title h2 small {
-    margin-left: 10px;
-}
-
 .x_title span {
     color: #BDBDBD;
 }
@@ -332,7 +333,9 @@ table td.chart .total {
 }
 
 .page-title h1 {
-    margin: 9px 0;
+    margin: 9px 0 9px 13px;
+    font-size: 30px;
+
 }
 
 .page-title .title_right {
@@ -498,6 +501,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
         <nav class="navbar">
             <div class="container-fluid">
+                <p class="navbar-text" style="float: left">Dashboard</p>
                 <p class="navbar-text">You can adjust this report name</p>
             </div>
         </nav>
@@ -529,14 +533,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
         <tr>
             <td class="chart">
                 <canvas id="feature-chart"></canvas>
-                <div class="total">24</div>
+                <div class="total">29</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -547,7 +551,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">29.17 %</td>
+                        <td class="percentage">31.03 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -556,7 +560,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">20.83 %</td>
+                        <td class="percentage">20.69 %</td>
                     </tr>
                     
                     <tr>
@@ -567,7 +571,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage">12.50 %</td>
+                        <td class="percentage">10.34 %</td>
                     </tr>
                     
                     
@@ -579,7 +583,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Not Defined
                             </p>
                         </td>
-                        <td class="percentage">16.67 %</td>
+                        <td class="percentage">13.79 %</td>
                     </tr>
                     
                     
@@ -591,7 +595,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Pending
                             </p>
                         </td>
-                        <td class="percentage">12.50 %</td>
+                        <td class="percentage">10.34 %</td>
                     </tr>
                     
                     
@@ -603,7 +607,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Skipped
                             </p>
                         </td>
-                        <td class="percentage">4.17 %</td>
+                        <td class="percentage">3.45 %</td>
                     </tr>
                     
 
@@ -640,14 +644,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
         <tr>
             <td class="chart">
                 <canvas id="scenario-chart"></canvas>
-                <div class="total">35</div>
+                <div class="total">37</div>
             </td>
             <td>
                 <table class="tile_info">
@@ -658,7 +662,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Passed
                             </p>
                         </td>
-                        <td class="percentage">45.71 %</td>
+                        <td class="percentage">45.95 %</td>
                     </tr>
                     <tr>
                         <td>
@@ -667,7 +671,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Failed
                             </p>
                         </td>
-                        <td class="percentage">14.29 %</td>
+                        <td class="percentage">16.22 %</td>
                     
                     <tr>
                         <td>
@@ -677,7 +681,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Ambiguous
                             </p>
                         </td>
-                        <td class="percentage">8.57 %</td>
+                        <td class="percentage">8.11 %</td>
                     </tr>
                     
                     
@@ -688,7 +692,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Not defined
                             </p>
                         </td>
-                        <td class="percentage">11.43 %</td>
+                        <td class="percentage">10.81 %</td>
                     </tr>
                     
                     </tr>
@@ -700,7 +704,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Pending
                             </p>
                         </td>
-                        <td class="percentage">11.43 %</td>
+                        <td class="percentage">10.81 %</td>
                     </tr>
                     
                     
@@ -711,7 +715,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 Skipped
                             </p>
                         </td>
-                        <td class="percentage">8.57 %</td>
+                        <td class="percentage">8.11 %</td>
                     </tr>
                     
                 </table>
@@ -804,17 +808,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         <th>Feature name</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <th class="text-center">
-                            <i class="fa fa-desktop fa-lg"></i>
-                            <i class="fa fa-mobile fa-lg"></i>
-                        </th>
-                        <th>Device</th>
-                        <th>OS</th>
                         
-                        <th>App</th>
+                            <th class="text-center">
+                                <i class="fa fa-desktop fa-lg"></i>
+                                <i class="fa fa-mobile fa-lg"></i>
+                            </th>
+                            <th>Device</th>
+                            <th>OS</th>
+                            
+                            <th>App</th>
+                            
+                            
+                            <th>Browser</th>
+                            
                         
-                        
-                        <th>Browser</th>
                         
                         
                         <th>Duration</th>
@@ -841,12 +848,24 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/8e2cfd34-2c3f-4d07-a019-1ddfb29a3caf-after-error.html">After Error</a>
+                            <a href="features/37c7d46b-2355-4a41-b5c5-86fab119f46f-after-error.html">After Error</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@Test">
+                                <span>@Test</span>
+                            </i>
                             
                             
                         </td>
@@ -861,48 +880,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
-                                <span>question-circle not-defined-color</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
-                            not known
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
+                                    <span>question-circle not-defined-color</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
+                                not known
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span>not known</span></i>
+                                not known
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>not known</span></i>
-                            not known
-                            
-                        </td>
                         
                         
                         <td>12:03:20.000</td>
@@ -926,9 +952,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/98bed657-3e0b-4c02-be40-6156c479dd09-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/91e35d70-140c-4438-a9bb-3f789139eb08-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -946,48 +975,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-linux fa-lg"><span>linux</span></i>
-                            16.04
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-linux fa-lg"><span>linux</span></i>
+                                16.04
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg">
+                                    <span>firefox</span></i>
+                                53
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
-                            53
-                            
-                        </td>
                         
                         
                         <td>00:32:10.520</td>
@@ -1011,9 +1047,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/93839b13-0f86-4eda-955b-88c82b4db6e6-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/61c91539-e845-408c-b733-d5e09eace829-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -1031,48 +1070,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-linux fa-lg"><span>linux</span></i>
-                            16.04
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-linux fa-lg"><span>linux</span></i>
+                                16.04
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg">
+                                    <span>firefox</span></i>
+                                53
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
-                            53
-                            
-                        </td>
                         
                         
                         <td>00:00:00.002</td>
@@ -1096,9 +1142,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/b322ffea-cddc-4937-94f9-c99a132e16f9-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/720ab4bb-8833-4424-b6fb-a4c10987c08c-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -1116,48 +1165,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>flash ambiguous-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-linux fa-lg"><span>linux</span></i>
-                            16.04
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-linux fa-lg"><span>linux</span></i>
+                                16.04
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg">
+                                    <span>firefox</span></i>
+                                53
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
-                            53
-                            
-                        </td>
                         
                         
                         <td>00:00:00.003</td>
@@ -1181,12 +1237,146 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/adc6855e-057e-4206-913a-67010266fe18-before-error.html">Before Error</a>
+                            <a href="features/02d06c4b-e580-43bf-907c-4623cdb4aa86-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@TEST_PDVS-286 @smoke-test @complete @RC-HP @WIP">
+                                <span>@TEST_PDVS-286 @smoke-test @complete @RC-HP @WIP</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
+                                    <span>question-circle not-defined-color</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
+                                not known
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span>not known</span></i>
+                                not known
+                                
+
+                                
+                            </td>
+                            
+                        
+                        
+                        
+                        <td>14:45:51.000</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/9a05dd71-5962-4094-8642-dfe39e30af7d-auto-launch.html">Background Feature 2</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@REGRESSION_AUTO_LAUNCH @REGRESSION_2 @REGRESSION_3 @AUTO_LAUNCH">
+                                <span>@REGRESSION_AUTO_LAUNCH @REGRESSION_2 @REGRESSION_3 @AUTO_LAUNCH</span>
+                            </i>
                             
                             
                         </td>
@@ -1201,6 +1391,69 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Xiaomi Mi A2 Lite
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-android fa-lg"><span>android</span></i>
+                                9
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                            </td>
+                            
+                        
+                        
+                        
+                        <td>11:00:00.000</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/f85a218b-057c-4753-ba26-22201c79866b-before-and-after-hook.html">Before and After hook</a>
+                        </td>
                         <td class="text-center">
                             
                             
@@ -1208,41 +1461,173 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                             
                             
                             
-                            <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
-                                <span>question-circle not-defined-color</span>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
                             </i>
                         </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                MacBook Pro 15
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.12.6
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                83.0.4103.116
+                                
+
+                                
+                            </td>
+                            
+                        
+                        
+                        
+                        <td>02:46:40.000</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                    </tr>
+                    
+                    <tr>
                         <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            <a href="features/d123707e-fc61-4a70-9ef3-572c0d63d41f-before-error.html">Before Error</a>
                         </td>
-                        <td>
+                        <td class="text-center">
                             
                             
                             
                             
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
-                            not known
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@debug">
+                                <span>@debug</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
                         </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
+                                    <span>question-circle not-defined-color</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
+                                not known
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span>not known</span></i>
+                                not known
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>not known</span></i>
-                            not known
-                            
-                        </td>
                         
                         
                         <td>00:50:00.000</td>
@@ -1266,9 +1651,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/bf9457ef-ff90-451b-86fa-13c5cc61e950-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/0e529475-900f-4f31-812f-c94967b3e9fa-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
                             
                         </td>
                         <td class="text-center">
@@ -1282,48 +1672,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>edge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td>13:22:18.377</td>
@@ -1347,9 +1744,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/beaa2fa0-0604-44ca-8d5d-f3f05d867577-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/d1d5d328-53c8-4631-a1da-d6af04a833b4-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -1372,48 +1776,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                58
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            58
-                            
-                        </td>
                         
                         
                         <td>06:18:51.101</td>
@@ -1437,9 +1848,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/42e89643-fdee-4187-bc56-33700216d754-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/52f81ac9-d51e-4bc4-aebb-7fade0039a43-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -1462,48 +1880,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                58
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            58
-                            
-                        </td>
                         
                         
                         <td>00:00:05.020</td>
@@ -1527,9 +1952,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/6f045571-006e-455d-90cd-c691fa4c9f5c-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/467923c4-2b71-4fe0-8234-c052cd6e8b3c-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -1552,48 +1984,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                58
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            58
-                            
-                        </td>
                         
                         
                         <td>00:00:03.922</td>
@@ -1617,9 +2056,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/416994a7-8220-414b-9cf7-ed8eee23f0d4-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/e0514d59-5903-4ffd-86f6-acfec3607802-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                         </td>
                         <td class="text-center">
@@ -1633,43 +2075,46 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Google Pixel 2
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-android fa-lg"><span>android</span></i>
-                            8
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Google Pixel 2
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-android fa-lg"><span>android</span></i>
+                                8
+                            </td>
                             
-                            Greetings app <br>V: 1.02
+                            <td>
+                                
+                                Greetings app <br>V: 1.02
+                                
+                            </td>
                             
-                        </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                        </td>
                         
                         
                         <td>00:00:03.358</td>
@@ -1693,9 +2138,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f4ec50a9-27d5-40f6-9823-daca1ab28bf2-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/fc584a61-d9fc-48aa-9a8c-c2cfd4306973-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                         </td>
                         <td class="text-center">
@@ -1709,43 +2157,46 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            iPhone X
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            11.1
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                iPhone X
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                11.1
+                            </td>
                             
-                            Greetings app <br>V: 1.02
+                            <td>
+                                
+                                Greetings app <br>V: 1.02
+                                
+                            </td>
                             
-                        </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                        </td>
                         
                         
                         <td>00:00:03.358</td>
@@ -1769,16 +2220,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d6754dd8-58eb-446c-bb28-6873cbef2de2-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/30b1cc4e-959e-4500-943a-80888cfd2627-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
                             
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -1794,48 +2292,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>edge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td>12:46:06.365</td>
@@ -1859,16 +2364,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/8f3be5e0-6c48-4ce9-accb-6ac106841d8c-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/48929081-ddda-4311-b2e2-f15c0c450630-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -1884,48 +2436,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>edge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td>00:00:07.873</td>
@@ -1949,16 +2508,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/c9e150d3-7aed-44b3-b5e7-042f2d058d14-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/56fd4664-640d-4b73-84b0-cd816658bedf-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -1974,48 +2580,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>microsoftedge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>microsoftedge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td>00:00:06.502</td>
@@ -2039,9 +2652,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/1225dfa7-db7f-41cf-a13c-2e40495c5232-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/c52aa2e2-284e-4d49-a00a-4a89643e9603-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
+                            
                             
                             
                             
@@ -2059,48 +2673,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
-                                <span>question-circle not-defined-color</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
-                            not known
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
+                                    <span>question-circle not-defined-color</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
+                                not known
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span>not known</span></i>
+                                not known
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>not known</span></i>
-                            not known
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2124,9 +2745,204 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/ef62fcc7-7094-494b-99e1-c6dd2ab66cf2-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/34ff67c1-8dcf-436a-b032-f998264fb6e8-no_elements_v2-1494777183356.html">No elements V2</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                            <svg class="headless" width="20" height="20">
+                                               <title>Firefox Headless</title>
+                                            </svg>
+                                           <span style="vertical-align: bottom">
+                                               58.8
+                                           </span>
+                                
+
+                                
+                            </td>
+                            
+                        
+                        
+                        
+                        <td>00:00:00.000</td>
+                        
+                        <td class="text-right none">0</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/a4b819cf-81dc-4845-a14f-a3b7a161716e-no_elements_v3-1494777183356.html">No elements V3</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                            <svg class="headless" width="20" height="20">
+                                               <title>Chrome Headless</title>
+                                            </svg>
+                                           <span style="vertical-align: bottom">
+                                               97.6.5.9
+                                           </span>
+                                
+
+                                
+                            </td>
+                            
+                        
+                        
+                        
+                        <td>00:00:00.000</td>
+                        
+                        <td class="text-right none">0</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        <td class="text-right none">0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/c881d785-dd19-4a4e-97e1-b58467e369d6-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -2144,48 +2960,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>minus-circle pending-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Samsung S7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-android fa-lg"><span>android</span></i>
-                            7.1
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Samsung S7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-android fa-lg"><span>android</span></i>
+                                7.1
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                56
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            56
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2209,9 +3032,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/6cc943f9-b31e-4bb7-99da-5cc6c9b79173-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/b108e036-97eb-44ca-acd6-b3c4afd870f6-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -2229,48 +3055,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>minus-circle pending-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Samsung S7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-android fa-lg"><span>android</span></i>
-                            7.1
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Samsung S7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-android fa-lg"><span>android</span></i>
+                                7.1
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                56
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            56
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2294,9 +3127,12 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/cae33aa4-a92c-44e3-bfc2-78846bf323a0-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/765a4bd5-557f-4b30-ad62-802f8c502c57-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
                             
                             
                             
@@ -2314,48 +3150,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>minus-circle pending-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Samsung S7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-android fa-lg"><span>android</span></i>
-                            7.1
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Samsung S7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-android fa-lg"><span>android</span></i>
+                                7.1
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg">
+                                    <span>chrome</span></i>
+                                56
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
-                            56
-                            
-                        </td>
                         
                         
                         <td>00:00:00.003</td>
@@ -2379,9 +3222,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/8d71095d-61ba-4b94-add3-3ab79cf22b15-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/f1fbab4c-e4bd-4bbf-a5b1-04d23d56b91f-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -2399,48 +3249,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>arrow-circle-right skipped-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            MacBook Pro
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            10.12
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                MacBook Pro
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.12
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-safari fa-lg">
+                                    <span>safari</span></i>
+                                10
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-safari fa-lg"><span>safari</span></i>
-                            10
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2464,16 +3321,29 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/a6bc2533-8dcd-44c3-9229-fe4485762a14-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/ab95d027-36a1-494a-88f7-77ec6766e2a1-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
-                            <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@undefined">
-                                <span>@undefined</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@undefined @timmy @angular @nothing">
+                                <span>@undefined @timmy @angular @nothing</span>
                             </i>
                             
                             
@@ -2489,48 +3359,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>question-circle not-defined-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            iPhone 7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            10.1.2
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                iPhone 7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.1.2
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-safari fa-lg">
+                                    <span>safari</span></i>
+                                10
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-safari fa-lg"><span>safari</span></i>
-                            10
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2554,16 +3431,29 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/ca211a45-8272-4c28-b235-5b41d5d608c4-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/68a35c7c-5668-4128-8d1c-c12acd6e1781-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
-                            <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@undefined">
-                                <span>@undefined</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@undefined @timmy @angular @nothing">
+                                <span>@undefined @timmy @angular @nothing</span>
                             </i>
                             
                             
@@ -2579,48 +3469,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>question-circle not-defined-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            iPhone 7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            10.1.2
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                iPhone 7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.1.2
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-safari fa-lg">
+                                    <span>safari</span></i>
+                                10
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-safari fa-lg"><span>safari</span></i>
-                            10
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2644,16 +3541,29 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/35eea073-4972-4f22-87f6-776359220ce5-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/f9b64eb5-e17c-439a-932b-1bfdd31d5630-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
-                            <i class="fa fa-tag fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@undefined">
-                                <span>@undefined</span>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@undefined @timmy @angular @nothing">
+                                <span>@undefined @timmy @angular @nothing</span>
                             </i>
                             
                             
@@ -2669,48 +3579,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>question-circle not-defined-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            iPhone 7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            10.1.2
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                iPhone 7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.1.2
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-safari fa-lg">
+                                    <span>safari</span></i>
+                                10
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-safari fa-lg"><span>safari</span></i>
-                            10
-                            
-                        </td>
                         
                         
                         <td>00:00:00.000</td>
@@ -2734,9 +3651,28 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f92886a9-c154-4c33-8bb5-3b61d7339dc8-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
+                            <a href="features/473b1152-87cc-4b7a-943f-269038b01c66-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -2759,48 +3695,55 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>question-circle not-defined-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
-                                <span>mobile</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            iPhone 7
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-apple fa-lg"><span>apple</span></i>
-                            10.1.2
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-mobile fa-lg" data-toggle="tooltip" data-placement="top" title="Mobile / Tablet">
+                                    <span>mobile</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                iPhone 7
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.1.2
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-safari fa-lg">
+                                    <span>safari</span></i>
+                                10
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-safari fa-lg"><span>safari</span></i>
-                            10
-                            
-                        </td>
                         
                         
                         <td>00:00:01.608</td>
@@ -2824,9 +3767,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/5cb5712c-865a-4cfc-b93c-37f2c8d3dbc3-json-report-starwars.html">Report with JSON rest response</a>
+                            <a href="features/cc658e1a-7035-40d3-9ab6-2c7b42d401b5-json-report-starwars.html">Report with JSON rest response</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                         </td>
                         <td class="text-center">
@@ -2840,54 +3792,61 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
-                                <span>question-circle not-defined-color</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
-                            
-                        </td>
                         
-                        <td>
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg" data-toggle="tooltip" data-placement="top" title="Not known">
+                                    <span>question-circle not-defined-color</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"></i> not known
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg"><span>question-circle not-defined-color</span></i>
+                                
+                            </td>
                             
-                        </td>
+                            <td>
+                                
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span></span></i>
+                                
+                                
+
+                                
+                            </td>
+                            
                         
-                        
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span></span></i>
-                            
-                            
-                        </td>
                         
                         
                         <td>02:42:52.525</td>
                         
-                        <td class="text-right ">2</td>
-                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
                         <td class="text-right none">0</td>
                         
                         <td class="text-right none">0</td>
@@ -2962,8 +3921,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         ],
                         datasets: [{
                             data: [
-                                7,
-                                5,
+                                9,
+                                6,
                                 3,
                                 4,
                                 3,
@@ -3001,8 +3960,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         ],
                         datasets: [{
                             data: [
-                                16,
-                                5,
+                                17,
+                                6,
                                 3,
                                 4,
                                 4,
@@ -3042,6 +4001,26 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 $('body').tooltip({
     selector: '[data-toggle="tooltip"]'
 });
+
+hideResult = (resultId) => {
+    $('span[class*=step]').closest('div.x_panel[style]').hide();
+    $('span[class*=' + resultId + ']').closest('div.x_panel[style]').show();
+}
+
+showAll = () => {
+    $('span[class*=step]').closest('div.x_panel[style]').show();
+}
+
+$(document).ready(() => {
+    const status = ['passed', 'failed', 'pending', 'skipped', 'ambiguous', 'not-defined']
+    status.forEach(value => {
+        var menuItem = $('span[class*=' + value + '-background]');
+        if (menuItem.length === 0) {
+            $('#' + value).parent().addClass('disabled');
+        }
+    })
+});
+
             });
         </script>
     </body>

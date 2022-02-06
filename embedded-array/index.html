@@ -11,10 +11,10 @@
         
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
-                
+
                 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                
+
                 <!--[if lt IE 9]>
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
@@ -492,6 +492,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
         <nav class="navbar">
             <div class="container-fluid">
+                <p class="navbar-text" style="float: left">Dashboard</p>
                 <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
             </div>
         </nav>
@@ -523,7 +524,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
@@ -590,7 +591,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
@@ -698,15 +699,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         <th>Feature name</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <th class="text-center">
-                            <i class="fa fa-desktop fa-lg"></i>
-                            <i class="fa fa-mobile fa-lg"></i>
-                        </th>
-                        <th>Device</th>
-                        <th>OS</th>
                         
+                            <th class="text-center">
+                                <i class="fa fa-desktop fa-lg"></i>
+                                <i class="fa fa-mobile fa-lg"></i>
+                            </th>
+                            <th>Device</th>
+                            <th>OS</th>
+                            
+                            
+                            <th>Browser</th>
+                            
                         
-                        <th>Browser</th>
                         
                         
                         <th>Total</th>
@@ -723,16 +727,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/84d50620-5905-4180-8c3f-b3e4fa330e9b-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/f31e9cb0-e151-432f-8fa9-e33ce41ee7d8-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -748,44 +799,51 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-internet-explorer fa-lg">
+                                    <span>internet explorer</span></i>
+                                11
+                                
+
+                                
+                            </td>
+                            
                         
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-internet-explorer fa-lg"><span>internet explorer</span></i>
-                            11
-                            
-                        </td>
                         
                         
                         <td class="text-right ">3</td>
@@ -799,9 +857,22 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/b7004a22-d92c-4ea0-a12b-ecced0883222-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
+                            <a href="features/bb1c1655-873b-4a54-92aa-faa972a12596-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -824,44 +895,51 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-question-circle not-defined-color fa-lg">
+                                    <span>server</span></i>
+                                1.15.31
+                                
+
+                                
+                            </td>
+                            
                         
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-question-circle not-defined-color fa-lg"><span>server</span></i>
-                            1.15.31
-                            
-                        </td>
                         
                         
                         <td class="text-right ">2</td>
@@ -875,9 +953,16 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/7df41b3f-8a8b-44fc-9ecd-cdc01242b635-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/1c03a0e3-0049-47ad-ab9b-d5e39d69ce23-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -900,44 +985,51 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>exclamation-circle failed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>edge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td class="text-right ">1</td>
@@ -951,16 +1043,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/17558ae9-ab99-48ed-9b28-5c29be73a288-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/2a8bd104-4006-44ec-b217-8598025c07a1-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -976,44 +1115,51 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>edge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>edge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td class="text-right ">3</td>
@@ -1027,16 +1173,63 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/6d47c555-62bd-48c4-bbd3-cee09c4b0a79-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/63b95d22-144c-4701-bc93-0706a349841c-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
                             
                             
                             
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
                             <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
-                               title="@example @happy-flow @angular">
-                                <span>@example @happy-flow @angular</span>
+                               title="@example @happy-flow @angular @visitor @julie @todo @count @validate @add">
+                                <span>@example @happy-flow @angular @visitor @julie @todo @count @validate @add</span>
                             </i>
                             
                             
@@ -1052,44 +1245,51 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 <span>check-circle passed-color</span>
                             </i>
                         </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
-                                <span>desktop</span>
-                            </i>
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            Virtual Machine
-                        </td>
-                        <td>
-                            
-                            
-                            
-                            
-                            <i class="fa fa-windows fa-lg"><span>windows</span></i>
-                            10
-                        </td>
                         
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                Virtual Machine
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-windows fa-lg"><span>windows</span></i>
+                                10
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-edge fa-lg">
+                                    <span>microsoftedge</span></i>
+                                14
+                                
+
+                                
+                            </td>
+                            
                         
-                        <td>
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-edge fa-lg"><span>microsoftedge</span></i>
-                            14
-                            
-                        </td>
                         
                         
                         <td class="text-right ">3</td>
@@ -1234,6 +1434,26 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 $('body').tooltip({
     selector: '[data-toggle="tooltip"]'
 });
+
+hideResult = (resultId) => {
+    $('span[class*=step]').closest('div.x_panel[style]').hide();
+    $('span[class*=' + resultId + ']').closest('div.x_panel[style]').show();
+}
+
+showAll = () => {
+    $('span[class*=step]').closest('div.x_panel[style]').show();
+}
+
+$(document).ready(() => {
+    const status = ['passed', 'failed', 'pending', 'skipped', 'ambiguous', 'not-defined']
+    status.forEach(value => {
+        var menuItem = $('span[class*=' + value + '-background]');
+        if (menuItem.length === 0) {
+            $('#' + value).parent().addClass('disabled');
+        }
+    })
+});
+
             });
         </script>
     </body>

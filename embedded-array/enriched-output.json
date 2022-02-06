@@ -17,11 +17,13 @@
   "style": "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/my.css",
   "customStyle": "/Users/wimselles/Git/multiple-cucumber-html-reporter/test/custom.css",
   "useCDN": false,
+  "hideMetadata": false,
+  "displayReportTime": false,
   "displayDuration": false,
   "browser": 5,
   "name": "",
   "version": "version",
-  "time": "2020-02-17T15:22:10.563Z",
+  "time": "2022-02-06T15:51:54.859Z",
   "features": [
     {
       "metadata": {
@@ -450,7 +452,7 @@
           "time": "00:00:11.625"
         }
       ],
-      "id": "84d50620-5905-4180-8c3f-b3e4fa330e9b-happy-flow-v1",
+      "id": "f31e9cb0-e151-432f-8fa9-e33ce41ee7d8-happy-flow-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Happy flow V1",
@@ -722,7 +724,7 @@
       "keyword": "Feature",
       "name": "Failure report Multi Attachment V3",
       "line": 2,
-      "id": "b7004a22-d92c-4ea0-a12b-ecced0883222-failure-report-multi-attachment-v3",
+      "id": "bb1c1655-873b-4a54-92aa-faa972a12596-failure-report-multi-attachment-v3",
       "tags": [
         {
           "name": "@skip",
@@ -878,7 +880,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "7df41b3f-8a8b-44fc-9ecd-cdc01242b635-failure-report-v3",
+      "id": "1c03a0e3-0049-47ad-ab9b-d5e39d69ce23-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -1247,7 +1249,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "17558ae9-ab99-48ed-9b28-5c29be73a288-happy-flow-v2",
+      "id": "2a8bd104-4006-44ec-b217-8598025c07a1-happy-flow-v2",
       "scenarios": {
         "passed": 3,
         "failed": 0,
@@ -1290,7 +1292,7 @@
       "keyword": "Feature",
       "name": "Happy flow V3",
       "line": 2,
-      "id": "6d47c555-62bd-48c4-bbd3-cee09c4b0a79-happy-flow-v3",
+      "id": "63b95d22-144c-4701-bc93-0706a349841c-happy-flow-v3",
       "tags": [
         {
           "name": "@example",

@@ -11,10 +11,10 @@
         
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
-                
+
                 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                
+
                 <!--[if lt IE 9]>
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
@@ -53,6 +53,10 @@ nav.navbar {
     margin-bottom: 10px;
 }
 
+filter-i {
+    margin-left: 5px;
+}
+
 nav .navbar-brand {
     border-right: 1px solid #D9DEE4;
     color: #5A738E;
@@ -64,6 +68,7 @@ nav .navbar-text {
     margin-bottom: 0;
     margin-top: 0;
     padding: 15px 0;
+    float: right;
 }
 
 /* Table */
@@ -276,10 +281,6 @@ table td.chart .total {
     height: 320px;
 }
 
-.x_title h2 small {
-    margin-left: 10px;
-}
-
 .x_title span {
     color: #BDBDBD;
 }
@@ -332,7 +333,9 @@ table td.chart .total {
 }
 
 .page-title h1 {
-    margin: 9px 0;
+    margin: 9px 0 9px 13px;
+    font-size: 30px;
+
 }
 
 .page-title .title_right {
@@ -498,6 +501,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 
         <nav class="navbar">
             <div class="container-fluid">
+                <p class="navbar-text" style="float: left">Dashboard</p>
                 <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
             </div>
         </nav>
@@ -529,7 +533,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
@@ -640,7 +644,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     <p class="">Status</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <p class="">Progress</p>
+                    <p class="" style="float:right;">Progress</p>
                 </div>
             </th>
         </tr>
@@ -787,7 +791,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f02aa167-09aa-49b8-b7f0-b8663830bfd6-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/fbf661f2-8d4c-4b6c-9926-7d8819c102d5-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -850,7 +854,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d407433c-6d74-457c-9dcc-87d25bf458f6-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/f852c806-46ed-497e-9597-344bb61b8ac7-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -872,15 +876,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            5.1
+                            4.0 R11
                         </td>
                         
                         <td>
-                            17.10 GA
+                            17.10
                         </td>
                         
                         <td>
-                            Config B
+                            Config A
                         </td>
                         
                         <td>
@@ -913,7 +917,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/20f7d711-bcde-4493-a343-3b8f0be5d494-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/8c34fec4-ddd1-439f-9818-3b3c05fc303c-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -944,7 +948,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            18.5
+                            17.10
                         </td>
                         
                         <td>
@@ -952,11 +956,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            Windows
+                            Ubuntu
                         </td>
                         
                         <td>
-                            10
+                            16.04
                         </td>
                         
                         
@@ -981,7 +985,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e245a8e6-3187-42f6-95c8-47b7dcdc05f5-google-com.html">Multiple json and plain text attachments</a>
+                            <a href="features/25288b22-7dde-4a55-9f89-50135cd55451-google-com.html">Multiple json and plain text attachments</a>
                         </td>
                         <td class="text-center">
                             
@@ -1003,62 +1007,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            
-                        </td>
-                        
-                        <td>
-                            
-                        </td>
-                        
-                        <td>
-                            
-                        </td>
-                        
-                        
-                        <td>00:00:00.000</td>
-                        
-                        <td>1</td>
-                        <td>1</td>
-                        <td>0</td>
-                        
-                        <td>0</td>
-                        
-                        
-                        <td>0</td>
-                        
-                        
-                        <td>0</td>
-                        
-                        
-                        <td>0</td>
-                        
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            <a href="features/c28f94d3-b3c0-4fd4-8a81-78ff8ee30f6b-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
-                        </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                        </td>
-                        <td class="text-center">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
-                                <span>check-circle passed-color</span>
-                            </i>
-                        </td>
-                        
-                        <td>
-                            5.2.1
+                            4.0 R11
                         </td>
                         
                         <td>
@@ -1066,15 +1015,78 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            Config C
+                            Config A
                         </td>
                         
                         <td>
-                            Android
+                            Ubuntu
                         </td>
                         
                         <td>
-                            7.1
+                            16.04
+                        </td>
+                        
+                        
+                        <td>00:00:00.000</td>
+                        
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                        
+                        <td>0</td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/40dd7d6b-9f16-45dc-9711-0a0687e337d6-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                        <td>
+                            4.0 R11
+                        </td>
+                        
+                        <td>
+                            17.10
+                        </td>
+                        
+                        <td>
+                            Config A
+                        </td>
+                        
+                        <td>
+                            Ubuntu
+                        </td>
+                        
+                        <td>
+                            16.04
                         </td>
                         
                         
@@ -1099,7 +1111,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/61d39e8d-2510-450a-a962-d423ab65b5cf-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/c3655d38-9d9f-4495-aacc-e5433c2b6ac3-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -1133,11 +1145,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            OSX
+                            Ubuntu
                         </td>
                         
                         <td>
-                            10.12
+                            16.04
                         </td>
                         
                         
@@ -1162,7 +1174,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e261ae21-c8d2-4d3e-8e5d-4b8aabf79ce3-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/f052698e-7722-45a6-9839-bcfd2f9b99be-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1189,23 +1201,23 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         </td>
                         
                         <td>
-                            5.1.1
+                            4.0 R11
                         </td>
                         
                         <td>
-                            17.5
+                            17.10
                         </td>
                         
                         <td>
-                            Config D
+                            Config A
                         </td>
                         
                         <td>
-                            iOS
+                            Ubuntu
                         </td>
                         
                         <td>
-                            10.1.2
+                            16.04
                         </td>
                         
                         
@@ -1367,6 +1379,26 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 $('body').tooltip({
     selector: '[data-toggle="tooltip"]'
 });
+
+hideResult = (resultId) => {
+    $('span[class*=step]').closest('div.x_panel[style]').hide();
+    $('span[class*=' + resultId + ']').closest('div.x_panel[style]').show();
+}
+
+showAll = () => {
+    $('span[class*=step]').closest('div.x_panel[style]').show();
+}
+
+$(document).ready(() => {
+    const status = ['passed', 'failed', 'pending', 'skipped', 'ambiguous', 'not-defined']
+    status.forEach(value => {
+        var menuItem = $('span[class*=' + value + '-background]');
+        if (menuItem.length === 0) {
+            $('#' + value).parent().addClass('disabled');
+        }
+    })
+});
+
             });
         </script>
     </body>

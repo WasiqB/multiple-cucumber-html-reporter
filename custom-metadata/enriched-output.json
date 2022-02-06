@@ -4,11 +4,13 @@
   "customData": null,
   "style": "style.css",
   "useCDN": false,
+  "hideMetadata": false,
+  "displayReportTime": false,
   "displayDuration": true,
-  "browser": 1,
+  "browser": 0,
   "name": "",
   "version": "version",
-  "time": "2020-02-17T15:22:10.608Z",
+  "time": "2022-02-06T15:51:55.049Z",
   "features": [
     {
       "metadata": [
@@ -125,7 +127,7 @@
           "time": "00:00:00.001"
         }
       ],
-      "id": "f02aa167-09aa-49b8-b7f0-b8663830bfd6-ambiguous-scenarios-specified-v1",
+      "id": "fbf661f2-8d4c-4b6c-9926-7d8819c102d5-ambiguous-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Ambiguous scenarios specified V1",
@@ -250,7 +252,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "d407433c-6d74-457c-9dcc-87d25bf458f6-ambiguous-scenarios-specified-v2",
+      "id": "f852c806-46ed-497e-9597-344bb61b8ac7-ambiguous-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -305,7 +307,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "20f7d711-bcde-4493-a343-3b8f0be5d494-failure-report-v3",
+      "id": "8c34fec4-ddd1-439f-9818-3b3c05fc303c-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -440,21 +442,10 @@
       "totalTime": null
     },
     {
-      "metadata": {
-        "browser": {
-          "name": "not known",
-          "version": "not known"
-        },
-        "device": "not known",
-        "platform": {
-          "name": "not known",
-          "version": "not known"
-        }
-      },
       "keyword": "Feature",
       "name": "Multiple json and plain text attachments",
       "line": 1,
-      "id": "e245a8e6-3187-42f6-95c8-47b7dcdc05f5-google-com",
+      "id": "25288b22-7dde-4a55-9f89-50135cd55451-google-com",
       "tags": [],
       "uri": "features/google.feature",
       "elements": [
@@ -527,6 +518,18 @@
                   "media": {
                     "type": "application/json"
                   }
+                },
+                {
+                  "data": 0,
+                  "media": {
+                    "type": "application/json"
+                  }
+                },
+                {
+                  "data": 1,
+                  "media": {
+                    "type": "text/plain"
+                  }
                 }
               ],
               "attachments": [],
@@ -539,10 +542,12 @@
                 },
                 {
                   "yet another json": 5
-                }
+                },
+                0
               ],
               "text": [
-                "Some plain text message"
+                "Some plain text message",
+                1
               ],
               "time": "00:00:00.000"
             },
@@ -566,6 +571,28 @@
           "ambiguous": 0,
           "duration": 2407,
           "time": "00:00:00.000"
+        }
+      ],
+      "metadata": [
+        {
+          "name": "Backend version",
+          "value": "4.0 R11"
+        },
+        {
+          "name": "Client API version",
+          "value": "17.10"
+        },
+        {
+          "name": "Test Configuration",
+          "value": "Config A"
+        },
+        {
+          "name": "platform",
+          "value": "Ubuntu"
+        },
+        {
+          "name": "platform version",
+          "value": "16.04"
         }
       ],
       "scenarios": {
@@ -711,7 +738,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "c28f94d3-b3c0-4fd4-8a81-78ff8ee30f6b-pending-scenarios-specified-v1",
+      "id": "40dd7d6b-9f16-45dc-9711-0a0687e337d6-pending-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Pending scenarios specified V1",
@@ -1052,7 +1079,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "61d39e8d-2510-450a-a962-d423ab65b5cf-skipped_scenarios-1494823563764",
+      "id": "c3655d38-9d9f-4495-aacc-e5433c2b6ac3-skipped_scenarios-1494823563764",
       "keyword": "Feature",
       "line": 1,
       "name": "Skipped scenarios specified",
@@ -1111,7 +1138,7 @@
       "keyword": "Feature",
       "name": "Undefined scenarios specified V3",
       "line": 2,
-      "id": "e261ae21-c8d2-4d3e-8e5d-4b8aabf79ce3-undefined-scenarios-specified-v3",
+      "id": "f052698e-7722-45a6-9839-bcfd2f9b99be-undefined-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
