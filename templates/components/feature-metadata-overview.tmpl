@@ -23,6 +23,8 @@
                     <% deviceType = 'mobile'; %>
                     <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(metadata.platform.name.toLowerCase()) > -1) { %>
                     <% deviceType = 'desktop'; %>
+                    <% } else if (metadata.platform.name.toLowerCase().startsWith('win')) { %>
+                    <% deviceType = 'desktop'; %>
                     <% } else { %>
                     <% deviceType = 'question-circle not-defined-color'; %>
                     <% } %>
@@ -43,7 +45,7 @@
                     <% platformName = 'apple'; %>
                     <% } else if (metadata.platform.name.toLowerCase() === 'android') { %>
                     <% platformName = 'android'; %>
-                    <% } else if (metadata.platform.name.toLowerCase() === 'windows') { %>
+                    <% } else if (metadata.platform.name.toLowerCase() === 'windows' || metadata.platform.name.toLowerCase().startsWith('win')) { %>
                     <% platformName = 'windows'; %>
                     <% } else if (metadata.platform.name.toLowerCase() === 'ubuntu' || metadata.platform.name.toLowerCase() === 'linux') { %>
                     <% platformName = 'linux'; %>
