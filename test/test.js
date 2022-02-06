@@ -81,5 +81,12 @@ test.generate({
     jsonDir: './test/unit/data/custom-metadata-json/',
     reportPath: './.tmp/custom-metadata/',
     customMetadata: true,
-    displayDuration: true
+    displayDuration: true,
+    metadata: [
+        { "name": "Backend version", "value": "4.0 R11" },
+        { "name": "Client API version", "value": "17.10" },
+        { "name": "Test Configuration", "value": "Config A" },
+        { "name": "platform", "value": "Ubuntu" },
+        { "name": "platform version", "value": "16.04" }
+    ]
 });
