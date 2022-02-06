@@ -45,6 +45,6 @@
   "devDependencies": {
     "istanbul": "^0.4.5",
     "jasmine": "^3.5.0",
-    "release-it": "^14.11.8"
+    "release-it": "^14.12.4"
   }
 }
