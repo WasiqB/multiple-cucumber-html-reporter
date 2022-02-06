@@ -46,16 +46,17 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <p class="navbar-text"><%= reportName %></p>
+
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" onclick="history.back(-1)">
                     <i class="fa fa-arrow-left"><span>Back</span></i>
                 </a>
             </div>
-            <p class="navbar-text">Feature:
-                <small><%= feature.name %></small>
+            <p class="navbar-text" style="float: left">Features Overview
             </p>
+            <p class="navbar-text"><%= reportName %></p>
         </div>
+
     </nav>
 
     <div class="main_conainer">
@@ -73,7 +74,14 @@
             <h1>Feature:
                 <small><%= feature.name %></small>
             </h1>
-            <p><%= feature.description %></p>
+            <p><% if (feature.description && feature.description.length > 0) { %>
+                <strong>Description: </strong> <%= feature.description %> </p>
+            <% } %>
+           <p><strong>File name:</strong>
+                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
+            </p>
+            <p><strong>Relative path:</strong>
+                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).slice(-2).join('/') %></p>
         </div>
 
         <div class="clearfix"></div>
@@ -92,7 +100,34 @@
             </div>
             <% } %>
         </div>
-
+        <div class="dropdown pull-right dropup" >
+            <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown" style="margin-bottom: 15px;">
+                Filter By<span class="caret" style="margin-left: 5px"></span></button>
+            <ul class="dropdown-menu">
+                <li> <a id="passed" href="javascript:void(0)" onclick="hideResult(this.id)">Passed
+                    <i class="fa fa-check-circle passed-color filter-i"></i></a>
+                </li>
+                <li> <a id="failed" href="javascript:void(0)" onclick="hideResult(this.id)">Failed
+                    <i class="fa fa-exclamation-circle failed-color filter-i"></i></a>
+                </li>
+                <li> <a id="pending" href="javascript:void(0)" onclick="hideResult(this.id)">Pending
+                    <i class="fa fa-minus-circle pending-color filter-i"></i></a>
+                </li>
+                <li> <a id="skipped" href="javascript:void(0)" onclick="hideResult(this.id)">Skipped
+                    <i class="fa fa-arrow-circle-right fa skipped-color filter-i"></i></a>
+                </li>
+                <li> <a id="not-defined" href="javascript:void(0)" onclick="hideResult(this.id)">Not Defined
+                    <i class="fa fa-question-circle not-defined-color filter-i"></i></a>
+                </li>
+                <li> <a id="ambiguous" href="javascript:void(0)" onclick="hideResult(this.id)">Ambiguous
+                    <i class="fa fa-flash ambiguous-color filter-i"></i></a>
+                </li>
+                <li class="divider"></li>
+                <li> <a id="clear" href="javascript:void(0)"onclick="showAll()">Clear
+                    <i class="fa fa-times-circle"></i></a>
+                </li>
+            </ul>
+        </div>
         <div class="row">
             <%= scenarioTemplate %>
         </div>
@@ -122,6 +157,8 @@
 
     <!-- Custom -->
     <script>
+        var hideResult;
+        var showAll;
         $(document).ready(function () {
 
             var scenarioOptions = {
