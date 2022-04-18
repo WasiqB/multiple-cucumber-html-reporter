@@ -94,8 +94,6 @@ Since cucumber-js 3.x the `AfterFeatures` hook is not supported anymore. To use 
 
 > **Advice** is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
 
->
-
 ## Options
 ### `jsonDir`
 - **Type:** `String`
@@ -181,7 +179,7 @@ This expects the durations in the report to be in **nanoseconds**, which might r
 - **Default:** `false`
 - **Mandatory:** No
 
-If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanaseconds**.
+If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanoseconds**.
 This parameter relies on `displayDuration: true`
 
 ### `hideMetadata`
@@ -265,6 +263,8 @@ On the features overview page the custom metadata is shown like:
 >**IMPORTANT:**
 > This does not work correctly if features have different sets of metadata. Try to avoid this situation.
 
+> **Much like with metadata, if you provide the custom metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence**
+
 ### `customData`
 - **Type:** `object`
 - **Mandatory:** No
@@ -306,7 +306,7 @@ data: [
 ```
 
 ## Metadata
-The report can also show on which browser / device a feature has been executed. It is shown on the featurs overview in the table as well as on the feature overview in a container.
+The report can also show on which browser / device a feature has been executed. It is shown on the features overview in the table as well as on the feature overview in a container.
 
 ### Adding metadata to the Cucumber JSON
 
@@ -404,7 +404,7 @@ The advantage of this is that when you look at the folder where the Cucumber JSO
 - on which browser
 - a timestamp to see which feature has been executed the last (if featurename and browser are the same)
 
-### Metdata shows `not known` or not the correct icons
+### Metadata shows `not known` or not the correct icons
 There could be 2 causes:
 
  1. The metadata has not (correctly) been added to the Cucumber JSON.
