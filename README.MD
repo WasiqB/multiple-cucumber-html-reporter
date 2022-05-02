@@ -206,14 +206,15 @@ If you prefer, you can use CDN for assets.
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+Please refer to the `test` directory for an example.
 
 ### `overrideStyle`
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need replace default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
-
+If you need to replace completely the default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
+Please refer to the `test` directory for an example.
 
 ### `metadata`
 - **Type:** `JSON`
