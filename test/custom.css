@@ -1,3 +1,38 @@
 body {
   background: rgb(58,58,58);
 }
+
+/* CSS custom properties are used to style doughnut charts */
+:root {
+  --ambiguous-color:#AAAAAA;
+  --failed-color:#FF0000;
+  --not-defined-color:#0000FF;
+  --passed-color:#00FF00;
+  --pending-color:#FFAA33;
+  --skipped-color:#770077;
+}
+
+/* Style colors are derived from custom properties to have a homogeneous style */
+.ambiguous-color {
+    color: var(--ambiguous-color) !important;
+}
+
+.failed-color {
+    color: var(--failed-color) !important;
+}
+
+.not-defined-color {
+    color: var(--not-defined-color) !important;
+}
+
+.passed-color {
+    color: var(--passed-color) !important;
+}
+
+.pending-color {
+    color: var(--pending-color) !important;
+}
+
+.skipped-color {
+    color: var(--skipped-color) !important;
+}
