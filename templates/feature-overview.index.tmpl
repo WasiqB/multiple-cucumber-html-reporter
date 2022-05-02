@@ -156,6 +156,7 @@
     <% } %>
 
     <!-- Custom -->
+    <script src="../assets/js/Chart.style.js"></script>
     <script>
         var hideResult;
         var showAll;
@@ -187,14 +188,7 @@
                             <%= feature.scenarios.ambiguous %>,
                             <%= feature.scenarios.notDefined %>
                         ],
-                        backgroundColor: [
-                            "#26B99A",
-                            "#E74C3C",
-                            "#FFD119",
-                            "#3498DB",
-                            "#b73122",
-                            "#F39C12"
-                        ]
+                        backgroundColor: getChartColors()
                     }]
                 },
                 options: scenarioOptions

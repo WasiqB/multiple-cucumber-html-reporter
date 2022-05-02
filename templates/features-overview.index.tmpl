@@ -6,8 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title><%= pageTitle %></title>
-
+        <title><%= pageTitle %></title>
         <% if (useCDN) { %>
             <!-- Bootstrap -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -122,6 +121,7 @@
         <% } %>
 
         <!-- Custom -->
+        <script src="assets/js/Chart.style.js"></script>
         <script>
             $(document).ready(function () {
                 $('#features-table').dataTable({
@@ -156,14 +156,7 @@
                                 <%= suite.featureCount.pending %>,
                                 <%= suite.featureCount.skipped %>
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: featureOptions
@@ -195,14 +188,7 @@
                                 <%= suite.scenarios.pending %>,
                                 <%= suite.scenarios.skipped %>
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: scenarioOptions
