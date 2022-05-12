@@ -420,7 +420,7 @@ You can attach screenshots at any time to a Cucumber JSON file. Just create a Cu
 ### How to attach Plain Text to HTML report
 You can attach plain-text / data at any time to a Cucumber JSON file to help debug / review the results. You can add them during running or when a `scenario` failed.
 
-> Check the framework you are using to attach plain text to the JSON file.
+> Check the framework you are using to attach plain text to the JSON file. Please make sure to convert binary/non-readable data to a suitable textual representation, e.g. via Base64 encoding.
 
 ### How to attach pretty JSON to HTML report
 You can attach JSON at any time to a Cucumber JSON file. You can add them during running or when a `scenario` failed.
