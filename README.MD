@@ -113,18 +113,21 @@ The directory in which the report needs to be saved, relative from where the scr
 
 ### `staticFilePath`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If true each feature will get a static filename for the html. Use this feature only if you are not running multiple instances of the same tests.
 
 ### `openReportInBrowser`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If true the report will automatically be opened in the default browser of the operating system.
 
 ### `saveCollectedJSON`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 This module will first merge all the JSON-files to 1 file and then enrich it with data that is used for the report. If `saveCollectedJSON :true` the merged JSON **AND** the enriched JSON will be saved in the `reportPath`. They will be saved as:
@@ -134,8 +137,8 @@ This module will first merge all the JSON-files to 1 file and then enrich it wit
 
 ### `disableLog`
 - **Type:** `boolean`
-- **Mandatory:** No
 - **Default:** `false`
+- **Mandatory:** No
 
 This will disable the log so will **NOT** see this.
 
@@ -165,8 +168,17 @@ You can change the report name to a name you want
 
 You can customise Page Footer if required. You just need to provide a html string like `<div><p>A custom footer in html</p></div>`
 
+### `plainDescription`
+- **Type:** `boolean`
+- **Default:** `false`
+- **Mandatory:** No
+
+Feature descriptions are nicely formatted by the template. If your test features provide already a custom formatting
+set this property to `true` so that the text is copied verbatim alongside with its formatting.
+
 ### `displayDuration`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If set to `true` the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
@@ -198,6 +210,7 @@ If set to `true` the date and time at which the JSON-files were generated, is di
 
 ### `useCDN`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If you prefer, you can use CDN for assets.
@@ -242,6 +255,7 @@ See [metadata](./README.MD#metadata-1) for more info
 
 ### `customMetadata`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many (10+) variables are used.
