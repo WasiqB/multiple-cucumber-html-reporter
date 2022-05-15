@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/wswebcreation/multiple-cucumber-html-reporter#readme",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "find": "^0.3.0",
     "fs-extra": "^8.1.0",
     "js-base64": "^2.5.1",
