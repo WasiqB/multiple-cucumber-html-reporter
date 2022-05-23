@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../assets/js/darkmode.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-control" content="public">
     <title><%= pageTitle %></title>
 
     <% if (useCDN) { %>
@@ -43,7 +45,13 @@
     </style>
 </head>
 <body>
-
+    <script type="text/javascript">
+        window.onload = function() {
+            if(window.localStorage['darkmode'] === 'on') {
+                applyDarkModeInFeature();
+            }
+        }
+    </script>
     <nav class="navbar">
         <div class="container-fluid">
 

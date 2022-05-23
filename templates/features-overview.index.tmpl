@@ -6,7 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title><%= pageTitle %></title>
+        <meta http-equiv="Cache-control" content="public">
+        <title><%= pageTitle %></title>
 
         <% if (useCDN) { %>
             <!-- Bootstrap -->
@@ -37,7 +38,7 @@
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
                 <![endif]-->
-
+                <script src="assets/js/darkmode.js"></script>
                 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
                 <!-- DataTables -->
@@ -52,10 +53,11 @@
         </style>
     </head>
     <body>
-
         <nav class="navbar">
             <div class="container-fluid">
                 <p class="navbar-text" style="float: left">Dashboard</p>
+                <input id="darkCheck" type="checkbox" hidden onchange="applyDarkMode(); saveState()"></input>
+                <label title="Darkmode" id=darkmodeicon for="darkCheck" class="fa fa-toggle-off fa-lg darkModeIcon"></label>
                 <p class="navbar-text"><%= reportName %></p>
             </div>
         </nav>

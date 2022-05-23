@@ -19,7 +19,7 @@ i span {
 nav.navbar {
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 filter-i {
@@ -461,4 +461,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 .created-by {
     padding: 50px 0;
     text-align: center;
+}
+
+.darkmode {
+    background-color: #333 !important;
+    color: #eee;
+    border-color: gray;
+}
+
+#features-table > thead > tr {
+    color: steelblue;
+}
+
+.darkModeIcon {
+    font-size: x-large;
+    float: left;
+    padding-top: 18px;
+    cursor: pointer;
 }
