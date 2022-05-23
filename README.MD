@@ -173,8 +173,19 @@ You can customise Page Footer if required. You just need to provide a html strin
 - **Default:** `false`
 - **Mandatory:** No
 
-Feature descriptions are nicely formatted by the template. If your test features provide already a custom formatting
-set this property to `true` so that the text is copied verbatim alongside with its formatting.
+The feature description is assumed to be a simple string and the library formats it accordingly, by copying it inside a
+paragraph tag. Since the description can be any free text, it can also be as complex as a full `div`, e.g.:
+
+```html
+<div>
+    <p><strong>Test description  </strong> : The test implements comparisons using all our datatypes</p>
+    <p><strong>Expected result   </strong> : Device does not reset</p>
+    <p><strong>Feature type      </strong> : Robustness</p>
+    <p><strong>Comments          </strong> : Test covers comparison operators</p>
+</div>
+```
+
+If the description already include formatting tags you can include it _as is_ by setting `plainDescription` to `true`.
 
 ### `displayDuration`
 - **Type:** `boolean`
