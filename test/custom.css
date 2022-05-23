@@ -36,3 +36,28 @@ body {
 .skipped-color {
     color: var(--skipped-color) !important;
 }
+
+/* backgrounds */
+.ambiguous-background {
+    background: var(--ambiguous-color) !important;
+}
+
+.failed-background {
+    background: var(--failed-color) !important;
+}
+
+.not-defined-background {
+    background: var(--not-defined-color) !important;
+}
+
+.passed-background {
+    background: var(--passed-color) !important;
+}
+
+.pending-background {
+    background: var(--pending-color) !important;
+}
+
+.skipped-background {
+    background: var(--skipped-color) !important;
+}
