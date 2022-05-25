@@ -464,7 +464,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 }
 
 .darkmode {
-    background-color: #333 !important;
+    background-color: #181616 !important;
     color: #eee;
     border-color: gray;
 }
