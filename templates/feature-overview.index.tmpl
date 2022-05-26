@@ -74,14 +74,18 @@
             <h1>Feature:
                 <small><%= feature.name %></small>
             </h1>
-            <p><% if (feature.description && feature.description.length > 0) { %>
-                <strong>Description: </strong> <%= feature.description %> </p>
+            <% if (!plainDescription) { %>
+                <p><% if (feature.description && feature.description.length > 0) { %>
+                    <strong>Description: </strong> <%= feature.description %> </p>
+                <% } %>
+               <p><strong>File name:</strong>
+                    <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
+                </p>
+                <p><strong>Relative path:</strong>
+                    <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).slice(-2).join('/') %></p>
+            <% } else { %>
+                <%= feature.description %>
             <% } %>
-           <p><strong>File name:</strong>
-                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
-            </p>
-            <p><strong>Relative path:</strong>
-                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).slice(-2).join('/') %></p>
         </div>
 
         <div class="clearfix"></div>

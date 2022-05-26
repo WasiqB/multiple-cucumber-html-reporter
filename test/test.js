@@ -38,6 +38,7 @@ test.generate({
     customMetadata: false,
     pageTitle: 'A custom page title',
     pageFooter: '<div><p>Some custom footer data can be placed here</p></div>',
+    plainDescription: true,
     customData: {
         title: 'Run info',
         data: [
