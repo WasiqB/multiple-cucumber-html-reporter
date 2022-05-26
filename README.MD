@@ -230,14 +230,35 @@ If you prefer, you can use CDN for assets.
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+Customization is now possible also for the doughnut chart by using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+The user can define colors for the chart by defining variables for the different categories as follows:
+```css
+:root {
+  --ambiguous-color:#AAAAAA;
+  --failed-color:#BBBBBB;
+  --not-defined-color:#CCCCCC;
+  --passed-color:#DDDDDD;
+  --pending-color:#EEEEEE;
+  --skipped-color:#FFFFFF;
+}
+```
+Please note that these colors do _not_ affect the main colors CSS. To have homogeneous styling you can simply link those
+colors to the variables, e.g.:
+
+```css
+.ambiguous-color {
+    color: var(--ambiguous-color) !important;
+}
+```
+Please refer to the `test` directory and the `embedded-array` test report for a complete color customization example.
 
 ### `overrideStyle`
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need replace default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
-
+If you need to replace completely the default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
+Please refer to the `test` directory for an example.
 
 ### `metadata`
 - **Type:** `JSON`
@@ -445,7 +466,7 @@ You can attach screenshots at any time to a Cucumber JSON file. Just create a Cu
 ### How to attach Plain Text to HTML report
 You can attach plain-text / data at any time to a Cucumber JSON file to help debug / review the results. You can add them during running or when a `scenario` failed.
 
-> Check the framework you are using to attach plain text to the JSON file.
+> Check the framework you are using to attach plain text to the JSON file. Please make sure to convert binary/non-readable data to a suitable textual representation, e.g. via Base64 encoding.
 
 ### How to attach pretty JSON to HTML report
 You can attach JSON at any time to a Cucumber JSON file. You can add them during running or when a `scenario` failed.
