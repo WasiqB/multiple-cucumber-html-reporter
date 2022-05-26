@@ -521,3 +521,7 @@ body.darkmode div pre {
     background-color: #3e3939 !important;
     color: #eee;
 }
+
+body.darkmode span.tag {
+    color: yellow;
+}
