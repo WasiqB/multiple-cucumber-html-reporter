@@ -489,6 +489,9 @@ body.darkmode #features-table th
 body.darkmode li:not([class])>a[id] {
     color: white;
 }
+body.darkmode li:not([class])>a[id]:hover {
+    background: darkslateblue;
+}
 
 body.darkmode tabl {
     color: white;
@@ -506,5 +509,15 @@ body.darkmode .form-control {
 }
 body.darkmode li[id*=features]>a {
     background-color: #3e3939 !important;
+}
 
+body.darkmode .btn-info {
+    color: #eee;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+body.darkmode .panel_toolbox > li > a:hover {
+    background: transparent;
+}
 }
