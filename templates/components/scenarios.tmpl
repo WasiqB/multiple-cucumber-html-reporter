@@ -153,7 +153,11 @@
                                         <a href="#error<%= scenarioIndex %>-<%= stepIndex %>-error" data-toggle="collapse">+ Show Error</a>
                                     <% } %>
 
-                                    <% if (step.text || step.json) { %>
+                                    <% if (step.json) { %>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-json" data-toggle="collapse">+ Show Info</a>
+                                    <% } %>
+                                    
+                                    <% if (step.text) { %>
                                         <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
                                     <% } %>
 
@@ -186,7 +190,7 @@
                             <% } %>
 
                             <% if (step.json) { %>
-                                <div id="info<%= scenarioIndex %>-<%= stepIndex %>-text" class="scenario-step-collapse collapse">
+                                <div id="info<%= scenarioIndex %>-<%= stepIndex %>-json" class="scenario-step-collapse collapse">
                                     <pre class=info><% try { %><%= JSON.stringify(step.json, undefined, 2) %><% } catch (error) { %><%= step.json %><% } %></pre>
                                 </div>
                             <% } %>
