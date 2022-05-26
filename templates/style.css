@@ -463,7 +463,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
     text-align: center;
 }
 
-.darkmode {
+body.darkmode,
+body.darkmode div.x_panel,
+body.darkmode div.container-fluid,
+body.darkmode div.created-by,
+body.darkmode .form-control,
+body.darkmode li.paginate_button>a,
+body.darkmode .dropdown-menu,
+body.darkmode #features-table th
+{
     background-color: #181616 !important;
     color: #eee;
     border-color: gray;
@@ -478,4 +486,18 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
     float: left;
     padding-top: 18px;
     cursor: pointer;
+}
+
+body.darkmode li:not([class])>a[id] {
+    color: white;
+}
+
+body.darkmode tabl {
+    color: white;
+}
+
+body.darkmode #features-table th {
+    background-color: #181616 !important;
+    color: #673ab7;
+    border-color: gray;
 }
