@@ -113,18 +113,21 @@ The directory in which the report needs to be saved, relative from where the scr
 
 ### `staticFilePath`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If true each feature will get a static filename for the html. Use this feature only if you are not running multiple instances of the same tests.
 
 ### `openReportInBrowser`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If true the report will automatically be opened in the default browser of the operating system.
 
 ### `saveCollectedJSON`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 This module will first merge all the JSON-files to 1 file and then enrich it with data that is used for the report. If `saveCollectedJSON :true` the merged JSON **AND** the enriched JSON will be saved in the `reportPath`. They will be saved as:
@@ -134,8 +137,8 @@ This module will first merge all the JSON-files to 1 file and then enrich it wit
 
 ### `disableLog`
 - **Type:** `boolean`
-- **Mandatory:** No
 - **Default:** `false`
+- **Mandatory:** No
 
 This will disable the log so will **NOT** see this.
 
@@ -165,8 +168,28 @@ You can change the report name to a name you want
 
 You can customise Page Footer if required. You just need to provide a html string like `<div><p>A custom footer in html</p></div>`
 
+### `plainDescription`
+- **Type:** `boolean`
+- **Default:** `false`
+- **Mandatory:** No
+
+The feature description is assumed to be a simple string and the library formats it accordingly, by copying it inside a
+paragraph tag. Since the description can be any free text, it can also be as complex as a full `div`, e.g.:
+
+```html
+<div>
+    <p><strong>Test description  </strong> : The test implements comparisons using all our datatypes</p>
+    <p><strong>Expected result   </strong> : Device does not reset</p>
+    <p><strong>Feature type      </strong> : Robustness</p>
+    <p><strong>Comments          </strong> : Test covers comparison operators</p>
+</div>
+```
+
+If the description already include formatting tags you can include it _as is_ by setting `plainDescription` to `true`.
+
 ### `displayDuration`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If set to `true` the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
@@ -198,6 +221,7 @@ If set to `true` the date and time at which the JSON-files were generated, is di
 
 ### `useCDN`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 If you prefer, you can use CDN for assets.
@@ -206,14 +230,35 @@ If you prefer, you can use CDN for assets.
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
+Customization is now possible also for the doughnut chart by using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+The user can define colors for the chart by defining variables for the different categories as follows:
+```css
+:root {
+  --ambiguous-color:#AAAAAA;
+  --failed-color:#BBBBBB;
+  --not-defined-color:#CCCCCC;
+  --passed-color:#DDDDDD;
+  --pending-color:#EEEEEE;
+  --skipped-color:#FFFFFF;
+}
+```
+Please note that these colors do _not_ affect the main colors CSS. To have homogeneous styling you can simply link those
+colors to the variables, e.g.:
+
+```css
+.ambiguous-color {
+    color: var(--ambiguous-color) !important;
+}
+```
+Please refer to the `test` directory and the `embedded-array` test report for a complete color customization example.
 
 ### `overrideStyle`
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need replace default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
-
+If you need to replace completely the default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
+Please refer to the `test` directory for an example.
 
 ### `metadata`
 - **Type:** `JSON`
@@ -242,6 +287,7 @@ See [metadata](./README.MD#metadata-1) for more info
 
 ### `customMetadata`
 - **Type:** `boolean`
+- **Default:** `false`
 - **Mandatory:** No
 
 It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many (10+) variables are used.
@@ -420,7 +466,7 @@ You can attach screenshots at any time to a Cucumber JSON file. Just create a Cu
 ### How to attach Plain Text to HTML report
 You can attach plain-text / data at any time to a Cucumber JSON file to help debug / review the results. You can add them during running or when a `scenario` failed.
 
-> Check the framework you are using to attach plain text to the JSON file.
+> Check the framework you are using to attach plain text to the JSON file. Please make sure to convert binary/non-readable data to a suitable textual representation, e.g. via Base64 encoding.
 
 ### How to attach pretty JSON to HTML report
 You can attach JSON at any time to a Cucumber JSON file. You can add them during running or when a `scenario` failed.
