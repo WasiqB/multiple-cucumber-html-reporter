@@ -67,7 +67,7 @@
 
     </nav>
 
-    <div class="main_conainer">
+    <div class="main_container">
 
         <div class="page-title">
             <div class="tags">
@@ -82,14 +82,18 @@
             <h1>Feature:
                 <small><%= feature.name %></small>
             </h1>
-            <p><% if (feature.description && feature.description.length > 0) { %>
-                <strong>Description: </strong> <%= feature.description %> </p>
+            <% if (!plainDescription) { %>
+                <p><% if (feature.description && feature.description.length > 0) { %>
+                    <strong>Description: </strong> <%= feature.description %> </p>
+                <% } %>
+               <p><strong>File name:</strong>
+                    <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
+                </p>
+                <p><strong>Relative path:</strong>
+                    <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).slice(-2).join('/') %></p>
+            <% } else { %>
+                <%= feature.description %>
             <% } %>
-           <p><strong>File name:</strong>
-                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
-            </p>
-            <p><strong>Relative path:</strong>
-                <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).slice(-2).join('/') %></p>
         </div>
 
         <div class="clearfix"></div>
@@ -164,6 +168,7 @@
     <% } %>
 
     <!-- Custom -->
+    <script src="../assets/js/Chart.style.js"></script>
     <script>
         var hideResult;
         var showAll;
@@ -195,14 +200,7 @@
                             <%= feature.scenarios.ambiguous %>,
                             <%= feature.scenarios.notDefined %>
                         ],
-                        backgroundColor: [
-                            "#26B99A",
-                            "#E74C3C",
-                            "#FFD119",
-                            "#3498DB",
-                            "#b73122",
-                            "#F39C12"
-                        ]
+                        backgroundColor: getChartColors()
                     }]
                 },
                 options: scenarioOptions

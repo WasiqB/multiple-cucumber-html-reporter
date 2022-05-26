@@ -30,6 +30,10 @@
               {
                 "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
                 "mime_type": "application/json"
+              },
+              {
+                "data": "orderCxl",
+                "mime_type": "text/plain"
               }
             ],
             "match": {
