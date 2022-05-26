@@ -467,8 +467,6 @@ body.darkmode,
 body.darkmode div.x_panel,
 body.darkmode div.container-fluid,
 body.darkmode div.created-by,
-body.darkmode .form-control,
-body.darkmode li.paginate_button>a,
 body.darkmode .dropdown-menu,
 body.darkmode #features-table th
 {
@@ -497,7 +495,16 @@ body.darkmode tabl {
 }
 
 body.darkmode #features-table th {
-    background-color: #181616 !important;
-    color: #673ab7;
+    background-color: #3e3939 !important;
+    color: #c3c3c3;
     border-color: gray;
+}
+
+body.darkmode .form-control {
+    background-color: #3e3939 !important;
+    color: #c3c3c3;
+}
+body.darkmode li[id*=features]>a {
+    background-color: #3e3939 !important;
+
 }
