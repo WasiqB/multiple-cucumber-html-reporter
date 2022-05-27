@@ -12,7 +12,7 @@ body {
   --skipped-color:#770077;
 }
 
-/* Hide darkmode toggle button */
+/* If your custom theme doesn't properly support dark mode, you can easily hide the toggle button */
 .fa-toggle-off {
     display: none
 }
