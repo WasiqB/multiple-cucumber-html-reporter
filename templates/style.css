@@ -493,10 +493,6 @@ body.darkmode li:not([class])>a[id]:hover {
     background: darkslateblue;
 }
 
-body.darkmode tabl {
-    color: white;
-}
-
 body.darkmode #features-table th {
     background-color: #3e3939 !important;
     color: #c3c3c3;
@@ -520,4 +516,12 @@ body.darkmode .btn-info {
 body.darkmode .panel_toolbox > li > a:hover {
     background: transparent;
 }
+
+body.darkmode div pre {
+    background-color: #3e3939 !important;
+    color: #eee;
+}
+
+body.darkmode span.tag {
+    color: #FFD119;
 }
