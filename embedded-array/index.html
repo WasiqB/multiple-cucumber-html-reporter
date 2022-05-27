@@ -6,8 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>A custom page title</title>
-
+        <meta http-equiv="Cache-control" content="public">
+        <title>A custom page title</title>
         
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
@@ -19,7 +19,7 @@
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
                 <![endif]-->
-
+                <script src="assets/js/darkmode.js"></script>
                 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
                 <!-- DataTables -->
@@ -40,7 +40,7 @@ body {
     line-height: 1.471;
 }
 
-.main_conainer {
+.main_container {
     padding: 10px 20px 0;
 }
 
@@ -486,18 +486,78 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
   background: rgb(58,58,58);
 }
 
+/* CSS custom properties are used to style doughnut charts */
+:root {
+  --ambiguous-color:#AAAAAA;
+  --failed-color:#FF0000;
+  --not-defined-color:#0000FF;
+  --passed-color:#00FF00;
+  --pending-color:#FFAA33;
+  --skipped-color:#770077;
+}
+
+/* Style colors are derived from custom properties to have a homogeneous style */
+.ambiguous-color {
+    color: var(--ambiguous-color) !important;
+}
+
+.failed-color {
+    color: var(--failed-color) !important;
+}
+
+.not-defined-color {
+    color: var(--not-defined-color) !important;
+}
+
+.passed-color {
+    color: var(--passed-color) !important;
+}
+
+.pending-color {
+    color: var(--pending-color) !important;
+}
+
+.skipped-color {
+    color: var(--skipped-color) !important;
+}
+
+/* backgrounds */
+.ambiguous-background {
+    background: var(--ambiguous-color) !important;
+}
+
+.failed-background {
+    background: var(--failed-color) !important;
+}
+
+.not-defined-background {
+    background: var(--not-defined-color) !important;
+}
+
+.passed-background {
+    background: var(--passed-color) !important;
+}
+
+.pending-background {
+    background: var(--pending-color) !important;
+}
+
+.skipped-background {
+    background: var(--skipped-color) !important;
+}
         </style>
     </head>
     <body>
-
         <nav class="navbar">
             <div class="container-fluid">
                 <p class="navbar-text" style="float: left">Dashboard</p>
+                <input id="darkCheck" type="checkbox" hidden onchange="applyDarkMode(); saveState()"></input>
+                <label title="Darkmode" id=darkmodeicon for="darkCheck" class="fa fa-toggle-off fa-lg darkModeIcon"></label>
                 <p class="navbar-text">Multiple Cucumber HTML Reporter</p>
             </div>
         </nav>
 
-        <div class="main_conainer">
+        <div class="main_container">
 
             <div class="row">
                 <div class="col-md-6 col-lg-4 col-xs-12">
@@ -727,7 +787,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f31e9cb0-e151-432f-8fa9-e33ce41ee7d8-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/cf30ce26-b847-43a6-9604-6497972cfc82-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -857,7 +917,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/bb1c1655-873b-4a54-92aa-faa972a12596-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
+                            <a href="features/e658416b-2749-4b46-bd2e-859fa2749d1c-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -953,7 +1013,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/1c03a0e3-0049-47ad-ab9b-d5e39d69ce23-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/e2edd7d7-6e9f-422b-a5b6-357c8305d5bd-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1043,7 +1103,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/2a8bd104-4006-44ec-b217-8598025c07a1-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/81da1922-8673-4b10-a122-3f2b1cf05634-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1173,7 +1233,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/63b95d22-144c-4701-bc93-0706a349841c-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/7b8aca7f-5a12-4161-9c71-76c5e1a023be-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1312,7 +1372,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
             </div>
         </div>
          
-                <div><p>Some custom footer data can be placed here</p></div>
+                true
          
 
         
@@ -1327,6 +1387,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         
 
         <!-- Custom -->
+        <script src="assets/js/Chart.style.js"></script>
         <script>
             $(document).ready(function () {
                 $('#features-table').dataTable({
@@ -1361,14 +1422,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 0,
                                 0
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: featureOptions
@@ -1400,14 +1454,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 0,
                                 0
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: scenarioOptions

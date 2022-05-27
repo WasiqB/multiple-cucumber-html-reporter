@@ -6,8 +6,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>Multiple Cucumber HTML Reporter</title>
-
+        <meta http-equiv="Cache-control" content="public">
+        <title>Multiple Cucumber HTML Reporter</title>
         
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
@@ -19,7 +19,7 @@
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
                 <![endif]-->
-
+                <script src="assets/js/darkmode.js"></script>
                 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
                 <!-- DataTables -->
@@ -38,7 +38,7 @@
     line-height: 1.471;
 }
 
-.main_conainer {
+.main_container {
     padding: 10px 20px 0;
 }
 
@@ -50,7 +50,7 @@ i span {
 nav.navbar {
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 filter-i {
@@ -494,19 +494,79 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
     text-align: center;
 }
 
+body.darkmode,
+body.darkmode div.x_panel,
+body.darkmode div.container-fluid,
+body.darkmode div.created-by,
+body.darkmode .dropdown-menu,
+body.darkmode #features-table th
+{
+    background-color: #181616 !important;
+    color: #eee;
+    border-color: gray;
+}
+
+#features-table > thead > tr {
+    color: steelblue;
+}
+
+.darkModeIcon {
+    font-size: x-large;
+    float: left;
+    padding-top: 18px;
+    cursor: pointer;
+}
+
+body.darkmode li:not([class])>a[id] {
+    color: white;
+}
+body.darkmode li:not([class])>a[id]:hover {
+    background: darkslateblue;
+}
+
+body.darkmode tabl {
+    color: white;
+}
+
+body.darkmode #features-table th {
+    background-color: #3e3939 !important;
+    color: #c3c3c3;
+    border-color: gray;
+}
+
+body.darkmode .form-control {
+    background-color: #3e3939 !important;
+    color: #c3c3c3;
+}
+body.darkmode li[id*=features]>a {
+    background-color: #3e3939 !important;
+}
+
+body.darkmode .btn-info {
+    color: #eee;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+body.darkmode .panel_toolbox > li > a:hover {
+    background: transparent;
+}
+}
+
             
         </style>
     </head>
     <body>
-
         <nav class="navbar">
             <div class="container-fluid">
                 <p class="navbar-text" style="float: left">Dashboard</p>
+                <input id="darkCheck" type="checkbox" hidden onchange="applyDarkMode(); saveState()"></input>
+                <label title="Darkmode" id=darkmodeicon for="darkCheck" class="fa fa-toggle-off fa-lg darkModeIcon"></label>
                 <p class="navbar-text">You can adjust this report name</p>
             </div>
         </nav>
 
-        <div class="main_conainer">
+        <div class="main_container">
 
             <div class="row">
                 <div class="col-md-6 col-lg-4 col-xs-12">
@@ -848,7 +908,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/37c7d46b-2355-4a41-b5c5-86fab119f46f-after-error.html">After Error</a>
+                            <a href="features/dfd4d7ad-e56e-4d7f-a84a-17a2cd0a99fb-after-error.html">After Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -952,7 +1012,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/91e35d70-140c-4438-a9bb-3f789139eb08-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/67ea72bd-e744-4e16-82a3-207fc37d3a92-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1047,7 +1107,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/61c91539-e845-408c-b733-d5e09eace829-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/4e226945-5582-4232-8874-b97e0634ba19-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1142,7 +1202,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/720ab4bb-8833-4424-b6fb-a4c10987c08c-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/a41b7fc9-ecf4-40d0-b9a6-49cb23787a15-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1237,7 +1297,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/02d06c4b-e580-43bf-907c-4623cdb4aa86-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
+                            <a href="features/3d8c82d5-9bec-40a5-8cea-9e6960aee4e7-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
                         </td>
                         <td class="text-center">
                             
@@ -1351,7 +1411,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/9a05dd71-5962-4094-8642-dfe39e30af7d-auto-launch.html">Background Feature 2</a>
+                            <a href="features/c53eef8c-c1c3-4fe6-8a08-647c1a7a3ca3-auto-launch.html">Background Feature 2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1452,7 +1512,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f85a218b-057c-4753-ba26-22201c79866b-before-and-after-hook.html">Before and After hook</a>
+                            <a href="features/ae017ccc-497b-4199-bc8a-805d3024e3ad-before-and-after-hook.html">Before and After hook</a>
                         </td>
                         <td class="text-center">
                             
@@ -1547,7 +1607,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d123707e-fc61-4a70-9ef3-572c0d63d41f-before-error.html">Before Error</a>
+                            <a href="features/be51f81d-22db-4e0c-b135-c2c7d61b19ec-before-error.html">Before Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -1651,7 +1711,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/0e529475-900f-4f31-812f-c94967b3e9fa-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/f8a32542-0380-4e97-a3cc-a047ecb23856-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
                             
@@ -1744,7 +1804,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d1d5d328-53c8-4631-a1da-d6af04a833b4-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/a7948370-bef5-4d23-937a-5c6546317c75-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1848,7 +1908,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/52f81ac9-d51e-4bc4-aebb-7fade0039a43-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/ac795550-f0fd-44d8-b568-fae40877f4bc-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1952,7 +2012,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/467923c4-2b71-4fe0-8234-c052cd6e8b3c-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/ce16dc9a-cd3f-437f-b637-a92ae2844c10-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2056,7 +2116,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e0514d59-5903-4ffd-86f6-acfec3607802-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/74539221-066c-400a-aab5-7a83c7ba218f-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2138,7 +2198,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/fc584a61-d9fc-48aa-9a8c-c2cfd4306973-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/0ed564a9-ddc7-4150-8637-8740e840d475-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2220,7 +2280,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/30b1cc4e-959e-4500-943a-80888cfd2627-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/e2e68ec9-2377-4578-9fcd-8ba4b51f7041-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -2364,7 +2424,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/48929081-ddda-4311-b2e2-f15c0c450630-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/c06451fd-4461-4fbc-91d8-f268162b6582-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2508,7 +2568,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/56fd4664-640d-4b73-84b0-cd816658bedf-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/ccb0ccb5-35a8-463e-b3ad-b01b7e8c5719-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2652,7 +2712,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/c52aa2e2-284e-4d49-a00a-4a89643e9603-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/53f7d508-e6c5-4ee5-ae55-981ea5d215d9-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
                             
@@ -2745,7 +2805,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/34ff67c1-8dcf-436a-b032-f998264fb6e8-no_elements_v2-1494777183356.html">No elements V2</a>
+                            <a href="features/41272b4c-cbf9-403d-b538-fe594c242e06-no_elements_v2-1494777183356.html">No elements V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2841,7 +2901,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/a4b819cf-81dc-4845-a14f-a3b7a161716e-no_elements_v3-1494777183356.html">No elements V3</a>
+                            <a href="features/fb9ed054-9915-4a32-9d8c-20154f80e7fd-no_elements_v3-1494777183356.html">No elements V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2937,7 +2997,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/c881d785-dd19-4a4e-97e1-b58467e369d6-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/dbd54a33-5572-42ef-a5d1-d93c8094051b-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3032,7 +3092,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/b108e036-97eb-44ca-acd6-b3c4afd870f6-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/7da6dc34-4a07-4f69-af7c-713fb8d47e0e-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3127,7 +3187,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/765a4bd5-557f-4b30-ad62-802f8c502c57-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/5705ec8d-1d2d-4d02-9982-92a48c287a57-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3222,7 +3282,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f1fbab4c-e4bd-4bbf-a5b1-04d23d56b91f-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/f4a80062-df92-4e7a-8cf6-1cd97a3c5efa-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -3321,7 +3381,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/ab95d027-36a1-494a-88f7-77ec6766e2a1-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/1806ff5f-9f04-421a-ac26-f1603f626328-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3431,7 +3491,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/68a35c7c-5668-4128-8d1c-c12acd6e1781-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/72bc0008-a5aa-4a6d-b6c0-31616dfac1d7-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3541,7 +3601,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/f9b64eb5-e17c-439a-932b-1bfdd31d5630-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/47ae039c-70d5-48a6-919e-74138aa23303-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3651,7 +3711,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/473b1152-87cc-4b7a-943f-269038b01c66-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
+                            <a href="features/e47fda86-e061-45b5-9266-b3207389cf43-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3767,7 +3827,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/cc658e1a-7035-40d3-9ab6-2c7b42d401b5-json-report-starwars.html">Report with JSON rest response</a>
+                            <a href="features/f0f5a4a8-306d-4fc0-9bc4-740c193ad0ce-json-report-starwars.html">Report with JSON rest response</a>
                         </td>
                         <td class="text-center">
                             
@@ -3894,6 +3954,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         
 
         <!-- Custom -->
+        <script src="assets/js/Chart.style.js"></script>
         <script>
             $(document).ready(function () {
                 $('#features-table').dataTable({
@@ -3928,14 +3989,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 3,
                                 1
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: featureOptions
@@ -3967,14 +4021,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 4,
                                 3
                             ],
-                            backgroundColor: [
-                                "#26B99A",
-                                "#E74C3C",
-                                "#b73122",
-                                "#F39C12",
-                                "#FFD119",
-                                "#3498DB"
-                            ]
+                            backgroundColor: getChartColors()
                         }]
                     },
                     options: scenarioOptions

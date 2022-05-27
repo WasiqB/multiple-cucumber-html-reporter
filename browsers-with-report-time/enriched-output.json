@@ -34,11 +34,11 @@
   "browser": 23,
   "name": "",
   "version": "version",
-  "time": "2022-02-06T15:51:54.925Z",
+  "time": "2022-05-27T06:56:22.983Z",
   "features": [
     {
       "metadata": {
-        "reportTime": "2020/07/22 09:59:58",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "not known",
           "version": "not known"
@@ -52,7 +52,7 @@
       "keyword": "Feature",
       "name": "After Error",
       "line": 1,
-      "id": "ac56b54e-ccc5-485c-92ea-7c8dc2abe45a-after-error",
+      "id": "b8fe55b6-33f9-48b7-a4a6-2bc227fdc833-after-error",
       "tags": [],
       "uri": "src\\test.feature",
       "elements": [
@@ -155,7 +155,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -175,7 +175,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Firefox",
           "version": "53"
@@ -278,7 +278,7 @@
           "time": "00:32:10.520"
         }
       ],
-      "id": "674a98bd-669b-4d1e-a980-4832d2a101b7-ambiguous-scenarios-specified-v1",
+      "id": "6ca20b52-7589-4f8c-96aa-55365c07a392-ambiguous-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Ambiguous scenarios specified V1",
@@ -293,7 +293,7 @@
         "ambiguous": 1,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "100.00",
@@ -313,7 +313,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Firefox",
           "version": "53"
@@ -393,7 +393,7 @@
           "time": "00:00:00.002"
         }
       ],
-      "id": "378dc5ac-cd0a-4680-8de6-c17284c610e3-ambiguous-scenarios-specified-v2",
+      "id": "a1040add-ffb9-4d0c-bfae-f4a5029e999f-ambiguous-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -403,7 +403,7 @@
         "ambiguous": 1,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "100.00",
@@ -423,7 +423,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Firefox",
           "version": "53"
@@ -438,7 +438,7 @@
       "keyword": "Feature",
       "name": "Ambiguous scenarios specified V3",
       "line": 1,
-      "id": "50723123-b1a9-49b8-af62-875b77cfb36f-ambiguous-scenarios-specified-v3",
+      "id": "878216b2-cba7-4fab-916f-514634ffb3f3-ambiguous-scenarios-specified-v3",
       "tags": [],
       "uri": "e2e-tests/features/ambiguous.feature",
       "elements": [
@@ -513,7 +513,7 @@
         "ambiguous": 1,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "100.00",
@@ -533,7 +533,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/07/13 08:31:21",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "not known",
           "version": "not known"
@@ -938,7 +938,7 @@
       ],
       "name": "Background Feature",
       "description": "",
-      "id": "03780d1e-bfef-4251-9194-354ebb9cd401-datos-en-pantalla-de-aceptaci-n",
+      "id": "3bd6c254-06b1-40f0-af30-d5c55ee568df-datos-en-pantalla-de-aceptaci-n",
       "keyword": "Feature",
       "uri": "file:src/test/java/features/cliente_con_cuenta/aceptacion_solicitud_4beneficiarios.feature",
       "tags": [],
@@ -951,7 +951,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -971,7 +971,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/07/13 08:31:21",
+        "reportTime": "2022/02/06 16:54:08",
         "device": "Xiaomi Mi A2 Lite",
         "platform": {
           "name": "android",
@@ -1242,7 +1242,7 @@
       ],
       "name": "Background Feature 2",
       "description": "",
-      "id": "910d417c-d8c9-47a7-84af-a3f150b8910f-auto-launch",
+      "id": "d5ee1947-0989-4783-b93c-e014d8e67cb2-auto-launch",
       "keyword": "Feature",
       "uri": "classpath:features/Autolaunch.feature",
       "tags": [
@@ -1264,7 +1264,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1284,7 +1284,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/07/13 08:31:21",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "chrome",
           "version": "83.0.4103.116"
@@ -1472,7 +1472,7 @@
           "time": "02:46:40.000"
         }
       ],
-      "id": "bc842080-8f6c-4e33-820e-8acb4891e669-before-and-after-hook",
+      "id": "df509d7e-71da-4806-9d99-cc4c62ca4d01-before-and-after-hook",
       "scenarios": {
         "passed": 1,
         "failed": 0,
@@ -1482,7 +1482,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1502,7 +1502,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "not known",
           "version": "not known"
@@ -1516,7 +1516,7 @@
       "keyword": "Feature",
       "name": "Before Error",
       "line": 1,
-      "id": "8fff6bd2-a4d1-403f-9bc5-844aae0eb780-before-error",
+      "id": "0cb21007-4639-4bca-b5dd-21302d127937-before-error",
       "tags": [],
       "uri": "e2e/demo.feature",
       "elements": [
@@ -1602,7 +1602,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1622,7 +1622,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/05/26 08:07:15",
         "browser": {
           "name": "Edge",
           "version": "14"
@@ -1652,6 +1652,10 @@
                 {
                   "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
                   "mime_type": "application/json"
+                },
+                {
+                  "data": "orderCxl",
+                  "mime_type": "text/plain"
                 }
               ],
               "match": {
@@ -1681,6 +1685,9 @@
                     "id": 51
                   }
                 ]
+              ],
+              "text": [
+                "orderCxl"
               ],
               "time": "00:01:18.145"
             },
@@ -1776,7 +1783,7 @@
               "attachments": [],
               "text": [
                 "&#47;&#47; testdata to be printed",
-                "&#123;&#13;&#10;    &#34;value&#34;&#58; &#34;write a protractor test&#34;&#13;&#10;&#125;"
+                "ew0KICAgICJ2YWx1ZSI6ICJ3cml0ZSBhIHByb3RyYWN0b3IgdGVzdCINCn0&#61;"
               ],
               "time": "12:54:16.822"
             },
@@ -1804,7 +1811,7 @@
               },
               "attachments": [],
               "text": [
-                "Suspendisse lectus leo",
+                "U3VzcGVuZGlzc2UgbGVjdHVzIGxlbw&#61;&#61;",
                 "Suspendisse lectus leo"
               ],
               "time": "07:35:41.587"
@@ -1874,7 +1881,7 @@
           "time": "12:50:06.076"
         }
       ],
-      "id": "289b3bc7-23a9-4e5d-ad58-d5084c1d7d15-testing_embeddings-1494823257420",
+      "id": "439fcec1-756c-4835-8527-a6940752a604-testing_embeddings-1494823257420",
       "keyword": "Feature",
       "line": 1,
       "name": "Testing embeddings",
@@ -1888,7 +1895,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1908,7 +1915,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "58"
@@ -2044,7 +2051,7 @@
           "time": "06:18:51.101"
         }
       ],
-      "id": "78b9cfa0-1bc5-4580-8fb3-c136d16c3a5c-failure-report-v1",
+      "id": "05089451-5b9d-4bbd-9342-b6acf809781c-failure-report-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Failure report V1",
@@ -2064,7 +2071,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -2084,7 +2091,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "58"
@@ -2206,7 +2213,7 @@
           "time": "00:00:05.020"
         }
       ],
-      "id": "b23dced9-6738-426b-ba3a-2afc9729bc6f-failure-report-v2",
+      "id": "c72608b9-e655-47a3-9ce2-d077c8d462c2-failure-report-v2",
       "scenarios": {
         "passed": 0,
         "failed": 1,
@@ -2216,7 +2223,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -2236,7 +2243,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "58"
@@ -2251,7 +2258,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "fc1dbf71-1078-4a20-a94f-d18694ba76c0-failure-report-v3",
+      "id": "0e53f67f-96db-4653-9169-66aca11bcc6a-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -2367,7 +2374,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -2387,7 +2394,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "app": {
           "name": "Greetings app",
           "version": "1.02"
@@ -2401,7 +2408,7 @@
       "keyword": "Feature",
       "name": "Happy flow app",
       "line": 2,
-      "id": "a96af83b-fd5b-4d86-be82-5274e2549d19-happy-flow-app",
+      "id": "85a10cdd-1171-4ab0-b68c-19b6438462d4-happy-flow-app",
       "uri": "e2e-tests/features/app.feature",
       "elements": [
         {
@@ -2484,7 +2491,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -2504,7 +2511,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "app": {
           "name": "Greetings app",
           "version": "1.02"
@@ -2518,7 +2525,7 @@
       "keyword": "Feature",
       "name": "Happy flow app",
       "line": 2,
-      "id": "dea196c6-dcb4-4fd8-9435-acece8dada67-happy-flow-app",
+      "id": "24d2429e-0894-4b2a-b951-a4ec925f889b-happy-flow-app",
       "uri": "e2e-tests/features/app.feature",
       "elements": [
         {
@@ -2601,7 +2608,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -2621,7 +2628,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Edge",
           "version": "14"
@@ -3007,7 +3014,7 @@
           "time": "17:26:17.723"
         }
       ],
-      "id": "c32f3e14-313a-4cbc-8ae5-1f165f1539a9-happy-flow-v1",
+      "id": "375531e9-9659-4d84-bbfd-d4b7abafaa7d-happy-flow-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Happy flow V1",
@@ -3035,7 +3042,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -3055,7 +3062,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Edge",
           "version": "14"
@@ -3388,7 +3395,7 @@
           "time": "00:00:01.527"
         }
       ],
-      "id": "a7bc1c8c-3497-4a21-ad78-2e2828a48e74-happy-flow-v2",
+      "id": "4ef71dd9-cb71-4000-bb9a-7c8d6c211540-happy-flow-v2",
       "scenarios": {
         "passed": 3,
         "failed": 0,
@@ -3398,7 +3405,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -3418,7 +3425,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "microsoftedge",
           "version": "14"
@@ -3432,7 +3439,7 @@
       "keyword": "Feature",
       "name": "Happy flow V3",
       "line": 2,
-      "id": "390c32bf-ae1b-4b21-8ab8-3bab7b518bf4-happy-flow-v3",
+      "id": "7716201c-dfac-4897-9065-400273843d56-happy-flow-v3",
       "tags": [
         {
           "name": "@example",
@@ -3756,7 +3763,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -3776,7 +3783,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "not known",
           "version": "not known"
@@ -3788,7 +3795,7 @@
         }
       },
       "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
-      "id": "52a69551-0600-4fbb-afd1-a1e893d93947-no_elements-1494777183356",
+      "id": "45075b4b-c034-4c99-b7d9-45b0d4955e74-no_elements-1494777183356",
       "keyword": "Feature",
       "line": 1,
       "name": "No elements",
@@ -3803,7 +3810,7 @@
         "ambiguous": 0,
         "passedPercentage": 0,
         "failedPercentage": 0,
-        "notdefinedPercentage": 0,
+        "notDefinedPercentage": 0,
         "skippedPercentage": 0,
         "pendingPercentage": 0,
         "ambiguousPercentage": 0,
@@ -3821,7 +3828,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2022/02/06 16:49:45",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Firefox Headless",
           "version": "58.8"
@@ -3833,7 +3840,7 @@
         }
       },
       "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
-      "id": "678e61f6-ce6d-45ad-a244-c4a5a34fdf61-no_elements_v2-1494777183356",
+      "id": "885f737f-cf89-4904-8af1-5e4bae9a1466-no_elements_v2-1494777183356",
       "keyword": "Feature",
       "line": 1,
       "name": "No elements V2",
@@ -3848,7 +3855,7 @@
         "ambiguous": 0,
         "passedPercentage": 0,
         "failedPercentage": 0,
-        "notdefinedPercentage": 0,
+        "notDefinedPercentage": 0,
         "skippedPercentage": 0,
         "pendingPercentage": 0,
         "ambiguousPercentage": 0,
@@ -3866,7 +3873,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2022/02/06 16:49:45",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome Headless",
           "version": "97.6.5.9"
@@ -3878,7 +3885,7 @@
         }
       },
       "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
-      "id": "3c40f581-58cd-400e-bb95-1fb76e93e1d8-no_elements_v3-1494777183356",
+      "id": "2728427f-069f-492a-9528-04b580b7f016-no_elements_v3-1494777183356",
       "keyword": "Feature",
       "line": 1,
       "name": "No elements V3",
@@ -3893,7 +3900,7 @@
         "ambiguous": 0,
         "passedPercentage": 0,
         "failedPercentage": 0,
-        "notdefinedPercentage": 0,
+        "notDefinedPercentage": 0,
         "skippedPercentage": 0,
         "pendingPercentage": 0,
         "ambiguousPercentage": 0,
@@ -3911,7 +3918,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "56"
@@ -4015,7 +4022,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "d87ec610-d77d-4b0f-b491-28a4e6411c77-pending-scenarios-specified-v1",
+      "id": "f3ffb7cd-1926-40df-a026-7cfa6f77370b-pending-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 1,
       "name": "Pending scenarios specified V1",
@@ -4030,7 +4037,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "100.00",
         "ambiguousPercentage": "0.00",
@@ -4049,7 +4056,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "56"
@@ -4133,7 +4140,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "4a170bfa-93b6-46a2-b80b-a796e6c01216-pending-scenarios-specified-v2",
+      "id": "06b4a7b6-905d-43c2-8fcd-bd8b23cf5f7a-pending-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -4143,7 +4150,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "100.00",
         "ambiguousPercentage": "0.00",
@@ -4162,7 +4169,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Chrome",
           "version": "56"
@@ -4177,7 +4184,7 @@
       "keyword": "Feature",
       "name": "Pending scenarios specified V3",
       "line": 1,
-      "id": "da5801f3-ee3d-4d8e-956f-4103f368ddb6-pending-scenarios-specified-v3",
+      "id": "8f03e844-4095-4a2d-a1bf-e05910a7c333-pending-scenarios-specified-v3",
       "tags": [],
       "uri": "e2e-tests/features/pending.feature",
       "elements": [
@@ -4257,7 +4264,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "100.00",
         "ambiguousPercentage": "0.00",
@@ -4277,7 +4284,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Safari",
           "version": "10"
@@ -4573,7 +4580,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "b259d54d-b38d-4f60-942f-dbfffb80b15a-skipped_scenarios-1494823563764",
+      "id": "5333c76e-5551-4b5b-8f2b-6b4904a979d1-skipped_scenarios-1494823563764",
       "keyword": "Feature",
       "line": 1,
       "name": "Skipped scenarios specified",
@@ -4588,7 +4595,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "100.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -4607,7 +4614,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Safari",
           "version": "10"
@@ -4719,7 +4726,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "4e6fafde-2e0b-406c-923e-5836de32273a-undefined-scenarios-specified-v1",
+      "id": "cbba0f67-f2bf-43ad-8209-c890403c7ef6-undefined-scenarios-specified-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Undefined scenarios specified V1",
@@ -4739,7 +4746,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "100.00",
+        "notDefinedPercentage": "100.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -4758,7 +4765,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Safari",
           "version": "10"
@@ -4855,7 +4862,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "c719ed0a-c58d-46f4-b80e-5f57fb1676bc-undefined-scenarios-specified-v2",
+      "id": "67f0fa98-88cf-41bd-909f-cc8f3f90a74f-undefined-scenarios-specified-v2",
       "scenarios": {
         "passed": 0,
         "failed": 0,
@@ -4865,7 +4872,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "100.00",
+        "notDefinedPercentage": "100.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -4884,7 +4891,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Safari",
           "version": "10"
@@ -4899,7 +4906,7 @@
       "keyword": "Feature",
       "name": "Undefined scenarios specified V3",
       "line": 2,
-      "id": "99931269-327c-4df3-ad31-eea39ee85f07-undefined-scenarios-specified-v3",
+      "id": "d9d28106-c0ee-4d0c-abe8-381f501496ac-undefined-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
@@ -4991,7 +4998,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "100.00",
+        "notDefinedPercentage": "100.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -5010,7 +5017,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "Safari",
           "version": "10"
@@ -5025,7 +5032,7 @@
       "keyword": "Feature",
       "name": "Undefined, pending, passed scenarios specified V3",
       "line": 2,
-      "id": "35dccc76-3fa6-49b3-8672-e33ddb52c0d5-undefined-pending-passed-scenarios-specified-v3",
+      "id": "3b3247b2-d4c8-410e-9c68-c52d1e769702-undefined-pending-passed-scenarios-specified-v3",
       "tags": [
         {
           "name": "@undefined",
@@ -5274,7 +5281,7 @@
         "ambiguous": 0,
         "passedPercentage": "33.33",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "33.33",
+        "notDefinedPercentage": "33.33",
         "skippedPercentage": "0.00",
         "pendingPercentage": "33.33",
         "ambiguousPercentage": "0.00",
@@ -5294,7 +5301,7 @@
     },
     {
       "metadata": {
-        "reportTime": "2020/02/17 16:27:43",
+        "reportTime": "2022/02/06 16:54:08",
         "browser": {
           "name": "",
           "version": ""
@@ -5331,7 +5338,7 @@
                 "value": "17:30:35.244 karate.env system property was: demo",
                 "line": 15
               },
-              "id": "05949855-6d6d-4215-9679-5b20ec1fef7a-undefined-url--https---swapi-co-api-",
+              "id": "b1e40a24-8d59-41ea-8011-ee06564f5971-undefined-url--https---swapi-co-api-",
               "restWireData": "17&#58;30&#58;35&#46;244 karate&#46;env system property was&#58; demo",
               "time": "00:26:42.504"
             }
@@ -5384,7 +5391,7 @@
                 "value": "17:30:35.402 request:\n1 > GET https://swapi.co/api/planets\n1 > Accept-Encoding: gzip,deflate\n1 > Connection: Keep-Alive\n1 > Host: swapi.co\n1 > User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_242)\n\n17:30:38.408 response time in milliseconds: 3002.61\n1 < 301\n1 < CF-Cache-Status: DYNAMIC\n1 < CF-RAY: 560eda61f8296b6b-LHR\n1 < Connection: keep-alive\n1 < Content-Type: text/html; charset=utf-8\n1 < Date: Thu, 06 Feb 2020 17:30:38 GMT\n1 < Expect-CT: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"\n1 < Location: https://swapi.co/api/planets/\n1 < Server: cloudflare\n1 < Set-Cookie: __cfduid=da2652607b9b30b4e232d4a0a253db7111581010237; expires=Sat, 07-Mar-20 17:30:37 GMT; path=/; domain=.swapi.co; HttpOnly; SameSite=Lax; Secure\n1 < Transfer-Encoding: chunked\n1 < Via: 1.1 vegur\n1 < X-Frame-Options: SAMEORIGIN\n\n\n17:30:38.411 request:\n2 > GET https://swapi.co/api/planets\n2 > Accept-Encoding: gzip,deflate\n2 > Connection: Keep-Alive\n2 > Cookie: __cfduid=da2652607b9b30b4e232d4a0a253db7111581010237\n2 > Host: swapi.co\n2 > User-Agent: Apache-HttpClient/4.5.5 (Java/1.8.0_242)\n\n17:30:39.317 response time in milliseconds: 903.69\n2 < 200\n2 < Allow: GET, HEAD, OPTIONS\n2 < CF-Cache-Status: DYNAMIC\n2 < CF-RAY: 560eda66beab6b6b-LHR\n2 < Connection: keep-alive\n2 < Content-Type: application/json\n2 < Date: Thu, 06 Feb 2020 17:30:39 GMT\n2 < Etag: W/\"394d177de8df8accc41f9427b749ef4a\"\n2 < Expect-CT: max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"\n2 < Server: cloudflare\n2 < Transfer-Encoding: chunked\n2 < Vary: Accept, Cookie\n2 < Via: 1.1 vegur\n2 < X-Frame-Options: SAMEORIGIN\n{\"count\":61,\"next\":\"https://swapi.co/api/planets/?page=2\",\"previous\":null,\"results\":[{\"name\":\"Alderaan\",\"rotation_period\":\"24\",\"orbital_period\":\"364\",\"diameter\":\"12500\",\"climate\":\"temperate\",\"gravity\":\"1 standard\",\"terrain\":\"grasslands, mountains\",\"surface_water\":\"40\",\"population\":\"2000000000\",\"residents\":[\"https://swapi.co/api/people/5/\",\"https://swapi.co/api/people/68/\",\"https://swapi.co/api/people/81/\"],\"films\":[\"https://swapi.co/api/films/6/\",\"https://swapi.co/api/films/1/\"],\"created\":\"2014-12-10T11:35:48.479000Z\",\"edited\":\"2014-12-20T20:58:18.420000Z\",\"url\":\"https://swapi.co/api/planets/2/\"},{\"name\":\"Yavin IV\",\"rotation_period\":\"24\",\"orbital_period\":\"4818\",\"diameter\":\"10200\",\"climate\":\"temperate, tropical\",\"gravity\":\"1 standard\",\"terrain\":\"jungle, rainforests\",\"surface_water\":\"8\",\"population\":\"1000\",\"residents\":[],\"films\":[\"https://swapi.co/api/films/1/\"],\"created\":\"2014-12-10T11:37:19.144000Z\",\"edited\":\"2014-12-20T20:58:18.421000Z\",\"url\":\"https://swapi.co/api/planets/3/\"},{\"name\":\"Hoth\",\"rotation_period\":\"23\",\"orbital_period\":\"549\",\"diameter\":\"7200\",\"climate\":\"frozen\",\"gravity\":\"1.1 standard\",\"terrain\":\"tundra, ice caves, mountain ranges\",\"surface_water\":\"100\",\"population\":\"unknown\",\"residents\":[],\"films\":[\"https://swapi.co/api/films/2/\"],\"created\":\"2014-12-10T11:39:13.934000Z\",\"edited\":\"2014-12-20T20:58:18.423000Z\",\"url\":\"https://swapi.co/api/planets/4/\"},{\"name\":\"Dagobah\",\"rotation_period\":\"23\",\"orbital_period\":\"341\",\"diameter\":\"8900\",\"climate\":\"murky\",\"gravity\":\"N/A\",\"terrain\":\"swamp, jungles\",\"surface_water\":\"8\",\"population\":\"unknown\",\"residents\":[],\"films\":[\"https://swapi.co/api/films/2/\",\"https://swapi.co/api/films/6/\",\"https://swapi.co/api/films/3/\"],\"created\":\"2014-12-10T11:42:22.590000Z\",\"edited\":\"2014-12-20T20:58:18.425000Z\",\"url\":\"https://swapi.co/api/planets/5/\"},{\"name\":\"Bespin\",\"rotation_period\":\"12\",\"orbital_period\":\"5110\",\"diameter\":\"118000\",\"climate\":\"temperate\",\"gravity\":\"1.5 (surface), 1 standard (Cloud City)\",\"terrain\":\"gas giant\",\"surface_water\":\"0\",\"population\":\"6000000\",\"residents\":[\"https://swapi.co/api/people/26/\"],\"films\":[\"https://swapi.co/api/films/2/\"],\"created\":\"2014-12-10T11:43:55.240000Z\",\"edited\":\"2014-12-20T20:58:18.427000Z\",\"url\":\"https://swapi.co/api/planets/6/\"},{\"name\":\"Endor\",\"rotation_period\":\"18\",\"orbital_period\":\"402\",\"diameter\":\"4900\",\"climate\":\"temperate\",\"gravity\":\"0.85 standard\",\"terrain\":\"forests, mountains, lakes\",\"surface_water\":\"8\",\"population\":\"30000000\",\"residents\":[\"https://swapi.co/api/people/30/\"],\"films\":[\"https://swapi.co/api/films/3/\"],\"created\":\"2014-12-10T11:50:29.349000Z\",\"edited\":\"2014-12-20T20:58:18.429000Z\",\"url\":\"https://swapi.co/api/planets/7/\"},{\"name\":\"Naboo\",\"rotation_period\":\"26\",\"orbital_period\":\"312\",\"diameter\":\"12120\",\"climate\":\"temperate\",\"gravity\":\"1 standard\",\"terrain\":\"grassy hills, swamps, forests, mountains\",\"surface_water\":\"12\",\"population\":\"4500000000\",\"residents\":[\"https://swapi.co/api/people/3/\",\"https://swapi.co/api/people/21/\",\"https://swapi.co/api/people/36/\",\"https://swapi.co/api/people/37/\",\"https://swapi.co/api/people/38/\",\"https://swapi.co/api/people/39/\",\"https://swapi.co/api/people/42/\",\"https://swapi.co/api/people/60/\",\"https://swapi.co/api/people/61/\",\"https://swapi.co/api/people/66/\",\"https://swapi.co/api/people/35/\"],\"films\":[\"https://swapi.co/api/films/5/\",\"https://swapi.co/api/films/4/\",\"https://swapi.co/api/films/6/\",\"https://swapi.co/api/films/3/\"],\"created\":\"2014-12-10T11:52:31.066000Z\",\"edited\":\"2014-12-20T20:58:18.430000Z\",\"url\":\"https://swapi.co/api/planets/8/\"},{\"name\":\"Coruscant\",\"rotation_period\":\"24\",\"orbital_period\":\"368\",\"diameter\":\"12240\",\"climate\":\"temperate\",\"gravity\":\"1 standard\",\"terrain\":\"cityscape, mountains\",\"surface_water\":\"unknown\",\"population\":\"1000000000000\",\"residents\":[\"https://swapi.co/api/people/34/\",\"https://swapi.co/api/people/55/\",\"https://swapi.co/api/people/74/\"],\"films\":[\"https://swapi.co/api/films/5/\",\"https://swapi.co/api/films/4/\",\"https://swapi.co/api/films/6/\",\"https://swapi.co/api/films/3/\"],\"created\":\"2014-12-10T11:54:13.921000Z\",\"edited\":\"2014-12-20T20:58:18.432000Z\",\"url\":\"https://swapi.co/api/planets/9/\"},{\"name\":\"Kamino\",\"rotation_period\":\"27\",\"orbital_period\":\"463\",\"diameter\":\"19720\",\"climate\":\"temperate\",\"gravity\":\"1 standard\",\"terrain\":\"ocean\",\"surface_water\":\"100\",\"population\":\"1000000000\",\"residents\":[\"https://swapi.co/api/people/22/\",\"https://swapi.co/api/people/72/\",\"https://swapi.co/api/people/73/\"],\"films\":[\"https://swapi.co/api/films/5/\"],\"created\":\"2014-12-10T12:45:06.577000Z\",\"edited\":\"2014-12-20T20:58:18.434000Z\",\"url\":\"https://swapi.co/api/planets/10/\"},{\"name\":\"Geonosis\",\"rotation_period\":\"30\",\"orbital_period\":\"256\",\"diameter\":\"11370\",\"climate\":\"temperate, arid\",\"gravity\":\"0.9 standard\",\"terrain\":\"rock, desert, mountain, barren\",\"surface_water\":\"5\",\"population\":\"100000000000\",\"residents\":[\"https://swapi.co/api/people/63/\"],\"films\":[\"https://swapi.co/api/films/5/\"],\"created\":\"2014-12-10T12:47:22.350000Z\",\"edited\":\"2014-12-20T20:58:18.437000Z\",\"url\":\"https://swapi.co/api/planets/11/\"}]}",
                 "line": 20
               },
-              "id": "30b65272-ebd4-49d0-a714-54945b678eae-create_api_validate_all_planet_and_response-method-get",
+              "id": "f7d9fd1a-1c1c-4da2-9ff2-3f4e44b09c38-create_api_validate_all_planet_and_response-method-get",
               "restWireData": "17&#58;30&#58;35&#46;402 request&#58;&#10;1 &#62; GET https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#10;1 &#62; Accept&#45;Encoding&#58; gzip&#44;deflate&#10;1 &#62; Connection&#58; Keep&#45;Alive&#10;1 &#62; Host&#58; swapi&#46;co&#10;1 &#62; User&#45;Agent&#58; Apache&#45;HttpClient&#47;4&#46;5&#46;5 &#40;Java&#47;1&#46;8&#46;0&#95;242&#41;&#10;&#10;17&#58;30&#58;38&#46;408 response time in milliseconds&#58; 3002&#46;61&#10;1 &#60; 301&#10;1 &#60; CF&#45;Cache&#45;Status&#58; DYNAMIC&#10;1 &#60; CF&#45;RAY&#58; 560eda61f8296b6b&#45;LHR&#10;1 &#60; Connection&#58; keep&#45;alive&#10;1 &#60; Content&#45;Type&#58; text&#47;html&#59; charset&#61;utf&#45;8&#10;1 &#60; Date&#58; Thu&#44; 06 Feb 2020 17&#58;30&#58;38 GMT&#10;1 &#60; Expect&#45;CT&#58; max&#45;age&#61;604800&#44; report&#45;uri&#61;&#34;https&#58;&#47;&#47;report&#45;uri&#46;cloudflare&#46;com&#47;cdn&#45;cgi&#47;beacon&#47;expect&#45;ct&#34;&#10;1 &#60; Location&#58; https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;&#10;1 &#60; Server&#58; cloudflare&#10;1 &#60; Set&#45;Cookie&#58; &#95;&#95;cfduid&#61;da2652607b9b30b4e232d4a0a253db7111581010237&#59; expires&#61;Sat&#44; 07&#45;Mar&#45;20 17&#58;30&#58;37 GMT&#59; path&#61;&#47;&#59; domain&#61;&#46;swapi&#46;co&#59; HttpOnly&#59; SameSite&#61;Lax&#59; Secure&#10;1 &#60; Transfer&#45;Encoding&#58; chunked&#10;1 &#60; Via&#58; 1&#46;1 vegur&#10;1 &#60; X&#45;Frame&#45;Options&#58; SAMEORIGIN&#10;&#10;&#10;17&#58;30&#58;38&#46;411 request&#58;&#10;2 &#62; GET https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#10;2 &#62; Accept&#45;Encoding&#58; gzip&#44;deflate&#10;2 &#62; Connection&#58; Keep&#45;Alive&#10;2 &#62; Cookie&#58; &#95;&#95;cfduid&#61;da2652607b9b30b4e232d4a0a253db7111581010237&#10;2 &#62; Host&#58; swapi&#46;co&#10;2 &#62; User&#45;Agent&#58; Apache&#45;HttpClient&#47;4&#46;5&#46;5 &#40;Java&#47;1&#46;8&#46;0&#95;242&#41;&#10;&#10;17&#58;30&#58;39&#46;317 response time in milliseconds&#58; 903&#46;69&#10;2 &#60; 200&#10;2 &#60; Allow&#58; GET&#44; HEAD&#44; OPTIONS&#10;2 &#60; CF&#45;Cache&#45;Status&#58; DYNAMIC&#10;2 &#60; CF&#45;RAY&#58; 560eda66beab6b6b&#45;LHR&#10;2 &#60; Connection&#58; keep&#45;alive&#10;2 &#60; Content&#45;Type&#58; application&#47;json&#10;2 &#60; Date&#58; Thu&#44; 06 Feb 2020 17&#58;30&#58;39 GMT&#10;2 &#60; Etag&#58; W&#47;&#34;394d177de8df8accc41f9427b749ef4a&#34;&#10;2 &#60; Expect&#45;CT&#58; max&#45;age&#61;604800&#44; report&#45;uri&#61;&#34;https&#58;&#47;&#47;report&#45;uri&#46;cloudflare&#46;com&#47;cdn&#45;cgi&#47;beacon&#47;expect&#45;ct&#34;&#10;2 &#60; Server&#58; cloudflare&#10;2 &#60; Transfer&#45;Encoding&#58; chunked&#10;2 &#60; Vary&#58; Accept&#44; Cookie&#10;2 &#60; Via&#58; 1&#46;1 vegur&#10;2 &#60; X&#45;Frame&#45;Options&#58; SAMEORIGIN&#10;&#123;&#34;count&#34;&#58;61&#44;&#34;next&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;&#63;page&#61;2&#34;&#44;&#34;previous&#34;&#58;null&#44;&#34;results&#34;&#58;&#91;&#123;&#34;name&#34;&#58;&#34;Alderaan&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;24&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;364&#34;&#44;&#34;diameter&#34;&#58;&#34;12500&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;grasslands&#44; mountains&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;40&#34;&#44;&#34;population&#34;&#58;&#34;2000000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;5&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;68&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;81&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;6&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;1&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;35&#58;48&#46;479000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;420000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;2&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Yavin IV&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;24&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;4818&#34;&#44;&#34;diameter&#34;&#58;&#34;10200&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#44; tropical&#34;&#44;&#34;gravity&#34;&#58;&#34;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;jungle&#44; rainforests&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;8&#34;&#44;&#34;population&#34;&#58;&#34;1000&#34;&#44;&#34;residents&#34;&#58;&#91;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;1&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;37&#58;19&#46;144000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;421000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;3&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Hoth&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;23&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;549&#34;&#44;&#34;diameter&#34;&#58;&#34;7200&#34;&#44;&#34;climate&#34;&#58;&#34;frozen&#34;&#44;&#34;gravity&#34;&#58;&#34;1&#46;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;tundra&#44; ice caves&#44; mountain ranges&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;100&#34;&#44;&#34;population&#34;&#58;&#34;unknown&#34;&#44;&#34;residents&#34;&#58;&#91;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;2&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;39&#58;13&#46;934000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;423000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;4&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Dagobah&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;23&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;341&#34;&#44;&#34;diameter&#34;&#58;&#34;8900&#34;&#44;&#34;climate&#34;&#58;&#34;murky&#34;&#44;&#34;gravity&#34;&#58;&#34;N&#47;A&#34;&#44;&#34;terrain&#34;&#58;&#34;swamp&#44; jungles&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;8&#34;&#44;&#34;population&#34;&#58;&#34;unknown&#34;&#44;&#34;residents&#34;&#58;&#91;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;2&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;6&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;3&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;42&#58;22&#46;590000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;425000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;5&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Bespin&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;12&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;5110&#34;&#44;&#34;diameter&#34;&#58;&#34;118000&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;1&#46;5 &#40;surface&#41;&#44; 1 standard &#40;Cloud City&#41;&#34;&#44;&#34;terrain&#34;&#58;&#34;gas giant&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;0&#34;&#44;&#34;population&#34;&#58;&#34;6000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;26&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;2&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;43&#58;55&#46;240000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;427000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;6&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Endor&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;18&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;402&#34;&#44;&#34;diameter&#34;&#58;&#34;4900&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;0&#46;85 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;forests&#44; mountains&#44; lakes&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;8&#34;&#44;&#34;population&#34;&#58;&#34;30000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;30&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;3&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;50&#58;29&#46;349000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;429000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;7&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Naboo&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;26&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;312&#34;&#44;&#34;diameter&#34;&#58;&#34;12120&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;grassy hills&#44; swamps&#44; forests&#44; mountains&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;12&#34;&#44;&#34;population&#34;&#58;&#34;4500000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;3&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;21&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;36&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;37&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;38&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;39&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;42&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;60&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;61&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;66&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;35&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;5&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;4&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;6&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;3&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;52&#58;31&#46;066000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;430000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;8&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Coruscant&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;24&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;368&#34;&#44;&#34;diameter&#34;&#58;&#34;12240&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;cityscape&#44; mountains&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;unknown&#34;&#44;&#34;population&#34;&#58;&#34;1000000000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;34&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;55&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;74&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;5&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;4&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;6&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;3&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T11&#58;54&#58;13&#46;921000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;432000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;9&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Kamino&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;27&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;463&#34;&#44;&#34;diameter&#34;&#58;&#34;19720&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#34;&#44;&#34;gravity&#34;&#58;&#34;1 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;ocean&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;100&#34;&#44;&#34;population&#34;&#58;&#34;1000000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;22&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;72&#47;&#34;&#44;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;73&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;5&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T12&#58;45&#58;06&#46;577000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;434000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;10&#47;&#34;&#125;&#44;&#123;&#34;name&#34;&#58;&#34;Geonosis&#34;&#44;&#34;rotation&#95;period&#34;&#58;&#34;30&#34;&#44;&#34;orbital&#95;period&#34;&#58;&#34;256&#34;&#44;&#34;diameter&#34;&#58;&#34;11370&#34;&#44;&#34;climate&#34;&#58;&#34;temperate&#44; arid&#34;&#44;&#34;gravity&#34;&#58;&#34;0&#46;9 standard&#34;&#44;&#34;terrain&#34;&#58;&#34;rock&#44; desert&#44; mountain&#44; barren&#34;&#44;&#34;surface&#95;water&#34;&#58;&#34;5&#34;&#44;&#34;population&#34;&#58;&#34;100000000000&#34;&#44;&#34;residents&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;people&#47;63&#47;&#34;&#93;&#44;&#34;films&#34;&#58;&#91;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;films&#47;5&#47;&#34;&#93;&#44;&#34;created&#34;&#58;&#34;2014&#45;12&#45;10T12&#58;47&#58;22&#46;350000Z&#34;&#44;&#34;edited&#34;&#58;&#34;2014&#45;12&#45;20T20&#58;58&#58;18&#46;437000Z&#34;&#44;&#34;url&#34;&#58;&#34;https&#58;&#47;&#47;swapi&#46;co&#47;api&#47;planets&#47;11&#47;&#34;&#125;&#93;&#125;",
               "time": "23:55:35.948"
             },
@@ -5405,7 +5412,7 @@
                 "value": "",
                 "line": 20
               },
-              "id": "fbf61816-7851-4be9-90a8-2927305e3626-create_api_validate_all_planet_and_response-status-200",
+              "id": "7564d6c5-906b-4657-aa72-4744fa445e29-create_api_validate_all_planet_and_response-status-200",
               "restWireData": "",
               "time": "00:00:09.140"
             },
@@ -5456,7 +5463,7 @@
       ],
       "name": "Report with JSON rest response",
       "description": "Report with JSON rest response",
-      "id": "8107e87c-98be-4438-b49d-eacec62acfd2-json-report-starwars",
+      "id": "7b21cbc7-b045-4d8f-866c-94612c4b4b4b-json-report-starwars",
       "keyword": "Feature",
       "uri": "starwars.feature",
       "scenarios": {
@@ -5468,7 +5475,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -5497,7 +5504,7 @@
     "total": 29,
     "ambiguousPercentage": "10.34",
     "failedPercentage": "20.69",
-    "notdefinedPercentage": "13.79",
+    "notDefinedPercentage": "13.79",
     "pendingPercentage": "10.34",
     "skippedPercentage": "3.45",
     "passedPercentage": "31.03"
@@ -5513,7 +5520,7 @@
     "total": 37,
     "ambiguousPercentage": "8.11",
     "failedPercentage": "16.22",
-    "notdefinedPercentage": "10.81",
+    "notDefinedPercentage": "10.81",
     "passedPercentage": "45.95",
     "pendingPercentage": "10.81",
     "skippedPercentage": "8.11"

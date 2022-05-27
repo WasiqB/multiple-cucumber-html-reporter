@@ -23,7 +23,7 @@
   "browser": 5,
   "name": "",
   "version": "version",
-  "time": "2022-02-06T15:51:54.859Z",
+  "time": "2022-05-27T06:56:22.910Z",
   "features": [
     {
       "metadata": {
@@ -452,7 +452,7 @@
           "time": "00:00:11.625"
         }
       ],
-      "id": "f31e9cb0-e151-432f-8fa9-e33ce41ee7d8-happy-flow-v1",
+      "id": "cf30ce26-b847-43a6-9604-6497972cfc82-happy-flow-v1",
       "keyword": "Feature",
       "line": 2,
       "name": "Happy flow V1",
@@ -480,7 +480,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -724,7 +724,7 @@
       "keyword": "Feature",
       "name": "Failure report Multi Attachment V3",
       "line": 2,
-      "id": "bb1c1655-873b-4a54-92aa-faa972a12596-failure-report-multi-attachment-v3",
+      "id": "e658416b-2749-4b46-bd2e-859fa2749d1c-failure-report-multi-attachment-v3",
       "tags": [
         {
           "name": "@skip",
@@ -741,7 +741,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -880,7 +880,7 @@
       "keyword": "Feature",
       "name": "Failure report V3",
       "line": 2,
-      "id": "1c03a0e3-0049-47ad-ab9b-d5e39d69ce23-failure-report-v3",
+      "id": "e2edd7d7-6e9f-422b-a5b6-357c8305d5bd-failure-report-v3",
       "tags": [
         {
           "name": "@skip",
@@ -897,7 +897,7 @@
         "ambiguous": 0,
         "passedPercentage": "0.00",
         "failedPercentage": "100.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1249,7 +1249,7 @@
           "time": "00:00:00.000"
         }
       ],
-      "id": "2a8bd104-4006-44ec-b217-8598025c07a1-happy-flow-v2",
+      "id": "81da1922-8673-4b10-a122-3f2b1cf05634-happy-flow-v2",
       "scenarios": {
         "passed": 3,
         "failed": 0,
@@ -1259,7 +1259,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1292,7 +1292,7 @@
       "keyword": "Feature",
       "name": "Happy flow V3",
       "line": 2,
-      "id": "63b95d22-144c-4701-bc93-0706a349841c-happy-flow-v3",
+      "id": "7b8aca7f-5a12-4161-9c71-76c5e1a023be-happy-flow-v3",
       "tags": [
         {
           "name": "@example",
@@ -1616,7 +1616,7 @@
         "ambiguous": 0,
         "passedPercentage": "100.00",
         "failedPercentage": "0.00",
-        "notdefinedPercentage": "0.00",
+        "notDefinedPercentage": "0.00",
         "skippedPercentage": "0.00",
         "pendingPercentage": "0.00",
         "ambiguousPercentage": "0.00",
@@ -1645,7 +1645,7 @@
     "total": 5,
     "ambiguousPercentage": "0.00",
     "failedPercentage": "40.00",
-    "notdefinedPercentage": "0.00",
+    "notDefinedPercentage": "0.00",
     "pendingPercentage": "0.00",
     "skippedPercentage": "0.00",
     "passedPercentage": "60.00"
@@ -1661,7 +1661,7 @@
     "total": 12,
     "ambiguousPercentage": "0.00",
     "failedPercentage": "25.00",
-    "notdefinedPercentage": "0.00",
+    "notDefinedPercentage": "0.00",
     "passedPercentage": "75.00",
     "pendingPercentage": "0.00",
     "skippedPercentage": "0.00"
