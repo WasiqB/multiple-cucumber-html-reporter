@@ -72,11 +72,13 @@
         <div class="page-title">
             <div class="tags">
                 <% if (feature.tags) { %>
-                <% var amount = feature.tags.length; %>
-                <% if (amount > 0 ){ %>
-                <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg"></i>
-                <% _.each(feature.tags, (tag) => {%><span class="tag"><%= tag.name %></span><%});%>
-                <% } %>
+                    <% var amount = feature.tags.length; %>
+                    <% if (amount > 0 ){ %>
+                        <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg"></i>
+                        <% _.each(feature.tags, (tag) => {%>
+                            <span class="tag"><%= tag.name %></span>
+                        <%});%>
+                    <% } %>
                 <% } %>
             </div>
             <h1>Feature:
