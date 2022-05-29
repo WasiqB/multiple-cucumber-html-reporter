@@ -525,3 +525,15 @@ body.darkmode div pre {
 body.darkmode span.tag {
     color: #FFD119;
 }
+
+body.darkmode .keyword {
+    color: chocolate;
+}
+
+body.darkmode div.tags ~h1 {
+    color: chocolate;
+}
+
+body.darkmode div.tags ~h2 {
+    color: chocolate;
+}
