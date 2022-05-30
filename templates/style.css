@@ -527,13 +527,21 @@ body.darkmode span.tag {
 }
 
 body.darkmode .keyword {
-    color: chocolate;
+    color: #d2691e;
 }
 
 body.darkmode div.tags ~h1 {
-    color: chocolate;
+    color: #d2691e;
 }
 
 body.darkmode div.tags ~h2 {
-    color: chocolate;
+    color: #d2691e;
+}
+
+.fa-sun-o:before {
+    color: #ff5722
+}
+
+.fa-moon-o:before {
+    color: #0e1416
 }
