@@ -482,7 +482,7 @@ body.darkmode #features-table th
 .darkModeIcon {
     font-size: x-large;
     float: left;
-    padding-top: 18px;
+    padding-top: 12px;
     cursor: pointer;
 }
 
@@ -524,4 +524,35 @@ body.darkmode div pre {
 
 body.darkmode span.tag {
     color: #FFD119;
+}
+
+body.darkmode .keyword {
+    color: #d2691e;
+}
+
+body.darkmode div.tags ~h1 {
+    color: #d2691e;
+}
+
+body.darkmode div.tags ~h2 {
+    color: #d2691e;
+}
+
+svg#moon, svg#sun {
+    width: 40px;
+    height: 30px;
+    fill: #ff4500;
+}
+
+input#darkCheck:checked ~ label>svg#sun {
+    display: none;
+}
+
+label>svg#moon {
+    display: none;
+}
+
+input#darkCheck:checked ~ label>svg#moon {
+    display: inline-block;
+    fill: #ffe4c4;
 }
