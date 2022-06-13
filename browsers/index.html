@@ -513,8 +513,12 @@ body.darkmode #features-table th
 .darkModeIcon {
     font-size: x-large;
     float: left;
-    padding-top: 18px;
+    padding-top: 12px;
     cursor: pointer;
+}
+
+.darkModeIcon:before {
+    content: '';
 }
 
 body.darkmode li:not([class])>a[id] {
@@ -522,10 +526,6 @@ body.darkmode li:not([class])>a[id] {
 }
 body.darkmode li:not([class])>a[id]:hover {
     background: darkslateblue;
-}
-
-body.darkmode tabl {
-    color: white;
 }
 
 body.darkmode #features-table th {
@@ -551,6 +551,45 @@ body.darkmode .btn-info {
 body.darkmode .panel_toolbox > li > a:hover {
     background: transparent;
 }
+
+body.darkmode div pre {
+    background-color: #3e3939 !important;
+    color: #eee;
+}
+
+body.darkmode span.tag {
+    color: #FFD119;
+}
+
+body.darkmode .keyword {
+    color: #d2691e;
+}
+
+body.darkmode div.tags ~h1 {
+    color: #d2691e;
+}
+
+body.darkmode div.tags ~h2 {
+    color: #d2691e;
+}
+
+svg#moon, svg#sun {
+    width: 40px;
+    height: 30px;
+    fill: #ff4500;
+}
+
+input#darkCheck:checked ~ label>svg#sun {
+    display: none;
+}
+
+label>svg#moon {
+    display: none;
+}
+
+input#darkCheck:checked ~ label>svg#moon {
+    display: inline-block;
+    fill: #ffe4c4;
 }
 
             
@@ -561,7 +600,10 @@ body.darkmode .panel_toolbox > li > a:hover {
             <div class="container-fluid">
                 <p class="navbar-text" style="float: left">Dashboard</p>
                 <input id="darkCheck" type="checkbox" hidden onchange="applyDarkMode(); saveState()"></input>
-                <label title="Darkmode" id=darkmodeicon for="darkCheck" class="fa fa-toggle-off fa-lg darkModeIcon"></label>
+                <label title="Darkmode" id=darkmodeicon for="darkCheck" class="darkModeIcon">
+                    <svg id="moon" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 262.86"><path fill-rule="nonzero" d="M316.78 16.55h-205.9c-30.5 0-58.22 12.48-78.31 32.57C12.47 69.21 0 96.93 0 127.44c0 30.5 12.47 58.22 32.57 78.31 20.09 20.1 47.81 32.57 78.31 32.57h193.25c21.54 15.43 47.9 24.54 76.26 24.54h.18c36.14 0 69.02-14.79 92.83-38.6 23.8-23.81 38.6-56.67 38.6-92.83 0-36.15-14.78-69.03-38.63-92.8C449.53 14.8 416.67 0 380.57 0h-.18c-23.02 0-44.72 6.02-63.61 16.55zm70.62 97.17.43.09c.82-3.45 2.83-6.19 6.04-8.16 3.2-1.98 6.53-2.57 10.01-1.75l.1-.43c-3.47-.82-6.2-2.83-8.17-6.03-1.98-3.22-2.57-6.55-1.75-10.01l-.43-.1c-.82 3.47-2.83 6.2-6.03 8.18-3.21 1.98-6.55 2.56-10.02 1.74l-.1.43c3.47.82 6.2 2.84 8.18 6.04 1.99 3.19 2.56 6.52 1.74 10zm36.87 16.77.53.12c1.02-4.35 3.55-7.78 7.58-10.26 4.02-2.49 8.2-3.22 12.56-2.19l.13-.53c-4.35-1.03-7.78-3.55-10.26-7.59-2.49-4.03-3.22-8.22-2.2-12.56l-.53-.12c-1.02 4.35-3.55 7.77-7.58 10.26-4.02 2.49-8.21 3.22-12.56 2.19l-.13.53c4.36 1.03 7.78 3.55 10.26 7.58 2.49 4.02 3.22 8.22 2.2 12.57zm-38.79-61.01c-15.69 7.67-26.98 23.26-28.29 41.93-1.96 27.88 19.05 52.06 46.92 54.02 13.23.93 25.64-3.32 35.22-11.02 4.75-3.82 9.66-.45 7.59 4.36-11.33 26.42-38.45 44.04-68.74 41.91-38.29-2.69-67.14-35.91-64.45-74.19C316.3 89.8 347.05 61.67 383.44 62c6.71.06 8.13 4.5 2.04 7.48zm-5.09-53.95h.18c63.75 0 115.91 52.15 115.91 115.9 0 63.75-52.23 115.91-115.91 115.91h-.18c-63.68 0-115.91-52.16-115.91-115.91s52.16-115.9 115.91-115.9z"/></svg>
+                    <svg id="sun" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 256.04"><path d="M128.02 0h.18c22.03 0 42.83 5.66 61 15.6h210.38c30.89 0 59 12.65 79.38 33.04C499.35 68.99 512 97.1 512 128.02c0 30.92-12.66 59.03-33.02 79.4l-.42.38c-20.34 20.15-48.29 32.64-78.98 32.64H189.24c-18.17 9.93-38.98 15.6-61.04 15.6h-.18c-35.2 0-67.22-14.41-90.42-37.6C14.41 195.25 0 163.24 0 128.02s14.4-67.24 37.59-90.43l.91-.83C61.65 14.05 93.29 0 128.02 0zm-5.95 54.42c0-1.95.8-3.73 2.08-5 2.74-2.77 7.27-2.76 10.02-.01l.14.16a7.042 7.042 0 0 1 1.94 4.85v12.95c0 1.95-.8 3.73-2.08 5.01-2.75 2.75-7.27 2.75-10.02 0a7.084 7.084 0 0 1-2.08-5.01V54.42zm6.05 31.17c11.72 0 22.32 4.75 30 12.43 7.67 7.68 12.43 18.29 12.43 30 0 11.72-4.75 22.32-12.43 30s-18.28 12.43-30 12.43c-11.72 0-22.32-4.75-30.01-12.43-7.67-7.68-12.43-18.28-12.43-30 0-11.72 4.76-22.32 12.43-30 7.69-7.67 18.3-12.43 30.01-12.43zm-56.33-5.34a7.114 7.114 0 0 1-2.07-5.01c0-3.9 3.18-7.09 7.09-7.09 1.81 0 3.62.69 5 2.07l9.16 9.16a7.065 7.065 0 0 1 2.08 5.01c0 1.8-.7 3.62-2.08 5.01a7.057 7.057 0 0 1-5.01 2.08c-1.8 0-3.61-.7-5-2.07l-9.17-9.16zm-17.28 53.81c-1.95 0-3.73-.8-5-2.08-2.77-2.74-2.76-7.27-.01-10.01l.15-.14a7.04 7.04 0 0 1 4.86-1.94h12.94a7.082 7.082 0 0 1 7.09 7.09c0 1.95-.8 3.73-2.07 5.01a7.099 7.099 0 0 1-5.02 2.07H54.51zm25.82 50.28a7.049 7.049 0 0 1-5 2.07c-3.91 0-7.09-3.16-7.09-7.08 0-1.81.68-3.62 2.07-5.01l9.31-9.29a7.02 7.02 0 0 1 4.86-1.94 7.09 7.09 0 0 1 7.09 7.09c0 1.79-.69 3.6-2.08 4.99l-9.16 9.17zm53.82 17.29c0 1.94-.8 3.73-2.08 5-2.74 2.76-7.27 2.75-10.02 0l-.13-.15a7.033 7.033 0 0 1-1.94-4.85v-12.95c0-1.96.8-3.73 2.07-5.01 2.76-2.75 7.27-2.75 10.03 0a7.1 7.1 0 0 1 2.07 5.01v12.95zm50.28-25.83a7.055 7.055 0 0 1 2.07 5.01c0 3.89-3.18 7.09-7.08 7.09-1.81 0-3.63-.69-5.01-2.07l-9.16-9.16a7.095 7.095 0 0 1-2.07-5.02c0-3.9 3.18-7.09 7.08-7.09 1.8 0 3.61.7 5 2.08l9.17 9.16zm17.29-53.82c1.93 0 3.73.81 5 2.08 2.76 2.75 2.75 7.27 0 10.02l-.15.14a7.098 7.098 0 0 1-4.85 1.94h-12.95c-1.96 0-3.74-.8-5.01-2.08-2.76-2.75-2.76-7.27 0-10.02a7.049 7.049 0 0 1 5.01-2.08h12.95zM175.89 71.7a7.074 7.074 0 0 1 5-2.07c3.9 0 7.1 3.19 7.1 7.09 0 1.81-.69 3.62-2.07 5l-9.32 9.31a7.12 7.12 0 0 1-4.86 1.93c-3.91 0-7.09-3.18-7.09-7.09 0-1.8.7-3.61 2.08-5l9.16-9.17zm34.17-41.87c2.96 2.47 5.81 5.07 8.53 7.8 23.22 23.15 37.63 55.17 37.63 90.39s-14.42 67.23-37.6 90.42a130.2 130.2 0 0 1-8.5 7.77h189.46c26.83 0 51.24-10.91 69.02-28.5l.32-.35c17.79-17.79 28.85-42.35 28.85-69.34 0-26.99-11.06-51.55-28.85-69.35-17.77-17.8-42.33-28.84-69.34-28.84H210.06zm-82.04-14.71h.18c62.09 0 112.89 50.81 112.89 112.9 0 62.1-50.86 112.9-112.89 112.9h-.18c-62.03 0-112.9-50.8-112.9-112.9 0-62.09 50.81-112.9 112.9-112.9z"/></svg>
+                </label>
                 <p class="navbar-text">You can adjust this report name</p>
             </div>
         </nav>
@@ -908,7 +950,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/dfd4d7ad-e56e-4d7f-a84a-17a2cd0a99fb-after-error.html">After Error</a>
+                            <a href="features/c49c5cf8-1b78-436a-82fc-aa88cb8517ec-after-error.html">After Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -1012,7 +1054,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/67ea72bd-e744-4e16-82a3-207fc37d3a92-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/9702b016-455b-4db6-9de2-120c09f41d29-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1107,7 +1149,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/4e226945-5582-4232-8874-b97e0634ba19-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/c95e095c-4aff-4316-a194-a4bc8f20d3ec-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1202,7 +1244,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/a41b7fc9-ecf4-40d0-b9a6-49cb23787a15-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/7d6809cc-df3b-4fe0-9ef6-d96ef9e7c24e-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1297,7 +1339,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/3d8c82d5-9bec-40a5-8cea-9e6960aee4e7-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
+                            <a href="features/29afe964-c0e9-4b45-addf-0018a6a95a50-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
                         </td>
                         <td class="text-center">
                             
@@ -1411,7 +1453,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/c53eef8c-c1c3-4fe6-8a08-647c1a7a3ca3-auto-launch.html">Background Feature 2</a>
+                            <a href="features/549f5d0b-b0b6-4316-92d5-d4695441e0b6-auto-launch.html">Background Feature 2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1512,7 +1554,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/ae017ccc-497b-4199-bc8a-805d3024e3ad-before-and-after-hook.html">Before and After hook</a>
+                            <a href="features/c7a65934-5d38-448d-8c94-ffbb4cb4c91b-before-and-after-hook.html">Before and After hook</a>
                         </td>
                         <td class="text-center">
                             
@@ -1607,7 +1649,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/be51f81d-22db-4e0c-b135-c2c7d61b19ec-before-error.html">Before Error</a>
+                            <a href="features/929ac431-047e-434c-9f57-bad99fd14eb9-before-error.html">Before Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -1711,7 +1753,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/f8a32542-0380-4e97-a3cc-a047ecb23856-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/0b73a367-dc2f-4234-9db4-4c52fb07a803-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
                             
@@ -1804,7 +1846,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/a7948370-bef5-4d23-937a-5c6546317c75-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/ea346314-6410-413e-9be7-83bfad353846-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1908,7 +1950,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/ac795550-f0fd-44d8-b568-fae40877f4bc-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/dd3946ac-8244-454a-b2ae-c231e13bd2dd-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2012,7 +2054,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/ce16dc9a-cd3f-437f-b637-a92ae2844c10-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/657cbab7-3893-44db-a663-ee4ba7626dbb-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2116,7 +2158,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/74539221-066c-400a-aab5-7a83c7ba218f-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/77f5ba09-89d0-43a7-bcbe-4ac37c673142-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2198,7 +2240,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/0ed564a9-ddc7-4150-8637-8740e840d475-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/a5d0ef78-4c80-4e6d-829c-1adb84beec3c-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2280,7 +2322,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/e2e68ec9-2377-4578-9fcd-8ba4b51f7041-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/e6055b11-e0b3-4469-a92c-3840bc796e72-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -2424,7 +2466,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/c06451fd-4461-4fbc-91d8-f268162b6582-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/17be09ce-2b8d-4ee7-a937-febd7fbf6eb5-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2568,7 +2610,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/ccb0ccb5-35a8-463e-b3ad-b01b7e8c5719-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/33f70b0f-5632-4407-a52b-d673000dd056-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2712,7 +2754,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/53f7d508-e6c5-4ee5-ae55-981ea5d215d9-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/1bfc6182-cbc6-4e57-a6d1-7400527900a9-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
                             
@@ -2805,7 +2847,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/41272b4c-cbf9-403d-b538-fe594c242e06-no_elements_v2-1494777183356.html">No elements V2</a>
+                            <a href="features/73957bbc-a5f0-4f4b-a3c9-4b28d470572f-no_elements_v2-1494777183356.html">No elements V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2901,7 +2943,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/fb9ed054-9915-4a32-9d8c-20154f80e7fd-no_elements_v3-1494777183356.html">No elements V3</a>
+                            <a href="features/e1b680d0-789f-483b-8c7b-aa6a5c6432e3-no_elements_v3-1494777183356.html">No elements V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2997,7 +3039,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/dbd54a33-5572-42ef-a5d1-d93c8094051b-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/9841bbb9-a90e-422d-8d5e-e9bf49cb725a-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3092,7 +3134,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/7da6dc34-4a07-4f69-af7c-713fb8d47e0e-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/5a997c79-e871-4dcf-bcd7-dcd3b4ed4fd9-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3187,7 +3229,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/5705ec8d-1d2d-4d02-9982-92a48c287a57-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/1f1d2589-f282-4d3b-a428-11e25c214112-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3282,7 +3324,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/f4a80062-df92-4e7a-8cf6-1cd97a3c5efa-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/db89337e-31b5-4e95-a958-d1556de51c0e-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -3381,7 +3423,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/1806ff5f-9f04-421a-ac26-f1603f626328-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/764ceeb6-fd0d-453e-86da-7277138114e6-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3491,7 +3533,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/72bc0008-a5aa-4a6d-b6c0-31616dfac1d7-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/8ebe0892-7284-460f-911d-7ce6e6d14c51-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3601,7 +3643,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/47ae039c-70d5-48a6-919e-74138aa23303-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/dae8d2ee-0f30-40a1-a1d4-ca0998b07d4d-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3711,7 +3753,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/e47fda86-e061-45b5-9266-b3207389cf43-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
+                            <a href="features/e9f78011-aed3-4cbc-94fc-44444adc95b6-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3827,7 +3869,7 @@ body.darkmode .panel_toolbox > li > a:hover {
                     
                     <tr>
                         <td>
-                            <a href="features/f0f5a4a8-306d-4fc0-9bc4-740c193ad0ce-json-report-starwars.html">Report with JSON rest response</a>
+                            <a href="features/e3309ddb-464e-4fd6-acd5-03fb597f1990-json-report-starwars.html">Report with JSON rest response</a>
                         </td>
                         <td class="text-center">
                             
