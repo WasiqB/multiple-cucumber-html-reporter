@@ -486,6 +486,10 @@ body.darkmode #features-table th
     cursor: pointer;
 }
 
+.darkModeIcon:before {
+    content: '';
+}
+
 body.darkmode li:not([class])>a[id] {
     color: white;
 }
