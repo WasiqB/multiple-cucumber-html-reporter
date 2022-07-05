@@ -102,7 +102,7 @@ After(function (scenarioResult) {
     world.attach(screenshot, 'image/png');
   }
 
-  return Promise.resolve(scenarioResult.status));
+  return Promise.resolve(scenarioResult.status);
 });
 
 ```
