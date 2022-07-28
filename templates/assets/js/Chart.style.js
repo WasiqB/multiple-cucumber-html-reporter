@@ -2,10 +2,10 @@ function getChartColors() {
     const colorsMap = [
         {colorVar: "--passed-color", defaultColor: "#26B99A"},
         {colorVar: "--failed-color", defaultColor: "#E74C3C"},
-        {colorVar: "--ambiguous-color", defaultColor: "#b73122"},
-        {colorVar: "--not-defined-color", defaultColor: "#F39C12"},
         {colorVar: "--pending-color", defaultColor: "#FFD119"},
         {colorVar: "--skipped-color", defaultColor: "#3498DB"},
+        {colorVar: "--ambiguous-color", defaultColor: "#b73122"},
+        {colorVar: "--not-defined-color", defaultColor: "#F39C12"},
     ];
     const colors = []
     const style = window.getComputedStyle(document.body);

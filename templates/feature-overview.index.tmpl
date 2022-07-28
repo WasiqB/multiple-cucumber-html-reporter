@@ -197,10 +197,10 @@
                         data: [
                             <%= feature.scenarios.passed %>,
                             <%= feature.scenarios.failed %>,
-                            <%= feature.scenarios.ambiguous %>,
-                            <%= feature.scenarios.notDefined %>,
                             <%= feature.scenarios.pending %>,
-                            <%= feature.scenarios.skipped %>
+                            <%= feature.scenarios.skipped %>,
+                            <%= feature.scenarios.ambiguous %>,
+                            <%= feature.scenarios.notDefined %>
                         ],
                         backgroundColor: getChartColors()
                     }]
