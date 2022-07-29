@@ -10,7 +10,7 @@ function getChartColors() {
     const colors = []
     const style = window.getComputedStyle(document.body);
     for (let i = 0; i < colorsMap.length; i++) {
-         colors.push(style.getPropertyValue(colorsMap[i].colorVar) || colorsMap[i].defaultColor)
+        colors.push(style.getPropertyValue(colorsMap[i].colorVar) || colorsMap[i].defaultColor)
     }
     return colors
 }

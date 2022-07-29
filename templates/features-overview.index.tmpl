@@ -147,19 +147,19 @@
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
                                 <%= suite.featureCount.passed %>,
                                 <%= suite.featureCount.failed %>,
-                                <%= suite.featureCount.ambiguous %>,
-                                <%= suite.featureCount.notDefined %>,
                                 <%= suite.featureCount.pending %>,
-                                <%= suite.featureCount.skipped %>
+                                <%= suite.featureCount.skipped %>,
+                                <%= suite.featureCount.ambiguous %>,
+                                <%= suite.featureCount.notDefined %>
                             ],
                             backgroundColor: getChartColors()
                         }]
@@ -179,19 +179,19 @@
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
                                 <%= suite.scenarios.passed %>,
                                 <%= suite.scenarios.failed %>,
-                                <%= suite.scenarios.ambiguous %>,
-                                <%= suite.scenarios.notDefined %>,
                                 <%= suite.scenarios.pending %>,
-                                <%= suite.scenarios.skipped %>
+                                <%= suite.scenarios.skipped %>,
+                                <%= suite.scenarios.ambiguous %>,
+                                <%= suite.scenarios.notDefined %>
                             ],
                             backgroundColor: getChartColors()
                         }]
