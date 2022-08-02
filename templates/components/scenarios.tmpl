@@ -78,23 +78,23 @@
                             <div class="scenario-step-container">
 
                                 <% if(step.result) { %>
-                                    <% if(step.result.status === 'passed') { %>
+                                    <% if(step.result.status.toLowerCase() === 'passed') { %>
                                         <div class="label" title="Success">
                                             <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
                                         </div>
-                                    <% } else if(step.result.status === 'failed') { %>
+                                    <% } else if(step.result.status.toLowerCase() === 'failed') { %>
                                         <div class="label" data-toggle="tooltip" data-placement="top" title="Step failed">
                                             <i class="fa fa-exclamation-circle fa-2x failed-color"></i>
                                         </div>
-                                    <% } else if(step.result.status === 'skipped') { %>
+                                    <% } else if(step.result.status.toLowerCase() === 'skipped') { %>
                                         <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
                                             <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                                         </div>
-                                    <% } else if(step.result.status === 'pending') { %>
+                                    <% } else if(step.result.status.toLowerCase() === 'pending') { %>
                                         <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
                                             <i class="fa fa-minus-circle fa-2x pending-color"></i>
                                         </div>
-                                    <% } else if(step.result.status === 'ambiguous') { %>
+                                    <% } else if(step.result.status.toLowerCase() === 'ambiguous') { %>
                                         <div class="label" data-toggle="tooltip" data-placement="top" title="Step has double step implementation and failed because of that.">
                                             <i class="fa fa-flash fa-2x ambiguous-color"></i>
                                         </div>
