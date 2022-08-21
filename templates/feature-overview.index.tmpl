@@ -170,7 +170,6 @@
     <% } %>
 
     <!-- Custom -->
-    <script src="../assets/js/Chart.style.js"></script>
     <script>
         var hideResult;
         var showAll;
@@ -180,6 +179,13 @@
                 legend: false,
                 responsive: false
             };
+
+            var getColor = function(selector, defaultColor) {
+                if (document.querySelector(selector)) {
+                    return getComputedStyle(document.querySelector(selector)).color
+                }
+                return defaultColor
+            }
 
             new Chart(document.getElementById("scenario-chart"), {
                 type: 'doughnut',
@@ -202,7 +208,14 @@
                             <%= feature.scenarios.ambiguous %>,
                             <%= feature.scenarios.notDefined %>
                         ],
-                        backgroundColor: getChartColors()
+                        backgroundColor: [
+                            getColor(".passed-color", "#26B99A"),
+                            getColor(".failed-color", "#E74C3C"),
+                            getColor(".pending-color", "#FFD119"),
+                            getColor(".skipped-color", "#3498DB"),
+                            getColor(".ambiguous-color", "#b73122"),
+                            getColor(".not-defined-color", "#F39C12")
+                        ]
                     }]
                 },
                 options: scenarioOptions
