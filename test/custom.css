@@ -2,67 +2,57 @@ body {
   background: rgb(58,58,58);
 }
 
-/* CSS custom properties are used to style doughnut charts */
-:root {
-  --ambiguous-color:#AAAAAA;
-  --failed-color:#FF0000;
-  --not-defined-color:#0000FF;
-  --passed-color:#00FF00;
-  --pending-color:#FFAA33;
-  --skipped-color:#770077;
-}
-
 /* If your custom theme doesn't properly support dark mode, you can easily hide the toggle button */
 .fa-toggle-off {
     display: none
 }
 
-/* Style colors are derived from custom properties to have a homogeneous style */
+/* This styling applies also to the doughnut charts */
 .ambiguous-color {
-    color: var(--ambiguous-color) !important;
+    color: #AAAAAA !important;
 }
 
 .failed-color {
-    color: var(--failed-color) !important;
+    color: #FF0000 !important;
 }
 
 .not-defined-color {
-    color: var(--not-defined-color) !important;
+    color: #0000FF !important;
 }
 
 .passed-color {
-    color: var(--passed-color) !important;
+    color: #00FF00 !important;
 }
 
 .pending-color {
-    color: var(--pending-color) !important;
+    color: #FFAA33 !important;
 }
 
 .skipped-color {
-    color: var(--skipped-color) !important;
+    color: #770077 !important;
 }
 
 /* backgrounds */
 .ambiguous-background {
-    background: var(--ambiguous-color) !important;
+    background: #AAAAAA !important;
 }
 
 .failed-background {
-    background: var(--failed-color) !important;
+    background: #FF0000 !important;
 }
 
 .not-defined-background {
-    background: var(--not-defined-color) !important;
+    background: #0000FF !important;
 }
 
 .passed-background {
-    background: var(--passed-color) !important;
+    background: #00FF00 !important;
 }
 
 .pending-background {
-    background: var(--pending-color) !important;
+    background: #FFAA33 !important;
 }
 
 .skipped-background {
-    background: var(--skipped-color) !important;
+    background: #770077 !important;
 }
