@@ -86,7 +86,7 @@
             </h1>
             <% if (!plainDescription) { %>
                 <p><% if (feature.description && feature.description.length > 0) { %>
-                    <strong>Description: </strong> <%= feature.description %> </p>
+                    <strong>Description: </strong> <%= feature.description.replace(/(?:\r\n|\r|\n)/g, '<br>') %> </p>
                 <% } %>
                <p><strong>File name:</strong>
                     <%= Array.from(feature.uri.replace(/\\/g,'/').split('/')).pop() %>
