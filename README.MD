@@ -234,28 +234,9 @@ If you prefer, you can use CDN for assets.
 - **Type:** `path`
 - **Mandatory:** No
 
-If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`
-Customization is now possible also for the doughnut chart by using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
-The user can define colors for the chart by defining variables for the different categories as follows:
-```css
-:root {
-  --ambiguous-color:#AAAAAA;
-  --failed-color:#BBBBBB;
-  --not-defined-color:#CCCCCC;
-  --passed-color:#DDDDDD;
-  --pending-color:#EEEEEE;
-  --skipped-color:#FFFFFF;
-}
-```
-Please note that these colors do _not_ affect the main colors CSS. To have homogeneous styling you can simply link those
-colors to the variables, e.g.:
-
-```css
-.ambiguous-color {
-    color: var(--ambiguous-color) !important;
-}
-```
-Please refer to the `test` directory and the `embedded-array` test report for a complete color customization example.
+If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`.
+Please note that the doughnut charts uses the same colors as used by the status icons, i.e. the `.*-color` classes.
+Refer to the `test` directory and the `embedded-array` test report for a complete color customization example.
 
 ### `overrideStyle`
 - **Type:** `path`
