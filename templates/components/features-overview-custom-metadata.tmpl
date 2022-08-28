@@ -30,11 +30,11 @@
                         <th>Total</th>
                         <th>Passed</th>
                         <th>Failed</th>
-                        <% if(+suite.scenarios.pending > 0) { %>
-                        <th>Pending</th>
-                        <% } %>
                         <% if(+suite.scenarios.skipped > 0) { %>
                         <th>Skip</th>
+                        <% } %>
+                        <% if(+suite.scenarios.pending > 0) { %>
+                        <th>Pending</th>
                         <% } %>
                         <% if(+suite.scenarios.notDefined > 0) { %>
                         <th>Undefined</th>
@@ -75,7 +75,7 @@
                             <% } else if (feature.isNotdefined) { %>
                             <% status = 'Not Defined'; %>
                             <% statusIcon = 'question-circle not-defined-color'; %>
-                            <% } else if (feature.isNotdefined) { %>
+                            <% } else if (feature.isPending) { %>
                             <% status = 'Pending'; %>
                             <% statusIcon = 'minus-circle pending-color'; %>
                             <% } else if (feature.isSkipped) { %>
