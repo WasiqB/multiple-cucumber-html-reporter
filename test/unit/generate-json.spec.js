@@ -37,7 +37,7 @@ describe('generate-report.js', () => {
 
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
                 .toEqual(true, 'Index file exists');
-            expect(fs.readFileSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`)).toContain('>Date</th>');
+            expect(fs.readFileSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`, 'utf8')).toContain('>Date</th>');
         });
         it('should create a report from the merged found json files with custom data with static file paths', () => {
             fs.removeSync(REPORT_PATH);
