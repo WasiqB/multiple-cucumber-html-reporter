@@ -18,7 +18,7 @@
         "steps": [
           {
             "result": {
-              "duration": 110000000,
+              "duration": 110,
               "status": "passed"
             },
             "line": 5,
@@ -30,7 +30,7 @@
           },
           {
             "result": {
-              "duration": 9727000000,
+              "duration": 9727,
               "status": "passed"
             },
             "line": 6,
@@ -43,7 +43,7 @@
           {
             "result": {
               "error_message": "dummy",
-              "duration": 32309000000,
+              "duration": 32309,
               "status": "failed"
             },
             "line": 7,
@@ -89,7 +89,7 @@
               }
             ],
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "failed"
             },
             "match": {
@@ -100,7 +100,7 @@
         "before": [
           {
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "passed"
             },
             "match": {

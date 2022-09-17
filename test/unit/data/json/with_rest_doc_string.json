@@ -53,7 +53,7 @@
           {
             "name": "method get",
             "result": {
-              "duration": 4060535948,
+              "duration": 4060535,
               "status": "passed"
             },
             "match": {

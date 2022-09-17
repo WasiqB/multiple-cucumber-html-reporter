@@ -28,7 +28,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 3000000,
+              "duration": 3,
               "error_message": "Error: blabla\n    at World.<anonymous> (e2e/steps/common.steps.ts:32:10)"
             }
           },
@@ -52,7 +52,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 426000000
+              "duration": 426
             },
             "embeddings": [
             ]
@@ -65,7 +65,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             }
           }
         ]

@@ -46,7 +46,7 @@
             "name": "I do nothing",
             "result": {
               "status": "passed",
-              "duration": 779454156
+              "duration": 779454
             },
             "line": 5,
             "match": {
@@ -104,7 +104,7 @@
             "name": "I add embeddings:",
             "result": {
               "status": "passed",
-              "duration": 1256056822
+              "duration": 1256056
             },
             "line": 19,
             "embeddings": [
@@ -127,7 +127,7 @@
             "name": "I should also have other embeddings",
             "result": {
               "status": "passed",
-              "duration": 27341587
+              "duration": 27341
             },
             "line": 20,
             "embeddings": [
@@ -150,7 +150,7 @@
             "name": "I am embedded",
             "result": {
               "status": "passed",
-              "duration": 58807667
+              "duration": 58807
             },
             "line": 21,
             "embeddings": [
