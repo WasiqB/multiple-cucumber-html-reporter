@@ -20,7 +20,7 @@
     "release.major": "npm run release -- major",
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json istanbul cover jasmine"
+    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
   },
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "istanbul": "^0.4.5",
     "jasmine": "^4.4.0",
+    "nyc": "^15.1.0",
     "release-it": "^15.4.1"
   }
 }
