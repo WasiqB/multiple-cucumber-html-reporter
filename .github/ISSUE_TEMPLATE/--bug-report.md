@@ -9,7 +9,7 @@ about: Create a report to help us improve.
  - Node.js version: [e.g. 8.9.1]
  - NPM version: [e.g. 5.8.0]
  - Platform name and version: [e.g. Windows 10]
- - Cucucmber version: [e.g. 4.2.0]
+ - Cucumber version: [e.g. 4.2.0]
 
 **Config of multiple-cucumber-html-reporter**
 An example of how you configured the reporter in your config
@@ -26,7 +26,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Log**
-If applicable, add logs to help explain your problem. If you don't have log, enable 'debug:true' in the config and paste the log here.
+If applicable, add logs to help explain your problem. If you don't have logs, enable 'debug:true' in the config and paste the log here.
 Please use proper markdown to style it
 
 **Additional context**

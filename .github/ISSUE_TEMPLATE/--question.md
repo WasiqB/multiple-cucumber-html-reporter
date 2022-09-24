@@ -17,7 +17,7 @@ A clear and concise question that doesn't require too much conversation. Need mo
  - Node.js version: [e.g. 8.9.1]
  - NPM version: [e.g. 5.8.0]
  - Platform name and version: [e.g. Windows 10]
- - Cucucmber version: [e.g. 4.2.0]
+ - Cucumber version: [e.g. 4.2.0]
 
 
 **Additional context**
