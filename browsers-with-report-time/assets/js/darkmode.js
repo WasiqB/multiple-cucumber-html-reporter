@@ -2,7 +2,6 @@ var darkMode = 'darkmode'
 
 function applyDarkMode() {
     document.getElementById('features-table').classList.toggle('table-striped');
-    document.getElementById('darkmodeicon')?.classList.toggle('fa-toggle-on');
     applyFontStyle();
 }
 

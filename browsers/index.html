@@ -50,11 +50,7 @@ i span {
 nav.navbar {
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
-    margin-bottom: 0px;
-}
-
-filter-i {
-    margin-left: 5px;
+    margin-bottom: 0;
 }
 
 nav .navbar-brand {
@@ -249,10 +245,7 @@ table td.chart .total {
     background: #fff;
     border: 1px solid #E6E9ED;
     -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
     opacity: 1;
-    transition: all .2s ease;
 }
 
 .x_title {
@@ -482,11 +475,11 @@ ul.panel_toolbox li .step {
 /* override */
 table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
-    background-color: #1ABB9C;
+    background: #1ABB9C;
 }
 
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
-    background-color: #E74C3C;
+    background: #E74C3C;
 }
 
 .created-by {
@@ -495,30 +488,82 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 }
 
 body.darkmode,
-body.darkmode div.x_panel,
-body.darkmode div.container-fluid,
 body.darkmode div.created-by,
-body.darkmode .dropdown-menu,
-body.darkmode #features-table th
+body.darkmode .dropdown-menu
 {
-    background-color: #181616 !important;
-    color: #eee;
-    border-color: gray;
+    background: #212121 !important;
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
-#features-table > thead > tr {
-    color: steelblue;
+body.darkmode .x_panel
+{
+    background: #1c1c21 !important;
+    color: #b4bfca;
+    border: 1px solid #2e2e2e;
+}
+
+body.darkmode div.container-fluid
+{
+    background: #2b2b2b !important;
+    color: #b4bfca;
+    border: 0 solid #2e2e2e;
+}
+
+body.darkmode nav.navbar {
+    background: #2b2b2b;
+    border-bottom: 1px solid #313a45;
+    margin-bottom: 0;
+}
+
+body.darkmode .x_title {
+    background: #1c1c21 !important;
+    border-bottom: 2px solid #2e2e2e;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px;
+}
+
+body.darkmode table.quick-list  tr {
+    border-bottom: 1px solid #292929;
+    padding: 0.5em 0;
+}
+
+body.darkmode ul.quick-list li,
+body.darkmode table.quick-list tr {
+    border-bottom: 1px solid #2e2e2e;
+    padding: 0.5em 0;
 }
 
 .darkModeIcon {
     font-size: x-large;
     float: left;
     padding-top: 12px;
+    padding-left: 4px;
     cursor: pointer;
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
 .darkModeIcon:before {
     content: '';
+}
+
+body.darkmode a.navbar-default,
+body.darkmode a.navbar-brand {
+    color: #b1bfcd;
+    background: transparent !important;
+    border-right: 1px solid #313a45;
+}
+
+body.darkmode a {
+    background: transparent !important;
+    color: #9cc2e3;
+    border-color: #2e2e2e;
+}
+
+body.darkmode a.collapse-link {
+    color: #c7c7c7;
+    border-color: #2e2e2e;
 }
 
 body.darkmode li:not([class])>a[id] {
@@ -528,23 +573,75 @@ body.darkmode li:not([class])>a[id]:hover {
     background: darkslateblue;
 }
 
+body.darkmode #features-table {
+    color: #b4bfca;
+    border-color: #2e2e2e;
+}
+
 body.darkmode #features-table th {
-    background-color: #3e3939 !important;
-    color: #c3c3c3;
-    border-color: gray;
+    background: #212121 !important;
+    color: #a3c2db;
+    border-color: #2e2e2e;
+}
+
+body.darkmode #features-table td {
+    border-color: #2e2e2e;
+}
+
+body.darkmode #features-table tr:nth-of-type(odd) {
+    background: #212121 !important;
+    border-color: #2e2e2e;
+}
+
+body.darkmode table.dataTable>tbody>tr.child ul.dtr-details li {
+    border-bottom: 1px solid #2e2e2e;
+    padding: 0.5em 0;
+}
+
+body.darkmode .pagination,
+body.darkmode .pagination>.active>a,
+body.darkmode .pagination>.active>a:focus,
+body.darkmode .pagination>.active>a:hover,
+body.darkmode .pagination>.active>span,
+body.darkmode .pagination>.active>span:focus,
+body.darkmode .pagination>.active>span:hover {
+    background: #3a7ab7;
+    border-color: #3a7ab7;
+}
+
+body.darkmode .pagination>.disabled>a,
+body.darkmode .pagination>.disabled>a:focus,
+body.darkmode .pagination>.disabled>a:hover,
+body.darkmode .pagination>.disabled>span,
+body.darkmode .pagination>.disabled>span:focus,
+body.darkmode .pagination>.disabled>span:hover {
+    background: #3a7ab7;
+    border-color: #3b3b3b;
+    color: #bfbfbf;
+}
+
+body.darkmode table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child::before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child::before {
+    border: 1px solid #2e2e2e;
+}
+
+body.darkmode #features-table>thead>tr {
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
 body.darkmode .form-control {
-    background-color: #3e3939 !important;
+    background: #212121 !important;
     color: #c3c3c3;
+    border-color: #2e2e2e;
 }
 body.darkmode li[id*=features]>a {
-    background-color: #3e3939 !important;
+    background: #212121 !important;
 }
 
 body.darkmode .btn-info {
-    color: #eee;
-    background-color: #337ab7;
+    color: #b4bfca;
+    background: #337ab7;
     border-color: #337ab7;
 }
 
@@ -552,35 +649,48 @@ body.darkmode .panel_toolbox > li > a:hover {
     background: transparent;
 }
 
+body.darkmode .table-striped>tbody>tr:nth-of-type(even) {
+    background: #1c1c21;
+}
+
 body.darkmode div pre {
-    background-color: #3e3939 !important;
-    color: #eee;
+    background: #212121 !important;
+    color: #b4bfca;
 }
 
 body.darkmode span.tag {
-    color: #FFD119;
+    color: #b4bfca;
 }
 
 body.darkmode .keyword {
-    color: #d2691e;
+    color: #b4bfca;
 }
 
 body.darkmode div.tags ~h1 {
-    color: #d2691e;
+    color: #b4bfca;
 }
 
 body.darkmode div.tags ~h2 {
-    color: #d2691e;
+    color: #b4bfca;
+}
+
+body.darkmode div.tags ~h1 small {
+    color: #bfbfbf;
+}
+
+body.darkmode div.tags ~h2 small {
+    color: #bfbfbf;
 }
 
 svg#moon, svg#sun {
     width: 40px;
     height: 30px;
-    fill: #ff4500;
+    fill: #ec6d04;
 }
 
 input#darkCheck:checked ~ label>svg#sun {
     display: none;
+    border-color: #212121;
 }
 
 label>svg#moon {
@@ -589,7 +699,8 @@ label>svg#moon {
 
 input#darkCheck:checked ~ label>svg#moon {
     display: inline-block;
-    fill: #ffe4c4;
+    fill: #b4bfca;
+    border-color: #212121;
 }
 
             
@@ -932,10 +1043,10 @@ input#darkCheck:checked ~ label>svg#moon {
                         <th>Passed</th>
                         <th>Failed</th>
                         
-                        <th>Pending</th>
-                        
-                        
                         <th>Skip</th>
+                        
+                        
+                        <th>Pending</th>
                         
                         
                         <th>Undefined</th>
@@ -950,7 +1061,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/c49c5cf8-1b78-436a-82fc-aa88cb8517ec-after-error.html">After Error</a>
+                            <a href="features/d6d54056-0380-4fac-b476-b6efe248f38f-after-error.html">After Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -1033,7 +1144,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>12:03:20.000</td>
+                        <td>01:30:11.000</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right none">0</td>
@@ -1054,7 +1165,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/9702b016-455b-4db6-9de2-120c09f41d29-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
+                            <a href="features/c6d69ce5-168c-48cf-9aba-7554a00c1e71-ambiguous-scenarios-specified-v1.html">Ambiguous scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1149,7 +1260,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/c95e095c-4aff-4316-a194-a4bc8f20d3ec-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
+                            <a href="features/26d8368d-5e17-4767-b989-47bba37cf4ff-ambiguous-scenarios-specified-v2.html">Ambiguous scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1244,7 +1355,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/7d6809cc-df3b-4fe0-9ef6-d96ef9e7c24e-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
+                            <a href="features/8fad32b0-03b9-40db-b0cb-890e3af2ec9d-ambiguous-scenarios-specified-v3.html">Ambiguous scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1339,7 +1450,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/29afe964-c0e9-4b45-addf-0018a6a95a50-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
+                            <a href="features/f946ed82-6b61-4d76-b815-bdcd72b28513-datos-en-pantalla-de-aceptaci-n.html">Background Feature</a>
                         </td>
                         <td class="text-center">
                             
@@ -1432,7 +1543,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>14:45:51.000</td>
+                        <td>05:04:43.551</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right ">1</td>
@@ -1453,7 +1564,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/549f5d0b-b0b6-4316-92d5-d4695441e0b6-auto-launch.html">Background Feature 2</a>
+                            <a href="features/1248a75d-5a96-4548-97a3-c3403af47152-auto-launch.html">Background Feature 2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1533,7 +1644,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>11:00:00.000</td>
+                        <td>00:00:48.510</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right none">0</td>
@@ -1554,7 +1665,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/c7a65934-5d38-448d-8c94-ffbb4cb4c91b-before-and-after-hook.html">Before and After hook</a>
+                            <a href="features/f5cf810c-7ba9-4c0a-8308-465d874f929c-before-and-after-hook.html">Before and After hook</a>
                         </td>
                         <td class="text-center">
                             
@@ -1628,7 +1739,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>02:46:40.000</td>
+                        <td>00:00:01.306</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right ">1</td>
@@ -1649,7 +1760,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/929ac431-047e-434c-9f57-bad99fd14eb9-before-error.html">Before Error</a>
+                            <a href="features/b3930d1d-9820-41b7-b056-2aeb9cf4cc7a-before-error.html">Before Error</a>
                         </td>
                         <td class="text-center">
                             
@@ -1732,7 +1843,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>00:50:00.000</td>
+                        <td>00:00:00.003</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right none">0</td>
@@ -1753,7 +1864,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/0b73a367-dc2f-4234-9db4-4c52fb07a803-testing_embeddings-1494823257420.html">Testing embeddings</a>
+                            <a href="features/1abc257e-98e2-4643-8da1-dda3af4232b9-testing_embeddings-1494823257420.html">Testing embeddings</a>
                         </td>
                         <td class="text-center">
                             
@@ -1825,7 +1936,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>13:22:18.377</td>
+                        <td>00:36:39.803</td>
                         
                         <td class="text-right ">2</td>
                         <td class="text-right ">2</td>
@@ -1846,7 +1957,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/ea346314-6410-413e-9be7-83bfad353846-failure-report-v1.html">Failure report V1</a>
+                            <a href="features/4bfc36a2-1025-4e90-b070-07c415c43f24-failure-report-v1.html">Failure report V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -1929,7 +2040,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>06:18:51.101</td>
+                        <td>01:12:22.730</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right none">0</td>
@@ -1950,7 +2061,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/dd3946ac-8244-454a-b2ae-c231e13bd2dd-failure-report-v2.html">Failure report V2</a>
+                            <a href="features/acd598d5-a53f-4669-a5c1-ecbe33b18c27-failure-report-v2.html">Failure report V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2054,7 +2165,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/657cbab7-3893-44db-a663-ee4ba7626dbb-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/6d5a30aa-2598-421c-9ba6-d52765724632-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2158,7 +2269,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/77f5ba09-89d0-43a7-bcbe-4ac37c673142-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/96209dd3-bc3c-406f-9eae-0c3e0c6cb0ab-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2240,7 +2351,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/a5d0ef78-4c80-4e6d-829c-1adb84beec3c-happy-flow-app.html">Happy flow app</a>
+                            <a href="features/c8da829b-f259-4401-9560-97e349bba721-happy-flow-app.html">Happy flow app</a>
                         </td>
                         <td class="text-center">
                             
@@ -2322,7 +2433,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/e6055b11-e0b3-4469-a92c-3840bc796e72-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/d03e93b1-813a-427a-b43c-a793e280b61f-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -2445,7 +2556,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>12:46:06.365</td>
+                        <td>06:35:56.625</td>
                         
                         <td class="text-right ">3</td>
                         <td class="text-right ">3</td>
@@ -2466,7 +2577,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/17be09ce-2b8d-4ee7-a937-febd7fbf6eb5-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/e0ab4781-415c-41d1-aa1b-a810c5dfe202-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2610,7 +2721,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/33f70b0f-5632-4407-a52b-d673000dd056-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/aadf80ab-9024-4e8d-b017-aa725ecbb558-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -2754,7 +2865,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/1bfc6182-cbc6-4e57-a6d1-7400527900a9-no_elements-1494777183356.html">No elements</a>
+                            <a href="features/eebce2c0-c5de-4ae3-b3ee-bba1b9c486a6-no_elements-1494777183356.html">No elements</a>
                         </td>
                         <td class="text-center">
                             
@@ -2847,7 +2958,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/73957bbc-a5f0-4f4b-a3c9-4b28d470572f-no_elements_v2-1494777183356.html">No elements V2</a>
+                            <a href="features/a60c0767-9468-4824-b948-a3bd232512b8-no_elements_v2-1494777183356.html">No elements V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -2943,7 +3054,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/e1b680d0-789f-483b-8c7b-aa6a5c6432e3-no_elements_v3-1494777183356.html">No elements V3</a>
+                            <a href="features/6c316c43-aaf7-41e4-94c5-ec389db32052-no_elements_v3-1494777183356.html">No elements V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3039,7 +3150,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/9841bbb9-a90e-422d-8d5e-e9bf49cb725a-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
+                            <a href="features/2c843729-9231-4fe9-b7f0-1eae4790ed92-pending-scenarios-specified-v1.html">Pending scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3134,7 +3245,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/5a997c79-e871-4dcf-bcd7-dcd3b4ed4fd9-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
+                            <a href="features/3206e915-88f5-4361-8207-13997524675c-pending-scenarios-specified-v2.html">Pending scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3229,7 +3340,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/1f1d2589-f282-4d3b-a428-11e25c214112-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
+                            <a href="features/de82dad1-f66f-4397-9df4-7c4d43d6c2f6-pending-scenarios-specified-v3.html">Pending scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3324,7 +3435,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/db89337e-31b5-4e95-a958-d1556de51c0e-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
+                            <a href="features/eddde44f-fc6a-4f57-9da6-c1eee15f60d2-skipped_scenarios-1494823563764.html">Skipped scenarios specified</a>
                         </td>
                         <td class="text-center">
                             
@@ -3423,7 +3534,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/764ceeb6-fd0d-453e-86da-7277138114e6-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
+                            <a href="features/ff6e18c6-56be-4a64-8cba-405e4156e7ae-undefined-scenarios-specified-v1.html">Undefined scenarios specified V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -3533,7 +3644,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/8ebe0892-7284-460f-911d-7ce6e6d14c51-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
+                            <a href="features/9d68826c-adb5-498b-a474-03972b0703a1-undefined-scenarios-specified-v2.html">Undefined scenarios specified V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -3643,7 +3754,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/dae8d2ee-0f30-40a1-a1d4-ca0998b07d4d-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
+                            <a href="features/e507ecd1-e756-4a6a-8ca7-a627834655c8-undefined-scenarios-specified-v3.html">Undefined scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3753,7 +3864,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/e9f78011-aed3-4cbc-94fc-44444adc95b6-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
+                            <a href="features/10a485cb-f213-4fe0-9038-e3fcfef1dfea-undefined-pending-passed-scenarios-specified-v3.html">Undefined, pending, passed scenarios specified V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -3869,7 +3980,7 @@ input#darkCheck:checked ~ label>svg#moon {
                     
                     <tr>
                         <td>
-                            <a href="features/e3309ddb-464e-4fd6-acd5-03fb597f1990-json-report-starwars.html">Report with JSON rest response</a>
+                            <a href="features/6dcbf4e8-ff04-415e-b89d-7f82d26dad34-json-report-starwars.html">Report with JSON rest response</a>
                         </td>
                         <td class="text-center">
                             
@@ -3945,7 +4056,7 @@ input#darkCheck:checked ~ label>svg#moon {
                         
                         
                         
-                        <td>02:42:52.525</td>
+                        <td>03:54:57.112</td>
                         
                         <td class="text-right ">1</td>
                         <td class="text-right ">1</td>
@@ -3996,7 +4107,6 @@ input#darkCheck:checked ~ label>svg#moon {
         
 
         <!-- Custom -->
-        <script src="assets/js/Chart.style.js"></script>
         <script>
             $(document).ready(function () {
                 $('#features-table').dataTable({
@@ -4009,6 +4119,13 @@ input#darkCheck:checked ~ label>svg#moon {
                     legend: false,
                     responsive: false
                 };
+                
+                var getColor = function(selector, defaultColor) {
+                    if (document.querySelector(selector)) {
+                        return getComputedStyle(document.querySelector(selector)).color
+                    }
+                    return defaultColor
+                }
 
                 new Chart(document.getElementById("feature-chart"), {
                     type: 'doughnut',
@@ -4017,21 +4134,28 @@ input#darkCheck:checked ~ label>svg#moon {
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
                                 9,
                                 6,
                                 3,
-                                4,
+                                1,
                                 3,
-                                1
+                                4
                             ],
-                            backgroundColor: getChartColors()
+                            backgroundColor: [
+                                getColor(".passed-color", "#26B99A"),
+                                getColor(".failed-color", "#E74C3C"),
+                                getColor(".pending-color", "#FFD119"),
+                                getColor(".skipped-color", "#3498DB"),
+                                getColor(".ambiguous-color", "#b73122"),
+                                getColor(".not-defined-color", "#F39C12")
+                            ]
                         }]
                     },
                     options: featureOptions
@@ -4049,21 +4173,28 @@ input#darkCheck:checked ~ label>svg#moon {
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
                                 17,
                                 6,
+                                4,
                                 3,
-                                4,
-                                4,
-                                3
+                                3,
+                                4
                             ],
-                            backgroundColor: getChartColors()
+                            backgroundColor: [
+                                getColor(".passed-color", "#26B99A"),
+                                getColor(".failed-color", "#E74C3C"),
+                                getColor(".pending-color", "#FFD119"),
+                                getColor(".skipped-color", "#3498DB"),
+                                getColor(".ambiguous-color", "#b73122"),
+                                getColor(".not-defined-color", "#F39C12")
+                            ]
                         }]
                     },
                     options: scenarioOptions

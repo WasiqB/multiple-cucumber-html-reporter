@@ -486,69 +486,59 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
   background: rgb(58,58,58);
 }
 
-/* CSS custom properties are used to style doughnut charts */
-:root {
-  --ambiguous-color:#AAAAAA;
-  --failed-color:#FF0000;
-  --not-defined-color:#0000FF;
-  --passed-color:#00FF00;
-  --pending-color:#FFAA33;
-  --skipped-color:#770077;
-}
-
 /* If your custom theme doesn't properly support dark mode, you can easily hide the toggle button */
 .fa-toggle-off {
     display: none
 }
 
-/* Style colors are derived from custom properties to have a homogeneous style */
+/* This styling applies also to the doughnut charts */
 .ambiguous-color {
-    color: var(--ambiguous-color) !important;
+    color: #AAAAAA !important;
 }
 
 .failed-color {
-    color: var(--failed-color) !important;
+    color: #FF0000 !important;
 }
 
 .not-defined-color {
-    color: var(--not-defined-color) !important;
+    color: #0000FF !important;
 }
 
 .passed-color {
-    color: var(--passed-color) !important;
+    color: #00FF00 !important;
 }
 
 .pending-color {
-    color: var(--pending-color) !important;
+    color: #FFAA33 !important;
 }
 
 .skipped-color {
-    color: var(--skipped-color) !important;
+    color: #770077 !important;
 }
 
 /* backgrounds */
 .ambiguous-background {
-    background: var(--ambiguous-color) !important;
+    background: #AAAAAA !important;
 }
 
 .failed-background {
-    background: var(--failed-color) !important;
+    background: #FF0000 !important;
 }
 
 .not-defined-background {
-    background: var(--not-defined-color) !important;
+    background: #0000FF !important;
 }
 
 .passed-background {
-    background: var(--passed-color) !important;
+    background: #00FF00 !important;
 }
 
 .pending-background {
-    background: var(--pending-color) !important;
+    background: #FFAA33 !important;
 }
 
 .skipped-background {
-    background: var(--skipped-color) !important;
+    background: #770077 !important;
 }
 
         </style>
@@ -796,7 +786,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/5ae02ddb-71ae-4ec4-922e-45a2b5dfca6a-happy-flow-v1.html">Happy flow V1</a>
+                            <a href="features/50bed9ea-424b-4f86-a03b-e5cdf03f4302-happy-flow-v1.html">Happy flow V1</a>
                         </td>
                         <td class="text-center">
                             
@@ -926,7 +916,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/ae49605b-28dc-43f5-b887-9ebeffa84020-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
+                            <a href="features/4f671b5e-f29c-4fe0-b9d9-32dc24e02c9a-failure-report-multi-attachment-v3.html">Failure report Multi Attachment V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1022,7 +1012,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/e2c717c8-ebcd-4c55-b988-82a849a8ef61-failure-report-v3.html">Failure report V3</a>
+                            <a href="features/cc869ee7-676c-4862-bd66-e3a7c20bff97-failure-report-v3.html">Failure report V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1112,7 +1102,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/9b343ec6-d66a-414b-92b6-b38dd2da072d-happy-flow-v2.html">Happy flow V2</a>
+                            <a href="features/7143bb9e-d0aa-4499-a8e6-a81a36af57d5-happy-flow-v2.html">Happy flow V2</a>
                         </td>
                         <td class="text-center">
                             
@@ -1242,7 +1232,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     
                     <tr>
                         <td>
-                            <a href="features/d6e0fd9e-c8a6-43b3-93df-11a319dab3b5-happy-flow-v3.html">Happy flow V3</a>
+                            <a href="features/e2e3145d-14b6-42bf-b872-7a271ebb5d01-happy-flow-v3.html">Happy flow V3</a>
                         </td>
                         <td class="text-center">
                             
@@ -1396,7 +1386,6 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
         
 
         <!-- Custom -->
-        <script src="assets/js/Chart.style.js"></script>
         <script>
             $(document).ready(function () {
                 $('#features-table').dataTable({
@@ -1409,6 +1398,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                     legend: false,
                     responsive: false
                 };
+                
+                var getColor = function(selector, defaultColor) {
+                    if (document.querySelector(selector)) {
+                        return getComputedStyle(document.querySelector(selector)).color
+                    }
+                    return defaultColor
+                }
 
                 new Chart(document.getElementById("feature-chart"), {
                     type: 'doughnut',
@@ -1417,10 +1413,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
@@ -1431,7 +1427,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 0,
                                 0
                             ],
-                            backgroundColor: getChartColors()
+                            backgroundColor: [
+                                getColor(".passed-color", "#26B99A"),
+                                getColor(".failed-color", "#E74C3C"),
+                                getColor(".pending-color", "#FFD119"),
+                                getColor(".skipped-color", "#3498DB"),
+                                getColor(".ambiguous-color", "#b73122"),
+                                getColor(".not-defined-color", "#F39C12")
+                            ]
                         }]
                     },
                     options: featureOptions
@@ -1449,10 +1452,10 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                         labels: [
                             "Passed",
                             "Failed",
-                            "Ambiguous",
-                            "Not Defined",
                             "Pending",
-                            "Skipped"
+                            "Skipped",
+                            "Ambiguous",
+                            "Not Defined"
                         ],
                         datasets: [{
                             data: [
@@ -1463,7 +1466,14 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
                                 0,
                                 0
                             ],
-                            backgroundColor: getChartColors()
+                            backgroundColor: [
+                                getColor(".passed-color", "#26B99A"),
+                                getColor(".failed-color", "#E74C3C"),
+                                getColor(".pending-color", "#FFD119"),
+                                getColor(".skipped-color", "#3498DB"),
+                                getColor(".ambiguous-color", "#b73122"),
+                                getColor(".not-defined-color", "#F39C12")
+                            ]
                         }]
                     },
                     options: scenarioOptions

@@ -1,7 +1,7 @@
 [
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "not known",
         "version": "not known"
@@ -42,7 +42,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2836000000
+              "duration": 2836000
             }
           },
           {
@@ -55,7 +55,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 575000000
+              "duration": 575000
             }
           },
           {
@@ -100,7 +100,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Firefox",
         "version": "53"
@@ -203,7 +203,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Firefox",
         "version": "53"
@@ -278,7 +278,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Firefox",
         "version": "53"
@@ -353,7 +353,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "not known",
         "version": "not known"
@@ -375,7 +375,7 @@
         "steps": [
           {
             "result": {
-              "duration": 42704000,
+              "duration": 42704,
               "status": "passed"
             },
             "line": 5,
@@ -393,7 +393,7 @@
           },
           {
             "result": {
-              "duration": 1416368000,
+              "duration": 1416368,
               "status": "passed"
             },
             "line": 6,
@@ -422,7 +422,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3599209000,
+              "duration": 3599209,
               "status": "passed"
             },
             "line": 10,
@@ -444,7 +444,7 @@
           },
           {
             "result": {
-              "duration": 189910000,
+              "duration": 189910,
               "status": "passed"
             },
             "line": 11,
@@ -462,7 +462,7 @@
           },
           {
             "result": {
-              "duration": 143105000,
+              "duration": 143105,
               "status": "passed"
             },
             "line": 12,
@@ -480,7 +480,7 @@
           },
           {
             "result": {
-              "duration": 335194000,
+              "duration": 335194,
               "status": "passed"
             },
             "line": 13,
@@ -498,7 +498,7 @@
           },
           {
             "result": {
-              "duration": 6398646000,
+              "duration": 6398646,
               "status": "passed"
             },
             "line": 14,
@@ -547,7 +547,7 @@
           },
           {
             "result": {
-              "duration": 216413000,
+              "duration": 216413,
               "status": "passed"
             },
             "line": 20,
@@ -565,7 +565,7 @@
           },
           {
             "result": {
-              "duration": 223922000,
+              "duration": 223922,
               "status": "passed"
             },
             "line": 21,
@@ -587,7 +587,7 @@
           },
           {
             "result": {
-              "duration": 4027270000,
+              "duration": 4027270,
               "status": "passed"
             },
             "line": 22,
@@ -609,7 +609,7 @@
           },
           {
             "result": {
-              "duration": 516649000,
+              "duration": 516649,
               "status": "passed"
             },
             "line": 23,
@@ -631,7 +631,7 @@
           },
           {
             "result": {
-              "duration": 205658000,
+              "duration": 205658,
               "status": "passed"
             },
             "line": 24,
@@ -649,7 +649,7 @@
           },
           {
             "result": {
-              "duration": 484726000,
+              "duration": 484726,
               "status": "passed"
             },
             "line": 25,
@@ -671,7 +671,7 @@
           },
           {
             "result": {
-              "duration": 153461000,
+              "duration": 153461,
               "status": "passed"
             },
             "line": 26,
@@ -689,7 +689,7 @@
           },
           {
             "result": {
-              "duration": 330316000,
+              "duration": 330316,
               "status": "passed"
             },
             "line": 27,
@@ -734,7 +734,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "device": "Xiaomi Mi A2 Lite",
       "platform": {
         "name": "android",
@@ -752,7 +752,7 @@
         "steps": [
           {
             "result": {
-              "duration": 110000000,
+              "duration": 110,
               "status": "passed"
             },
             "line": 5,
@@ -764,7 +764,7 @@
           },
           {
             "result": {
-              "duration": 9727000000,
+              "duration": 9727,
               "status": "passed"
             },
             "line": 6,
@@ -777,7 +777,7 @@
           {
             "result": {
               "error_message": "dummy",
-              "duration": 32309000000,
+              "duration": 32309,
               "status": "failed"
             },
             "line": 7,
@@ -823,7 +823,7 @@
               }
             ],
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "failed"
             },
             "match": {
@@ -834,7 +834,7 @@
         "before": [
           {
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "passed"
             },
             "match": {}
@@ -848,7 +848,7 @@
             "keyword": "Before",
             "name": "Hook",
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "passed"
             },
             "line": "",
@@ -953,7 +953,7 @@
             "keyword": "After",
             "name": "Hook",
             "result": {
-              "duration": 3182000000,
+              "duration": 3182,
               "status": "failed"
             },
             "line": "",
@@ -1003,7 +1003,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "chrome",
         "version": "83.0.4103.116"
@@ -1036,7 +1036,7 @@
             "name": "Hook",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": "",
             "match": {
@@ -1049,7 +1049,7 @@
             "name": "Hook",
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 2
             },
             "line": "",
             "match": {
@@ -1068,7 +1068,7 @@
             "name": "I open Google",
             "result": {
               "status": "passed",
-              "duration": 1059000000
+              "duration": 1059
             },
             "line": 7,
             "match": {
@@ -1081,7 +1081,7 @@
             "name": "I attach data",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": 8,
             "match": {
@@ -1110,7 +1110,7 @@
             "name": "I can take a screenshot",
             "result": {
               "status": "passed",
-              "duration": 242000000
+              "duration": 242
             },
             "line": 9,
             "match": {
@@ -1129,7 +1129,7 @@
             "name": "Hook I attach data",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": "",
             "match": {
@@ -1162,7 +1162,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "not known",
         "version": "not known"
@@ -1201,7 +1201,7 @@
             },
             "result": {
               "status": "failed",
-              "duration": 3000000,
+              "duration": 3,
               "error_message": "Error: blabla\n    at World.<anonymous> (e2e/steps/common.steps.ts:32:10)"
             }
           },
@@ -1225,7 +1225,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 426000000
+              "duration": 426
             },
             "embeddings": []
           },
@@ -1237,7 +1237,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             }
           }
         ]
@@ -1246,7 +1246,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "Edge",
         "version": "14"
@@ -1292,7 +1292,7 @@
             "name": "I do nothing",
             "result": {
               "status": "passed",
-              "duration": 779454156
+              "duration": 779454
             },
             "line": 5,
             "match": {
@@ -1350,7 +1350,7 @@
             "name": "I add embeddings:",
             "result": {
               "status": "passed",
-              "duration": 1256056822
+              "duration": 1256056
             },
             "line": 19,
             "embeddings": [
@@ -1373,7 +1373,7 @@
             "name": "I should also have other embeddings",
             "result": {
               "status": "passed",
-              "duration": 27341587
+              "duration": 27341
             },
             "line": 20,
             "embeddings": [
@@ -1396,7 +1396,7 @@
             "name": "I am embedded",
             "result": {
               "status": "passed",
-              "duration": 58807667
+              "duration": 58807
             },
             "line": 21,
             "embeddings": [
@@ -1449,7 +1449,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "Chrome",
         "version": "58"
@@ -1486,7 +1486,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 2309209000
+              "duration": 2309209
             },
             "line": 7,
             "match": {
@@ -1499,7 +1499,7 @@
             "name": "I add the todo \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 1303154851
+              "duration": 1303154
             },
             "line": 10,
             "match": {
@@ -1512,7 +1512,7 @@
             "name": "I should have 2 todo's",
             "result": {
               "status": "failed",
-              "duration": 32239142,
+              "duration": 32239,
               "error_message": "AssertionError: expected 3 to equal 2"
             },
             "line": 11,
@@ -1537,7 +1537,7 @@
             "keyword": "After ",
             "result": {
               "status": "passed",
-              "duration": 698128108
+              "duration": 698128
             },
             "hidden": true,
             "embeddings": [
@@ -1586,7 +1586,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome",
         "version": "58"
@@ -1699,7 +1699,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome",
         "version": "58"
@@ -1813,7 +1813,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "app": {
         "name": "Greetings app",
         "version": "1.02"
@@ -1893,7 +1893,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "app": {
         "name": "Greetings app",
         "version": "1.02"
@@ -1973,7 +1973,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "Edge",
         "version": "14"
@@ -2009,7 +2009,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 2089982528
+              "duration": 2089982
             },
             "line": 5,
             "match": {
@@ -2022,7 +2022,7 @@
             "name": "I submit the name \"Julie\"",
             "result": {
               "status": "passed",
-              "duration": 1089208055
+              "duration": 1089208
             },
             "line": 9,
             "match": {
@@ -2035,7 +2035,7 @@
             "name": "I am greeted as \"Hello Julie!\"",
             "result": {
               "status": "passed",
-              "duration": 72073517
+              "duration": 72073
             },
             "line": 10,
             "match": {
@@ -2115,7 +2115,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 761518668
+              "duration": 761518
             },
             "line": 5,
             "match": {
@@ -2128,7 +2128,7 @@
             "name": "I count 2 todo's",
             "result": {
               "status": "passed",
-              "duration": 845462162
+              "duration": 845462
             },
             "line": 14,
             "match": {
@@ -2141,7 +2141,7 @@
             "name": "the last todo should hold \"build an AngularJS app\"",
             "result": {
               "status": "passed",
-              "duration": 49743712
+              "duration": 49743
             },
             "line": 15,
             "match": {
@@ -2225,7 +2225,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 458947811
+              "duration": 458947
             },
             "line": 5,
             "match": {
@@ -2238,7 +2238,7 @@
             "name": "I add the todo \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 9420511774
+              "duration": 9420511
             },
             "line": 19,
             "match": {
@@ -2251,7 +2251,7 @@
             "name": "I should have 3 todo's",
             "result": {
               "status": "passed",
-              "duration": 848834826
+              "duration": 8488348
             },
             "line": 20,
             "match": {
@@ -2264,7 +2264,7 @@
             "name": "the last todo should hold \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 48083312
+              "duration": 480833
             },
             "line": 21,
             "match": {
@@ -2347,7 +2347,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Edge",
         "version": "14"
@@ -2650,7 +2650,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "microsoftedge",
         "version": "14"
@@ -2948,7 +2948,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "not known",
         "version": "not known"
@@ -2969,7 +2969,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Firefox Headless",
         "version": "58.8"
@@ -2990,7 +2990,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome Headless",
         "version": "97.6.5.9"
@@ -3011,7 +3011,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome",
         "version": "56"
@@ -3116,7 +3116,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome",
         "version": "56"
@@ -3196,7 +3196,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Chrome",
         "version": "56"
@@ -3276,7 +3276,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Safari",
         "version": "10"
@@ -3557,7 +3557,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Safari",
         "version": "10"
@@ -3675,7 +3675,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Safari",
         "version": "10"
@@ -3768,7 +3768,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Safari",
         "version": "10"
@@ -3861,7 +3861,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/06/13 08:05:39",
       "browser": {
         "name": "Safari",
         "version": "10"
@@ -4090,7 +4090,7 @@
   },
   {
     "metadata": {
-      "reportTime": "2022/05/27 08:58:07",
+      "reportTime": "2022/09/30 08:25:12",
       "browser": {
         "name": "",
         "version": ""
@@ -4154,7 +4154,7 @@
           {
             "name": "method get",
             "result": {
-              "duration": 4060535948,
+              "duration": 4060535,
               "status": "passed"
             },
             "match": {
