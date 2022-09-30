@@ -36,7 +36,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 2089982528
+              "duration": 2089982
             },
             "line": 5,
             "match": {
@@ -49,7 +49,7 @@
             "name": "I submit the name \"Julie\"",
             "result": {
               "status": "passed",
-              "duration": 1089208055
+              "duration": 1089208
             },
             "line": 9,
             "match": {
@@ -62,7 +62,7 @@
             "name": "I am greeted as \"Hello Julie!\"",
             "result": {
               "status": "passed",
-              "duration": 72073517
+              "duration": 72073
             },
             "line": 10,
             "match": {
@@ -142,7 +142,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 761518668
+              "duration": 761518
             },
             "line": 5,
             "match": {
@@ -155,7 +155,7 @@
             "name": "I count 2 todo's",
             "result": {
               "status": "passed",
-              "duration": 845462162
+              "duration": 845462
             },
             "line": 14,
             "match": {
@@ -168,7 +168,7 @@
             "name": "the last todo should hold \"build an AngularJS app\"",
             "result": {
               "status": "passed",
-              "duration": 49743712
+              "duration": 49743
             },
             "line": 15,
             "match": {
@@ -252,7 +252,7 @@
             "name": "I visit the Angular homepage",
             "result": {
               "status": "passed",
-              "duration": 458947811
+              "duration": 458947
             },
             "line": 5,
             "match": {
@@ -265,7 +265,7 @@
             "name": "I add the todo \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 9420511774
+              "duration": 9420511
             },
             "line": 19,
             "match": {
@@ -278,7 +278,7 @@
             "name": "I should have 3 todo's",
             "result": {
               "status": "passed",
-              "duration": 848834826
+              "duration": 8488348
             },
             "line": 20,
             "match": {
@@ -291,7 +291,7 @@
             "name": "the last todo should hold \"write a protractor test\"",
             "result": {
               "status": "passed",
-              "duration": 48083312
+              "duration": 480833
             },
             "line": 21,
             "match": {

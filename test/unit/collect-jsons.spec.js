@@ -4,7 +4,6 @@ const jsonFile = require('jsonfile');
 const path = require('path');
 const collectJSONS = require('../../lib/collect-jsons');
 const reportPath = path.resolve(process.cwd(), './.tmp/test');
-const chalk = require('chalk');
 
 describe('collect-jsons.js', () => {
     describe('Happy flows', () => {
@@ -74,7 +73,7 @@ describe('collect-jsons.js', () => {
                 jsonDir: './test/unit/data/no-jsons',
                 reportPath: reportPath
             });
-            expect(console.log).toHaveBeenCalledWith(chalk.yellow(`WARNING: No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`))
+            expect(console.log).toHaveBeenCalledWith('\x1b[33m%s\x1b[0m', `WARNING: No JSON files found in './test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`)
         });
 
         it('should return an empty array when no json files could be found', () => {

@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 42704000,
+              "duration": 42704,
               "status": "passed"
             },
             "line": 5,
@@ -29,7 +29,7 @@
           },
           {
             "result": {
-              "duration": 1416368000,
+              "duration": 1416368,
               "status": "passed"
             },
             "line": 6,
@@ -58,7 +58,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3599209000,
+              "duration": 3599209,
               "status": "passed"
             },
             "line": 10,
@@ -80,7 +80,7 @@
           },
           {
             "result": {
-              "duration": 189910000,
+              "duration": 189910,
               "status": "passed"
             },
             "line": 11,
@@ -98,7 +98,7 @@
           },
           {
             "result": {
-              "duration": 143105000,
+              "duration": 143105,
               "status": "passed"
             },
             "line": 12,
@@ -116,7 +116,7 @@
           },
           {
             "result": {
-              "duration": 335194000,
+              "duration": 335194,
               "status": "passed"
             },
             "line": 13,
@@ -134,7 +134,7 @@
           },
           {
             "result": {
-              "duration": 6398646000,
+              "duration": 6398646,
               "status": "passed"
             },
             "line": 14,
@@ -183,7 +183,7 @@
           },
           {
             "result": {
-              "duration": 216413000,
+              "duration": 216413,
               "status": "passed"
             },
             "line": 20,
@@ -201,7 +201,7 @@
           },
           {
             "result": {
-              "duration": 223922000,
+              "duration": 223922,
               "status": "passed"
             },
             "line": 21,
@@ -223,7 +223,7 @@
           },
           {
             "result": {
-              "duration": 4027270000,
+              "duration": 4027270,
               "status": "passed"
             },
             "line": 22,
@@ -245,7 +245,7 @@
           },
           {
             "result": {
-              "duration": 516649000,
+              "duration": 516649,
               "status": "passed"
             },
             "line": 23,
@@ -267,7 +267,7 @@
           },
           {
             "result": {
-              "duration": 205658000,
+              "duration": 205658,
               "status": "passed"
             },
             "line": 24,
@@ -285,7 +285,7 @@
           },
           {
             "result": {
-              "duration": 484726000,
+              "duration": 484726,
               "status": "passed"
             },
             "line": 25,
@@ -307,7 +307,7 @@
           },
           {
             "result": {
-              "duration": 153461000,
+              "duration": 153461,
               "status": "passed"
             },
             "line": 26,
@@ -325,7 +325,7 @@
           },
           {
             "result": {
-              "duration": 330316000,
+              "duration": 330316,
               "status": "passed"
             },
             "line": 27,

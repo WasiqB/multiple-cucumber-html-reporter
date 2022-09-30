@@ -22,7 +22,7 @@
             "name": "Hook",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": "",
             "match": {
@@ -35,7 +35,7 @@
             "name": "Hook",
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 2
             },
             "line": "",
             "match": {
@@ -54,7 +54,7 @@
             "name": "I open Google",
             "result": {
               "status": "passed",
-              "duration": 1059000000
+              "duration": 1059
             },
             "line": 7,
             "match": {
@@ -67,7 +67,7 @@
             "name": "I attach data",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": 8,
             "match": {
@@ -96,7 +96,7 @@
             "name": "I can take a screenshot",
             "result": {
               "status": "passed",
-              "duration": 242000000
+              "duration": 242
             },
             "line": 9,
             "match": {
@@ -115,7 +115,7 @@
             "name": "Hook I attach data",
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 1
             },
             "line": "",
             "match": {
