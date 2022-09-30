@@ -19,11 +19,7 @@ i span {
 nav.navbar {
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
-    margin-bottom: 0px;
-}
-
-filter-i {
-    margin-left: 5px;
+    margin-bottom: 0;
 }
 
 nav .navbar-brand {
@@ -218,10 +214,7 @@ table td.chart .total {
     background: #fff;
     border: 1px solid #E6E9ED;
     -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
     opacity: 1;
-    transition: all .2s ease;
 }
 
 .x_title {
@@ -451,11 +444,11 @@ ul.panel_toolbox li .step {
 /* override */
 table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
-    background-color: #1ABB9C;
+    background: #1ABB9C;
 }
 
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
-    background-color: #E74C3C;
+    background: #E74C3C;
 }
 
 .created-by {
@@ -464,30 +457,82 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before
 }
 
 body.darkmode,
-body.darkmode div.x_panel,
-body.darkmode div.container-fluid,
 body.darkmode div.created-by,
-body.darkmode .dropdown-menu,
-body.darkmode #features-table th
+body.darkmode .dropdown-menu
 {
-    background-color: #181616 !important;
-    color: #eee;
-    border-color: gray;
+    background: #212121 !important;
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
-#features-table > thead > tr {
-    color: steelblue;
+body.darkmode .x_panel
+{
+    background: #1c1c21 !important;
+    color: #b4bfca;
+    border: 1px solid #2e2e2e;
+}
+
+body.darkmode div.container-fluid
+{
+    background: #2b2b2b !important;
+    color: #b4bfca;
+    border: 0 solid #2e2e2e;
+}
+
+body.darkmode nav.navbar {
+    background: #2b2b2b;
+    border-bottom: 1px solid #313a45;
+    margin-bottom: 0;
+}
+
+body.darkmode .x_title {
+    background: #1c1c21 !important;
+    border-bottom: 2px solid #2e2e2e;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px;
+}
+
+body.darkmode table.quick-list  tr {
+    border-bottom: 1px solid #292929;
+    padding: 0.5em 0;
+}
+
+body.darkmode ul.quick-list li,
+body.darkmode table.quick-list tr {
+    border-bottom: 1px solid #2e2e2e;
+    padding: 0.5em 0;
 }
 
 .darkModeIcon {
     font-size: x-large;
     float: left;
     padding-top: 12px;
+    padding-left: 4px;
     cursor: pointer;
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
 .darkModeIcon:before {
     content: '';
+}
+
+body.darkmode a.navbar-default,
+body.darkmode a.navbar-brand {
+    color: #b1bfcd;
+    background: transparent !important;
+    border-right: 1px solid #313a45;
+}
+
+body.darkmode a {
+    background: transparent !important;
+    color: #9cc2e3;
+    border-color: #2e2e2e;
+}
+
+body.darkmode a.collapse-link {
+    color: #c7c7c7;
+    border-color: #2e2e2e;
 }
 
 body.darkmode li:not([class])>a[id] {
@@ -497,23 +542,75 @@ body.darkmode li:not([class])>a[id]:hover {
     background: darkslateblue;
 }
 
+body.darkmode #features-table {
+    color: #b4bfca;
+    border-color: #2e2e2e;
+}
+
 body.darkmode #features-table th {
-    background-color: #3e3939 !important;
-    color: #c3c3c3;
-    border-color: gray;
+    background: #212121 !important;
+    color: #a3c2db;
+    border-color: #2e2e2e;
+}
+
+body.darkmode #features-table td {
+    border-color: #2e2e2e;
+}
+
+body.darkmode #features-table tr:nth-of-type(odd) {
+    background: #212121 !important;
+    border-color: #2e2e2e;
+}
+
+body.darkmode table.dataTable>tbody>tr.child ul.dtr-details li {
+    border-bottom: 1px solid #2e2e2e;
+    padding: 0.5em 0;
+}
+
+body.darkmode .pagination,
+body.darkmode .pagination>.active>a,
+body.darkmode .pagination>.active>a:focus,
+body.darkmode .pagination>.active>a:hover,
+body.darkmode .pagination>.active>span,
+body.darkmode .pagination>.active>span:focus,
+body.darkmode .pagination>.active>span:hover {
+    background: #3a7ab7;
+    border-color: #3a7ab7;
+}
+
+body.darkmode .pagination>.disabled>a,
+body.darkmode .pagination>.disabled>a:focus,
+body.darkmode .pagination>.disabled>a:hover,
+body.darkmode .pagination>.disabled>span,
+body.darkmode .pagination>.disabled>span:focus,
+body.darkmode .pagination>.disabled>span:hover {
+    background: #3a7ab7;
+    border-color: #3b3b3b;
+    color: #bfbfbf;
+}
+
+body.darkmode table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child::before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child::before {
+    border: 1px solid #2e2e2e;
+}
+
+body.darkmode #features-table>thead>tr {
+    color: #b4bfca;
+    border-color: #2e2e2e;
 }
 
 body.darkmode .form-control {
-    background-color: #3e3939 !important;
+    background: #212121 !important;
     color: #c3c3c3;
+    border-color: #2e2e2e;
 }
 body.darkmode li[id*=features]>a {
-    background-color: #3e3939 !important;
+    background: #212121 !important;
 }
 
 body.darkmode .btn-info {
-    color: #eee;
-    background-color: #337ab7;
+    color: #b4bfca;
+    background: #337ab7;
     border-color: #337ab7;
 }
 
@@ -521,35 +618,48 @@ body.darkmode .panel_toolbox > li > a:hover {
     background: transparent;
 }
 
+body.darkmode .table-striped>tbody>tr:nth-of-type(even) {
+    background: #1c1c21;
+}
+
 body.darkmode div pre {
-    background-color: #3e3939 !important;
-    color: #eee;
+    background: #212121 !important;
+    color: #b4bfca;
 }
 
 body.darkmode span.tag {
-    color: #FFD119;
+    color: #b4bfca;
 }
 
 body.darkmode .keyword {
-    color: #d2691e;
+    color: #b4bfca;
 }
 
 body.darkmode div.tags ~h1 {
-    color: #d2691e;
+    color: #b4bfca;
 }
 
 body.darkmode div.tags ~h2 {
-    color: #d2691e;
+    color: #b4bfca;
+}
+
+body.darkmode div.tags ~h1 small {
+    color: #bfbfbf;
+}
+
+body.darkmode div.tags ~h2 small {
+    color: #bfbfbf;
 }
 
 svg#moon, svg#sun {
     width: 40px;
     height: 30px;
-    fill: #ff4500;
+    fill: #ec6d04;
 }
 
 input#darkCheck:checked ~ label>svg#sun {
     display: none;
+    border-color: #212121;
 }
 
 label>svg#moon {
@@ -558,5 +668,6 @@ label>svg#moon {
 
 input#darkCheck:checked ~ label>svg#moon {
     display: inline-block;
-    fill: #ffe4c4;
+    fill: #b4bfca;
+    border-color: #212121;
 }
