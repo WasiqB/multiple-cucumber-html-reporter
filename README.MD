@@ -18,9 +18,9 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 
 ![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
 
-or with dark mode enabled
-![image](https://user-images.githubusercontent.com/6072775/170474502-609d7e56-a7d4-42f1-80a5-c1cb0deee807.png)
-![image](https://user-images.githubusercontent.com/6072775/170474592-915efcbb-2587-4c52-984d-e0900cf19b0b.png)
+or with dark mode enabled:
+![image](https://user-images.githubusercontent.com/10329968/193400025-37dcbc0a-f5b8-4dea-b40e-51330c43aebf.png)
+![image](https://user-images.githubusercontent.com/10329968/193400032-1142963c-f216-416c-bf42-95a26351a824.png)
 
 A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/browsers/index.html)
 
