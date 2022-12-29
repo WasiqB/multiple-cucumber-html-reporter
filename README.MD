@@ -13,12 +13,8 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a features overview that can be searched / filtered / sorted
 - a feature(s) overview with metadata of the used browser(s) / devices
 
-# Maintainer(s) Wanted
-Unfortunately I no longer have the time and/or resources to work on this project. 
-
-For now only pull requests of external contributors are being reviewed, accepted and welcomed (with some delay). No more bug fixes or new features will be implemented by me.
-
-If you are interested in giving this project some ❤️, please chime in. I'm also happy to transfer the package to someone else and give you all the rights.
+# 🙏 Appreciation!!
+Thanks @wswebcreation for beliveing in me and transferring the ownership of the project.
 
 # Important
 > **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
