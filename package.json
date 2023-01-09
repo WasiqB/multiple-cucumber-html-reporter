@@ -36,13 +36,13 @@
     "fs-extra": "^11.1.0",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.1.1",
+    "luxon": "^3.2.1",
     "open": "^8.4.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jasmine": "^4.5.0",
     "nyc": "^15.1.0",
-    "release-it": "^15.5.1"
+    "release-it": "^15.6.0"
   }
 }
