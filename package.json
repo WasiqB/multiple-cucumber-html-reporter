@@ -24,13 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wswebcreation/multiple-cucumber-html-reporter.git"
+    "url": "git+https://github.com/WasiqB/multiple-cucumber-html-reporter.git"
   },
-  "author": "wswebcreation",
+  "author": "WasiqB",
   "bugs": {
-    "url": "https://github.com/wswebcreation/multiple-cucumber-html-reporter/issues"
+    "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
   },
-  "homepage": "https://github.com/wswebcreation/multiple-cucumber-html-reporter#readme",
+  "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "dependencies": {
     "find": "^0.3.0",
     "fs-extra": "^11.1.0",
