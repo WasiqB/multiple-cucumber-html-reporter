@@ -43,6 +43,6 @@
   "devDependencies": {
     "jasmine": "^4.5.0",
     "nyc": "^15.1.0",
-    "release-it": "^15.8.0"
+    "release-it": "^15.9.0"
   }
 }
