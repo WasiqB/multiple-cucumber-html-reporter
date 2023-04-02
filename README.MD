@@ -12,10 +12,6 @@ Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the 
 - a features overview that can be searched / filtered / sorted
 - a feature(s) overview with metadata of the used browser(s) / devices
 
-## 🙏 Appreciation
-
-Thanks @wswebcreation for beliveing in me and transferring the ownership of the project.
-
 ## Important
 
 > **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
@@ -26,14 +22,14 @@ or with dark mode enabled:
 ![image](https://user-images.githubusercontent.com/10329968/193400025-37dcbc0a-f5b8-4dea-b40e-51330c43aebf.png)
 ![image](https://user-images.githubusercontent.com/10329968/193400032-1142963c-f216-416c-bf42-95a26351a824.png)
 
-A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/browsers/index.html)
+A sample can be found [here](https://wasiqb.github.io/multiple-cucumber-html-reporter/browsers/index.html)
 
 But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](./README.MD#custommetadata).
 This nice feature has been created by [LennDG](https://github.com/LennDG)
 
 ![Snapshot - Features overview](./docs/images/custom-metadata-features-overview.jpg "Snapshot - Custom metadata features overview")
 
-A sample can be found [here](https://wswebcreation.github.io/multiple-cucumber-html-reporter/custom-metadata/index.html)
+A sample can be found [here](https://wasiqb.github.io/multiple-cucumber-html-reporter/custom-metadata/index.html)
 
 ## Install
 
