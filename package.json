@@ -41,7 +41,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jasmine": "^5.0.2",
+    "jasmine": "^5.1.0",
     "nyc": "^15.1.0",
     "release-it": "^16.1.2"
   }
