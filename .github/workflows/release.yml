@@ -43,4 +43,4 @@ jobs:
       - name: Release
         run: npm run release.ci -- ${{github.event.inputs.releaseType}}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}

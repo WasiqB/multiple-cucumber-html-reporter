@@ -1,0 +1,9 @@
+{
+  "json": {
+    "enabled": true
+  },
+  "messages": {
+    "enabled": false
+  },
+  "stepDefinitions": ["cypress/e2e/[filepath].step.{js,ts}"]
+}

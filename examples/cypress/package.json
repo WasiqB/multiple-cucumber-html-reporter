@@ -1,0 +1,22 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "Sample Cypress project",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --browser chrome --headed --reporter json",
+    "cy:run": "cypress run"
+  },
+  "author": "Wasiq Bhamla",
+  "license": "MIT",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.5",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress": "^13.2.0",
+    "multiple-cucumber-html-reporter": "^3.4.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.9",
+    "fs": "^0.0.1-security"
+  }
+}
