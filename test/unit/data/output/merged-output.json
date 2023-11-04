@@ -503,39 +503,19 @@
             },
             "rows": [
               {
-                "cells": [
-                  "nombre",
-                  "cedula",
-                  "parentesco"
-                ]
+                "cells": ["nombre", "cedula", "parentesco"]
               },
               {
-                "cells": [
-                  "Miguel",
-                  "8-811-1888",
-                  "PRIMO"
-                ]
+                "cells": ["Miguel", "8-811-1888", "PRIMO"]
               },
               {
-                "cells": [
-                  "Glendy",
-                  "8-988-755",
-                  "SOBRINO"
-                ]
+                "cells": ["Glendy", "8-988-755", "SOBRINO"]
               },
               {
-                "cells": [
-                  "Cecilia",
-                  "8-877-544",
-                  "ABUELO"
-                ]
+                "cells": ["Cecilia", "8-877-544", "ABUELO"]
               },
               {
-                "cells": [
-                  "Claudia",
-                  "8-145-755",
-                  "MADRE"
-                ]
+                "cells": ["Claudia", "8-145-755", "MADRE"]
               }
             ],
             "keyword": "And "

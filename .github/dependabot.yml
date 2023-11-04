@@ -2,11 +2,25 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    target-branch: "main"
     versioning-strategy: increase
+    open-pull-requests-limit: 100
     schedule:
       interval: "weekly"
+      timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        dependency-type: "production"
+      dev-dependencies:
+        dependency-type: "development"
 
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "main"
+    open-pull-requests-limit: 100
     schedule:
       interval: "weekly"
+      timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        dependency-type: "production"

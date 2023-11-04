@@ -103,8 +103,7 @@
               "duration": 3182,
               "status": "passed"
             },
-            "match": {
-            }
+            "match": {}
           }
         ],
         "type": "scenario",
