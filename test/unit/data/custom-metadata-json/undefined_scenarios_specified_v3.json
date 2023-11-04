@@ -142,17 +142,17 @@
                   "type": "application/json"
                 }
               },
-	      {
-		"data": "Some plain text message",
+              {
+                "data": "Some plain text message",
                 "media": {
                   "type": "text/plain"
                 }
-	      },
-	      {
-		"data": "{\"yet another json\":5}",
-		"media": {
-	          "type": "application/json"
-		}
+              },
+              {
+                "data": "{\"yet another json\":5}",
+                "media": {
+                  "type": "application/json"
+                }
               }
             ]
           },

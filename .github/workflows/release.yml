@@ -15,6 +15,7 @@ on:
 
 env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
 
 jobs:
   release:
@@ -25,9 +26,18 @@ jobs:
           ref: "main"
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: 16
+          version: latest
+
+      - name: Setup Node v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm i
 
       - name: NPM Setup
         run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
@@ -37,10 +47,7 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Release
-        run: npm run release.ci -- ${{github.event.inputs.releaseType}}
+        run: pnpm release.ci -- ${{ github.event.inputs.releaseType }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
+          GITHUB_TOKEN: ${{ env.PUSH_TOKEN }}

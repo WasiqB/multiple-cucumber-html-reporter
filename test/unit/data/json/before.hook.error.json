@@ -54,8 +54,7 @@
               "status": "passed",
               "duration": 426
             },
-            "embeddings": [
-            ]
+            "embeddings": []
           },
           {
             "keyword": "After",

@@ -94,7 +94,8 @@
           {
             "name": "@pending",
             "line": 1
-          }],
+          }
+        ],
         "type": "scenario",
         "steps": [
           {
