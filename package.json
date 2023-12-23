@@ -1,6 +1,6 @@
 {
   "name": "multiple-cucumber-html-reporter",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
   "keywords": [
     "cucumber",
@@ -13,11 +13,11 @@
   "main": "lib/generate-report.js",
   "license": "MIT",
   "scripts": {
-    "release": "release-it --github.release",
-    "release.ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
-    "release.patch": "npm run release -- patch",
-    "release.minor": "npm run release -- minor",
-    "release.major": "npm run release -- major",
+    "release": "release-it",
+    "release.ci": "npm run release -- --ci",
+    "release.patch": "npm run release.ci -- patch",
+    "release.minor": "npm run release.ci -- minor",
+    "release.major": "npm run release.ci -- major",
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
