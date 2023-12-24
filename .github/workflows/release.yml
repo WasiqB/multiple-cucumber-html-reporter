@@ -16,11 +16,16 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: "main"
           fetch-depth: 0
+          token: ${{ env.PUSH_TOKEN }}
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
@@ -47,6 +52,3 @@ jobs:
 
       - name: Release
         run: npm run release.${{ github.event.inputs.releaseType }}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
