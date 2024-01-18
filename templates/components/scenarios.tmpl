@@ -130,6 +130,14 @@
                                         <% } %>
                                     <% } %>
 
+                                    <% if(suite.displayStepStartTime) { %>
+                                        <% if (step.startTime) { %>
+                                            <span class="startTime"><%= step.startTime %></span>
+                                        <% } else { %>
+                                            <span class="startTime">00:00:00.000</span>
+                                        <% } %>
+                                    <% } %>
+
                                 </div>
 
                                 <% if(step.result) { %>

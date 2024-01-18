@@ -4,8 +4,31 @@ const path = require('node:path');
 const test = require('../lib/generate-report');
 
 /**
- * Generate a report for browsers
+ * Generate a report for proemion input
  */
+test.generate({
+    saveCollectedJSON: true,
+    jsonDir: './test/unit/data/proemion/',
+    reportPath: './.tmp/proemion/',
+    reportName: 'You can adjust this report name',
+    overrideStyle: path.join(__dirname, './proemion.css'),
+    customMetadata: true,
+    displayDuration: true,
+    displayStepStartTime: true,
+    plainDescription: true,
+    customData: {
+        title: 'Run info',
+        data: [
+            {label: 'Project', value: 'Custom embedded project'},
+            {label: 'Release', value: '4.5.6'},
+        ]
+    }
+});
+
+/*
+/!**
+ * Generate a report for browsers
+ *!/
 test.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/json/',
@@ -26,9 +49,9 @@ test.generate({
     }
 });
 
-/**
+/!**
  * Generate a report with array of embedded data
- */
+ *!/
 test.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/embedded-array-json/',
@@ -48,9 +71,9 @@ test.generate({
     }
 });
 
-/**
+/!**
  * Generate a report for browsers with report time
- */
+ *!/
 test.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/json/',
@@ -73,10 +96,10 @@ test.generate({
     }
 });
 
-/**
+/!**
  * Generate a report with custom metadata
  * NOTE: must be last, if you use customMetadata you cannot reuse generator
- */
+ *!/
 test.generate({
     saveCollectedJSON: true,
     jsonDir: './test/unit/data/custom-metadata-json/',
@@ -91,3 +114,4 @@ test.generate({
         { "name": "platform version", "value": "16.04" }
     ]
 });
+*/
