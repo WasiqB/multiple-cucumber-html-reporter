@@ -28,7 +28,7 @@
             },
             "embeddings": [
               {
-                "data": "[{\"data\":{\"x\":\"1\",\"y\":\"1\",\"url\":\"http://url.com\"},\"event\":\"start\",\"show\":1,\"id\":50},{\"data\":{\"x\":\"2\",\"y\":\"3\",\"url\":\"http://example.com\"},\"event\":\"stop\",\"show\":2,\"id\":51}]",
+                "data": "W3siZGF0YSI6eyJ4IjoiMSIsInkiOiIxIiwidXJsIjoiaHR0cDovL3VybC5jb20ifSwiZXZlbnQiOiJzdGFydCIsInNob3ciOjEsImlkIjo1MH0seyJkYXRhIjp7IngiOiIyIiwieSI6IjMiLCJ1cmwiOiJodHRwOi8vZXhhbXBsZS5jb20ifSwiZXZlbnQiOiJzdG9wIiwic2hvdyI6MiwiaWQiOjUxfV0=",
                 "mime_type": "application/json"
               },
               {

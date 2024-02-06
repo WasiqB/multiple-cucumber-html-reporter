@@ -131,13 +131,13 @@
             },
             "embeddings": [
               {
-                "data": "{\"some\":\"json\"}",
+                "data": "eyJzb21lIjoianNvbiJ9",
                 "media": {
                   "type": "application/json"
                 }
               },
               {
-                "data": "{\"other\":\"json\"}",
+                "data": "eyJvdGhlciI6Impzb24ifQ==",
                 "media": {
                   "type": "application/json"
                 }
@@ -149,7 +149,7 @@
                 }
 	      },
 	      {
-		"data": "{\"yet another json\":5}",
+		"data": "eyJ5ZXQgYW5vdGhlciBqc29uIjo1fQ==",
 		"media": {
 	          "type": "application/json"
 		}

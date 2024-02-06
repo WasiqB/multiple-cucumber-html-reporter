@@ -83,9 +83,7 @@
                 "mime_type": "text/plain"
               },
               {
-                "data": {
-                  "json-string": true
-                },
+                "data": "eyJqc29uLXN0cmluZyI6IHRydWV9",
                 "mime_type": "application/json"
               }
             ]
