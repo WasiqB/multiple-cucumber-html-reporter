@@ -37,7 +37,7 @@
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
-    "open": "^8.4.2",
+    "open": "^10.0.4",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
