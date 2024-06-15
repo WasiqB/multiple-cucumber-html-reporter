@@ -14,10 +14,10 @@
   "license": "MIT",
   "scripts": {
     "release": "release-it",
-    "release.ci": "npm run release -- --ci",
-    "release.patch": "npm run release.ci -- patch",
-    "release.minor": "npm run release.ci -- minor",
-    "release.major": "npm run release.ci -- major",
+    "release.ci": "pnpm release -- --ci",
+    "release.patch": "pnpm release.ci -- patch",
+    "release.minor": "pnpm release.ci -- minor",
+    "release.major": "pnpm release.ci -- major",
     "test": "node ./test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
@@ -44,5 +44,6 @@
     "jasmine": "^5.1.0",
     "nyc": "^17.0.0",
     "release-it": "^17.3.0"
-  }
+  },
+  "packageManager": "pnpm@9.3.0"
 }

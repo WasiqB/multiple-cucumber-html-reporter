@@ -2,9 +2,21 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
+    target-branch: "main"
     versioning-strategy: increase
+    open-pull-requests-limit: 100
     schedule:
       interval: "weekly"
+      timezone: "Asia/Calcutta"
+
+  - package-ecosystem: "npm"
+    directory: "/examples/cypress"
+    target-branch: "main"
+    versioning-strategy: increase
+    open-pull-requests-limit: 100
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Calcutta"
 
   - package-ecosystem: "github-actions"
     directory: "/"

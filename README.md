@@ -52,11 +52,9 @@ Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2, 3 and 4**.
 
 ## Usage
 
-> **If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/wswebcreation/protractor-multiple-cucumber-html-reporter-plugin).**
-
-> **If you are using [webdriver.io](http://webdriver.io/) please check [WEBDRIVER.IO.MD](./docs/WEBDRIVER.IO.MD) for usage.**
-
-> **It provides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.**
+> If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/WasiqB/protractor-multiple-cucumber-html-reporter-plugin).
+> If you are using [webdriver.io](http://webdriver.io/) please check [WEBDRIVER.IO.MD](./docs/WEBDRIVER.IO.MD) for usage.
+> It provides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.
 
 ### cucumber-js 2.x and lower
 
@@ -96,11 +94,9 @@ report.generate({
 
 Since cucumber-js 3.x the `AfterFeatures` hook is not supported anymore. To use Multiple Cucumber HTML Reporter it must be run in a separate node executable after the cucumber-js process finishes.
 
-> **IMPORTANT:**
-
+> IMPORTANT:
 > Make sure that, when you generate the JSON files with Cucumber, each file will have a **UNIQUE** name. If you don't provide a unique name Cucumber will **override** the JSON files.
-
-> **Advice** is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
+> Advice is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
 
 ## Options
 
@@ -161,7 +157,7 @@ This will disable the log so will **NOT** see this.
 =====================================================================================
     Multiple Cucumber HTML report generated in:
 
-    /Users/wswebcreation/multiple-cucumber-html-reporter/.tmp/index.html
+    /Users/WasiqB/multiple-cucumber-html-reporter/.tmp/index.html
 ========================================================================
 ```
 
@@ -319,10 +315,9 @@ metadata: [
 On the features overview page the custom metadata is shown like:
 ![Snapshot - Features overview custom metadata](./docs/images/features-custom-metadata.jpg "Snapshot - Features overview custom metadata")
 
-> **IMPORTANT:**
+> IMPORTANT:
 > This does not work correctly if features have different sets of metadata. Try to avoid this situation.
-
-> **Much like with metadata, if you provide the custom metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence**
+> Much like with metadata, if you provide the custom metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence\*\*
 
 ### `customData`
 
@@ -378,15 +373,15 @@ To be able to see this you will need to add the following to the Cucumber JSON b
 const cucumberJSON;
 
 const metadata = {
-	"browser": {
-		"name": "chrome",
-		"version": "58"
-	},
-	"device": "string",
-	"platform": {
-		"name": "osx",
-		"version": "10.12"
-	}
+  "browser": {
+    "name": "chrome",
+    "version": "58"
+  },
+  "device": "string",
+  "platform": {
+    "name": "osx",
+    "version": "10.12"
+  }
 }
 
 // Add it with for example
@@ -479,8 +474,8 @@ The advantage of this is that when you look at the folder where the Cucumber JSO
 
 There could be 2 causes:
 
-1.  The metadata has not (correctly) been added to the Cucumber JSON.
-2.  The `metadata.browser.name` or `metadata.platform.name` can't be mapped to the right icon
+1. The metadata has not (correctly) been added to the Cucumber JSON.
+2. The `metadata.browser.name` or `metadata.platform.name` can't be mapped to the right icon
 
 To fix this see the part about **Metadata** and check the **possible values**.
 
@@ -504,7 +499,7 @@ You can attach JSON at any time to a Cucumber JSON file. You can add them during
 
 ## Changelog and Releases
 
-The Changelog and releases can be found [here](https://github.com/wswebcreation/multiple-cucumber-html-reporter/releases)
+The Changelog and releases can be found [here](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
 ## Contributing
 
