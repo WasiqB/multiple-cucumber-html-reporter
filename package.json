@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "jasmine": "^5.1.0",
-    "nyc": "^15.1.0",
+    "nyc": "^17.0.0",
     "release-it": "^17.3.0"
   }
 }
