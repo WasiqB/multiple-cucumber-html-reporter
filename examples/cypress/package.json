@@ -10,13 +10,13 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^18.0.5",
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.7",
     "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^13.2.0",
-    "multiple-cucumber-html-reporter": "^3.4.0"
+    "cypress": "^13.11.0",
+    "multiple-cucumber-html-reporter": "^3.6.2"
   },
   "dependencies": {
-    "dayjs": "^1.11.9",
+    "dayjs": "^1.11.11",
     "fs": "^0.0.1-security"
   }
 }
