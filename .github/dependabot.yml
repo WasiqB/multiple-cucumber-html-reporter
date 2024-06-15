@@ -8,6 +8,9 @@ updates:
     schedule:
       interval: "weekly"
       timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        update-types: ["major", "minor", "patch"]
 
   - package-ecosystem: "npm"
     directory: "/examples/cypress"
@@ -17,8 +20,14 @@ updates:
     schedule:
       interval: "weekly"
       timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        update-types: ["major", "minor", "patch"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      dependencies:
+        dependency-type: "production"
