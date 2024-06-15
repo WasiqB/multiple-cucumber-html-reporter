@@ -38,7 +38,7 @@
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
     "open": "^8.4.2",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "jasmine": "^5.1.0",
