@@ -1,0 +1,119 @@
+[
+  {
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
+    "elements": [
+      {
+        "id": "undefined-scenarios-specified-v1;timmy-wants-to-see-undefined-scenarios",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Timmy wants to see undefined scenarios",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Before ",
+            "result": {
+              "status": "passed",
+              "duration": 664231
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:83"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "Timmy visits the Angular homepage",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "he doesn't do anything",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 9
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "nothing has been done",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 10
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 694199
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:201"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 159344
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/node_modules/cucumber-tsflow/src/BindingDecorator.ts:87"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@undefined",
+            "line": 1
+          },
+          {
+            "name": "@timmy",
+            "line": 6
+          },
+          {
+            "name": "@angular",
+            "line": 6
+          },
+          {
+            "name": "@nothing",
+            "line": 6
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "undefined-scenarios-specified-v1",
+    "keyword": "Feature",
+    "line": 2,
+    "name": "Undefined scenarios specified V1",
+    "tags": [
+      {
+        "name": "@undefined",
+        "line": 1
+      }
+    ],
+    "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/undefined.feature",
+    "metadata": {
+      "browser": {
+        "name": "Safari",
+        "version": "10"
+      },
+      "device": "iPhone 7",
+      "platform": {
+        "name": "iOS",
+        "version": "10.1.2"
+      }
+    }
+  }
+]

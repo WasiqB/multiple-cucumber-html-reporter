@@ -21,6 +21,9 @@ importers:
       '@cypress/browserify-preprocessor':
         specifier: ^3.0.2
         version: 3.0.2
+      '@types/jasmine':
+        specifier: ^5.1.4
+        version: 5.1.4
       cypress:
         specifier: ^13.11.0
         version: 13.11.0
@@ -1042,6 +1045,9 @@ packages:
   '@teppeis/multimaps@3.0.0':
     resolution: {integrity: sha512-ID7fosbc50TbT0MK0EG12O+gAP3W3Aa/Pz4DaTtQtEvlc9Odaqi0de+xuZ7Li2GtK4HzEX7IuRWS/JmZLksR3Q==}
     engines: {node: '>=14'}
+
+  '@types/jasmine@5.1.4':
+    resolution: {integrity: sha512-px7OMFO/ncXxixDe1zR13V1iycqWae0MxTaw62RpFlksUi5QuNWgQJFkTQjIOvrmutJbI7Fp2Y2N1F6D2R4G6w==}
 
   '@types/node@20.14.2':
     resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
@@ -4165,6 +4171,8 @@ snapshots:
     optional: true
 
   '@teppeis/multimaps@3.0.0': {}
+
+  '@types/jasmine@5.1.4': {}
 
   '@types/node@20.14.2':
     dependencies:

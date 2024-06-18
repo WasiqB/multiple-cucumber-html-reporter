@@ -1,0 +1,304 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Edge",
+        "version": "14"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "Windows",
+        "version": "10"
+      }
+    },
+    "keyword": "Feature",
+    "line": 2,
+    "name": "Happy flow V2",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@example"
+      },
+      {
+        "line": 1,
+        "name": "@happy-flow"
+      },
+      {
+        "line": 1,
+        "name": "@angular"
+      }
+    ],
+    "uri": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.feature",
+    "description": "    A happy flow should generate a passed report\n    So a reviewer can judge what went correct",
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "As a visitor I want to be greeted",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@example"
+          },
+          {
+            "line": 1,
+            "name": "@happy-flow"
+          },
+          {
+            "line": 1,
+            "name": "@angular"
+          },
+          {
+            "line": 7,
+            "name": "@visitor"
+          },
+          {
+            "line": 7,
+            "name": "@julie"
+          }
+        ],
+        "id": "happy-flow-v2;as-a-visitor-i-want-to-be-greeted",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I visit the Happy flow",
+            "result": {
+              "status": "passed",
+              "duration": 3239
+            },
+            "isBackground": true,
+            "line": 5,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:6"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I submit the name \"Julie\"",
+            "result": {
+              "status": "passed",
+              "duration": 1163
+            },
+            "line": 9,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:11"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I am greeted as \"Hello Julie!\"",
+            "result": {
+              "status": "passed",
+              "duration": 78
+            },
+            "line": 10,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:32"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After",
+            "result": {
+              "status": "passed",
+              "duration": 1
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/config/helpers/after.scenario.ts:11"
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Validate todo list",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@example"
+          },
+          {
+            "line": 1,
+            "name": "@happy-flow"
+          },
+          {
+            "line": 1,
+            "name": "@angular"
+          },
+          {
+            "line": 12,
+            "name": "@todo"
+          },
+          {
+            "line": 12,
+            "name": "@count"
+          },
+          {
+            "line": 12,
+            "name": "@validate"
+          }
+        ],
+        "id": "happy-flow-v2;validate-todo-list",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I visit the Happy flow",
+            "result": {
+              "status": "passed",
+              "duration": 853
+            },
+            "isBackground": true,
+            "line": 5,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:6"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I count 2 todo's",
+            "result": {
+              "status": "passed",
+              "duration": 960
+            },
+            "line": 14,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:16"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "the last todo should hold \"build an AngularJS app\"",
+            "result": {
+              "status": "passed",
+              "duration": 53
+            },
+            "line": 15,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:40"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After",
+            "result": {
+              "status": "passed",
+              "duration": 0
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/config/helpers/after.scenario.ts:11"
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Add a todo",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@example"
+          },
+          {
+            "line": 1,
+            "name": "@happy-flow"
+          },
+          {
+            "line": 1,
+            "name": "@angular"
+          },
+          {
+            "line": 17,
+            "name": "@todo"
+          },
+          {
+            "line": 17,
+            "name": "@count"
+          },
+          {
+            "line": 17,
+            "name": "@add"
+          }
+        ],
+        "id": "happy-flow-v2;add-a-todo",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I visit the Happy flow",
+            "result": {
+              "status": "passed",
+              "duration": 496
+            },
+            "isBackground": true,
+            "line": 5,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:6"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "I add the todo \"write a protractor test\"",
+            "result": {
+              "status": "passed",
+              "duration": 957
+            },
+            "line": 19,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:23"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "I should have 3 todo's",
+            "result": {
+              "status": "passed",
+              "duration": 21
+            },
+            "line": 20,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:47"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "the last todo should hold \"write a protractor test\"",
+            "result": {
+              "status": "passed",
+              "duration": 53
+            },
+            "line": 21,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/features/example.steps.ts:40"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "After",
+            "result": {
+              "status": "passed",
+              "duration": 0
+            },
+            "hidden": true,
+            "match": {
+              "location": "/Users/wswebcreation/deTesters/protractor-cucumber-typescript-boilerplate/e2e-tests/config/helpers/after.scenario.ts:11"
+            }
+          }
+        ]
+      }
+    ],
+    "id": "happy-flow-v2"
+  }
+]

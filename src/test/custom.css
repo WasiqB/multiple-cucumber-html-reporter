@@ -1,0 +1,58 @@
+body {
+  background: rgb(58,58,58);
+}
+
+/* If your custom theme doesn't properly support dark mode, you can easily hide the toggle button */
+.fa-toggle-off {
+    display: none
+}
+
+/* This styling applies also to the doughnut charts */
+.ambiguous-color {
+    color: #AAAAAA !important;
+}
+
+.failed-color {
+    color: #FF0000 !important;
+}
+
+.not-defined-color {
+    color: #0000FF !important;
+}
+
+.passed-color {
+    color: #00FF00 !important;
+}
+
+.pending-color {
+    color: #FFAA33 !important;
+}
+
+.skipped-color {
+    color: #770077 !important;
+}
+
+/* backgrounds */
+.ambiguous-background {
+    background: #AAAAAA !important;
+}
+
+.failed-background {
+    background: #FF0000 !important;
+}
+
+.not-defined-background {
+    background: #0000FF !important;
+}
+
+.passed-background {
+    background: #00FF00 !important;
+}
+
+.pending-background {
+    background: #FFAA33 !important;
+}
+
+.skipped-background {
+    background: #770077 !important;
+}
