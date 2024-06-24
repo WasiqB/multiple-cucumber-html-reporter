@@ -10,7 +10,7 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.7",
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.0",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "cypress": "^13.11.0",
     "multiple-cucumber-html-reporter": "^3.6.2"
