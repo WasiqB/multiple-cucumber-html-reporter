@@ -1,12 +1,12 @@
 import path from "node:path";
-import { generateReport } from "../generate-report";
+import { generateReport } from "../generate-report.js";
 
 /**
  * Generate a report for browsers
  */
 generateReport({
   saveCollectedJson: true,
-  dir: "./test/unit/data/json/",
+  dir: "./src/test/unit/data/json/",
   reportPath: "./.tmp/browsers/",
   reportName: "You can adjust this report name",
   customMetadata: false,
@@ -29,7 +29,7 @@ generateReport({
  */
 generateReport({
   saveCollectedJson: true,
-  dir: "./test/unit/data/embedded-array-json/",
+  dir: "./src/test/unit/data/embedded-array-json/",
   reportPath: "./.tmp/embedded-array/",
   customStyle: path.join(__dirname, "./custom.css"),
   overrideStyle: path.join(__dirname, "./my.css"),
@@ -51,7 +51,7 @@ generateReport({
  */
 generateReport({
   saveCollectedJson: true,
-  dir: "./test/unit/data/json/",
+  dir: "./src/test/unit/data/json/",
   reportPath: "./.tmp/browsers-with-report-time/",
   reportName: "You can adjust this report name",
   customMetadata: false,
@@ -77,7 +77,7 @@ generateReport({
  */
 generateReport({
   saveCollectedJson: true,
-  dir: "./test/unit/data/custom-metadata-json/",
+  dir: "./src/test/unit/data/custom-metadata-json/",
   reportPath: "./.tmp/custom-metadata/",
   customMetadata: true,
   displayDuration: true,

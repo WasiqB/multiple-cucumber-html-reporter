@@ -2,6 +2,7 @@
   "name": "multiple-cucumber-html-reporter",
   "version": "3.6.2",
   "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
+  "type": "module",
   "keywords": [
     "cucumber",
     "html",
@@ -18,9 +19,10 @@
     "release.patch": "pnpm release.ci -- patch",
     "release.minor": "pnpm release.ci -- minor",
     "release.major": "pnpm release.ci -- major",
-    "test": "node ./test/test.js",
-    "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
+    "build": "tsc",
+    "test": "tsc && node ./dist/test/test.js",
+    "unit.test": "vitest",
+    "unit.test.coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -37,21 +39,23 @@
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
-    "open": "^8.4.2",
+    "open": "^10.1.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jsonfile": "^6.1.4",
-    "@types/lodash": "^4.17.5",
+    "@types/lodash": "^4.17.6",
     "@types/luxon": "^3.4.2",
-    "@types/node": "^20.14.2",
-    "@types/uuid": "^9.0.8",
+    "@types/node": "^20.14.9",
+    "@types/uuid": "^10.0.0",
+    "@vitest/coverage-istanbul": "^1.6.0",
     "jasmine": "^5.1.0",
     "nyc": "^17.0.0",
-    "release-it": "^17.3.0",
-    "typescript": "^5.4.5"
+    "release-it": "^17.4.1",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
   },
   "packageManager": "pnpm@9.3.0"
 }

@@ -4,7 +4,7 @@ import jsonFile from "jsonfile";
 import open from "open";
 import path from "node:path";
 import { v4 as uuid } from "uuid";
-import { collectJsonFiles } from "./collect-jsons";
+import { collectJsonFiles } from "./collect-jsons.js";
 import {
   Feature,
   Metadata,
@@ -13,13 +13,13 @@ import {
   Scenario,
   StepEmbedding,
   Suite,
-} from "./report-types";
+} from "./report-types.js";
 import {
   calculatePercentage,
   escapeHtml,
   formatDuration,
   readTemplateFile,
-} from "./helper";
+} from "./helper.js";
 
 const REPORT_STYLESHEET = "style.css";
 const GENERIC_JS = "generic.js";
@@ -190,10 +190,7 @@ const parseScenarios = (
     }
 
     if (scenario.hasOwnProperty("description") && scenario.description) {
-      scenario.description = scenario.description.replace(
-        new RegExp("\r?\n", "g"),
-        "<br />"
-      );
+      scenario.description = scenario.description.replace(/\r?\n/g, "<br />");
     }
 
     if (scenario.type === "background") {
@@ -315,7 +312,7 @@ const parseSteps = (
           let embeddingType = "text/plain";
           if (embedding.mime_type) {
             embeddingType = embedding.mime_type;
-          } else if (embedding.media && embedding.media.type) {
+          } else if (embedding.media?.type) {
             embeddingType = embedding.media.type;
           }
           step.attachments.push({
@@ -335,7 +332,7 @@ const parseSteps = (
         "-"
       );
       step.restWireData = escapeHtml(step.doc_string.value).replace(
-        new RegExp("\r?\n", "g"),
+        /\r?\n/g,
         "<br />"
       );
     }
@@ -513,7 +510,7 @@ const createFeatureIndexPages = (
   });
 };
 
-const generateReport = (options: ReportOption) => {
+const generateReport = (options?: ReportOption) => {
   if (!options) {
     throw new Error("Options need to be provided.");
   }

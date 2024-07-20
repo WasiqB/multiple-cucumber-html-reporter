@@ -1,9 +1,8 @@
 import find from "find";
 import fs from "fs-extra";
-import jsonFile from "jsonfile";
 import path from "node:path";
-import { Feature, ReportOption, Step } from "./report-types";
-import { formatToLocalIso } from "./helper";
+import { Feature, Metadata, ReportOption, Step } from "./report-types.js";
+import { formatToLocalIso } from "./helper.js";
 
 export const collectJsonFiles = (options: ReportOption): Feature[] => {
   let jsonOutput: Feature[];
@@ -21,44 +20,42 @@ export const collectJsonFiles = (options: ReportOption): Feature[] => {
   }
 
   if (files.length > 0) {
-    files.map((file) => {
+    files.forEach((file) => {
       // Cucumber json can be  empty, it's likely being created by another process (#47)
       const data = fs.readFileSync(file).toString() || "[]";
       const stats = fs.statSync(file);
       const reportTime = stats.birthtime;
+      console.log({ data, stats });
 
       JSON.parse(data).map((json: Feature) => {
-        if (options.metadata && !json.metadata) {
-          json.metadata = options.metadata;
+        let feature = json;
+        if (options.metadata && !options.customMetadata && !feature.metadata) {
+          feature.metadata = options.metadata as Metadata;
         } else {
-          json = Object.assign(
-            {
-              metadata: {
-                browser: {
-                  name: "not known",
-                  version: "not known",
-                },
-                device: "not known",
-                platform: {
-                  name: "not known",
-                  version: "not known",
-                },
+          feature = {
+            metadata: {
+              browser: {
+                name: "not known",
+                version: "not known",
+              },
+              device: "not known",
+              platform: {
+                name: "not known",
+                version: "not known",
               },
             },
-            json
-          );
+          } satisfies Feature;
         }
 
-        if (json.metadata && options.displayReportTime && reportTime) {
-          json.metadata = Object.assign({ reportTime }, json.metadata);
-          json.metadata.reportTime = formatToLocalIso(json.metadata.reportTime);
+        if (feature.metadata && options.displayReportTime && reportTime) {
+          feature.metadata.reportTime = formatToLocalIso(reportTime);
         }
 
         // Only check the feature hooks if there are elements (fail-safe)
-        const { scenarios } = json;
+        const { scenarios } = feature;
 
         if (scenarios) {
-          json.scenarios = scenarios.map((scenario) => {
+          feature.scenarios = scenarios.map((scenario) => {
             const { before, after } = scenario;
 
             if (before) {
@@ -74,14 +71,17 @@ export const collectJsonFiles = (options: ReportOption): Feature[] => {
             return scenario;
           });
         }
-        jsonOutput.push(json);
+        jsonOutput?.push(feature);
       });
     });
 
     if (options.saveCollectedJson) {
       const file = path.resolve(options.reportPath, "merged-output.json");
       fs.ensureDirSync(options.reportPath);
-      jsonFile.writeFileSync(file, jsonOutput, { spaces: 2 });
+      const content = JSON.stringify(jsonOutput);
+      if (content) {
+        fs.writeFileSync(file, content, { encoding: "utf-8" });
+      }
     }
 
     return jsonOutput;
@@ -113,16 +113,15 @@ export const collectJsonFiles = (options: ReportOption): Feature[] => {
  *     embeddings: []
  * }}
  */
-const parseFeatureHooks = (data: Step[], keyword: string): Step => {
+const parseFeatureHooks = (data: Step[], keyword: string): Step[] => {
   return data.map((step) => {
-    const match =
-      step.match && step.match.location
-        ? step.match
-        : { location: "can not be determined" };
+    const match = step.match?.location
+      ? step.match
+      : { location: "can not be determined" };
 
     return {
       arguments: step.arguments || [],
-      keyword: keyword,
+      keyword,
       name: "Hook",
       result: step.result,
       match,

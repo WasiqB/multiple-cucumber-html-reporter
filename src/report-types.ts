@@ -1,7 +1,7 @@
 type Metadata = {
   app?: number;
-  name: string;
-  value: string;
+  name?: string;
+  value?: string;
   browser?: {
     name: string;
     version: string;
@@ -47,27 +47,27 @@ type StepResult = {
 };
 
 type Step = {
-  id: string;
+  id?: string;
   arguments?: string[];
-  attachments: StepEmbedding[];
-  keyword: string;
+  attachments?: StepEmbedding[];
+  keyword?: string;
   name?: string;
-  result: StepResult;
+  result?: StepResult;
   line?: number;
-  hidden?: Boolean;
+  hidden?: boolean;
   match?: {
     location: string;
   };
   embeddings?: StepEmbedding[];
-  json: string[];
-  html: string[];
-  text: string[];
-  image: string[];
-  doc_string: {
+  json?: string[];
+  html?: string[];
+  text?: string[];
+  image?: string[];
+  doc_string?: {
     value: string;
   };
-  restWireData: string;
-  time: string;
+  restWireData?: string;
+  time?: string;
 };
 
 type StepEmbedding = {
@@ -80,41 +80,41 @@ type StepEmbedding = {
 
 type Feature = {
   metadata: Metadata;
-  scenarios: Scenario[];
-  scenarioCount: ScenarioCount;
-  id: string;
-  keyword: string;
-  line: number;
-  name: string;
-  tags: Tag[];
-  uri: string;
-  duration: number;
-  time: string;
-  isFailed: boolean;
-  isAmbiguous: boolean;
-  isSkipped: boolean;
-  isNotDefined: boolean;
-  isPending: boolean;
-  failed: number;
-  ambiguous: number;
-  notDefined: number;
-  pending: number;
-  skipped: number;
-  passed: number;
-  totalTime: number;
+  scenarios?: Scenario[];
+  scenarioCount?: ScenarioCount;
+  id?: string;
+  keyword?: string;
+  line?: number;
+  name?: string;
+  tags?: Tag[];
+  uri?: string;
+  duration?: number;
+  time?: string;
+  isFailed?: boolean;
+  isAmbiguous?: boolean;
+  isSkipped?: boolean;
+  isNotDefined?: boolean;
+  isPending?: boolean;
+  failed?: number;
+  ambiguous?: number;
+  notDefined?: number;
+  pending?: number;
+  skipped?: number;
+  passed?: number;
+  totalTime?: number;
 };
 
 type ReportOption = {
-  dir: string;
-  reportPath: string;
-  customMetadata: boolean;
+  dir?: string;
+  reportPath?: string;
+  customMetadata?: boolean;
   plainDescription?: boolean;
   overrideStyle?: string;
   customStyle?: string;
   disableLog?: boolean;
   openReportInBrowser?: boolean;
   reportName?: string;
-  saveCollectedJson: boolean;
+  saveCollectedJson?: boolean;
   displayDuration?: boolean;
   displayReportTime?: boolean;
   durationInMs?: boolean;
