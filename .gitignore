@@ -12,3 +12,4 @@ videos/
 screenshots/
 downloads/
 *.ndjson
+dist/
