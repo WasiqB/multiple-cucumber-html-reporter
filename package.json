@@ -37,11 +37,11 @@
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
-    "open": "^8.4.2",
+    "open": "^10.1.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "jasmine": "^5.1.0",
+    "jasmine": "^5.2.0",
     "nyc": "^17.0.0",
     "release-it": "^17.6.0"
   },
