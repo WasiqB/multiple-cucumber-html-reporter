@@ -12,11 +12,11 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.1.0",
     "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^13.13.0",
-    "multiple-cucumber-html-reporter": "^3.6.2"
+    "cypress": "^13.13.1",
+    "multiple-cucumber-html-reporter": "^3.7.0"
   },
   "dependencies": {
-    "dayjs": "^1.11.11",
+    "dayjs": "^1.11.12",
     "fs": "^0.0.1-security"
   }
 }
