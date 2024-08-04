@@ -1,0 +1,22 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "not known",
+        "version": "not known"
+      },
+      "device": "not known",
+      "platform": {
+        "name": "not known",
+        "version": "not known"
+      }
+    },
+    "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
+    "id": "no_elements.1494777183356",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "No elements",
+    "tags": [],
+    "uri": "no_elements.1494777183356"
+  }
+]

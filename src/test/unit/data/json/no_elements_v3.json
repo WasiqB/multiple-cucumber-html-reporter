@@ -1,0 +1,22 @@
+[
+  {
+    "metadata": {
+      "browser": {
+        "name": "Chrome Headless",
+        "version": "97.6.5.9"
+      },
+      "device": "Virtual Machine",
+      "platform": {
+        "name": "win64",
+        "version": "10"
+      }
+    },
+    "description": "  No elements have been found\n  So the report should hold no scenarios and steps",
+    "id": "no_elements_v3.1494777183356",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "No elements V3",
+    "tags": [],
+    "uri": "no_elements_v3.1494777183356"
+  }
+]

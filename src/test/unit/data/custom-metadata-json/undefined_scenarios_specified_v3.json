@@ -1,0 +1,174 @@
+[
+  {
+    "metadata": [
+      { "name": "Backend version", "value": "5.1.1" },
+      { "name": "Client API version", "value": "17.5" },
+      { "name": "Test Configuration", "value": "Config D" },
+      { "name": "platform", "value": "iOS" },
+      { "name": "platform version", "value": "10.1.2" }
+    ],
+    "description": "  No scenarios have scripted steps\n  So the report should hold undefined steps",
+    "keyword": "Feature",
+    "name": "Undefined scenarios specified V3",
+    "line": 2,
+    "id": "undefined-scenarios-specified-v3",
+    "tags": [
+      {
+        "name": "@undefined",
+        "line": 1
+      }
+    ],
+    "uri": "e2e-tests/features/undefined.feature",
+    "elements": [
+      {
+        "id": "undefined-scenarios-specified-v3;timmy-wants-to-see-undefined-scenarios",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "Timmy wants to see undefined scenarios",
+        "tags": [
+          {
+            "name": "@undefined",
+            "line": 1
+          },
+          {
+            "name": "@timmy",
+            "line": 6
+          },
+          {
+            "name": "@angular",
+            "line": 6
+          },
+          {
+            "name": "@nothing",
+            "line": 6
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "Timmy visits the Angular homepage",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "he doesn't do anything",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "nothing has been done",
+            "result": {
+              "status": "undefined"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "e2e-tests/config/helpers/after.scenario.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "google.com;i-open-google",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "I open google",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/steps.js:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 616
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I open url 'https://www.google.com/?hl=en'",
+            "match": {
+              "location": "src/steps.js:322"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1193
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 4,
+            "name": "I see input with value 'Google Search'",
+            "match": {
+              "location": "src/steps.js:418"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1214
+            },
+            "embeddings": [
+              {
+                "data": "eyJzb21lIjoianNvbiJ9",
+                "media": {
+                  "type": "application/json"
+                }
+              },
+              {
+                "data": "eyJvdGhlciI6Impzb24ifQ==",
+                "media": {
+                  "type": "application/json"
+                }
+              },
+	      {
+		"data": "Some plain text message",
+                "media": {
+                  "type": "text/plain"
+                }
+	      },
+	      {
+		"data": "eyJ5ZXQgYW5vdGhlciBqc29uIjo1fQ==",
+		"media": {
+	          "type": "application/json"
+		}
+              }
+            ]
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/steps.js:629"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 295
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
