@@ -3,20 +3,25 @@
   "version": "1.0.0",
   "description": "Sample Cypress project",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "cypress run --browser chrome --headed --reporter json",
+    "build": "tsc",
+    "clean": "rm -rf dist .run",
+    "test": "pnpm clean && pnpm build && cypress run --browser chrome --headed",
+    "report": "node dist/cucumber-html-report.js",
     "cy:run": "cypress run"
   },
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.1.0",
-    "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^13.13.1",
-    "multiple-cucumber-html-reporter": "^3.7.0"
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.2",
+    "@types/node": "^22.1.0",
+    "cypress": "^13.13.2",
+    "multiple-cucumber-html-reporter": "^3.7.0",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "dayjs": "^1.11.12",
-    "fs": "^0.0.1-security"
+    "dayjs": "^1.11.12"
   }
 }
