@@ -13,3 +13,4 @@ screenshots/
 downloads/
 *.ndjson
 dist/
+.run/

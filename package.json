@@ -45,16 +45,16 @@
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jsonfile": "^6.1.4",
-    "@types/lodash": "^4.17.6",
+    "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
-    "@types/node": "^20.14.9",
+    "@types/node": "^22.1.0",
     "@types/uuid": "^10.0.0",
-    "@vitest/coverage-istanbul": "^1.6.0",
-    "jasmine": "^5.1.0",
+    "@vitest/coverage-istanbul": "^2.0.5",
+    "jasmine": "^5.2.0",
     "nyc": "^17.0.0",
-    "release-it": "^17.4.1",
-    "typescript": "^5.5.3",
-    "vitest": "^1.6.0"
+    "release-it": "^17.6.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "packageManager": "pnpm@9.5.0"
 }
