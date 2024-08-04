@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
     "clean": "rm -rf dist .run",
-    "test": "pnpm clean && pnpm build && cypress run --browser chrome --headed",
+    "build": "pnpm clean && tsc",
+    "test": "pnpm build && cypress run --browser chrome --headed",
     "report": "node dist/cucumber-html-report.js",
     "cy:run": "cypress run"
   },
