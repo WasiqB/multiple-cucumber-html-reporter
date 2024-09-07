@@ -74,7 +74,7 @@
             <div class="x_content" style="display: none;">
                 <div class="scenario-step-container"><%= scenario.description %></div>
                     <% _.each(scenario.steps, function(step, stepIndex) { %>
-                        <% if(!step.hidden || step.image || step.text || step.html || step.attachment) { %>
+                        <% if(!step.hidden || step.image || step.video || step.text || step.html || step.attachment) { %>
                             <div class="scenario-step-container">
 
                                 <% if(step.result) { %>
@@ -156,7 +156,7 @@
                                     <% if (step.json) { %>
                                         <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-json" data-toggle="collapse">+ Show Info</a>
                                     <% } %>
-                                    
+
                                     <% if (step.text) { %>
                                         <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
                                     <% } %>
@@ -167,6 +167,10 @@
 
                                     <% if (step.image) { %>
                                         <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-image" data-toggle="collapse">+ Screenshot</a>
+                                    <% } %>
+
+                                    <% if (step.video) { %>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-video" data-toggle="collapse">+ Video</a>
                                     <% } %>
 
                                     <% if (!_.isEmpty(step.attachments)) { %>
@@ -211,6 +215,16 @@
                                 <div id="info<%= scenarioIndex %>-<%= stepIndex %>-image" class="scenario-step-collapse collapse">
                                     <% for( var i = 0; i < step.image.length; i++ ) { %>
                                         <img class="screenshot" src="<%= step.image[i] %>"/>
+                                    <% } %>
+                                </div>
+                            <% } %>
+
+                            <% if (step.video) { %>
+                                <div id="info<%= scenarioIndex %>-<%= stepIndex %>-video" class="scenario-step-collapse collapse">
+                                    <% for( var i = 0; i < step.video.length; i++ ) { %>
+                                        <video class="videoCapture" controls>
+                                            <source type="video/webm" src="<%= step.video[i] %>"/>
+                                        </video>
                                     <% } %>
                                 </div>
                             <% } %>

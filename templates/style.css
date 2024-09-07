@@ -381,6 +381,13 @@ ul.quick-list li i {
     max-width: 100%;
 }
 
+.videoCapture{
+    width: 50%;
+    height: 50%;
+    max-height: 100%;
+    max-width: 100%;
+}
+
 /* Features / Scenarios */
 ul.panel_toolbox li .step {
     border-radius: 50%;
