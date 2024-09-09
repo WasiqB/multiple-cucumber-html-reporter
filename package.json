@@ -2,6 +2,7 @@
   "name": "multiple-cucumber-html-reporter",
   "version": "3.7.0",
   "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
+  "type": "module",
   "keywords": [
     "cucumber",
     "html",
@@ -10,7 +11,7 @@
     "html report",
     "json to html"
   ],
-  "main": "lib/generate-report.js",
+  "main": "dist/generate-report.js",
   "license": "MIT",
   "scripts": {
     "release": "release-it",
@@ -18,7 +19,12 @@
     "release.patch": "pnpm release.ci patch",
     "release.minor": "pnpm release.ci minor",
     "release.major": "pnpm release.ci major",
+    "build": "rm -rf dist && tsc",
+    "dev": "pnpm build -w",
     "test": "node ./test/test.js",
+    "new:test": "pnpm node ./src/test/dummy/test.mjs",
+    "new:unit:test": "pnpm node src/runner.mjs",
+    "new:unit:coverage": "nyc pnpm new:unit:test",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
   },
@@ -32,18 +38,29 @@
   },
   "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "dependencies": {
-    "find": "^0.3.0",
     "fs-extra": "^11.2.0",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.4.4",
-    "open": "^8.4.2",
+    "luxon": "^3.5.0",
+    "open": "^10.1.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "jasmine": "^5.1.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/find": "^0.2.4",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jasmine": "^5.1.4",
+    "@types/jsonfile": "^6.1.4",
+    "@types/lodash": "^4.17.7",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.5.4",
+    "@types/uuid": "^10.0.0",
+    "find": "^0.3.0",
+    "jasmine": "^5.3.0",
     "nyc": "^17.0.0",
-    "release-it": "^17.6.0"
+    "release-it": "^17.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "packageManager": "pnpm@9.5.0"
 }
