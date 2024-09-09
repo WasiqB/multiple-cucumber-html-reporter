@@ -60,7 +60,7 @@
                     <i class="fa fa-arrow-left"><span>Back</span></i>
                 </a>
             </div>
-            <p class="navbar-text" style="float: left">Features Overview
+            <p class="navbar-text" style="float: left">Test Case Overview
             </p>
             <p class="navbar-text"><%= reportName %></p>
         </div>
@@ -99,21 +99,6 @@
         </div>
 
         <div class="clearfix"></div>
-
-        <div class="row">
-            <div class="<% if(suite.hideMetadata) {%>col-lg-12<% } else { %>col-md-8 col-xs-12<% } %>">
-                <div class="x_panel fixed_height_320">
-                    <%= featureScenariosOverviewChart %>
-                </div>
-            </div>
-            <% if (!suite.hideMetadata) { %>
-            <div class="col-md-4 col-xs-12">
-                <div class="x_panel fixed_height_320">
-                    <%= featureMetadataOverview %>
-                </div>
-            </div>
-            <% } %>
-        </div>
         <div class="dropdown pull-right dropup" >
             <button class="btn btn-info dropdown-toggle btn-sm" type="button" data-toggle="dropdown" style="margin-bottom: 15px;">
                 Filter By<span class="caret" style="margin-left: 5px"></span></button>
@@ -186,41 +171,6 @@
                 }
                 return defaultColor
             }
-
-            new Chart(document.getElementById("scenario-chart"), {
-                type: 'doughnut',
-                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-                data: {
-                    labels: [
-                        "Passed",
-                        "Failed",
-                        "Pending",
-                        "Skipped",
-                        "Ambiguous",
-                        "Not defined"
-                    ],
-                    datasets: [{
-                        data: [
-                            <%= feature.scenarios.passed %>,
-                            <%= feature.scenarios.failed %>,
-                            <%= feature.scenarios.pending %>,
-                            <%= feature.scenarios.skipped %>,
-                            <%= feature.scenarios.ambiguous %>,
-                            <%= feature.scenarios.notDefined %>
-                        ],
-                        backgroundColor: [
-                            getColor(".passed-color", "#26B99A"),
-                            getColor(".failed-color", "#E74C3C"),
-                            getColor(".pending-color", "#FFD119"),
-                            getColor(".skipped-color", "#3498DB"),
-                            getColor(".ambiguous-color", "#b73122"),
-                            getColor(".not-defined-color", "#F39C12")
-                        ]
-                    }]
-                },
-                options: scenarioOptions
-            });
-
             <%= genericScript %>
         });
     </script>
