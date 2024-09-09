@@ -1,5 +1,8 @@
 import path from "node:path";
-import { generateReport } from "../../../dist/generate-report.js";
+import { generateReport } from "../../dist/generate-report.js";
+import { getCurrentDir } from "../../dist/utils/constants.js";
+
+const __dirname = getCurrentDir(import.meta.url);
 
 /**
  * Generate a report for browsers

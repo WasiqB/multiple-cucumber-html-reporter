@@ -165,9 +165,11 @@ const parseSteps = (
 
       switch (type) {
         case "application/json":
-          const content = Buffer.from(data, "base64").toString();
+          embedding.data = Buffer.from(data, "base64").toString();
           step.json = (step.json || []).concat([
-            typeof content === "string" ? JSON.parse(content) : content,
+            typeof embedding.data === "string"
+              ? JSON.parse(embedding.data)
+              : embedding.data,
           ]);
           break;
         case "text/html":

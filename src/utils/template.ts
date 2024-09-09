@@ -1,10 +1,10 @@
 import fs from "fs-extra";
 import path from "path";
 import _ from "lodash";
-import { Options, Suite } from "../types/report-types";
+import { Options, Suite } from "../types/report-types.js";
 import { getCurrentDir } from "./constants.js";
 
-const __dirname = getCurrentDir(import.meta.url);
+const dirname = getCurrentDir(import.meta.url);
 
 const GENERIC_JS = "generic.js";
 const INDEX_HTML = "index.html";
@@ -38,7 +38,7 @@ const _readTemplateFile = (fileName: string): string => {
     return fs.readFileSync(fileName, "utf-8");
   } catch (err) {
     return fs.readFileSync(
-      path.join(__dirname, "..", "templates", fileName),
+      path.join(dirname, "..", "templates", fileName),
       "utf-8"
     );
   }
@@ -173,10 +173,7 @@ const _createFeatureIndexPages = (
     const assetsPath = path.resolve(reportPath || "", "assets");
 
     if (!fs.pathExistsSync(assetsPath) && !suite.useCDN) {
-      fs.copySync(
-        path.join(__dirname, "..", "templates", "assets"),
-        assetsPath
-      );
+      fs.copySync(path.join(dirname, "..", "templates", "assets"), assetsPath);
     }
   });
 };
