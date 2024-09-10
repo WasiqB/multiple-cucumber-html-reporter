@@ -1,4 +1,4 @@
-import { Options } from "./report-types";
+import { Options } from "./report-types.js";
 
 const REPORT_STYLESHEET = "style.css";
 const DEFAULT_REPORT_NAME = "Multiple Cucumber HTML Reporter";

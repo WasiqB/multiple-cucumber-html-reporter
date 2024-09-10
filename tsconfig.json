@@ -14,8 +14,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "types": ["jasmine"]
+    "rootDir": "./src"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["examples", "node_modules"]

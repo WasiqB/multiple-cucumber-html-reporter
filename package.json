@@ -12,6 +12,11 @@
     "json to html"
   ],
   "main": "dist/generate-report.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "license": "MIT",
   "scripts": {
     "release": "release-it",
@@ -23,8 +28,8 @@
     "dev": "pnpm build -w",
     "test": "node ./test/test.js",
     "new:test": "pnpm node ./src/test/test.mjs",
-    "new:unit:test": "pnpm node src/runner.mjs",
-    "new:unit:coverage": "nyc pnpm new:unit:test",
+    "new:unit:test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
+    "new:unit:coverage": "pnpm new:unit:test --coverage",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
   },
@@ -39,28 +44,27 @@
   "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.5.0",
     "open": "^10.1.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
-    "@types/jasmine": "^5.1.4",
+    "@types/jest": "^29.5.12",
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.7",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.5.4",
     "@types/uuid": "^10.0.0",
     "find": "^0.3.0",
-    "jasmine": "^5.3.0",
-    "nyc": "^17.0.0",
+    "jest": "^29.7.0",
+    "jsonfile": "^6.1.0",
     "release-it": "^17.6.0",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.9.0"
 }

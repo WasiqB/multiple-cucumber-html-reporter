@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
-import { generateReport } from "../generate-report.js";
-import { getCurrentDir } from "../utils/constants.js";
+import { generateReport } from "../generate-report";
+import { getCurrentDir } from "../utils/constants";
 const REPORT_PATH = "./.tmp/";
 
 describe("generate-report.ts", () => {
@@ -14,8 +14,8 @@ describe("generate-report.ts", () => {
   const reportPathExists = (filePath: string) => fs.pathExistsSync(filePath);
 
   describe("Happy flows", () => {
-    beforeEach(cleanUp);
-    afterEach(cleanUp);
+    beforeEach(() => cleanUp());
+    afterEach(() => cleanUp());
 
     it("should create a report from the merged found json files without provided custom data", () => {
       generateReport({
@@ -25,16 +25,16 @@ describe("generate-report.ts", () => {
         displayDuration: true,
       });
 
-      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBeTrue();
+      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
       expect(() =>
         fs.statSync(path.join(REPORT_PATH, "features/happy-flow-v2.html"))
       ).toThrow();
       expect(
         reportPathExists(path.join(REPORT_PATH, "merged-output.json"))
-      ).toBeTrue();
+      ).toBe(true);
       expect(
         reportPathExists(path.join(REPORT_PATH, "enriched-output.json"))
-      ).toBeTrue();
+      ).toBe(true);
     });
 
     it("should create a report with the report time", () => {
@@ -46,7 +46,7 @@ describe("generate-report.ts", () => {
         displayReportTime: true,
       });
 
-      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBeTrue();
+      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
       const indexHtmlContent = fs.readFileSync(
         path.join(REPORT_PATH, "index.html"),
         "utf8"
@@ -81,16 +81,16 @@ describe("generate-report.ts", () => {
         durationInMS: true,
       });
 
-      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBeTrue();
+      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
       expect(
         reportPathExists(path.join(REPORT_PATH, "features/happy-flow-v2.html"))
-      ).toBeTrue();
+      ).toBe(true);
       expect(
         reportPathExists(path.join(REPORT_PATH, "merged-output.json"))
-      ).toBeTrue();
+      ).toBe(true);
       expect(
         reportPathExists(path.join(REPORT_PATH, "enriched-output.json"))
-      ).toBeTrue();
+      ).toBe(true);
     });
 
     it("should create a report from the merged found json files with custom metadata", () => {
@@ -106,7 +106,7 @@ describe("generate-report.ts", () => {
 
       expect(
         reportPathExists(path.join(process.cwd(), REPORT_PATH, "index.html"))
-      ).toBeTrue();
+      ).toBe(true);
     });
 
     it("should create a report from the merged found json files and with array of embedded items", () => {
@@ -118,13 +118,13 @@ describe("generate-report.ts", () => {
         customMetadata: false,
       });
 
-      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBeTrue();
+      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
     });
   });
 
   describe("Failures", () => {
     it("should throw an error when the json folder does not exist", () => {
-      expect(() => generateReport({})).toThrowError(
+      expect(() => generateReport({})).toThrow(
         "A path holding the JSON files should be provided."
       );
     });
@@ -134,7 +134,7 @@ describe("generate-report.ts", () => {
         generateReport({
           jsonDir: "./src/test/data/json",
         })
-      ).toThrowError("An output path for the reports should be defined.");
+      ).toThrow("An output path for the reports should be defined.");
     });
   });
 });

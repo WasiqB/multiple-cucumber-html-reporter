@@ -19,7 +19,7 @@
     "@types/node": "^22.5.4",
     "cypress": "^13.14.2",
     "multiple-cucumber-html-reporter": "^3.7.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "dayjs": "^1.11.13"

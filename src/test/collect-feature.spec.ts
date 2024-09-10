@@ -1,8 +1,8 @@
 import jsonFile from "jsonfile";
 import path from "path";
-import { collectFeatures } from "../collect-jsons.js";
-import { defaultOptions } from "../types/default-values.js";
-import { Options } from "../types/report-types.js";
+import { collectFeatures } from "../collect-jsons";
+import { defaultOptions } from "../types/default-values";
+import { Options } from "../types/report-types";
 
 const reportPath = path.resolve(process.cwd(), "./.tmp/test");
 
@@ -63,12 +63,12 @@ describe("collect-features.ts", () => {
     });
 
     it("should collect the creation date of JSON files", () => {
-      const options = {
+      const options: Options = {
         ...defaultOptions,
         jsonDir: "./src/test/data/json",
         reportPath,
         displayReportTime: true,
-      } satisfies Options;
+      };
 
       const collectedFeatures = collectFeatures(options);
 
@@ -97,7 +97,9 @@ describe("collect-features.ts", () => {
     });
 
     it("should print a console message when no JSON files could be found", () => {
-      const consoleSpy = spyOn(console, "warn");
+      const consoleSpy = import.meta.jest
+        .spyOn(console, "warn")
+        .mockImplementation();
 
       collectFeatures({
         ...defaultOptions,
@@ -108,6 +110,7 @@ describe("collect-features.ts", () => {
       expect(consoleSpy).toHaveBeenCalledWith(
         `WARNING: No JSON files found in './src/test/data/no-jsons'. NO REPORT CAN BE CREATED!`
       );
+      consoleSpy.mockRestore();
     });
 
     it("should return an empty array when no JSON files could be found", () => {
