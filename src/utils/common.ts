@@ -12,4 +12,7 @@ export const formatToLocalIso = (date: Date): string =>
   DateTime.fromJSDate(date).toFormat("yyyy/MM/dd HH:mm:ss");
 
 export const calculatePercentage = (amount: number, total: number): number =>
-  (amount / total) * 100;
+  round((amount / total) * 100);
+
+const round = (value: number): number =>
+  Math.round((value + Number.EPSILON) * 100) / 100;

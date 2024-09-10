@@ -24,14 +24,13 @@
     "release.patch": "pnpm release.ci patch",
     "release.minor": "pnpm release.ci minor",
     "release.major": "pnpm release.ci major",
-    "build": "rm -rf dist && tsc && cp -R src/templates dist/templates",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc && cp -R src/templates dist/templates",
     "dev": "pnpm build -w",
     "test": "node ./test/test.js",
     "new:test": "pnpm node ./src/test/test.mjs",
     "new:unit:test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
-    "new:unit:coverage": "pnpm new:unit:test --coverage",
-    "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
+    "new:unit:coverage": "pnpm new:unit:test --coverage"
   },
   "repository": {
     "type": "git",

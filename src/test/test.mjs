@@ -9,6 +9,7 @@ const __dirname = getCurrentDir(import.meta.url);
  */
 generateReport({
   saveCollectedJSON: true,
+  useCDN: true,
   jsonDir: "./src/test/data/json/",
   reportPath: "./.tmp/browsers/",
   reportName: "You can adjust this report name",
