@@ -2,6 +2,7 @@
   "name": "multiple-cucumber-html-reporter",
   "version": "3.7.0",
   "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
+  "type": "module",
   "keywords": [
     "cucumber",
     "html",
@@ -10,7 +11,12 @@
     "html report",
     "json to html"
   ],
-  "main": "lib/generate-report.js",
+  "main": "dist/generate-report.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "license": "MIT",
   "scripts": {
     "release": "release-it",
@@ -18,9 +24,13 @@
     "release.patch": "pnpm release.ci patch",
     "release.minor": "pnpm release.ci minor",
     "release.major": "pnpm release.ci major",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsc && cp -R src/templates dist/templates",
+    "dev": "pnpm build -w",
     "test": "node ./test/test.js",
-    "unit.test": "jasmine JASMINE_CONFIG_PATH=test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=test/unit/jasmine.json nyc jasmine"
+    "new:test": "pnpm node ./src/test/test.mjs",
+    "new:unit:test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
+    "new:unit:coverage": "pnpm new:unit:test --coverage"
   },
   "repository": {
     "type": "git",
@@ -32,18 +42,28 @@
   },
   "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "dependencies": {
-    "find": "^0.3.0",
     "fs-extra": "^11.2.0",
-    "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.4.4",
-    "open": "^8.4.2",
+    "luxon": "^3.5.0",
+    "open": "^10.1.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "jasmine": "^5.1.0",
-    "nyc": "^17.0.0",
-    "release-it": "^17.6.0"
+    "@types/find": "^0.2.4",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/jsonfile": "^6.1.4",
+    "@types/lodash": "^4.17.7",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.5.4",
+    "@types/uuid": "^10.0.0",
+    "find": "^0.3.0",
+    "jest": "^29.7.0",
+    "jsonfile": "^6.1.0",
+    "release-it": "^17.6.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
   },
-  "packageManager": "pnpm@9.5.0"
+  "packageManager": "pnpm@9.9.0"
 }
