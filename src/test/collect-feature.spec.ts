@@ -4,7 +4,7 @@ import { collectFeatures } from "../collect-jsons";
 import { defaultOptions } from "../types/default-values";
 import { Options } from "../types/report-types";
 
-const reportPath = path.resolve(process.cwd(), "./.tmp/test");
+const reportPath = path.resolve(process.cwd(), "./.temp/test");
 
 describe("collect-features.ts", () => {
   describe("Happy flows", () => {

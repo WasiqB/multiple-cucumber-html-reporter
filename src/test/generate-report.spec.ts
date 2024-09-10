@@ -120,6 +120,19 @@ describe("generate-report.ts", () => {
 
       expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
     });
+
+    it("should open report in browser", () => {
+      generateReport({
+        jsonDir: "./src/test/data/embedded-array-json/",
+        reportName: "Embedded array of various mimeType",
+        reportPath: REPORT_PATH,
+        openReportInBrowser: true,
+        customStyle: path.join(getCurrentDir(import.meta.url), "my.css"),
+        customMetadata: false,
+      });
+
+      expect(reportPathExists(path.join(REPORT_PATH, "index.html"))).toBe(true);
+    });
   });
 
   describe("Failures", () => {

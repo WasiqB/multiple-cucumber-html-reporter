@@ -31,8 +31,6 @@ const SCENARIOS_TEMPLATE = "components/scenarios.tmpl";
  * @returns {string} Content of the file
  */
 const _readTemplateFile = (fileName: string): string => {
-  if (!fileName) return "";
-
   try {
     fs.accessSync(fileName, fs.constants.R_OK);
     return fs.readFileSync(fileName, "utf-8");

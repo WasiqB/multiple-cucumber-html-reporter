@@ -156,24 +156,26 @@ const parseSteps = (
     step.attachments = step.attachments || [];
 
     step.embeddings.forEach((embedding, embeddingIndex) => {
-      const { mime_type, media, data = "" } = embedding;
+      const { mime_type, media, data } = embedding;
       const type = mime_type || media?.type;
 
-      if (type === "text/html" || type === "text/plain") {
+      if ((type === "text/html" || type === "text/plain") && data) {
         embedding.data = Buffer.from(data.toString(), "base64").toString();
       }
 
       switch (type) {
         case "application/json":
-          embedding.data = Buffer.from(data, "base64").toString();
-          step.json = (step.json || []).concat([
-            typeof embedding.data === "string"
-              ? JSON.parse(embedding.data)
-              : embedding.data,
-          ]);
+          if (data) {
+            embedding.data = Buffer.from(data, "base64").toString();
+            step.json = (step.json || []).concat([
+              typeof embedding.data === "string"
+                ? JSON.parse(embedding.data)
+                : embedding.data,
+            ]);
+          }
           break;
         case "text/html":
-          step.html = (step.html || []).concat([data]);
+          step.html = (step.html || []).concat([data || ""]);
           break;
         case "text/plain":
           step.text = (step.text || []).concat([_escapeHtml(data)]);
