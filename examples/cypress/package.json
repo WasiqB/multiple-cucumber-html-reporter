@@ -15,8 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.1.2",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.2",
-    "@types/node": "^22.5.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
+    "@types/node": "^22.5.4",
     "cypress": "^13.13.2",
     "multiple-cucumber-html-reporter": "^3.7.0",
     "typescript": "^5.5.4"
