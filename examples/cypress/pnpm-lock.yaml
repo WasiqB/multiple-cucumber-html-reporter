@@ -14,13 +14,13 @@ importers:
     devDependencies:
       '@badeball/cypress-cucumber-preprocessor':
         specifier: ^20.1.2
-        version: 20.1.2(cypress@13.13.2)(typescript@5.5.4)
+        version: 20.1.2(cypress@13.13.2)(typescript@5.6.2)
       '@bahmutov/cypress-esbuild-preprocessor':
         specifier: ^2.2.3
         version: 2.2.3(esbuild@0.23.0)
       '@types/node':
-        specifier: ^22.5.4
-        version: 22.5.4
+        specifier: ^22.5.5
+        version: 22.5.5
       cypress:
         specifier: ^13.13.2
         version: 13.13.2
@@ -28,8 +28,8 @@ importers:
         specifier: ^3.7.0
         version: 3.7.0
       typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
+        specifier: ^5.6.2
+        version: 5.6.2
 
 packages:
 
@@ -438,8 +438,8 @@ packages:
     resolution: {integrity: sha512-ID7fosbc50TbT0MK0EG12O+gAP3W3Aa/Pz4DaTtQtEvlc9Odaqi0de+xuZ7Li2GtK4HzEX7IuRWS/JmZLksR3Q==}
     engines: {node: '>=14'}
 
-  '@types/node@22.5.4':
-    resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
+  '@types/node@22.5.5':
+    resolution: {integrity: sha512-Xjs4y5UPO/CLdzpgR6GirZJx36yScjh73+2NlLlkFRSoQN8B0DpfXPdZGnvVmLRLOsqDpOfTNv7D9trgGhmOIA==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1693,8 +1693,8 @@ packages:
     resolution: {integrity: sha512-spAaHzc6qre0TlZQQ2aA/nGMe+2Z/wyGk5Z+Ru2VUfdNwT6kWO6TjevOlpebsATEG1EIQ2sOiDszud3lO5mt/Q==}
     engines: {node: '>=16'}
 
-  typescript@5.5.4:
-    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
+  typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -1841,7 +1841,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@badeball/cypress-cucumber-preprocessor@20.1.2(cypress@13.13.2)(typescript@5.5.4)':
+  '@badeball/cypress-cucumber-preprocessor@20.1.2(cypress@13.13.2)(typescript@5.6.2)':
     dependencies:
       '@badeball/cypress-configuration': 6.1.1
       '@cucumber/ci-environment': 10.0.1
@@ -1857,7 +1857,7 @@ snapshots:
       chalk: 4.1.2
       cli-table: 0.3.11
       common-ancestor-path: 1.0.1
-      cosmiconfig: 9.0.0(typescript@5.5.4)
+      cosmiconfig: 9.0.0(typescript@5.6.2)
       cypress: 13.13.2
       debug: 4.3.6(supports-color@8.1.1)
       error-stack-parser: 2.1.4
@@ -2177,7 +2177,7 @@ snapshots:
 
   '@teppeis/multimaps@3.0.0': {}
 
-  '@types/node@22.5.4':
+  '@types/node@22.5.5':
     dependencies:
       undici-types: 6.19.8
 
@@ -2191,7 +2191,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.5.4
+      '@types/node': 22.5.5
     optional: true
 
   aggregate-error@3.1.0:
@@ -2416,14 +2416,14 @@ snapshots:
 
   core-util-is@1.0.2: {}
 
-  cosmiconfig@9.0.0(typescript@5.5.4):
+  cosmiconfig@9.0.0(typescript@5.6.2):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.5.4
+      typescript: 5.6.2
 
   cross-spawn@7.0.3:
     dependencies:
@@ -3441,7 +3441,7 @@ snapshots:
 
   type-fest@4.24.0: {}
 
-  typescript@5.5.4: {}
+  typescript@5.6.2: {}
 
   undici-types@6.19.8: {}
 
