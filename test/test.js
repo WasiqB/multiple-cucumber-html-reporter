@@ -27,6 +27,30 @@ test.generate({
 });
 
 /**
+ * Generate a report for browsers wit useCDN true
+ */
+test.generate({
+    saveCollectedJSON: true,
+    jsonDir: './test/unit/data/json/',
+    reportPath: './.tmp/browsers-with-cdn-usage/',
+    reportName: 'Report with CDN usage',
+    customMetadata: false,
+    displayDuration: true,
+    durationInMS: true,
+    useCDN: true,
+    customData: {
+        title: 'Run info',
+        data: [
+            {label: 'Project', value: 'Custom project'},
+            {label: 'Release', value: '1.2.3'},
+            {label: 'Cycle', value: 'B11221.34321'},
+            {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
+            {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
+        ]
+    }
+});
+
+/**
  * Generate a report with array of embedded data
  */
 test.generate({

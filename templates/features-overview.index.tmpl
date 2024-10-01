@@ -26,6 +26,10 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap.min.css" />
             <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
 
+            <!-- Darkmode -->
+            <script>
+                <%= darkmodeScript %>
+            </script>
         <% } else { %>
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
@@ -138,7 +142,7 @@
                     legend: false,
                     responsive: false
                 };
-                
+
                 var getColor = function(selector, defaultColor) {
                     if (document.querySelector(selector)) {
                         return getComputedStyle(document.querySelector(selector)).color
