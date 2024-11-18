@@ -14,9 +14,9 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^21.0.2",
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.9.0",
     "cypress": "^13.13.2",
     "multiple-cucumber-html-reporter": "^3.8.0",
     "typescript": "^5.6.3"
