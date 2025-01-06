@@ -36,14 +36,14 @@
     "fs-extra": "^11.2.0",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.4.4",
-    "open": "^8.4.2",
-    "uuid": "^10.0.0"
+    "luxon": "^3.5.0",
+    "open": "^10.1.0",
+    "uuid": "^11.0.4"
   },
   "devDependencies": {
-    "jasmine": "^5.1.0",
-    "nyc": "^17.0.0",
-    "release-it": "^17.6.0"
+    "jasmine": "^5.5.0",
+    "nyc": "^17.1.0",
+    "release-it": "^18.0.0"
   },
   "packageManager": "pnpm@9.5.0"
 }
