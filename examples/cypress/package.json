@@ -14,12 +14,12 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.13.1",
     "cypress": "^13.17.0",
-    "multiple-cucumber-html-reporter": "^3.8.0",
-    "typescript": "^5.7.2"
+    "multiple-cucumber-html-reporter": "^3.9.0",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "dayjs": "^1.11.13"
