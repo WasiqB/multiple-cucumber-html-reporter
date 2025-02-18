@@ -10,7 +10,9 @@
         <title><%= pageTitle %></title>
         <% if (useCDN) { %>
             <!-- Bootstrap -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+            <link href="https://cdn.datatables.net/responsive/3.0.4/css/responsive.bootstrap5.min.css" rel="stylesheet">
 
             <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,17 +24,11 @@
 
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-            <!-- DataTables -->
-            <link rel="stylesheet" href="https://cdn.datatables.net/2.2.0/css/dataTables.bootstrap5.min.css" />
-            <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.min.css">
-
-            <!-- Darkmode -->
-            <script>
-                <%= darkmodeScript %>
-            </script>
         <% } else { %>
                 <!-- Bootstrap -->
                 <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+                <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css" >
+                <link rel="stylesheet" href="assets/css/responsive.bootstrap5.min.css" >
 
                 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,13 +37,12 @@
                 <script src="assets/js/html5shiv.min.js"></script>
                 <script src="assets/js/respond.min.js"></script>
                 <![endif]-->
-                <script src="assets/js/darkmode.js"></script>
                 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-
-                <!-- DataTables -->
-                <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
-                <link href="assets/css/responsive.dataTables.min.css" rel="stylesheet">
         <% } %>
+        <!-- Darkmode -->
+        <script>
+            <%= darkmodeScript %>
+        </script>
 
         <!-- Custom Theme Style -->
         <style type="text/css">
@@ -110,24 +105,25 @@
 
         <% if (useCDN) { %>
             <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
             <!-- DataTables -->
-            <script src="https://cdn.datatables.net/2.2.0/js/dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/2.2.0/js/dataTables.bootstrap5.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/3.0.4/js/dataTables.responsive.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/3.0.4/js/responsive.bootstrap5.js"></script>
         <% } else { %>
-            <script src="assets/js/jquery-3.2.1.min.js"></script>
+            <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>
             <script src="assets/js/Chart.min.js"></script>
 
-            <!-- DataTables -->
-            <script src="assets/js/jquery.dataTables.min.js"></script>
-            <script src="assets/js/dataTables.bootstrap.min.js"></script>
+            <script src="assets/js/datatables.jquery.min.js"></script>
+            <script src="assets/js/datatables.min.js"></script>
+            <script src="assets/js/datatables.bootstrap5.min.js"></script>
             <script src="assets/js/dataTables.responsive.min.js"></script>
+            <script src="assets/js/responsive.bootstrap5.js"></script>
         <% } %>
 
         <!-- Custom -->
