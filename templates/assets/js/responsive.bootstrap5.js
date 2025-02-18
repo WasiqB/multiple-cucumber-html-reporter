@@ -77,9 +77,27 @@
     _bs = bs;
   };
 
+  // Get the Bootstrap library from locally set (legacy) or from DT.
+  function getBs() {
+    let dtBs = DataTable.use("bootstrap");
+
+    if (dtBs) {
+      return dtBs;
+    }
+
+    if (_bs) {
+      return _bs;
+    }
+
+    throw new Error(
+      "No Bootstrap library. Set it with `DataTable.use(bootstrap);`"
+    );
+  }
+
   _display.modal = function (options) {
     if (!modal && _bs.Modal) {
-      modal = new _bs.Modal(_modal[0]);
+      let localBs = getBs();
+      modal = new localBs.Modal(_modal[0]);
     }
 
     return function (row, update, render, closeCallback) {

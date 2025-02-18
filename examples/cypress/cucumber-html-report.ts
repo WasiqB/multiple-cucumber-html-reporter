@@ -28,6 +28,7 @@ generate({
   jsonDir: "./.run/reports/json/",
   reportPath: "./.run/html-report/",
   openReportInBrowser: true,
+  useCDN: false,
   metadata: {
     browser: {
       name:
