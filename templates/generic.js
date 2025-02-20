@@ -17,7 +17,7 @@ $(".x_title").on("click", function () {
 });
 
 $("body").tooltip({
-  selector: '[data-toggle="tooltip"]',
+  selector: '[data-bs-toggle="tooltip"]',
 });
 
 hideResult = (resultId) => {
