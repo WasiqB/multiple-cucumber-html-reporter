@@ -24,7 +24,7 @@
 
                     <% if (scenario.ambiguous) { %>
                         <li>
-                            <span class="step ambiguous-background" data-toggle="tooltip" data-placement="top" title="Scenario has double step implementation and failed because of that.">
+                            <span class="step ambiguous-background" data-bs-toggle="tooltip" data-placement="top" title="Scenario has double step implementation and failed because of that.">
                             <%= scenario.ambiguous %>
                             </span>
                         </li>
@@ -32,31 +32,31 @@
 
                     <% if (scenario.pending) { %>
                         <li>
-                            <span class="step pending-background" data-toggle="tooltip" title="Scenario is pending"><%= scenario.pending %></span>
+                            <span class="step pending-background" data-bs-toggle="tooltip" title="Scenario is pending"><%= scenario.pending %></span>
                         </li>
                     <% } %>
 
                     <% if (scenario.skipped) { %>
                         <li>
-                            <span class="step skipped-background" data-toggle="tooltip" title="Scenario is skipped"><%= scenario.skipped %></span>
+                            <span class="step skipped-background" data-bs-toggle="tooltip" title="Scenario is skipped"><%= scenario.skipped %></span>
                         </li>
                     <% } %>
 
                     <% if (scenario.failed) { %>
                         <li>
-                            <span class="step failed-background" data-toggle="tooltip" title="Scenario failed"><%= scenario.failed %></span>
+                            <span class="step failed-background" data-bs-toggle="tooltip" title="Scenario failed"><%= scenario.failed %></span>
                         </li>
                     <% } %>
 
                     <% if (scenario.passed) { %>
                         <li>
-                            <span class="step passed-background" data-toggle="tooltip" title="Scenario passed"><%= scenario.passed %></span>
+                            <span class="step passed-background" data-bs-toggle="tooltip" title="Scenario passed"><%= scenario.passed %></span>
                         </li>
                     <% } %>
 
                     <% if (scenario.notDefined) { %>
                         <li>
-                            <span class="step not-defined-background" data-toggle="tooltip" title="Scenario has nop step implementation."><%= scenario.notDefined %></span>
+                            <span class="step not-defined-background" data-bs-toggle="tooltip" title="Scenario has nop step implementation."><%= scenario.notDefined %></span>
                         </li>
                     <% } %>
 
@@ -80,26 +80,26 @@
                                 <% if(step.result) { %>
                                     <% if(step.result.status.toLowerCase() === 'passed') { %>
                                         <div class="label" title="Success">
-                                            <i class="fa fa-check-circle fa-2x passed-color" data-toggle="tooltip" data-placement="top" title="Step passed"></i>
+                                            <i class="fa fa-check-circle fa-2x passed-color" data-bs-toggle="tooltip" data-placement="top" title="Step passed"></i>
                                         </div>
                                     <% } else if(step.result.status.toLowerCase() === 'failed') { %>
-                                        <div class="label" data-toggle="tooltip" data-placement="top" title="Step failed">
+                                        <div class="label" data-bs-toggle="tooltip" data-placement="top" title="Step failed">
                                             <i class="fa fa-exclamation-circle fa-2x failed-color"></i>
                                         </div>
                                     <% } else if(step.result.status.toLowerCase() === 'skipped') { %>
-                                        <div class="label" data-toggle="tooltip" data-placement="top" title="Step is skipped">
+                                        <div class="label" data-bs-toggle="tooltip" data-placement="top" title="Step is skipped">
                                             <i class="fa fa-arrow-circle-right fa-2x skipped-color"></i>
                                         </div>
                                     <% } else if(step.result.status.toLowerCase() === 'pending') { %>
-                                        <div class="label" data-toggle="tooltip" data-placement="top" title="Step is pending">
+                                        <div class="label" data-bs-toggle="tooltip" data-placement="top" title="Step is pending">
                                             <i class="fa fa-minus-circle fa-2x pending-color"></i>
                                         </div>
                                     <% } else if(step.result.status.toLowerCase() === 'ambiguous') { %>
-                                        <div class="label" data-toggle="tooltip" data-placement="top" title="Step has double step implementation and failed because of that.">
+                                        <div class="label" data-bs-toggle="tooltip" data-placement="top" title="Step has double step implementation and failed because of that.">
                                             <i class="fa fa-flash fa-2x ambiguous-color"></i>
                                         </div>
                                     <% } else { %>
-                                        <div class="label" data-toggle="tooltip" data-placement="top" title="Step has no implementation.">
+                                        <div class="label" data-bs-toggle="tooltip" data-placement="top" title="Step has no implementation.">
                                             <i class="fa fa-question-circle fa-2x not-defined-color"></i>
                                         </div>
                                     <% } %>
@@ -111,7 +111,7 @@
                                     <% if(step.name) { %>
                                         <%= step.name.replace(/</g, '&lt;').replace(/>/g, '&gt;') %>
                                         <% if(step.restWireData) { %>
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="collapse" data-target="#<%= step.id%>">REST Query</button>
+                                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="collapse" data-target="#<%= step.id%>">REST Query</button>
                                             <div id="<%= step.id%>" class="collapse">
                                                 <div class="panel panel-default">
                                                     <div class="panel-body">
@@ -150,33 +150,33 @@
                                     <% } %>
 
                                     <% if (step.result.error_message) { %>
-                                        <a href="#error<%= scenarioIndex %>-<%= stepIndex %>-error" data-toggle="collapse">+ Show Error</a>
+                                        <a href="#error<%= scenarioIndex %>-<%= stepIndex %>-error" data-bs-toggle="collapse">+ Show Error</a>
                                     <% } %>
 
                                     <% if (step.json) { %>
-                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-json" data-toggle="collapse">+ Show Info</a>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-json" data-bs-toggle="collapse">+ Show Info</a>
                                     <% } %>
 
                                     <% if (step.text) { %>
-                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-text" data-toggle="collapse">+ Show Info</a>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-text" data-bs-toggle="collapse">+ Show Info</a>
                                     <% } %>
 
                                     <% if (step.html) { %>
-                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-html" data-toggle="collapse">+ Show Info</a>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-html" data-bs-toggle="collapse">+ Show Info</a>
                                     <% } %>
 
                                     <% if (step.image) { %>
-                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-image" data-toggle="collapse">+ Screenshot</a>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-image" data-bs-toggle="collapse">+ Screenshot</a>
                                     <% } %>
 
                                     <% if (step.video) { %>
-                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-video" data-toggle="collapse">+ Video</a>
+                                        <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-video" data-bs-toggle="collapse">+ Video</a>
                                     <% } %>
 
                                     <% if (!_.isEmpty(step.attachments)) { %>
                                         <span>[</span>
                                             <% _.each(step.attachments, function(attachment, attachmentIndex) { %>
-                                                <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-attachment<%= attachmentIndex %>" data-toggle="collapse">Attachment</a>
+                                                <a href="#info<%= scenarioIndex %>-<%= stepIndex %>-attachment<%= attachmentIndex %>" data-bs-toggle="collapse">Attachment</a>
                                                 <% if ( attachmentIndex < ( _.size(step.attachments) - 1 ) ) { %>
                                                     <span>,</span>
                                                 <% } %>

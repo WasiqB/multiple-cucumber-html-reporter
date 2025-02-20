@@ -33,7 +33,7 @@
                 <table class="tile_info">
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario passed">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Scenario passed">
                                 <i class="fa fa-check-circle passed-color"></i>
                                 Passed
                             </p>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario failed">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Scenario failed">
                                 <i class="fa fa-exclamation-circle failed-color"></i>
                                 Failed
                             </p>
@@ -51,7 +51,7 @@
                     <% if (scenarios.ambiguous > 0) { %>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
+                            <p data-bs-toggle="tooltip" data-placement="left"
                                title="Scenario has double step implementation and failed because of that.">
                                 <i class="fa fa-flash ambiguous-color"></i>
                                 Ambiguous
@@ -63,7 +63,7 @@
                     <% if (scenarios.notDefined > 0) { %>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Scenario has no step implmentation.">
                                 <i class="fa fa-question-circle not-defined-color"></i>
                                 Not defined
                             </p>
@@ -75,7 +75,7 @@
                     <% if (scenarios.pending > 0) { %>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is pending">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Scenario is pending">
                                 <i class="fa fa-minus-circle pending-color"></i>
                                 Pending
                             </p>
@@ -86,7 +86,7 @@
                     <% if (scenarios.skipped > 0) { %>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Scenario is skipped">
                                 <i class="fa fa-arrow-circle-right skipped-color"></i>
                                 Skipped
                             </p>

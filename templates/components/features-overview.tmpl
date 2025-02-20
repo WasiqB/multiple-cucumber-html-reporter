@@ -77,7 +77,7 @@
                             <% var amount = feature.tags.length; %>
                             <% var tags = _.reduce(feature.tags, (tags, tag) => tags + tag.name + ' ', ''); %>
                             <% if (amount > 0 ){ %>
-                            <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg" data-toggle="tooltip" data-placement="top"
+                            <i class="fa fa-tag<% if(amount > 1 ) {%>s<% } %> fa-lg" data-bs-toggle="tooltip" data-placement="top"
                                title="<%= tags.trim() %>">
                                 <span><%= tags.trim() %></span>
                             </i>
@@ -106,7 +106,7 @@
                             <% status = 'Passed'; %>
                             <% statusIcon = 'check-circle passed-color'; %>
                             <% } %>
-                            <i class="fa fa-<%= statusIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= status %>">
+                            <i class="fa fa-<%= statusIcon %> fa-lg" data-bs-toggle="tooltip" data-placement="top" title="<%= status %>">
                                 <span><%= statusIcon %></span>
                             </i>
                         </td>
@@ -127,7 +127,7 @@
                                 <% deviceType = 'Not known'; %>
                                 <% deviceIcon = 'question-circle not-defined-color'; %>
                                 <% } %>
-                                <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
+                                <i class="fa fa-<%= deviceIcon %> fa-lg" data-bs-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
                                     <span><%= deviceIcon %></span>
                                 </i>
                             </td>

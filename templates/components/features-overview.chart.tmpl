@@ -33,7 +33,7 @@
                 <table class="tile_info">
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Features passed">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Features passed">
                                 <i class="fa fa-check-circle passed-color"></i>
                                 Passed
                             </p>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left" title="Features failed">
+                            <p data-bs-toggle="tooltip" data-placement="left" title="Features failed">
                                 <i class="fa fa-exclamation-circle failed-color"></i>
                                 Failed
                             </p>
@@ -52,7 +52,7 @@
                     <%if(suite.featureCount.ambiguous > 0){%>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
+                            <p data-bs-toggle="tooltip" data-placement="left"
                                title="Features has double step implementation and failed because of that.">
                                 <i class="fa fa-flash ambiguous-color"></i>
                                 Ambiguous
@@ -64,7 +64,7 @@
                     <%if(suite.featureCount.notDefined > 0){%>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
+                            <p data-bs-toggle="tooltip" data-placement="left"
                                title="Features with undefined step definitions.">
                                 <i class="fa fa-question-circle not-defined-color"></i>
                                 Not Defined
@@ -76,7 +76,7 @@
                     <%if(suite.featureCount.pending > 0){%>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
+                            <p data-bs-toggle="tooltip" data-placement="left"
                                title="Features pending.">
                                 <i class="fa fa-minus-circle pending-color"></i>
                                 Pending
@@ -88,7 +88,7 @@
                     <%if(suite.featureCount.skipped > 0){%>
                     <tr>
                         <td>
-                            <p data-toggle="tooltip" data-placement="left"
+                            <p data-bs-toggle="tooltip" data-placement="left"
                                title="Features skipped">
                                 <i class="fa fa-arrow-circle-right skipped-color"></i>
                                 Skipped
