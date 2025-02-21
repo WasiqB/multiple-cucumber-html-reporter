@@ -18,7 +18,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@types/node": "^22.13.4",
     "cypress": "^14.0.3",
-    "multiple-cucumber-html-reporter": "3.9.1",
+    "multiple-cucumber-html-reporter": "3.9.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {

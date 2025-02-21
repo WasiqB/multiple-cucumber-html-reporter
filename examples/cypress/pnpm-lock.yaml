@@ -25,8 +25,8 @@ importers:
         specifier: ^14.0.3
         version: 14.0.3
       multiple-cucumber-html-reporter:
-        specifier: 3.9.1
-        version: 3.9.1
+        specifier: 3.9.2
+        version: 3.9.2
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -1608,8 +1608,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  multiple-cucumber-html-reporter@3.9.1:
-    resolution: {integrity: sha512-you1Tsjb1STFDJ8ztaFanRRN16NwH+i54VzZBJgp+Hzcs/iPHALYN2BeU3g9oodIZVQS+bZrG1M/BlGdXu3t/g==}
+  multiple-cucumber-html-reporter@3.9.2:
+    resolution: {integrity: sha512-liBtbgqucEr98qNHJ2gukcjmDjREa/oyGHSRB1jVdK0pdL7cqohIzRzk0YmUVTVP8eGe7gJQ6tTHikMgudULtQ==}
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
@@ -2238,6 +2238,10 @@ packages:
 
   uuid@11.0.5:
     resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+    hasBin: true
+
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   uuid@8.3.2:
@@ -4071,7 +4075,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  multiple-cucumber-html-reporter@3.9.1:
+  multiple-cucumber-html-reporter@3.9.2:
     dependencies:
       find: 0.3.0
       fs-extra: 11.3.0
@@ -4079,7 +4083,7 @@ snapshots:
       lodash: 4.17.21
       luxon: 3.5.0
       open: 8.4.2
-      uuid: 11.0.5
+      uuid: 11.1.0
 
   mz@2.7.0:
     dependencies:
@@ -4690,6 +4694,8 @@ snapshots:
   uuid@10.0.0: {}
 
   uuid@11.0.5: {}
+
+  uuid@11.1.0: {}
 
   uuid@8.3.2: {}
 
