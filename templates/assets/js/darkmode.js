@@ -1,11 +1,11 @@
 var darkMode = "darkmode";
 
 function applyDarkMode() {
-  document.getElementById("features-table").classList.toggle("table-striped");
   applyFontStyle();
   document
     .querySelector("html")
     .setAttribute("data-bs-theme", isDarkModeOn() ? "dark" : "light");
+  document.getElementById("features-table").classList.toggle("table-striped");
 }
 
 function saveState() {
@@ -29,5 +29,8 @@ window.onload = function () {
   if (window.localStorage["darkmode"] === "on") {
     applyDarkMode();
     document.getElementById("darkCheck").checked = true;
+    document
+      .querySelector("html")
+      .setAttribute("data-bs-theme", isDarkModeOn() ? "dark" : "light");
   }
 };
