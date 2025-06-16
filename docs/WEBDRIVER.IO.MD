@@ -1,7 +1,7 @@
 # webdriver.io
 
-> **NOTE:<br>**
-> If you are using WebdriverIO V4 follow the instructions below, if you are using WebdriverIO V5, please check [here](https://github.com/WasiqB/wdio-cucumberjs-json-reporter).
+> **NOTE:**
+> If you are using WebdriverIO V4 follow the instructions below, if you are using WebdriverIO V5, please check [wdio-cucumberjs-json-reporter](https://github.com/webdriverio-community/wdio-cucumberjs-json-reporter).
 
 Follow the installation instructions as mentioned in [Install](../README.MD#install)
 
@@ -12,9 +12,7 @@ It works nicely with this reporter.
 
 ## Using wdio-cucumber-framework version lower than 2.2.0?
 
-> **NOTE: THIS INSTRUCTION ONLY WORKS WITH `CucumberJS` V2 AND THUS `wdio-cucumber-framework` V1.1.1. I'M WORKING ON A SOLUTION FOR THE LATEST VERSION OF `CucumberJS` V4 AND THUS `wdio-cucumber-framework` > V2.0.0**
-
-> **THIS REPORT WORKS BASED ON EXTRA PROVIDED BROWSER INFO IN THE REPORT. PLEASE FOLLOWING THE INSTRUCTIONS BELOW / IN THE README.MD TO ADD THAT INFO. IF YOU DON'T YOU MAY GET ERRORS GENERATING THE REPORT**
+> **NOTE: THIS INSTRUCTION ONLY WORKS WITH `CucumberJS` V2 AND THUS `wdio-cucumber-framework` V1.1.1. I'M WORKING ON A SOLUTION FOR THE LATEST VERSION OF `CucumberJS` V4 AND THUS `wdio-cucumber-framework` > V2.0.0** > **THIS REPORT WORKS BASED ON EXTRA PROVIDED BROWSER INFO IN THE REPORT. PLEASE FOLLOWING THE INSTRUCTIONS BELOW / IN THE README.MD TO ADD THAT INFO. IF YOU DON'T YOU MAY GET ERRORS GENERATING THE REPORT**
 
 ## Step 1: Add extra dependency
 
