@@ -27,10 +27,14 @@ function isDarkModeOn() {
 
 window.onload = function () {
   if (window.localStorage["darkmode"] === "on") {
-    applyDarkMode();
-    document.getElementById("darkCheck").checked = true;
-    document
-      .querySelector("html")
-      .setAttribute("data-bs-theme", isDarkModeOn() ? "dark" : "light");
+    document.body.classList.add(darkMode);
+    document.querySelector("html").setAttribute("data-bs-theme", "dark");
+    var toggle = document.getElementById("darkCheck");
+    if (toggle) toggle.checked = true;
+  } else {
+    document.body.classList?.remove(darkMode);
+    document.querySelector("html").setAttribute("data-bs-theme", "light");
+    var toggle = document.getElementById("darkCheck");
+    if (toggle) toggle.checked = false;
   }
 };
