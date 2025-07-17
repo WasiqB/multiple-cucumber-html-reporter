@@ -36,8 +36,8 @@
     "fs-extra": "^11.3.0",
     "jsonfile": "^6.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.6.1",
-    "open": "^8.4.2",
+    "luxon": "^3.7.1",
+    "open": "^10.1.2",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
