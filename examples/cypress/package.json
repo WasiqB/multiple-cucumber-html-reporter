@@ -16,7 +16,7 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
-    "@types/node": "^24.10.0",
+    "@types/node": "^24.10.1",
     "cypress": "^14.4.1",
     "multiple-cucumber-html-reporter": "3.9.3",
     "typescript": "^5.9.3"
