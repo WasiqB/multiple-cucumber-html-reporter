@@ -130,10 +130,31 @@
         <!-- Custom -->
         <script>
             $(document).ready(function () {
-                $('#features-table').dataTable({
+                // Get search param from querystring
+                function getQueryParam(name) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(name) || '';
+                }
+
+                var searchValue = getQueryParam('search');
+                if (searchValue) {
+                    $('#features-search-box').val(searchValue);
+                }
+
+                var table = $('#features-table').DataTable({
                     "order": [[0, "asc"]],
                     "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]],
                     "stateSave": true
+                });
+
+                // If search param exists, filter table
+                if (searchValue) {
+                    table.search(searchValue).draw();
+                }
+
+                // Live search as user types
+                $('#features-search-box').on('input', function() {
+                    table.search(this.value).draw();
                 });
 
                 var featureOptions = {
