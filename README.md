@@ -226,6 +226,20 @@ This expects the durations in the report to be in **nanoseconds**, which might r
 If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanoseconds**.
 This parameter relies on `displayDuration: true`
 
+### `durationAggregation`
+
+- **Type:** `string`
+- **Default:** `sum`
+- **Mandatory:** No
+- **Possible values:** `sum | wallClock`
+
+Controls how feature duration is calculated when `displayDuration: true`.
+
+- `sum`: sum all scenario durations in a feature (default)
+- `wallClock`: use elapsed wall-clock time (`latest scenario end - earliest scenario start`)
+
+For `wallClock`, each timed scenario must provide `start_timestamp`; otherwise the reporter safely falls back to summed duration for that feature.
+
 ### `hideMetadata`
 
 - **Type:** `boolean`

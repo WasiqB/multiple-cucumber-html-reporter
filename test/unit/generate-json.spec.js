@@ -95,6 +95,51 @@ describe('generate-report.js', () => {
             expect(fs.statSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`).isFile())
                 .toEqual(true, 'Index file exists');
         });
+
+        it('should calculate feature duration with wall clock when durationAggregation is wallClock', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/json-parallel-time/',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                displayDuration: true,
+                durationAggregation: 'wallClock'
+            });
+
+            const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+            expect(enriched.features[0].time).toEqual('00:00:15.000');
+            expect(fs.readFileSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`, 'utf8'))
+                .toContain('>Duration (wall clock)<');
+        });
+
+        it('should fallback to summed duration when wallClock is selected but timestamps are missing', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/json-partial-parallel-time/',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                displayDuration: true,
+                durationAggregation: 'wallClock'
+            });
+
+            const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+            expect(enriched.features[0].time).toEqual('00:00:20.000');
+        });
+
+        it('should keep summed duration by default even when timestamps are present', () => {
+            fs.removeSync(REPORT_PATH);
+            multiCucumberHTMLReporter.generate({
+                jsonDir: './test/unit/data/json-parallel-time/',
+                reportPath: REPORT_PATH,
+                saveCollectedJSON: true,
+                displayDuration: true
+            });
+
+            const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+            expect(enriched.features[0].time).toEqual('00:00:20.000');
+            expect(fs.readFileSync(`${path.join(process.cwd(), REPORT_PATH, 'index.html')}`, 'utf8'))
+                .toContain('>Duration<');
+        });
     });
 
     describe('failures', () => {
