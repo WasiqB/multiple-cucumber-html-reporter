@@ -18,7 +18,7 @@ updates:
     versioning-strategy: increase
     open-pull-requests-limit: 100
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       timezone: "Asia/Calcutta"
     groups:
       dependencies:
@@ -27,7 +27,8 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      timezone: "Asia/Calcutta"
     groups:
       dependencies:
         dependency-type: "production"

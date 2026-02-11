@@ -45,5 +45,5 @@
     "nyc": "^17.1.0",
     "release-it": "^19.2.4"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.29.2"
 }

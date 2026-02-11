@@ -13,12 +13,15 @@ on:
           - "patch"
         default: "patch"
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   release:
     runs-on: ubuntu-latest
 
     env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
 
     steps:
@@ -48,11 +51,11 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
-      - name: NPM Setup
-        run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+      # - name: NPM Setup
+      #   run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
       - name: Install Dependencies
-        run: pnpm i
+        run: pnpm install
 
       - name: Release
         run: pnpm release.${{ github.event.inputs.releaseType }}
