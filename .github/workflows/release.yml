@@ -13,17 +13,16 @@ on:
           - "patch"
         default: "patch"
 
-permissions:
-  id-token: write
-  contents: write
-
 jobs:
   release:
     runs-on: ubuntu-latest
 
     env:
       PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-      # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    permissions:
+      id-token: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v6
@@ -52,9 +51,6 @@ jobs:
           node-version: 22
           cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
-
-      # - name: NPM Setup
-      # run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
       - name: Install Dependencies
         run: pnpm install
