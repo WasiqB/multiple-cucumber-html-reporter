@@ -1,0 +1,57 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Parallel timing feature",
+    "description": "",
+    "line": 1,
+    "id": "parallel-timing-feature",
+    "uri": "features/parallel-timing.feature",
+    "tags": [],
+    "elements": [
+      {
+        "keyword": "Scenario",
+        "type": "scenario",
+        "name": "Scenario A",
+        "line": 2,
+        "id": "parallel-timing-feature;scenario-a",
+        "start_timestamp": "2025-01-01T00:00:00.000Z",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "step a",
+            "line": 3,
+            "match": {
+              "location": "steps.js:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10000000000
+            }
+          }
+        ]
+      },
+      {
+        "keyword": "Scenario",
+        "type": "scenario",
+        "name": "Scenario B",
+        "line": 5,
+        "id": "parallel-timing-feature;scenario-b",
+        "start_timestamp": "2025-01-01T00:00:05.000Z",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "step b",
+            "line": 6,
+            "match": {
+              "location": "steps.js:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10000000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
