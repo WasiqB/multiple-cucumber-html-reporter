@@ -43,6 +43,7 @@
   "devDependencies": {
     "jasmine": "^6.0.0",
     "nyc": "^17.1.0",
+    "release-it-pnpm": "^4.6.6",
     "release-it": "^19.2.4"
   },
   "packageManager": "pnpm@10.29.2"

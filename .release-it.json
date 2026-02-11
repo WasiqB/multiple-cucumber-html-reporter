@@ -1,4 +1,8 @@
 {
+  "$schema": "https://unpkg.com/release-it@17/schema/release-it.json",
+  "plugins": {
+    "release-it-pnpm": {}
+  },
   "git": {
     "requireBranch": "main",
     "commitMessage": "chore: release v${version}",
