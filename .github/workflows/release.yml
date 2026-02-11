@@ -51,6 +51,7 @@ jobs:
         with:
           node-version: 22
           cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
 
       # - name: NPM Setup
       # run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
