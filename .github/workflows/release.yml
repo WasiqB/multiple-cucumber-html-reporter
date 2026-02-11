@@ -23,6 +23,7 @@ jobs:
 
     env:
       PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     steps:
       - uses: actions/checkout@v6
@@ -51,8 +52,8 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
-      # - name: NPM Setup
-      #   run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+      - name: NPM Setup
+        run: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
       - name: Install Dependencies
         run: pnpm install
