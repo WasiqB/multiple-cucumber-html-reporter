@@ -1,0 +1,18 @@
+{
+  "version": "3.10.0",
+  "npmClient": "pnpm",
+  "useWorkspace": false,
+  "changelog": {
+    "repo": "WasiqB/multiple-cucumber-html-reporter",
+    "labels": {
+      ":boom: pr: breaking change": ":boom: Breaking Change",
+      ":rocket: pr: new feature": ":rocket: New Feature",
+      ":bug: pr: bug fix": ":bug: Bug Fix",
+      ":nail_care: pr: polish": ":nail_care: Polish",
+      ":memo: pr: documentation": ":memo: Documentation",
+      ":house: pr: internal": ":house: Internal",
+      ":running_woman: pr: performance": ":running_woman: Performance"
+    },
+    "cacheDir": ".changelog"
+  }
+}

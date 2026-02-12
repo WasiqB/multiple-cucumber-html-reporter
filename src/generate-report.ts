@@ -1,13 +1,19 @@
-'use strict';
+import _ from 'lodash';
+const { size, template } = _;
+import fs from 'fs-extra';
+const { ensureDirSync, accessSync, constants, readFileSync, writeFileSync, pathExistsSync, copySync } = fs;
+import jsonfile from 'jsonfile';
+const { writeFileSync: _writeFileSync } = jsonfile;
+import open from 'open';
+import { resolve, join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { v4 as uuid } from 'uuid';
+import { Duration } from 'luxon';
+import collectJSONS from './collect-jsons.js';
+import { Options, Suite, Feature, Scenario, Step } from './types.js';
 
-const _ = require('lodash');
-const fs = require('fs-extra');
-const jsonFile = require('jsonfile');
-const open = require('open');
-const path = require('node:path');
-const { v4: uuid } = require('uuid');
-const { Duration } = require('luxon');
-const collectJSONS = require('./collect-jsons');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const REPORT_STYLESHEET = 'style.css';
 const DARK_MODE_JS = './assets/js/darkmode.js';
@@ -39,7 +45,7 @@ const RESULT_STATUS = {
 };
 const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
 
-function generateReport(options) {
+function generateReport(options: Options) {
   if (!options) {
     throw new Error('Options need to be provided.');
   }
@@ -62,7 +68,7 @@ function generateReport(options) {
   const disableLog = !!options.disableLog;
   const openReportInBrowser = !!options.openReportInBrowser;
   const reportName = options.reportName || DEFAULT_REPORT_NAME;
-  const reportPath = path.resolve(process.cwd(), options.reportPath);
+  const reportPath = resolve(process.cwd(), options.reportPath);
   const saveCollectedJSON = !!options.saveCollectedJSON;
   const displayDuration = !!options.displayDuration;
   const displayReportTime = !!options.displayReportTime;
@@ -75,12 +81,12 @@ function generateReport(options) {
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
 
-  fs.ensureDirSync(reportPath);
-  fs.ensureDirSync(path.resolve(reportPath, FEATURE_FOLDER));
+  ensureDirSync(reportPath);
+  ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
 
-  const allFeatures = collectJSONS(options);
+  const allFeatures: Feature[] = collectJSONS(options);
 
-  let suite = {
+  let suite: Suite = {
     app: 0,
     customMetadata: customMetadata,
     customData: customData,
@@ -161,14 +167,14 @@ function generateReport(options) {
    * @return {string} percentage
    * @private
    */
-  function _calculatePercentage(amount, total) {
+  function _calculatePercentage(amount: number, total: number): string {
     return ((amount / total) * 100).toFixed(2);
   }
 
   /* istanbul ignore else */
   if (saveCollectedJSON) {
-    jsonFile.writeFileSync(
-      path.resolve(reportPath, 'enriched-output.json'),
+    _writeFileSync(
+      resolve(reportPath, 'enriched-output.json'),
       suite,
       { spaces: 2 }
     );
@@ -185,18 +191,18 @@ function generateReport(options) {
 =====================================================================================
     Multiple Cucumber HTML report generated in:
 
-    ${path.join(reportPath, INDEX_HTML)}
+    ${join(reportPath, INDEX_HTML)}
 =====================================================================================\n`
     );
   }
 
   /* istanbul ignore if */
   if (openReportInBrowser) {
-    open(path.join(reportPath, INDEX_HTML));
+    open(join(reportPath, INDEX_HTML));
   }
 
-  function _parseFeatures(suite) {
-    suite.features.forEach((feature) => {
+  function _parseFeatures(suite: Suite) {
+    suite.features.forEach((feature: Feature) => {
       feature.scenarios = {
         passed: 0,
         failed: 0,
@@ -219,6 +225,13 @@ function generateReport(options) {
       feature.isSkipped = false;
       feature.isNotdefined = false;
       feature.isPending = false;
+      feature.passed = 0;
+      feature.failed = 0;
+      feature.notDefined = 0;
+      feature.skipped = 0;
+      feature.pending = 0;
+      feature.ambiguous = 0;
+      feature.totalTime = 0;
       suite.featureCount.total++;
       const idPrefix = staticFilePath ? '' : `${uuid()}.`;
       feature.id = `${idPrefix}${feature.id}`.replace(/[^a-zA-Z0-9-_]/g, '-');
@@ -229,7 +242,7 @@ function generateReport(options) {
         return;
       }
 
-      feature = _parseScenarios(feature, suite);
+      _parseScenarios(feature);
 
       if (feature.isFailed) {
         suite.featureCount.failed++;
@@ -257,10 +270,12 @@ function generateReport(options) {
       }
 
       // Check if browser / app is used
-      suite.app = feature.metadata.app ? suite.app + 1 : suite.app;
-      suite.browser = feature.metadata.browser
-        ? suite.browser + 1
-        : suite.browser;
+      if (!Array.isArray(feature.metadata)) {
+        suite.app = feature.metadata.app ? suite.app + 1 : suite.app;
+        suite.browser = feature.metadata.browser
+          ? suite.browser + 1
+          : suite.browser;
+      }
 
       // Percentages
       feature.scenarios.ambiguousPercentage = _calculatePercentage(
@@ -320,21 +335,21 @@ function generateReport(options) {
    * @return {object} return the parsed feature
    * @private
    */
-  function _parseScenarios(feature) {
+  function _parseScenarios(feature: Feature) {
     let earliestScenarioStart = Number.POSITIVE_INFINITY;
     let latestScenarioEnd = 0;
     let scenarioWithDurationCount = 0;
     let scenarioWithStartTimestampCount = 0;
 
-    feature.elements.forEach((scenario) => {
+    feature.elements.forEach((scenario: Scenario) => {
+      scenario.duration = 0;
+      scenario.time = '00:00:00.000';
       scenario.passed = 0;
       scenario.failed = 0;
       scenario.notDefined = 0;
       scenario.skipped = 0;
       scenario.pending = 0;
       scenario.ambiguous = 0;
-      scenario.duration = 0;
-      scenario.time = '00:00:00.000';
 
       scenario = _parseSteps(scenario);
 
@@ -409,11 +424,12 @@ function generateReport(options) {
       }
 
       /* istanbul ignore else */
-      if (scenario.passed > 0) {
+      if (scenario.passed && scenario.passed > 0) {
         suite.scenarios.total++;
         suite.scenarios.passed++;
         feature.scenarios.total++;
-        return feature.scenarios.passed++;
+        feature.passed = (feature.passed || 0) + 1;
+        return feature.scenarios.passed = Number(feature.scenarios.passed) + 1;
       }
     });
 
@@ -427,22 +443,23 @@ function generateReport(options) {
     }
 
     feature.isPending = feature.scenarios.total === feature.scenarios.pending
-    feature.isSkipped = (feature.scenarios.total === (feature.scenarios.skipped + feature.scenarios.pending))
+    feature.isSkipped = (feature.scenarios.total === (Number(feature.scenarios.skipped) + Number(feature.scenarios.pending)))
 
     return feature;
   }
 
   /**
    * Parse all the scenario steps and enrich them with the correct data
-   * @param {object} scenario Preparsed scenario
-   * @return {object} A parsed scenario
+   * @param {Scenario} scenario Preparsed scenario
+   * @return {Scenario} A parsed scenario
    * @private
    */
-  function _parseSteps(scenario) {
-    scenario.steps.forEach((step) => {
+  function _parseSteps(scenario: Scenario): Scenario {
+    scenario.steps.forEach((step: Step) => {
       if (step.embeddings !== undefined) {
         step.attachments = [];
-        step.embeddings.forEach((embedding, embeddingIndex) => {
+        const embeddings = step.embeddings || [];
+        embeddings.forEach((embedding: any, embeddingIndex: number) => {
 	  /* Decode Base64 for Text-ish attachements */
 	   if(
            embedding.mime_type === 'text/html' ||
@@ -480,7 +497,7 @@ function generateReport(options) {
             step.image = (step.image ? step.image : []).concat([
               'data:image/png;base64,' + embedding.data,
             ]);
-            step.embeddings[embeddingIndex] = {};
+            step.embeddings![embeddingIndex] = {};
           } else if (
             embedding.mime_type === 'video/webm' ||
             (embedding.media && embedding.media.type === 'video/webm')
@@ -488,7 +505,7 @@ function generateReport(options) {
             step.video = (step.video ? step.video : []).concat([
               'data:video/webm;base64,' + embedding.data,
             ]);
-            step.embeddings[embeddingIndex] = {};
+            step.embeddings![embeddingIndex] = {};
           } else {
             let embeddingType = 'text/plain';
             if (embedding.mime_type) {
@@ -496,11 +513,11 @@ function generateReport(options) {
             } else if (embedding.media && embedding.media.type) {
               embeddingType = embedding.media.type;
             }
-            step.attachments.push({
+            step.attachments!.push({
               data: 'data:' + embeddingType + ';base64,' + embedding.data,
               type: embeddingType,
             });
-            step.embeddings[embeddingIndex] = {};
+            step.embeddings![embeddingIndex] = {};
           }
         });
       }
@@ -516,11 +533,11 @@ function generateReport(options) {
         );
       }
       if (step.result.status === RESULT_STATUS.pending) {
-        return scenario.pending++
+        return scenario.pending = (scenario.pending || 0) + 1;
       }
 
       if (step.result.status === RESULT_STATUS.skipped) {
-        return scenario.skipped++
+        return scenario.skipped = (scenario.skipped || 0) + 1;
       }
 
       if (
@@ -531,34 +548,34 @@ function generateReport(options) {
           !step.text &&
           !step.image &&
           !step.video &&
-          _.size(step.attachments) === 0 &&
+          size(step.attachments) === 0 &&
           step.result.status !== RESULT_STATUS.failed)
       ) {
-        return 0;
+        return;
       }
 
       if (step.result.duration) {
-        scenario.duration += step.result.duration;
+        scenario.duration = (scenario.duration || 0) + step.result.duration;
         step.time = formatDuration(step.result.duration);
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.passed) {
-        return scenario.passed++;
+        return scenario.passed = (scenario.passed || 0) + 1;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.failed) {
-        return scenario.failed++;
+        return scenario.failed = (scenario.failed || 0) + 1;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.notDefined) {
-        return scenario.notDefined++;
+        return scenario.notDefined = (scenario.notDefined || 0) + 1;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.ambiguous) {
-        return scenario.ambiguous++;
+        return scenario.ambiguous = (scenario.ambiguous || 0) + 1;
       }
 
-      scenario.pending++
+      scenario.pending = (scenario.pending || 0) + 1;
     });
 
     return scenario;
@@ -570,14 +587,14 @@ function generateReport(options) {
    * @return {*} Content of the file
    * @private
    */
-  function _readTemplateFile(fileName) {
+  function _readTemplateFile(fileName: string): string {
     if (fileName) {
       try {
-        fs.accessSync(fileName, fs.constants.R_OK);
-        return fs.readFileSync(fileName, 'utf-8');
+        accessSync(fileName, constants.R_OK);
+        return readFileSync(fileName, 'utf-8');
       } catch (err) {
-        return fs.readFileSync(
-          path.join(__dirname, '..', 'templates', fileName),
+        return readFileSync(
+          join(__dirname, '..', 'templates', fileName),
           'utf-8'
         );
       }
@@ -592,7 +609,7 @@ function generateReport(options) {
    * @return {string}
    * @private
    */
-  function _escapeHtml(string) {
+  function _escapeHtml(string: any): string {
     return typeof string === 'string' || string instanceof String
       ? string.replace(
           /[^0-9A-Za-z ]/g,
@@ -606,11 +623,11 @@ function generateReport(options) {
    * @param {object} suite JSON object with all the features and scenarios
    * @private
    */
-  function _createFeaturesOverviewIndexPage(suite) {
-    const featuresOverviewIndex = path.resolve(reportPath, INDEX_HTML);
+  function _createFeaturesOverviewIndexPage(suite: Suite) {
+    const featuresOverviewIndex = resolve(reportPath, INDEX_HTML);
     if (suite.customMetadata && options.metadata) {
-      suite.features.forEach((feature) => {
-        if (!feature.metadata) {
+      suite.features.forEach((feature: Feature) => {
+        if (!feature.metadata && options.metadata) {
           feature.metadata = options.metadata;
         }
       });
@@ -619,43 +636,43 @@ function generateReport(options) {
       ? FEATURES_OVERVIEW_CUSTOM_METADATA_TEMPLATE
       : FEATURES_OVERVIEW_TEMPLATE;
 
-    fs.writeFileSync(
+    writeFileSync(
       featuresOverviewIndex,
-      _.template(_readTemplateFile(FEATURES_OVERVIEW_INDEX_TEMPLATE))({
+      template(_readTemplateFile(FEATURES_OVERVIEW_INDEX_TEMPLATE))({
         suite: suite,
-        featuresOverview: _.template(
+        featuresOverview: template(
           _readTemplateFile(FEATURES_OVERVIEW_TEMPLATE)
         )({
           suite: suite,
           _: _,
         }),
-        featuresScenariosOverviewChart: _.template(
+        featuresScenariosOverviewChart: template(
           _readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE)
         )({
           overviewPage: true,
           scenarios: suite.scenarios,
           _: _,
         }),
-        customDataOverview: _.template(_readTemplateFile(CUSTOM_DATA_TEMPLATE))(
+        customDataOverview: template(_readTemplateFile(CUSTOM_DATA_TEMPLATE))(
           {
             suite: suite,
             _: _,
           }
         ),
-        featuresOverviewChart: _.template(
+        featuresOverviewChart: template(
           _readTemplateFile(FEATURES_OVERVIEW_CHART_TEMPLATE)
         )({
           suite: suite,
           _: _,
         }),
-        customStyle: _readTemplateFile(suite.customStyle),
+        customStyle: suite.customStyle ? _readTemplateFile(suite.customStyle) : '',
         styles: _readTemplateFile(suite.style),
         useCDN: suite.useCDN,
         darkmodeScript: _readTemplateFile(DARK_MODE_JS),
         genericScript: _readTemplateFile(GENERIC_JS),
-        pageTitle: pageTitle,
-        reportName: reportName,
-        pageFooter: pageFooter,
+        pageTitle: pageTitle || '',
+        reportName: reportName || '',
+        pageFooter: pageFooter || '',
       })
     );
   }
@@ -665,23 +682,23 @@ function generateReport(options) {
    * @param suite suite JSON object with all the features and scenarios
    * @private
    */
-  function _createFeatureIndexPages(suite) {
+  function _createFeatureIndexPages(suite: Suite) {
     // Set custom metadata overview for the feature
     FEATURE_METADATA_OVERVIEW_TEMPLATE = suite.customMetadata
       ? FEATURE_CUSTOM_METADATA_OVERVIEW_TEMPLATE
       : FEATURE_METADATA_OVERVIEW_TEMPLATE;
 
-    suite.features.forEach((feature) => {
-      const featurePage = path.resolve(
+    suite.features.forEach((feature: Feature) => {
+      const featurePage = resolve(
         reportPath,
         `${FEATURE_FOLDER}/${feature.id}.html`
       );
-      fs.writeFileSync(
+      writeFileSync(
         featurePage,
-        _.template(_readTemplateFile(FEATURE_OVERVIEW_INDEX_TEMPLATE))({
+        template(_readTemplateFile(FEATURE_OVERVIEW_INDEX_TEMPLATE))({
           feature: feature,
           suite: suite,
-          featureScenariosOverviewChart: _.template(
+          featureScenariosOverviewChart: template(
             _readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE)
           )({
             overviewPage: false,
@@ -690,39 +707,36 @@ function generateReport(options) {
             scenarios: feature.scenarios,
             _: _,
           }),
-          featureMetadataOverview: _.template(
+          featureMetadataOverview: template(
             _readTemplateFile(FEATURE_METADATA_OVERVIEW_TEMPLATE)
           )({
             metadata: feature.metadata,
             _: _,
           }),
-          scenarioTemplate: _.template(_readTemplateFile(SCENARIOS_TEMPLATE))({
+          scenarioTemplate: template(_readTemplateFile(SCENARIOS_TEMPLATE))({
             suite: suite,
             scenarios: feature.elements,
             _: _,
           }),
           useCDN: suite.useCDN,
-          customStyle: _readTemplateFile(suite.customStyle),
+          customStyle: suite.customStyle ? _readTemplateFile(suite.customStyle) : '',
           styles: _readTemplateFile(suite.style),
           darkmodeScript: _readTemplateFile(DARK_MODE_JS),
           genericScript: _readTemplateFile(GENERIC_JS),
-          pageTitle: pageTitle,
-          reportName: reportName,
-          pageFooter: pageFooter,
+          pageTitle: pageTitle || '',
+          reportName: reportName || '',
+          pageFooter: pageFooter || '',
           plainDescription: plainDescription,
         })
       );
       // Copy the assets, but first check if they don't exist and not useCDN
       if (
-        !fs.pathExistsSync(path.resolve(reportPath, 'assets')) &&
+        !pathExistsSync(resolve(reportPath, 'assets')) &&
         !suite.useCDN
       ) {
-        fs.copySync(
-          path.resolve(
-            path.dirname(require.resolve('../package.json')),
-            'templates/assets'
-          ),
-          path.resolve(reportPath, 'assets')
+        copySync(
+          resolve(__dirname, '..', 'templates', 'assets'),
+          resolve(reportPath, 'assets')
         );
       }
     });
@@ -736,7 +750,7 @@ function generateReport(options) {
    *
    * @return {string} the duration formatted as a string
    */
-  function formatDuration(duration) {
+  function formatDuration(duration: number): string {
     return Duration.fromMillis(
         durationInMS ? duration : duration / 1000000
     ).toFormat('hh:mm:ss.SSS');
@@ -747,7 +761,7 @@ function generateReport(options) {
    * @param {number} duration
    * @returns {number}
    */
-  function toMillis(duration) {
+  function toMillis(duration: number): number {
     return durationInMS ? duration : duration / 1000000;
   }
 
@@ -756,16 +770,16 @@ function generateReport(options) {
    * @param {number} millis
    * @returns {number}
    */
-  function fromMillis(millis) {
+  function fromMillis(millis: number): number {
     return durationInMS ? millis : millis * 1000000;
   }
 
   /**
    * Parse scenario start timestamp to epoch milliseconds.
-   * @param {object} scenario
+   * @param {Scenario} scenario
    * @returns {number|null}
    */
-  function parseScenarioStartTime(scenario) {
+  function parseScenarioStartTime(scenario: Scenario): number | null {
     if (!scenario || !scenario.start_timestamp) {
       return null;
     }
@@ -775,6 +789,4 @@ function generateReport(options) {
   }
 }
 
-module.exports = {
-  generate: generateReport,
-};
+export const generate = generateReport;

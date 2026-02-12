@@ -1,42 +1,46 @@
-'use strict';
-
-const find = require('find');
-const fs = require('fs-extra');
-const jsonFile = require('jsonfile');
-const path = require('node:path');
-const { DateTime } = require('luxon');
+import find from 'find';
+const { fileSync } = find;
+import fs from 'fs-extra';
+const { readFileSync, statSync, ensureDirSync } = fs;
+import jsonfile from 'jsonfile';
+const { writeFileSync } = jsonfile;
+import { resolve } from 'node:path';
+import { DateTime } from 'luxon';
+import { Options, Feature, Step } from './types.js';
 
 /**
  * Formats input date to yyyy/MM/dd HH:mm:ss
  *
- * @param {Date} date
+ * @param {Date | string} date
  * @returns {string} formatted date in ISO format local time
  */
-function formatToLocalIso(date) {
+function formatToLocalIso(date: Date | string): string {
     return typeof date === 'string' ? 
         DateTime.fromISO(date).toFormat('yyyy/MM/dd HH:mm:ss')
         :
         DateTime.fromJSDate(date).toFormat('yyyy/MM/dd HH:mm:ss');
 }
 
-module.exports = function collectJSONS(options) {
-    const jsonOutput = [];
-    let files;
+export default function collectJSONS(options: Options): Feature[] {
+    const jsonOutput: Feature[] = [];
+    let files: string[];
 
     try {
-        files = find.fileSync(/\.json$/, path.resolve(process.cwd(), options.jsonDir));
+        files = fileSync(/\.json$/, resolve(process.cwd(), options.jsonDir));
     } catch (e) {
         throw new Error(`There were issues reading JSON-files from '${options.jsonDir}'.`);
     }
 
     if (files.length > 0) {
-        files.map(file => {
+        files.forEach(file => {
             // Cucumber json can be  empty, it's likely being created by another process (#47)
-            const data = fs.readFileSync(file).toString() || "[]";
-            const stats = fs.statSync(file);
+            const data = readFileSync(file).toString() || "[]";
+            const stats = statSync(file);
             const reportTime = stats.birthtime;
 
-            JSON.parse(data).map(json => {
+            const features: Feature[] = JSON.parse(data);
+
+            features.forEach(json => {
                 if (options.metadata && !json.metadata) {
                     json.metadata = options.metadata;
                 } else {
@@ -56,8 +60,10 @@ module.exports = function collectJSONS(options) {
                 }
 
                 if (json.metadata && options.displayReportTime && reportTime) {
-                    json.metadata = Object.assign({reportTime: reportTime}, json.metadata)
-                    json.metadata.reportTime = formatToLocalIso(json.metadata.reportTime);
+                    if (!Array.isArray(json.metadata)) {
+                        json.metadata = Object.assign({ reportTime: reportTime }, json.metadata);
+                        (json.metadata as any).reportTime = formatToLocalIso((json.metadata as any).reportTime);
+                    }
                 }
 
                 // Only check the feature hooks if there are elements (fail-safe)
@@ -83,9 +89,9 @@ module.exports = function collectJSONS(options) {
         });
 
         if (options.saveCollectedJSON) {
-            const file = path.resolve(options.reportPath, 'merged-output.json');
-            fs.ensureDirSync(options.reportPath);
-            jsonFile.writeFileSync(file, jsonOutput, {spaces: 2});
+            const file = resolve(options.reportPath, 'merged-output.json');
+            ensureDirSync(options.reportPath);
+            writeFileSync(file, jsonOutput, {spaces: 2});
         }
 
         return jsonOutput;
@@ -100,21 +106,9 @@ module.exports = function collectJSONS(options) {
  *
  * @param {object} data
  * @param {string} keyword
- * @returns {{
- *     arguments: array,
- *     keyword: string,
- *     name: string,
- *     result: {
- *         status: string,
- *     },
- *     line: string,
- *     match: {
- *         location: string
- *     },
- *     embeddings: []
- * }}
+ * @returns {Step[]}
  */
-function parseFeatureHooks(data, keyword) {
+function parseFeatureHooks(data: any[], keyword: string): Step[] {
     return data.map(step => {
         const match = step.match && step.match.location ? step.match : {location: 'can not be determined'};
 

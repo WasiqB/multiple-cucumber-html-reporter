@@ -1,14 +1,16 @@
-'use strict';
-const path = require('node:path');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import * as test from '../generate-report.js';
 
-const test = require('../lib/generate-report');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Generate a report for browsers
  */
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/json/',
+    jsonDir: './src/test/unit/data/json/',
     reportPath: './.tmp/browsers/',
     reportName: 'You can adjust this report name',
     customMetadata: false,
@@ -31,7 +33,7 @@ test.generate({
  */
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/json/',
+    jsonDir: './src/test/unit/data/json/',
     reportPath: './.tmp/browsers-with-cdn-usage/',
     reportName: 'Report with CDN usage',
     customMetadata: false,
@@ -55,7 +57,7 @@ test.generate({
  */
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/embedded-array-json/',
+    jsonDir: './src/test/unit/data/embedded-array-json/',
     reportPath: './.tmp/embedded-array/',
     customStyle: path.join(__dirname, './custom.css'),
     overrideStyle: path.join(__dirname, './my.css'),
@@ -77,7 +79,7 @@ test.generate({
  */
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/json/',
+    jsonDir: './src/test/unit/data/json/',
     reportPath: './.tmp/browsers-with-report-time/',
     reportName: 'You can adjust this report name',
     customMetadata: false,
@@ -103,7 +105,7 @@ test.generate({
  */
 test.generate({
     saveCollectedJSON: true,
-    jsonDir: './test/unit/data/custom-metadata-json/',
+    jsonDir: './src/test/unit/data/custom-metadata-json/',
     reportPath: './.tmp/custom-metadata/',
     customMetadata: true,
     displayDuration: true,
