@@ -12,10 +12,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: examples/cypress
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
@@ -28,20 +24,30 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
-      - name: Install dependencies
+      - name: Install Root Dependencies
         run: pnpm install
 
-      - name: Build Project
+      - name: Build Root Project
+        run: pnpm build
+
+      - name: Install Cypress dependencies
+        working-directory: examples/cypress
+        run: pnpm install
+
+      - name: Build Cypress Project
+        working-directory: examples/cypress
         run: pnpm build
 
       - name: Run Cypress
+        working-directory: examples/cypress
         run: pnpm test
 
       - name: Generate Report
+        working-directory: examples/cypress
         run: pnpm report
 
       - name: Upload Report
         uses: actions/upload-artifact@v6
         with:
           name: cypress-report
-          path: .run/html-report
+          path: examples/cypress/.run/html-report
