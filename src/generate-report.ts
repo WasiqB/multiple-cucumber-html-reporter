@@ -1,16 +1,22 @@
 import _ from 'lodash';
+
 const { size, template } = _;
+
 import fs from 'fs-extra';
+
 const { ensureDirSync, accessSync, constants, readFileSync, writeFileSync, pathExistsSync, copySync } = fs;
+
 import jsonfile from 'jsonfile';
+
 const { writeFileSync: _writeFileSync } = jsonfile;
-import open from 'open';
-import { resolve, join, dirname } from 'node:path';
+
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { v4 as uuid } from 'uuid';
 import { Duration } from 'luxon';
+import open from 'open';
+import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
-import { Options, Suite, Feature, Scenario, Step } from './types.js';
+import type { Feature, Options, Scenario, Step, Suite } from './types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,17 +29,12 @@ const FEATURE_FOLDER = 'features';
 const FEATURES_OVERVIEW_INDEX_TEMPLATE = 'features-overview.index.tmpl';
 const CUSTOM_DATA_TEMPLATE = 'components/custom-data.tmpl';
 let FEATURES_OVERVIEW_TEMPLATE = 'components/features-overview.tmpl';
-const FEATURES_OVERVIEW_CUSTOM_METADATA_TEMPLATE =
-  'components/features-overview-custom-metadata.tmpl';
-const FEATURES_OVERVIEW_CHART_TEMPLATE =
-  'components/features-overview.chart.tmpl';
-const SCENARIOS_OVERVIEW_CHART_TEMPLATE =
-  'components/scenarios-overview.chart.tmpl';
+const FEATURES_OVERVIEW_CUSTOM_METADATA_TEMPLATE = 'components/features-overview-custom-metadata.tmpl';
+const FEATURES_OVERVIEW_CHART_TEMPLATE = 'components/features-overview.chart.tmpl';
+const SCENARIOS_OVERVIEW_CHART_TEMPLATE = 'components/scenarios-overview.chart.tmpl';
 const FEATURE_OVERVIEW_INDEX_TEMPLATE = 'feature-overview.index.tmpl';
-let FEATURE_METADATA_OVERVIEW_TEMPLATE =
-  'components/feature-metadata-overview.tmpl';
-const FEATURE_CUSTOM_METADATA_OVERVIEW_TEMPLATE =
-  'components/feature-custom-metadata-overview.tmpl';
+let FEATURE_METADATA_OVERVIEW_TEMPLATE = 'components/feature-metadata-overview.tmpl';
+const FEATURE_CUSTOM_METADATA_OVERVIEW_TEMPLATE = 'components/feature-custom-metadata-overview.tmpl';
 const SCENARIOS_TEMPLATE = 'components/scenarios.tmpl';
 const RESULT_STATUS = {
   passed: 'passed',
@@ -55,9 +56,7 @@ function generateReport(options: Options) {
   }
 
   if (!options.reportPath) {
-    throw new Error(
-      'An output path for the reports should be defined, no path was provided.'
-    );
+    throw new Error('An output path for the reports should be defined, no path was provided.');
   }
 
   const customMetadata = !!options.customMetadata;
@@ -73,8 +72,7 @@ function generateReport(options: Options) {
   const displayDuration = !!options.displayDuration;
   const displayReportTime = !!options.displayReportTime;
   const durationInMS = !!options.durationInMS;
-  const durationAggregation =
-    options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
+  const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
   const pageTitle = options.pageTitle || 'Multiple Cucumber HTML Reporter';
   const pageFooter = options.pageFooter || null;
@@ -86,7 +84,7 @@ function generateReport(options: Options) {
 
   const allFeatures: Feature[] = collectJSONS(options);
 
-  let suite: Suite = {
+  const suite: Suite = {
     app: 0,
     customMetadata: customMetadata,
     customData: customData,
@@ -97,8 +95,7 @@ function generateReport(options: Options) {
     displayReportTime: displayReportTime,
     displayDuration: displayDuration,
     durationAggregation: durationAggregation,
-    durationColumnTitle:
-      durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
+    durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
     browser: 0,
     name: '',
     version: 'version',
@@ -135,30 +132,15 @@ function generateReport(options: Options) {
   _parseFeatures(suite);
 
   // Percentages
-  suite.featureCount.ambiguousPercentage = _calculatePercentage(
-    suite.featureCount.ambiguous,
-    suite.featureCount.total
-  );
-  suite.featureCount.failedPercentage = _calculatePercentage(
-    suite.featureCount.failed,
-    suite.featureCount.total
-  );
+  suite.featureCount.ambiguousPercentage = _calculatePercentage(suite.featureCount.ambiguous, suite.featureCount.total);
+  suite.featureCount.failedPercentage = _calculatePercentage(suite.featureCount.failed, suite.featureCount.total);
   suite.featureCount.notDefinedPercentage = _calculatePercentage(
     suite.featureCount.notDefined,
-    suite.featureCount.total
+    suite.featureCount.total,
   );
-  suite.featureCount.pendingPercentage = _calculatePercentage(
-    suite.featureCount.pending,
-    suite.featureCount.total
-  );
-  suite.featureCount.skippedPercentage = _calculatePercentage(
-    suite.featureCount.skipped,
-    suite.featureCount.total
-  );
-  suite.featureCount.passedPercentage = _calculatePercentage(
-    suite.featureCount.passed,
-    suite.featureCount.total
-  );
+  suite.featureCount.pendingPercentage = _calculatePercentage(suite.featureCount.pending, suite.featureCount.total);
+  suite.featureCount.skippedPercentage = _calculatePercentage(suite.featureCount.skipped, suite.featureCount.total);
+  suite.featureCount.passedPercentage = _calculatePercentage(suite.featureCount.passed, suite.featureCount.total);
 
   /**
    * Calculate and return the percentage
@@ -173,11 +155,7 @@ function generateReport(options: Options) {
 
   /* istanbul ignore else */
   if (saveCollectedJSON) {
-    _writeFileSync(
-      resolve(reportPath, 'enriched-output.json'),
-      suite,
-      { spaces: 2 }
-    );
+    _writeFileSync(resolve(reportPath, 'enriched-output.json'), suite, { spaces: 2 });
   }
 
   _createFeaturesOverviewIndexPage(suite);
@@ -186,13 +164,13 @@ function generateReport(options: Options) {
   /* istanbul ignore else */
   if (!disableLog) {
     console.log(
-        '\x1b[34m%s\x1b[0m',
-        `\n
+      '\x1b[34m%s\x1b[0m',
+      `\n
 =====================================================================================
     Multiple Cucumber HTML report generated in:
 
     ${join(reportPath, INDEX_HTML)}
-=====================================================================================\n`
+=====================================================================================\n`,
     );
   }
 
@@ -272,60 +250,28 @@ function generateReport(options: Options) {
       // Check if browser / app is used
       if (!Array.isArray(feature.metadata)) {
         suite.app = feature.metadata.app ? suite.app + 1 : suite.app;
-        suite.browser = feature.metadata.browser
-          ? suite.browser + 1
-          : suite.browser;
+        suite.browser = feature.metadata.browser ? suite.browser + 1 : suite.browser;
       }
 
       // Percentages
       feature.scenarios.ambiguousPercentage = _calculatePercentage(
         feature.scenarios.ambiguous,
-        feature.scenarios.total
+        feature.scenarios.total,
       );
-      feature.scenarios.failedPercentage = _calculatePercentage(
-        feature.scenarios.failed,
-        feature.scenarios.total
-      );
+      feature.scenarios.failedPercentage = _calculatePercentage(feature.scenarios.failed, feature.scenarios.total);
       feature.scenarios.notDefinedPercentage = _calculatePercentage(
         feature.scenarios.notDefined,
-        feature.scenarios.total
+        feature.scenarios.total,
       );
-      feature.scenarios.passedPercentage = _calculatePercentage(
-        feature.scenarios.passed,
-        feature.scenarios.total
-      );
-      feature.scenarios.pendingPercentage = _calculatePercentage(
-        feature.scenarios.pending,
-        feature.scenarios.total
-      );
-      feature.scenarios.skippedPercentage = _calculatePercentage(
-        feature.scenarios.skipped,
-        feature.scenarios.total
-      );
-      suite.scenarios.ambiguousPercentage = _calculatePercentage(
-        suite.scenarios.ambiguous,
-        suite.scenarios.total
-      );
-      suite.scenarios.failedPercentage = _calculatePercentage(
-        suite.scenarios.failed,
-        suite.scenarios.total
-      );
-      suite.scenarios.notDefinedPercentage = _calculatePercentage(
-        suite.scenarios.notDefined,
-        suite.scenarios.total
-      );
-      suite.scenarios.passedPercentage = _calculatePercentage(
-        suite.scenarios.passed,
-        suite.scenarios.total
-      );
-      suite.scenarios.pendingPercentage = _calculatePercentage(
-        suite.scenarios.pending,
-        suite.scenarios.total
-      );
-      suite.scenarios.skippedPercentage = _calculatePercentage(
-        suite.scenarios.skipped,
-        suite.scenarios.total
-      );
+      feature.scenarios.passedPercentage = _calculatePercentage(feature.scenarios.passed, feature.scenarios.total);
+      feature.scenarios.pendingPercentage = _calculatePercentage(feature.scenarios.pending, feature.scenarios.total);
+      feature.scenarios.skippedPercentage = _calculatePercentage(feature.scenarios.skipped, feature.scenarios.total);
+      suite.scenarios.ambiguousPercentage = _calculatePercentage(suite.scenarios.ambiguous, suite.scenarios.total);
+      suite.scenarios.failedPercentage = _calculatePercentage(suite.scenarios.failed, suite.scenarios.total);
+      suite.scenarios.notDefinedPercentage = _calculatePercentage(suite.scenarios.notDefined, suite.scenarios.total);
+      suite.scenarios.passedPercentage = _calculatePercentage(suite.scenarios.passed, suite.scenarios.total);
+      suite.scenarios.pendingPercentage = _calculatePercentage(suite.scenarios.pending, suite.scenarios.total);
+      suite.scenarios.skippedPercentage = _calculatePercentage(suite.scenarios.skipped, suite.scenarios.total);
     });
   }
 
@@ -369,11 +315,8 @@ function generateReport(options: Options) {
         }
       }
 
-      if (scenario.hasOwnProperty('description') && scenario.description) {
-        scenario.description = scenario.description.replace(
-          new RegExp('\r?\n', 'g'),
-          '<br />'
-        );
+      if (Object.hasOwn(scenario, 'description') && scenario.description) {
+        scenario.description = scenario.description.replace(/\r?\n/g, '<br />');
       }
 
       if (scenario.type === 'background') {
@@ -385,7 +328,8 @@ function generateReport(options: Options) {
         suite.scenarios.failed++;
         feature.scenarios.total++;
         feature.isFailed = true;
-        return feature.scenarios.failed++;
+        feature.scenarios.failed++;
+        return;
       }
 
       if (scenario.ambiguous > 0) {
@@ -393,7 +337,8 @@ function generateReport(options: Options) {
         suite.scenarios.ambiguous++;
         feature.scenarios.total++;
         feature.isAmbiguous = true;
-        return feature.scenarios.ambiguous++;
+        feature.scenarios.ambiguous++;
+        return;
       }
 
       if (scenario.notDefined > 0) {
@@ -401,7 +346,8 @@ function generateReport(options: Options) {
         suite.scenarios.notDefined++;
         feature.scenarios.total++;
         feature.isNotdefined = true;
-        return feature.scenarios.notDefined++;
+        feature.scenarios.notDefined++;
+        return;
       }
 
       if (scenario.pending > 0) {
@@ -409,18 +355,21 @@ function generateReport(options: Options) {
         suite.scenarios.pending++;
         feature.scenarios.total++;
         feature.isPending = true;
-        return feature.scenarios.pending++;
+        feature.scenarios.pending++;
+        return;
       }
 
       if (scenario.skipped > 0) {
-        suite.scenarios.total++
-        feature.scenarios.total++
+        suite.scenarios.total++;
+        feature.scenarios.total++;
         if (scenario.pending > 0) {
-          suite.scenarios.pending++
-          return feature.scenarios.pending++
+          suite.scenarios.pending++;
+          feature.scenarios.pending++;
+          return;
         }
-        suite.scenarios.skipped++
-        return feature.scenarios.skipped++
+        suite.scenarios.skipped++;
+        feature.scenarios.skipped++;
+        return;
       }
 
       /* istanbul ignore else */
@@ -429,7 +378,8 @@ function generateReport(options: Options) {
         suite.scenarios.passed++;
         feature.scenarios.total++;
         feature.passed = (feature.passed || 0) + 1;
-        return feature.scenarios.passed = Number(feature.scenarios.passed) + 1;
+        feature.scenarios.passed = Number(feature.scenarios.passed) + 1;
+        return;
       }
     });
 
@@ -442,8 +392,9 @@ function generateReport(options: Options) {
       feature.duration = fromMillis(latestScenarioEnd - earliestScenarioStart);
     }
 
-    feature.isPending = feature.scenarios.total === feature.scenarios.pending
-    feature.isSkipped = (feature.scenarios.total === (Number(feature.scenarios.skipped) + Number(feature.scenarios.pending)))
+    feature.isPending = feature.scenarios.total === feature.scenarios.pending;
+    feature.isSkipped =
+      feature.scenarios.total === Number(feature.scenarios.skipped) + Number(feature.scenarios.pending);
 
     return feature;
   }
@@ -460,61 +411,44 @@ function generateReport(options: Options) {
         step.attachments = [];
         const embeddings = step.embeddings || [];
         embeddings.forEach((embedding: any, embeddingIndex: number) => {
-	  /* Decode Base64 for Text-ish attachements */
-	   if(
-           embedding.mime_type === 'text/html' ||
-           embedding.mime_type === 'text/plain'
-	  ) {
-        embedding.data = Buffer.from(embedding.data.toString(), 'base64')
-      }
+          /* Decode Base64 for Text-ish attachements */
+          if (embedding.mime_type === 'text/html' || embedding.mime_type === 'text/plain') {
+            embedding.data = Buffer.from(embedding.data.toString(), 'base64');
+          }
           /* istanbul ignore else */
           if (
             embedding.mime_type === 'application/json' ||
             (embedding.media && embedding.media.type === 'application/json')
           ) {
-            embedding.data = Buffer.from(embedding.data, 'base64').toString()
+            embedding.data = Buffer.from(embedding.data, 'base64').toString();
             step.json = (step.json ? step.json : []).concat([
-              typeof embedding.data === 'string'
-                ? JSON.parse(embedding.data)
-                : embedding.data,
+              typeof embedding.data === 'string' ? JSON.parse(embedding.data) : embedding.data,
             ]);
-          } else if (
-            embedding.mime_type === 'text/html' ||
-            (embedding.media && embedding.media.type === 'text/html')
-          ) {
+          } else if (embedding.mime_type === 'text/html' || (embedding.media && embedding.media.type === 'text/html')) {
             step.html = (step.html ? step.html : []).concat([embedding.data]);
           } else if (
             embedding.mime_type === 'text/plain' ||
             (embedding.media && embedding.media.type === 'text/plain')
           ) {
-            step.text = (step.text ? step.text : []).concat([
-              _escapeHtml(embedding.data),
-            ]);
-          } else if (
-            embedding.mime_type === 'image/png' ||
-            (embedding.media && embedding.media.type === 'image/png')
-          ) {
-            step.image = (step.image ? step.image : []).concat([
-              'data:image/png;base64,' + embedding.data,
-            ]);
+            step.text = (step.text ? step.text : []).concat([_escapeHtml(embedding.data)]);
+          } else if (embedding.mime_type === 'image/png' || (embedding.media && embedding.media.type === 'image/png')) {
+            step.image = (step.image ? step.image : []).concat([`data:image/png;base64,${embedding.data}`]);
             step.embeddings![embeddingIndex] = {};
           } else if (
             embedding.mime_type === 'video/webm' ||
             (embedding.media && embedding.media.type === 'video/webm')
           ) {
-            step.video = (step.video ? step.video : []).concat([
-              'data:video/webm;base64,' + embedding.data,
-            ]);
+            step.video = (step.video ? step.video : []).concat([`data:video/webm;base64,${embedding.data}`]);
             step.embeddings![embeddingIndex] = {};
           } else {
             let embeddingType = 'text/plain';
             if (embedding.mime_type) {
               embeddingType = embedding.mime_type;
-            } else if (embedding.media && embedding.media.type) {
+            } else if (embedding.media?.type) {
               embeddingType = embedding.media.type;
             }
-            step.attachments!.push({
-              data: 'data:' + embeddingType + ';base64,' + embedding.data,
+            step.attachments?.push({
+              data: `data:${embeddingType};base64,${embedding.data}`,
               type: embeddingType,
             });
             step.embeddings![embeddingIndex] = {};
@@ -523,21 +457,17 @@ function generateReport(options: Options) {
       }
 
       if (step.doc_string !== undefined) {
-        step.id = `${uuid()}.${scenario.id}.${step.name}`.replace(
-          /[^a-zA-Z0-9-_]/g,
-          '-'
-        );
-        step.restWireData = _escapeHtml(step.doc_string.value).replace(
-          new RegExp('\r?\n', 'g'),
-          '<br />'
-        );
+        step.id = `${uuid()}.${scenario.id}.${step.name}`.replace(/[^a-zA-Z0-9-_]/g, '-');
+        step.restWireData = _escapeHtml(step.doc_string.value).replace(/\r?\n/g, '<br />');
       }
       if (step.result.status === RESULT_STATUS.pending) {
-        return scenario.pending = (scenario.pending || 0) + 1;
+        scenario.pending = (scenario.pending || 0) + 1;
+        return;
       }
 
       if (step.result.status === RESULT_STATUS.skipped) {
-        return scenario.skipped = (scenario.skipped || 0) + 1;
+        scenario.skipped = (scenario.skipped || 0) + 1;
+        return;
       }
 
       if (
@@ -560,19 +490,23 @@ function generateReport(options: Options) {
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.passed) {
-        return scenario.passed = (scenario.passed || 0) + 1;
+        scenario.passed = (scenario.passed || 0) + 1;
+        return;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.failed) {
-        return scenario.failed = (scenario.failed || 0) + 1;
+        scenario.failed = (scenario.failed || 0) + 1;
+        return;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.notDefined) {
-        return scenario.notDefined = (scenario.notDefined || 0) + 1;
+        scenario.notDefined = (scenario.notDefined || 0) + 1;
+        return;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.ambiguous) {
-        return scenario.ambiguous = (scenario.ambiguous || 0) + 1;
+        scenario.ambiguous = (scenario.ambiguous || 0) + 1;
+        return;
       }
 
       scenario.pending = (scenario.pending || 0) + 1;
@@ -592,11 +526,8 @@ function generateReport(options: Options) {
       try {
         accessSync(fileName, constants.R_OK);
         return readFileSync(fileName, 'utf-8');
-      } catch (err) {
-        return readFileSync(
-          join(__dirname, '..', 'templates', fileName),
-          'utf-8'
-        );
+      } catch (_err) {
+        return readFileSync(join(__dirname, '..', 'templates', fileName), 'utf-8');
       }
     } else {
       return '';
@@ -611,10 +542,7 @@ function generateReport(options: Options) {
    */
   function _escapeHtml(string: any): string {
     return typeof string === 'string' || string instanceof String
-      ? string.replace(
-          /[^0-9A-Za-z ]/g,
-          (chr) => '&#' + chr.charCodeAt(0) + ';'
-        )
+      ? string.replace(/[^0-9A-Za-z ]/g, (chr) => `&#${chr.charCodeAt(0)};`)
       : string;
   }
 
@@ -640,28 +568,20 @@ function generateReport(options: Options) {
       featuresOverviewIndex,
       template(_readTemplateFile(FEATURES_OVERVIEW_INDEX_TEMPLATE))({
         suite: suite,
-        featuresOverview: template(
-          _readTemplateFile(FEATURES_OVERVIEW_TEMPLATE)
-        )({
+        featuresOverview: template(_readTemplateFile(FEATURES_OVERVIEW_TEMPLATE))({
           suite: suite,
           _: _,
         }),
-        featuresScenariosOverviewChart: template(
-          _readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE)
-        )({
+        featuresScenariosOverviewChart: template(_readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE))({
           overviewPage: true,
           scenarios: suite.scenarios,
           _: _,
         }),
-        customDataOverview: template(_readTemplateFile(CUSTOM_DATA_TEMPLATE))(
-          {
-            suite: suite,
-            _: _,
-          }
-        ),
-        featuresOverviewChart: template(
-          _readTemplateFile(FEATURES_OVERVIEW_CHART_TEMPLATE)
-        )({
+        customDataOverview: template(_readTemplateFile(CUSTOM_DATA_TEMPLATE))({
+          suite: suite,
+          _: _,
+        }),
+        featuresOverviewChart: template(_readTemplateFile(FEATURES_OVERVIEW_CHART_TEMPLATE))({
           suite: suite,
           _: _,
         }),
@@ -673,7 +593,7 @@ function generateReport(options: Options) {
         pageTitle: pageTitle || '',
         reportName: reportName || '',
         pageFooter: pageFooter || '',
-      })
+      }),
     );
   }
 
@@ -689,27 +609,20 @@ function generateReport(options: Options) {
       : FEATURE_METADATA_OVERVIEW_TEMPLATE;
 
     suite.features.forEach((feature: Feature) => {
-      const featurePage = resolve(
-        reportPath,
-        `${FEATURE_FOLDER}/${feature.id}.html`
-      );
+      const featurePage = resolve(reportPath, `${FEATURE_FOLDER}/${feature.id}.html`);
       writeFileSync(
         featurePage,
         template(_readTemplateFile(FEATURE_OVERVIEW_INDEX_TEMPLATE))({
           feature: feature,
           suite: suite,
-          featureScenariosOverviewChart: template(
-            _readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE)
-          )({
+          featureScenariosOverviewChart: template(_readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE))({
             overviewPage: false,
             feature: feature,
             suite: suite,
             scenarios: feature.scenarios,
             _: _,
           }),
-          featureMetadataOverview: template(
-            _readTemplateFile(FEATURE_METADATA_OVERVIEW_TEMPLATE)
-          )({
+          featureMetadataOverview: template(_readTemplateFile(FEATURE_METADATA_OVERVIEW_TEMPLATE))({
             metadata: feature.metadata,
             _: _,
           }),
@@ -727,17 +640,11 @@ function generateReport(options: Options) {
           reportName: reportName || '',
           pageFooter: pageFooter || '',
           plainDescription: plainDescription,
-        })
+        }),
       );
       // Copy the assets, but first check if they don't exist and not useCDN
-      if (
-        !pathExistsSync(resolve(reportPath, 'assets')) &&
-        !suite.useCDN
-      ) {
-        copySync(
-          resolve(__dirname, '..', 'templates', 'assets'),
-          resolve(reportPath, 'assets')
-        );
+      if (!pathExistsSync(resolve(reportPath, 'assets')) && !suite.useCDN) {
+        copySync(resolve(__dirname, '..', 'templates', 'assets'), resolve(reportPath, 'assets'));
       }
     });
   }
@@ -751,9 +658,7 @@ function generateReport(options: Options) {
    * @return {string} the duration formatted as a string
    */
   function formatDuration(duration: number): string {
-    return Duration.fromMillis(
-        durationInMS ? duration : duration / 1000000
-    ).toFormat('hh:mm:ss.SSS');
+    return Duration.fromMillis(durationInMS ? duration : duration / 1000000).toFormat('hh:mm:ss.SSS');
   }
 
   /**
