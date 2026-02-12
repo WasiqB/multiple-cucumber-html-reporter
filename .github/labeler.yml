@@ -1,0 +1,16 @@
+version: 1
+labels:
+  - label: ':rocket: pr: new feature'
+    title: '^feat.*'
+  - label: ':boom: pr: breaking change'
+    title: '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)!.*'
+  - label: ':bug: pr: bug fix'
+    title: '^fix.*'
+  - label: ':nail_care: pr: polish'
+    title: '^(chore|style|refactor|revert).*'
+  - label: ':memo: pr: documentation'
+    title: '^docs.*'
+  - label: ':house: pr: internal'
+    title: '^(ci|build).*'
+  - label: ':running_woman: pr: performance'
+    title: '^(perf|test).*'

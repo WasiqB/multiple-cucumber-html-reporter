@@ -1,8 +1,10 @@
-'use strict';
+import fs from 'fs-extra';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import * as multiCucumberHTMLReporter from '../../generate-report.js';
 
-const fs = require('fs-extra');
-const path = require('path');
-const multiCucumberHTMLReporter = require('../../lib/generate-report');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const REPORT_PATH = './.tmp/';
 
 describe('generate-report.js', () => {
@@ -10,7 +12,7 @@ describe('generate-report.js', () => {
         it('should create a report from the merged found json files without provided custom data', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json',
+                jsonDir: './src/test/unit/data/json',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
                 displayDuration: true
@@ -28,7 +30,7 @@ describe('generate-report.js', () => {
         it('should create a report with the report time', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json',
+                jsonDir: './src/test/unit/data/json',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
                 displayDuration: true,
@@ -42,7 +44,7 @@ describe('generate-report.js', () => {
         it('should create a report from the merged found json files with custom data with static file paths', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json',
+                jsonDir: './src/test/unit/data/json',
                 reportPath: REPORT_PATH,
                 staticFilePath: true,
                 saveCollectedJSON: true,
@@ -73,7 +75,7 @@ describe('generate-report.js', () => {
         it('should create a report from the merged found json files with custom metadata', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/custom-metadata-json/',
+                jsonDir: './src/test/unit/data/custom-metadata-json/',
                 reportPath: REPORT_PATH,
                 customMetadata: true
             });
@@ -85,7 +87,7 @@ describe('generate-report.js', () => {
         it('should create a report from the merged found json files and with array of embedded items', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/embedded-array-json/',
+                jsonDir: './src/test/unit/data/embedded-array-json/',
                 reportName: 'Embedded array of various mimeType',
                 reportPath: REPORT_PATH,
                 customStyle: path.join(__dirname, '../my.css'),
@@ -99,7 +101,7 @@ describe('generate-report.js', () => {
         it('should calculate feature duration with wall clock when durationAggregation is wallClock', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json-parallel-time/',
+                jsonDir: './src/test/unit/data/json-parallel-time/',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
                 displayDuration: true,
@@ -115,7 +117,7 @@ describe('generate-report.js', () => {
         it('should fallback to summed duration when wallClock is selected but timestamps are missing', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json-partial-parallel-time/',
+                jsonDir: './src/test/unit/data/json-partial-parallel-time/',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
                 displayDuration: true,
@@ -129,7 +131,7 @@ describe('generate-report.js', () => {
         it('should keep summed duration by default even when timestamps are present', () => {
             fs.removeSync(REPORT_PATH);
             multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json-parallel-time/',
+                jsonDir: './src/test/unit/data/json-parallel-time/',
                 reportPath: REPORT_PATH,
                 saveCollectedJSON: true,
                 displayDuration: true
@@ -144,17 +146,17 @@ describe('generate-report.js', () => {
 
     describe('failures', () => {
         it('should throw an error when no options are provided', () => {
-            expect(() => multiCucumberHTMLReporter.generate()).toThrowError('Options need to be provided.');
+            expect(() => (multiCucumberHTMLReporter as any).generate()).toThrowError('Options need to be provided.');
         });
 
         it('should throw an error when the json folder does not exist', () => {
-            expect(() => multiCucumberHTMLReporter.generate({})).toThrowError(`A path which holds the JSON files should be provided.`);
+            expect(() => (multiCucumberHTMLReporter as any).generate({})).toThrowError(`A path which holds the JSON files should be provided.`);
         });
 
         it('should throw an error when the report folder is not provided', () => {
-            expect(() => multiCucumberHTMLReporter.generate({
-                jsonDir: './test/unit/data/json'
-            })).toThrowError(`An output path for the reports should be defined, no path was provided.`);
+            expect(() => (multiCucumberHTMLReporter as any).generate({
+                jsonDir: './src/test/unit/data/json'
+            } as any)).toThrowError(`An output path for the reports should be defined, no path was provided.`);
         });
     });
 });

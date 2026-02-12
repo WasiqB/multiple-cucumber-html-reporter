@@ -27,7 +27,7 @@ async function setupNodeEvents(
         | CypressCommandLine.CypressFailedRunResult
     ): Promise<void> => {
       if (results) {
-        await afterRunHandler(config);
+        await afterRunHandler(config, results);
         writeFileSync(".run/results.json", JSON.stringify(results));
       }
     }

@@ -57,6 +57,7 @@ jobs:
           npm install -g npm
           npm -v
           pnpm install
+          pnpm build
 
       - name: Release
         run: pnpm release.${{ github.event.inputs.releaseType }}

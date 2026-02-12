@@ -1,0 +1,57 @@
+name: Test Cypress Example
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install Root Dependencies
+        run: pnpm install
+
+      - name: Build Root Project
+        run: pnpm build
+
+      - name: Install Cypress dependencies
+        working-directory: examples/cypress
+        run: pnpm install
+
+      - name: Build Cypress Project
+        working-directory: examples/cypress
+        run: pnpm build
+
+      - name: Install Cypress
+        working-directory: examples/cypress
+        run: pnpm cypress install
+
+      - name: Run Cypress
+        working-directory: examples/cypress
+        run: pnpm test
+
+      - name: Generate Report
+        working-directory: examples/cypress
+        run: pnpm report
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v6
+        with:
+          name: cypress-report
+          path: examples/cypress/.run/html-report
