@@ -38,6 +38,10 @@ jobs:
         working-directory: examples/cypress
         run: pnpm build
 
+      - name: Install Cypress
+        working-directory: examples/cypress
+        run: pnpm cypress install
+
       - name: Run Cypress
         working-directory: examples/cypress
         run: pnpm test
