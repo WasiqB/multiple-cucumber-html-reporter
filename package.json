@@ -16,7 +16,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && pnpm postbuild",
-    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && cp src/test/unit/jasmine.json dist/test/unit/jasmine.json && sed -i '' 's/src\\/test/dist\\/test/g' dist/test/unit/jasmine.json",
+    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
     "release": "release-it",
     "release.ci": "pnpm release --ci",
     "release.patch": "pnpm release.ci patch",

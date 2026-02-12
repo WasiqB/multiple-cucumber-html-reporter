@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout your code
+        uses: actions/checkout@v6
+
       - uses: srvaroa/labeler@master
         env:
           GITHUB_TOKEN: "${{ secrets.PUSH_TOKEN }}"
+        with:
+          fail_on_error: true
+          use_local_config: true
