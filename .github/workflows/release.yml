@@ -52,8 +52,11 @@ jobs:
           cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install Dependencies
-        run: pnpm install
+      - name: Install Dependencies and Upgrade NPM
+        run: |
+          npm install -g npm
+          npm -v
+          pnpm install
 
       - name: Release
         run: pnpm release.${{ github.event.inputs.releaseType }}
