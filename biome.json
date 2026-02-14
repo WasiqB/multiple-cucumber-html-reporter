@@ -6,7 +6,16 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**/*.ts", "!!**/dist", "!!**/node_modules", "!!**/.run", "!!templates/assets/js"]
+    "includes": [
+      "**/*.ts",
+      "**/*.json",
+      "**/*.js",
+      "!!**/dist",
+      "!!**/node_modules",
+      "!!**/.run",
+      "!!templates/assets/js",
+      "!!src/test/unit/data/**/*.json"
+    ]
   },
   "formatter": {
     "enabled": true,

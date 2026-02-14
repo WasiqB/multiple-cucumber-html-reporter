@@ -5,6 +5,9 @@ updates:
     target-branch: "main"
     versioning-strategy: increase
     open-pull-requests-limit: 100
+    labels:
+      - ':house: pr: internal'
+      - 'typescript'
     schedule:
       interval: "weekly"
       timezone: "Asia/Calcutta"
@@ -17,6 +20,9 @@ updates:
     target-branch: "main"
     versioning-strategy: increase
     open-pull-requests-limit: 100
+    labels:
+      - ':house: pr: internal'
+      - 'typescript'
     schedule:
       interval: "monthly"
       timezone: "Asia/Calcutta"
@@ -29,6 +35,9 @@ updates:
     schedule:
       interval: "monthly"
       timezone: "Asia/Calcutta"
+    labels:
+      - ':house: pr: internal'
+      - 'github_actions'
     groups:
       dependencies:
         dependency-type: "production"
