@@ -13,7 +13,8 @@
       "!!**/dist",
       "!!**/node_modules",
       "!!**/.run",
-      "!!templates/assets/js"
+      "!!templates/assets/js",
+      "!!src/test/unit/data/**/*.json"
     ]
   },
   "formatter": {
