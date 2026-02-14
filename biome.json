@@ -6,7 +6,15 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**/*.ts", "!!**/dist", "!!**/node_modules", "!!**/.run", "!!templates/assets/js"]
+    "includes": [
+      "**/*.ts",
+      "**/*.json",
+      "**/*.js",
+      "!!**/dist",
+      "!!**/node_modules",
+      "!!**/.run",
+      "!!templates/assets/js"
+    ]
   },
   "formatter": {
     "enabled": true,
