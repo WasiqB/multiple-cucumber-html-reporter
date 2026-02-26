@@ -3,7 +3,7 @@ name: Release to NPM and GitHub
 on:
   workflow_dispatch:
     inputs:
-      releaseType:
+      release-type:
         description: "Release Type"
         required: true
         type: choice
@@ -12,6 +12,10 @@ on:
           - "minor"
           - "patch"
         default: "patch"
+      pre-release:
+        description: Is this a pre-release?
+        type: boolean
+        default: false
 
 jobs:
   release:
@@ -57,7 +61,17 @@ jobs:
           npm install -g npm
           npm -v
           pnpm install
-          pnpm build
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
 
       - name: Release
-        run: pnpm release.${{ github.event.inputs.releaseType }}
+        if: ${{ ! inputs.pre-release }}
+        run: pnpm release.${{ github.event.inputs.release-type }}
+        working-directory: reporter
+
+      - name: Pre Release
+        if: ${{ inputs.pre-release }}
+        run: pnpm release.pre${{ github.event.inputs.release-type }}
+        working-directory: reporter

@@ -29,6 +29,7 @@ jobs:
 
       - name: Build Root Project
         run: pnpm build
+        working-directory: reporter
 
       - name: Install Cypress dependencies
         working-directory: examples/cypress

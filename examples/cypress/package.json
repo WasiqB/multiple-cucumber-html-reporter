@@ -14,15 +14,15 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^24.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
-    "@types/node": "^25.2.3",
-    "cypress": "^15.10.0",
-    "multiple-cucumber-html-reporter": "file:../..",
+    "@types/node": "^25.3.1",
+    "cypress": "^15.11.0",
+    "multiple-cucumber-html-reporter": "workspace:*",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "dayjs": "^1.11.19"
   },
-  "packageManager": "pnpm@10.4.0"
+  "packageManager": "pnpm@10.30.2"
 }
