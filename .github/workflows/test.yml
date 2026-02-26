@@ -39,6 +39,8 @@ jobs:
 
       - name: Build Project
         run: pnpm build
+        working-directory: reporter
 
       - name: Run Unit Tests and generate coverage report
         run: pnpm unit.test.coverage
+        working-directory: reporter

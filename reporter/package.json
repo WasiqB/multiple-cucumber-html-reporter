@@ -1,0 +1,72 @@
+{
+  "name": "multiple-cucumber-html-reporter",
+  "version": "3.10.0",
+  "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
+  "type": "module",
+  "keywords": [
+    "cucumber",
+    "html",
+    "test report",
+    "multiple-cucumber-html-reporter",
+    "html report",
+    "json to html"
+  ],
+  "main": "dist/generate-report.js",
+  "types": "dist/generate-report.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && pnpm postbuild",
+    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
+    "release": "release-it",
+    "release.ci": "pnpm release --ci",
+    "beta": "pnpm release.ci --preRelease=beta",
+    "release.patch": "pnpm release.ci patch",
+    "release.minor": "pnpm release.ci minor",
+    "release.major": "pnpm release.ci major",
+    "release.premajor": "pnpm beta premajor",
+    "release.preminor": "pnpm beta preminor",
+    "release.prepatch": "pnpm beta prepatch",
+    "test": "node ./dist/test/test.js",
+    "unit.test": "jasmine JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json",
+    "unit.test.coverage": "JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json c8 jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WasiqB/multiple-cucumber-html-reporter.git"
+  },
+  "author": "WasiqB",
+  "bugs": {
+    "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
+  "dependencies": {
+    "find": "^0.3.0",
+    "fs-extra": "^11.3.3",
+    "jsonfile": "^6.2.0",
+    "lodash": "^4.17.21",
+    "luxon": "^3.7.2",
+    "open": "^11.0.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@release-it-plugins/lerna-changelog": "^8.0.1",
+    "@types/find": "^0.2.4",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jasmine": "^6.0.0",
+    "@types/jsonfile": "^6.1.4",
+    "@types/lodash": "^4.17.24",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^25.3.1",
+    "@types/uuid": "^11.0.0",
+    "c8": "^11.0.0",
+    "jasmine": "^6.1.0",
+    "lerna-changelog": "^2.2.0",
+    "release-it": "^19.2.4",
+    "release-it-pnpm": "^4.6.6",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "pnpm@10.30.2"
+}
