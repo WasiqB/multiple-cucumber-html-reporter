@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ report.pageTitle | default: "Cucumber Test Report" }}</title>
+<link rel="stylesheet" href="{{ base_url | default: "." }}/styles.css">
+{% if report.useCDN %}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+{% else %}
+    <script src="{{ base_url | default: "." }}/assets/js/apex-charts.js"></script>
+    <link rel="stylesheet" href="{{ base_url | default: "." }}/assets/css/font-awesome.css">
+{% endif %}
+<style>
+    [v-cloak] { display: none; }
+</style>

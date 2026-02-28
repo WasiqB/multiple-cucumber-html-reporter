@@ -28,7 +28,7 @@ generate({
   jsonDir: './.run/reports/json/',
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
-  useCDN: false,
+  useCDN: true,
   metadata: {
     browser: {
       name: runInfos.browserName === 'chromium' ? 'chrome' : runInfos.browserName,
@@ -56,8 +56,8 @@ generate({
       },
     ],
   },
-  pageTitle: 'Sample',
-  reportName: 'Sample',
+  pageTitle: 'Cypress Sample',
+  reportName: 'Cypress Sample',
   displayDuration: true,
   displayReportTime: true,
 });

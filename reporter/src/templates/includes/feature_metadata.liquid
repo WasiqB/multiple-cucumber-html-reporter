@@ -1,0 +1,50 @@
+<div class="grid grid-cols-2 lg:flex lg:flex-wrap gap-x-4 gap-y-3 md:gap-6 text-xs md:text-sm text-muted-foreground">
+    <div class="flex items-center gap-2 overflow-hidden">
+        <i class="{% if feature.device contains 'iPhone' or feature.device contains 'Android' or feature.device contains 'Mobile' %}fa-solid fa-mobile-screen-button{% elsif feature.device contains 'Tablet' or feature.device contains 'iPad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-primary shrink-0"></i>
+        <div class="truncate">
+            <span class="font-medium text-foreground block md:inline">Device:</span> 
+            <span class="truncate">{{ feature.device }}</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-2 overflow-hidden">
+        <i class="{% if feature.os contains 'Windows' %}fa-brands fa-microsoft{% elsif feature.os contains 'Mac' or feature.os contains 'iOS' or feature.os contains 'macOS' %}fa-brands fa-apple{% elsif feature.os contains 'Android' %}fa-brands fa-android{% elsif feature.os contains 'Linux' or feature.os contains 'Ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-primary shrink-0"></i>
+        <div class="truncate">
+            <span class="font-medium text-foreground block md:inline">OS:</span> 
+            <span class="truncate">{{ feature.os }}</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-2 overflow-hidden">
+        <i class="{% if feature.browser contains 'Chrome' %}fa-brands fa-chrome{% elsif feature.browser contains 'Firefox' %}fa-brands fa-firefox{% elsif feature.browser contains 'Safari' %}fa-brands fa-safari{% elsif feature.browser contains 'Edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-primary shrink-0"></i>
+        <div class="truncate">
+            <span class="font-medium text-foreground block md:inline">Browser:</span> 
+            <span class="truncate">{{ feature.browser }}</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-2 overflow-hidden">
+        <i class="fa-solid fa-cube text-primary shrink-0"></i>
+        <div class="truncate">
+            <span class="font-medium text-foreground block md:inline">App:</span> 
+            <span class="truncate">{{ feature.app }}</span>
+        </div>
+    </div>
+    {% if feature.file %}
+    <div class="flex items-center gap-2 overflow-hidden lg:col-span-2">
+        <i class="fa-solid fa-file-code text-primary shrink-0"></i>
+        <div class="truncate">
+            <span class="font-medium text-foreground block md:inline">File:</span> 
+            <span class="truncate" title="{{ feature.file }}">{{ feature.file }}</span>
+        </div>
+    </div>
+    {% endif %}
+    {% if feature.metadata %}
+        {% for item in feature.metadata %}
+        <div class="flex items-center gap-2 overflow-hidden">
+            <i class="fa-solid fa-circle-info text-primary shrink-0"></i>
+            <div class="truncate">
+                <span class="font-medium text-foreground block md:inline">{{ item.label }}:</span> 
+                <span class="truncate" title="{{ item.value }}">{{ item.value }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>

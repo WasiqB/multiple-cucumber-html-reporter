@@ -15,8 +15,7 @@
   "types": "dist/generate-report.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && pnpm postbuild",
-    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
+    "build": "tsc && cp -r src/templates dist/templates",
     "release": "release-it",
     "release.ci": "pnpm release --ci",
     "beta": "pnpm release.ci --preRelease=beta",
@@ -46,9 +45,12 @@
     "find": "^0.3.0",
     "fs-extra": "^11.3.3",
     "jsonfile": "^6.2.0",
+    "liquidjs": "^10.20.1",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
@@ -59,7 +61,7 @@
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.3.1",
+    "@types/node": "^25.3.2",
     "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.1.0",

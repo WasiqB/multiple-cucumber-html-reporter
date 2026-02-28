@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% render "includes/meta_head.liquid", base_url: base_url, report: data.report %}
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <div class="w-full">
+        <!-- Header -->
+        {% render "includes/header.liquid", base_url: base_url, data: data %}
+
+        <!-- Main Content -->
+        <main class="space-y-6 px-6 py-8">
+            <div class="mx-auto max-w-7xl">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        {% render "includes/footer.liquid", base_url: base_url, data: data %}
+    </div>
+
+    <!-- Media Modal -->
+    {% render "includes/media_modal.liquid", base_url: base_url %}
+
+    {% render "includes/scripts.liquid", base_url: base_url %}
+</body>
+</html>

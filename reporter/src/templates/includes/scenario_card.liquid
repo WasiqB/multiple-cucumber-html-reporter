@@ -1,0 +1,104 @@
+{% assign scenario_status = "passed" %}
+{% for step in scenario.steps %}
+    {% if step.result.status == "failed" or step.result.status == "ambiguous" %}
+        {% assign scenario_status = "failed" %}
+        {% break %}
+    {% elsif step.result.status == "skipped" or step.result.status == "pending" or step.result.status == "undefined" %}
+        {% if scenario_status == "passed" %}
+            {% assign scenario_status = "skipped" %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden scenario-card" data-status="{{ scenario_status }}">
+    <button class="w-full text-left px-4 md:px-6 py-4 flex items-center justify-between hover:bg-muted/50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden')">
+        <div class="flex items-center gap-3 overflow-hidden">
+            
+            {% if scenario_status == "passed" %}
+            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
+                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+            </span>
+            {% else %}
+            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
+                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+            </span>
+            {% endif %}
+            <div class="truncate">
+                <h4 class="font-bold text-sm md:text-base truncate">{{ scenario.name }}</h4>
+                {% if scenario.tags.size > 0 %}
+                <div class="flex flex-wrap gap-1 mt-0.5">
+                    {% for tag in scenario.tags %}
+                    <span class="text-[9px] md:text-[10px] font-medium text-muted-foreground">{{ tag.name }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="flex items-center gap-2 md:gap-4 shrink-0 ml-2">
+            <span class="font-mono text-[10px] md:text-xs text-muted-foreground">{{ scenario.duration }}</span>
+            <svg class="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+    </button>
+    <div class="hidden border-t divide-y divide-border">
+        {% for step in scenario.steps %}
+        <div class="px-6 py-4 bg-muted/20">
+            <div class="flex items-start justify-between">
+                <div class="flex items-start gap-3 w-full">
+                        {% if step.result.status == "passed" %}
+                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        {% elsif step.result.status == "failed" %}
+                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </span>
+                        {% else %}
+                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-yellow-500 text-white">
+                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </span>
+                        {% endif %}
+                        <div class="w-full">
+                        <p class="text-sm">
+                            <span class="font-bold text-foreground">{{ step.keyword }}</span>
+                            <span>{{ step.name }}</span>
+                        </p>
+                        <p class="text-[10px] text-muted-foreground mt-1 font-mono">{{ step.time }}</p>
+                        
+                        {% if step.attachments.size > 0 %}
+                        <div class="mt-3 space-y-2 bg-background/50 p-3 rounded border border-muted">
+                            <p class="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Attachments</p>
+                            <div class="space-y-2">
+                                {% for attachment in step.attachments %}
+                                <div class="flex items-center justify-between gap-2 bg-background p-2 rounded border border-muted/50 text-xs hover:border-primary/50 transition-colors cursor-pointer modal-trigger" 
+                                        data-attachment-type="{{ attachment.type }}" 
+                                        data-attachment-name="{{ attachment.name }}"
+                                        {% if attachment.type == 'log' %}data-attachment-content="{{ attachment.content | escape }}"{% endif %}>
+                                    <div class="flex items-center gap-2">
+                                        {% if attachment.type == "screenshot" %}
+                                        <svg class="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                        {% elsif attachment.type == "log" %}
+                                        <svg class="h-4 w-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                        {% elsif attachment.type == "video" %}
+                                        <svg class="h-4 w-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                        {% endif %}
+                                        <span class="font-medium cursor-pointer">{{ attachment.name }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-muted-foreground">{{ attachment.size }}</span>
+                                        <svg class="h-3 w-3 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </div>
+                                </div>
+                                {% if attachment.type == "log" and attachment.content %}
+                                <pre class="mt-1 p-2 bg-muted rounded text-[10px] font-mono overflow-x-auto max-h-32 text-muted-foreground">{{ attachment.content }}</pre>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

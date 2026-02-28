@@ -1,41 +1,29 @@
-import _ from 'lodash';
-
-const { size, template } = _;
-
-import fs from 'fs-extra';
-
-const { ensureDirSync, accessSync, constants, readFileSync, writeFileSync, pathExistsSync, copySync } = fs;
-
-import jsonfile from 'jsonfile';
-
-const { writeFileSync: _writeFileSync } = jsonfile;
-
-import { dirname, join, resolve } from 'node:path';
+import { execSync } from 'node:child_process';
+import path, { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import fs from 'fs-extra';
+import jsonfile from 'jsonfile';
+import { Liquid } from 'liquidjs';
+import _ from 'lodash';
 import { Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
 import type { Feature, Options, Scenario, Step, Suite } from './types.js';
 
+const { size } = _;
+const { writeFileSync: _writeFileSync } = jsonfile;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const REPORT_STYLESHEET = 'style.css';
-const DARK_MODE_JS = './assets/js/darkmode.js';
-const GENERIC_JS = 'generic.js';
+const engine = new Liquid({
+  root: join(__dirname, 'templates'),
+  extname: '.liquid',
+});
+
 const INDEX_HTML = 'index.html';
 const FEATURE_FOLDER = 'features';
-const FEATURES_OVERVIEW_INDEX_TEMPLATE = 'features-overview.index.tmpl';
-const CUSTOM_DATA_TEMPLATE = 'components/custom-data.tmpl';
-let FEATURES_OVERVIEW_TEMPLATE = 'components/features-overview.tmpl';
-const FEATURES_OVERVIEW_CUSTOM_METADATA_TEMPLATE = 'components/features-overview-custom-metadata.tmpl';
-const FEATURES_OVERVIEW_CHART_TEMPLATE = 'components/features-overview.chart.tmpl';
-const SCENARIOS_OVERVIEW_CHART_TEMPLATE = 'components/scenarios-overview.chart.tmpl';
-const FEATURE_OVERVIEW_INDEX_TEMPLATE = 'feature-overview.index.tmpl';
-let FEATURE_METADATA_OVERVIEW_TEMPLATE = 'components/feature-metadata-overview.tmpl';
-const FEATURE_CUSTOM_METADATA_OVERVIEW_TEMPLATE = 'components/feature-custom-metadata-overview.tmpl';
-const SCENARIOS_TEMPLATE = 'components/scenarios.tmpl';
 const RESULT_STATUS = {
   passed: 'passed',
   failed: 'failed',
@@ -46,7 +34,10 @@ const RESULT_STATUS = {
 };
 const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
 
-function generateReport(options: Options) {
+const projectRoot = path.resolve(__dirname, '..');
+const templatesDir = path.join(projectRoot, 'src', 'templates');
+
+async function generateReport(options: Options) {
   if (!options) {
     throw new Error('Options need to be provided.');
   }
@@ -62,7 +53,6 @@ function generateReport(options: Options) {
   const customMetadata = !!options.customMetadata;
   const customData = options.customData || null;
   const plainDescription = !!options.plainDescription;
-  const style = options.overrideStyle || REPORT_STYLESHEET;
   const customStyle = options.customStyle;
   const disableLog = !!options.disableLog;
   const openReportInBrowser = !!options.openReportInBrowser;
@@ -79,22 +69,21 @@ function generateReport(options: Options) {
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
 
-  ensureDirSync(reportPath);
-  ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
+  fs.ensureDirSync(reportPath);
+  fs.ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
 
   const allFeatures: Feature[] = collectJSONS(options);
 
   const suite: Suite = {
     app: 0,
-    customMetadata: customMetadata,
-    customData: customData,
-    style: style,
-    customStyle: customStyle,
-    useCDN: useCDN,
-    hideMetadata: hideMetadata,
-    displayReportTime: displayReportTime,
-    displayDuration: displayDuration,
-    durationAggregation: durationAggregation,
+    customMetadata,
+    customData,
+    style: options.overrideStyle || 'styles.css',
+    useCDN,
+    hideMetadata,
+    displayReportTime,
+    displayDuration,
+    durationAggregation,
     durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
     browser: 0,
     name: '',
@@ -116,7 +105,8 @@ function generateReport(options: Options) {
       skippedPercentage: 0,
       passedPercentage: 0,
     },
-    reportName: reportName,
+    reportName,
+    customStyle,
     scenarios: {
       failed: 0,
       ambiguous: 0,
@@ -153,16 +143,18 @@ function generateReport(options: Options) {
     return ((amount / total) * 100).toFixed(2);
   }
 
-  /* istanbul ignore else */
   if (saveCollectedJSON) {
+    /* istanbul ignore else */
     _writeFileSync(resolve(reportPath, 'enriched-output.json'), suite, { spaces: 2 });
   }
 
-  _createFeaturesOverviewIndexPage(suite);
-  _createFeatureIndexPages(suite);
+  await _createFeaturesOverviewIndexPage(suite);
+  await _createFeatureIndexPages(suite);
+  await _createCssFile(suite);
+  await _createJsFiles();
 
-  /* istanbul ignore else */
   if (!disableLog) {
+    /* istanbul ignore else */
     console.log(
       '\x1b[34m%s\x1b[0m',
       `\n
@@ -174,8 +166,8 @@ function generateReport(options: Options) {
     );
   }
 
-  /* istanbul ignore if */
   if (openReportInBrowser) {
+    /* istanbul ignore if */
     open(join(reportPath, INDEX_HTML));
   }
 
@@ -516,25 +508,6 @@ function generateReport(options: Options) {
   }
 
   /**
-   * Read a template file and return it's content
-   * @param {string} fileName
-   * @return {*} Content of the file
-   * @private
-   */
-  function _readTemplateFile(fileName: string): string {
-    if (fileName) {
-      try {
-        accessSync(fileName, constants.R_OK);
-        return readFileSync(fileName, 'utf-8');
-      } catch (_err) {
-        return readFileSync(join(__dirname, '..', 'templates', fileName), 'utf-8');
-      }
-    } else {
-      return '';
-    }
-  }
-
-  /**
    * Escape html in string
    * @param string
    * @return {string}
@@ -551,50 +524,40 @@ function generateReport(options: Options) {
    * @param {object} suite JSON object with all the features and scenarios
    * @private
    */
-  function _createFeaturesOverviewIndexPage(suite: Suite) {
+  async function _createFeaturesOverviewIndexPage(suite: Suite) {
     const featuresOverviewIndex = resolve(reportPath, INDEX_HTML);
-    if (suite.customMetadata && options.metadata) {
-      suite.features.forEach((feature: Feature) => {
-        if (!feature.metadata && options.metadata) {
-          feature.metadata = options.metadata;
-        }
-      });
-    }
-    FEATURES_OVERVIEW_TEMPLATE = suite.customMetadata
-      ? FEATURES_OVERVIEW_CUSTOM_METADATA_TEMPLATE
-      : FEATURES_OVERVIEW_TEMPLATE;
 
-    writeFileSync(
-      featuresOverviewIndex,
-      template(_readTemplateFile(FEATURES_OVERVIEW_INDEX_TEMPLATE))({
-        suite: suite,
-        featuresOverview: template(_readTemplateFile(FEATURES_OVERVIEW_TEMPLATE))({
-          suite: suite,
-          _: _,
-        }),
-        featuresScenariosOverviewChart: template(_readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE))({
-          overviewPage: true,
-          scenarios: suite.scenarios,
-          _: _,
-        }),
-        customDataOverview: template(_readTemplateFile(CUSTOM_DATA_TEMPLATE))({
-          suite: suite,
-          _: _,
-        }),
-        featuresOverviewChart: template(_readTemplateFile(FEATURES_OVERVIEW_CHART_TEMPLATE))({
-          suite: suite,
-          _: _,
-        }),
-        customStyle: suite.customStyle ? _readTemplateFile(suite.customStyle) : '',
-        styles: _readTemplateFile(suite.style),
-        useCDN: suite.useCDN,
-        darkmodeScript: _readTemplateFile(DARK_MODE_JS),
-        genericScript: _readTemplateFile(GENERIC_JS),
-        pageTitle: pageTitle || '',
-        reportName: reportName || '',
-        pageFooter: pageFooter || '',
-      }),
-    );
+    const report = {
+      reportName: suite.reportName,
+      pageTitle: pageTitle,
+      pageFooter: pageFooter,
+      project: customData?.title,
+      release: 'v1.0.0',
+      cycle: 'N/A',
+      executionStartTime: formatDuration(0),
+      executionEndTime: formatDuration(suite.totalTime),
+      metadata: customData?.data,
+      useCDN: suite.useCDN,
+      hideMetadata: suite.hideMetadata,
+      displayReportTime: suite.displayReportTime,
+      displayDuration: suite.displayDuration,
+      plainDescription,
+      customStyle: suite.customStyle ? fs.readFileSync(resolve(process.cwd(), suite.customStyle), 'utf-8') : '',
+    };
+
+    const data = {
+      summary: suite.featureCount,
+      features: suite.features,
+      scenarios: suite.scenarios,
+      report,
+    };
+
+    const html = await engine.renderFile('index', {
+      data,
+      base_url: '.',
+    });
+
+    await fs.writeFile(featuresOverviewIndex, html);
   }
 
   /**
@@ -602,51 +565,85 @@ function generateReport(options: Options) {
    * @param suite suite JSON object with all the features and scenarios
    * @private
    */
-  function _createFeatureIndexPages(suite: Suite) {
-    // Set custom metadata overview for the feature
-    FEATURE_METADATA_OVERVIEW_TEMPLATE = suite.customMetadata
-      ? FEATURE_CUSTOM_METADATA_OVERVIEW_TEMPLATE
-      : FEATURE_METADATA_OVERVIEW_TEMPLATE;
+  async function _createFeatureIndexPages(suite: Suite) {
+    for (const feature of suite.features) {
+      const featurePage = join(reportPath, FEATURE_FOLDER, `${feature.id}.html`);
 
-    suite.features.forEach((feature: Feature) => {
-      const featurePage = resolve(reportPath, `${FEATURE_FOLDER}/${feature.id}.html`);
-      writeFileSync(
-        featurePage,
-        template(_readTemplateFile(FEATURE_OVERVIEW_INDEX_TEMPLATE))({
-          feature: feature,
-          suite: suite,
-          featureScenariosOverviewChart: template(_readTemplateFile(SCENARIOS_OVERVIEW_CHART_TEMPLATE))({
-            overviewPage: false,
-            feature: feature,
-            suite: suite,
-            scenarios: feature.scenarios,
-            _: _,
-          }),
-          featureMetadataOverview: template(_readTemplateFile(FEATURE_METADATA_OVERVIEW_TEMPLATE))({
-            metadata: feature.metadata,
-            _: _,
-          }),
-          scenarioTemplate: template(_readTemplateFile(SCENARIOS_TEMPLATE))({
-            suite: suite,
-            scenarios: feature.elements,
-            _: _,
-          }),
-          useCDN: suite.useCDN,
-          customStyle: suite.customStyle ? _readTemplateFile(suite.customStyle) : '',
-          styles: _readTemplateFile(suite.style),
-          darkmodeScript: _readTemplateFile(DARK_MODE_JS),
-          genericScript: _readTemplateFile(GENERIC_JS),
-          pageTitle: pageTitle || '',
-          reportName: reportName || '',
-          pageFooter: pageFooter || '',
-          plainDescription: plainDescription,
-        }),
-      );
-      // Copy the assets, but first check if they don't exist and not useCDN
-      if (!pathExistsSync(resolve(reportPath, 'assets')) && !suite.useCDN) {
-        copySync(resolve(__dirname, '..', 'templates', 'assets'), resolve(reportPath, 'assets'));
+      const report = {
+        reportName: suite.reportName,
+        pageTitle: pageTitle,
+        pageFooter: pageFooter,
+        project: customData?.title,
+        release: 'v1.0.0',
+        cycle: 'N/A',
+        executionStartTime: formatDuration(0),
+        executionEndTime: formatDuration(suite.totalTime),
+        metadata: customData?.data,
+        useCDN: suite.useCDN,
+        hideMetadata: suite.hideMetadata,
+        displayReportTime: suite.displayReportTime,
+        displayDuration: suite.displayDuration,
+        plainDescription,
+        customStyle: suite.customStyle ? fs.readFileSync(resolve(process.cwd(), suite.customStyle), 'utf-8') : '',
+      };
+
+      const data = {
+        report,
+        feature,
+      };
+
+      const html = await engine.renderFile('feature', {
+        data,
+        base_url: '..',
+      });
+
+      await fs.writeFile(featurePage, html);
+    }
+
+    // Copy the assets
+    await fs.copy(resolve(templatesDir, 'assets'), resolve(reportPath, 'assets'));
+  }
+
+  async function _createCssFile(suite: Suite) {
+    console.log('Creating Report CSS file...');
+    if (!suite.customStyle) {
+      const cssIn = path.join(templatesDir, 'styles', 'main.css');
+      const cssOut = path.join(reportPath, 'styles.css');
+      await fs.ensureDir(path.dirname(cssOut));
+
+      if (!(await fs.pathExists(cssIn))) {
+        console.log('Creating Basic CSS file...');
+        await fs.writeFile(
+          cssIn,
+          "@import 'tailwindcss';\n\n@theme inline {\n --color-background: white;\n --color-foreground: black;\n}",
+        );
       }
-    });
+
+      try {
+        console.log('Compiling CSS...');
+        execSync(`npx @tailwindcss/cli -i ${cssIn} -o ${cssOut}`, { stdio: 'inherit' });
+      } catch (error) {
+        console.error('Error compiling CSS: ', error);
+      }
+    } else {
+      const cssFile = resolve(reportPath, 'styles.css');
+      const cssContent = suite.customStyle;
+      console.log('Using Custom CSS file...');
+      await fs.writeFile(cssFile, cssContent);
+    }
+  }
+
+  async function _createJsFiles() {
+    // Copy JS
+    console.log('Copying JS...');
+    const jsInDir = path.join(templatesDir, 'scripts');
+    const jsOutDir = path.join(reportPath, 'scripts');
+    if (await fs.pathExists(jsInDir)) {
+      await fs.ensureDir(jsOutDir);
+      await fs.copy(jsInDir, jsOutDir);
+    }
+
+    console.log('Build complete!');
   }
 
   /**
