@@ -29,7 +29,6 @@ window.ReportTable = {
 
       tableBody.innerHTML = paginatedItems
         .map((feature) => {
-          const slug = window.ReportUtils.formatSlug(feature.name);
           const total = (feature.passed || 0) + (feature.failed || 0) + (feature.skipped || 0);
           const passPercentage = total > 0 ? Math.round((feature.passed / total) * 100) : 0;
 
@@ -62,7 +61,7 @@ window.ReportTable = {
           return `
             <tr class="hover:bg-muted/50 transition-colors">
               <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
-                <a href="features/${slug}.html" class="font-medium text-primary hover:underline">
+                <a href="features/${feature.id}.html" class="font-medium text-primary hover:underline">
                   ${feature.name}
                 </a>
                 <div class="flex flex-wrap gap-1 mt-1">

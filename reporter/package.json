@@ -15,6 +15,7 @@
   "types": "dist/generate-report.d.ts",
   "license": "MIT",
   "scripts": {
+    "prebuild": "pnpm generate:css && pnpm generate:css:min",
     "build": "tsc && cp -r src/templates dist/templates",
     "release": "release-it",
     "release.ci": "pnpm release --ci",
@@ -27,7 +28,9 @@
     "release.prepatch": "pnpm beta prepatch",
     "test": "node ./dist/test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json",
-    "unit.test.coverage": "JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json c8 jasmine"
+    "unit.test.coverage": "JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json c8 jasmine",
+    "generate:css": "npx @tailwindcss/cli -i ./src/templates/styles/main.css -o ./src/templates/assets/css/styles.css",
+    "generate:css:min": "npx @tailwindcss/cli -i ./src/templates/styles/main.css -o ./src/templates/assets/css/styles.min.css --minify"
   },
   "repository": {
     "type": "git",
@@ -49,26 +52,26 @@
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
-    "@tailwindcss/cli": "^4.2.1",
-    "tailwindcss": "^4.2.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@release-it-plugins/lerna-changelog": "^8.0.1",
+    "@tailwindcss/cli": "^4.2.1",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^6.0.0",
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.3.2",
+    "@types/node": "^25.3.3",
     "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.1.0",
     "lerna-changelog": "^2.2.0",
     "release-it": "^19.2.4",
     "release-it-pnpm": "^4.6.6",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.30.2"
+  "packageManager": "pnpm@10.30.3"
 }

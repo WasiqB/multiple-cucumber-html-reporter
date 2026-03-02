@@ -1,11 +1,10 @@
-import { execSync } from 'node:child_process';
 import path, { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
 import jsonfile from 'jsonfile';
 import { Liquid } from 'liquidjs';
 import _ from 'lodash';
-import { Duration } from 'luxon';
+import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
@@ -34,8 +33,8 @@ const RESULT_STATUS = {
 };
 const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
 
-const projectRoot = path.resolve(__dirname, '..');
-const templatesDir = path.join(projectRoot, 'src', 'templates');
+const projectRoot = path.resolve(__dirname);
+const templatesDir = path.join(projectRoot, 'templates');
 
 async function generateReport(options: Options) {
   if (!options) {
@@ -104,9 +103,18 @@ async function generateReport(options: Options) {
       pendingPercentage: 0,
       skippedPercentage: 0,
       passedPercentage: 0,
+      steps: {
+        passed: 0,
+        failed: 0,
+        skipped: 0,
+        total: 0,
+      },
     },
     reportName,
-    customStyle,
+    customStyle:
+      customStyle && fs.pathExistsSync(resolve(process.cwd(), customStyle))
+        ? fs.readFileSync(resolve(process.cwd(), customStyle), 'utf-8')
+        : customStyle,
     scenarios: {
       failed: 0,
       ambiguous: 0,
@@ -205,8 +213,22 @@ async function generateReport(options: Options) {
       suite.featureCount.total++;
       const idPrefix = staticFilePath ? '' : `${uuid()}.`;
       feature.id = `${idPrefix}${feature.id}`.replace(/[^a-zA-Z0-9-_]/g, '-');
-      feature.app = 0;
-      feature.browser = 0;
+      feature.app = '';
+      feature.browser = '';
+
+      // Metadata shortcuts for templates
+      if (feature.metadata && !Array.isArray(feature.metadata)) {
+        if (feature.metadata.device) feature.device = feature.metadata.device;
+        if (feature.metadata.platform) {
+          feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
+        }
+        if (feature.metadata.browser) {
+          feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`;
+        }
+        if (feature.metadata.app) {
+          feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
+        }
+      }
 
       if (!feature.elements) {
         return;
@@ -216,26 +238,21 @@ async function generateReport(options: Options) {
 
       if (feature.isFailed) {
         suite.featureCount.failed++;
-        feature.failed++;
       } else if (feature.isAmbiguous) {
         suite.featureCount.ambiguous++;
-        feature.ambiguous++;
       } else if (feature.isNotdefined) {
-        feature.notDefined++;
         suite.featureCount.notDefined++;
       } else if (feature.isPending) {
-        feature.pending++;
         suite.featureCount.pending++;
       } else if (feature.isSkipped) {
-        feature.skipped++;
         suite.featureCount.skipped++;
       } else {
-        feature.passed++;
         suite.featureCount.passed++;
       }
 
       if (feature.duration) {
         feature.totalTime += feature.duration;
+        suite.totalTime += feature.duration;
         feature.time = formatDuration(feature.duration);
       }
 
@@ -307,6 +324,8 @@ async function generateReport(options: Options) {
         }
       }
 
+      scenario.duration = toMillis(scenario.duration) / 1000;
+
       if (Object.hasOwn(scenario, 'description') && scenario.description) {
         scenario.description = scenario.description.replace(/\r?\n/g, '<br />');
       }
@@ -318,8 +337,9 @@ async function generateReport(options: Options) {
       if (scenario.failed > 0) {
         suite.scenarios.total++;
         suite.scenarios.failed++;
-        feature.scenarios.total++;
         feature.isFailed = true;
+        feature.failed++;
+        feature.scenarios.total++;
         feature.scenarios.failed++;
         return;
       }
@@ -327,8 +347,9 @@ async function generateReport(options: Options) {
       if (scenario.ambiguous > 0) {
         suite.scenarios.total++;
         suite.scenarios.ambiguous++;
-        feature.scenarios.total++;
         feature.isAmbiguous = true;
+        feature.ambiguous++;
+        feature.scenarios.total++;
         feature.scenarios.ambiguous++;
         return;
       }
@@ -336,8 +357,9 @@ async function generateReport(options: Options) {
       if (scenario.notDefined > 0) {
         suite.scenarios.total++;
         suite.scenarios.notDefined++;
-        feature.scenarios.total++;
         feature.isNotdefined = true;
+        feature.notDefined++;
+        feature.scenarios.total++;
         feature.scenarios.notDefined++;
         return;
       }
@@ -345,21 +367,25 @@ async function generateReport(options: Options) {
       if (scenario.pending > 0) {
         suite.scenarios.total++;
         suite.scenarios.pending++;
-        feature.scenarios.total++;
         feature.isPending = true;
+        feature.pending++;
+        feature.scenarios.total++;
         feature.scenarios.pending++;
         return;
       }
 
       if (scenario.skipped > 0) {
         suite.scenarios.total++;
-        feature.scenarios.total++;
         if (scenario.pending > 0) {
           suite.scenarios.pending++;
+          feature.pending++;
+          feature.scenarios.total++;
           feature.scenarios.pending++;
           return;
         }
         suite.scenarios.skipped++;
+        feature.skipped++;
+        feature.scenarios.total++;
         feature.scenarios.skipped++;
         return;
       }
@@ -368,9 +394,9 @@ async function generateReport(options: Options) {
       if (scenario.passed && scenario.passed > 0) {
         suite.scenarios.total++;
         suite.scenarios.passed++;
+        feature.passed++;
         feature.scenarios.total++;
-        feature.passed = (feature.passed || 0) + 1;
-        feature.scenarios.passed = Number(feature.scenarios.passed) + 1;
+        feature.scenarios.passed++;
         return;
       }
     });
@@ -502,6 +528,18 @@ async function generateReport(options: Options) {
       }
 
       scenario.pending = (scenario.pending || 0) + 1;
+
+      // Global step stats
+      if (suite.featureCount.steps) {
+        suite.featureCount.steps.total++;
+        if (step.result.status === RESULT_STATUS.passed) {
+          suite.featureCount.steps.passed++;
+        } else if (step.result.status === RESULT_STATUS.failed || step.result.status === RESULT_STATUS.ambiguous) {
+          suite.featureCount.steps.failed++;
+        } else {
+          suite.featureCount.steps.skipped++;
+        }
+      }
     });
 
     return scenario;
@@ -531,18 +569,19 @@ async function generateReport(options: Options) {
       reportName: suite.reportName,
       pageTitle: pageTitle,
       pageFooter: pageFooter,
-      project: customData?.title,
+      project: options.customData?.title,
       release: 'v1.0.0',
       cycle: 'N/A',
-      executionStartTime: formatDuration(0),
-      executionEndTime: formatDuration(suite.totalTime),
-      metadata: customData?.data,
+      executionStartTime: formatDuration(0), // Placeholder
+      executionEndTime: formatDuration(suite.totalTime), // Total duration
+      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      metadata: options.customData?.data,
       useCDN: suite.useCDN,
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
       displayDuration: suite.displayDuration,
       plainDescription,
-      customStyle: suite.customStyle ? fs.readFileSync(resolve(process.cwd(), suite.customStyle), 'utf-8') : '',
+      customStyle: suite.customStyle || '',
     };
 
     const data = {
@@ -573,23 +612,27 @@ async function generateReport(options: Options) {
         reportName: suite.reportName,
         pageTitle: pageTitle,
         pageFooter: pageFooter,
-        project: customData?.title,
+        project: options.customData?.title,
         release: 'v1.0.0',
         cycle: 'N/A',
         executionStartTime: formatDuration(0),
         executionEndTime: formatDuration(suite.totalTime),
-        metadata: customData?.data,
+        executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+        metadata: options.customData?.data,
         useCDN: suite.useCDN,
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,
         displayDuration: suite.displayDuration,
         plainDescription,
-        customStyle: suite.customStyle ? fs.readFileSync(resolve(process.cwd(), suite.customStyle), 'utf-8') : '',
+        customStyle: suite.customStyle || '',
       };
 
       const data = {
         report,
-        feature,
+        feature: {
+          ...feature,
+          elements: feature.elements,
+        },
       };
 
       const html = await engine.renderFile('feature', {
@@ -607,24 +650,12 @@ async function generateReport(options: Options) {
   async function _createCssFile(suite: Suite) {
     console.log('Creating Report CSS file...');
     if (!suite.customStyle) {
-      const cssIn = path.join(templatesDir, 'styles', 'main.css');
-      const cssOut = path.join(reportPath, 'styles.css');
+      console.log('Creating TailwindCSS file...');
+      const cssIn = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
+      const cssOut = path.join(reportPath, 'styles.min.css');
+
       await fs.ensureDir(path.dirname(cssOut));
-
-      if (!(await fs.pathExists(cssIn))) {
-        console.log('Creating Basic CSS file...');
-        await fs.writeFile(
-          cssIn,
-          "@import 'tailwindcss';\n\n@theme inline {\n --color-background: white;\n --color-foreground: black;\n}",
-        );
-      }
-
-      try {
-        console.log('Compiling CSS...');
-        execSync(`npx @tailwindcss/cli -i ${cssIn} -o ${cssOut}`, { stdio: 'inherit' });
-      } catch (error) {
-        console.error('Error compiling CSS: ', error);
-      }
+      await fs.copy(cssIn, cssOut);
     } else {
       const cssFile = resolve(reportPath, 'styles.css');
       const cssContent = suite.customStyle;

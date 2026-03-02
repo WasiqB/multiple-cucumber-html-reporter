@@ -1,25 +1,35 @@
 <div class="grid grid-cols-2 lg:flex lg:flex-wrap gap-x-4 gap-y-3 md:gap-6 text-xs md:text-sm text-muted-foreground">
+    {% if feature.device %}
+    {% assign device = feature.device | downcase %}
     <div class="flex items-center gap-2 overflow-hidden">
-        <i class="{% if feature.device contains 'iPhone' or feature.device contains 'Android' or feature.device contains 'Mobile' %}fa-solid fa-mobile-screen-button{% elsif feature.device contains 'Tablet' or feature.device contains 'iPad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-primary shrink-0"></i>
+        <i class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-primary shrink-0"></i>
         <div class="truncate">
             <span class="font-medium text-foreground block md:inline">Device:</span> 
             <span class="truncate">{{ feature.device }}</span>
         </div>
     </div>
+    {% endif %}
+    {% if feature.os %}
+    {% assign os = feature.os | downcase %}
     <div class="flex items-center gap-2 overflow-hidden">
-        <i class="{% if feature.os contains 'Windows' %}fa-brands fa-microsoft{% elsif feature.os contains 'Mac' or feature.os contains 'iOS' or feature.os contains 'macOS' %}fa-brands fa-apple{% elsif feature.os contains 'Android' %}fa-brands fa-android{% elsif feature.os contains 'Linux' or feature.os contains 'Ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-primary shrink-0"></i>
+        <i class="{% if os contains 'windows' %}fa-brands fa-microsoft{% elsif os contains 'osx' or os contains 'ios' or os contains 'macos' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-primary shrink-0"></i>
         <div class="truncate">
             <span class="font-medium text-foreground block md:inline">OS:</span> 
             <span class="truncate">{{ feature.os }}</span>
         </div>
     </div>
+    {% endif %}
+    {% if feature.browser %}
+    {% assign browser = feature.browser | downcase %}
     <div class="flex items-center gap-2 overflow-hidden">
-        <i class="{% if feature.browser contains 'Chrome' %}fa-brands fa-chrome{% elsif feature.browser contains 'Firefox' %}fa-brands fa-firefox{% elsif feature.browser contains 'Safari' %}fa-brands fa-safari{% elsif feature.browser contains 'Edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-primary shrink-0"></i>
+        <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-primary shrink-0"></i>
         <div class="truncate">
             <span class="font-medium text-foreground block md:inline">Browser:</span> 
             <span class="truncate">{{ feature.browser }}</span>
         </div>
     </div>
+    {% endif %}
+    {% if feature.app %}
     <div class="flex items-center gap-2 overflow-hidden">
         <i class="fa-solid fa-cube text-primary shrink-0"></i>
         <div class="truncate">
@@ -27,6 +37,7 @@
             <span class="truncate">{{ feature.app }}</span>
         </div>
     </div>
+    {% endif %}
     {% if feature.file %}
     <div class="flex items-center gap-2 overflow-hidden lg:col-span-2">
         <i class="fa-solid fa-file-code text-primary shrink-0"></i>
@@ -38,6 +49,7 @@
     {% endif %}
     {% if feature.metadata %}
         {% for item in feature.metadata %}
+        {% if item.value %}
         <div class="flex items-center gap-2 overflow-hidden">
             <i class="fa-solid fa-circle-info text-primary shrink-0"></i>
             <div class="truncate">
@@ -45,6 +57,7 @@
                 <span class="truncate" title="{{ item.value }}">{{ item.value }}</span>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     {% endif %}
 </div>
