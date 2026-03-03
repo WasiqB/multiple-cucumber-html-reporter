@@ -51,7 +51,7 @@ jobs:
         run: pnpm report
 
       - name: Upload Report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: cypress-report
           path: examples/cypress/.run/html-report
