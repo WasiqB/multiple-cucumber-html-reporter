@@ -138,8 +138,10 @@ export interface Feature {
   isSkipped: boolean;
   isNotdefined: boolean;
   isPending: boolean;
-  app: number;
-  browser: number;
+  app: string;
+  browser: string;
+  os: string;
+  device: string;
   totalTime: number;
   passed: number;
   failed: number;
@@ -147,6 +149,7 @@ export interface Feature {
   skipped: number;
   pending: number;
   ambiguous: number;
+  tags?: Array<{ name: string; line: number }>;
 }
 
 export interface Suite {
@@ -180,6 +183,12 @@ export interface Suite {
     pendingPercentage: string | number;
     skippedPercentage: string | number;
     passedPercentage: string | number;
+    steps?: {
+      passed: number;
+      failed: number;
+      skipped: number;
+      total: number;
+    };
   };
   reportName: string;
   scenarios: {

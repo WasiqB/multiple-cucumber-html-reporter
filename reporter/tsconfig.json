@@ -12,5 +12,6 @@
     "rootDir": "./src",
     "sourceMap": true
   },
-  "include": ["cucumber-html-report.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
