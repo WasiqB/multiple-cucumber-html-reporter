@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "target": "es2022",
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "node16",
+    "moduleResolution": "node16",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "sourceMap": true
   },
-  "include": ["cucumber-html-report.ts"]
+  "include": ["cucumber-html-report.ts", "cypress.config.ts", "cypress/**/*.ts"]
 }

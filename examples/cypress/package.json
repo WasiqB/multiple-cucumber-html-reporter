@@ -16,13 +16,13 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
-    "@types/node": "^25.3.3",
-    "cypress": "^15.11.0",
+    "@types/node": "^25.5.0",
+    "cypress": "^15.12.0",
     "multiple-cucumber-html-reporter": "workspace:*",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "dayjs": "^1.11.19"
+    "dayjs": "^1.11.20"
   },
   "packageManager": "pnpm@10.30.3"
 }

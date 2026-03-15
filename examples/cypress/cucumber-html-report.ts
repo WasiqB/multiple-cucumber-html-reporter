@@ -22,6 +22,7 @@ const mapOs = (os: string) => {
   } else if (os.startsWith('ios')) {
     return 'ios';
   }
+  return 'unknown';
 };
 
 generate({

@@ -13,6 +13,12 @@
   ],
   "main": "dist/generate-report.js",
   "types": "dist/generate-report.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/generate-report.d.ts",
+      "import": "./dist/generate-report.js"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "prebuild": "pnpm generate:css && pnpm generate:css:min",
@@ -46,9 +52,9 @@
   "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "dependencies": {
     "find": "^0.3.0",
-    "fs-extra": "^11.3.3",
+    "fs-extra": "^11.3.4",
     "jsonfile": "^6.2.0",
-    "liquidjs": "^10.20.1",
+    "liquidjs": "^10.25.0",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
@@ -63,7 +69,7 @@
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.5.0",
     "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.1.0",
