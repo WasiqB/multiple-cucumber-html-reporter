@@ -32,8 +32,8 @@ generate({
   useCDN: false,
   metadata: {
     browser: {
-      name: runInfos.browserName === 'chromium' ? 'chrome' : (runInfos.browserName as string),
-      version: runInfos.browserVersion as string,
+      name: runInfos.browserName === 'chromium' ? 'chrome' : runInfos.browserName,
+      version: runInfos.browserVersion,
     },
     platform: {
       name: mapOs(runInfos.osName),
