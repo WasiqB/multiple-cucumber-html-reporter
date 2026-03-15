@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/release-it@19.2.4/schema/release-it.json",
+  "$schema": "https://unpkg.com/release-it@latest/schema/release-it.json",
   "plugins": {
     "release-it-pnpm": {},
     "@release-it-plugins/lerna-changelog": {

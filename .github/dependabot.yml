@@ -15,21 +15,6 @@ updates:
       dependencies:
         update-types: ["major", "minor", "patch"]
 
-  - package-ecosystem: "npm"
-    directory: "/examples/cypress"
-    target-branch: "main"
-    versioning-strategy: increase
-    open-pull-requests-limit: 100
-    labels:
-      - ':house: pr: internal'
-      - 'typescript'
-    schedule:
-      interval: "monthly"
-      timezone: "Asia/Calcutta"
-    groups:
-      dependencies:
-        update-types: ["major", "minor", "patch"]
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

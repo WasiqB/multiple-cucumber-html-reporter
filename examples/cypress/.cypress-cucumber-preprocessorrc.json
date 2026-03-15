@@ -1,7 +1,6 @@
 {
   "json": {
     "enabled": true,
-    "formatter": ".bin/cucumber-json-formatter",
     "output": ".run/reports/json/cucumber-report.json"
   },
   "messages": {
