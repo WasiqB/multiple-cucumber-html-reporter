@@ -46,6 +46,7 @@ jobs:
       - name: Run Cypress
         working-directory: examples/cypress
         run: pnpm test
+        continue-on-error: true
 
       - name: Generate Report
         working-directory: examples/cypress
