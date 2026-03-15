@@ -1,6 +1,7 @@
 import {
   After,
   AfterStep,
+  attach,
   Before,
   BeforeStep,
   type DataTable,
@@ -24,7 +25,7 @@ defineParameterType({
  * Global setup before each scenario tagged with @parabank.
  */
 Before({ tags: '@parabank' }, (scenario) => {
-  cy.log(`Starting scenario: ${scenario.pickle.name}`);
+  attach(`Starting scenario: ${scenario.pickle.name}`);
 });
 
 /**
@@ -32,7 +33,7 @@ Before({ tags: '@parabank' }, (scenario) => {
  */
 BeforeStep((scenario) => {
   const stepText = scenario.pickleStep.text;
-  cy.log(`Step execution begins: ${stepText}`);
+  attach(`Step execution begins: ${stepText}`);
 });
 
 /**
@@ -43,18 +44,18 @@ AfterStep((scenario) => {
   const screenshotName = `${stepText}_${Date.now()}`;
 
   cy.screenshot(screenshotName, { capture: 'viewport' });
-  cy.log(`Completed step: ${scenario.pickleStep.text}`);
+  attach(`Completed step: ${scenario.pickleStep.text}`);
 });
 
 /**
  * Global teardown after each scenario.
  */
 After((scenario) => {
-  cy.log(`Scenario finished successfully ${scenario.pickle.name}.`);
+  attach(`Scenario finished successfully ${scenario.pickle.name}.`);
 });
 
 Given('I am on the Parabank home page', () => {
-  cy.log('Navigating to Parabank index page');
+  attach('Navigating to Parabank index page');
   cy.visit('https://parabank.parasoft.com/parabank/index.htm');
 });
 
@@ -62,7 +63,7 @@ Given('I am on the Parabank home page', () => {
  * Navigates to a specific page using the custom parameter type.
  */
 When('I navigate to the {pageName}', (pageName: string) => {
-  cy.log(`Clicking on link for: ${pageName}`);
+  attach(`Clicking on link for: ${pageName}`);
   cy.contains('a', pageName).click();
 });
 
@@ -71,7 +72,7 @@ When('I navigate to the {pageName}', (pageName: string) => {
  */
 When('I fill in my personal details:', (dataTable: DataTable) => {
   const data = dataTable.hashes()[0];
-  cy.log(`Filling registration details for: ${data['First Name']} ${data['Last Name']}`);
+  attach(`Filling registration details for: ${data['First Name']} ${data['Last Name']}`);
 
   const fields: Record<string, string> = {
     'First Name': 'customer.firstName',
@@ -92,50 +93,50 @@ When('I fill in my personal details:', (dataTable: DataTable) => {
 });
 
 When('I choose a username {string} and password {string}', (username: string, password: string) => {
-  cy.log(`Choosing credentials: ${username}`);
+  attach(`Choosing credentials: ${username}`);
   cy.get('input[id="customer.username"]').type(username);
   cy.get('input[id="customer.password"]').type(password);
   cy.get('input[id="repeatedPassword"]').type(password);
 });
 
 When('I click on the {string} button', (buttonValue: string) => {
-  cy.log(`Clicking button with value: ${buttonValue}`);
+  attach(`Clicking button with value: ${buttonValue}`);
   cy.get(`input[type="submit"][value="${buttonValue}"]`).click();
 });
 
 Then('I should see a welcome message {string}', (message: string) => {
-  cy.log(`Verifying welcome message: ${message}`);
+  attach(`Verifying welcome message: ${message}`);
   cy.get('h1.title').should('contain', message);
 });
 
 Then('I should be logged in', () => {
-  cy.log('Verifying Logout link visibility');
+  attach('Verifying Logout link visibility');
   cy.contains('a', 'Log Out').should('be.visible');
 });
 
 When('I enter my username {string} and password {string}', (username: string, password: string) => {
-  cy.log(`Entering login credentials for: ${username}`);
+  attach(`Entering login credentials for: ${username}`);
   cy.get('input[name="username"]').type(username);
   cy.get('input[name="password"]').type(password);
 });
 
 Then('I should see the {string} page', (title: string) => {
-  cy.log(`Verifying page title: ${title}`);
+  attach(`Verifying page title: ${title}`);
   cy.get('h1.title').should('contain', title);
 });
 
 Then('I should not see the {string} error message', (errorText: string) => {
-  cy.log(`Confirming absence of error: ${errorText}`);
+  attach(`Confirming absence of error: ${errorText}`);
   cy.get('.error').should('not.contain', errorText);
 });
 
 Then('I should see an error message {string}', (errorText: string) => {
-  cy.log(`Verifying error message: ${errorText}`);
+  attach(`Verifying error message: ${errorText}`);
   cy.get('.error').should('contain', errorText);
 });
 
 Then('I should still be on the home page', () => {
-  cy.log('Verifying URL is on index page');
+  attach('Verifying URL is on index page');
   cy.url().should('include', '/index.htm');
 });
 
@@ -144,7 +145,7 @@ Then('I should still be on the home page', () => {
  */
 When('I fill in the lookup form with:', (dataTable: DataTable) => {
   const data = dataTable.hashes()[0];
-  cy.log(`Filling lookup details for: ${data['First Name']} ${data['Last Name']}`);
+  attach(`Filling lookup details for: ${data['First Name']} ${data['Last Name']}`);
 
   const lookupFields: Record<string, string> = {
     'First Name': 'firstName',
@@ -164,6 +165,6 @@ When('I fill in the lookup form with:', (dataTable: DataTable) => {
 });
 
 Then('I should see my login information', () => {
-  cy.log('Verifying success message for lookup');
+  attach('Verifying success message for lookup');
   cy.get('p').should('contain', 'Your login information was located successfully');
 });
