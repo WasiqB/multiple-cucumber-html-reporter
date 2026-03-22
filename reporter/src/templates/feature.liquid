@@ -12,7 +12,7 @@
 
     <!-- Feature Header -->
     <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden">
-        <div class="p-4 md:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="p-4 md:p-6 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
             <div class="space-y-4 flex-1">
                 <div class="space-y-2">
                     <h2 class="text-xl md:text-2xl font-bold text-foreground leading-tight">{{ data.feature.name }}</h2>
@@ -23,6 +23,11 @@
                             {{ tag.name }}
                         </span>
                         {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if data.feature.description %}
+                    <div class="mt-4 text-sm text-muted-foreground whitespace-pre-line bg-muted/20 p-3 rounded-lg border border-border/50">
+                        {{ data.feature.description | escape | strip }}
                     </div>
                     {% endif %}
                 </div>

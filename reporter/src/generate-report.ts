@@ -217,16 +217,27 @@ async function generateReport(options: Options) {
       feature.browser = '';
 
       // Metadata shortcuts for templates
-      if (feature.metadata && !Array.isArray(feature.metadata)) {
-        if (feature.metadata.device) feature.device = feature.metadata.device;
-        if (feature.metadata.platform) {
-          feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
-        }
-        if (feature.metadata.browser) {
-          feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`;
-        }
-        if (feature.metadata.app) {
-          feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
+      if (feature.metadata) {
+        if (Array.isArray(feature.metadata)) {
+          feature.metadata.forEach((item: any) => {
+            const label = (item.name || item.label || '').toLowerCase();
+            const value = item.value || '';
+            if (label.includes('device')) feature.device = value;
+            if (label.includes('os') || label.includes('platform')) feature.os = value;
+            if (label.includes('browser')) feature.browser = value;
+            if (label.includes('app')) feature.app = value;
+          });
+        } else {
+          if (feature.metadata.device) feature.device = feature.metadata.device;
+          if (feature.metadata.platform) {
+            feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
+          }
+          if (feature.metadata.browser) {
+            feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`;
+          }
+          if (feature.metadata.app) {
+            feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
+          }
         }
       }
 

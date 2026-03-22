@@ -92,11 +92,11 @@ window.ReportCharts = {
     clear('#device-os-chart');
     const devices = {};
     data.features.forEach((f) => {
-      const key = f.device || 'N/A';
+      const key = [f.device, f.os].filter(Boolean).join(' - ') || 'N/A';
       if (!devices[key]) devices[key] = { passed: 0, failed: 0, skipped: 0 };
-      devices[key].passed += f.passed || 0;
-      devices[key].failed += f.failed || 0;
-      devices[key].skipped += f.skipped || 0;
+      devices[key].passed += f.scenarios?.passed || f.passed || 0;
+      devices[key].failed += f.scenarios?.failed || f.failed || 0;
+      devices[key].skipped += f.scenarios?.skipped || f.skipped || 0;
     });
     const deviceKeys = Object.keys(devices);
     const hasDevices = deviceKeys.length > 0;
@@ -125,9 +125,9 @@ window.ReportCharts = {
     data.features.forEach((f) => {
       const key = f.browser || 'N/A';
       if (!browsers[key]) browsers[key] = { passed: 0, failed: 0, skipped: 0 };
-      browsers[key].passed += f.passed || 0;
-      browsers[key].failed += f.failed || 0;
-      browsers[key].skipped += f.skipped || 0;
+      browsers[key].passed += f.scenarios?.passed || f.passed || 0;
+      browsers[key].failed += f.scenarios?.failed || f.failed || 0;
+      browsers[key].skipped += f.scenarios?.skipped || f.skipped || 0;
     });
     const browserKeys = Object.keys(browsers);
     const hasBrowsers = browserKeys.length > 0;
@@ -157,8 +157,8 @@ window.ReportCharts = {
     if (!stepsData || (stepsData.passed === 0 && stepsData.failed === 0 && stepsData.skipped === 0)) {
       stepsData = { passed: 0, failed: 0, skipped: 0 };
       data.features.forEach((f) => {
-        f.elements.forEach((s) => {
-          s.steps.forEach((step) => {
+        (f.elements || []).forEach((s) => {
+          (s.steps || []).forEach((step) => {
             const status = step.result?.status;
             if (status === 'passed') stepsData.passed++;
             else if (status === 'failed' || status === 'ambiguous') stepsData.failed++;
@@ -203,9 +203,9 @@ window.ReportCharts = {
     if (hasTrend) {
       new ApexCharts(document.querySelector('#status-trend-chart'), {
         series: [
-          { name: 'Passed', data: data.features.map((f) => f.passed || 0) },
-          { name: 'Failed', data: data.features.map((f) => f.failed || 0) },
-          { name: 'Skipped', data: data.features.map((f) => f.skipped || 0) },
+          { name: 'Passed', data: data.features.map((f) => f.scenarios?.passed || f.passed || 0) },
+          { name: 'Failed', data: data.features.map((f) => f.scenarios?.failed || f.failed || 0) },
+          { name: 'Skipped', data: data.features.map((f) => f.scenarios?.skipped || f.skipped || 0) },
         ],
         chart: { type: 'bar', height: 320, stacked: true, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: {

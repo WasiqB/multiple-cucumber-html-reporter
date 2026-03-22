@@ -39,23 +39,18 @@ window.ReportModal = {
     title.textContent = name;
     let html = '';
 
-    if (type === 'screenshot') {
+    if (type === 'screenshot' || type?.includes('image')) {
       html = `
-        <div class="flex items-center justify-center bg-slate-900 rounded p-4 md:p-8">
-          <div class="text-center text-slate-400">
-            <i class="fa-solid fa-image text-5xl mb-4 opacity-30"></i>
-            <p class="text-sm font-medium">Screenshot: ${name}</p>
-            <p class="text-xs opacity-50 mt-2 italic">Preview requires asset hosting in static mode</p>
-          </div>
+        <div class="flex items-center justify-center bg-slate-900 rounded p-2 overflow-auto max-h-[80vh]">
+          <img src="${content}" alt="${name}" class="max-w-full h-auto rounded shadow-2xl transition-transform duration-300 hover:scale-[1.02]" onerror='this.onerror=null; this.src="../assets/img/placeholder.png"; this.parentElement.innerHTML="<p class="text-slate-400 p-8">Failed to load image</p>"'>
         </div>`;
-    } else if (type === 'video') {
+    } else if (type === 'video' || type?.includes('video')) {
       html = `
-        <div class="flex items-center justify-center bg-slate-900 rounded p-4 md:p-8">
-          <div class="text-center text-slate-300">
-            <i class="fa-solid fa-video text-5xl mb-4 opacity-30"></i>
-            <p class="text-sm font-medium">Video: ${name}</p>
-            <p class="text-xs opacity-50 mt-2 italic">Playback requires asset hosting in static mode</p>
-          </div>
+        <div class="flex items-center justify-center bg-slate-900 rounded p-2">
+          <video controls class="max-w-full max-h-[80vh] rounded shadow-2xl" autoplay>
+            <source src="${content}" type="${type}">
+            Your browser does not support the video tag.
+          </video>
         </div>`;
     } else if (type === 'log') {
       html = `
