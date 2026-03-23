@@ -29,7 +29,7 @@
         </div>
     </div>
     {% endif %}
-    {% if feature.app %}
+    {% if feature.app and feature.app != "" %}
     <div class="flex items-center gap-2 overflow-hidden">
         <i class="fa-solid fa-cube text-primary shrink-0"></i>
         <div class="truncate">
@@ -38,12 +38,12 @@
         </div>
     </div>
     {% endif %}
-    {% if feature.file %}
+    {% if feature.uri and feature.uri != "" %}
     <div class="flex items-center gap-2 overflow-hidden lg:col-span-2">
         <i class="fa-solid fa-file-code text-primary shrink-0"></i>
         <div class="truncate">
-            <span class="font-medium text-foreground block md:inline">File:</span> 
-            <span class="truncate" title="{{ feature.file }}">{{ feature.file }}</span>
+            <span class="font-medium text-foreground block md:inline">File URL:</span>
+            <span class="truncate font-mono text-muted-foreground" title="{{ feature.uri }}">{{ feature.uri }}</span>
         </div>
     </div>
     {% endif %}

@@ -25,7 +25,7 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                    {% if data.feature.description %}
+                    {% if data.feature.description and data.feature.description != "" %}
                     <div class="mt-4 text-sm text-muted-foreground whitespace-pre-line bg-muted/20 p-3 rounded-lg border border-border/50">
                         {{ data.feature.description | escape | strip }}
                     </div>
