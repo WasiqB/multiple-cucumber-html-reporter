@@ -13,8 +13,7 @@
       "!!**/dist",
       "!!**/node_modules",
       "!!**/.run",
-      "!!reporter/templates/assets/js",
-      "!!reporter/src/templates",
+      "!!reporter/src/templates/**/*",
       "!!reporter/src/test/unit/data/**/*.json"
     ]
   },

@@ -402,5 +402,37 @@ window.ReportCharts = {
         tooltip: { theme },
       }).render();
     }
+
+    // 5. Top 10 Tags Chart
+    clear('#tag-distribution-chart');
+    const tags = {};
+    const featureTags = feature.tags || [];
+    
+    (feature.elements || []).forEach((s) => {
+      const scenarioTags = (s.tags || []).concat(featureTags);
+      const uniqueScenarioTags = [...new Set(scenarioTags.map(t => typeof t === 'string' ? t : t.name))];
+      
+      uniqueScenarioTags.forEach((name) => {
+        tags[name] = (tags[name] || 0) + 1;
+      });
+    });
+
+    const tagKeys = Object.keys(tags)
+      .sort((a, b) => tags[b] - tags[a])
+      .slice(0, 10);
+    const hasTags = tagKeys.length > 0;
+    toggleChart('#tag-distribution-chart', hasTags);
+    if (hasTags) {
+      new ApexCharts(document.querySelector('#tag-distribution-chart'), {
+        series: [{ name: 'Scenarios', data: tagKeys.map((k) => tags[k]) }],
+        chart: { type: 'bar', height: 250, toolbar: { show: false }, animations: { enabled: false } },
+        xaxis: { categories: tagKeys, labels: { style: { colors: textColor } } },
+        yaxis: { labels: { style: { colors: textColor } } },
+        colors: ['#6366f1'],
+        plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+        grid: { borderColor: gridColor },
+        tooltip: { theme },
+      }).render();
+    }
   },
 };
