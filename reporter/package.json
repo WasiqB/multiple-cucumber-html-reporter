@@ -52,7 +52,7 @@
     "find": "^0.3.0",
     "fs-extra": "^11.3.4",
     "jsonfile": "^6.2.0",
-    "liquidjs": "^10.25.0",
+    "liquidjs": "^10.25.2",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
@@ -73,7 +73,7 @@
     "lerna-changelog": "^2.2.0",
     "release-it": "^19.2.4",
     "release-it-pnpm": "^4.6.6",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "packageManager": "pnpm@10.32.1"
 }

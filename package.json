@@ -34,13 +34,13 @@
   },
   "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "devDependencies": {
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "2.4.9",
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@types/node": "^25.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "lint-staged": {
     "**/*.{ts,js,mjs,json}": [
