@@ -88,12 +88,28 @@
     <div class="space-y-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <h3 class="text-xl font-bold text-foreground">Scenarios</h3>
-            <div class="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border">
-                <button class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-xs font-bold transition-all hover:bg-background hover:shadow-sm" data-status="all">ALL</button>
-                <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-green-600 dark:text-green-500" data-status="passed">PASSED</button>
-                <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-red-600 dark:text-red-500" data-status="failed">FAILED</button>
-                <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-yellow-600 dark:text-yellow-500" data-status="skipped">SKIPPED</button>
+            <div class="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
+                <div class="relative w-full md:w-64">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </span>
+                    <input type="text" id="scenario-search" placeholder="Search scenarios..." 
+                            class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm">
+                </div>
+                <div class="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border w-full md:w-auto overflow-x-auto">
+                    <button class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm" data-status="all">ALL</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-green-600 dark:text-green-500" data-status="passed">PASSED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-red-600 dark:text-red-500" data-status="failed">FAILED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-yellow-600 dark:text-yellow-500" data-status="skipped">SKIPPED</button>
+                </div>
             </div>
+        </div>
+        <div id="no-scenarios-message" class="hidden py-12 text-center bg-muted/20 rounded-xl border border-dashed">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
+                <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
+            </div>
+            <h4 class="text-sm font-semibold text-foreground">No scenario found</h4>
+            <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
         </div>
         <div id="scenarios-container" class="space-y-4">
             {% for scenario in data.feature.elements %}

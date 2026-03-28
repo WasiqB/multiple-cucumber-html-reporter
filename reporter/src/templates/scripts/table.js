@@ -106,7 +106,16 @@ window.ReportTable = {
                 </div>
               </td>
               <td class="px-4 md:px-6 py-4 text-right whitespace-nowrap">
-                ${passPercentage}%
+                <div class="inline-flex items-center justify-end relative h-12 w-12">
+                  <svg class="h-12 w-12 transform -rotate-90">
+                    <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                    <circle class="text-green-500 transition-all duration-500 ease-out" stroke-width="3" 
+                      stroke-dasharray="125.6" 
+                      stroke-dashoffset="${125.66 - (passPercentage * 1.2566)}" 
+                      stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                  </svg>
+                  <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">${passPercentage}%</span>
+                </div>
               </td>
             </tr>
           `;

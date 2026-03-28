@@ -724,7 +724,7 @@ async function generateReport(options: Options) {
    * @returns {number|null}
    */
   function parseScenarioStartTime(scenario: Scenario): number | null {
-    if (!scenario || !scenario.start_timestamp) {
+    if (!scenario?.start_timestamp) {
       return null;
     }
 

@@ -63,19 +63,23 @@
                         </div>
                     </td>
                     <td class="px-4 md:px-6 py-4 whitespace-nowrap">
+                        {% assign device = feature.device | default: feature.metadata.device | default: "desktop" | downcase %}
+                        {% assign os = feature.os | default: feature.metadata.platform.name | default: "N/A" | downcase %}
+                        {% assign browser = feature.browser | default: feature.metadata.browser.name | default: "N/A" | downcase %}
+                        
                         <div class="flex items-center gap-2 text-foreground font-medium">
-                            <i class="fa-solid fa-desktop text-muted-foreground w-4"></i>
-                            {{ feature.metadata.device | default: "Desktop" }}
+                            <i class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-muted-foreground w-4"></i>
+                            {{ feature.device | default: feature.metadata.device | default: "Desktop" }}
                         </div>
                         <div class="flex items-center gap-2 text-xs text-muted-foreground mt-1">
                              <span class="flex items-center gap-1">
-                                <i class="fa-solid fa-laptop-code w-3"></i>
-                                {{ feature.metadata.platform.name | default: "N/A" }}
+                                <i class="{% if os contains 'windows' %}fa-brands fa-microsoft{% elsif os contains 'osx' or os contains 'ios' or os contains 'macos' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} w-3"></i>
+                                {{ feature.os | default: feature.metadata.platform.name | default: "N/A" }}
                             </span>
                             <span class="opacity-30">/</span>
                             <span class="flex items-center gap-1">
-                                <i class="fa-solid fa-globe w-3"></i>
-                                {{ feature.metadata.browser.name | default: "N/A" }}
+                                <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} w-3"></i>
+                                {{ feature.browser | default: feature.metadata.browser.name | default: "N/A" }}
                             </span>
                         </div>
                     </td>
@@ -100,10 +104,20 @@
                     <td class="px-6 py-4 text-right">
                          {% assign total = feature.passed | plus: feature.failed | plus: feature.skipped %}
                          {% if total > 0 %}
-                            {{ feature.passed | times: 100 | divided_by: total }}%
+                            {% assign passPercentage = feature.passed | times: 100 | divided_by: total %}
                          {% else %}
-                            0%
+                            {% assign passPercentage = 0 %}
                          {% endif %}
+                         <div class="inline-flex items-center justify-end relative h-12 w-12">
+                            <svg class="h-12 w-12 transform -rotate-90">
+                              <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                              <circle class="text-green-500 transition-all duration-500 ease-out" stroke-width="3" 
+                                stroke-dasharray="125.6" 
+                                stroke-dashoffset="{{ 100 | minus: passPercentage | times: 1.256 }}" 
+                                stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
+                            </svg>
+                            <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">{{ passPercentage }}%</span>
+                         </div>
                     </td>
                 </tr>
                 {% endfor %}
@@ -117,13 +131,13 @@
             Showing <span id="showing-start" class="font-bold text-foreground">1</span> to <span id="showing-end" class="font-bold text-foreground">10</span> of <span id="total-records" class="font-bold text-foreground">{{ data.features.size }}</span> entries
         </div>
         <div class="flex items-center gap-1" id="pagination-controls">
-            <button id="prev-page" class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <button id="prev-page" disabled class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
             <div id="page-numbers" class="flex items-center gap-1">
                 <!-- Page buttons will be injected here -->
             </div>
-            <button id="next-page" class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <button id="next-page" {% if data.features.size <= 10 %}disabled{% endif %} class="h-8 w-8 flex items-center justify-center rounded border border-transparent text-foreground hover:bg-muted hover:border-border transition-all disabled:opacity-30 disabled:cursor-not-allowed">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>

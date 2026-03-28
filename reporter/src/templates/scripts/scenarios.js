@@ -1,17 +1,45 @@
-/**
- * Scenario filtering logic
- */
 window.ReportScenarios = {
   init: () => {
     const filters = document.querySelectorAll('.status-filter');
     const scenarios = document.querySelectorAll('.scenario-card');
+    const searchInput = document.getElementById('scenario-search');
+    const noScenariosMessage = document.getElementById('no-scenarios-message');
+
+    let currentStatus = 'all';
+    let currentSearch = '';
+
+    const applyFilters = () => {
+      let visibleCount = 0;
+      scenarios.forEach((card) => {
+        const cardStatus = (card.getAttribute('data-status') || '').toLowerCase().trim();
+        const cardName = (card.querySelector('h4')?.textContent || '').toLowerCase().trim();
+
+        const matchesStatus = currentStatus === 'all' || cardStatus === currentStatus;
+        const matchesSearch = currentSearch === '' || cardName.includes(currentSearch);
+
+        if (matchesStatus && matchesSearch) {
+          card.style.display = 'block';
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        noScenariosMessage?.classList.remove('hidden');
+      } else {
+        noScenariosMessage?.classList.add('hidden');
+      }
+    };
 
     filters.forEach((filter) => {
       // Ensure cursor is pointer
       filter.style.cursor = 'pointer';
 
       filter.addEventListener('click', () => {
-        const targetStatus = filter.dataset.status.toLowerCase().trim();
+        currentStatus = filter.dataset.status.toLowerCase().trim();
 
         // Update UI
         filters.forEach((f) => {
@@ -23,19 +51,13 @@ window.ReportScenarios = {
         filter.classList.add('active', 'bg-background', 'shadow-sm', 'border-primary', 'ring-2', 'ring-primary/20');
         filter.style.fontWeight = 'bold';
 
-        // Filter scenarios
-        scenarios.forEach((card) => {
-          const cardStatus = (card.getAttribute('data-status') || '').toLowerCase().trim();
-
-          if (targetStatus === 'all' || cardStatus === targetStatus) {
-            card.style.display = 'block';
-            card.classList.remove('hidden');
-          } else {
-            card.style.display = 'none';
-            card.classList.add('hidden');
-          }
-        });
+        applyFilters();
       });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      currentSearch = e.target.value.toLowerCase().trim();
+      applyFilters();
     });
   },
 };
