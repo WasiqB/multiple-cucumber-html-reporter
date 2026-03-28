@@ -12,7 +12,8 @@
     "rootDir": "./src",
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "types": ["jasmine", "node"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
