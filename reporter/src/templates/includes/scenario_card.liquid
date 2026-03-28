@@ -32,7 +32,7 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-                {% if scenario.description %}
+                {% if scenario.description and scenario.description != "" %}
                 <div class="mt-2 text-xs text-muted-foreground line-clamp-2">{{ scenario.description }}</div>
                 {% endif %}
             </div>
@@ -43,7 +43,7 @@
         </div>
     </button>
     <div class="hidden border-t divide-y divide-border">
-        {% if scenario.description %}
+        {% if scenario.description and scenario.description != "" %}
         <div class="px-6 py-3 bg-muted/10 border-b">
             <p class="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Description</p>
             <div class="text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">{{ scenario.description }}</div>
