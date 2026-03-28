@@ -9,11 +9,11 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: 2.4.8
-        version: 2.4.8
+        specifier: 2.4.9
+        version: 2.4.9
       '@commitlint/cli':
         specifier: ^20.5.0
-        version: 20.5.0(@types/node@25.5.0)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)(typescript@5.9.3)
+        version: 20.5.0(@types/node@25.5.0)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)(typescript@6.0.2)
       '@commitlint/config-conventional':
         specifier: ^20.5.0
         version: 20.5.0
@@ -27,8 +27,8 @@ importers:
         specifier: ^16.4.0
         version: 16.4.0
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.2
+        version: 6.0.2
 
   examples/cypress:
     dependencies:
@@ -38,7 +38,7 @@ importers:
     devDependencies:
       '@badeball/cypress-cucumber-preprocessor':
         specifier: ^24.0.1
-        version: 24.0.1(@babel/core@7.29.0)(cypress@15.12.0)(typescript@5.9.3)
+        version: 24.0.1(@babel/core@7.29.0)(cypress@15.13.0)(typescript@6.0.2)
       '@bahmutov/cypress-esbuild-preprocessor':
         specifier: ^2.2.8
         version: 2.2.8(esbuild@0.27.4)
@@ -46,14 +46,14 @@ importers:
         specifier: ^25.5.0
         version: 25.5.0
       cypress:
-        specifier: ^15.12.0
-        version: 15.12.0
+        specifier: ^15.13.0
+        version: 15.13.0
       multiple-cucumber-html-reporter:
         specifier: workspace:*
         version: link:../../reporter
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.2
+        version: 6.0.2
 
   reporter:
     dependencies:
@@ -67,8 +67,8 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0
       liquidjs:
-        specifier: ^10.25.1
-        version: 10.25.1
+        specifier: ^10.25.2
+        version: 10.25.2
       lodash:
         specifier: ^4.17.21
         version: 4.17.23
@@ -131,8 +131,8 @@ importers:
         specifier: ^4.2.1
         version: 4.2.2
       typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
+        specifier: ^6.0.2
+        version: 6.0.2
 
 packages:
 
@@ -246,59 +246,59 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
-  '@biomejs/biome@2.4.8':
-    resolution: {integrity: sha512-ponn0oKOky1oRXBV+rlSaUlixUxf1aZvWC19Z41zBfUOUesthrQqL3OtiAlSB1EjFjyWpn98Q64DHelhA6jNlA==}
+  '@biomejs/biome@2.4.9':
+    resolution: {integrity: sha512-wvZW92FrwitTcacvCBT8xdAbfbxWfDLwjYMmU3djjqQTh7Ni4ZdiWIT/x5VcZ+RQuxiKzIOzi5D+dcyJDFZMsA==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.4.8':
-    resolution: {integrity: sha512-ARx0tECE8I7S2C2yjnWYLNbBdDoPdq3oyNLhMglmuctThwUsuzFWRKrHmIGwIRWKz0Mat9DuzLEDp52hGnrxGQ==}
+  '@biomejs/cli-darwin-arm64@2.4.9':
+    resolution: {integrity: sha512-d5G8Gf2RpH5pYwiHLPA+UpG3G9TLQu4WM+VK6sfL7K68AmhcEQ9r+nkj/DvR/GYhYox6twsHUtmWWWIKfcfQQA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.4.8':
-    resolution: {integrity: sha512-Jg9/PsB9vDCJlANE8uhG7qDhb5w0Ix69D7XIIc8IfZPUoiPrbLm33k2Ig3NOJ/7nb3UbesFz3D1aDKm9DvzjhQ==}
+  '@biomejs/cli-darwin-x64@2.4.9':
+    resolution: {integrity: sha512-LNCLNgqDMG7BLdc3a8aY/dwKPK7+R8/JXJoXjCvZh2gx8KseqBdFDKbhrr7HCWF8SzNhbTaALhTBoh/I6rf9lA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.4.8':
-    resolution: {integrity: sha512-Zo9OhBQDJ3IBGPlqHiTISloo5H0+FBIpemqIJdW/0edJ+gEcLR+MZeZozcUyz3o1nXkVA7++DdRKQT0599j9jA==}
+  '@biomejs/cli-linux-arm64-musl@2.4.9':
+    resolution: {integrity: sha512-8RCww5xnPn2wpK4L/QDGDOW0dq80uVWfppPxHIUg6mOs9B6gRmqPp32h1Ls3T8GnW8Wo5A8u7vpTwz4fExN+sw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.4.8':
-    resolution: {integrity: sha512-5CdrsJct76XG2hpKFwXnEtlT1p+4g4yV+XvvwBpzKsTNLO9c6iLlAxwcae2BJ7ekPGWjNGw9j09T5KGPKKxQig==}
+  '@biomejs/cli-linux-arm64@2.4.9':
+    resolution: {integrity: sha512-4adnkAUi6K4C/emPRgYznMOcLlUqZdXWM6aIui4VP4LraE764g6Q4YguygnAUoxKjKIXIWPteKMgRbN0wsgwcg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.4.8':
-    resolution: {integrity: sha512-Gi8quv8MEuDdKaPFtS2XjEnMqODPsRg6POT6KhoP+VrkNb+T2ywunVB+TvOU0LX1jAZzfBr+3V1mIbBhzAMKvw==}
+  '@biomejs/cli-linux-x64-musl@2.4.9':
+    resolution: {integrity: sha512-5TD+WS9v5vzXKzjetF0hgoaNFHMcpQeBUwKKVi3JbG1e9UCrFuUK3Gt185fyTzvRdwYkJJEMqglRPjmesmVv4A==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.4.8':
-    resolution: {integrity: sha512-PdKXspVEaMCQLjtZCn6vfSck/li4KX9KGwSDbZdgIqlrizJ2MnMcE3TvHa2tVfXNmbjMikzcfJpuPWH695yJrw==}
+  '@biomejs/cli-linux-x64@2.4.9':
+    resolution: {integrity: sha512-L10na7POF0Ks/cgLFNF1ZvIe+X4onLkTi5oP9hY+Rh60Q+7fWzKDDCeGyiHUFf1nGIa9dQOOUPGe2MyYg8nMSQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.4.8':
-    resolution: {integrity: sha512-LoFatS0tnHv6KkCVpIy3qZCih+MxUMvdYiPWLHRri7mhi2vyOOs8OrbZBcLTUEWCS+ktO72nZMy4F96oMhkOHQ==}
+  '@biomejs/cli-win32-arm64@2.4.9':
+    resolution: {integrity: sha512-aDZr0RBC3sMGJOU10BvG7eZIlWLK/i51HRIfScE2lVhfts2dQTreowLiJJd+UYg/tHKxS470IbzpuKmd0MiD6g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.4.8':
-    resolution: {integrity: sha512-vAn7iXDoUbqFXqVocuq1sMYAd33p8+mmurqJkWl6CtIhobd/O6moe4rY5AJvzbunn/qZCdiDVcveqtkFh1e7Hg==}
+  '@biomejs/cli-win32-x64@2.4.9':
+    resolution: {integrity: sha512-NS4g/2G9SoQ4ktKtz31pvyc/rmgzlcIDCGU/zWbmHJAqx6gcRj2gj5Q/guXhoWTzCUaQZDIqiCQXHS7BcGYc0w==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -1335,8 +1335,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.10.10:
-    resolution: {integrity: sha512-sUoJ3IMxx4AyRqO4MLeHlnGDkyXRoUG0/AI9fjK+vS72ekpV0yWVY7O0BVjmBcRtkNcsAO2QDZ4tdKKGoI6YaQ==}
+  baseline-browser-mapping@2.10.11:
+    resolution: {integrity: sha512-DAKrHphkJyiGuau/cFieRYhcTFeK/lBuD++C7cZ6KZHbMhBrisoi+EvhQ5RZrIfV5qwsW8kgQ07JIC+MDJRAhg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -1705,8 +1705,8 @@ packages:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
-  cypress@15.12.0:
-    resolution: {integrity: sha512-B2BRcudLfA4NZZP5QpA45J70bu1heCH59V1yKRLHAtiC49r7RV03X5ifUh7Nfbk8QNg93RAsc6oAmodm/+j0pA==}
+  cypress@15.13.0:
+    resolution: {integrity: sha512-hJ9sY++TUC/HlUzHVJpIrDyqKMjlhx5PTXl/A7eA91JNEtUWkJAqefQR5mo9AtLra/9+m+JJaMg2U5Qd0a74Fw==}
     engines: {node: ^20.1.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
 
@@ -1887,8 +1887,8 @@ packages:
   ecc-jsbn@0.1.2:
     resolution: {integrity: sha512-eh9O+hwRHNbG4BLTjEl3nw044CkGm5X6LoaCf7LPp7UU8Qrt47JYNi6nPX8xjW97TKGKm1ouctg0QSpZe9qrnw==}
 
-  electron-to-chromium@1.5.321:
-    resolution: {integrity: sha512-L2C7Q279W2D/J4PLZLk7sebOILDSWos7bMsMNN06rK482umHUrh/3lM8G7IlHFOYip2oAg5nha1rCMxr/rs6ZQ==}
+  electron-to-chromium@1.5.328:
+    resolution: {integrity: sha512-QNQ5l45DzYytThO21403XN3FvK0hOkWDG8viNf6jqS42msJ8I4tGDSpBCgvDRRPnkffafiwAym2X2eHeGD2V0w==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -2791,8 +2791,8 @@ packages:
     engines: {node: '>=20.17'}
     hasBin: true
 
-  liquidjs@10.25.1:
-    resolution: {integrity: sha512-D+jsJvkGigFn8qNUgh8U6XNHhGFBp+p8Dk26ea/Hl+XrjFVSg9OXlN31hGAfS3MYQ3Kr8Xi9sEVBVQa/VTVSmg==}
+  liquidjs@10.25.2:
+    resolution: {integrity: sha512-ZbgcjEjGNlAIjqhuMzymO3lCpHgmVMftKfrq4/YLLxmKaFFeQMXRGrJTqKX7OXX1hKVPUDpTIrvL7lxt3X/hmw==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -3870,8 +3870,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  systeminformation@5.31.4:
-    resolution: {integrity: sha512-lZppDyQx91VdS5zJvAyGkmwe+Mq6xY978BDUG2wRkWE+jkmUF5ti8cvOovFQoN5bvSFKCXVkyKEaU5ec3SJiRg==}
+  systeminformation@5.31.5:
+    resolution: {integrity: sha512-5SyLdip4/3alxD4Kh+63bUQTJmu7YMfYQTC+koZy7X73HgNqZSD2P4wOZQWtUncvPvcEmnfIjCoygN4MRoEejQ==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
@@ -4009,6 +4009,11 @@ packages:
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4337,7 +4342,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@badeball/cypress-cucumber-preprocessor@24.0.1(@babel/core@7.29.0)(cypress@15.12.0)(typescript@5.9.3)':
+  '@badeball/cypress-cucumber-preprocessor@24.0.1(@babel/core@7.29.0)(cypress@15.13.0)(typescript@6.0.2)':
     dependencies:
       '@cucumber/ci-environment': 13.0.0
       '@cucumber/cucumber': 12.7.0
@@ -4352,8 +4357,8 @@ snapshots:
       base64-js: 1.5.1
       cli-table: 0.3.11
       common-ancestor-path: 2.0.0
-      cosmiconfig: 9.0.1(typescript@5.9.3)
-      cypress: 15.12.0
+      cosmiconfig: 9.0.1(typescript@6.0.2)
+      cypress: 15.13.0
       debug: 4.4.3(supports-color@8.1.1)
       error-stack-parser: 2.1.4
       find-cypress-specs: 1.54.10(@babel/core@7.29.0)
@@ -4378,49 +4383,49 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
-  '@biomejs/biome@2.4.8':
+  '@biomejs/biome@2.4.9':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.4.8
-      '@biomejs/cli-darwin-x64': 2.4.8
-      '@biomejs/cli-linux-arm64': 2.4.8
-      '@biomejs/cli-linux-arm64-musl': 2.4.8
-      '@biomejs/cli-linux-x64': 2.4.8
-      '@biomejs/cli-linux-x64-musl': 2.4.8
-      '@biomejs/cli-win32-arm64': 2.4.8
-      '@biomejs/cli-win32-x64': 2.4.8
+      '@biomejs/cli-darwin-arm64': 2.4.9
+      '@biomejs/cli-darwin-x64': 2.4.9
+      '@biomejs/cli-linux-arm64': 2.4.9
+      '@biomejs/cli-linux-arm64-musl': 2.4.9
+      '@biomejs/cli-linux-x64': 2.4.9
+      '@biomejs/cli-linux-x64-musl': 2.4.9
+      '@biomejs/cli-win32-arm64': 2.4.9
+      '@biomejs/cli-win32-x64': 2.4.9
 
-  '@biomejs/cli-darwin-arm64@2.4.8':
+  '@biomejs/cli-darwin-arm64@2.4.9':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.4.8':
+  '@biomejs/cli-darwin-x64@2.4.9':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.4.8':
+  '@biomejs/cli-linux-arm64-musl@2.4.9':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.4.8':
+  '@biomejs/cli-linux-arm64@2.4.9':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.4.8':
+  '@biomejs/cli-linux-x64-musl@2.4.9':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.4.8':
+  '@biomejs/cli-linux-x64@2.4.9':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.4.8':
+  '@biomejs/cli-win32-arm64@2.4.9':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.4.8':
+  '@biomejs/cli-win32-x64@2.4.9':
     optional: true
 
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commitlint/cli@20.5.0(@types/node@25.5.0)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)(typescript@5.9.3)':
+  '@commitlint/cli@20.5.0(@types/node@25.5.0)(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)(typescript@6.0.2)':
     dependencies:
       '@commitlint/format': 20.5.0
       '@commitlint/lint': 20.5.0
-      '@commitlint/load': 20.5.0(@types/node@25.5.0)(typescript@5.9.3)
+      '@commitlint/load': 20.5.0(@types/node@25.5.0)(typescript@6.0.2)
       '@commitlint/read': 20.5.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)
       '@commitlint/types': 20.5.0
       tinyexec: 1.0.4
@@ -4469,14 +4474,14 @@ snapshots:
       '@commitlint/rules': 20.5.0
       '@commitlint/types': 20.5.0
 
-  '@commitlint/load@20.5.0(@types/node@25.5.0)(typescript@5.9.3)':
+  '@commitlint/load@20.5.0(@types/node@25.5.0)(typescript@6.0.2)':
     dependencies:
       '@commitlint/config-validator': 20.5.0
       '@commitlint/execute-rule': 20.0.0
       '@commitlint/resolve-extends': 20.5.0
       '@commitlint/types': 20.5.0
-      cosmiconfig: 9.0.1(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.2.0(@types/node@25.5.0)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig: 9.0.1(typescript@6.0.2)
+      cosmiconfig-typescript-loader: 6.2.0(@types/node@25.5.0)(cosmiconfig@9.0.1(typescript@6.0.2))(typescript@6.0.2)
       is-plain-obj: 4.1.0
       lodash.mergewith: 4.6.2
       picocolors: 1.1.1
@@ -5440,7 +5445,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.10.10: {}
+  baseline-browser-mapping@2.10.11: {}
 
   basic-ftp@5.2.0: {}
 
@@ -5477,9 +5482,9 @@ snapshots:
 
   browserslist@4.28.1:
     dependencies:
-      baseline-browser-mapping: 2.10.10
+      baseline-browser-mapping: 2.10.11
       caniuse-lite: 1.0.30001781
-      electron-to-chromium: 1.5.321
+      electron-to-chromium: 1.5.328
       node-releases: 2.0.36
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
@@ -5835,21 +5840,21 @@ snapshots:
 
   core-util-is@1.0.2: {}
 
-  cosmiconfig-typescript-loader@6.2.0(@types/node@25.5.0)(cosmiconfig@9.0.1(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.2.0(@types/node@25.5.0)(cosmiconfig@9.0.1(typescript@6.0.2))(typescript@6.0.2):
     dependencies:
       '@types/node': 25.5.0
-      cosmiconfig: 9.0.1(typescript@5.9.3)
+      cosmiconfig: 9.0.1(typescript@6.0.2)
       jiti: 2.6.1
-      typescript: 5.9.3
+      typescript: 6.0.2
 
-  cosmiconfig@9.0.1(typescript@5.9.3):
+  cosmiconfig@9.0.1(typescript@6.0.2):
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
       js-yaml: 4.1.1
       parse-json: 5.2.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   cross-spawn@7.0.6:
     dependencies:
@@ -5857,7 +5862,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  cypress@15.12.0:
+  cypress@15.13.0:
     dependencies:
       '@cypress/request': 3.0.10
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
@@ -5896,7 +5901,7 @@ snapshots:
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
       supports-color: 8.1.1
-      systeminformation: 5.31.4
+      systeminformation: 5.31.5
       tmp: 0.2.5
       tree-kill: 1.2.2
       tslib: 1.14.1
@@ -6094,7 +6099,7 @@ snapshots:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
 
-  electron-to-chromium@1.5.321: {}
+  electron-to-chromium@1.5.328: {}
 
   emoji-regex@10.6.0: {}
 
@@ -7035,7 +7040,7 @@ snapshots:
       tinyexec: 1.0.4
       yaml: 2.8.2
 
-  liquidjs@10.25.1:
+  liquidjs@10.25.2:
     dependencies:
       commander: 10.0.1
 
@@ -8270,7 +8275,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  systeminformation@5.31.4: {}
+  systeminformation@5.31.5: {}
 
   tagged-tag@1.0.0: {}
 
@@ -8382,6 +8387,8 @@ snapshots:
       tagged-tag: 1.0.0
 
   typescript@5.9.3: {}
+
+  typescript@6.0.2: {}
 
   ufo@1.6.3: {}
 
