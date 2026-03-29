@@ -48,7 +48,7 @@ Feature: Parabank Web Application Testing
       When I enter my username "invalid_user" and password "invalid_pass"
       And I click on the "Log In" button
       Then I should see an error message "The username and password could not be verified."
-      * I should still be on the home page
+      And I should still be on the home page
 
   Rule: Account lookup should help users who forgot their credentials
     Description: Users who have forgotten their username or password can 

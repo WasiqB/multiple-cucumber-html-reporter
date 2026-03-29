@@ -17,12 +17,12 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@types/node": "^25.5.0",
-    "cypress": "^15.12.0",
+    "cypress": "^15.13.0",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "dependencies": {
-    "dayjs": "^1.11.19"
+    "dayjs": "^1.11.20"
   },
   "packageManager": "pnpm@10.32.1"
 }

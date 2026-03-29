@@ -1,0 +1,16 @@
+<div id="media-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4" onclick="closeModal()">
+    <div class="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-lg shadow-lg flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b p-4 text-card-foreground">
+            <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
+            <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        
+        <!-- Content -->
+        <div id="modal-content" class="overflow-auto flex-1 p-4 bg-muted/10">
+            <!-- Content will be injected here -->
+        </div>
+    </div>
+</div>

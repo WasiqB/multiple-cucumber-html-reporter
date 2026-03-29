@@ -1,0 +1,117 @@
+/**
+ * Modal handling and attachment functions
+ */
+window.ReportModal = {
+  init: () => {
+    // Global click listener for modal triggers
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.modal-trigger');
+      if (trigger) {
+        const type = trigger.dataset.attachmentType;
+        const name = trigger.dataset.attachmentName;
+        const content = trigger.dataset.attachmentContent || '';
+        window.ReportModal.open(type, name, content);
+      }
+    });
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') window.ReportModal.close();
+    });
+  },
+
+  close: () => {
+    const modal = document.getElementById('media-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  },
+
+  open: (type, name, content) => {
+    const modal = document.getElementById('media-modal');
+    const title = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+
+    if (!modal || !title || !modalContent) return;
+
+    title.textContent = name;
+    let html = '';
+
+    if (type === 'screenshot' || type?.includes('image')) {
+      html = `
+        <div class="flex items-center justify-center bg-slate-900 rounded p-2 overflow-auto max-h-[80vh]">
+          <img src="${content}" alt="${name}" class="max-w-full h-auto rounded shadow-2xl transition-transform duration-300 hover:scale-[1.02]" onerror='this.onerror=null; this.src="../assets/img/placeholder.png"; this.parentElement.innerHTML="<p class="text-slate-400 p-8">Failed to load image</p>"'>
+        </div>`;
+    } else if (type === 'video' || type?.includes('video')) {
+      html = `
+        <div class="flex items-center justify-center bg-slate-900 rounded p-2">
+          <video controls class="max-w-full max-h-[80vh] rounded shadow-2xl" autoplay>
+            <source src="${content}" type="${type}">
+            Your browser does not support the video tag.
+          </video>
+        </div>`;
+    } else if (type === 'log') {
+      html = `
+        <div class="flex flex-col h-full overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-2 bg-slate-800 rounded-t border-b border-slate-700">
+            <span class="text-slate-300 text-xs font-semibold uppercase tracking-wider">Console Log</span>
+            <button onclick="window.ReportModal.copyLog()" id="copy-btn" class="flex items-center gap-1.5 px-3 py-1 text-slate-300 hover:text-white hover:bg-slate-700 rounded transition-all text-xs font-medium">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copy Log</span>
+            </button>
+          </div>
+          <div class="bg-slate-900 text-slate-300 p-4 rounded-b font-mono text-[10px] md:text-xs overflow-auto max-h-[60vh] leading-relaxed">
+            ${window.ReportUtils.escape(content)
+              .split('\n')
+              .map((line) => `<div class="whitespace-pre-wrap mb-0.5">${line}</div>`)
+              .join('')}
+          </div>
+        </div>`;
+      window._lastModalContent = content;
+    } else if (type === 'error') {
+      html = `
+        <div class="flex flex-col h-full overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-2 bg-red-950/40 rounded-t border-b border-red-500/20">
+            <span class="text-red-400 text-xs font-semibold uppercase tracking-wider">Error Details & Stack Trace</span>
+            <button onclick="window.ReportModal.copyLog()" id="copy-btn" class="flex items-center gap-1.5 px-3 py-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all text-xs font-medium">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copy Error</span>
+            </button>
+          </div>
+          <div class="bg-slate-950 text-red-400/90 p-4 rounded-b font-mono text-[10px] md:text-sm overflow-auto max-h-[70vh] leading-relaxed">
+            ${window.ReportUtils.escape(content)
+              .split('\n')
+              .map((line) => `<div class="whitespace-pre-wrap mb-1.5">${line}</div>`)
+              .join('')}
+          </div>
+        </div>`;
+      window._lastModalContent = content;
+    }
+
+    modalContent.innerHTML = html;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  },
+
+  copyLog: () => {
+    const content = window._lastModalContent;
+    if (content) {
+      navigator.clipboard.writeText(content).then(() => {
+        const btn = document.getElementById('copy-btn');
+        if (btn) {
+          const originalInner = btn.innerHTML;
+          btn.innerHTML = `<i class="fa-solid fa-check text-green-400"></i><span class="text-green-400">Copied!</span>`;
+          setTimeout(() => (btn.innerHTML = originalInner), 2000);
+        }
+      });
+    }
+  },
+};
+
+// Aliases for global scope (legacy/shorthand support)
+window.closeModal = window.ReportModal.close;
+window.openModal = window.ReportModal.open;
+window.copyModalContent = window.ReportModal.copyLog;

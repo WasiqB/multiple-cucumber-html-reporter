@@ -1,0 +1,23 @@
+<header class="border-b bg-background px-4 md:px-6 py-4 sticky top-0 z-40 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <div class="mx-auto max-w-7xl flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 truncate">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 overflow-hidden">
+                {% if data.report.logo %}
+                    <img src="{{ base_url | default: "." }}/assets/{{ data.report.logo }}" alt="Logo" class="h-full w-full object-cover">
+                {% else %}
+                    <i class="fa-solid fa-vial-circle-check text-xl"></i>
+                {% endif %}
+            </div>
+            <div class="truncate">
+                <h1 class="text-lg md:text-2xl font-bold text-foreground truncate tracking-tight">{{ data.report.reportName | default: "Cucumber Report" }}</h1>
+                <p class="mt-0.5 text-[10px] md:text-xs text-muted-foreground uppercase font-bold tracking-widest opacity-70">{{ data.report.project | default: "Automated Execution Insights" }}</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button id="theme-toggle" class="p-2 rounded-md hover:bg-accent transition-colors shrink-0">
+                <svg id="sun-icon" class="hidden h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"/></svg>
+                <svg id="moon-icon" class="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
