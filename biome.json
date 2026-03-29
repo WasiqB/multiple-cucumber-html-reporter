@@ -13,7 +13,7 @@
       "!!**/dist",
       "!!**/node_modules",
       "!!**/.run",
-      "!!reporter/src/templates/**/*",
+      "!!reporter/src/templates",
       "!!reporter/src/test/unit/data/**/*.json"
     ]
   },

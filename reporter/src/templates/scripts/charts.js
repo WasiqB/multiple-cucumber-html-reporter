@@ -321,39 +321,93 @@ window.ReportCharts = {
       }).render();
     }
 
-    // 2.5 Time Distribution
+    // 2.5 Top 10 Slowest Steps
     clear('#feature-time-dist-chart');
-    const hasBoxPlot = durations.length > 0 && durations.some((v) => v > 0);
-    toggleChart('#feature-time-dist-chart', hasBoxPlot);
-    if (hasBoxPlot) {
+    const allSteps = [];
+    (feature.elements || []).forEach((s) => {
+      (s.steps || []).forEach((step) => {
+        const d = (step.result?.duration || 0) / 1000000000; // ns to s
+        if (d > 0) {
+          allSteps.push({
+            label: `${step.keyword} ${step.name}`.trim(),
+            duration: d,
+          });
+        }
+      });
+    });
+
+    const slowestSteps = allSteps.sort((a, b) => b.duration - a.duration).slice(0, 10);
+
+    const hasSlowSteps = slowestSteps.length > 0;
+    toggleChart('#feature-time-dist-chart', hasSlowSteps);
+    if (hasSlowSteps) {
       new ApexCharts(document.querySelector('#feature-time-dist-chart'), {
-        series: [
-          {
-            name: 'Execution Time',
-            type: 'boxPlot',
-            data: [
-              {
-                x: 'Scenarios',
-                y: window.ReportUtils.calculateBoxPlotData(durations),
-              },
-            ],
+        series: [{ name: 'Duration', data: slowestSteps.map((s) => s.duration) }],
+        chart: {
+          type: 'bar',
+          height: 250,
+          toolbar: { show: false },
+          animations: { enabled: false },
+        },
+        theme: { mode: theme },
+        dataLabels: {
+          enabled: true,
+          textAnchor: 'start',
+          style: {
+            colors: [textColor],
+            fontSize: '10px',
+            fontWeight: 'bold',
           },
-        ],
-        chart: { type: 'boxPlot', height: 250, toolbar: { show: false }, animations: { enabled: false } },
-        title: { text: 'Duration Distribution (s)', align: 'left', style: { color: textColor, fontSize: '12px' } },
+          offsetX: 5,
+          formatter: (v) => v.toFixed(3) + 's',
+        },
         plotOptions: {
-          boxPlot: {
-            colors: { upper: '#3b82f6', lower: '#60a5fa' },
+          bar: {
+            horizontal: true,
+            borderRadius: 4,
+            barHeight: '70%',
+            distributed: true,
+            dataLabels: {
+              position: 'top',
+            },
           },
         },
-        stroke: { colors: [isDark ? '#475569' : '#cbd5e1'] },
-        grid: { borderColor: gridColor },
         xaxis: {
-          categories: ['Scenarios'],
-          labels: { style: { colors: textColor } },
+          categories: slowestSteps.map((s) => s.label),
+          labels: {
+            style: { colors: textColor },
+            formatter: (v) => (typeof v === 'number' ? v.toFixed(2) + 's' : v),
+          },
         },
-        yaxis: { labels: { style: { colors: textColor } } },
-        tooltip: { theme },
+        yaxis: {
+          labels: {
+            style: { colors: textColor, fontSize: '10px' },
+            maxWidth: 140,
+            formatter: (v) => (v.length > 25 ? v.substring(0, 22) + '...' : v),
+          },
+        },
+        colors: [
+          '#ef4444',
+          '#f97316',
+          '#f59e0b',
+          '#eab308',
+          '#84cc16',
+          '#22c55e',
+          '#10b981',
+          '#06b6d4',
+          '#3b82f6',
+          '#6366f1',
+        ],
+        grid: { borderColor: gridColor },
+        legend: { show: false },
+        tooltip: {
+          theme,
+          shared: true,
+          intersect: false,
+          y: {
+            formatter: (v) => v.toFixed(3) + 's',
+          },
+        },
       }).render();
     }
 
