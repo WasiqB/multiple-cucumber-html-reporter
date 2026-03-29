@@ -63,9 +63,27 @@ window.ReportModal = {
             </button>
           </div>
           <div class="bg-slate-900 text-slate-300 p-4 rounded-b font-mono text-[10px] md:text-xs overflow-auto max-h-[60vh] leading-relaxed">
-            ${content
+            ${window.ReportUtils.escape(content)
               .split('\n')
               .map((line) => `<div class="whitespace-pre-wrap mb-0.5">${line}</div>`)
+              .join('')}
+          </div>
+        </div>`;
+      window._lastModalContent = content;
+    } else if (type === 'error') {
+      html = `
+        <div class="flex flex-col h-full overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-2 bg-red-950/40 rounded-t border-b border-red-500/20">
+            <span class="text-red-400 text-xs font-semibold uppercase tracking-wider">Error Details & Stack Trace</span>
+            <button onclick="window.ReportModal.copyLog()" id="copy-btn" class="flex items-center gap-1.5 px-3 py-1 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded transition-all text-xs font-medium">
+              <i class="fa-solid fa-copy"></i>
+              <span>Copy Error</span>
+            </button>
+          </div>
+          <div class="bg-slate-950 text-red-400/90 p-4 rounded-b font-mono text-[10px] md:text-sm overflow-auto max-h-[70vh] leading-relaxed">
+            ${window.ReportUtils.escape(content)
+              .split('\n')
+              .map((line) => `<div class="whitespace-pre-wrap mb-1.5">${line}</div>`)
               .join('')}
           </div>
         </div>`;

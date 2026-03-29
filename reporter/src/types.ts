@@ -51,6 +51,7 @@ export interface Hook {
   result: {
     status: string;
     duration?: number;
+    error_message?: string;
   };
   line: string | number;
   match: {
@@ -66,6 +67,7 @@ export interface Step {
   result: {
     status: string;
     duration?: number;
+    error_message?: string;
   };
   line: string | number;
   match?: {
