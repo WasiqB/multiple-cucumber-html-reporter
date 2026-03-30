@@ -1,0 +1,84 @@
+---
+title: Usage
+description: Detailed instructions on how to use Multiple Cucumber HTML Reporter with different versions of CucumberJS.
+---
+
+Multiple Cucumber HTML Reporter can be run in two primary ways: inside a hook or as a separate node executable.
+
+## Basic Usage
+
+To generate a report, use the following code structure:
+
+```javascript
+const report = require("multiple-cucumber-html-reporter");
+
+report.generate({
+  jsonDir: "./path-to-your-json-output/",
+  reportPath: "./path-where-the-report-needs-to-be/",
+  metadata: {
+    browser: {
+      name: "chrome",
+      version: "60",
+    },
+    device: "Local test machine",
+    platform: {
+      name: "ubuntu",
+      version: "16.04",
+    },
+  },
+  customData: {
+    title: "Run info",
+    data: [
+      { label: "Project", value: "Custom project" },
+      { label: "Release", value: "1.2.3" },
+      { label: "Cycle", value: "B11221.34321" },
+      { label: "Execution Start Time", value: "Nov 19th 2017, 02:31 PM EST" },
+      { label: "Execution End Time", value: "Nov 19th 2017, 02:56 PM EST" },
+    ],
+  },
+});
+```
+
+---
+
+## Integration with Cucumber Versions
+
+The way you execute the report depends on which version of CucumberJS you are using:
+
+### CucumberJS 2.x and Lower
+
+You can integrate the reporter directly into your `AfterFeatures` hook:
+
+```javascript
+const report = require("multiple-cucumber-html-reporter");
+
+// Add this into your AfterFeatures-hook
+report.generate({
+  // ... configuration ...
+});
+```
+
+### CucumberJS 3.x and 4.x
+
+Since `AfterFeatures` hook is no longer supported in newer versions, you must run the reporter as a separate node executable **after** the cucumber-js process finishes.
+
+#### Step 1: Run your tests
+Ensure your tests generate JSON results correctly.
+
+#### Step 2: Create a separate generate script
+Create a file (e.g., `generate-report.js`) with the reporting logic.
+
+#### Step 3: Execute the script
+Update your `package.json` scripts:
+
+```json
+{
+  "scripts": {
+    "test": "cucumber-js -f json:./reports/report.json",
+    "generate-report": "node ./generate-report.js"
+  }
+}
+```
+
+> [!IMPORTANT]
+> When generating JSON files with Cucumber, ensure each file has a **UNIQUE** name (e.g., use a timestamp). If you don't, Cucumber may overwrite your results.

@@ -1,0 +1,98 @@
+---
+title: Metadata
+description: Everything you need to know about metadata in Multiple Cucumber HTML Reporter.
+---
+
+Multiple Cucumber HTML Reporter can display the browser, version, platform, and device type each feature was executed on.
+
+Metadata can be displayed either in the Features overview table or within each scenario's details.
+
+## Adding Metadata
+
+There are two primary ways to add metadata:
+
+### Method 1: On Instance Initialization (Global)
+
+If you provide metadata when instantiating the reporter, it will be added to each feature in the report.
+
+```javascript
+report.generate({
+    metadata: {
+        browser: {
+            name: 'chrome',
+            version: '60'
+        },
+        device: 'Local test machine',
+        platform: {
+            name: 'ubuntu',
+            version: '16.04'
+        }
+    }
+});
+```
+
+### Method 2: Per Scenario (Dynamic)
+
+If your test scenarios are running in different environments, you can add metadata to the Cucumber JSON file before saving it to your tests.
+
+```javascript
+const metadata = {
+  "browser": {
+    "name": "chrome",
+    "version": "58"
+  },
+  "device": "Custom Machine",
+  "platform": {
+    "name": "osx",
+    "version": "10.12"
+  }
+}
+
+// Add metadata directly to the scenario
+cucumberJSON[0].metadata = metadata;
+```
+
+---
+
+## Supported Metadata Values
+
+To ensure proper icons are displayed, use the following predefined values for certain fields:
+
+### `browser.name`
+- `internet explorer`
+- `edge`
+- `chrome`
+- `firefox`
+- `safari`
+
+### `platform.name`
+- `windows`
+- `osx`
+- `linux`
+- `ubuntu`
+- `android`
+- `ios`
+
+---
+
+## Custom Metadata
+
+If you need more than just the standard browser and platform information, you can use **Custom Metadata**.
+
+### Configuration
+
+Set `customMetadata: true` in your options:
+
+```javascript
+report.generate({
+  customMetadata: true,
+  metadata: [
+    { name: "Environment v.", value: "12.3" },
+    { name: "Plugin v.", value: "32.1" },
+    { name: "Variable set", value: "Foo" },
+  ],
+});
+```
+
+> [!CAUTION]
+> Custom metadata will override regular metadata completely. Try to avoid using more than 10 metadata variables, as it can cause layout issues.
