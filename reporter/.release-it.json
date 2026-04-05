@@ -12,6 +12,8 @@
     "commit": true,
     "tag": true,
     "push": true,
+    "commitArgs": ["-S", "--no-verify"],
+    "tagArgs": ["-s"],
     "requireCleanWorkingDir": true
   },
   "github": {
