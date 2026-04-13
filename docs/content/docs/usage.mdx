@@ -39,8 +39,6 @@ report.generate({
 });
 ```
 
----
-
 ## Integration with Cucumber Versions
 
 The way you execute the report depends on which version of CucumberJS you are using:
@@ -62,13 +60,13 @@ report.generate({
 
 Since `AfterFeatures` hook is no longer supported in newer versions, you must run the reporter as a separate node executable **after** the cucumber-js process finishes.
 
-#### Step 1: Run your tests
+#### Run your tests [step]
 Ensure your tests generate JSON results correctly.
 
-#### Step 2: Create a separate generate script
+#### Create a separate generate script [step]
 Create a file (e.g., `generate-report.js`) with the reporting logic.
 
-#### Step 3: Execute the script
+#### Execute the script [step]
 Update your `package.json` scripts:
 
 ```json
@@ -80,5 +78,6 @@ Update your `package.json` scripts:
 }
 ```
 
-> [!IMPORTANT]
-> When generating JSON files with Cucumber, ensure each file has a **UNIQUE** name (e.g., use a timestamp). If you don't, Cucumber may overwrite your results.
+<Callout title="Important" type="info">
+When generating JSON files with Cucumber, ensure each file has a **UNIQUE** name (e.g., use a timestamp). If you don't, Cucumber may overwrite your results.
+</Callout>

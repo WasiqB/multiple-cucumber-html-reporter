@@ -8,11 +8,13 @@
   "files": {
     "includes": [
       "**/*.ts",
+      "**/*.{ts,tsx,json,jsonc,mjs,css}",
       "**/*.json",
       "**/*.js",
       "!!**/dist",
       "!!**/node_modules",
       "!!**/.run",
+      "!!docs/src/components/ui",
       "!!reporter/src/templates",
       "!!reporter/src/test/unit/data/**/*.json"
     ]
@@ -73,6 +75,19 @@
       "enabled": true,
       "indentStyle": "space",
       "indentWidth": 2
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    },
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "quoteStyle": "single"
+    },
+    "linter": {
+      "enabled": false
     }
   },
   "assist": {

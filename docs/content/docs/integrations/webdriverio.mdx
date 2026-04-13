@@ -7,10 +7,11 @@ Integrating with WebdriverIO allows you to automatically generate beautiful repo
 
 ## WebdriverIO Support
 
-> [!CAUTION]
-> If you are using WebdriverIO **V5 or higher**, we recommend using the `wdio-cucumberjs-json-reporter` from the WebdriverIO community.
+<Callout title="Caution" type="warn">
+If you are using WebdriverIO **V5 or higher**, we recommend using the `wdio-cucumberjs-json-reporter` from the WebdriverIO community.
+</Callout>
 
-## Step 1: Add Dependency
+## Add Dependency [step]
 
 You will need `fs-extra` to handle JSON result files:
 
@@ -18,7 +19,7 @@ You will need `fs-extra` to handle JSON result files:
 npm install fs-extra --save-dev
 ```
 
-## Step 2: Set Up Report Hook
+## Set Up Report Hook [step]
 
 Create a `report.hook.js` file (e.g., in `e2e/config/hooks`) and add the following logic:
 
@@ -67,7 +68,7 @@ defineSupportCode(({ registerListener }) => {
 });
 ```
 
-## Step 3: Handle Failures
+## Handle Failures [step]
 
 To automatically capture screenshots and attach them on failure globally:
 
@@ -84,7 +85,7 @@ After(function (scenarioResult) {
 });
 ```
 
-## Step 4: Configure `wdio.conf.js`
+## Configure `wdio.conf.js` [step]
 
 Add the report logic to the `onComplete` hook:
 

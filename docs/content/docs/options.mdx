@@ -28,8 +28,6 @@ The directory in which the final report needs to be saved. Both `jsonDir` and `r
 
 If true, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests.
 
----
-
 ## Report Behavior Options
 
 ### `openReportInBrowser`
@@ -52,8 +50,6 @@ This module will first merge all the JSON files to a single file and then enrich
 - **Default**: `false`
 
 Disables the summary report log in the console.
-
----
 
 ## Visual Customization Options
 
@@ -83,8 +79,6 @@ Customizes the page footer if required. You can provide a HTML string like `<div
 
 If your description already contains formatting tags (e.g., `<div>`, `<strong>`), set this to `true` to include it "as-is" without extra formatting.
 
----
-
 ## Duration Options
 
 ### `displayDuration`
@@ -94,8 +88,9 @@ If your description already contains formatting tags (e.g., `<div>`, `<strong>`)
 
 If set to `true`, the duration of steps, scenarios, and features is displayed on the Features overview and single feature page in an easily readable format.
 
-> [!NOTE]
-> CucumberJS 2 and 3 use milliseconds, while others use nanoseconds. You may need to use `durationInMS: true` if your durations are not showing correctly.
+<Callout title="Note" type="info">
+CucumberJS 2 and 3 use milliseconds, while others use nanoseconds. You may need to use `durationInMS: true` if your durations are not showing correctly.
+</Callout>
 
 ### `durationInMS`
 
@@ -112,8 +107,6 @@ If set to `true`, step durations are expected to be in **milliseconds**. This pa
 Controls how feature duration is calculated:
 - `sum`: sum all scenario durations in a feature (default)
 - `wallClock`: use elapsed wall-clock time (`latest scenario end - earliest scenario start`). Each timed scenario must provide `start_timestamp`.
-
----
 
 ## Custom Styling Options
 

@@ -52,8 +52,6 @@ const metadata = {
 cucumberJSON[0].metadata = metadata;
 ```
 
----
-
 ## Supported Metadata Values
 
 To ensure proper icons are displayed, use the following predefined values for certain fields:
@@ -72,8 +70,6 @@ To ensure proper icons are displayed, use the following predefined values for ce
 - `ubuntu`
 - `android`
 - `ios`
-
----
 
 ## Custom Metadata
 
@@ -94,5 +90,6 @@ report.generate({
 });
 ```
 
-> [!CAUTION]
-> Custom metadata will override regular metadata completely. Try to avoid using more than 10 metadata variables, as it can cause layout issues.
+<Callout title="Caution" type="warn">
+Custom metadata will override regular metadata completely. Try to avoid using more than 10 metadata variables, as it can cause layout issues.
+</Callout>
