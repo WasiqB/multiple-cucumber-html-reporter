@@ -8,7 +8,7 @@
   "files": {
     "includes": [
       "**/*.ts",
-      "**/*.{ts,tsx,json,jsonc,mjs,css}",
+      "**/*.{ts,tsx,json,jsonc,mjs}",
       "**/*.json",
       "**/*.js",
       "!!**/dist",
