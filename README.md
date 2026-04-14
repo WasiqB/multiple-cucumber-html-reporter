@@ -1,64 +1,46 @@
 # Multiple Cucumber HTML Reporter
 
-[![Discord](https://img.shields.io/discord/1057960728692260975?label=Chat%20on%20Discord&logo=Discord&style=for-the-badge)](https://discord.gg/d6rfHkSDjc)
-[![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/WasiqB/multiple-cucumber-html-reporter/test.yml?label=Test%20Workflows&logo=GitHub&style=for-the-badge)](https://github.com/WasiqB/multiple-cucumber-html-reporter/actions)
-[![GitHub](https://img.shields.io/github/license/WasiqB/multiple-cucumber-html-reporter?logo=open%20source%20initiative&style=for-the-badge)](http://opensource.org/licenses/MIT)
-[![npm](https://img.shields.io/npm/dm/multiple-cucumber-html-reporter?label=NPM%20Downloads&logo=NPM&style=for-the-badge)](https://nodei.co/npm/multiple-cucumber-html-reporter/)
+<p align="center">
+  <strong>Generate beautiful, interactive, and customizable HTML reports for Cucumber runs.</strong>
+</p>
 
-Multiple Cucumber HTML Reporter is a reporting module for Cucumber to parse the JSON output to a beautiful report. The difference between all the other reporting modules on the market is that this module has:
+<p align="center">
+  <a href="https://discord.gg/d6rfHkSDjc"><img src="https://img.shields.io/discord/1057960728692260975?label=Chat%20on%20Discord&logo=Discord&style=for-the-badge" alt="Discord"></a>
+  <a href="https://github.com/WasiqB/multiple-cucumber-html-reporter/actions"><img src="https://img.shields.io/github/actions/workflow/status/WasiqB/multiple-cucumber-html-reporter/test.yml?label=Tests&logo=GitHub&style=for-the-badge" alt="GitHub Workflow Status"></a>
+  <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter"><img src="https://img.shields.io/npm/v/multiple-cucumber-html-reporter?logo=npm&style=for-the-badge" alt="NPM Version"></a>
+  <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter"><img src="https://img.shields.io/npm/dm/multiple-cucumber-html-reporter?label=Downloads&logo=npm&style=for-the-badge" alt="NPM Downloads"></a>
+  <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/WasiqB/multiple-cucumber-html-reporter?logo=open-source-initiative&style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/sponsors/WasiqB"><img src="https://img.shields.io/badge/Sponsor-WasiqB-ea4aaa?style=for-the-badge&logo=github-sponsors" alt="Sponsor"></a>
+</p>
 
-- a quick overview of all tested features and scenarios
-- a features overview that can hold multiple runs of the same feature / runs of the same feature on different browsers / devices
-- a features overview that can be searched / filtered / sorted
-- a feature(s) overview with metadata of the used browser(s) / devices
+---
 
-## Important
+![Multiple Cucumber HTML Reporter Hero](./docs/public/feature-list-page.png)
 
-> **The default time notation in Cucumber is in nanoseconds. When you use a version of Cucumber that uses milliseconds (like CucumberJS 2 and 3) and you want to show the duration you should use [`displayDuration`](./README.MD#displayDuration) AND [`durationInMS = true`](./README.MD#durationinms)**
+## 🌟 Why this reporter?
 
-![Snapshot - Features overview](./docs/images/browsers-features-overview.jpg "Snapshot - Browsers features overview")
+**Multiple Cucumber HTML Reporter** is a robust reporting module that transforms standard Cucumber JSON output into stunning, feature-rich HTML reports. Unlike generic reporters, it is designed for scale and clarity.
 
-or with dark mode enabled:
-![image](https://user-images.githubusercontent.com/10329968/193400025-37dcbc0a-f5b8-4dea-b40e-51330c43aebf.png)
-![image](https://user-images.githubusercontent.com/10329968/193400032-1142963c-f216-416c-bf42-95a26351a824.png)
+### ✨ Key Features
 
-A sample can be found [here](https://wasiqb.github.io/multiple-cucumber-html-reporter/browsers/index.html)
+-   📊 **Interactive Dashboard**: Scored overview of all tested features and scenarios.
+-   🌓 **Dark Mode Support**: Built-in support for light and dark themes for better accessibility.
+-   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
+-   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
+-   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
+-   🎨 **Fully Customizable**: Add custom data blocks, brand colors, and additional CSS styles.
 
-But you can also create a beautiful overview when you don't want to use CucumberJS with browser(meta)data but with custom metadata, see [customMetadata](./README.MD#custommetadata).
-This nice feature has been created by [LennDG](https://github.com/LennDG)
+---
 
-![Snapshot - Features overview](./docs/images/custom-metadata-features-overview.jpg "Snapshot - Custom metadata features overview")
+## 🚀 Quick Start
 
-A sample can be found [here](https://wasiqb.github.io/multiple-cucumber-html-reporter/custom-metadata/index.html)
-
-## Install
-
-Install this module locally with the following command:
-
+### 1. Install
 ```bash
-npm install multiple-cucumber-html-reporter
-```
-
-Save to dependencies or dev-dependencies:
-
-```bash
-npm install multiple-cucumber-html-reporter --save
 npm install multiple-cucumber-html-reporter --save-dev
 ```
 
-## Compatibility
-
-Multiple Cucumber HTML Reporter **now works with CucumberJS 1, 2, 3 and 4**.
-
-## Usage
-
-> If you are using Protractor I would advise you to use [protractor-multiple-cucumber-html-reporter-plugin](https://github.com/WasiqB/protractor-multiple-cucumber-html-reporter-plugin).
-> If you are using [webdriver.io](http://webdriver.io/) please check [WEBDRIVER.IO.MD](./docs/WEBDRIVER.IO.MD) for usage.
-> It provides `multiple-cucumber-html-reporter` and some nice integration features that will make using Protractor + CucumberJS 1/2/3 nicely integrate with only a few lines of code.
-
-### cucumber-js 2.x and lower
-
-Multiple Cucumber HTML Reporter transforms the Cucumber JSON output to a beautiful report. In order to let this happen add the piece of code that is placed below to CucumberJS `AfterFeatures`-hook.
+### 2. Generate Report
+Add this to your test teardown or a separate reporting script:
 
 ```javascript
 const report = require("multiple-cucumber-html-reporter");
@@ -69,461 +51,72 @@ report.generate({
   metadata: {
     browser: {
       name: "chrome",
-      version: "60",
+      version: "latest",
     },
     device: "Local test machine",
     platform: {
-      name: "ubuntu",
-      version: "16.04",
+      name: "osx",
+      version: "Sonoma",
     },
   },
   customData: {
     title: "Run info",
     data: [
-      { label: "Project", value: "Custom project" },
-      { label: "Release", value: "1.2.3" },
-      { label: "Cycle", value: "B11221.34321" },
-      { label: "Execution Start Time", value: "Nov 19th 2017, 02:31 PM EST" },
-      { label: "Execution End Time", value: "Nov 19th 2017, 02:56 PM EST" },
+      { label: "Project", value: "My Awesome Project" },
+      { label: "Release", value: "1.0.0" },
     ],
   },
 });
 ```
 
-### cucumber-js 3.x
+Check out the [examples](./examples) folder for integration with frameworks like Cypress.
 
-Since cucumber-js 3.x the `AfterFeatures` hook is not supported anymore. To use Multiple Cucumber HTML Reporter it must be run in a separate node executable after the cucumber-js process finishes.
+---
 
-> IMPORTANT:
-> Make sure that, when you generate the JSON files with Cucumber, each file will have a **UNIQUE** name. If you don't provide a unique name Cucumber will **override** the JSON files.
-> Advice is to use for example the name of the feature, the name of the browser / device it is running on AND a unix timestamp with for example this `(new Date).getTime();`. This will result in something like this `name_of_feature.chrome.1495298685509.json`
+## 📖 In-Depth Documentation
 
-## Options
+Looking for advanced configurations, framework integrations (WebdriverIO, Cypress, etc.), or FAQs? Visit our comprehensive documentation site:
 
-### `jsonDir`
+### [👉 Read the Full Documentation](https://wasiqb.github.io/multiple-cucumber-html-reporter/)
 
-- **Type:** `String`
-- **Mandatory:** Yes
+---
 
-The directory that will hold all the generated JSON files, relative from where the script is started.
+## 🖼️ Feature Showcase
 
-**N.B.:** If you use a npm script from the command line, like for example `npm run generate-report` the `jsonDir` will be relative from the path where the script is executed. Executing it from the root of your project will also search for the `jsonDir` from the root of you project.
+### Feature List Page
 
-### `reportPath`
+![Feature List Page](./docs/public/feature-list-page.png)
 
-- **Type:** `String`
-- **Mandatory:** Yes
+### Feature Details Page
 
-The directory in which the report needs to be saved, relative from where the script is started.
+![Feature Details Page](./docs/public/feature-details-page.png)
 
-**N.B.:** If you use a npm script from the command line, like for example `npm run generate-report` the `reportPath` will be relative from the path where the script is executed. Executing it from the root of your project will also save the report in the `reportPath` in the root of you project.
+---
 
-### `staticFilePath`
+## 🤝 Contributing & Community
 
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
+Contributions are what make the open source community such an amazing place to learn, inspire, and create.
 
-If true each feature will get a static filename for the html. Use this feature only if you are not running multiple instances of the same tests.
+- **Contributing**: Read our [Contributing Guide](./.github/CONTRIBUTING.md) to get started.
+- **Security**: Please report vulnerabilities via our [Security Policy](./.github/SECURITY.md).
+- **Code of Conduct**: We expect all contributors to follow our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 
-### `openReportInBrowser`
+### 💬 Support & Talk
 
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
+- **Discord**: [Join our Discord server](https://discord.gg/d6rfHkSDjc) for real-time support.
+- **GitHub Issues**: [Report bugs or request features](https://github.com/WasiqB/multiple-cucumber-html-reporter/issues).
+- **GitHub Discussions**: [Join our GitHub Discussions](https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions).
+- **Project Milestones**: [View Project Milestones](https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones).
+- **Twitter / X**: Follow [@WasiqBhamla](https://x.com/WasiqBhamla) for project updates.
 
-If true the report will automatically be opened in the default browser of the operating system.
+## ❤️ Support the project
 
-### `saveCollectedJSON`
+If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB). Your support helps keep the project maintained and improved!
 
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
+## ⚖️ License
 
-This module will first merge all the JSON-files to 1 file and then enrich it with data that is used for the report. If `saveCollectedJSON :true` the merged JSON **AND** the enriched JSON will be saved in the `reportPath`. They will be saved as:
+Distributed under the MIT License. See `LICENSE` for more information.
 
-- `merged-output.json`
-- `enriched-output.json`
+---
 
-### `disableLog`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-This will disable the log so will **NOT** see this.
-
-```shell
-=====================================================================================
-    Multiple Cucumber HTML report generated in:
-
-    /Users/WasiqB/multiple-cucumber-html-reporter/.tmp/index.html
-========================================================================
-```
-
-### `pageTitle`
-
-- **Type:** `string`
-- **Mandatory:** No
-- **Default:** Multiple Cucumber HTML Reporter
-
-You can change the report title in the HTML head Tag
-
-### `reportName`
-
-- **Type:** `string`
-- **Mandatory:** No
-
-You can change the report name to a name you want
-
-### `pageFooter`
-
-- **Type:** `string`
-- **Mandatory:** No
-
-You can customise Page Footer if required. You just need to provide a html string like `<div><p>A custom footer in html</p></div>`
-
-### `plainDescription`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-The feature description is assumed to be a simple string and the library formats it accordingly, by copying it inside a
-paragraph tag. Since the description can be any free text, it can also be as complex as a full `div`, e.g.:
-
-```html
-<div>
-  <p>
-    <strong>Test description </strong> : The test implements comparisons using
-    all our datatypes
-  </p>
-  <p><strong>Expected result </strong> : Device does not reset</p>
-  <p><strong>Feature type </strong> : Robustness</p>
-  <p><strong>Comments </strong> : Test covers comparison operators</p>
-</div>
-```
-
-If the description already include formatting tags you can include it _as is_ by setting `plainDescription` to `true`.
-
-### `displayDuration`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-If set to `true` the duration of steps, scenarios and features is displayed on the Features overview and single feature page in an easily readable format.
-This expects the durations in the report to be in **nanoseconds**, which might result in incorrect durations when using a version of Cucumber(JS 2 and 3) that does not report in nanoseconds but in milliseconds. This can be changed to milliseconds by adding the parameter `durationInMS: true`, see below
-
-> **NOTE: Only the duration of a feature can be shown in the features overview. A total duration over all features CAN NOT be given because the module doesn't know if all features have been run in parallel**
-
-### `durationInMS`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-If set to `true` the duration of steps will be expected to be in **milliseconds**, which might result in incorrect durations when using a version of Cucumber(JS 1 or 4) that does report in **nanoseconds**.
-This parameter relies on `displayDuration: true`
-
-### `durationAggregation`
-
-- **Type:** `string`
-- **Default:** `sum`
-- **Mandatory:** No
-- **Possible values:** `sum | wallClock`
-
-Controls how feature duration is calculated when `displayDuration: true`.
-
-- `sum`: sum all scenario durations in a feature (default)
-- `wallClock`: use elapsed wall-clock time (`latest scenario end - earliest scenario start`)
-
-For `wallClock`, each timed scenario must provide `start_timestamp`; otherwise the reporter safely falls back to summed duration for that feature.
-
-### `hideMetadata`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-If set to `true` metadata Devicetype, Device, OS, App, Browser are not being displayed in the Features overview.
-
-### `displayReportTime`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-If set to `true` the date and time at which the JSON-files were generated, is displayed on the Features overview.
-
-### `useCDN`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-If you prefer, you can use CDN for assets.
-
-### `customStyle`
-
-- **Type:** `path`
-- **Mandatory:** No
-
-If you need to add some custom style to your report. Add it like this `customStyle: 'your-path-where/custom.css'`.
-Please note that the doughnut charts uses the same colors as used by the status icons, i.e. the `.*-color` classes.
-Refer to the `test` directory and the `embedded-array` test report for a complete color customization example.
-
-### `overrideStyle`
-
-- **Type:** `path`
-- **Mandatory:** No
-
-If you need to replace completely the default style for your report. Add it like this `overrideStyle: 'your-path-where/custom.css'`
-Please refer to the `test` directory for an example.
-
-### `metadata`
-
-- **Type:** `JSON`
-- **Mandatory:** No
-
-Print more data to your report, such as browser name + version, platform name + version and your environment. The values need to meet some predefined data, see [Metadata](./README.MD#metadata) for more info.
-Data can be passed like below.
-
-> **If you provide the metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence**
-
-```js
-metadata:{
-    browser: {
-        name: 'chrome',
-        version: '60'
-    },
-    device: 'Local test machine',
-    platform: {
-        name: 'ubuntu',
-        version: '16.04'
-    }
-}
-```
-
-See [metadata](./README.MD#metadata-1) for more info
-
-### `customMetadata`
-
-- **Type:** `boolean`
-- **Default:** `false`
-- **Mandatory:** No
-
-It is possible to provide custom metadata by setting this variable to `true`. Custom metadata will override the regular metadata completely and potentially have strange formatting bugs if too many (10+) variables are used.
-The columns will be in the order defined by the order of the list.
-
-Adding the metadata is done in the same way as with normal metadata. The metadata is formed as a list of key-value pairs to preserve order:
-
-```js
-metadata: [
-  { name: "Environment v.", value: "12.3" },
-  { name: "Plugin v.", value: "32.1" },
-  { name: "Variable set", value: "Foo" },
-];
-```
-
-On the features overview page the custom metadata is shown like:
-![Snapshot - Features overview custom metadata](./docs/images/features-custom-metadata.jpg "Snapshot - Features overview custom metadata")
-
-> IMPORTANT:
-> This does not work correctly if features have different sets of metadata. Try to avoid this situation.
-> Much like with metadata, if you provide the custom metadata when instantiating `multi-cucumber-html-reporter` the metadata will be added to each feature. If you already have metadata in your JSON then the metadata in the JSON will take precedence\*\*
-
-### `customData`
-
-- **Type:** `object`
-- **Mandatory:** No
-
-You can add a custom data block to the report like this
-
-![Snapshot - Features overview custom data](./docs/images/custom-data.jpg "Snapshot - Features overview custom data")
-
-```js
-customData: {
-    title: 'Run info',
-    data: [
-        {label: 'Project', value: 'Custom project'},
-        {label: 'Release', value: '1.2.3'},
-        {label: 'Cycle', value: 'B11221.34321'},
-        {label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST'},
-        {label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST'}
-    ]
-}
-```
-
-#### `customData.title`
-
-- **Type:** `string`
-- **Mandatory:** No
-- **Default:** `Custom data title`
-
-Select a title for the custom data block. If not provided it will be defaulted.
-
-#### `customData.data`
-
-- **Type:** `array`
-- **Mandatory:** yes
-
-The data you want to add. This needs to be in the format
-
-```js
-data: [{ label: "your label", value: "the represented value" }];
-```
-
-## Metadata
-
-The report can also show on which browser / device a feature has been executed. It is shown on the features overview in the table as well as on the feature overview in a container.
-
-### Adding metadata to the Cucumber JSON
-
-To be able to see this you will need to add the following to the Cucumber JSON before you save it.
-
-```javascript
-// This represents the Cucumber JSON file that has be retrieved
-const cucumberJSON;
-
-const metadata = {
-  "browser": {
-    "name": "chrome",
-    "version": "58"
-  },
-  "device": "string",
-  "platform": {
-    "name": "osx",
-    "version": "10.12"
-  }
-}
-
-// Add it with for example
-cucumberJSON[0].metadata = metadata;
-
-// Now save the file to the disk
-```
-
-### `metadata.app.name`
-
-- **Type:** `string`
-
-**e.g.:** The name of the app.
-
-### `metadata.app.version`
-
-- **Type:** `string`
-
-**e.g.:** The version of the app.
-
-### `metadata.browser.name`
-
-- **Type:** `string`
-- **Possible values:** `internet explorer | edge | chrome | firefox | safari`
-
-> If no correct value is provided the `?`-icon with the text `not known` is shown
-
-### `metadata.browser.version`
-
-- **Type:** `string`
-
-**e.g.:** The version of the browser, this can be added manual or retrieved during the execution of the tests to get the exact version number.
-
-> If no correct value is provided the `?`-icon with the text `not known` is shown
-
-### `metadata.device`
-
-- **Type:** `string`
-
-**e.g.:** A name that represents the type of device. For example, if you run it on a virtual machine, you can place it here `Virtual Machine`, or the name of the mobile, like for example `iPhone 7 Plus`.
-
-> If no correct value is provided the `?`-icon with the text `not known` is shown
-
-### `metadata.platform.name`
-
-- **Type:** `string`
-- **Possible values:** `windows | osx | linux | ubuntu | android | ios`
-
-> If no correct value is provided the `?`-icon with the text `not known` is shown
-
-### `metadata.platform.version`
-
-- **Type:** `string`
-
-**e.g.:** The version of the platform
-
-> If no correct value is provided the `?`-icon with the text `not known` is shown
-
-### Metadata example features overview
-
-![Snapshot - Features overview browser / device info](./docs/images/overview-metadata.jpg "Snapshot - Features overview browser / device info")
-
-### Metadata example scenario with and without known data
-
-![Snapshot - Scenario browser / device info](./docs/images/scenario-browser-metadata.jpg "Snapshot - Scenario browser / device info")
-![Snapshot - Scenario app / device info](./docs/images/scenario-app-metadata.jpg "Snapshot - Scenario app / device info")
-![Snapshot - Scenario browser / device info not known](./docs/images/scenario-no-metadata.jpg "Snapshot - Scenario browser / device info not known")
-
-## FAQ
-
-### Only 1 report is shown in the features overview table
-
-It could be that the name of the Cucumber JSON file that has been saved is not unique (enough).
-
-My advice is to use for example:
-
-- the name of the feature
-- the name of the browser / device it is running on
-- a unix timestamp with for example this `(new Date).getTime();`
-
-This will result in something like this `name_of_feature.chrome.1495298685509.json`.
-
-The advantage of this is that when you look at the folder where the Cucumber JSON-files are saved you can see:
-
-- the features that have been executed
-- on which browser
-- a timestamp to see which feature has been executed the last (if featurename and browser are the same)
-
-### Metadata shows `not known` or not the correct icons
-
-There could be 2 causes:
-
-1. The metadata has not (correctly) been added to the Cucumber JSON.
-2. The `metadata.browser.name` or `metadata.platform.name` can't be mapped to the right icon
-
-To fix this see the part about **Metadata** and check the **possible values**.
-
-### How to attach Screenshots to HTML report
-
-You can attach screenshots at any time to a Cucumber JSON file. Just create a Cucumber `scenario`-hook that will handle this. You can add them during running or when a `scenario` failed.
-
-> Check the framework you are using to attach screenshots to the JSON file.
-
-### How to attach Plain Text to HTML report
-
-You can attach plain-text / data at any time to a Cucumber JSON file to help debug / review the results. You can add them during running or when a `scenario` failed.
-
-> Check the framework you are using to attach plain text to the JSON file. Please make sure to convert binary/non-readable data to a suitable textual representation, e.g. via Base64 encoding.
-
-### How to attach pretty JSON to HTML report
-
-You can attach JSON at any time to a Cucumber JSON file. You can add them during running or when a `scenario` failed.
-
-> Check the framework you are using to attach JSON data to the JSON file.
-
-## Changelog and Releases
-
-The Changelog and releases can be found [here](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
-
-## Contributing
-
-How to contribute can be found [here](./docs/CONTRIBUTING.md)
-
-## Credits
-
-In the search for a reporting tools for Cucumber I found a few tools that helped me a lot:
-
-- [cucumber-html-repository](https://github.com/gkushang/cucumber-html-reporter)
-- [cucumber-html-report](https://github.com/leinonen/cucumber-html-report)
-- [cucumber-protractor-report](https://github.com/JesterXL/cucumber-protractor-report)
-- [grunt-protractor-cucumber-html-report](https://github.com/robhil/grunt-protractor-cucumber-html-report)
+<p align="center">Built with ❤️ by <a href="https://wasiqbhamla.com/">Wasiq Bhamla</a></p>
