@@ -11,7 +11,28 @@ export function baseOptions(): BaseLayoutProps {
       ),
       transparentMode: 'top',
     },
-    links: [],
+    links: [
+      {
+        text: 'Features',
+        url: '/#features',
+        active: 'nested-url',
+      },
+      {
+        text: 'How it Works',
+        url: '/how-it-works',
+        active: 'nested-url',
+      },
+      {
+        text: 'Community',
+        url: '/#community',
+        active: 'nested-url',
+      },
+      {
+        text: 'Docs',
+        url: '/docs',
+        active: 'nested-url',
+      },
+    ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   };
 }

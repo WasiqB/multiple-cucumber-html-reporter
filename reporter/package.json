@@ -75,7 +75,7 @@
     "c8": "^11.0.0",
     "jasmine": "^6.2.0",
     "lerna-changelog": "^2.2.0",
-    "release-it": "^19.2.4",
+    "release-it": "^20.0.0",
     "release-it-pnpm": "^4.6.6",
     "tailwindcss": "^4.2.1",
     "typescript": "^6.0.2"

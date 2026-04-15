@@ -230,7 +230,7 @@ report.generate({
       </section>
 
       {/* Footer Branding */}
-      <footer className='border-t border-zinc-200 dark:border-zinc-800 pt-12 pb-20 px-6'>
+      <footer className='border-t border-zinc-200 dark:border-zinc-800 pt-12 px-6'>
         <div className='container mx-auto flex flex-col md:flex-row justify-between items-center gap-8'>
           <div className='flex flex-col gap-2'>
             <span className='text-2xl font-bold flex items-center'>
