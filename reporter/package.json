@@ -55,7 +55,7 @@
     "find": "^0.3.0",
     "fs-extra": "^11.3.4",
     "jsonfile": "^6.2.0",
-    "liquidjs": "^10.25.2",
+    "liquidjs": "^10.25.5",
     "lodash": "^4.18.1",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
@@ -70,15 +70,15 @@
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.5.1",
+    "@types/node": "^25.6.0",
     "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
-    "jasmine": "^6.1.0",
+    "jasmine": "^6.2.0",
     "lerna-changelog": "^2.2.0",
-    "release-it": "^19.2.4",
+    "release-it": "^20.0.0",
     "release-it-pnpm": "^4.6.6",
     "tailwindcss": "^4.2.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@10.32.1"
 }
