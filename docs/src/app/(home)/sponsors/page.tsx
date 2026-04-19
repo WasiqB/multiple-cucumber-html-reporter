@@ -1,6 +1,6 @@
 'use client';
 
-import { Bug, FileText, Rocket, ShieldCheck } from 'lucide-react';
+import { Bug, FileText, Heart, Rocket, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +19,10 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function SponsorsPage() {
   const { hero, benefits, tiers, curators, faq, cta } = sponsorsDataJson as SponsorsData;
+  const hasSponsors =
+    (curators?.goldSponsors?.length ?? 0) > 0 ||
+    (curators?.silverAndBronze?.length ?? 0) > 0 ||
+    (curators?.individuals?.length ?? 0) > 0;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -137,7 +141,8 @@ export default function SponsorsPage() {
                   )}
 
                   <Link
-                    href='#'
+                    href={tier.href}
+                    target='_blank'
                     className={cn(
                       buttonVariants({ size: 'default' }),
                       'mt-auto w-full rounded-2xl font-bold',
@@ -160,69 +165,135 @@ export default function SponsorsPage() {
       {/* Curators */}
       {curators && (
         <section className='container mx-auto px-6 max-w-4xl py-12'>
-          <div className='mb-12 flex flex-col items-start'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-4'>{curators.title}</h2>
-            <p className='text-zinc-600 dark:text-zinc-400'>{curators.description}</p>
-          </div>
-
           <div className='flex flex-col gap-12'>
-            {curators.goldSponsors && curators.goldSponsors.length > 0 && (
-              <div>
-                <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Gold Sponsors</h3>
-                <div className='flex flex-wrap gap-4'>
-                  {curators.goldSponsors.map((s, idx) => (
-                    <div
-                      key={idx}
-                      className='w-40 h-20 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center font-bold text-zinc-500 shadow-sm'
-                    >
-                      {s.name}
-                    </div>
-                  ))}
+            {!hasSponsors ? (
+              <div className='bg-zinc-50 dark:bg-zinc-900 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-[2rem] p-6 text-center flex flex-col items-center gap-6'>
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+                >
+                  <Heart className='h-12 w-12 text-rose-500' />
+                </motion.div>
+                <div>
+                  <h3 className='text-2xl font-bold mb-2'>Be the First Sponsor!</h3>
+                  <p className='text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto'>
+                    Your support directly funds independent development, ensuring the ecosystem remains modern, secure,
+                    and sustainable. Join our community of supporters today and help us build the future of Reporting.
+                  </p>
                 </div>
+                <Link
+                  href='https://github.com/sponsors/WasiqB'
+                  className={cn(
+                    buttonVariants({ size: 'lg' }),
+                    'bg-rose-500 hover:bg-rose-600 text-white rounded-full',
+                  )}
+                >
+                  Become a Sponsor
+                </Link>
               </div>
-            )}
-
-            {curators.silverAndBronze && curators.silverAndBronze.length > 0 && (
-              <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
-                <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Silver &amp; Bronze</h3>
-                <div className='flex flex-wrap gap-4'>
-                  {curators.silverAndBronze.map((s, idx) => (
-                    <div
-                      key={idx}
-                      className='w-24 h-24 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-center font-bold text-zinc-500 shadow-sm text-xs text-center p-2'
-                    >
-                      {s.name}
-                    </div>
-                  ))}
+            ) : (
+              <>
+                <div className='mb-12 flex flex-col items-start'>
+                  <h2 className='text-3xl md:text-4xl font-bold mb-4'>{curators.title}</h2>
+                  <p className='text-zinc-600 dark:text-zinc-400'>{curators.description}</p>
                 </div>
-              </div>
-            )}
-
-            {curators.individuals && curators.individuals.length > 0 && (
-              <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
-                <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Individuals</h3>
-                <div className='flex flex-wrap gap-3 items-center'>
-                  {curators.individuals.map((u, idx) => (
-                    <div
-                      key={idx}
-                      className='w-10 h-10 bg-zinc-200 dark:bg-zinc-800 rounded-full border border-zinc-300 dark:border-zinc-700 shadow-sm overflow-hidden'
-                    >
-                      <Image
-                        width={40}
-                        height={40}
-                        src={`https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=${u.name}`}
-                        alt={u.name}
-                        className='w-full h-full object-cover'
-                      />
+                <div className='flex flex-col gap-12'>
+                  {curators.goldSponsors && curators.goldSponsors.length > 0 && (
+                    <div>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Gold Sponsors</h3>
+                      <div className='flex flex-wrap gap-6'>
+                        {curators.goldSponsors.map((s, idx) => (
+                          <Link
+                            key={idx}
+                            href={s.url || '#'}
+                            className='group flex flex-col items-center transition-transform hover:scale-105'
+                          >
+                            <div className='w-24 h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-3'>
+                              {s.image ? (
+                                <Image
+                                  src={s.image}
+                                  alt={s.name}
+                                  width={96}
+                                  height={96}
+                                  className='w-full h-full object-cover'
+                                />
+                              ) : (
+                                <div className='text-xl font-bold text-emerald-600'>{s.name[0]}</div>
+                              )}
+                            </div>
+                            <span className='text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-500'>
+                              {s.name}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                  {curators.moreCount && (
-                    <div className='w-10 h-10 bg-zinc-100 dark:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-800 shadow-sm flex items-center justify-center text-xs font-bold text-zinc-500'>
-                      {curators.moreCount}
+                  )}
+
+                  {curators.silverAndBronze && curators.silverAndBronze.length > 0 && (
+                    <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                        Silver & Bronze
+                      </h3>
+                      <div className='flex flex-wrap gap-4'>
+                        {curators.silverAndBronze.map((s, idx) => (
+                          <Link
+                            key={idx}
+                            href={s.url || '#'}
+                            className='group flex flex-col items-center transition-transform hover:scale-105'
+                          >
+                            <div className='w-16 h-16 bg-white dark:bg-zinc-900 border border-emerald-500/50 rounded-full flex items-center justify-center shadow-md overflow-hidden mb-2'>
+                              {s.image ? (
+                                <Image
+                                  src={s.image}
+                                  alt={s.name}
+                                  width={64}
+                                  height={64}
+                                  className='w-full h-full object-cover'
+                                />
+                              ) : (
+                                <div className='text-sm font-bold text-emerald-600'>{s.name[0]}</div>
+                              )}
+                            </div>
+                            <span className='text-[10px] font-medium text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500'>
+                              {s.name}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {curators.individuals && curators.individuals.length > 0 && (
+                    <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Individuals</h3>
+                      <div className='flex flex-wrap gap-3 items-center'>
+                        {curators.individuals.map((u, idx) => (
+                          <Link
+                            key={idx}
+                            href={u.url || '#'}
+                            className='w-10 h-10 bg-zinc-200 dark:bg-zinc-800 rounded-full border border-zinc-300 dark:border-zinc-700 shadow-sm overflow-hidden transition-transform hover:scale-110'
+                          >
+                            <Image
+                              width={40}
+                              height={40}
+                              src={u.image || `https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=${u.name}`}
+                              alt={u.name}
+                              className='w-full h-full object-cover'
+                            />
+                          </Link>
+                        ))}
+                        {curators.moreCount && (
+                          <div className='w-10 h-10 bg-zinc-100 dark:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-800 shadow-sm flex items-center justify-center text-xs font-bold text-zinc-500'>
+                            {curators.moreCount}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
-              </div>
+              </>
             )}
           </div>
         </section>

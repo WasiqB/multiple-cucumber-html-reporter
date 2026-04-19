@@ -310,6 +310,7 @@ export interface SponsorsTier {
   period: string;
   features: string[];
   button: string;
+  href: string;
   type: string;
 }
 
@@ -322,6 +323,7 @@ export interface SponsorsTiers {
 export interface SponsorsCuratorGroup {
   name: string;
   image?: string;
+  url?: string;
 }
 
 export interface SponsorsCurators {

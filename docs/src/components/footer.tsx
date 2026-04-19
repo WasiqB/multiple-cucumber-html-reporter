@@ -17,22 +17,27 @@ export function Footer({ className }: { className?: string }) {
               reporter
             </span>
           </div>
-          <p className='text-sm text-zinc-500'>© 2024 Precision Curator. Open source under MIT License.</p>
+          <p className='text-sm text-zinc-500'>
+            © {new Date().getFullYear()} Wasiq Bhamla. Open source under MIT License.
+          </p>
         </div>
         <div className='flex flex-wrap justify-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400'>
           <Link href='/docs' className='hover:text-emerald-500 transition-colors'>
             Documentation
           </Link>
-          <Link href='#' className='hover:text-emerald-500 transition-colors'>
+          <Link
+            href='https://github.com/WasiqB/multiple-cucumber-html-reporter/releases'
+            className='hover:text-emerald-500 transition-colors'
+          >
             Changelog
           </Link>
-          <Link href='#' className='hover:text-emerald-500 transition-colors'>
-            Status
-          </Link>
-          <Link href='#' className='hover:text-emerald-500 transition-colors'>
+          <Link href='https://github.com/sponsors/WasiqB' className='hover:text-emerald-500 transition-colors'>
             Sponsor
           </Link>
-          <Link href='#' className='hover:text-emerald-500 transition-colors'>
+          <Link
+            href='https://github.com/WasiqB/multiple-cucumber-html-reporter/tree/main/.github/CONTRIBUTING.md'
+            className='hover:text-emerald-500 transition-colors'
+          >
             Contributing
           </Link>
         </div>

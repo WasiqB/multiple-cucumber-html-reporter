@@ -1,8 +1,8 @@
 {
   "hero": {
     "titleLine1": "Support the future of",
-    "titleLine2": "CucumberHTML",
-    "description": "CucumberHTML is built on the belief that technical precision should be accessible to everyone. Your sponsorship directly funds independent development, ensuring the ecosystem remains modern, secure, and sustainable for the long term.",
+    "titleLine2": "Multiple CucumberHTML Reporter",
+    "description": "Multiple CucumberHTML Reporter is built on the belief that technical precision should be accessible to everyone. Your sponsorship directly funds independent development, ensuring the ecosystem remains modern, secure, and sustainable for the long term.",
     "action": {
       "text": "Sponsor on GitHub",
       "href": "https://github.com/sponsors/WasiqB"
@@ -12,7 +12,7 @@
     {
       "icon": "Rocket",
       "title": "Faster Core Development",
-      "description": "Sponsorship allows our core maintainers to dedicate full-time hours to performance optimizations and new feature implementations, reducing the release cycle by 40%.",
+      "description": "Sponsorship allows our core maintainers to dedicate full-time hours to performance optimizations and new feature implementations.",
       "type": "light"
     },
     {
@@ -39,60 +39,91 @@
     "description": "Support the project at a level that fits your contribution capacity. Every bit counts towards engineering excellence.",
     "items": [
       {
-        "name": "Backer",
+        "name": "🚶🏻 Starter",
         "price": "$5",
         "period": "per month",
-        "features": ["Name on website"],
+        "features": ["You get a shoutout on my Socials", "Get your name listed on my personal website"],
         "button": "Join",
-        "type": "outline"
+        "type": "outline",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=157962"
       },
       {
-        "name": "Individual",
+        "name": "🤝 Backer",
         "price": "$25",
         "period": "per month",
-        "features": ["Avatar on website", "Discord badge"],
+        "features": ["Including previous tier benefits", "Get your name listed on README of all my repositories"],
         "button": "Join",
-        "type": "outline"
+        "type": "outline",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=157963"
       },
       {
-        "name": "Bronze",
+        "name": "🥉 Bronze",
+        "price": "$50",
+        "period": "per month",
+        "features": [
+          "Including previous tier benefits",
+          "Get special sponsor role on my Discord server with access to private sponsor channel where you will get priority over other discussions"
+        ],
+        "button": "Join",
+        "type": "solid",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=157964"
+      },
+      {
+        "name": "🥈 Silver",
         "price": "$100",
         "period": "per month",
-        "features": ["Logo on website", "Discord priority", "Early access"],
+        "features": [
+          "Including previous tier benefits",
+          "Get 30 minutes / month of call with me anytime during the month for any consulting or mentorship"
+        ],
         "button": "Join",
-        "type": "solid"
+        "type": "primary",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=157967"
       },
       {
-        "name": "Silver",
-        "price": "$250",
+        "name": "🥇 Gold",
+        "price": "$350",
         "period": "per month",
-        "features": ["Logo on GitHub", "Logo on Website", "Promo Support"],
+        "features": [
+          "Including previous tier benefits",
+          "Get 1 hour / month of call with me anytime during the month for any consulting or mentorship"
+        ],
         "button": "Join",
-        "type": "dark"
+        "type": "dark",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=206957"
       },
       {
-        "name": "Gold",
+        "name": "💎 Diamond",
+        "price": "$500",
+        "period": "per month",
+        "features": [
+          "Including previous tier benefits",
+          "Get 4 hour / month of call with me anytime during the month for any consulting or mentorship"
+        ],
+        "button": "Join",
+        "type": "dark",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=235804"
+      },
+      {
+        "name": "👑 Platinum",
         "price": "$1000",
         "period": "per month",
-        "features": ["Large Logo Showcase", "Dedicated Support", "Feature Prioritization"],
+        "features": [
+          "Including previous tier benefits",
+          "Get 12 hour / month call with me anytime during the month for any consulting or mentorship"
+        ],
         "button": "Join",
-        "type": "primary"
+        "type": "dark",
+        "href": "https://github.com/sponsors/WasiqB/sponsorships?tier_id=206958"
       }
     ]
   },
   "curators": {
     "title": "Meet the Curators",
     "description": "The organizations and individuals keeping the project alive.",
-    "goldSponsors": [{ "name": "Company A" }, { "name": "Company B" }],
-    "silverAndBronze": [{ "name": "Company C" }, { "name": "Company D" }, { "name": "Company E" }],
-    "individuals": [
-      { "name": "user1" },
-      { "name": "user2" },
-      { "name": "user3" },
-      { "name": "user4" },
-      { "name": "user5" }
-    ],
-    "moreCount": "+142"
+    "goldSponsors": [],
+    "silverAndBronze": [],
+    "individuals": []
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -103,11 +134,7 @@
       },
       {
         "question": "Can I manage or cancel my sponsorship?",
-        "answer": "Yes, all billing is handled through GitHub Sponsors or Open Collective. You can upgrade, downgrade, or cancel your recurring contribution at any time through their respective dashboards."
-      },
-      {
-        "question": "Do you accept corporate sponsorships via invoice?",
-        "answer": "For Gold and Silver tiers, we can provide manual invoicing. Please contact our core team directly via the support email in the documentation footer."
+        "answer": "Yes, all billing is handled through GitHub Sponsors. You can upgrade, downgrade, or cancel your recurring contribution at any time through the dashboard."
       }
     ]
   },

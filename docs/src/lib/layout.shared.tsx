@@ -20,36 +20,36 @@ export function baseOptions(): BaseLayoutProps {
       transparentMode: 'top',
     },
     links: [
-      // {
-      //   text: 'Features',
-      //   url: '/features',
-      //   active: 'nested-url',
-      // },
-      // {
-      //   text: 'How it Works',
-      //   url: '/how-it-works',
-      //   active: 'nested-url',
-      // },
-      // {
-      //   text: 'Community',
-      //   url: '/community',
-      //   active: 'nested-url',
-      // },
-      // {
-      //   text: 'Sponsors',
-      //   url: '/sponsors',
-      //   active: 'nested-url',
-      // },
+      {
+        text: 'Features',
+        url: '/features',
+        active: 'nested-url',
+      },
+      {
+        text: 'How it Works',
+        url: '/how-it-works',
+        active: 'nested-url',
+      },
       {
         text: 'Documentation',
         url: '/docs',
         active: 'nested-url',
       },
-      // {
-      //   text: 'Showcase',
-      //   url: '/showcase',
-      //   active: 'nested-url',
-      // },
+      {
+        text: 'Showcase',
+        url: '/showcase',
+        active: 'nested-url',
+      },
+      {
+        text: 'Sponsors',
+        url: '/sponsors',
+        active: 'nested-url',
+      },
+      {
+        text: 'Community',
+        url: '/community',
+        active: 'nested-url',
+      },
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   };
