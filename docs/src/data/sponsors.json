@@ -1,0 +1,119 @@
+{
+  "hero": {
+    "titleLine1": "Support the future of",
+    "titleLine2": "CucumberHTML",
+    "description": "CucumberHTML is built on the belief that technical precision should be accessible to everyone. Your sponsorship directly funds independent development, ensuring the ecosystem remains modern, secure, and sustainable for the long term.",
+    "action": {
+      "text": "Sponsor on GitHub",
+      "href": "https://github.com/sponsors/WasiqB"
+    }
+  },
+  "benefits": [
+    {
+      "icon": "Rocket",
+      "title": "Faster Core Development",
+      "description": "Sponsorship allows our core maintainers to dedicate full-time hours to performance optimizations and new feature implementations, reducing the release cycle by 40%.",
+      "type": "light"
+    },
+    {
+      "icon": "FileText",
+      "title": "Editorial Quality Docs",
+      "description": "We believe documentation is a first-class feature. Funds help us maintain high-fidelity tutorials and API references.",
+      "type": "green"
+    },
+    {
+      "icon": "ShieldCheck",
+      "title": "Security Audits",
+      "description": "Dedicated maintenance includes quarterly security sweeps and dependency hardening.",
+      "type": "light"
+    },
+    {
+      "icon": "Bug",
+      "title": "Priority Bug Fixes",
+      "description": "Community-reported issues are triaged and resolved with precision, ensuring the stable branch remains production-ready at all times for enterprises and individuals alike.",
+      "type": "light"
+    }
+  ],
+  "tiers": {
+    "title": "Choose Your Tier",
+    "description": "Support the project at a level that fits your contribution capacity. Every bit counts towards engineering excellence.",
+    "items": [
+      {
+        "name": "Backer",
+        "price": "$5",
+        "period": "per month",
+        "features": ["Name on website"],
+        "button": "Join",
+        "type": "outline"
+      },
+      {
+        "name": "Individual",
+        "price": "$25",
+        "period": "per month",
+        "features": ["Avatar on website", "Discord badge"],
+        "button": "Join",
+        "type": "outline"
+      },
+      {
+        "name": "Bronze",
+        "price": "$100",
+        "period": "per month",
+        "features": ["Logo on website", "Discord priority", "Early access"],
+        "button": "Join",
+        "type": "solid"
+      },
+      {
+        "name": "Silver",
+        "price": "$250",
+        "period": "per month",
+        "features": ["Logo on GitHub", "Logo on Website", "Promo Support"],
+        "button": "Join",
+        "type": "dark"
+      },
+      {
+        "name": "Gold",
+        "price": "$1000",
+        "period": "per month",
+        "features": ["Large Logo Showcase", "Dedicated Support", "Feature Prioritization"],
+        "button": "Join",
+        "type": "primary"
+      }
+    ]
+  },
+  "curators": {
+    "title": "Meet the Curators",
+    "description": "The organizations and individuals keeping the project alive.",
+    "goldSponsors": [{ "name": "Company A" }, { "name": "Company B" }],
+    "silverAndBronze": [{ "name": "Company C" }, { "name": "Company D" }, { "name": "Company E" }],
+    "individuals": [
+      { "name": "user1" },
+      { "name": "user2" },
+      { "name": "user3" },
+      { "name": "user4" },
+      { "name": "user5" }
+    ],
+    "moreCount": "+142"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Where does the money go?",
+        "answer": "100% of funds (after platform fees) go towards project expenses: paying maintainers for focused dev time, hosting our documentation infrastructure, and sponsoring upstream dependencies we rely on."
+      },
+      {
+        "question": "Can I manage or cancel my sponsorship?",
+        "answer": "Yes, all billing is handled through GitHub Sponsors or Open Collective. You can upgrade, downgrade, or cancel your recurring contribution at any time through their respective dashboards."
+      },
+      {
+        "question": "Do you accept corporate sponsorships via invoice?",
+        "answer": "For Gold and Silver tiers, we can provide manual invoicing. Please contact our core team directly via the support email in the documentation footer."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to curate the future with us?",
+    "primaryLink": { "label": "Sponsor on GitHub", "url": "https://github.com/sponsors/WasiqB" },
+    "secondaryLink": { "label": "Other ways to help", "url": "/community" }
+  }
+}

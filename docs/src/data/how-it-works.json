@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "titleLine1": "From Test Run to",
+    "titleLine2": "Visual Insight.",
+    "description": "Streamline your Cucumber testing workflow with our lightweight, high-performance reporting engine. Zero dependencies, maximum clarity."
+  },
+  "steps": [
+    {
+      "number": 1,
+      "title": "Simple Installation",
+      "description": "Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.",
+      "badges": ["zero dependencies", "lightweight"],
+      "codeHtml": "<span className='text-emerald-400'>$</span> npm install cucumber-html-reporter --save-dev<br /><br /><span className='text-zinc-500'># or using yarn</span><br /><span className='text-emerald-400'>$</span> yarn add cucumber-html-reporter -D"
+    },
+    {
+      "number": 2,
+      "title": "Declarative Configuration",
+      "description": "Customize your output with a simple JSON object. Define themes, file paths, and metadata about your environment in cucumber.conf.js.",
+      "checklist": ["Multiple UI Themes supported", "Attach screenshots on failure"],
+      "codeHtml": "<span className='text-pink-400'>const</span> reporter = <span className='text-sky-400'>require</span>(<span className='text-emerald-300'>'cucumber-html-reporter'</span>);<br /><br /><span className='text-pink-400'>const</span> options = {'{'}<br />{'  '}theme: <span className='text-emerald-300'>'bootstrap'</span>,<br />{'  '}jsonFile: <span className='text-emerald-300'>'test/report/cucumber_report.json'</span>,<br />{'  '}output: <span className='text-emerald-300'>'test/report/cucumber_report.html'</span>,<br />{'  '}reportSuiteAsScenarios: <span className='text-amber-400'>true</span>,<br />{'  '}launchReport: <span className='text-amber-400'>true</span><br />{'}'}<br /><br />reporter.<span className='text-sky-400'>generate</span>(options);"
+    },
+    {
+      "number": 3,
+      "title": "Execute & Generate",
+      "description": "Run your tests as you normally would. Cucumber Reporter intercepts the JSON output and transforms it into a beautiful interactive dashboard instantly.",
+      "command": "npm test",
+      "commandStatus": "Generating report... done."
+    }
+  ],
+  "analysis": {
+    "stepNumber": 4,
+    "title": "Interactive Analysis",
+    "description": "Experience the results through a sophisticated lens. High-density data curated for clarity, featuring real-time filtering, failure diagnostics, and performance trends.",
+    "cards": [
+      {
+        "icon": "PieChart",
+        "title": "Visual Analytics",
+        "description": "Beautiful charts providing an immediate overview of test pass/fail rates and suite health."
+      },
+      {
+        "icon": "ChevronDown",
+        "title": "Smart Filtering",
+        "description": "Drill down into specific tags, features, or failure reasons with lightning-fast search and filters."
+      },
+      {
+        "icon": "FileJson",
+        "title": "Rich Artifacts",
+        "description": "Embedded screenshots and video links attached directly to failed test steps for rapid debugging."
+      }
+    ],
+    "image": "/feature-list-page.png"
+  },
+  "cicd": {
+    "stepNumber": 5,
+    "title": "CI/CD Ready",
+    "description": "Automate your quality reporting. Perfect for GitHub Actions, GitLab CI, or Jenkins. Generate and publish reports automatically on every push.",
+    "platforms": ["GitHub Actions", "Jenkins", "GitLab"]
+  }
+}

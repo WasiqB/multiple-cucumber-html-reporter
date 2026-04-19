@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "badge": "New in Version 4.0",
+    "titleLine1": "Beautiful Cucumber Reports,",
+    "titleLine2": "Made Easy",
+    "description": "The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.",
+    "primaryLink": { "label": "Try It Now", "url": "/docs" },
+    "secondaryLink": { "label": "GitHub Docs", "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter" },
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
+  },
+  "features": {
+    "title": "Precision Reporting",
+    "description": "Stop digging through log files. Our reporter visualizes every step of your BDD journey with precision and clarity.",
+    "items": [
+      {
+        "icon": "Activity",
+        "title": "Detailed Metrics",
+        "description": "Get visual feedback on your test execution with interactive pie charts and trend lines."
+      },
+      {
+        "icon": "BarChart3",
+        "title": "Insightful Reports",
+        "description": "Get detailed insights into your test execution with interactive charts and tables."
+      },
+      {
+        "icon": "Zap",
+        "title": "Lightning Fast",
+        "description": "Optimized, fast loading and smooth interactions."
+      },
+      {
+        "icon": "Layers",
+        "title": "Deep Integration",
+        "description": "Supports screenshots, video and logs attachments, and custom metadata for every failing scenario."
+      }
+    ]
+  },
+  "setup": {
+    "titleLine1": "Simple Setup,",
+    "titleLine2": "Powerful Results",
+    "description": "Integration takes minutes. Just pass your JSON output files and let our engine handle the rest.",
+    "link": { "label": "Read the full installation guide", "url": "/docs" },
+    "code": "import { generate } from 'multiple-cucumber-html-reporter';\n\nconst report = generate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});"
+  },
+  "community": {
+    "title": "Support the Open Source Ecosystem",
+    "items": [
+      {
+        "icon": "Heart",
+        "color": "rose",
+        "title": "Sponsor",
+        "description": "Help us maintain the project with your support.",
+        "buttonText": "Support Project",
+        "href": "https://github.com/sponsors/WasiqB"
+      },
+      {
+        "icon": "Star",
+        "color": "amber",
+        "title": "Star on GitHub",
+        "description": "Show your love! A simple star helps us grow our community and gain visibility.",
+        "buttonText": "Star Repository",
+        "href": "https://github.com/WasiqB/multiple-cucumber-html-reporter"
+      },
+      {
+        "icon": "MessageSquare",
+        "color": "emerald",
+        "title": "Contribute",
+        "description": "Found a bug or have a feature idea? Join our discord and open a pull request.",
+        "buttonText": "Join Discord",
+        "href": "https://discord.gg/d6rfHkSDjc"
+      }
+    ]
+  },
+  "trustedBy": {
+    "title": "Trusted by Engineering Teams at",
+    "companies": []
+  }
+}

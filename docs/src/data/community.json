@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "badge": "Open Source First",
+    "titleLine1": "Join the",
+    "titleLine2": "CucumberHTML",
+    "titleLine3": "Community",
+    "description": "We believe in the power of precision and collaboration. Join thousands of developers building the future of clean, automated HTML scaffolding. Every line of code counts.",
+    "primaryLink": { "label": "Become a Contributor", "url": "#" },
+    "secondaryLink": { "label": "View Roadmap", "url": "#" }
+  },
+  "supportChannels": {
+    "title": "Support Channels",
+    "description": "Whether you're stuck on a bug or looking for architectural advice, our community is here to help you move faster.",
+    "items": [
+      {
+        "icon": "Discord",
+        "title": "Discord",
+        "description": "Join our vibrant real-time chat for quick questions, community hangouts, and live announcements.",
+        "linkText": "Join Server",
+        "href": "#"
+      },
+      {
+        "icon": "GitHub",
+        "title": "GitHub Issues",
+        "description": "Found a bug or have a feature request? Open an issue on our repository to track progress.",
+        "linkText": "Submit Issue",
+        "href": "#"
+      },
+      {
+        "icon": "StackOverflow",
+        "title": "StackOverflow",
+        "description": "Browse the Q&A archive or ask a specific technical question using the custom tag.",
+        "linkText": "Ask a Question",
+        "href": "#"
+      }
+    ]
+  },
+  "contributing": {
+    "title": "Start contributing today",
+    "description": "New to open source? No problem. We have a dedicated path for beginners to help you make your first pull request.",
+    "primaryLink": { "label": "Good First Issues", "url": "#" },
+    "secondaryLink": { "label": "Contributing Guide", "url": "#" },
+    "code": "git clone https://github.com/cucumber-html.git\ncd mchr\nnpm install\nnpm run dev"
+  },
+  "spotlight": {
+    "title": "Community Spotlight",
+    "description": "Recognizing the incredible individuals who dedicate their time to making CucumberHTML better for everyone.",
+    "items": [
+      { "name": "Alex Rivera", "role": "TOP REVIEWER" },
+      { "name": "Sarah Chen", "role": "CORE TEAM" },
+      { "name": "Marcus Vogt", "role": "DOCS MASTER" },
+      { "name": "Elena Petrova", "role": "UI CONTRIBUTOR" },
+      { "name": "Jordan Lee", "role": "PLUGIN DEV" },
+      { "name": "Riley Smith", "role": "MAINTAINER" },
+      { "name": "S. Gupta", "role": "BUG HUNTER" }
+    ]
+  },
+  "eventsAndUpdates": {
+    "eventsTitle": "Upcoming Events",
+    "events": [
+      {
+        "month": "Nov",
+        "day": "24",
+        "title": "Monthly Community Sync",
+        "description": "Join the core team to discuss the Q1 roadmap and new architectural changes.",
+        "link": { "text": "RSVP on Discord", "url": "#" }
+      },
+      {
+        "month": "Dec",
+        "day": "12",
+        "title": "Hack-the-December 2024",
+        "description": "A 40-hour global hackathon focused on building ecosystem plugins.",
+        "status": "Coming soon"
+      }
+    ],
+    "updatesTitle": "Latest Updates",
+    "updates": [
+      {
+        "category": "Version Release",
+        "title": "CucumberHTML v4.2.0 \"Emerald\" is here",
+        "description": "Improved tree-shaking and full support for the new design system primitives.",
+        "type": "primary",
+        "link": { "text": "Read Changelog", "url": "#" }
+      },
+      {
+        "category": "Community Blog",
+        "title": "Scaling Documentation with Asymmetry",
+        "description": "How we used precision duration to overhaul our technical guides.",
+        "type": "secondary",
+        "link": { "text": "Read Post", "url": "#" }
+      }
+    ]
+  }
+}

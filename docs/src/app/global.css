@@ -138,3 +138,8 @@ html:has(body[data-scroll-locked]) {
     @apply font-sans;
   }
 }
+
+/* Custom Nav Active Style */
+header nav a[data-active="true"] {
+  @apply text-emerald-600 dark:text-emerald-400 border-b-2 border-emerald-500 rounded-none pb-[2px];
+}

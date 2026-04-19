@@ -5,6 +5,15 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'k9v00w0cps.ufs.sh',
+        pathname: '/f/**',
+      },
+    ],
+  },
 };
 
 export default withMDX(config);
