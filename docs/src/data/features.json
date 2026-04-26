@@ -4,54 +4,74 @@
     "titleLine1": "Powerful reporting for",
     "titleLine2": "modern BDD",
     "description": "Discover the features that make CucumberHTML the preferred reporter for engineering teams. Build trust through visibility.",
-    "primaryLink": { "label": "Install Library", "url": "/docs" },
+    "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
     "secondaryLink": { "label": "View Demo", "url": "#" },
-    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
   },
-  "precision": {
-    "title": "Precision at Scale",
-    "description": "Every detail engineered for developer productivity.",
-    "cards": [
+  "stats": {
+    "items": [
+      { "label": "NPM Downloads", "value": "1M+", "icon": "Download" },
+      { "label": "GitHub Stars", "value": "270+", "icon": "Star" },
+      { "label": "Dependents", "value": "6.2K+", "icon": "Users" },
+      { "label": "Weekly Downloads", "value": "248K+", "icon": "Activity" }
+    ]
+  },
+  "accordion": {
+    "title": "Unmatched Capabilities",
+    "description": "Deep dive into the specialized features that set us apart from standard reporters.",
+    "items": [
       {
-        "icon": "BarChart3",
-        "title": "Visual Analytics",
-        "description": "Transform raw test data into beautiful charts for pass/fail rates and trend analysis. Identify bottlenecks across releases with high-fidelity heatmaps.",
-        "linkText": "Explore Visualizations",
-        "linkUrl": "#",
-        "type": "light"
+        "title": "Rich Metadata and Environment Info",
+        "pointers": [
+          "Capture OS, Browser, and Device information automatically",
+          "Custom metadata fields for CI/CD pipeline details",
+          "Environment-specific tags and labels",
+          "Automated platform detection"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH76k1PXE3snmf0ExP6I4HKDeiZTVCv5z9jrWS",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxOUbNVrrvT17za2GAlImDop3L0qNbMgE6WQK"
+        ]
       },
       {
-        "icon": "Network",
-        "title": "Deep Integration",
-        "description": "Full support for screenshots, video attachments, and custom metadata linked directly to failing steps.",
-        "type": "dark"
+        "title": "Interactive Analytics Dashboards",
+        "pointers": [
+          "Real-time pass/fail distribution charts",
+          "Historical trend analysis and heatmaps",
+          "Duration breakdowns per feature and scenario",
+          "Customizable visualization themes"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ"
+        ]
       },
       {
-        "icon": "Search",
-        "title": "Searchable Reports",
-        "description": "High-performance filtering by status, tags, and duration. Find that flaky test in seconds.",
-        "type": "light"
+        "title": "Advanced Error Diagnostics",
+        "pointers": [
+          "Clean, formatted stack traces with syntax highlighting",
+          "Automatic screenshot capture on failure",
+          "Video attachment support for flaky tests",
+          "Step-by-step logs with execution timing"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWSwZ4mzuXbQxU14FIfOCKwTlo7qcWJn02GYZ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZt8RXI3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
+        ]
+      },
+      {
+        "title": "Multi-Language & Platform Support",
+        "pointers": [
+          "Native support for Cucumber (JS, Java, Ruby, Python)",
+          "Cross-platform reporting for Web, Mobile, and API",
+          "Docker-ready CLI for cloud execution",
+          "Easy integration with Jenkins, GitHub Actions, and more"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
+        ]
       }
-    ],
-    "developerFirst": {
-      "icon": "Terminal",
-      "title": "Developer-First",
-      "description": "Clean JSON transformation, CLI support, and easy CI integration. Built to fit into your existing workflow without friction.",
-      "code": "<span className='text-emerald-400'>$</span> npm install cucumber-html<br /><span className='text-zinc-500'>// Initialize report</span><br /><span className='text-sky-300'>reporter.generate</span>({'{\\n  ... \\n}'})"
-    }
-  },
-  "preview": {
-    "title": "Interactive Preview",
-    "description": "Experience the interface your stakeholders will see. High precision, low noise.",
-    "stats": {
-      "total": "1,284",
-      "passed": "1,263",
-      "duration": "14m 2s"
-    },
-    "features": [
-      { "name": "Feature: User Authentication Flow", "time": "2.4s", "status": "passed" },
-      { "name": "Feature: Shopping Cart Persistence", "time": "1.1s", "status": "passed" },
-      { "name": "Feature: Stripe Webhook Integration", "time": "1.8s", "status": "failed" }
     ]
   },
   "upgrade": {
@@ -65,8 +85,7 @@
   },
   "cta": {
     "title": "Ready to upgrade your reports?",
-    "description": "Join over 5,000 engineering teams delivering clearer BDD results every single day.",
-    "primaryLink": { "label": "Get Started", "url": "/docs" },
-    "secondaryLink": { "label": "View Docs", "url": "/docs" }
+    "description": "Join over 6K+ engineers and teams delivering clearer BDD results every single day.",
+    "primaryLink": { "label": "Get Started", "url": "/docs" }
   }
 }

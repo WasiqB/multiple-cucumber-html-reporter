@@ -19,10 +19,13 @@ const iconMap: Record<string, React.ReactNode> = {
   Heart: <Heart className='h-8 w-8 text-rose-500' />,
   Star: <Star className='h-8 w-8 text-amber-500' />,
   MessageSquare: <MessageSquare className='h-8 w-8 text-emerald-500' />,
+  Download: <Activity className='h-6 w-6 text-emerald-500' />,
+  Users: <Layers className='h-6 w-6 text-emerald-500' />,
+  StarFill: <Star className='h-6 w-6 text-emerald-500' />,
 };
 
 export default function HomePage() {
-  const { hero, features, setup, community, trustedBy } = homeDataJson as HomeData;
+  const { hero, stats, features, setup, community, trustedBy } = homeDataJson as HomeData;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -110,6 +113,36 @@ export default function HomePage() {
                 </div>
               </motion.div>
             )}
+          </div>
+        </section>
+      )}
+ 
+      {/* Stats Section */}
+      {stats?.items && (
+        <section className='container mx-auto px-6'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem] px-8 md:px-16'>
+            {stats.items.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className='flex flex-col items-center md:items-start text-center md:text-left gap-2'
+              >
+                <div className='flex items-center gap-3 mb-1'>
+                  {stat.icon && (
+                    <div className='p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'>
+                      {iconMap[stat.icon === 'Star' ? 'StarFill' : stat.icon] || iconMap.Activity}
+                    </div>
+                  )}
+                  <div className='text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-500'>
+                    {stat.value}
+                  </div>
+                </div>
+                <div className='text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </section>
       )}

@@ -7,6 +7,19 @@ export interface ImageLinks {
   images: LinkData[];
 }
 
+export interface StatItem {
+  label: string;
+  value: string;
+  description?: string;
+  icon?: string;
+}
+
+export interface ProjectStats {
+  title?: string;
+  description?: string;
+  items: StatItem[];
+}
+
 // ----------------------------------
 // Home Data
 // ----------------------------------
@@ -66,6 +79,7 @@ export interface HomeTrustedBy {
 
 export interface HomeData {
   hero: HomeHero;
+  stats?: ProjectStats;
   features: HomeFeatures;
   setup: HomeSetup;
   community: HomeCommunity;
@@ -192,10 +206,24 @@ export interface FeaturesCta {
   secondaryLink?: LinkData;
 }
 
+export interface FeaturesAccordionItem {
+  title: string;
+  pointers: string[];
+  images: string[];
+}
+
+export interface FeaturesAccordion {
+  title: string;
+  description: string;
+  items: FeaturesAccordionItem[];
+}
+
 export interface FeaturesData {
   hero: FeaturesHero;
+  stats?: ProjectStats;
   precision: FeaturesPrecision;
   preview: FeaturesPreview;
+  accordion: FeaturesAccordion;
   upgrade: FeaturesUpgrade;
   cta: FeaturesCta;
 }

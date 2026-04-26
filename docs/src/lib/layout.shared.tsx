@@ -35,11 +35,11 @@ export function baseOptions(): BaseLayoutProps {
         url: '/docs',
         active: 'nested-url',
       },
-      {
-        text: 'Showcase',
-        url: '/showcase',
-        active: 'nested-url',
-      },
+      // {
+      //   text: 'Showcase',
+      //   url: '/showcase',
+      //   active: 'nested-url',
+      // },
       {
         text: 'Sponsors',
         url: '/sponsors',

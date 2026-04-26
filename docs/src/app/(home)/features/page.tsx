@@ -1,23 +1,26 @@
 'use client';
 
-import { BarChart3, CheckCircle2, Network, Search, Terminal, XCircle } from 'lucide-react';
+import { Activity, CheckCircle2, Layers, Star } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { buttonVariants } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import featuresDataJson from '@/data/features.json';
 import type { FeaturesData } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
-  BarChart3: <BarChart3 className='h-6 w-6' />,
-  Network: <Network className='h-6 w-6' />,
-  Search: <Search className='h-6 w-6' />,
-  Terminal: <Terminal className='h-6 w-6' />,
+  Download: <Activity className='h-6 w-6' />,
+  Users: <Layers className='h-6 w-6' />,
+  Star: <Star className='h-6 w-6' />,
+  Activity: <Activity className='h-6 w-6' />,
 };
 
 export default function FeaturesPage() {
-  const { hero, precision, preview, upgrade, cta } = featuresDataJson as FeaturesData;
+  const { hero, stats, accordion, cta } = featuresDataJson as FeaturesData;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -93,235 +96,142 @@ export default function FeaturesPage() {
         </section>
       )}
 
-      {/* Precision at Scale Section */}
-      {precision && (
-        <section className='container mx-auto px-6 max-w-6xl'>
-          <div className='mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-4'>{precision.title}</h2>
-            <p className='text-zinc-600 dark:text-zinc-400'>{precision.description}</p>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-            {precision.cards?.map((card, idx) => (
+      {/* Stats Section */}
+      {stats?.items && (
+        <section className='container mx-auto px-6'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem] px-8 md:px-16'>
+            {stats.items.map((stat, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  'rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all flex flex-col items-start border',
-                  card.type === 'dark'
-                    ? 'bg-emerald-800 dark:bg-emerald-900 border-emerald-700 dark:border-emerald-800 text-white'
-                    : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800',
-                )}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className='flex flex-col items-center md:items-start text-center md:text-left gap-2'
               >
-                <div
-                  className={cn(
-                    'w-12 h-12 rounded-xl flex items-center justify-center mb-6',
-                    card.type === 'dark'
-                      ? 'bg-emerald-700/50 dark:bg-emerald-800 text-emerald-200'
-                      : 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400',
+                <div className='flex items-center gap-3 mb-1'>
+                  {stat.icon && (
+                    <div className='p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'>
+                      {iconMap[stat.icon] || iconMap.Activity}
+                    </div>
                   )}
-                >
-                  {iconMap[card.icon]}
+                  <div className='text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-500'>
+                    {stat.value}
+                  </div>
                 </div>
-                <h3 className='text-xl font-bold mb-3'>{card.title}</h3>
-                <p
-                  className={cn(
-                    'text-sm leading-relaxed mb-6',
-                    card.type === 'dark' ? 'text-emerald-100/80' : 'text-zinc-600 dark:text-zinc-400',
-                  )}
-                >
-                  {card.description}
-                </p>
-                {card.linkText && (
-                  <Link
-                    href={card.linkUrl || '#'}
-                    className='mt-auto font-bold text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2 group hover:text-emerald-700'
-                  >
-                    {card.linkText} <span className='transition-transform group-hover:translate-x-1 font-sans'>→</span>
-                  </Link>
-                )}
+                <div className='text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
-
-            {precision.developerFirst && (
-              <motion.div
-                whileHover={{ y: -5 }}
-                className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all flex flex-col md:flex-row gap-8 items-center overflow-hidden'
-              >
-                <div className='flex flex-col items-start flex-1'>
-                  <div className='w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-6'>
-                    {iconMap[precision.developerFirst.icon] || <Terminal className='h-6 w-6' />}
-                  </div>
-                  <h3 className='text-xl font-bold mb-3'>{precision.developerFirst.title}</h3>
-                  <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>
-                    {precision.developerFirst.description}
-                  </p>
-                </div>
-                <div className='w-full md:w-64 bg-zinc-950 rounded-xl p-4 md:p-5 border border-zinc-800 shrink-0 font-mono text-[10px] md:text-xs text-zinc-300 shadow-inner'>
-                  <div className='flex gap-1.5 mb-3'>
-                    <div className='w-2 h-2 rounded-full bg-red-500/80'></div>
-                    <div className='w-2 h-2 rounded-full bg-amber-500/80'></div>
-                    <div className='w-2 h-2 rounded-full bg-emerald-500/80'></div>
-                  </div>
-                  {precision.developerFirst.code && (
-                    <div dangerouslySetInnerHTML={{ __html: precision.developerFirst.code }} />
-                  )}
-                </div>
-              </motion.div>
-            )}
           </div>
         </section>
       )}
 
-      {/* Interactive Preview Section */}
-      {preview && (
-        <section className='container mx-auto px-6 max-w-5xl text-center py-12'>
-          <h2 className='text-3xl md:text-4xl font-bold mb-4'>{preview.title}</h2>
-          <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-12'>
-            {preview.description}
-          </p>
+      {/* Detailed Features Accordion Section */}
+      {accordion && (
+        <section className='container mx-auto px-6 max-w-6xl py-12'>
+          <div className='text-center mb-16'>
+            <h2 className='text-3xl md:text-5xl font-bold mb-6'>{accordion.title}</h2>
+            <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-lg'>{accordion.description}</p>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className='rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 overflow-hidden shadow-2xl relative max-w-4xl mx-auto'
-          >
-            {/* Header */}
-            <div className='bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 p-4 flex items-center justify-between px-6'>
-              <div className='flex items-center gap-6'>
-                <div className='flex gap-2'>
-                  <div className='w-3 h-3 rounded-full bg-red-400'></div>
-                  <div className='w-3 h-3 rounded-full bg-amber-400'></div>
-                  <div className='w-3 h-3 rounded-full bg-emerald-400'></div>
-                </div>
-                <span className='text-xs font-bold text-zinc-500 tracking-widest'>LIVE REPORT JSON</span>
-              </div>
-              <div className='px-3 py-1 rounded bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold'>
-                Passing 98.4%
-              </div>
-            </div>
-
-            <div className='p-6 md:p-10 grid grid-cols-1 md:grid-cols-4 gap-8'>
-              {/* Left Stats column */}
-              {preview.stats && (
-                <div className='flex flex-col gap-4 text-left'>
-                  <div className='bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm'>
-                    <div className='text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1'>
-                      Total scenarios
-                    </div>
-                    <div className='text-2xl font-black'>{preview.stats.total}</div>
+          <Accordion type='single' collapsible className='w-full space-y-4' defaultValue='item-0'>
+            {accordion.items.map((item, idx) => (
+              <AccordionItem
+                key={idx}
+                value={`item-${idx}`}
+                className='border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden px-2 data-[state=open]:bg-emerald-50/30 dark:data-[state=open]:bg-emerald-950/10 transition-all duration-300'
+              >
+                <AccordionTrigger className='hover:no-underline py-6 px-4 md:px-8 group'>
+                  <div className='flex items-center gap-4 text-left'>
+                    <span className='flex size-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-bold'>
+                      {idx + 1}
+                    </span>
+                    <h3 className='text-xl md:text-2xl font-bold group-data-[state=open]:text-emerald-600 dark:group-data-[state=open]:text-emerald-400 transition-colors'>
+                      {item.title}
+                    </h3>
                   </div>
-                  <div className='bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-4 shadow-sm'>
-                    <div className='text-[10px] font-bold text-emerald-700 dark:text-emerald-500 uppercase tracking-wider mb-1'>
-                      Passed
+                </AccordionTrigger>
+                <AccordionContent className='px-4 md:px-8 pb-8'>
+                  <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+                    <div className='flex flex-col gap-6'>
+                      <ul className='space-y-4'>
+                        {item.pointers.map((pointer, pIdx) => (
+                          <motion.li
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: pIdx * 0.1 }}
+                            key={pIdx}
+                            className='flex items-start gap-3 text-zinc-600 dark:text-zinc-400'
+                          >
+                            <CheckCircle2 className='h-5 w-5 text-emerald-500 shrink-0 mt-0.5' />
+                            <span className='text-base leading-relaxed'>{pointer}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
                     </div>
-                    <div className='text-2xl font-black text-emerald-700 dark:text-emerald-400'>
-                      {preview.stats.passed}
-                    </div>
-                  </div>
-                  <div className='bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm'>
-                    <div className='text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1'>Duration</div>
-                    <div className='text-2xl font-black'>{preview.stats.duration}</div>
-                  </div>
-                </div>
-              )}
-
-              {/* Right Feed & Chart column */}
-              <div className='md:col-span-3 flex flex-col gap-6 text-left relative'>
-                {preview.features?.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className={cn(
-                      'flex items-center justify-between',
-                      idx !== preview.features.length - 1 && 'border-b border-zinc-200 dark:border-zinc-800 pb-4',
-                    )}
-                  >
-                    <div className='flex items-center gap-3'>
-                      {feature.status === 'passed' ? (
-                        <CheckCircle2 className='h-5 w-5 text-emerald-500' />
-                      ) : (
-                        <XCircle className='h-5 w-5 text-red-500' />
-                      )}
-                      <span
-                        className={cn(
-                          'font-bold text-sm',
-                          feature.status === 'failed' && 'text-red-600 dark:text-red-400',
+                    <div className='relative group'>
+                      <Carousel className='w-full'>
+                        <CarouselContent>
+                          {item.images.map((img, imgIdx) => (
+                            <CarouselItem key={imgIdx}>
+                              <Dialog>
+                                <DialogTrigger asChild>
+                                  <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xl aspect-video cursor-zoom-in group/img'
+                                  >
+                                    <Image
+                                      src={img}
+                                      alt={`${item.title} - ${imgIdx + 1}`}
+                                      fill
+                                      className='object-cover transition-transform duration-500 group-hover/img:scale-105'
+                                    />
+                                    <div className='absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover/img:opacity-100'>
+                                      <div className='bg-white/90 dark:bg-zinc-900/90 p-2 rounded-full shadow-lg text-xs font-bold uppercase tracking-wider scale-90 group-hover/img:scale-100 transition-transform'>
+                                        Click to enlarge
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                </DialogTrigger>
+                                <DialogContent className='max-w-[95vw] sm:max-w-[95vw] h-[90vh] p-0 border-none bg-black/40 backdrop-blur-sm shadow-none focus:outline-none flex items-center justify-center'>
+                                  <div className='relative w-full h-full p-4 md:p-12'>
+                                    <Image
+                                      src={img}
+                                      alt={item.title}
+                                      fill
+                                      className='object-contain transition-all duration-300'
+                                      priority
+                                    />
+                                  </div>
+                                </DialogContent>
+                              </Dialog>
+                            </CarouselItem>
+                          ))}
+                        </CarouselContent>
+                        {item.images.length > 1 && (
+                          <>
+                            <CarouselPrevious
+                              className='left-2 opacity-70 hover:opacity-100 transition-all bg-white/90 dark:bg-zinc-900/90 border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-md'
+                              size='icon'
+                            />
+                            <CarouselNext
+                              className='right-2 opacity-70 hover:opacity-100 transition-all bg-white/90 dark:bg-zinc-900/90 border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-md'
+                              size='icon'
+                            />
+                          </>
                         )}
-                      >
-                        {feature.name}
-                      </span>
+                      </Carousel>
                     </div>
-                    <span className='text-xs text-zinc-500 font-mono'>{feature.time}</span>
                   </div>
-                ))}
-
-                {/* Decorative Chart Area */}
-                <div className='mt-4 h-32 w-full bg-linear-to-t from-emerald-100 to-transparent dark:from-emerald-900/20 dark:to-transparent rounded-lg flex items-end justify-between px-2 gap-1 overflow-hidden relative'>
-                  {/* Lines to simulate chart */}
-                  <div className='absolute bottom-0 left-0 w-full h-full opacity-30'>
-                    <svg viewBox='0 0 100 100' preserveAspectRatio='none' className='w-full h-full text-emerald-500'>
-                      <path
-                        d='M0,100 L20,80 L40,90 L60,40 L80,60 L100,20 L100,100 Z'
-                        fill='currentColor'
-                        opacity='0.2'
-                      />
-                      <path
-                        d='M0,80 L20,60 L40,70 L60,20 L80,40 L100,0'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeWidth='1'
-                      />
-                    </svg>
-                  </div>
-                  {/* Bars */}
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className='w-full bg-emerald-400 dark:bg-emerald-600 rounded-t-sm z-10'
-                      style={{ height: `${Math.max(10, Math.random() * 100)}%`, opacity: i > 18 ? 0.3 : 0.8 }}
-                    ></div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-      )}
-
-      {/* The Upgrade Path Section */}
-      {upgrade && (
-        <section className='container mx-auto px-6 max-w-4xl text-center py-12'>
-          <h2 className='text-3xl md:text-4xl font-bold mb-12'>{upgrade.title}</h2>
-
-          <div className='bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[2rem] overflow-hidden text-left'>
-            <div className='grid grid-cols-3 p-6 px-10 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-950/50'>
-              <div className='text-[10px] font-bold text-zinc-500 uppercase tracking-widest'>Feature Capability</div>
-              <div className='text-[10px] font-bold text-zinc-500 uppercase tracking-widest'>Standard JSON</div>
-              <div className='text-[10px] font-bold text-emerald-600 dark:text-emerald-500 uppercase tracking-widest'>
-                CucumberHTML
-              </div>
-            </div>
-
-            {upgrade.rows?.map((row, idx) => (
-              <div
-                key={idx}
-                className={cn(
-                  'grid grid-cols-3 p-6 px-10 items-center hover:bg-white dark:hover:bg-zinc-900/80 transition-colors',
-                  idx !== upgrade.rows.length - 1 && 'border-b border-zinc-200 dark:border-zinc-800',
-                )}
-              >
-                <div className='font-semibold text-sm'>{row.feature}</div>
-                <div className='text-sm text-zinc-500 italic'>{row.standard}</div>
-                <div className='text-sm font-bold flex items-center gap-2'>
-                  <CheckCircle2 className='h-4 w-4 text-emerald-500' /> {row.improved}
-                </div>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </section>
       )}
-
       {/* Ready to Upgrade CTA */}
       {cta && (
         <section className='container mx-auto px-6 max-w-5xl mb-12'>
@@ -345,21 +255,10 @@ export default function FeaturesPage() {
                   href={cta.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 rounded-full font-bold px-8 shadow-lg',
+                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-500 rounded-full font-bold px-8 shadow-lg',
                   )}
                 >
                   {cta.primaryLink.label}
-                </Link>
-              )}
-              {cta.secondaryLink && (
-                <Link
-                  href={cta.secondaryLink.url}
-                  className={cn(
-                    buttonVariants({ variant: 'outline', size: 'lg' }),
-                    'border-emerald-700 bg-emerald-950/50 text-emerald-100 hover:bg-emerald-800 hover:text-white rounded-full font-bold px-8',
-                  )}
-                >
-                  {cta.secondaryLink.label}
                 </Link>
               )}
             </div>

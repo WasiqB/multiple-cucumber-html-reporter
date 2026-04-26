@@ -8,6 +8,14 @@
     "secondaryLink": { "label": "GitHub Docs", "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter" },
     "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
   },
+  "stats": {
+    "items": [
+      { "label": "NPM Downloads", "value": "1M+", "icon": "Download" },
+      { "label": "GitHub Stars", "value": "270+", "icon": "Star" },
+      { "label": "Dependents", "value": "6.2K+", "icon": "Users" },
+      { "label": "Weekly Downloads", "value": "248K+", "icon": "Activity" }
+    ]
+  },
   "features": {
     "title": "Precision Reporting",
     "description": "Stop digging through log files. Our reporter visualizes every step of your BDD journey with precision and clarity.",
