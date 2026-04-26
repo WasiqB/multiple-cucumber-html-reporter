@@ -2,11 +2,14 @@
   "hero": {
     "badge": "Open Source First",
     "titleLine1": "Join the",
-    "titleLine2": "CucumberHTML",
+    "titleLine2": "Multiple CucumberHTML Reporter",
     "titleLine3": "Community",
     "description": "We believe in the power of precision and collaboration. Join thousands of developers building the future of clean, automated HTML scaffolding. Every line of code counts.",
-    "primaryLink": { "label": "Become a Contributor", "url": "#" },
-    "secondaryLink": { "label": "View Roadmap", "url": "#" }
+    "primaryLink": { "label": "Become a Contributor", "url": "/docs/contributing" },
+    "secondaryLink": {
+      "label": "View Roadmap",
+      "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones"
+    }
   },
   "supportChannels": {
     "title": "Support Channels",
@@ -17,78 +20,96 @@
         "title": "Discord",
         "description": "Join our vibrant real-time chat for quick questions, community hangouts, and live announcements.",
         "linkText": "Join Server",
-        "href": "#"
+        "href": "https://discord.gg/d6rfHkSDjc"
       },
       {
         "icon": "GitHub",
         "title": "GitHub Issues",
         "description": "Found a bug or have a feature request? Open an issue on our repository to track progress.",
         "linkText": "Submit Issue",
-        "href": "#"
+        "href": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
       },
       {
-        "icon": "StackOverflow",
-        "title": "StackOverflow",
-        "description": "Browse the Q&A archive or ask a specific technical question using the custom tag.",
-        "linkText": "Ask a Question",
-        "href": "#"
+        "icon": "GitHub",
+        "title": "GitHub Discussions",
+        "description": "Join our GitHub Discussions to ask questions, share ideas, and connect with other users.",
+        "linkText": "Join Discussions",
+        "href": "https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions"
       }
     ]
   },
   "contributing": {
     "title": "Start contributing today",
     "description": "New to open source? No problem. We have a dedicated path for beginners to help you make your first pull request.",
-    "primaryLink": { "label": "Good First Issues", "url": "#" },
-    "secondaryLink": { "label": "Contributing Guide", "url": "#" },
-    "code": "git clone https://github.com/cucumber-html.git\ncd mchr\nnpm install\nnpm run dev"
+    "primaryLink": {
+      "label": "Good First Issues",
+      "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
+    },
+    "secondaryLink": { "label": "Contributing Guide", "url": "/docs/contributing" },
+    "code": [
+      "git clone git@github.com:WasiqB/multiple-cucumber-html-reporter.git",
+      "cd multiple-cucumber-html-reporter",
+      "pnpm install"
+    ]
   },
   "spotlight": {
     "title": "Community Spotlight",
-    "description": "Recognizing the incredible individuals who dedicate their time to making CucumberHTML better for everyone.",
+    "description": "Recognizing the incredible individuals who dedicate their time to making Multiple CucumberHTML Reporter better for everyone.",
     "items": [
-      { "name": "Alex Rivera", "role": "TOP REVIEWER" },
-      { "name": "Sarah Chen", "role": "CORE TEAM" },
-      { "name": "Marcus Vogt", "role": "DOCS MASTER" },
-      { "name": "Elena Petrova", "role": "UI CONTRIBUTOR" },
-      { "name": "Jordan Lee", "role": "PLUGIN DEV" },
-      { "name": "Riley Smith", "role": "MAINTAINER" },
-      { "name": "S. Gupta", "role": "BUG HUNTER" }
+      {
+        "name": "Wasiq Bhamla",
+        "role": "Core Maintainer",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9130909?v=4",
+        "link": "https://github.com/WasiqB"
+      }
+    ]
+  },
+  "alumni": {
+    "title": "Alumni Community",
+    "description": "A huge thank you to the former contributors and maintainers whose efforts built the foundation of Multiple CucumberHTML Reporter.",
+    "items": [
+      {
+        "name": "Wim Selles",
+        "role": "Former Core Maintainer",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/11979740?v=4",
+        "link": "https://github.com/wswebcreation"
+      },
+      {
+        "name": "Federico Buti",
+        "role": "Contributor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/10329968?v=4",
+        "link": "https://github.com/BaCaRoZzo"
+      },
+      {
+        "name": "Basker Peram Subramaniyan",
+        "role": "Contributor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/6072775?v=4",
+        "link": "https://github.com/Baskercarrer"
+      },
+      {
+        "name": "Stefano Tamagnini",
+        "role": "Contributor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/226824?v=4",
+        "link": "https://github.com/yoghi"
+      },
+      {
+        "name": "Henri d'Orgeval",
+        "role": "Contributor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/9698924?v=4",
+        "link": "https://github.com/hdorgeval"
+      },
+      {
+        "name": "Kevin Kuszyk",
+        "role": "Contributor",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/2734580?v=4",
+        "link": "https://github.com/kevinkuszyk"
+      }
     ]
   },
   "eventsAndUpdates": {
     "eventsTitle": "Upcoming Events",
-    "events": [
-      {
-        "month": "Nov",
-        "day": "24",
-        "title": "Monthly Community Sync",
-        "description": "Join the core team to discuss the Q1 roadmap and new architectural changes.",
-        "link": { "text": "RSVP on Discord", "url": "#" }
-      },
-      {
-        "month": "Dec",
-        "day": "12",
-        "title": "Hack-the-December 2024",
-        "description": "A 40-hour global hackathon focused on building ecosystem plugins.",
-        "status": "Coming soon"
-      }
-    ],
+    "events": [],
     "updatesTitle": "Latest Updates",
-    "updates": [
-      {
-        "category": "Version Release",
-        "title": "CucumberHTML v4.2.0 \"Emerald\" is here",
-        "description": "Improved tree-shaking and full support for the new design system primitives.",
-        "type": "primary",
-        "link": { "text": "Read Changelog", "url": "#" }
-      },
-      {
-        "category": "Community Blog",
-        "title": "Scaling Documentation with Asymmetry",
-        "description": "How we used precision duration to overhaul our technical guides.",
-        "type": "secondary",
-        "link": { "text": "Read Post", "url": "#" }
-      }
-    ]
+    "updates": []
   }
 }

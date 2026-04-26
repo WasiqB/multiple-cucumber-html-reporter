@@ -28,7 +28,7 @@ export default function SponsorsPage() {
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
       {/* Hero Section */}
       {hero && (
-        <section className='pt-20 md:pt-32 px-6 flex flex-col'>
+        <section className='pt-20 md:pt-32 px-6 flex flex-col items-center text-center'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,11 +44,11 @@ export default function SponsorsPage() {
                 </span>
               )}
             </h1>
-            <p className='text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10 max-w-2xl'>
+            <p className='text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10 max-w-2xl text-balance'>
               {hero.description}
             </p>
             {hero.action && (
-              <div className='flex flex-wrap gap-4'>
+              <div className='flex flex-wrap justify-center gap-4'>
                 <Link
                   href={hero.action.href || '#'}
                   className={cn(
@@ -201,12 +201,15 @@ export default function SponsorsPage() {
                 <div className='flex flex-col gap-12'>
                   {curators.goldSponsors && curators.goldSponsors.length > 0 && (
                     <div>
-                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Gold Sponsors</h3>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                        Gold Sponsors and above
+                      </h3>
                       <div className='flex flex-wrap gap-6'>
                         {curators.goldSponsors.map((s, idx) => (
                           <Link
                             key={idx}
                             href={s.url || '#'}
+                            target='_blank'
                             className='group flex flex-col items-center transition-transform hover:scale-105'
                           >
                             <div className='w-24 h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-3'>
@@ -232,7 +235,7 @@ export default function SponsorsPage() {
                   )}
 
                   {curators.silverAndBronze && curators.silverAndBronze.length > 0 && (
-                    <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
+                    <div className='border-zinc-200 dark:border-zinc-800 pt-8'>
                       <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
                         Silver & Bronze
                       </h3>
@@ -241,6 +244,7 @@ export default function SponsorsPage() {
                           <Link
                             key={idx}
                             href={s.url || '#'}
+                            target='_blank'
                             className='group flex flex-col items-center transition-transform hover:scale-105'
                           >
                             <div className='w-16 h-16 bg-white dark:bg-zinc-900 border border-emerald-500/50 rounded-full flex items-center justify-center shadow-md overflow-hidden mb-2'>
@@ -273,6 +277,7 @@ export default function SponsorsPage() {
                           <Link
                             key={idx}
                             href={u.url || '#'}
+                            target='_blank'
                             className='w-10 h-10 bg-zinc-200 dark:bg-zinc-800 rounded-full border border-zinc-300 dark:border-zinc-700 shadow-sm overflow-hidden transition-transform hover:scale-110'
                           >
                             <Image

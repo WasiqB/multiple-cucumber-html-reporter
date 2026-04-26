@@ -1,5 +1,6 @@
 'use client';
 
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { Activity, BarChart3, Heart, Layers, MessageSquare, Star, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
@@ -160,16 +161,16 @@ export default function HomePage() {
               </div>
 
               {setup.code && (
-                <div className='relative font-mono text-sm leading-relaxed overflow-x-auto rounded-xl bg-zinc-900/50 p-6 border border-zinc-800'>
-                  <div className='flex gap-1.5 mb-4'>
-                    <div className='w-3 h-3 rounded-full bg-red-500/50' />
-                    <div className='w-3 h-3 rounded-full bg-amber-500/50' />
-                    <div className='w-3 h-3 rounded-full bg-emerald-500/50' />
-                  </div>
-                  <pre className='text-zinc-300'>
-                    <code className='language-javascript'>{setup.code}</code>
-                  </pre>
-                </div>
+                <DynamicCodeBlock
+                  lang='ts'
+                  code={setup.code}
+                  options={{
+                    themes: {
+                      light: 'github-light',
+                      dark: 'github-dark',
+                    },
+                  }}
+                />
               )}
             </div>
           </div>

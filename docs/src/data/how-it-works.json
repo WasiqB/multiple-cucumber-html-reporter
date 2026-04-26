@@ -10,21 +10,46 @@
       "title": "Simple Installation",
       "description": "Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.",
       "badges": ["zero dependencies", "lightweight"],
-      "codeHtml": "<span className='text-emerald-400'>$</span> npm install cucumber-html-reporter --save-dev<br /><br /><span className='text-zinc-500'># or using yarn</span><br /><span className='text-emerald-400'>$</span> yarn add cucumber-html-reporter -D"
+      "lang": "shell",
+      "commands": [
+        {
+          "command": "npm install multiple-cucumber-html-reporter --save-dev",
+          "tabValue": "npm"
+        },
+        {
+          "command": "yarn add multiple-cucumber-html-reporter -D",
+          "tabValue": "yarn"
+        },
+        {
+          "command": "pnpm add multiple-cucumber-html-reporter --save-dev",
+          "tabValue": "pnpm"
+        }
+      ]
     },
     {
       "number": 2,
       "title": "Declarative Configuration",
       "description": "Customize your output with a simple JSON object. Define themes, file paths, and metadata about your environment in cucumber.conf.js.",
       "checklist": ["Multiple UI Themes supported", "Attach screenshots on failure"],
-      "codeHtml": "<span className='text-pink-400'>const</span> reporter = <span className='text-sky-400'>require</span>(<span className='text-emerald-300'>'cucumber-html-reporter'</span>);<br /><br /><span className='text-pink-400'>const</span> options = {'{'}<br />{'  '}theme: <span className='text-emerald-300'>'bootstrap'</span>,<br />{'  '}jsonFile: <span className='text-emerald-300'>'test/report/cucumber_report.json'</span>,<br />{'  '}output: <span className='text-emerald-300'>'test/report/cucumber_report.html'</span>,<br />{'  '}reportSuiteAsScenarios: <span className='text-amber-400'>true</span>,<br />{'  '}launchReport: <span className='text-amber-400'>true</span><br />{'}'}<br /><br />reporter.<span className='text-sky-400'>generate</span>(options);"
+      "lang": "js",
+      "commands": [
+        {
+          "command": "import { generate } from 'multiple-cucumber-html-reporter';\n\nconst report = generate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});",
+          "tabValue": "Javascript"
+        }
+      ]
     },
     {
       "number": 3,
       "title": "Execute & Generate",
       "description": "Run your tests as you normally would. Cucumber Reporter intercepts the JSON output and transforms it into a beautiful interactive dashboard instantly.",
-      "command": "npm test",
-      "commandStatus": "Generating report... done."
+      "lang": "bash",
+      "commands": [
+        {
+          "command": "pnpm report",
+          "output": "> node dist/cucumber-html-report.js\n\nCreating Report CSS file...\nCreating TailwindCSS file...\nCopying JS...\nBuild complete!\n\n\n=====================================================================================Multiple Cucumber HTML report generated in:\n/Users/wasiqbhamla/Developer/github/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html\n====================================================================================="
+        }
+      ]
     }
   ],
   "analysis": {

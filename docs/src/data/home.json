@@ -39,7 +39,7 @@
     "titleLine2": "Powerful Results",
     "description": "Integration takes minutes. Just pass your JSON output files and let our engine handle the rest.",
     "link": { "label": "Read the full installation guide", "url": "/docs" },
-    "code": "import { generate } from 'multiple-cucumber-html-reporter';\n\nconst report = generate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});"
+    "code": "import { generate } from 'multiple-cucumber-html-reporter';\n\ngenerate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});"
   },
   "community": {
     "title": "Support the Open Source Ecosystem",

@@ -6,11 +6,17 @@ const withMDX = createMDX();
 const config = {
   reactStrictMode: true,
   images: {
+    minimumCacheTTL: 60 * 60 * 24,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'k9v00w0cps.ufs.sh',
         pathname: '/f/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '/**',
       },
     ],
   },

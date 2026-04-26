@@ -1,9 +1,12 @@
 'use client';
 
-import { CheckCircle2, ChevronDown, FileJson, PieChart, TerminalSquare } from 'lucide-react';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { CheckCircle2, ChevronDown, FileJson, PieChart } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { FaGithub, FaGitlab, FaJenkins } from 'react-icons/fa6';
+import { Terminal } from '@/components/ui/terminal';
 import howItWorksDataJson from '@/data/how-it-works.json';
 import type { HowItWorksData } from '@/data/types';
 import { cn } from '@/lib/cn';
@@ -30,7 +33,7 @@ export default function HowItWorksPage() {
   const { hero, steps, analysis, cicd } = howItWorksDataJson as HowItWorksData;
 
   return (
-    <main className='flex flex-col overflow-x-hidden m-10'>
+    <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
       {/* Header Section */}
       {hero && (
         <section className='pt-20 md:pt-32 pb-16 px-6 text-center max-w-4xl mx-auto'>
@@ -58,26 +61,20 @@ export default function HowItWorksPage() {
             const isReversed = idx % 2 !== 0;
 
             return (
-              <section
-                key={idx}
-                className={cn(
-                  'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center',
-                  isReversed && 'flex-col-reverse lg:flex-row-reverse',
-                )}
-              >
+              <section key={idx} className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center'>
                 <motion.div
                   initial={{ opacity: 0, x: isReversed ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className={cn('flex flex-col gap-6', isReversed && 'lg:pl-12')}
+                  className={cn('flex flex-col gap-6', isReversed && 'lg:order-2')}
                 >
                   <StepNumber number={step.number} />
-                  <h2 className='text-3xl md:text-4xl font-bold'>{step.title}</h2>
+                  <h2 className='text-3xl md:text-4xl font-bold text-balance'>{step.title}</h2>
                   <p className='text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed'>{step.description}</p>
 
                   {step.badges && (
-                    <div className='flex gap-3 mt-2'>
+                    <div className='flex flex-wrap gap-3 mt-2'>
                       {step.badges.map((b, i) => (
                         <Badge key={i}>{b}</Badge>
                       ))}
@@ -88,53 +85,54 @@ export default function HowItWorksPage() {
                     <div className='flex flex-col gap-3 mt-2'>
                       {step.checklist.map((item, i) => (
                         <div key={i} className='flex items-center gap-3'>
-                          <CheckCircle2 className='text-emerald-500 h-5 w-5' />
+                          <div className='flex-none rounded-full bg-emerald-500/10 p-1'>
+                            <CheckCircle2 className='text-emerald-500 h-4 w-4' />
+                          </div>
                           <span className='text-zinc-700 dark:text-zinc-300'>{item}</span>
                         </div>
                       ))}
                     </div>
                   )}
-
-                  {step.command && (
-                    <div className='flex items-center gap-4 mt-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 w-fit shadow-sm'>
-                      <div className='flex items-center gap-2 font-mono font-medium text-emerald-600 dark:text-emerald-400'>
-                        <TerminalSquare className='h-5 w-5' /> {step.command}
-                      </div>
-                      {step.commandStatus && (
-                        <span className='text-zinc-400 italic text-sm border-l border-zinc-200 dark:border-zinc-800 pl-4'>
-                          {step.commandStatus}
-                        </span>
-                      )}
-                    </div>
-                  )}
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, x: isReversed ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className={cn('relative', !step.codeHtml && 'flex justify-center lg:justify-end')}
+                  transition={{ duration: 0.6 }}
+                  className={cn('w-full', isReversed && 'lg:order-1')}
                 >
-                  {step.codeHtml && (
-                    <>
-                      <div className='absolute -inset-4 bg-emerald-500/10 blur-2xl rounded-full opacity-50' />
-                      <div className='relative font-mono text-sm leading-relaxed overflow-x-auto rounded-2xl bg-[#0d1117] p-8 shadow-2xl border border-zinc-800/50'>
-                        <div className='flex gap-1.5 mb-6'>
-                          <div className='w-3 h-3 rounded-full bg-red-500/80' />
-                          <div className='w-3 h-3 rounded-full bg-amber-500/80' />
-                          <div className='w-3 h-3 rounded-full bg-emerald-500/80' />
-                        </div>
-                        <pre>
-                          <code dangerouslySetInnerHTML={{ __html: step.codeHtml }}></code>
-                        </pre>
+                  {step.commands?.map((command, i) => {
+                    return (
+                      <div key={i}>
+                        {command.output && (
+                          <Terminal
+                            commands={[command.command]}
+                            outputs={{ 0: [command.output] }}
+                            typingSpeed={45}
+                            enableSound
+                            initialDelay={3}
+                            delayBetweenCommands={1000}
+                          />
+                        )}
                       </div>
-                    </>
-                  )}
+                    );
+                  })}
 
-                  {!step.codeHtml && !step.command && (
-                    <div className='w-64 h-64 bg-zinc-100 dark:bg-zinc-900 rounded-2xl flex items-center justify-center border border-zinc-200 dark:border-zinc-800 shadow-inner overflow-hidden relative'>
-                      <TerminalSquare className='h-32 w-32 text-zinc-200 dark:text-zinc-800' strokeWidth={1} />
-                      <div className='absolute bottom-0 right-0 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full' />
+                  {(step.commands?.filter((command) => !command.output).length ?? 0) > 0 && (
+                    <div className='relative group'>
+                      <div className='absolute -inset-1 bg-linear-to-r from-emerald-500/20 to-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none' />
+                      <Tabs items={step.commands?.filter((c) => !c.output).map((command) => command.tabValue ?? '')}>
+                        {step.commands
+                          ?.filter((c) => !c.output)
+                          .map((command, i) => {
+                            return (
+                              <Tab key={i} value={command.tabValue ?? ''}>
+                                <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
+                              </Tab>
+                            );
+                          })}
+                      </Tabs>
                     </div>
                   )}
                 </motion.div>

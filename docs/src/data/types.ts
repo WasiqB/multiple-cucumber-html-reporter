@@ -87,9 +87,8 @@ export interface HowItWorksStep {
   description: string;
   badges?: string[];
   checklist?: string[];
-  codeHtml?: string;
-  command?: string;
-  commandStatus?: string;
+  lang?: string;
+  commands?: { command: string; tabValue?: string; output?: string }[];
 }
 
 export interface HowItWorksAnalysisCard {
@@ -233,12 +232,14 @@ export interface CommunityContributing {
   description: string;
   primaryLink?: LinkData;
   secondaryLink?: LinkData;
-  code?: string;
+  code?: string[];
 }
 
 export interface CommunitySpotlightItem {
   name: string;
   role: string;
+  avatarUrl: string;
+  link: string;
 }
 
 export interface CommunitySpotlight {
@@ -281,6 +282,7 @@ export interface CommunityData {
   supportChannels: CommunitySupportChannels;
   contributing: CommunityContributing;
   spotlight: CommunitySpotlight;
+  alumni?: CommunitySpotlight;
   eventsAndUpdates: CommunityEventsAndUpdates;
 }
 

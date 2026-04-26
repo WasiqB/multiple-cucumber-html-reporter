@@ -122,7 +122,13 @@
     "title": "Meet the Curators",
     "description": "The organizations and individuals keeping the project alive.",
     "goldSponsors": [],
-    "silverAndBronze": [],
+    "silverAndBronze": [
+      {
+        "name": "TestMu AI",
+        "image": "https://avatars.githubusercontent.com/u/171592363?v=4",
+        "url": "https://testmu.ai/"
+      }
+    ],
     "individuals": []
   },
   "faq": {
