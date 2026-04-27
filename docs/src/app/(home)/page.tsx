@@ -116,7 +116,7 @@ export default function HomePage() {
           </div>
         </section>
       )}
- 
+
       {/* Stats Section */}
       {stats?.items && (
         <section className='container mx-auto px-6'>
@@ -140,7 +140,9 @@ export default function HomePage() {
                     {stat.value}
                   </div>
                 </div>
-                <div className='text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>{stat.label}</div>
+                <div className='text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>

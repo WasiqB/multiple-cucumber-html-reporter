@@ -73,7 +73,7 @@
         "description": "Embedded screenshots and video links attached directly to failed test steps for rapid debugging."
       }
     ],
-    "image": "/feature-list-page.png"
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
   },
   "cicd": {
     "stepNumber": 5,

@@ -220,9 +220,7 @@ export default function CommunityPage() {
                 link={item.link}
               />
             ))}
-            {alumni.items.length === 0 && (
-              <div className='text-zinc-500 italic'>No alumni records yet.</div>
-            )}
+            {alumni.items.length === 0 && <div className='text-zinc-500 italic'>No alumni records yet.</div>}
           </div>
         </section>
       )}
