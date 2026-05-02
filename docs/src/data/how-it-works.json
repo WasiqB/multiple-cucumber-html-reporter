@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "titleLine1": "From Test Run to",
+    "titleLine2": "Visual Insight.",
+    "description": "Streamline your Cucumber testing workflow with our lightweight, high-performance reporting engine. Zero dependencies, maximum clarity."
+  },
+  "steps": [
+    {
+      "number": 1,
+      "title": "Simple Installation",
+      "description": "Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.",
+      "badges": ["zero dependencies", "lightweight"],
+      "lang": "shell",
+      "commands": [
+        {
+          "command": "npm install multiple-cucumber-html-reporter --save-dev",
+          "tabValue": "npm"
+        },
+        {
+          "command": "yarn add multiple-cucumber-html-reporter -D",
+          "tabValue": "yarn"
+        },
+        {
+          "command": "pnpm add multiple-cucumber-html-reporter --save-dev",
+          "tabValue": "pnpm"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Declarative Configuration",
+      "description": "Customize your HTML report with metadata about your environment and report branding by adding options in report options.",
+      "checklist": [
+        "Customize the report branding",
+        "Add metadata about your environment",
+        "Attach logs on each test step",
+        "Attach screenshots on failure",
+        "Attach video on failure"
+      ],
+      "lang": "js",
+      "commands": [
+        {
+          "command": "import { generate } from 'multiple-cucumber-html-reporter';\n\ngenerate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});",
+          "tabValue": "Javascript"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Execute & Generate",
+      "description": "Run your tests as you normally would. Then execute the Cucumber Reporter method, it will parse the Cucumber JSON output and transforms it into a beautiful interactive dashboard instantly.",
+      "lang": "bash",
+      "commands": [
+        {
+          "command": "pnpm report",
+          "output": "> node dist/cucumber-html-report.js\n\nCreating Report CSS file...\nCreating TailwindCSS file...\nCopying JS...\nBuild complete!\n\n\n=====================================================================================Multiple Cucumber HTML report generated in:\n/Users/wasiqbhamla/Developer/github/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html\n====================================================================================="
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "stepNumber": 4,
+    "title": "Interactive Analysis",
+    "description": "Experience the results through a sophisticated lens. High-density data curated for clarity, featuring real-time filtering, failure diagnostics, and performance trends.",
+    "cards": [
+      {
+        "icon": "PieChart",
+        "title": "Visual Analytics",
+        "description": "Beautiful charts providing an immediate overview of test pass/fail rates and suite health."
+      },
+      {
+        "icon": "ChevronDown",
+        "title": "Smart Filtering",
+        "description": "Drill down into specific tags, features, or failure reasons with lightning-fast search and filters."
+      },
+      {
+        "icon": "FileJson",
+        "title": "Rich Artifacts",
+        "description": "Embedded screenshots and video links attached directly to failed test steps for rapid debugging."
+      }
+    ],
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
+  },
+  "cicd": {
+    "stepNumber": 5,
+    "title": "CI/CD Ready",
+    "description": "Automate your quality reporting. Perfect for GitHub Actions, GitLab CI, or Jenkins. Generate and publish reports automatically on every push.",
+    "platforms": ["GitHub Actions", "Jenkins", "GitLab"]
+  }
+}

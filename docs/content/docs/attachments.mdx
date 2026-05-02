@@ -1,0 +1,52 @@
+---
+title: Attachments
+description: Methods and techniques for attaching screenshots and plain text results to HTML reports.
+---
+
+Multiple Cucumber HTML Reporter allows you to attach media and data to help debug and review results effectively.
+
+## Attaching Screenshots
+
+Screenshots can be added at any time to your Cucumber JSON report. The best way is to use a `scenario`-hook that automatically captures a screenshot upon failure.
+
+```javascript
+import { After, Status } from "cucumber";
+
+After(function (scenarioResult) {
+  if (scenarioResult.status === Status.FAILED) {
+    // Attach a screenshot of the original state
+    const screenshot = browser.saveScreenshot();
+    world.attach(screenshot, "image/png");
+  }
+
+  return Promise.resolve(scenarioResult.status);
+});
+```
+
+<Callout title="Tip" type="idea">
+Use this feature to give your test reports a professional, visual dimension and quickly identify UI or styling regressions.
+</Callout>
+
+## Attaching Plain Text
+
+Attach logs or plain-text / data at any time to help you better understand the failure.
+
+```javascript
+// Attach raw text
+scenario.attach("Simple log message");
+```
+
+<Callout title="Important" type="info">
+When attaching data, ensure non-readable binary data is properly encoded (e.g., via Base64).
+</Callout>
+
+## Attaching Pretty JSON
+
+You can also attach JSON-formatted data for API or configuration tests. This will be formatted for better readability.
+
+```javascript
+const responseData = { id: 1, name: "Antigravity" };
+scenario.attach(JSON.stringify(responseData), "application/json");
+```
+
+Check the specific framework you are using to attach these results directly to the Cucumber JSON file.

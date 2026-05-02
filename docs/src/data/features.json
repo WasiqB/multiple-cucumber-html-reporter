@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "badge": "Open Source Reporter",
+    "titleLine1": "Powerful reporting for",
+    "titleLine2": "modern BDD",
+    "description": "Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.",
+    "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
+    "secondaryLink": { "label": "View Demo", "url": "#" },
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
+  },
+  "stats": {
+    "items": [
+      { "label": "NPM Downloads", "value": "1M+", "icon": "Download" },
+      { "label": "GitHub Stars", "value": "270+", "icon": "Star" },
+      { "label": "Dependents", "value": "6.2K+", "icon": "Users" },
+      { "label": "Weekly Downloads", "value": "248K+", "icon": "Activity" }
+    ]
+  },
+  "accordion": {
+    "title": "Unmatched Capabilities",
+    "description": "Deep dive into the specialized features that set us apart from standard reporters.",
+    "items": [
+      {
+        "title": "Rich Metadata and Environment Info",
+        "pointers": [
+          "Capture OS, Browser, and Device information automatically",
+          "Custom metadata fields for CI/CD pipeline details",
+          "Environment-specific tags and labels",
+          "Automated platform detection"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH76k1PXE3snmf0ExP6I4HKDeiZTVCv5z9jrWS",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxOUbNVrrvT17za2GAlImDop3L0qNbMgE6WQK"
+        ]
+      },
+      {
+        "title": "Interactive Analytics Dashboards",
+        "pointers": [
+          "Detailed pass/fail distribution charts",
+          "Test performance trend analysis",
+          "Detailed charts for features, scenarios and scenario steps",
+          "OS, Browser, and Device-specific charts",
+          "Top tags and slow steps featured charts"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
+        ]
+      },
+      {
+        "title": "Advanced Diagnostics",
+        "pointers": [
+          "Clean, formatted stack traces with syntax highlighting",
+          "Attached screenshots and video capture on failure",
+          "Attached logs for better debugging",
+          "Step-by-step execution logs"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPmAKlSZdhNxDiWyGMp7wlS2tBRa8TjPIQco3",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWSwZ4mzuXbQxU14FIfOCKwTlo7qcWJn02GYZ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZt8RXI3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
+        ]
+      },
+      {
+        "title": "Rich and Detailed Feature and Scenario Tables",
+        "pointers": [
+          "Detailed table for feature and scenario",
+          "Easy to understand stats for each features and scenarios",
+          "User friendly filtering of records",
+          "Quick navigation between features and scenarios"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHgh6RQVftUDRdg6Q2jyeOKb3sVunz0vik8ZlL",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHu6oRpcTDHSFoxIf5730GKRA9l46OrpvJLzuw"
+        ]
+      }
+    ]
+  },
+  "upgrade": {
+    "title": "The Upgrade Path",
+    "rows": [
+      { "feature": "Visualization", "standard": "None (Raw Text)", "improved": "Interactive Charts" },
+      { "feature": "Media Support", "standard": "Base64 Strings", "improved": "Optimized Lightbox" },
+      { "feature": "Search/Filter", "standard": "Manual Regex", "improved": "High-Speed Indices" },
+      { "feature": "CI Integration", "standard": "Custom Scripts", "improved": "Native CLI + Hooks" }
+    ]
+  },
+  "cta": {
+    "title": "Ready to upgrade your reports?",
+    "description": "Join over 6K+ engineers and teams delivering clearer BDD results every single day.",
+    "primaryLink": { "label": "Get Started", "url": "/docs" }
+  }
+}

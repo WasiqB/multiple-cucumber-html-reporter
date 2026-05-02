@@ -1,0 +1,74 @@
+{
+  "hero": {
+    "badge": "Community Driven",
+    "titleLine1": "Community",
+    "titleLine2": "Showcase",
+    "description": "Discover how engineers worldwide leverage CucumberHTML to create stunning, high-performance test reports across Playwright, Cypress, Selenium, and Puppeteer.",
+    "primaryLink": { "label": "Submit Your Project", "url": "#" },
+    "secondaryLink": { "label": "Browse Docs", "url": "/docs" },
+    "verifiedProjects": {
+      "label": "Verified Projects",
+      "count": "1,240+"
+    },
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+  },
+  "filters": ["All Frameworks", "Playwright", "Cypress", "Selenium", "Puppeteer"],
+  "projects": [
+    {
+      "icon": "MonitorPlay",
+      "name": "qa-master-suite",
+      "framework": "Playwright",
+      "description": "Enterprise-grade reporting engine for distributed cloud testing with CucumberHTML integration.",
+      "authors": ["abraham", "claire"],
+      "moreAuthors": "+4",
+      "stars": "1.2k",
+      "forks": "234"
+    },
+    {
+      "icon": "Bug",
+      "name": "cypress-visual-reporter",
+      "framework": "Cypress",
+      "description": "A lightweight plugin to generate visual regression reports using CucumberHTML's powerful charting.",
+      "authors": ["david"],
+      "moreAuthors": "+2",
+      "stars": "890",
+      "forks": "112"
+    },
+    {
+      "icon": "Rocket",
+      "name": "selenium-grid-html",
+      "framework": "Selenium",
+      "description": "Consolidate test results from multiple Selenium Grid nodes into a single editorialized HTML report.",
+      "authors": ["frank", "grace"],
+      "stars": "645",
+      "forks": "56"
+    },
+    {
+      "icon": "Zap",
+      "name": "fast-puppeteer-reports",
+      "framework": "Puppeteer",
+      "description": "Blazing fast headless browser report generation optimized for CI/CD pipelines.",
+      "authors": ["harry"],
+      "stars": "432",
+      "forks": "32"
+    },
+    {
+      "icon": "Layout",
+      "name": "custom-cucumber-ui",
+      "framework": "Playwright",
+      "description": "Tailwind CSS powered UI kit for CucumberHTML customization and white-labeling.",
+      "authors": ["irene", "jack"],
+      "stars": "2.1k",
+      "forks": "450"
+    },
+    {
+      "icon": "Activity",
+      "name": "vitals-reporter",
+      "framework": "Puppeteer",
+      "description": "Chrome Web Vitals tracking integrated into standard CucumberHTML reports for performance monitoring.",
+      "authors": ["kate"],
+      "stars": "340",
+      "forks": "18"
+    }
+  ]
+}
