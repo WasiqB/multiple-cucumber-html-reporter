@@ -3,7 +3,7 @@
     "badge": "Open Source Reporter",
     "titleLine1": "Powerful reporting for",
     "titleLine2": "modern BDD",
-    "description": "Discover the features that make CucumberHTML the preferred reporter for engineering teams. Build trust through visibility.",
+    "description": "Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.",
     "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
     "secondaryLink": { "label": "View Demo", "url": "#" },
     "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
@@ -36,40 +36,44 @@
       {
         "title": "Interactive Analytics Dashboards",
         "pointers": [
-          "Real-time pass/fail distribution charts",
-          "Historical trend analysis and heatmaps",
-          "Duration breakdowns per feature and scenario",
-          "Customizable visualization themes"
+          "Detailed pass/fail distribution charts",
+          "Test performance trend analysis",
+          "Detailed charts for features, scenarios and scenario steps",
+          "OS, Browser, and Device-specific charts",
+          "Top tags and slow steps featured charts"
         ],
         "images": [
           "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
         ]
       },
       {
-        "title": "Advanced Error Diagnostics",
+        "title": "Advanced Diagnostics",
         "pointers": [
           "Clean, formatted stack traces with syntax highlighting",
-          "Automatic screenshot capture on failure",
-          "Video attachment support for flaky tests",
-          "Step-by-step logs with execution timing"
+          "Attached screenshots and video capture on failure",
+          "Attached logs for better debugging",
+          "Step-by-step execution logs"
         ],
         "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPmAKlSZdhNxDiWyGMp7wlS2tBRa8TjPIQco3",
           "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWSwZ4mzuXbQxU14FIfOCKwTlo7qcWJn02GYZ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh",
           "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZt8RXI3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
         ]
       },
       {
-        "title": "Multi-Language & Platform Support",
+        "title": "Rich and Detailed Feature and Scenario Tables",
         "pointers": [
-          "Native support for Cucumber (JS, Java, Ruby, Python)",
-          "Cross-platform reporting for Web, Mobile, and API",
-          "Docker-ready CLI for cloud execution",
-          "Easy integration with Jenkins, GitHub Actions, and more"
+          "Detailed table for feature and scenario",
+          "Easy to understand stats for each features and scenarios",
+          "User friendly filtering of records",
+          "Quick navigation between features and scenarios"
         ],
         "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHgh6RQVftUDRdg6Q2jyeOKb3sVunz0vik8ZlL",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHu6oRpcTDHSFoxIf5730GKRA9l46OrpvJLzuw"
         ]
       }
     ]

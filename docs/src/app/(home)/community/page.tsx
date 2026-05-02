@@ -67,7 +67,7 @@ export default function CommunityPage() {
                   href={hero.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'default' }),
-                    'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white rounded-full px-8 h-12 text-base font-bold transition-all',
+                    'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-full px-8 h-12 text-base font-bold transition-all',
                   )}
                 >
                   <FaGithub className='mr-2 h-5 w-5' /> {hero.primaryLink.label}
@@ -78,7 +78,7 @@ export default function CommunityPage() {
                   href={hero.secondaryLink.url}
                   className={cn(
                     buttonVariants({ variant: 'ghost', size: 'default' }),
-                    'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-8 h-12 text-base font-semibold group hover:bg-zinc-200 dark:hover:bg-zinc-800',
+                    'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-full px-8 h-12 text-base font-semibold group hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100',
                   )}
                 >
                   {hero.secondaryLink.label}
@@ -135,7 +135,7 @@ export default function CommunityPage() {
                     href={contributing.primaryLink.url}
                     className={cn(
                       buttonVariants({ size: 'default' }),
-                      'bg-emerald-400 hover:bg-emerald-500 text-emerald-950 border-none rounded-xl font-bold px-6',
+                      'bg-emerald-400 hover:bg-emerald-500 text-emerald-950 hover:text-emerald-950 border-none rounded-xl font-bold px-6',
                     )}
                   >
                     <FiBookOpen className='mr-2 h-5 w-5' /> {contributing.primaryLink.label}
@@ -352,6 +352,7 @@ function SupportChannelCard({
       <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm'>{description}</p>
       <Link
         href={href}
+        target='_blank'
         className='mt-auto pt-4 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 group hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors text-sm'
       >
         {linkText} <span className='transition-transform group-hover:translate-x-1 font-sans'>→</span>

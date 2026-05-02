@@ -146,11 +146,11 @@ export default function SponsorsPage() {
                     className={cn(
                       buttonVariants({ size: 'default' }),
                       'mt-auto w-full rounded-2xl font-bold',
-                      tier.type === 'primary' && 'bg-white text-emerald-900 hover:bg-zinc-100',
-                      tier.type === 'solid' && 'bg-emerald-700 text-white hover:bg-emerald-800',
-                      tier.type === 'dark' && 'bg-zinc-700 text-white hover:bg-zinc-800',
+                      tier.type === 'primary' && 'bg-white text-emerald-900 hover:bg-zinc-100 hover:text-emerald-900',
+                      tier.type === 'solid' && 'bg-emerald-700 text-white hover:bg-emerald-800 hover:text-white',
+                      tier.type === 'dark' && 'bg-zinc-700 text-white hover:bg-zinc-800 hover:text-white',
                       tier.type === 'outline' &&
-                        'bg-zinc-200 text-zinc-900 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white',
+                        'bg-zinc-200 text-zinc-900 hover:bg-zinc-300 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 dark:hover:text-white',
                     )}
                   >
                     {tier.button || 'Join'}
@@ -186,7 +186,7 @@ export default function SponsorsPage() {
                   href='https://github.com/sponsors/WasiqB'
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-rose-500 hover:bg-rose-600 text-white rounded-full',
+                    'bg-rose-500 hover:bg-rose-600 text-white hover:text-white rounded-full',
                   )}
                 >
                   Become a Sponsor
@@ -342,7 +342,7 @@ export default function SponsorsPage() {
                   href={cta.primaryLink.url || '#'}
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-white hover:bg-zinc-100 text-emerald-950 rounded-full font-bold px-8 shadow-lg',
+                    'bg-white hover:bg-zinc-100 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-8 shadow-lg',
                   )}
                 >
                   {cta.primaryLink.label}

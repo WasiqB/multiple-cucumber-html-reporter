@@ -52,7 +52,7 @@ export default function FeaturesPage() {
                     href={hero.primaryLink.url}
                     className={cn(
                       buttonVariants({ size: 'default' }),
-                      'bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-8 h-12 text-base font-bold transition-all shadow-lg',
+                      'bg-emerald-700 hover:bg-emerald-800 text-white hover:text-white rounded-full px-8 h-12 text-base font-bold transition-all shadow-lg',
                     )}
                   >
                     {hero.primaryLink.label}
@@ -255,7 +255,7 @@ export default function FeaturesPage() {
                   href={cta.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-500 rounded-full font-bold px-8 shadow-lg',
+                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-8 shadow-lg',
                   )}
                 >
                   {cta.primaryLink.label}

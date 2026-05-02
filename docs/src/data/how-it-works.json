@@ -29,12 +29,18 @@
     {
       "number": 2,
       "title": "Declarative Configuration",
-      "description": "Customize your output with a simple JSON object. Define themes, file paths, and metadata about your environment in cucumber.conf.js.",
-      "checklist": ["Multiple UI Themes supported", "Attach screenshots on failure"],
+      "description": "Customize your HTML report with metadata about your environment and report branding by adding options in report options.",
+      "checklist": [
+        "Customize the report branding",
+        "Add metadata about your environment",
+        "Attach logs on each test step",
+        "Attach screenshots on failure",
+        "Attach video on failure"
+      ],
       "lang": "js",
       "commands": [
         {
-          "command": "import { generate } from 'multiple-cucumber-html-reporter';\n\nconst report = generate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});",
+          "command": "import { generate } from 'multiple-cucumber-html-reporter';\n\ngenerate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});",
           "tabValue": "Javascript"
         }
       ]
@@ -42,7 +48,7 @@
     {
       "number": 3,
       "title": "Execute & Generate",
-      "description": "Run your tests as you normally would. Cucumber Reporter intercepts the JSON output and transforms it into a beautiful interactive dashboard instantly.",
+      "description": "Run your tests as you normally would. Then execute the Cucumber Reporter method, it will parse the Cucumber JSON output and transforms it into a beautiful interactive dashboard instantly.",
       "lang": "bash",
       "commands": [
         {

@@ -76,7 +76,7 @@ export default function ShowcasePage() {
                     href={hero.primaryLink.url}
                     className={cn(
                       buttonVariants({ size: 'lg' }),
-                      'bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-800 text-white rounded-full px-8 h-12 text-base font-bold transition-all shadow-md group',
+                      'bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-800 text-white hover:text-white rounded-full px-8 h-12 text-base font-bold transition-all shadow-md group',
                     )}
                   >
                     {hero.primaryLink.label}
@@ -88,7 +88,7 @@ export default function ShowcasePage() {
                     href={hero.secondaryLink.url}
                     className={cn(
                       buttonVariants({ variant: 'secondary', size: 'lg' }),
-                      'bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-full px-8 h-12 text-base font-semibold',
+                      'bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 hover:text-zinc-900 dark:text-zinc-100 dark:hover:text-zinc-100 rounded-full px-8 h-12 text-base font-semibold',
                     )}
                   >
                     {hero.secondaryLink.label}

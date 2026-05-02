@@ -72,7 +72,7 @@ export default function HomePage() {
                     href={hero.primaryLink.url}
                     className={cn(
                       buttonVariants({ size: 'default' }),
-                      'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white rounded-xl px-8 h-12 text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98]',
+                      'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-xl px-8 h-12 text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98]',
                     )}
                   >
                     {hero.primaryLink.label}

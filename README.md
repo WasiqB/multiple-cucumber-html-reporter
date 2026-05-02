@@ -15,7 +15,7 @@
 
 ---
 
-![Multiple Cucumber HTML Reporter Hero](./docs/public/feature-list-page.png)
+![Multiple Cucumber HTML Reporter Hero](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo)
 
 ## 🌟 Why this reporter?
 
@@ -35,8 +35,9 @@
 ## 🚀 Quick Start
 
 ### 1. Install
+
 ```bash
-npm install multiple-cucumber-html-reporter --save-dev
+pnpm add multiple-cucumber-html-reporter --save-dev
 ```
 
 ### 2. Generate Report
@@ -85,11 +86,11 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 ### Feature List Page
 
-![Feature List Page](./docs/public/feature-list-page.png)
+![Feature List Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo)
 
 ### Feature Details Page
 
-![Feature Details Page](./docs/public/feature-details-page.png)
+![Feature Details Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPqiXBwZdhNxDiWyGMp7wlS2tBRa8TjPIQco3)
 
 ---
 
