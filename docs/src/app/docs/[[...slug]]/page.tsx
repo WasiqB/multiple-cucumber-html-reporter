@@ -4,6 +4,7 @@ import {
   DocsPage,
   DocsTitle,
   MarkdownCopyButton,
+  PageLastUpdate,
   ViewOptionsPopover,
 } from 'fumadocs-ui/layouts/docs/page';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
@@ -18,7 +19,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const MDX = page.data.body;
+  const { body: MDX, lastModified } = page.data;
   const markdownUrl = getPageMarkdownUrl(page).url;
 
   return (
@@ -40,6 +41,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
           })}
         />
       </DocsBody>
+      {lastModified && <PageLastUpdate date={lastModified} />}
     </DocsPage>
   );
 }
