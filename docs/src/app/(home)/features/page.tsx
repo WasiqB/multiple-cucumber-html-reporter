@@ -9,7 +9,8 @@ import { buttonVariants } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import featuresDataJson from '@/data/features.json';
-import type { FeaturesData } from '@/data/types';
+import statsDataJson from '@/data/stats.json';
+import type { FeaturesData, ProjectStats } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -20,7 +21,8 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function FeaturesPage() {
-  const { hero, stats, accordion, cta } = featuresDataJson as FeaturesData;
+  const { hero, accordion, cta } = featuresDataJson as FeaturesData;
+  const { stats } = statsDataJson as ProjectStats;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -97,10 +99,10 @@ export default function FeaturesPage() {
       )}
 
       {/* Stats Section */}
-      {stats?.items && (
+      {stats && (
         <section className='container mx-auto px-6'>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem] px-8 md:px-16'>
-            {stats.items.map((stat, idx) => (
+            {stats.map((stat, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}

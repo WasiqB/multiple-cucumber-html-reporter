@@ -15,9 +15,7 @@ export interface StatItem {
 }
 
 export interface ProjectStats {
-  title?: string;
-  description?: string;
-  items: StatItem[];
+  stats: StatItem[];
 }
 
 // ----------------------------------
@@ -79,7 +77,6 @@ export interface HomeTrustedBy {
 
 export interface HomeData {
   hero: HomeHero;
-  stats?: ProjectStats;
   features: HomeFeatures;
   setup: HomeSetup;
   community: HomeCommunity;
@@ -220,7 +217,6 @@ export interface FeaturesAccordion {
 
 export interface FeaturesData {
   hero: FeaturesHero;
-  stats?: ProjectStats;
   precision: FeaturesPrecision;
   preview: FeaturesPreview;
   accordion: FeaturesAccordion;

@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa6';
 import { buttonVariants } from '@/components/ui/button';
 import homeDataJson from '@/data/home.json';
-import type { HomeData } from '@/data/types';
+import statsDataJson from '@/data/stats.json';
+import type { HomeData, ProjectStats } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -25,7 +26,8 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function HomePage() {
-  const { hero, stats, features, setup, community, trustedBy } = homeDataJson as HomeData;
+  const { hero, features, setup, community, trustedBy } = homeDataJson as HomeData;
+  const { stats } = statsDataJson as ProjectStats;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -118,10 +120,10 @@ export default function HomePage() {
       )}
 
       {/* Stats Section */}
-      {stats?.items && (
+      {stats && (
         <section className='container mx-auto px-6'>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem] px-8 md:px-16'>
-            {stats.items.map((stat, idx) => (
+            {stats.map((stat, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}

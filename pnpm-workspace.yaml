@@ -2,3 +2,9 @@ packages:
   - "reporter"
   - "examples/cypress"
   - "docs"
+allowBuilds:
+  '@parcel/watcher': true
+  cypress: true
+  esbuild: false
+  msw: false
+  sharp: true

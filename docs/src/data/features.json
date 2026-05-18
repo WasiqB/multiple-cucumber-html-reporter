@@ -8,14 +8,6 @@
     "secondaryLink": { "label": "View Demo", "url": "#" },
     "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
   },
-  "stats": {
-    "items": [
-      { "label": "NPM Downloads", "value": "1M+", "icon": "Download" },
-      { "label": "GitHub Stars", "value": "270+", "icon": "Star" },
-      { "label": "Dependents", "value": "6.2K+", "icon": "Users" },
-      { "label": "Weekly Downloads", "value": "248K+", "icon": "Activity" }
-    ]
-  },
   "accordion": {
     "title": "Unmatched Capabilities",
     "description": "Deep dive into the specialized features that set us apart from standard reporters.",
