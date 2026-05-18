@@ -34,7 +34,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies and Upgrade NPM
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm build
@@ -93,7 +93,7 @@ jobs:
         run: |
           npm install -g npm
           npm -v
-          pnpm install
+          pnpm install --frozen-lockfile
 
       - name: Build Project
         run: pnpm build

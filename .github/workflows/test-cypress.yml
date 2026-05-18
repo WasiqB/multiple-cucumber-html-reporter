@@ -25,7 +25,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install Root Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build Root Project
         working-directory: reporter
