@@ -20,9 +20,9 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
-    "fumadocs-core": "16.8.11",
-    "fumadocs-mdx": "15.0.6",
-    "fumadocs-ui": "16.8.11",
+    "fumadocs-core": "16.8.12",
+    "fumadocs-mdx": "15.0.7",
+    "fumadocs-ui": "16.8.12",
     "lucide-react": "^1.14.0",
     "motion": "^12.39.0",
     "next": "16.2.6",
@@ -46,7 +46,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.15",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   }
