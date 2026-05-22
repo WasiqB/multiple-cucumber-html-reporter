@@ -35,10 +35,6 @@ jobs:
         working-directory: examples/wdio
         run: pnpm install
 
-      - name: Build WDIO Project
-        working-directory: examples/wdio
-        run: pnpm build
-
       - name: Run WDIO
         working-directory: examples/wdio
         run: pnpm test

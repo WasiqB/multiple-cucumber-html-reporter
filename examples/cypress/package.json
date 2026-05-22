@@ -8,8 +8,7 @@
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
     "test": "pnpm build && cypress run --browser chrome --headed",
-    "report": "node dist/cucumber-html-report.js",
-    "cy:run": "cypress run"
+    "report": "node dist/cucumber-html-report.js"
   },
   "author": "Wasiq Bhamla",
   "license": "MIT",
