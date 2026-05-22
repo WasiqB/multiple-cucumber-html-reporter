@@ -1,0 +1,8 @@
+{
+  "name": "@mchr/tsconfig",
+  "version": "3.10.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  }
+}

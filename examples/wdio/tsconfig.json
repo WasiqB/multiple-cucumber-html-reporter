@@ -1,0 +1,14 @@
+{
+  "extends": "@mchr/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["es2022", "dom"],
+    "types": ["node", "@wdio/globals/types", "expect-webdriverio", "@wdio/cucumber-framework"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "wdio.conf.ts"]
+}

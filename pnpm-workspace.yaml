@@ -1,11 +1,14 @@
 packages:
   - "reporter"
-  - "examples/cypress"
+  - "examples/*"
+  - "packages/*"
   - "docs"
 allowBuilds:
   '@parcel/watcher': true
   cypress: true
+  edgedriver: true
   esbuild: false
+  geckodriver: false
   msw: false
   sharp: true
 minimumReleaseAgeExclude:
