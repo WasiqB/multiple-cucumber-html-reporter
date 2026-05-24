@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - reporter/**
+
   pull_request:
     branches:
       - main
+    paths:
+      - reporter/**
 
 jobs:
   test:

@@ -1,6 +1,10 @@
 import { rm } from 'node:fs/promises';
+import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
+
+let startTime: number;
+let endTime: number;
 
 export const config: WebdriverIO.Config = {
   //
@@ -142,7 +146,7 @@ export const config: WebdriverIO.Config = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ['./src/step-definitions/*.steps.ts'],
+    require: ['./src/steps/*.steps.ts'],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -180,7 +184,10 @@ export const config: WebdriverIO.Config = {
    * @param {object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  onPrepare: async () => await rm('reports', { recursive: true }),
+  onPrepare: async () => {
+    await rm('reports', { recursive: true });
+    startTime = Date.now();
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialize specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -312,6 +319,7 @@ export const config: WebdriverIO.Config = {
    * @param {<Object>} _results object containing test results
    */
   onComplete: async (_exitCode, _config, _capabilities, _results) => {
+    endTime = Date.now();
     await generate({
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
@@ -323,6 +331,33 @@ export const config: WebdriverIO.Config = {
       displayDuration: true,
       pageTitle: 'My WDIO Typescript Sample',
       reportName: 'Cucumber JS Report',
+      metadata: {
+        browser: {
+          name: 'chrome',
+          version: '148',
+        },
+        platform: {
+          name: 'osx',
+          version: '26.5',
+        },
+      },
+      customData: {
+        title: 'Run Info',
+        data: [
+          { label: 'Project', value: 'Sample ' },
+          { label: 'Release', value: '1.0.0' },
+          { label: 'WDIO Version', value: '9.0.0' },
+          { label: 'Node Version', value: '24.0.0' },
+          {
+            label: 'Execution Start Time',
+            value: dayjs(startTime).format('YYYY-MM-DD HH:mm:ss.SSS'),
+          },
+          {
+            label: 'Execution End Time',
+            value: dayjs(endTime).format('YYYY-MM-DD HH:mm:ss.SSS'),
+          },
+        ],
+      },
     });
   },
   /**

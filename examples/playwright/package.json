@@ -1,0 +1,22 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "tsx src/utils/prepare-run.ts && node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js && tsx src/utils/generate-report.ts"
+  },
+  "keywords": [],
+  "author": "Waqas Bhamla",
+  "license": "MIT",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.9.0",
+    "@mchr/tsconfig": "workspace:*",
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^25.9.1",
+    "multiple-cucumber-html-reporter": "workspace:*",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}

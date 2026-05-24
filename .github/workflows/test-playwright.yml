@@ -1,18 +1,18 @@
-name: Test Cypress Example
+name: Test Playwright Example
 
 on:
   push:
     branches:
       - main
     paths:
-      - examples/cypress/**
+      - examples/playwright/*
       - reporter/**
 
   pull_request:
     branches:
       - main
     paths:
-      - examples/cypress/**
+      - examples/playwright/*
       - reporter/**
 
 jobs:
@@ -38,29 +38,19 @@ jobs:
         working-directory: reporter
         run: pnpm build
 
-      - name: Install Cypress dependencies
-        working-directory: examples/cypress
+      - name: Install Playwright dependencies
+        working-directory: examples/playwright
         run: pnpm install
 
-      - name: Build Cypress Project
-        working-directory: examples/cypress
-        run: pnpm build
-
-      - name: Install Cypress
-        working-directory: examples/cypress
-        run: pnpm cypress install
-
-      - name: Run Cypress
-        working-directory: examples/cypress
+      - name: Run Playwright
+        working-directory: examples/playwright
         run: pnpm test
+        env:
+          CI: true
         continue-on-error: true
-
-      - name: Generate Report
-        working-directory: examples/cypress
-        run: pnpm report
 
       - name: Upload Report
         uses: actions/upload-artifact@v7
         with:
-          name: cypress-report
-          path: examples/cypress/.run/html-report
+          name: playwright-report
+          path: examples/playwright/reports

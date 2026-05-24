@@ -1,6 +1,6 @@
 import { type DataTable, Given, Then, When } from '@wdio/cucumber-framework';
 import { browser, expect } from '@wdio/globals';
-import SauceDemoPage from '@/pageobjects/saucedemo.page.js';
+import SauceDemoPage from '@/pages/saucedemo.page.js';
 
 Given('I am on the Sauce Demo login page', async () => {
   await SauceDemoPage.open();

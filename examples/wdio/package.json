@@ -16,6 +16,9 @@
     "multiple-cucumber-html-reporter": "workspace:*",
     "@mchr/tsconfig": "workspace:*"
   },
+  "dependencies": {
+    "dayjs": "^1.11.20"
+  },
   "scripts": {
     "test": "wdio run ./wdio.conf.ts"
   }
