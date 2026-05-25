@@ -1,0 +1,54 @@
+name: Test WDIO Example
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - examples/wdio/*
+      - reporter/**
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - examples/wdio/*
+      - reporter/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Root Project
+        working-directory: reporter
+        run: pnpm build
+
+      - name: Install WDIO dependencies
+        working-directory: examples/wdio
+        run: pnpm install
+
+      - name: Run WDIO
+        working-directory: examples/wdio
+        run: pnpm test
+        continue-on-error: true
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v7
+        with:
+          name: wdio-report
+          path: examples/wdio/reports

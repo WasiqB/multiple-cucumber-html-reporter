@@ -1,0 +1,204 @@
+---
+title: Cypress
+description: How to use Multiple Cucumber HTML Reporter with Cypress.
+---
+
+Here you will learn how to configure the Cypress Cucumber project to generate Cucumber JSON reports and the beautiful HTML report using Multiple Cucumber HTML Reporter.
+
+## Steps to generate Multiple Cucumber HTML reporter
+
+### Generate Cucumber JSON reports [step]
+
+The multiple cucumber HTML reporter requires the Cucumber JSON report files in order to generate the beautiful HTML reports.
+
+We have used `@badeball/cypress-cucumber-preprocessor` and `@bahmutov/cypress-esbuild-preprocessor` dependencies to generate the Cucumber JSON report files.
+
+### Cypress Configuration [step]
+
+Update the Cypress Configuration file as shown below to save the result in JSON format. This data will be used later.
+
+```typescript
+// cypress.config.ts
+import { writeFileSync } from 'node:fs';
+import { addCucumberPreprocessorPlugin, afterRunHandler } from '@badeball/cypress-cucumber-preprocessor';
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import { defineConfig } from 'cypress';
+
+async function setupNodeEvents(
+  on: Cypress.PluginEvents,
+  config: Cypress.PluginConfigOptions,
+): Promise<Cypress.PluginConfigOptions> {
+  await addCucumberPreprocessorPlugin(on, config);
+
+  on(
+    'file:preprocessor',
+    createBundler({
+      plugins: [createEsbuildPlugin(config)],
+    }),
+  );
+  on(
+    'after:run',
+    async (results: CypressCommandLine.CypressRunResult | CypressCommandLine.CypressFailedRunResult): Promise<void> => {
+      if (results) {
+        await afterRunHandler(config, results);
+        writeFileSync('.run/results.json', JSON.stringify(results));  // [!code highlight]
+      }
+    },
+  );
+
+  return config;
+}
+
+export default defineConfig({
+  e2e: {
+    specPattern: 'cypress/e2e/**/*.feature',
+    setupNodeEvents,  // [!code highlight]
+    defaultCommandTimeout: 60000,
+    pageLoadTimeout: 60000,
+    video: false,
+    experimentalInteractiveRunEvents: true,
+    downloadsFolder: './cypress/.run/downloads',
+    fixturesFolder: './cypress/.run/fixtures',
+    screenshotsFolder: './cypress/.run/screenshots',
+    videosFolder: './cypress/.run/videos',
+  },
+});
+```
+
+### Cucumber pre-processor configuration [step]
+
+Add the following configuration to your `.cypress-cucumber-preprocessorrc.json` file to generate the Cucumber JSON report files.
+
+```json
+// .cypress-cucumber-preprocessorrc.json
+{
+  "json": {
+    "enabled": true,  // [!code highlight]
+    "output": ".run/reports/json/cucumber-report.json"  // [!code highlight]
+  },
+  "messages": {
+    "enabled": true,
+    "output": ".run/reports/messages/cucumber-report.json"
+  },
+  "stepDefinitions": [
+    "cypress/e2e/[filepath].step.{js,ts}",
+    "cypress/e2e/[filepath]/*.step.{js,ts}"
+  ]
+}
+```
+
+### Script to generate the report [step]
+
+Create a typescript file at the root of the project as shown below:
+
+```typescript
+// cucumber-html-report.ts
+import { readFileSync } from 'node:fs';
+import dayjs from 'dayjs';
+import { generate } from 'multiple-cucumber-html-reporter';
+
+const data = readFileSync('./.run/results.json', {
+  encoding: 'utf8',
+  flag: 'r',
+});
+const runInfos = JSON.parse(data);
+
+const mapOs = (os: string) => {
+  if (os.startsWith('win')) {
+    return 'windows';
+  } else if (os.startsWith('darwin')) {
+    return 'osx';
+  } else if (os.startsWith('linux')) {
+    return 'linux';
+  } else if (os.startsWith('ubuntu')) {
+    return 'ubuntu';
+  } else if (os.startsWith('android')) {
+    return 'android';
+  } else if (os.startsWith('ios')) {
+    return 'ios';
+  }
+  return 'unknown';
+};
+
+generate({
+  jsonDir: './.run/reports/json/',
+  reportPath: './.run/html-report/',
+  openReportInBrowser: true,
+  useCDN: true,
+  metadata: {
+    browser: {
+      name: runInfos.browserName === 'chromium' ? 'chrome' : runInfos.browserName,
+      version: runInfos.browserVersion,
+    },
+    platform: {
+      name: mapOs(runInfos.osName),
+      version: runInfos.osVersion,
+    },
+  },
+  customData: {
+    title: 'Run Info',
+    data: [
+      { label: 'Project', value: 'Sample ' },
+      { label: 'Release', value: '1.0.0' },
+      { label: 'Cypress Version', value: runInfos.cypressVersion },
+      { label: 'Node Version', value: runInfos.nodeVersion },
+      {
+        label: 'Execution Start Time',
+        value: dayjs(runInfos.startedTestsAt).format('YYYY-MM-DD HH:mm:ss.SSS'),
+      },
+      {
+        label: 'Execution End Time',
+        value: dayjs(runInfos.endedTestsAt).format('YYYY-MM-DD HH:mm:ss.SSS'),
+      },
+    ],
+  },
+  pageTitle: 'Cypress Sample',
+  reportName: 'Cypress Sample',
+  displayDuration: true,
+  displayReportTime: true,
+});
+```
+
+### Configure the scripts in `package.json` [step]
+
+```json
+// package.json
+{
+  "scripts": {
+    "clean": "rm -rf dist .run",
+    "build": "pnpm clean && tsc",
+    "test": "pnpm build && cypress run --browser chrome --headed",
+    "report": "node dist/cucumber-html-report.js"
+  },
+}
+```
+
+- `pnpm clean` - Remove the `dist` and `.run` folders
+- `pnpm build` - Compiles the TypeScript code for `cucumber-html-report.ts`
+- `pnpm test` - Run the tests in the browser
+- `pnpm report` - Generate the HTML report
+
+### Install the dependencies [step]
+
+Install the dependencies by running the following command:
+
+```shell
+pnpm install
+```
+
+### Run the Tests [step]
+
+Execute your test cases by running the following command in the terminal:
+
+```shell
+pnpm test
+```
+
+### Generate the HTML reporter [step]
+
+Once the test execution is done, run the following command in the terminal to generate the HTML report:
+
+```shell
+pnpm report
+```

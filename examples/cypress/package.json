@@ -8,18 +8,18 @@
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
     "test": "pnpm build && cypress run --browser chrome --headed",
-    "report": "node dist/cucumber-html-report.js",
-    "cy:run": "cypress run"
+    "report": "node dist/cucumber-html-report.js"
   },
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
-    "@types/node": "^25.9.0",
+    "@types/node": "^25.9.1",
     "cypress": "^15.14.2",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "@mchr/tsconfig": "workspace:*"
   },
   "dependencies": {
     "dayjs": "^1.11.20"

@@ -11,8 +11,6 @@
     "html report",
     "json to html"
   ],
-  "main": "dist/generate-report.js",
-  "types": "dist/generate-report.d.ts",
   "license": "MIT",
   "scripts": {
     "lint": "biome lint",
@@ -21,23 +19,15 @@
     "lint:fix": "biome lint --write",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WasiqB/multiple-cucumber-html-reporter.git"
-  },
   "author": "WasiqB",
-  "bugs": {
-    "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
-  },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
-  "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
-    "@types/node": "^25.9.0",
+    "@types/node": "^25.9.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.2",
     "typescript": "^6.0.3"
@@ -50,5 +40,5 @@
       "pnpm lint"
     ]
   },
-  "packageManager": "pnpm@11.1.3"
+  "packageManager": "pnpm@11.3.0"
 }

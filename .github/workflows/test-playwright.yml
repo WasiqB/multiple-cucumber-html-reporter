@@ -1,0 +1,56 @@
+name: Test Playwright Example
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - examples/playwright/*
+      - reporter/**
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - examples/playwright/*
+      - reporter/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Root Project
+        working-directory: reporter
+        run: pnpm build
+
+      - name: Install Playwright dependencies
+        working-directory: examples/playwright
+        run: pnpm install
+
+      - name: Run Playwright
+        working-directory: examples/playwright
+        run: pnpm test
+        env:
+          CI: true
+        continue-on-error: true
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: examples/playwright/reports

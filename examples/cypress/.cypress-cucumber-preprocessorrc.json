@@ -7,5 +7,5 @@
     "enabled": true,
     "output": ".run/reports/messages/cucumber-report.json"
   },
-  "stepDefinitions": ["cypress/e2e/[filepath].step.{js,ts}"]
+  "stepDefinitions": ["cypress/e2e/[filepath].step.{js,ts}", "cypress/e2e/[filepath]/*.step.{js,ts}"]
 }
