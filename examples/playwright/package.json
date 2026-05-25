@@ -5,9 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "tsx src/utils/prepare-run.ts && node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js && tsx src/utils/generate-report.ts"
+    "pretest": "tsx src/utils/prepare-run.ts",
+    "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
+    "posttest": "tsx src/utils/generate-report.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "Playwright"
+  ],
   "author": "Waqas Bhamla",
   "license": "MIT",
   "devDependencies": {

@@ -344,7 +344,7 @@ export const config: WebdriverIO.Config = {
       customData: {
         title: 'Run Info',
         data: [
-          { label: 'Project', value: 'Sample ' },
+          { label: 'Project', value: 'Sample WDIO Typescript' },
           { label: 'Release', value: '1.0.0' },
           { label: 'WDIO Version', value: '9.0.0' },
           { label: 'Node Version', value: '24.0.0' },

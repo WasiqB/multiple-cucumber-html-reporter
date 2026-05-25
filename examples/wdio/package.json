@@ -11,7 +11,6 @@
     "@wdio/spec-reporter": "^9.27.1",
     "expect-webdriverio": "^5.6.5",
     "wdio-cucumberjs-json-reporter": "^6.0.1",
-    "wdio-json-html-reporter": "^1.5.14",
     "wdio-wait-for": "^3.1.1",
     "multiple-cucumber-html-reporter": "workspace:*",
     "@mchr/tsconfig": "workspace:*"

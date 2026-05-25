@@ -1,9 +1,11 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import type { Metadata } from 'next';
 import { Geist, Inter } from 'next/font/google';
 import { Suspense } from 'react';
 import analytics from '@/data/analytics.json';
+import { baseUrl, createMetadata } from '@/lib/metadata';
 import { isProd } from '@/lib/shared';
 import { cn } from '@/lib/utils';
 
@@ -11,6 +13,16 @@ const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const inter = Inter({
   subsets: ['latin'],
+});
+
+export const metadata: Metadata = createMetadata({
+  title: {
+    template: '%s | Multiple Cucumber HTML Reporter',
+    default: 'Multiple Cucumber HTML Reporter',
+  },
+  description:
+    'Multiple Cucumber HTML Reporter is a feature-rich, fast, and highly configurable HTML reporter for CucumberJS reports, optimized for performance and user experience.',
+  metadataBase: baseUrl,
 });
 
 async function AnalyticsWrapper() {

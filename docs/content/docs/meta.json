@@ -1,13 +1,3 @@
 {
-  "pages": [
-    "index",
-    "installation",
-    "usage",
-    "options",
-    "metadata",
-    "faq",
-    "attachments",
-    "integrations",
-    "contributing"
-  ]
+  "pages": ["index", "installation", "usage", "options", "metadata", "faq", "attachments", "frameworks", "contributing"]
 }

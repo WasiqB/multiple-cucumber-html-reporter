@@ -1,0 +1,123 @@
+---
+title: Playwright
+description: How to use Multiple Cucumber HTML Reporter with Playwright.
+---
+
+Here you will learn how to configure the Playwright Cucumber project to generate Cucumber JSON report and convert it to beautiful HTML report using Multiple Cucumber HTML Reporer.
+
+## Steps to generate Multiple Cucumber HTML reporter
+
+### Generate Cucumber JSON reports [step]
+
+The multiple cucumber HTML reporter requires the Cucumber JSON report files in order to generate the beautiful HTML reports.
+
+We have used `@cucumber/cucumber` dependency to generate the Cucumber JSON report files.
+
+### Cucumber configuration [step]
+
+```json
+// cucumber.json
+{
+  "default": {
+    "import": ["src/steps/*.steps.ts"],
+    "paths": ["src/features/*.feature"],
+    "format": ["progress", "json:reports/cucumber-report.json"]  // [!code highlight]
+  }
+}
+```
+
+### Prepare report folders [step]
+
+This script will be executed before executing the Cucumber tests to clean up the previous test results and prepare the folders for the new test results.
+
+```typescript
+// prepare-run.ts
+import { mkdir, rm } from 'node:fs/promises';
+
+await rm('reports', { recursive: true, force: true });
+await rm('test-results', { recursive: true, force: true });
+
+await mkdir('reports', { recursive: true });
+await mkdir('test-results/screenshots', { recursive: true });
+await mkdir('test-results/trace', { recursive: true });
+```
+
+### Script to generate the report [step]
+
+This script will generate beautiful HTML reports by using the Cucumber generated JSON reports. This script will be executed after the Cucumber tests are completed.
+
+```typescript
+// generate-report.ts
+import { generate } from 'multiple-cucumber-html-reporter';
+
+generate({
+  jsonDir: 'reports/',
+  reportPath: 'reports/report/',
+  useCDN: false,
+  openReportInBrowser: true,
+  saveCollectedJSON: true,
+  displayReportTime: true,
+  durationInMS: false,
+  displayDuration: true,
+  pageTitle: 'My Playwright Typescript Sample',
+  reportName: 'Cucumber JS Report',
+  metadata: {
+    browser: {
+      name: 'chrome',
+      version: '148',
+    },
+    platform: {
+      name: 'osx',
+      version: '26.5',
+    },
+  },
+  customData: {
+    title: 'Run Info',
+    data: [
+      { label: 'Project', value: 'Sample Playwright' },
+      { label: 'Release', value: '1.0.0' },
+      { label: 'Test Cycle', value: 'Smoke' },
+      { label: 'Test Environment', value: 'Dev' },
+      { label: 'Playwright Version', value: '1.40.0' },
+      { label: 'Node Version', value: '24.0.0' },
+    ],
+  },
+});
+```
+
+### Configure the scripts in `package.json` [step]
+
+Following scripts are configured in `package.json` to execute `prepare-run.ts` script before running tests and `generate-report.ts` script after running tests.
+
+```json
+// package.json
+{
+  "scripts": {
+    "pretest": "tsx src/utils/prepare-run.ts",
+    "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
+    "posttest": "tsx src/utils/generate-report.ts"
+  },
+}
+```
+
+- `pnpm pretest` - Prepare the test environment and folders for the new test results.
+- `pnpm test` - Run the tests in the browser and open the report in default browser if configured.
+- `pnpm posttest` - Generate HTML reports by using the Cucumber generated JSON reports.
+
+### Install the dependencies [step]
+
+Install the dependencies by running the following command:
+
+```shell
+pnpm install
+```
+
+### Run the Tests and generate report [step]
+
+Execute your test cases by running the following command in the terminal:
+
+```shell
+pnpm test
+```
+
+This command will execute all your test cases and generate HTML report at the end.

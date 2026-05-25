@@ -236,9 +236,6 @@ importers:
       wdio-cucumberjs-json-reporter:
         specifier: ^6.0.1
         version: 6.0.1(@wdio/cucumber-framework@9.27.1)(@wdio/globals@9.27.1)(@wdio/types@9.27.1)(webdriverio@9.27.1)
-      wdio-json-html-reporter:
-        specifier: ^1.5.14
-        version: 1.5.14
       wdio-wait-for:
         specifier: ^3.1.1
         version: 3.1.1
@@ -2672,9 +2669,6 @@ packages:
   '@types/node@20.19.41':
     resolution: {integrity: sha512-ECymXOukMnOoVkC2bb1Vc/w/836DXncOg5m8Xj1RH7xSHZJWNYY6Zh7EH477vcnD5egKNNfy2RpNOmuChhFPgQ==}
 
-  '@types/node@22.19.19':
-    resolution: {integrity: sha512-dyh/xO2Fh5bYrfWaaqGrRQQGkNdmYw6AmaAUvYeUMNTWQtvb796ikLdmTchRmOlOiIJ1TDXfWgVx1QkUlQ6Hew==}
-
   '@types/node@25.9.1':
     resolution: {integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==}
 
@@ -2841,10 +2835,6 @@ packages:
     resolution: {integrity: sha512-Uvol8Je1VrCUDZqLT1/fhrvXOGpAGcjEXd69LbhupFAVv336fGX+aonJlWV8VJyWow55xSW4zmKnaLIhpFk3Uw==}
     engines: {node: '>=18.20.0'}
 
-  '@wdio/logger@8.38.0':
-    resolution: {integrity: sha512-kcHL86RmNbcQP+Gq/vQUGlArfU6IIcbbnNp32rRIraitomZow+iEoc519rdQmSVusDozMS5DZthkgDdxK+vz6Q==}
-    engines: {node: ^16.13 || >=18}
-
   '@wdio/logger@9.18.0':
     resolution: {integrity: sha512-HdzDrRs+ywAqbXGKqe1i/bLtCv47plz4TvsHFH3j729OooT5VH38ctFn5aLXgECmiAKDkmH/A6kOq2Zh5DIxww==}
     engines: {node: '>=18.20.0'}
@@ -2855,10 +2845,6 @@ packages:
   '@wdio/repl@9.16.2':
     resolution: {integrity: sha512-FLTF0VL6+o5BSTCO7yLSXocm3kUnu31zYwzdsz4n9s5YWt83sCtzGZlZpt7TaTzb3jVUfxuHNQDTb8UMkCu0lQ==}
     engines: {node: '>=18.20.0'}
-
-  '@wdio/reporter@8.43.0':
-    resolution: {integrity: sha512-0ph8SabdMrgDmuLUEwA7yvkrvlCw4/EXttb3CGucjSkuiSbZNLhdTMXpyPoewh2soa253fIpnx79HztOsOzn5Q==}
-    engines: {node: ^16.13 || >=18}
 
   '@wdio/reporter@9.27.1':
     resolution: {integrity: sha512-2ueVjd5hOCclfC+GV3yhaN/4Tids1mXMcpPtNTPushHIQY4gLmBqqKDe5RSXAED3bNU+DRdHq2uBiZTBd4QDJg==}
@@ -2874,10 +2860,6 @@ packages:
   '@wdio/spec-reporter@9.27.1':
     resolution: {integrity: sha512-q9UMJJbCcP+nCOojIvOIcsXnerhHICmWu94guRMRYPbW2IsG/5VM/uhzwru8SU/1WRXLtKgTjkuXXsjzjVpf2w==}
     engines: {node: '>=18.20.0'}
-
-  '@wdio/types@8.41.0':
-    resolution: {integrity: sha512-t4NaNTvJZci3Xv/yUZPH4eTL0hxrVTf5wdwNnYIBrzMnlRDbNefjQ0P7FM7ZjQCLaH92AEH6t/XanUId7Webug==}
-    engines: {node: ^16.13 || >=18}
 
   '@wdio/types@9.27.1':
     resolution: {integrity: sha512-EHBNCvLmvpYerln4mb/OBxzKtnavL2wdenjhwuYjzkZMOWHgm/uLXH6sLThM0y6DIbCU72Asth16fo1eDcsofA==}
@@ -7579,10 +7561,6 @@ packages:
       '@wdio/types': ^9.0.0
       webdriverio: ^9.0.0
 
-  wdio-json-html-reporter@1.5.14:
-    resolution: {integrity: sha512-4Lh9SUipoCcLmV1+6ulM67GXJeV2TeDAOFl8J7gQaJUsSZ0NE/AX+EOkJDOQzT7uZkFeUJV2caPKOsCfTjZAGg==}
-    hasBin: true
-
   wdio-wait-for@3.1.1:
     resolution: {integrity: sha512-Ogw8907/JbjFe+aIfKYdlildDxCpU4emhwhqo4hCVZ9pjcJj6/fVb0lxmOjAMfRU30vXdB6o7ZY1rb65PFJzBw==}
     engines: {node: '>=18 || >=20 || >=22'}
@@ -10272,10 +10250,6 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.19.19':
-    dependencies:
-      undici-types: 6.21.0
-
   '@types/node@25.9.1':
     dependencies:
       undici-types: 7.24.6
@@ -10542,13 +10516,6 @@ snapshots:
       - utf-8-validate
       - webdriverio
 
-  '@wdio/logger@8.38.0':
-    dependencies:
-      chalk: 5.6.2
-      loglevel: 1.9.2
-      loglevel-plugin-prefix: 0.8.4
-      strip-ansi: 7.2.0
-
   '@wdio/logger@9.18.0':
     dependencies:
       chalk: 5.6.2
@@ -10562,14 +10529,6 @@ snapshots:
   '@wdio/repl@9.16.2':
     dependencies:
       '@types/node': 20.19.41
-
-  '@wdio/reporter@8.43.0':
-    dependencies:
-      '@types/node': 22.19.19
-      '@wdio/logger': 8.38.0
-      '@wdio/types': 8.41.0
-      diff: 7.0.0
-      object-inspect: 1.13.4
 
   '@wdio/reporter@9.27.1':
     dependencies:
@@ -10607,10 +10566,6 @@ snapshots:
       chalk: 5.6.2
       easy-table: 1.2.0
       pretty-ms: 9.3.0
-
-  '@wdio/types@8.41.0':
-    dependencies:
-      '@types/node': 22.19.19
 
   '@wdio/types@9.27.1':
     dependencies:
@@ -16090,10 +16045,6 @@ snapshots:
       fs-extra: 11.3.5
       strip-ansi: 7.2.0
       webdriverio: 9.27.1
-
-  wdio-json-html-reporter@1.5.14:
-    dependencies:
-      '@wdio/reporter': 8.43.0
 
   wdio-wait-for@3.1.1: {}
 
