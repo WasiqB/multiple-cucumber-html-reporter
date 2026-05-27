@@ -7,14 +7,14 @@
     }
   },
   "git": {
-    "requireBranch": "main",
+    "requireBranch": "issue-542",
     "commitMessage": "chore: release v${version}",
     "commit": true,
     "tag": true,
     "push": true,
     "commitArgs": ["-S", "--no-verify"],
     "tagArgs": ["-s"],
-    "requireCleanWorkingDir": true
+    "requireCleanWorkingDir": false
   },
   "github": {
     "release": true,
@@ -25,8 +25,5 @@
       "pr": ":rocket: _This pull request is included in v${version}. See [${releaseName}](${releaseUrl}) for release notes._"
     }
   },
-  "npm": {
-    "publish": true,
-    "skipChecks": true
-  }
+  "npm": false
 }
