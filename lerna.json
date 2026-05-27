@@ -1,7 +1,7 @@
 {
   "version": "3.10.0",
   "npmClient": "pnpm",
-  "useWorkspace": false,
+  "useWorkspaces": false,
   "changelog": {
     "repo": "WasiqB/multiple-cucumber-html-reporter",
     "labels": {

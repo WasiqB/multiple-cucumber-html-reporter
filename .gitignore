@@ -45,3 +45,5 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 test-results/
+
+.changelog/

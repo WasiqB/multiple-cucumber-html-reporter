@@ -17,9 +17,18 @@
     "format": "biome format",
     "format:fix": "biome format --write",
     "lint:fix": "biome lint --write",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "release-it",
+    "release.ci": "pnpm release --ci",
+    "beta": "pnpm release.ci --preRelease=beta",
+    "release.patch": "pnpm release.ci patch",
+    "release.minor": "pnpm release.ci minor",
+    "release.major": "pnpm release.ci major",
+    "release.premajor": "pnpm beta premajor",
+    "release.preminor": "pnpm beta preminor",
+    "release.prepatch": "pnpm beta prepatch"
   },
-  "author": "WasiqB",
+  "author": "Wasiq Bhamla",
   "engines": {
     "node": ">=24"
   },
@@ -28,6 +37,10 @@
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@types/node": "^25.9.1",
+    "lerna-changelog": "^2.2.0",
+    "release-it": "^19.2.4",
+    "release-it-pnpm": "^4.6.6",
+    "@release-it-plugins/lerna-changelog": "^8.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.2",
     "typescript": "^6.0.3"

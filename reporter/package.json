@@ -24,15 +24,6 @@
     "prebuild": "pnpm generate:css && pnpm generate:css:min",
     "build": "tsc && cp -r src/templates dist/templates",
     "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
-    "release": "release-it",
-    "release.ci": "pnpm release --ci",
-    "beta": "pnpm release.ci --preRelease=beta",
-    "release.patch": "pnpm release.ci patch",
-    "release.minor": "pnpm release.ci minor",
-    "release.major": "pnpm release.ci major",
-    "release.premajor": "pnpm beta premajor",
-    "release.preminor": "pnpm beta preminor",
-    "release.prepatch": "pnpm beta prepatch",
     "test": "node ./dist/test/test.js",
     "unit.test": "jasmine JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=dist/test/unit/jasmine.json c8 jasmine",
@@ -66,7 +57,6 @@
     "uuid": "^14.0.0"
   },
   "devDependencies": {
-    "@release-it-plugins/lerna-changelog": "^8.0.1",
     "@tailwindcss/cli": "^4.2.4",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
@@ -78,9 +68,6 @@
     "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.2.0",
-    "lerna-changelog": "^2.2.0",
-    "release-it": "^20.0.1",
-    "release-it-pnpm": "^4.6.6",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
     "@mchr/tsconfig": "workspace:*"
