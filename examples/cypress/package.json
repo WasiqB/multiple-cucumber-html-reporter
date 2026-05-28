@@ -15,11 +15,11 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "@mchr/tsconfig": "workspace:*",
     "@types/node": "^25.9.1",
-    "cypress": "^15.14.2",
+    "cypress": "^15.16.0",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "typescript": "^6.0.3",
-    "@mchr/tsconfig": "workspace:*"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
     "dayjs": "^1.11.20"

@@ -19,9 +19,13 @@
       "import": "./dist/generate-report.js"
     }
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "license": "MIT",
   "scripts": {
-    "release": "release-it",
+    "release": "release-it --ci",
     "prebuild": "pnpm generate:css && pnpm generate:css:min",
     "build": "tsc && cp -r src/templates dist/templates",
     "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
@@ -32,8 +36,7 @@
     "generate:css:min": "npx @tailwindcss/cli -i ./src/templates/styles/main.css -o ./src/templates/assets/css/styles.min.css --minify"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WasiqB/multiple-cucumber-html-reporter.git"
+    "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter"
   },
   "author": "WasiqB",
   "bugs": {
@@ -58,6 +61,8 @@
     "uuid": "^14.0.0"
   },
   "devDependencies": {
+    "@mchr/tsconfig": "workspace:*",
+    "@release-it-plugins/lerna-changelog": "^8.0.1",
     "@tailwindcss/cli": "^4.2.4",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
@@ -66,12 +71,11 @@
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
     "@types/node": "^25.9.1",
-    "@types/uuid": "^11.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.2.0",
-    "tailwindcss": "^4.2.4",
+    "lerna-changelog": "^2.2.0",
     "release-it": "^19.2.4",
-    "typescript": "^6.0.3",
-    "@mchr/tsconfig": "workspace:*"
+    "tailwindcss": "^4.2.4",
+    "typescript": "^6.0.3"
   }
 }
