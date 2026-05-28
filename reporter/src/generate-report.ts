@@ -460,8 +460,12 @@ async function generateReport(options: Options) {
             (embedding.media && embedding.media.type === 'text/plain')
           ) {
             step.text = (step.text ? step.text : []).concat([_escapeHtml(embedding.data)]);
-          } else if (embedding.mime_type === 'image/png' || (embedding.media && embedding.media.type === 'image/png')) {
-            step.image = (step.image ? step.image : []).concat([`data:image/png;base64,${embedding.data}`]);
+          } else if (
+            ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.mime_type ?? '') ||
+            (embedding.media && ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.media.type))
+          ) {
+            const mimeType = embedding.mime_type ?? embedding.media?.type ?? 'image/png';
+            step.image = (step.image ? step.image : []).concat([`data:${mimeType};base64,${embedding.data}`]);
             step.embeddings![embeddingIndex] = {};
           } else if (
             embedding.mime_type === 'video/webm' ||
