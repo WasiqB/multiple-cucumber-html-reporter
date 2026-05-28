@@ -216,6 +216,16 @@ async function generateReport(options: Options) {
       feature.app = '';
       feature.browser = '';
 
+      if (feature.uri) {
+        let uriPath = feature.uri;
+        if (uriPath.startsWith('file://')) {
+          uriPath = uriPath.substring(7);
+        }
+        if (path.isAbsolute(uriPath)) {
+          feature.uri = path.relative(process.cwd(), uriPath);
+        }
+      }
+
       // Metadata shortcuts for templates
       if (feature.metadata) {
         if (Array.isArray(feature.metadata)) {
@@ -581,8 +591,9 @@ async function generateReport(options: Options) {
       pageTitle: pageTitle,
       pageFooter: pageFooter,
       project: options.customData?.title,
-      release: 'v1.0.0',
-      cycle: 'N/A',
+      release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
+        ?.value,
+      cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')?.value,
       executionStartTime: formatDuration(0), // Placeholder
       executionEndTime: formatDuration(suite.totalTime), // Total duration
       executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
@@ -624,8 +635,10 @@ async function generateReport(options: Options) {
         pageTitle: pageTitle,
         pageFooter: pageFooter,
         project: options.customData?.title,
-        release: 'v1.0.0',
-        cycle: 'N/A',
+        release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
+          ?.value,
+        cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')
+          ?.value,
         executionStartTime: formatDuration(0),
         executionEndTime: formatDuration(suite.totalTime),
         executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),

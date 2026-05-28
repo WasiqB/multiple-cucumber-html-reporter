@@ -41,12 +41,14 @@ generate({
     },
   },
   customData: {
-    title: 'Run Info',
+    title: 'Cypress Sample',
     data: [
-      { label: 'Project', value: 'Sample ' },
+      { label: 'Project', value: 'Sample Cypress Typescript' },
       { label: 'Release', value: '1.0.0' },
-      { label: 'Cypress Version', value: runInfos.cypressVersion },
-      { label: 'Node Version', value: runInfos.nodeVersion },
+      { label: 'Cycle', value: 'Build-1002' },
+      { label: 'Cypress Version', value: '15.16.0' },
+      { label: 'Node Version', value: '24.15.0' },
+      { label: 'Test Environment', value: 'QA' },
       {
         label: 'Execution Start Time',
         value: dayjs(runInfos.startedTestsAt).format('YYYY-MM-DD HH:mm:ss.SSS'),

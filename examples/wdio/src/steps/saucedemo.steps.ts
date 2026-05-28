@@ -44,7 +44,7 @@ Then('I should see {string} in the cart', async (productName: string) => {
   const cartItems = SauceDemoPage.cartItems;
   const texts = await cartItems.map(async (element) => await element.getText());
   const found = texts.some((text) => text.includes(productName));
-  await expect(found).toBe(true);
+  expect(found).toBeTruthy();
 });
 
 When('I click the checkout button', async () => {
@@ -66,7 +66,7 @@ Then('I should see the checkout overview for {string}', async (productName: stri
   const cartItems = SauceDemoPage.cartItems;
   const texts = await cartItems.map((el) => el.getText());
   const found = texts.some((text) => text.includes(productName));
-  await expect(found).toBe(true);
+  expect(found).toBeTruthy();
 });
 
 When('I click the finish button', async () => {
@@ -75,7 +75,7 @@ When('I click the finish button', async () => {
 
 Then('I should see the success page with message {string}', async (message: string) => {
   const url = await browser.getUrl();
-  await expect(url).toContain('/checkout-complete.html');
+  expect(url).toContain('/checkout-complete.html');
   await expect(SauceDemoPage.completeHeader).toBeDisplayed();
   await expect(SauceDemoPage.completeHeader).toHaveText(expect.stringContaining(message));
 });
@@ -91,4 +91,20 @@ When('I click the logout button', async () => {
 
 Then('I should see the login page', async () => {
   await expect(SauceDemoPage.usernameInput).toBeDisplayed();
+});
+
+Then('Here is a "{string}" step', async (step: string) => {
+  if (step === 'pending') return 'pending';
+});
+
+Then(/Here is a "([^"]*)" step/, async (step: string) => {
+  console.log(step);
+});
+
+When('This will fail', async () => {
+  throw new Error('This will fail');
+});
+
+Then('This will get skipped', async () => {
+  throw new Error('This will get skipped');
 });

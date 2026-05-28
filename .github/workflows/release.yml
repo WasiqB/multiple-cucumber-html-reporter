@@ -43,12 +43,10 @@ jobs:
       - name: Release
         if: ${{ ! inputs.pre-release }}
         run: pnpm release.${{ github.event.inputs.release-type }} --dry-run
-        working-directory: reporter
 
       - name: Pre Release
         if: ${{ inputs.pre-release }}
         run: pnpm release.pre${{ github.event.inputs.release-type }} --dry-run
-        working-directory: reporter
 
   release:
     runs-on: ubuntu-latest
@@ -102,9 +100,7 @@ jobs:
       - name: Release
         if: ${{ ! inputs.pre-release }}
         run: pnpm release.${{ github.event.inputs.release-type }}
-        working-directory: reporter
 
       - name: Pre Release
         if: ${{ inputs.pre-release }}
         run: pnpm release.pre${{ github.event.inputs.release-type }}
-        working-directory: reporter

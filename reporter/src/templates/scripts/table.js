@@ -29,7 +29,7 @@ window.ReportTable = {
 
       tableBody.innerHTML = paginatedItems
         .map((feature) => {
-          const total = (feature.passed || 0) + (feature.failed || 0) + (feature.skipped || 0);
+          const total = (feature.passed || 0) + (feature.failed || 0) + (feature.ambiguous || 0) + (feature.notDefined || 0) + (feature.pending || 0) + (feature.skipped || 0);
           const passPercentage = total > 0 ? Math.round((feature.passed / total) * 100) : 0;
 
           const deviceIcon = feature.device.match(/iPhone|Android|Mobile/i)
@@ -97,12 +97,18 @@ window.ReportTable = {
                 <div class="flex h-2 w-24 md:w-32 overflow-hidden rounded-full bg-secondary">
                   ${feature.passed > 0 ? `<div class="h-full bg-green-500" style="width: ${(feature.passed / total) * 100}%"></div>` : ''}
                   ${feature.failed > 0 ? `<div class="h-full bg-red-500" style="width: ${(feature.failed / total) * 100}%"></div>` : ''}
-                  ${feature.skipped > 0 ? `<div class="h-full bg-yellow-500" style="width: ${(feature.skipped / total) * 100}%"></div>` : ''}
+                  ${feature.ambiguous > 0 ? `<div class="h-full bg-purple-500" style="width: ${(feature.ambiguous / total) * 100}%"></div>` : ''}
+                  ${feature.notDefined > 0 ? `<div class="h-full bg-sky-500" style="width: ${(feature.notDefined / total) * 100}%"></div>` : ''}
+                  ${feature.pending > 0 ? `<div class="h-full bg-amber-500" style="width: ${(feature.pending / total) * 100}%"></div>` : ''}
+                  ${feature.skipped > 0 ? `<div class="h-full bg-gray-400" style="width: ${(feature.skipped / total) * 100}%"></div>` : ''}
                 </div>
-                <div class="mt-1 flex gap-2 text-[10px] font-medium uppercase">
+                <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
                   <span class="text-green-600">${feature.passed} Passed</span>
                   <span class="text-red-600">${feature.failed} Failed</span>
-                  <span class="text-yellow-600">${feature.skipped} Skipped</span>
+                  ${feature.ambiguous > 0 ? `<span class="text-purple-600">${feature.ambiguous} Ambiguous</span>` : ''}
+                  ${feature.notDefined > 0 ? `<span class="text-sky-600">${feature.notDefined} Undefined</span>` : ''}
+                  ${feature.pending > 0 ? `<span class="text-amber-600">${feature.pending} Pending</span>` : ''}
+                  <span class="text-gray-400">${feature.skipped} Skipped</span>
                 </div>
               </td>
               <td class="px-4 md:px-6 py-4 text-right whitespace-nowrap">
@@ -140,8 +146,8 @@ window.ReportTable = {
 
       filteredFeatures.sort((a, b) => {
         let valA, valB;
-        const totalA = (a.passed || 0) + (a.failed || 0) + (a.skipped || 0);
-        const totalB = (b.passed || 0) + (b.failed || 0) + (b.skipped || 0);
+        const totalA = (a.passed || 0) + (a.failed || 0) + (a.ambiguous || 0) + (a.notDefined || 0) + (a.pending || 0) + (a.skipped || 0);
+        const totalB = (b.passed || 0) + (b.failed || 0) + (b.ambiguous || 0) + (b.notDefined || 0) + (b.pending || 0) + (b.skipped || 0);
 
         switch (column) {
           case 0:

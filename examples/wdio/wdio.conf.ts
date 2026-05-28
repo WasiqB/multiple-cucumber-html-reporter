@@ -323,7 +323,7 @@ export const config: WebdriverIO.Config = {
     await generate({
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
-      useCDN: false,
+      useCDN: true,
       openReportInBrowser: true,
       saveCollectedJSON: true,
       displayReportTime: true,
@@ -336,18 +336,20 @@ export const config: WebdriverIO.Config = {
           name: 'chrome',
           version: '148',
         },
+        device: 'Mac OS X',
         platform: {
           name: 'osx',
           version: '26.5',
         },
       },
       customData: {
-        title: 'Run Info',
+        title: 'WebDriverIO Sample',
         data: [
           { label: 'Project', value: 'Sample WDIO Typescript' },
           { label: 'Release', value: '1.0.0' },
-          { label: 'WDIO Version', value: '9.0.0' },
-          { label: 'Node Version', value: '24.0.0' },
+          { label: 'Cycle', value: 'Build-1002' },
+          { label: 'WDIO Version', value: '9.27.2' },
+          { label: 'Node Version', value: '24.15.0' },
           {
             label: 'Execution Start Time',
             value: dayjs(startTime).format('YYYY-MM-DD HH:mm:ss.SSS'),

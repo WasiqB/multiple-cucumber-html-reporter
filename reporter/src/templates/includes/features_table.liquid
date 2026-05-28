@@ -91,18 +91,30 @@
                             {% if feature.scenarios.failed > 0 %}
                             <div class="h-full bg-red-500" style="width: {{ feature.scenarios.failed | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
                             {% endif %}
+                            {% if feature.scenarios.ambiguous > 0 %}
+                            <div class="h-full bg-purple-500" style="width: {{ feature.scenarios.ambiguous | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
+                            {% if feature.scenarios.notDefined > 0 %}
+                            <div class="h-full bg-sky-500" style="width: {{ feature.scenarios.notDefined | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
+                            {% if feature.scenarios.pending > 0 %}
+                            <div class="h-full bg-amber-500" style="width: {{ feature.scenarios.pending | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
                             {% if feature.scenarios.skipped > 0 %}
-                            <div class="h-full bg-yellow-500" style="width: {{ feature.scenarios.skipped | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            <div class="h-full bg-gray-400" style="width: {{ feature.scenarios.skipped | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
                             {% endif %}
                         </div>
-                        <div class="mt-1 flex gap-2 text-[10px] font-medium uppercase">
+                        <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
                             <span class="text-green-600">{{ feature.passed }} Passed</span>
                             <span class="text-red-600">{{ feature.failed }} Failed</span>
-                            <span class="text-yellow-600">{{ feature.skipped }} Skipped</span>
+                            {% if feature.ambiguous > 0 %}<span class="text-purple-600">{{ feature.ambiguous }} Ambiguous</span>{% endif %}
+                            {% if feature.notDefined > 0 %}<span class="text-sky-600">{{ feature.notDefined }} Undefined</span>{% endif %}
+                            {% if feature.pending > 0 %}<span class="text-amber-600">{{ feature.pending }} Pending</span>{% endif %}
+                            <span class="text-gray-400">{{ feature.skipped }} Skipped</span>
                         </div>
                     </td>
                     <td class="px-6 py-4 text-right">
-                         {% assign total = feature.passed | plus: feature.failed | plus: feature.skipped %}
+                         {% assign total = feature.passed | plus: feature.failed | plus: feature.ambiguous | plus: feature.notDefined | plus: feature.pending | plus: feature.skipped %}
                          {% if total > 0 %}
                             {% assign passPercentage = feature.passed | times: 100 | divided_by: total %}
                          {% else %}

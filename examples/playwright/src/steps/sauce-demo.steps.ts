@@ -153,3 +153,23 @@ When('I click the logout button', async () => {
 Then('I should see the login page', async () => {
   await expect(sauceDemoPage.usernameInput).toBeVisible();
 });
+
+Then('Here is a {string} step', async (step: string) => {
+  if (step === 'pending') return 'pending';
+});
+
+Then('This will be pending', async () => {
+  return 'pending';
+});
+
+Then(/Here is a "([^"]*)" step/, async (step: string) => {
+  console.log(step);
+});
+
+When('This will fail', async () => {
+  throw new Error('This will fail');
+});
+
+Then('This will get skipped', async () => {
+  throw new Error('This will get skipped');
+});
