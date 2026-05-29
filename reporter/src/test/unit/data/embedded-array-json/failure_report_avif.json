@@ -1,0 +1,86 @@
+[
+  {
+    "description": "AVIF and other modern image format attachments should render as screenshots",
+    "elements": [
+      {
+        "description": "",
+        "id": "avif-image-support;avif-screenshot",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "AVIF screenshot",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "a step with an avif screenshot",
+            "match": {
+              "location": "features/step_definitions/avif.steps.ts:1"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 100
+            },
+            "embeddings": [
+              {
+                "data": "AAAAHGZ0eXBhdmlm",
+                "mime_type": "image/avif"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "a step with a webp screenshot",
+            "match": {
+              "location": "features/step_definitions/avif.steps.ts:2"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 100
+            },
+            "embeddings": [
+              {
+                "data": "UklGRiAAAABXRUJQVlA4",
+                "mime_type": "image/webp"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "a step with a jpeg screenshot",
+            "match": {
+              "location": "features/step_definitions/avif.steps.ts:3"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 100
+            },
+            "embeddings": [
+              {
+                "data": "/9j/4AAQSkZJRgABAQ==",
+                "mime_type": "image/jpeg"
+              }
+            ]
+          }
+        ],
+        "tags": [
+          {
+            "name": "@avif",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "avif-image-support",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "AVIF image support",
+    "tags": [],
+    "uri": "features/avif.feature"
+  }
+]

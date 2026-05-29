@@ -106,6 +106,27 @@ describe('generate-report.js', () => {
         .toBeTrue();
     });
 
+    it('should render avif, webp and jpeg embeddings as screenshots (img tags) not as attachments', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/embedded-array-json/',
+        reportName: 'Modern image format embeddings',
+        reportPath: REPORT_PATH,
+        saveCollectedJSON: true,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      const avifFeature = enriched.features.find((f: { name: string }) => f.name === 'AVIF image support');
+      const steps = avifFeature.elements[0].steps;
+      const avifStep = steps.find((s: { name: string }) => s.name === 'a step with an avif screenshot');
+      const webpStep = steps.find((s: { name: string }) => s.name === 'a step with a webp screenshot');
+      const jpegStep = steps.find((s: { name: string }) => s.name === 'a step with a jpeg screenshot');
+
+      expect(avifStep.image[0]).toContain('data:image/avif;base64,');
+      expect(webpStep.image[0]).toContain('data:image/webp;base64,');
+      expect(jpegStep.image[0]).toContain('data:image/jpeg;base64,');
+    });
+
     it('should calculate feature duration with wall clock when durationAggregation is wallClock', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
