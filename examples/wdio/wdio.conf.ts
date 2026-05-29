@@ -4,6 +4,7 @@ import * as os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
+import type { Metadata } from '../../reporter/dist/types';
 
 let startTime: number;
 let endTime: number;
@@ -62,17 +63,18 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
+      browserVersion: '148',
       'cjson:metadata': {
         browser: {
           name: 'chrome',
-          version: '148.0.7778.179',
+          version: '148',
         },
         platform: {
           name: os.platform(),
           version: os.release(),
         },
       },
-    },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
 
   //
