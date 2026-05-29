@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
-    "test": "pnpm build && cypress run --browser chrome --headed",
+    "test": "pnpm build && cypress run --browser chrome --headless",
     "report": "node dist/cucumber-html-report.js"
   },
   "author": "Wasiq Bhamla",

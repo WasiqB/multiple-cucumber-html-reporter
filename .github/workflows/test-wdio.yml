@@ -38,13 +38,11 @@ jobs:
         working-directory: reporter
         run: pnpm build
 
-      - name: Install WDIO dependencies
-        working-directory: examples/wdio
-        run: pnpm install
-
       - name: Run WDIO
         working-directory: examples/wdio
         run: pnpm test
+        env:
+          CI: true
         continue-on-error: true
 
       - name: Upload Report
