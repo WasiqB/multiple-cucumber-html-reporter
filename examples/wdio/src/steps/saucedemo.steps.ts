@@ -105,6 +105,10 @@ When('This will fail', async () => {
   throw new Error('This will fail');
 });
 
+Then('This will be pending', async () => {
+  return 'pending';
+});
+
 Then('This will get skipped', async () => {
   throw new Error('This will get skipped');
 });

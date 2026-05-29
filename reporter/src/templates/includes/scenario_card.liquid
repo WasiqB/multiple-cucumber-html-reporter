@@ -16,30 +16,19 @@
         <div class="flex items-center gap-3 overflow-hidden">
             
             {% if scenario_status == "passed" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-check text-xl md:text-2xl shrink-0 text-status-passed"></i>
             {% elsif scenario_status == "failed" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-xmark text-xl md:text-2xl shrink-0 text-status-failed"></i>
             {% elsif scenario_status == "ambiguous" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-purple-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            </span>
+            <i class="fa-solid fa-bolt text-xl md:text-2xl shrink-0 text-status-ambiguous"></i>
             {% elsif scenario_status == "undefined" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-sky-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8.25 9.671V9.75m0-.079c0-1.266 1.025-2.292 2.292-2.292h.001c1.266 0 2.292 1.026 2.292 2.292 0 .907-.54 1.716-1.371 2.062a.72.72 0 00-.472.673V12.75M12 15.75h.008v.008H12v-.008z"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-question text-xl md:text-2xl shrink-0 text-status-undefined"></i>
             {% elsif scenario_status == "pending" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-minus text-xl md:text-2xl shrink-0 text-status-pending"></i>
             {% else %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-gray-400 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-right text-xl md:text-2xl shrink-0 text-status-skipped"></i>
             {% endif %}
+
             <div class="truncate">
                 <h4 class="font-bold text-sm md:text-base truncate">{{ scenario.name }}</h4>
                 {% if scenario.tags.size > 0 %}
@@ -72,29 +61,17 @@
             <div class="flex items-start justify-between">
                 <div class="flex items-start gap-3 w-full">
                         {% if step.result.status == "passed" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-check mt-0.5 shrink-0 text-status-passed"></i>
                         {% elsif step.result.status == "failed" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-status-failed"></i>
                         {% elsif step.result.status == "ambiguous" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-purple-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        </span>
+                        <i class="fa-solid fa-bolt mt-0.5 shrink-0 text-status-ambiguous"></i>
                         {% elsif step.result.status == "undefined" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8.25 9.671V9.75m0-.079c0-1.266 1.025-2.292 2.292-2.292h.001c1.266 0 2.292 1.026 2.292 2.292 0 .907-.54 1.716-1.371 2.062a.72.72 0 00-.472.673V12.75M12 15.75h.008v.008H12v-.008z"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-question mt-0.5 shrink-0 text-status-undefined"></i>
                         {% elsif step.result.status == "pending" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-minus mt-0.5 shrink-0 text-status-pending"></i>
                         {% else %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-gray-400 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-right mt-0.5 shrink-0 text-status-skipped"></i>
                         {% endif %}
                         <div class="w-full">
                         <p class="text-sm">

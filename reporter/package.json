@@ -25,7 +25,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "prebuild": "pnpm generate:css && pnpm generate:css:min",
+    "prebuild": "pnpm generate:css && pnpm generate:css:min && rm -rf dist/",
     "build": "tsc && cp -r src/templates dist/templates",
     "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
     "test": "node ./dist/test/test.js",

@@ -5,11 +5,20 @@ window.ReportCharts = {
   // Shared options
   getCommonOptions: () => {
     const isDark = window.ReportUtils.isDark();
+    const css = getComputedStyle(document.documentElement);
+    const statusColor = (name) => css.getPropertyValue(`--status-${name}`).trim();
     return {
       textColor: window.ReportUtils.getTextColor(),
       gridColor: window.ReportUtils.getGridColor(),
       theme: isDark ? 'dark' : 'light',
-      colors: ['#22c55e', '#ef4444', '#a855f7', '#0ea5e9', '#f59e0b', '#9ca3af'],
+      colors: [
+        statusColor('passed'),
+        statusColor('failed'),
+        statusColor('ambiguous'),
+        statusColor('undefined'),
+        statusColor('pending'),
+        statusColor('skipped'),
+      ],
     };
   },
 
@@ -43,7 +52,7 @@ window.ReportCharts = {
     if (hasFeatures) {
       new ApexCharts(document.querySelector('#features-chart'), {
         series: featuresSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Undefined', 'Pending', 'Skipped'],
+        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         tooltip: { theme },
@@ -80,7 +89,7 @@ window.ReportCharts = {
     if (hasScenarios) {
       new ApexCharts(document.querySelector('#scenarios-chart'), {
         series: scenariosSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Undefined', 'Pending', 'Skipped'],
+        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         tooltip: { theme },
@@ -124,7 +133,7 @@ window.ReportCharts = {
           { name: 'Passed', data: deviceKeys.map((k) => devices[k].passed) },
           { name: 'Failed', data: deviceKeys.map((k) => devices[k].failed) },
           { name: 'Ambiguous', data: deviceKeys.map((k) => devices[k].ambiguous) },
-          { name: 'Undefined', data: deviceKeys.map((k) => devices[k].undefined) },
+          { name: 'Not Defined', data: deviceKeys.map((k) => devices[k].undefined) },
           { name: 'Pending', data: deviceKeys.map((k) => devices[k].pending) },
           { name: 'Skipped', data: deviceKeys.map((k) => devices[k].skipped) },
         ],
@@ -161,7 +170,7 @@ window.ReportCharts = {
           { name: 'Passed', data: browserKeys.map((k) => browsers[k].passed) },
           { name: 'Failed', data: browserKeys.map((k) => browsers[k].failed) },
           { name: 'Ambiguous', data: browserKeys.map((k) => browsers[k].ambiguous) },
-          { name: 'Undefined', data: browserKeys.map((k) => browsers[k].undefined) },
+          { name: 'Not Defined', data: browserKeys.map((k) => browsers[k].undefined) },
           { name: 'Pending', data: browserKeys.map((k) => browsers[k].pending) },
           { name: 'Skipped', data: browserKeys.map((k) => browsers[k].skipped) },
         ],
@@ -210,7 +219,7 @@ window.ReportCharts = {
     if (hasSteps) {
       new ApexCharts(document.querySelector('#steps-status-chart'), {
         series: stepsSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Undefined', 'Pending', 'Skipped'],
+        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         tooltip: { theme },
@@ -242,7 +251,7 @@ window.ReportCharts = {
           { name: 'Passed', data: data.features.map((f) => f.scenarios?.passed || f.passed || 0) },
           { name: 'Failed', data: data.features.map((f) => f.scenarios?.failed || f.failed || 0) },
           { name: 'Ambiguous', data: data.features.map((f) => f.scenarios?.ambiguous || f.ambiguous || 0) },
-          { name: 'Undefined', data: data.features.map((f) => f.scenarios?.notDefined || f.notDefined || 0) },
+          { name: 'Not Defined', data: data.features.map((f) => f.scenarios?.notDefined || f.notDefined || 0) },
           { name: 'Pending', data: data.features.map((f) => f.scenarios?.pending || f.pending || 0) },
           { name: 'Skipped', data: data.features.map((f) => f.scenarios?.skipped || f.skipped || 0) },
         ],
@@ -318,7 +327,7 @@ window.ReportCharts = {
     if (hasScenarios) {
       new ApexCharts(document.querySelector('#feature-scenarios-chart'), {
         series: scenarioSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Undefined', 'Pending', 'Skipped'],
+        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false } },
         colors: colors,
         tooltip: { theme },
