@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
+import * as os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
-import * as os from 'os';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 let startTime: number;
@@ -62,9 +62,6 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
-      'goog:chromeOptions': {
-        args: process.env.CI ? ['--headless', '--disable-gpu'] : [],
-      },
       'cjson:metadata': {
         browser: {
           name: 'chrome',
