@@ -1,6 +1,8 @@
+import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
+import * as os from 'os';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 let startTime: number;
@@ -64,6 +66,16 @@ export const config: WebdriverIO.Config = {
       browserName: 'chrome',
       'goog:chromeOptions': {
         args: process.env.CI ? ['--headless', '--disable-gpu'] : [],
+      },
+      'cjson:metadata': {
+        browser: {
+          name: 'chrome',
+          version: '148',
+        },
+        platform: {
+          name: os.platform(),
+          version: os.release(),
+        },
       },
     },
   ],
@@ -190,7 +202,9 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: async () => {
-    await rm('reports', { recursive: true });
+    if (existsSync('reports')) {
+      await rm('reports', { recursive: true });
+    }
     startTime = Date.now();
   },
   /**
@@ -336,17 +350,6 @@ export const config: WebdriverIO.Config = {
       displayDuration: true,
       pageTitle: 'My WDIO Typescript Sample',
       reportName: 'Cucumber JS Report',
-      metadata: {
-        browser: {
-          name: 'chrome',
-          version: '148',
-        },
-        device: 'osx',
-        platform: {
-          name: 'osx',
-          version: '26.5',
-        },
-      },
       customData: {
         title: 'WebDriverIO Sample',
         data: [
