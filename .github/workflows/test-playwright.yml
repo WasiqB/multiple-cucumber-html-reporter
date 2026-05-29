@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Playwright dependencies
         working-directory: examples/playwright
-        run: pnpm install
+        run: pnpm exec playwright install
 
       - name: Run Playwright
         working-directory: examples/playwright
@@ -48,6 +48,10 @@ jobs:
         env:
           CI: true
         continue-on-error: true
+
+      - name: Generate Report
+        working-directory: examples/playwright
+        run: pnpm report
 
       - name: Upload Report
         uses: actions/upload-artifact@v7

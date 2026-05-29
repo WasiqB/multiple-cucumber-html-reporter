@@ -7,7 +7,7 @@
   "scripts": {
     "pretest": "tsx src/utils/prepare-run.ts",
     "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
-    "posttest": "tsx src/utils/generate-report.ts"
+    "report": "tsx src/utils/generate-report.ts"
   },
   "keywords": [
     "Playwright"
