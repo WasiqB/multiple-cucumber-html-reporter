@@ -47,3 +47,4 @@ node_modules/
 test-results/
 
 .changelog/
+logs/

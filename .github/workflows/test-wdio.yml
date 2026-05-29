@@ -46,7 +46,10 @@ jobs:
         continue-on-error: true
 
       - name: Upload Report
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: wdio-report
-          path: examples/wdio/reports
+          path: |
+            examples/wdio/reports
+            examples/wdio/logs

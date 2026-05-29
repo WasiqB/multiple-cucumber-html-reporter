@@ -259,24 +259,24 @@ async function generateReport(options: Options) {
           (feature.browser || '').toLowerCase(),
           (feature.app || '').toLowerCase(),
         ];
-        if (feature.metadata && Array.isArray(feature.metadata)) {
-          feature.metadata.forEach((item: any) => {
-            platformCheckValues.push((item.name || '').toLowerCase());
-            platformCheckValues.push((item.label || '').toLowerCase());
-            platformCheckValues.push((item.value || '').toLowerCase());
-          });
-        } else if (feature.metadata) {
-          Object.entries(feature.metadata).forEach(([key, value]) => {
-            platformCheckValues.push(key.toLowerCase());
-            if (typeof value === 'string') {
-              platformCheckValues.push(value.toLowerCase());
-            } else if (value && typeof value === 'object') {
-              Object.values(value).forEach((nestedValue) => {
-                if (typeof nestedValue === 'string') platformCheckValues.push(nestedValue.toLowerCase());
-              });
-            }
-          });
-        }
+        // if (feature.metadata && Array.isArray(feature.metadata)) {
+        //   feature.metadata.forEach((item: any) => {
+        //     platformCheckValues.push((item.name || '').toLowerCase());
+        //     platformCheckValues.push((item.label || '').toLowerCase());
+        //     platformCheckValues.push((item.value || '').toLowerCase());
+        //   });
+        // } else if (feature.metadata) {
+        //   Object.entries(feature.metadata).forEach(([key, value]) => {
+        //     platformCheckValues.push(key.toLowerCase());
+        //     if (typeof value === 'string') {
+        //       platformCheckValues.push(value.toLowerCase());
+        //     } else if (value && typeof value === 'object') {
+        //       Object.values(value).forEach((nestedValue) => {
+        //         if (typeof nestedValue === 'string') platformCheckValues.push(nestedValue.toLowerCase());
+        //       });
+        //     }
+        //   });
+        // }
         const platformStr = platformCheckValues.join(' ');
         if (platformStr.includes('browserstack')) {
           feature.executionPlatform = 'browserstack';

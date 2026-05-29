@@ -14,6 +14,8 @@ export const config: WebdriverIO.Config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
   tsConfigPath: './tsconfig.json',
+  autoXvfb: false,
+  outputDir: './logs',
 
   //
   // ==================
@@ -327,7 +329,7 @@ export const config: WebdriverIO.Config = {
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
       useCDN: true,
-      openReportInBrowser: true,
+      openReportInBrowser: !!process.env.CI,
       saveCollectedJSON: true,
       displayReportTime: true,
       durationInMS: false,
@@ -339,7 +341,7 @@ export const config: WebdriverIO.Config = {
           name: 'chrome',
           version: '148',
         },
-        device: 'Mac OS X',
+        device: 'osx',
         platform: {
           name: 'osx',
           version: '26.5',
