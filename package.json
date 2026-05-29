@@ -24,9 +24,9 @@
     "node": ">=24"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.15",
-    "@commitlint/cli": "^21.0.1",
-    "@commitlint/config-conventional": "^21.0.1",
+    "@biomejs/biome": "2.4.16",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
     "@types/node": "^25.9.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.2",

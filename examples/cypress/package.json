@@ -22,6 +22,6 @@
     "@mchr/tsconfig": "workspace:*"
   },
   "dependencies": {
-    "dayjs": "^1.11.20"
+    "dayjs": "^1.11.21"
   }
 }
