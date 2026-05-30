@@ -36,7 +36,7 @@ jobs:
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
       - name: Restore dependencies cache
-        uses: actions/cache/restore@v7
+        uses: actions/cache/restore@v5
         with:
           path: |
             ${{ steps.pnpm-cache.outputs.STORE_PATH }}
