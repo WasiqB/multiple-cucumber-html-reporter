@@ -16,7 +16,7 @@ on:
       - reporter/**
 
 jobs:
-  test:
+  test-formatter:
     runs-on: ubuntu-latest
 
     steps:
@@ -59,7 +59,65 @@ jobs:
 
       - name: Run WDIO
         working-directory: examples/wdio
-        run: pnpm test
+        run: pnpm test:formatter
+        env:
+          CI: true
+        continue-on-error: true
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wdio-report
+          if-no-files-found: error
+          path: |
+            examples/wdio/reports
+            examples/wdio/logs
+
+  test-reporter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            node_modules
+            docs/node_modules
+            examples/cypress/node_modules
+            examples/playwright/node_modules
+            examples/wdio/node_modules
+            reporter/node_modules
+            reporter/dist
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+          fail-on-cache-miss: true
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Run WDIO
+        working-directory: examples/wdio
+        run: pnpm test:reporter
         env:
           CI: true
         continue-on-error: true
