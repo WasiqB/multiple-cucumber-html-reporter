@@ -194,7 +194,6 @@ export const config: WebdriverIO.Config = {
    */
   onPrepare: async () => {
     if (existsSync('reports')) await rmdir('reports');
-    if (existsSync('logs')) await rmdir('logs');
     startTime = Date.now();
   },
   /**
