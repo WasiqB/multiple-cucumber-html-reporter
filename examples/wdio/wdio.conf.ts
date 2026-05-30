@@ -1,9 +1,9 @@
-import { existsSync } from 'node:fs';
-import { rmdir } from 'node:fs/promises';
-import * as os from 'node:os';
+import { rm } from 'node:fs/promises';
+import os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
+import type { Metadata } from '../../reporter/dist/types';
 
 let startTime: number;
 let endTime: number;
@@ -53,7 +53,7 @@ export const config: WebdriverIO.Config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 1,
+  maxInstances: 10,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -62,19 +62,17 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
-      browserVersion: '148',
-      'goog:chromeOptions': {
-        args: [
-          '--disable-infobars',
-          '--window-size=1280,800',
-          '--headless',
-          '--no-sandbox',
-          '--disable-gpu',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-        ],
+      'cjson:metadata': {
+        browser: {
+          name: 'chrome',
+          version: '148',
+        },
+        platform: {
+          name: os.platform(),
+          version: os.release(),
+        },
       },
-    },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
 
   //
@@ -95,10 +93,9 @@ export const config: WebdriverIO.Config = {
   // - @wdio/sumologic-reporter
   // - @wdio/cli, @wdio/config, @wdio/utils
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  // logLevels: {
-  //     webdriver: 'info',
-  //     '@wdio/appium-service': 'info'
-  // },
+  logLevels: {
+    webdriver: 'trace',
+  },
   //
   // If you only want to run your tests until a specific amount of tests have failed use
   // bail (default is 0 - don't bail, run all tests).
@@ -147,7 +144,15 @@ export const config: WebdriverIO.Config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec'],
+  reporters: [
+    'spec',
+    [
+      'cucumberjs-json',
+      {
+        jsonFolder: 'reports/json',
+      },
+    ],
+  ],
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
@@ -192,7 +197,7 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: async () => {
-    if (existsSync('reports')) await rmdir('reports');
+    await rm('reports', { recursive: true });
     startTime = Date.now();
   },
   /**
@@ -330,8 +335,8 @@ export const config: WebdriverIO.Config = {
     await generate({
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
-      useCDN: true,
-      openReportInBrowser: !!process.env.CI,
+      useCDN: false,
+      openReportInBrowser: true,
       saveCollectedJSON: true,
       displayReportTime: true,
       durationInMS: false,
@@ -349,13 +354,12 @@ export const config: WebdriverIO.Config = {
         },
       },
       customData: {
-        title: 'WebDriverIO Sample',
+        title: 'Run Info',
         data: [
           { label: 'Project', value: 'Sample WDIO Typescript' },
           { label: 'Release', value: '1.0.0' },
-          { label: 'Cycle', value: 'Build-1002' },
-          { label: 'WDIO Version', value: '9.27.2' },
-          { label: 'Node Version', value: '24.15.0' },
+          { label: 'WDIO Version', value: '9.0.0' },
+          { label: 'Node Version', value: '24.0.0' },
           {
             label: 'Execution Start Time',
             value: dayjs(startTime).format('YYYY-MM-DD HH:mm:ss.SSS'),

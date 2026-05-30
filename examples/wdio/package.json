@@ -3,7 +3,6 @@
   "type": "module",
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
-    "@testing-library/webdriverio": "^3.2.1",
     "@types/node": "^25.9.1",
     "@wdio/cli": "^9.27.2",
     "@wdio/cucumber-framework": "^9.27.2",
@@ -13,7 +12,8 @@
     "expect-webdriverio": "^5.6.5",
     "multiple-cucumber-html-reporter": "workspace:*",
     "wdio-cucumberjs-json-reporter": "^6.0.1",
-    "wdio-wait-for": "^3.1.1"
+    "wdio-wait-for": "^3.1.1",
+    "webdriverio": "^9.27.2"
   },
   "dependencies": {
     "dayjs": "^1.11.20"
