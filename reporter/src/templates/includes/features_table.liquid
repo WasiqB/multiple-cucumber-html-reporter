@@ -76,7 +76,7 @@
                             {% comment %} OS icon {% endcomment %}
                             {% if os != "" %}
                             <span title="{{ feature.os | default: feature.metadata.platform.name }}">
-                                <i class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-base"></i>
+                                <i class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'darwin' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-base"></i>
                             </span>
                             {% endif %}
                             {% comment %} Browser icon {% endcomment %}

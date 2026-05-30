@@ -32,7 +32,7 @@ window.ReportTable = {
     const iconForOs = (value = '') =>
       /Windows/i.test(value)
         ? 'fa-brands fa-windows'
-        : /Mac|iOS|macOS/i.test(value)
+        : /Mac|iOS|macOS|darwin/i.test(value)
           ? 'fa-brands fa-apple'
           : /Android/i.test(value)
             ? 'fa-brands fa-android'

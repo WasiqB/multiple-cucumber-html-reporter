@@ -1,10 +1,9 @@
 import { existsSync } from 'node:fs';
-import { rm } from 'node:fs/promises';
+import { rmdir } from 'node:fs/promises';
 import * as os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
-import type { Metadata } from '../../reporter/dist/types';
 
 let startTime: number;
 let endTime: number;
@@ -64,17 +63,18 @@ export const config: WebdriverIO.Config = {
     {
       browserName: 'chrome',
       browserVersion: '148',
-      'cjson:metadata': {
-        browser: {
-          name: 'chrome',
-          version: '148',
-        },
-        platform: {
-          name: os.platform(),
-          version: os.release(),
-        },
+      'goog:chromeOptions': {
+        args: [
+          '--disable-infobars',
+          '--window-size=1280,800',
+          '--headless',
+          '--no-sandbox',
+          '--disable-gpu',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+        ],
       },
-    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
+    },
   ],
 
   //
@@ -147,15 +147,8 @@ export const config: WebdriverIO.Config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [
-    'spec',
-    [
-      'cucumberjs-json',
-      {
-        jsonFolder: 'reports/json',
-      },
-    ],
-  ],
+  reporters: ['spec'],
+  outputDir: './logs',
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
@@ -181,6 +174,7 @@ export const config: WebdriverIO.Config = {
     tagExpression: '',
     // <number> timeout for step definitions
     timeout: 60000,
+    format: ['progress', 'json:reports/json/cucumber-report.json', 'message:reports/message/cucumber-message.ndjson'],
     // <boolean> Enable this config to treat undefined definitions as warnings.
     ignoreUndefinedDefinitions: false,
   },
@@ -199,9 +193,8 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: async () => {
-    if (existsSync('reports')) {
-      await rm('reports', { recursive: true });
-    }
+    if (existsSync('reports')) await rmdir('reports');
+    if (existsSync('logs')) await rmdir('logs');
     startTime = Date.now();
   },
   /**
@@ -347,6 +340,16 @@ export const config: WebdriverIO.Config = {
       displayDuration: true,
       pageTitle: 'My WDIO Typescript Sample',
       reportName: 'Cucumber JS Report',
+      metadata: {
+        browser: {
+          name: 'chrome',
+          version: '148',
+        },
+        platform: {
+          name: os.platform(),
+          version: os.release(),
+        },
+      },
       customData: {
         title: 'WebDriverIO Sample',
         data: [
