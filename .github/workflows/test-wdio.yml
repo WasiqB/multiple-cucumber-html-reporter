@@ -17,7 +17,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Repository
