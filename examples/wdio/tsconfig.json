@@ -10,5 +10,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "wdio.conf.ts"]
+  "include": ["src/**/*", "wdio-*.conf.ts"]
 }

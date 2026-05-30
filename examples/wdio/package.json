@@ -19,6 +19,7 @@
     "dayjs": "^1.11.20"
   },
   "scripts": {
-    "test": "wdio run ./wdio.conf.ts"
+    "test:formatter": "wdio run ./wdio-cc-formatter.conf.ts",
+    "test:reporter": "wdio run ./wdio-cc-reporter.conf.ts"
   }
 }

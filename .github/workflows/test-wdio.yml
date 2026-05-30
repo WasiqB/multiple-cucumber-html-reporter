@@ -17,7 +17,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -31,12 +31,31 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
 
-      - name: Build Root Project
-        working-directory: reporter
-        run: pnpm build
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v7
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            node_modules
+            docs/node_modules
+            examples/cypress/node_modules
+            examples/playwright/node_modules
+            examples/wdio/node_modules
+            reporter/node_modules
+            reporter/dist
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+          fail-on-cache-miss: true
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Run WDIO
         working-directory: examples/wdio

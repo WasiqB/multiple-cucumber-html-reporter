@@ -1,9 +1,9 @@
+import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
-import type { Metadata } from '../../reporter/dist/types';
 
 let startTime: number;
 let endTime: number;
@@ -16,7 +16,7 @@ export const config: WebdriverIO.Config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
   tsConfigPath: './tsconfig.json',
-
+  outputDir: './logs',
   //
   // ==================
   // Specify Test Files
@@ -62,17 +62,7 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
-      'cjson:metadata': {
-        browser: {
-          name: 'chrome',
-          version: '148',
-        },
-        platform: {
-          name: os.platform(),
-          version: os.release(),
-        },
-      },
-    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
+    },
   ],
 
   //
@@ -144,15 +134,7 @@ export const config: WebdriverIO.Config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [
-    'spec',
-    [
-      'cucumberjs-json',
-      {
-        jsonFolder: 'reports/json',
-      },
-    ],
-  ],
+  reporters: ['spec'],
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
@@ -178,7 +160,6 @@ export const config: WebdriverIO.Config = {
     tagExpression: '',
     // <number> timeout for step definitions
     timeout: 60000,
-    format: ['progress', 'json:reports/json/cucumber-report.json', 'message:reports/message/cucumber-message.ndjson'],
     // <boolean> Enable this config to treat undefined definitions as warnings.
     ignoreUndefinedDefinitions: false,
   },
@@ -197,7 +178,9 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: async () => {
-    await rm('reports', { recursive: true });
+    if (existsSync('reports')) {
+      await rm('reports', { recursive: true });
+    }
     startTime = Date.now();
   },
   /**
