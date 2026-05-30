@@ -17,7 +17,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Repository
@@ -50,6 +50,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: wdio-report
+          if-no-files-found: error
           path: |
             examples/wdio/reports
             examples/wdio/logs
