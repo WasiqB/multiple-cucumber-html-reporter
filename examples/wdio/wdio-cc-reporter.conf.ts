@@ -1,5 +1,5 @@
 import os from 'node:os';
-import type { Metadata } from '../../reporter/dist/types';
+import type { Metadata } from 'multiple-cucumber-html-reporter';
 import { isCI, config as sharedConfig } from './wdio-shared.conf';
 
 export const config: WebdriverIO.Config = {

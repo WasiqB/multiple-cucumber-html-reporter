@@ -791,3 +791,4 @@ async function generateReport(options: Options) {
 }
 
 export const generate = generateReport;
+export * from './types';

@@ -95,14 +95,14 @@ Following scripts are configured in `package.json` to execute `prepare-run.ts` s
   "scripts": {
     "pretest": "tsx src/utils/prepare-run.ts",
     "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
-    "posttest": "tsx src/utils/generate-report.ts"
+    "report": "tsx src/utils/generate-report.ts"
   },
 }
 ```
 
 - `pnpm pretest` - Prepare the test environment and folders for the new test results.
 - `pnpm test` - Run the tests in the browser and open the report in default browser if configured.
-- `pnpm posttest` - Generate HTML reports by using the Cucumber generated JSON reports.
+- `pnpm report` - Generate HTML reports by using the Cucumber generated JSON reports.
 
 ### Install the dependencies [step]
 
@@ -112,7 +112,7 @@ Install the dependencies by running the following command:
 pnpm install
 ```
 
-### Run the Tests and generate report [step]
+### Run the Tests [step]
 
 Execute your test cases by running the following command in the terminal:
 
@@ -120,4 +120,12 @@ Execute your test cases by running the following command in the terminal:
 pnpm test
 ```
 
-This command will execute all your test cases and generate HTML report at the end.
+This command will execute all your test cases.
+
+### Generate the report [step]
+
+Execute the following command to generate the report:
+
+```shell
+pnpm report
+```

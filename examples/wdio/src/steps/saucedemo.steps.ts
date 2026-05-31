@@ -1,6 +1,13 @@
-import { type DataTable, Given, Then, When } from '@wdio/cucumber-framework';
+import { After, type DataTable, Given, Then, When } from '@wdio/cucumber-framework';
 import { browser, expect } from '@wdio/globals';
 import SauceDemoPage from '@/pages/saucedemo.page.js';
+
+After(async function ({ result }) {
+  if (result?.status !== 'PASSED') {
+    const screenshot = await browser.takeScreenshot();
+    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');
+  }
+});
 
 Given('I am on the Sauce Demo login page', async () => {
   await SauceDemoPage.open();
