@@ -48,7 +48,7 @@ jobs:
             examples/wdio/node_modules
             reporter/node_modules
             reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -100,7 +100,7 @@ jobs:
             examples/wdio/node_modules
             reporter/node_modules
             reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
           fail-on-cache-miss: true
