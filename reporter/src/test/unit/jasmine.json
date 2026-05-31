@@ -1,6 +1,7 @@
 {
   "spec_dir": "src/test",
-  "spec_files": ["unit/*.spec.js"],
+  "spec_files": ["**/unit/*.spec.ts"],
+  "jsLoader": "import",
   "stopSpecOnExpectationFailure": false,
   "random": false
 }
