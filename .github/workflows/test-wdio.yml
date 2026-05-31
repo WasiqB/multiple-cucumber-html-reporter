@@ -57,11 +57,21 @@ jobs:
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        with:
+          chrome-version: stable
+          install-chromedriver: true
+
       - name: Run WDIO
         working-directory: examples/wdio
         run: pnpm test:formatter
         env:
           CI: true
+          WDIO_CHROME_DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          WDIO_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
       - name: Upload Report
@@ -115,11 +125,21 @@ jobs:
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        with:
+          chrome-version: stable
+          install-chromedriver: true
+
       - name: Run WDIO
         working-directory: examples/wdio
         run: pnpm test:reporter
         env:
           CI: true
+          WDIO_CHROME_DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          WDIO_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
       - name: Upload Report

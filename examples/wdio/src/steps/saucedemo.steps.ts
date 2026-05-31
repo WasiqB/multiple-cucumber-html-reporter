@@ -93,7 +93,7 @@ Then('I should see the login page', async () => {
   await expect(SauceDemoPage.usernameInput).toBeDisplayed();
 });
 
-Then('Here is a "{string}" step', async (step: string) => {
+Then('Here is a {string} step', async (step: string) => {
   if (step === 'pending') return 'pending';
 });
 

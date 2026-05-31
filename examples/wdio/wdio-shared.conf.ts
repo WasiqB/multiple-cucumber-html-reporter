@@ -7,7 +7,7 @@ import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 let startTime: number;
 let endTime: number;
-const isCI = !!process.env.CI;
+export const isCI = !!process.env.CI;
 
 export const config: WebdriverIO.Config = {
   //
@@ -63,10 +63,12 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
+      browserVersion: process.env.WDIO_CHROME_VERSION || '148',
       'wdio:chromedriverOptions': {
-        binary: process.env.CHROMEWEBDRIVER || undefined,
+        binary: process.env.WDIO_CHROME_DRIVER || undefined,
       },
       'goog:chromeOptions': {
+        binary: process.env.WDIO_CHROME_PATH || undefined,
         args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
       },
     },
@@ -315,7 +317,7 @@ export const config: WebdriverIO.Config = {
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error
    * thrown in the onComplete hook will result in the test run failing.
-   * @param {object} _exitCode 0 - success, 1 - fail
+   * @param {number} _exitCode 0 - success, 1 - fail
    * @param {object} _config wdio configuration object
    * @param {Array.<Object>} _capabilities list of capabilities details
    * @param {<Object>} _results object containing test results
@@ -336,11 +338,11 @@ export const config: WebdriverIO.Config = {
       metadata: {
         browser: {
           name: 'chrome',
-          version: '148',
+          version: process.env.WDIO_CHROME_VERSION || '148',
         },
         platform: {
-          name: os.platform(),
-          version: os.release(),
+          name: os.platform().trim(),
+          version: os.release().trim(),
         },
       },
       customData: {
