@@ -62,6 +62,9 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
+      'wdio:chromedriverOptions': {
+        binary: process.env.CHROMEWEBDRIVER || undefined,
+      },
     },
   ],
 
