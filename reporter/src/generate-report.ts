@@ -8,7 +8,7 @@ import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
-import type { Feature, Options, Scenario, Step, Suite } from './types.js';
+import type { Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
 
 const { size } = _;
 const { writeFileSync: _writeFileSync } = jsonfile;
@@ -791,4 +791,4 @@ async function generateReport(options: Options) {
 }
 
 export const generate = generateReport;
-export * from './types';
+export type { Metadata };
