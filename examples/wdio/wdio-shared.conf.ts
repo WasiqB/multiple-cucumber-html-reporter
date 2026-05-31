@@ -7,6 +7,7 @@ import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 let startTime: number;
 let endTime: number;
+const isCI = !!process.env.CI;
 
 export const config: WebdriverIO.Config = {
   //
@@ -64,6 +65,9 @@ export const config: WebdriverIO.Config = {
       browserName: 'chrome',
       'wdio:chromedriverOptions': {
         binary: process.env.CHROMEWEBDRIVER || undefined,
+      },
+      'goog:chromeOptions': {
+        args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
       },
     },
   ],
