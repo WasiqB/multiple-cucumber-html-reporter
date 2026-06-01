@@ -1,28 +1,34 @@
 {% assign scenario_status = "passed" %}
-{% for step in scenario.steps %}
-    {% if step.result.status == "failed" or step.result.status == "ambiguous" %}
-        {% assign scenario_status = "failed" %}
-        {% break %}
-    {% elsif step.result.status == "skipped" or step.result.status == "pending" or step.result.status == "undefined" %}
-        {% if scenario_status == "passed" %}
-            {% assign scenario_status = "skipped" %}
-        {% endif %}
-    {% endif %}
-{% endfor %}
+{% if scenario.failed > 0 %}
+    {% assign scenario_status = "failed" %}
+{% elsif scenario.ambiguous > 0 %}
+    {% assign scenario_status = "ambiguous" %}
+{% elsif scenario.notDefined > 0 %}
+    {% assign scenario_status = "undefined" %}
+{% elsif scenario.pending > 0 %}
+    {% assign scenario_status = "pending" %}
+{% elsif scenario.skipped > 0 %}
+    {% assign scenario_status = "skipped" %}
+{% endif %}
 
 <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden scenario-card" data-status="{{ scenario_status }}">
     <button class="w-full text-left px-4 md:px-6 py-4 flex items-center justify-between hover:bg-muted/50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden')">
         <div class="flex items-center gap-3 overflow-hidden">
             
             {% if scenario_status == "passed" %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-check text-xl md:text-2xl shrink-0 text-status-passed"></i>
+            {% elsif scenario_status == "failed" %}
+            <i class="fa-solid fa-circle-xmark text-xl md:text-2xl shrink-0 text-status-failed"></i>
+            {% elsif scenario_status == "ambiguous" %}
+            <i class="fa-solid fa-bolt text-xl md:text-2xl shrink-0 text-status-ambiguous"></i>
+            {% elsif scenario_status == "undefined" %}
+            <i class="fa-solid fa-circle-question text-xl md:text-2xl shrink-0 text-status-undefined"></i>
+            {% elsif scenario_status == "pending" %}
+            <i class="fa-solid fa-circle-minus text-xl md:text-2xl shrink-0 text-status-pending"></i>
             {% else %}
-            <span class="flex h-5 w-5 md:h-6 md:w-6 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
-                <svg class="h-3 w-3 md:h-4 md:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
-            </span>
+            <i class="fa-solid fa-circle-right text-xl md:text-2xl shrink-0 text-status-skipped"></i>
             {% endif %}
+
             <div class="truncate">
                 <h4 class="font-bold text-sm md:text-base truncate">{{ scenario.name }}</h4>
                 {% if scenario.tags.size > 0 %}
@@ -55,17 +61,17 @@
             <div class="flex items-start justify-between">
                 <div class="flex items-start gap-3 w-full">
                         {% if step.result.status == "passed" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-green-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-check mt-0.5 shrink-0 text-status-passed"></i>
                         {% elsif step.result.status == "failed" %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-red-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-xmark mt-0.5 shrink-0 text-status-failed"></i>
+                        {% elsif step.result.status == "ambiguous" %}
+                        <i class="fa-solid fa-bolt mt-0.5 shrink-0 text-status-ambiguous"></i>
+                        {% elsif step.result.status == "undefined" %}
+                        <i class="fa-solid fa-circle-question mt-0.5 shrink-0 text-status-undefined"></i>
+                        {% elsif step.result.status == "pending" %}
+                        <i class="fa-solid fa-circle-minus mt-0.5 shrink-0 text-status-pending"></i>
                         {% else %}
-                        <span class="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-yellow-500 text-white">
-                        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        </span>
+                        <i class="fa-solid fa-circle-right mt-0.5 shrink-0 text-status-skipped"></i>
                         {% endif %}
                         <div class="w-full">
                         <p class="text-sm">

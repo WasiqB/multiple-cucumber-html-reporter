@@ -40,3 +40,29 @@ Feature: Sauce Demo Web Application Testing
     When I open the side menu
     And I click the logout button
     Then I should see the login page
+
+  @Status
+  Scenario: Verify passed status
+    When I enter username "standard_user" and password "secret_sauce"
+    And I click the login button
+    Then I should see the login result as "success" with message "Products"
+
+  @Status
+  Scenario: Verify failed and skipped statuses
+    When I enter username "standard_user" and password "secret_sauce"
+    And I click the login button
+    And This will fail
+    Then This will get skipped
+
+  @Status
+  Scenario: Verify undefined status
+    And Here is a missing step
+
+  @Status
+  Scenario: Verify pending status
+    Then This will be pending
+
+  @Status
+  Scenario: Verify ambiguous status
+    Then Here is a "ambiguous" step
+

@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "declaration": true,
-    "incremental": true,
+    "incremental": false,
     "declarationMap": true
   },
   "exclude": ["node_modules"]

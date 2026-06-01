@@ -6,7 +6,7 @@
     "description": "Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.",
     "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
     "secondaryLink": { "label": "View Demo", "url": "#" },
-    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEwIl4TWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
   },
   "accordion": {
     "title": "Unmatched Capabilities",
@@ -21,8 +21,8 @@
           "Automated platform detection"
         ],
         "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH76k1PXE3snmf0ExP6I4HKDeiZTVCv5z9jrWS",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxOUbNVrrvT17za2GAlImDop3L0qNbMgE6WQK"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHLdB2QaKGWNPDQEC3jYK6MoeiI91lm5brXqgx",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHzc7voas2l3phtzWYkLH5mjZuCGw8yDbBqPdI"
         ]
       },
       {
@@ -35,9 +35,9 @@
           "Top tags and slow steps featured charts"
         ],
         "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEwIl4TWCelPrOgYXAUs4yKHobpxcd3hGq5I2",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHvXhBZZcerLDP9nWGNx8mTEzf7lpo1U2ZVQSC",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEjzkcXWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
         ]
       },
       {
@@ -49,10 +49,12 @@
           "Step-by-step execution logs"
         ],
         "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPmAKlSZdhNxDiWyGMp7wlS2tBRa8TjPIQco3",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWSwZ4mzuXbQxU14FIfOCKwTlo7qcWJn02GYZ",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZt8RXI3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHGm8i1E6q2RTyigwK7O1nYkt4Fr8DcbQmhAEo",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHsWhgirPo7cMZLNHAUEqG50QlfawkFr3BRCxi",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH7mCbp6E3snmf0ExP6I4HKDeiZTVCv5z9jrWS",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxCCp9O0rrvT17za2GAlImDop3L0qNbMgE6WQ",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHwZ1ssH0J4iq8PVZ6BWUzynNgxapK32T1fk0r",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHjTvUraw6JmGLNE8ZvlyWDKCnXdSUAx2VeQRT"
         ]
       },
       {
@@ -64,8 +66,20 @@
           "Quick navigation between features and scenarios"
         ],
         "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHgh6RQVftUDRdg6Q2jyeOKb3sVunz0vik8ZlL",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHu6oRpcTDHSFoxIf5730GKRA9l46OrpvJLzuw"
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHDlF3OoRHWIEji5xaV8oOT3RsuClPdXGr0KBh",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHmN7SzsuMlKqFBR6WmNgoh8YJxSCDpVZfUA9G"
+        ]
+      },
+      {
+        "title": "Customize report to your Brand",
+        "pointers": [
+          "Customize the report title and sub title",
+          "Customize the report logo (Coming soon!)",
+          "Customize the report footer"
+        ],
+        "images": [
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHV8thL8CxEHL41ki6dXyfNYl5QVDqK3Ra7sPT",
+          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHqeE3Dqm4cI7fWbCaP9sh3oUkELOGdMrnQpw4"
         ]
       }
     ]

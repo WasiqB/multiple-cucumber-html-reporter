@@ -117,6 +117,7 @@ export interface Feature {
   keyword: string;
   uri: string;
   elements: Scenario[];
+  executionPlatform: 'browserstack' | 'testmu' | 'local';
   metadata: Metadata;
   scenarios: {
     passed: number;

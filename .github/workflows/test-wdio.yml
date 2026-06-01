@@ -16,7 +16,7 @@ on:
       - reporter/**
 
 jobs:
-  test:
+  test-formatter:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,24 +31,123 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            node_modules
+            docs/node_modules
+            examples/cypress/node_modules
+            examples/playwright/node_modules
+            examples/wdio/node_modules
+            reporter/node_modules
+            reporter/dist
+          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+          fail-on-cache-miss: true
+
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Build Root Project
-        working-directory: reporter
-        run: pnpm build
-
-      - name: Install WDIO dependencies
-        working-directory: examples/wdio
-        run: pnpm install
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        with:
+          chrome-version: stable
+          install-chromedriver: true
 
       - name: Run WDIO
         working-directory: examples/wdio
-        run: pnpm test
+        run: pnpm test:formatter
+        env:
+          CI: true
+          WDIO_CHROME_DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          WDIO_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
       - name: Upload Report
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: wdio-report
-          path: examples/wdio/reports
+          if-no-files-found: error
+          path: |
+            examples/wdio/reports
+            examples/wdio/logs
+
+  test-reporter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+            node_modules
+            docs/node_modules
+            examples/cypress/node_modules
+            examples/playwright/node_modules
+            examples/wdio/node_modules
+            reporter/node_modules
+            reporter/dist
+          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+          fail-on-cache-miss: true
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        with:
+          chrome-version: stable
+          install-chromedriver: true
+
+      - name: Run WDIO
+        working-directory: examples/wdio
+        run: pnpm test:reporter
+        env:
+          CI: true
+          WDIO_CHROME_DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          WDIO_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
+        continue-on-error: true
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wdio-report
+          if-no-files-found: error
+          path: |
+            examples/wdio/reports
+            examples/wdio/logs

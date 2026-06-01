@@ -148,3 +148,23 @@ Then('I should see the login page', () => {
   attach('Verifying user is back on the login page');
   cy.get('[data-test="username"]').should('be.visible');
 });
+
+Then('Here is a {string} step', (step: string) => {
+  if (step === 'pending') return 'pending';
+});
+
+Then(/Here is a "([^"]*)" step/, (step: string) => {
+  console.log(step);
+});
+
+When('This will fail', () => {
+  throw new Error('This will fail');
+});
+
+Then('This will be pending', async () => {
+  return 'pending';
+});
+
+Then('This will get skipped', () => {
+  throw new Error('This will get skipped');
+});

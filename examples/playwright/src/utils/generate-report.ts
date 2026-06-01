@@ -22,14 +22,14 @@ generate({
     },
   },
   customData: {
-    title: 'Run Info',
+    title: 'Playwright Sample',
     data: [
-      { label: 'Project', value: 'Sample Playwright' },
+      { label: 'Project', value: 'Sample Playwright Typescript' },
       { label: 'Release', value: '1.0.0' },
-      { label: 'Test Cycle', value: 'Smoke' },
-      { label: 'Test Environment', value: 'Dev' },
+      { label: 'Cycle', value: 'Build-1002' },
       { label: 'Playwright Version', value: '1.40.0' },
-      { label: 'Node Version', value: '24.0.0' },
+      { label: 'Node Version', value: '24.15.0' },
+      { label: 'Test Environment', value: 'Dev' },
     ],
   },
 });

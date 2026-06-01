@@ -29,6 +29,16 @@
   --chart-5: oklch(0.3791 0.1378 265.5222);
   --radius: 0.375rem;
   --font-sans: Inter, sans-serif;
+
+  /* Status Colors */
+  --status-passed: oklch(71.15% 0.131 174.20);
+  --status-failed: oklch(63.07% 0.194 29.44);
+  --status-ambiguous: oklch(68.04% 0.210 33.69);
+  --status-undefined: oklch(76.28% 0.163 69.37);
+  --status-pending: oklch(83.58% 0.169 91.77);
+  --status-skipped: oklch(65.31% 0.135 242.69);
+  /* Status foreground (for text on colored backgrounds) */
+  --status-fg: oklch(1 0 0);
 }
 
 .dark {
@@ -56,6 +66,14 @@
   --chart-3: oklch(0.5461 0.2152 262.8809);
   --chart-4: oklch(0.4882 0.2172 264.3763);
   --chart-5: oklch(0.4244 0.1809 265.6377);
+
+  /* Status Colors (dark mode - slightly brighter) */
+  --status-passed: oklch(76.83% 0.139 174.06);
+  --status-failed: oklch(70.95% 0.183 27.32);
+  --status-ambiguous: oklch(72.90% 0.170 35.11);
+  --status-undefined: oklch(81.79% 0.156 73.78);
+  --status-pending: oklch(89.16% 0.157 92.99);
+  --status-skipped: oklch(71.82% 0.110 239.78);
 }
 
 @theme inline {
@@ -83,6 +101,15 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* Status Color Utilities */
+  --color-status-passed: var(--status-passed);
+  --color-status-failed: var(--status-failed);
+  --color-status-ambiguous: var(--status-ambiguous);
+  --color-status-undefined: var(--status-undefined);
+  --color-status-pending: var(--status-pending);
+  --color-status-skipped: var(--status-skipped);
+  --color-status-fg: var(--status-fg);
 
   --font-sans: var(--font-sans);
 

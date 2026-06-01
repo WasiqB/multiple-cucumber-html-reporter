@@ -8,8 +8,8 @@
                     <i class="fa-solid fa-vial-circle-check text-xl"></i>
                 {% endif %}
             </div>
-            <div class="truncate">
-                <h1 class="text-lg md:text-2xl font-bold text-foreground truncate tracking-tight">{{ data.report.reportName | default: "Cucumber Report" }}</h1>
+            <div class="text-balance">
+                <h1 class="text-lg md:text-2xl font-bold text-foreground text-balance tracking-tight">{{ data.report.reportName | default: "Cucumber Report" }}</h1>
                 <p class="mt-0.5 text-[10px] md:text-xs text-muted-foreground uppercase font-bold tracking-widest opacity-70">{{ data.report.project | default: "Automated Execution Insights" }}</p>
             </div>
         </div>

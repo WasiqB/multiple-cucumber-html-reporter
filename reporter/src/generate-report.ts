@@ -8,7 +8,7 @@ import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
-import type { Feature, Options, Scenario, Step, Suite } from './types.js';
+import type { Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
 
 const { size } = _;
 const { writeFileSync: _writeFileSync } = jsonfile;
@@ -216,6 +216,16 @@ async function generateReport(options: Options) {
       feature.app = '';
       feature.browser = '';
 
+      if (feature.uri) {
+        let uriPath = feature.uri;
+        if (uriPath.startsWith('file://')) {
+          uriPath = uriPath.substring(7);
+        }
+        if (path.isAbsolute(uriPath)) {
+          feature.uri = path.relative(process.cwd(), uriPath);
+        }
+      }
+
       // Metadata shortcuts for templates
       if (feature.metadata) {
         if (Array.isArray(feature.metadata)) {
@@ -238,6 +248,46 @@ async function generateReport(options: Options) {
           if (feature.metadata.app) {
             feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
           }
+        }
+      }
+
+      // Detect execution platform (local vs cloud)
+      {
+        const platformCheckValues = [
+          (feature.device || '').toLowerCase(),
+          (feature.os || '').toLowerCase(),
+          (feature.browser || '').toLowerCase(),
+          (feature.app || '').toLowerCase(),
+        ];
+        // if (feature.metadata && Array.isArray(feature.metadata)) {
+        //   feature.metadata.forEach((item: any) => {
+        //     platformCheckValues.push((item.name || '').toLowerCase());
+        //     platformCheckValues.push((item.label || '').toLowerCase());
+        //     platformCheckValues.push((item.value || '').toLowerCase());
+        //   });
+        // } else if (feature.metadata) {
+        //   Object.entries(feature.metadata).forEach(([key, value]) => {
+        //     platformCheckValues.push(key.toLowerCase());
+        //     if (typeof value === 'string') {
+        //       platformCheckValues.push(value.toLowerCase());
+        //     } else if (value && typeof value === 'object') {
+        //       Object.values(value).forEach((nestedValue) => {
+        //         if (typeof nestedValue === 'string') platformCheckValues.push(nestedValue.toLowerCase());
+        //       });
+        //     }
+        //   });
+        // }
+        const platformStr = platformCheckValues.join(' ');
+        if (platformStr.includes('browserstack')) {
+          feature.executionPlatform = 'browserstack';
+        } else if (
+          platformStr.includes('testmu') ||
+          platformStr.includes('testmu ai') ||
+          platformStr.includes('testmuai')
+        ) {
+          feature.executionPlatform = 'testmu';
+        } else {
+          feature.executionPlatform = 'local';
         }
       }
 
@@ -585,8 +635,9 @@ async function generateReport(options: Options) {
       pageTitle: pageTitle,
       pageFooter: pageFooter,
       project: options.customData?.title,
-      release: 'v1.0.0',
-      cycle: 'N/A',
+      release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
+        ?.value,
+      cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')?.value,
       executionStartTime: formatDuration(0), // Placeholder
       executionEndTime: formatDuration(suite.totalTime), // Total duration
       executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
@@ -628,8 +679,10 @@ async function generateReport(options: Options) {
         pageTitle: pageTitle,
         pageFooter: pageFooter,
         project: options.customData?.title,
-        release: 'v1.0.0',
-        cycle: 'N/A',
+        release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
+          ?.value,
+        cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')
+          ?.value,
         executionStartTime: formatDuration(0),
         executionEndTime: formatDuration(suite.totalTime),
         executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
@@ -738,3 +791,4 @@ async function generateReport(options: Options) {
 }
 
 export const generate = generateReport;
+export type { Metadata };

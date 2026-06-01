@@ -2,59 +2,87 @@
   "images": [
     {
       "label": "Feature List Metadata",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH76k1PXE3snmf0ExP6I4HKDeiZTVCv5z9jrWS"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHLdB2QaKGWNPDQEC3jYK6MoeiI91lm5brXqgx"
     },
     {
       "label": "Features charts 1",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4f2AG2sdsOvW2iaQdMexyRn9AtVkpcGBK83L"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEwIl4TWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
     },
     {
       "label": "Features charts 2",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHI4y8D9FU1OZKA4F3lnDwkYu0i8BX2HdSNWrJ"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHvXhBZZcerLDP9nWGNx8mTEzf7lpo1U2ZVQSC"
     },
     {
       "label": "Features list table",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHgh6RQVftUDRdg6Q2jyeOKb3sVunz0vik8ZlL"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHDlF3OoRHWIEji5xaV8oOT3RsuClPdXGr0KBh"
     },
     {
       "label": "Feature List page",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q"
     },
     {
       "label": "Feature detail metadata",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxOUbNVrrvT17za2GAlImDop3L0qNbMgE6WQK"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHzc7voas2l3phtzWYkLH5mjZuCGw8yDbBqPdI"
     },
     {
       "label": "Feature detail charts",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH4Rmj3YdsOvW2iaQdMexyRn9AtVkpcGBK83LU"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEjzkcXWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
     },
     {
       "label": "Scenario list table",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHu6oRpcTDHSFoxIf5730GKRA9l46OrpvJLzuw"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHmN7SzsuMlKqFBR6WmNgoh8YJxSCDpVZfUA9G"
     },
     {
       "label": "Success scenario",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHJiwwDRLMG7wfQJAbWsHi9VR4gv8SqyBlzM6N"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHGm8i1E6q2RTyigwK7O1nYkt4Fr8DcbQmhAEo"
     },
     {
       "label": "Failed scenario",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPmAKlSZdhNxDiWyGMp7wlS2tBRa8TjPIQco3"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHwu8mia0J4iq8PVZ6BWUzynNgxapK32T1fk0r"
+    },
+    {
+      "label": "Pending scenario",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZryP0e3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
+    },
+    {
+      "label": "Undefined scenario",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHXWIkWDJ7sWijgzQIqpE8PVvecxnRhlkMKfBD"
+    },
+    {
+      "label": "Ambiguous scenario",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHgdnYAZtUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
     },
     {
       "label": "Scenario Error log",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWSwZ4mzuXbQxU14FIfOCKwTlo7qcWJn02GYZ"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHsWhgirPo7cMZLNHAUEqG50QlfawkFr3BRCxi"
     },
     {
       "label": "Scenario attach log",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrJGiORwVnro8S9IAVk0MmygGfwCKQLeR7sEh"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH7mCbp6E3snmf0ExP6I4HKDeiZTVCv5z9jrWS"
     },
     {
       "label": "Scenario attach screenshot",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHZt8RXI3nuqDpltwxP8fIHs0YmkRcaVMJTby7"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxCCp9O0rrvT17za2GAlImDop3L0qNbMgE6WQ"
+    },
+    {
+      "label": "Scenario attach JSON",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHwZ1ssH0J4iq8PVZ6BWUzynNgxapK32T1fk0r"
+    },
+    {
+      "label": "Scenario attach Video",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHjTvUraw6JmGLNE8ZvlyWDKCnXdSUAx2VeQRT"
     },
     {
       "label": "Feature detail page",
-      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPqiXBwZdhNxDiWyGMp7wlS2tBRa8TjPIQco3"
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrRZ0l6Vnro8S9IAVk0MmygGfwCKQLeR7sEhZ"
+    },
+    {
+      "label": "Report Header",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHV8thL8CxEHL41ki6dXyfNYl5QVDqK3Ra7sPT"
+    },
+    {
+      "label": "Report Footer",
+      "url": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHqeE3Dqm4cI7fWbCaP9sh3oUkELOGdMrnQpw4"
     }
   ]
 }

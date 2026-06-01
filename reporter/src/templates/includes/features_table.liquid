@@ -31,7 +31,7 @@
                             <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
                         </div>
                     </th>
-                    <th class="px-4 md:px-6 py-3">Device / Browser</th>
+                    <th class="px-4 md:px-6 py-3">Environment</th>
                     <th class="px-4 md:px-6 py-3 cursor-pointer hover:text-foreground transition-colors group">
                         <div class="flex items-center gap-1.5">
                             Steps status
@@ -64,45 +64,77 @@
                     </td>
                     <td class="px-4 md:px-6 py-4 whitespace-nowrap">
                         {% assign device = feature.device | default: feature.metadata.device | default: "desktop" | downcase %}
-                        {% assign os = feature.os | default: feature.metadata.platform.name | default: "N/A" | downcase %}
-                        {% assign browser = feature.browser | default: feature.metadata.browser.name | default: "N/A" | downcase %}
+                        {% assign os = feature.os | default: feature.metadata.platform.name | default: "" | downcase %}
+                        {% assign browser = feature.browser | default: feature.metadata.browser.name | default: "" | downcase %}
+                        {% assign exec_platform = feature.executionPlatform | default: "local" %}
                         
-                        <div class="flex items-center gap-2 text-foreground font-medium">
-                            <i class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-muted-foreground w-4"></i>
-                            {{ feature.device | default: feature.metadata.device | default: "Desktop" }}
-                        </div>
-                        <div class="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                             <span class="flex items-center gap-1">
-                                <i class="{% if os contains 'windows' %}fa-brands fa-microsoft{% elsif os contains 'osx' or os contains 'ios' or os contains 'macos' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} w-3"></i>
-                                {{ feature.os | default: feature.metadata.platform.name | default: "N/A" }}
+                        <div class="flex items-center gap-2.5 text-muted-foreground">
+                            {% comment %} Device icon {% endcomment %}
+                            <span title="{{ feature.device | default: 'Desktop' }}">
+                                <i class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-base"></i>
                             </span>
-                            <span class="opacity-30">/</span>
-                            <span class="flex items-center gap-1">
-                                <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} w-3"></i>
-                                {{ feature.browser | default: feature.metadata.browser.name | default: "N/A" }}
+                            {% comment %} OS icon {% endcomment %}
+                            {% if os != "" %}
+                            <span title="{{ feature.os | default: feature.metadata.platform.name }}">
+                                <i class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'darwin' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-base"></i>
                             </span>
+                            {% endif %}
+                            {% comment %} Browser icon {% endcomment %}
+                            {% if browser != "" %}
+                            <span title="{{ feature.browser | default: feature.metadata.browser.name }}">
+                                <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-base"></i>
+                            </span>
+                            {% endif %}
+                            {% comment %} Cloud platform divider + icon {% endcomment %}
+                            {% if exec_platform != "local" %}
+                            {% if exec_platform == "browserstack" %}
+                            <span title="BrowserStack" class="text-[#e1660a]">
+                                <i class="fa-solid fa-cloud text-base"></i>
+                            </span>
+                            {% elsif exec_platform == "testmu" %}
+                            <span title="TestMu AI" class="text-indigo-500">
+                                <i class="fa-solid fa-cloud text-base"></i>
+                            </span>
+                            {% endif %}
+                            {% else %}
+                            <span title="Local machine">
+                                <i class="fa-solid fa-computer text-base"></i>
+                            </span>
+                            {% endif %}
                         </div>
                     </td>
-                    <td class="px-4 md:px-6 py-4 whitespace-nowrap">
-                        <div class="flex h-2 w-24 md:w-32 overflow-hidden rounded-full bg-secondary">
+                    <td class="px-4 md:px-6 py-4 min-w-[240px]">
+                        <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
                             {% if feature.scenarios.passed > 0 %}
-                            <div class="h-full bg-green-500" style="width: {{ feature.scenarios.passed | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            <div class="h-full bg-status-passed" style="width: {{ feature.scenarios.passed | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
                             {% endif %}
                             {% if feature.scenarios.failed > 0 %}
-                            <div class="h-full bg-red-500" style="width: {{ feature.scenarios.failed | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            <div class="h-full bg-status-failed" style="width: {{ feature.scenarios.failed | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
+                            {% if feature.scenarios.ambiguous > 0 %}
+                            <div class="h-full bg-status-ambiguous" style="width: {{ feature.scenarios.ambiguous | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
+                            {% if feature.scenarios.notDefined > 0 %}
+                            <div class="h-full bg-status-undefined" style="width: {{ feature.scenarios.notDefined | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            {% endif %}
+                            {% if feature.scenarios.pending > 0 %}
+                            <div class="h-full bg-status-pending" style="width: {{ feature.scenarios.pending | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
                             {% endif %}
                             {% if feature.scenarios.skipped > 0 %}
-                            <div class="h-full bg-yellow-500" style="width: {{ feature.scenarios.skipped | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
+                            <div class="h-full bg-status-skipped" style="width: {{ feature.scenarios.skipped | plus: 0.0 | divided_by: feature.scenarios.total | times: 100 }}%"></div>
                             {% endif %}
                         </div>
-                        <div class="mt-1 flex gap-2 text-[10px] font-medium uppercase">
-                            <span class="text-green-600">{{ feature.passed }} Passed</span>
-                            <span class="text-red-600">{{ feature.failed }} Failed</span>
-                            <span class="text-yellow-600">{{ feature.skipped }} Skipped</span>
+                        <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                            <span class="text-status-passed">{{ feature.passed }} Passed</span>
+                            <span class="text-status-failed">{{ feature.failed }} Failed</span>
+                            {% if feature.ambiguous > 0 %}<span class="text-status-ambiguous">{{ feature.ambiguous }} Ambiguous</span>{% endif %}
+                            {% if feature.notDefined > 0 %}<span class="text-status-undefined">{{ feature.notDefined }} Not Defined</span>{% endif %}
+                            {% if feature.pending > 0 %}<span class="text-status-pending">{{ feature.pending }} Pending</span>{% endif %}
+                            <span class="text-status-skipped">{{ feature.skipped }} Skipped</span>
                         </div>
                     </td>
                     <td class="px-6 py-4 text-right">
-                         {% assign total = feature.passed | plus: feature.failed | plus: feature.skipped %}
+                         {% assign total = feature.passed | plus: feature.failed | plus: feature.ambiguous | plus: feature.notDefined | plus: feature.pending | plus: feature.skipped %}
                          {% if total > 0 %}
                             {% assign passPercentage = feature.passed | times: 100 | divided_by: total %}
                          {% else %}
@@ -111,7 +143,7 @@
                          <div class="inline-flex items-center justify-end relative h-12 w-12">
                             <svg class="h-12 w-12 transform -rotate-90">
                               <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
-                              <circle class="text-green-500 transition-all duration-500 ease-out" stroke-width="3" 
+                              <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3" 
                                 stroke-dasharray="125.6" 
                                 stroke-dashoffset="{{ 100 | minus: passPercentage | times: 1.256 }}" 
                                 stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />

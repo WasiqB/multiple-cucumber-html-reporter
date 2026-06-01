@@ -26,7 +26,15 @@ BeforeAll(async () => {
 });
 
 Before(async () => {
-  context = await browser.newContext();
+  context = await browser.newContext({
+    recordVideo: {
+      dir: './test-results/videos',
+      size: { width: 640, height: 480 },
+      showActions: {
+        duration: 500,
+      },
+    },
+  });
   await context.tracing.start({
     screenshots: true,
     snapshots: true,
@@ -49,13 +57,13 @@ After(async function ({ pickle, result }) {
   if (!page.isClosed()) {
     video = page.video();
     img = await page.screenshot({ path: screenshotPath, type: 'png', fullPage: true });
+    this.attach(img, 'image/png');
   }
 
   await context.tracing.stop({ path: tracePath });
   await context.close();
 
-  if (result?.status === Status.PASSED && img) {
-    this.attach(img, 'image/png');
+  if (result?.status === Status.PASSED) {
     const videoPath = await video?.path();
     if (videoPath && existsSync(videoPath)) {
       this.attach(readFileSync(videoPath), 'video/webm');
@@ -146,10 +154,31 @@ When('I open the side menu', async () => {
   await sauceDemoPage.burgerMenuWrapper.waitFor({ state: 'visible', timeout: 5000 });
 });
 
-When('I click the logout button', async () => {
+When('I click the logout button', async function () {
+  this.attach('Logging out of the application');
   await sauceDemoPage.logoutLink.click();
 });
 
 Then('I should see the login page', async () => {
   await expect(sauceDemoPage.usernameInput).toBeVisible();
+});
+
+Then('Here is a {string} step', async (step: string) => {
+  if (step === 'pending') return 'pending';
+});
+
+Then('This will be pending', async () => {
+  return 'pending';
+});
+
+Then(/Here is a "([^"]*)" step/, async (step: string) => {
+  console.log(step);
+});
+
+When('This will fail', async () => {
+  throw new Error('This will fail');
+});
+
+Then('This will get skipped', async () => {
+  throw new Error('This will get skipped');
 });

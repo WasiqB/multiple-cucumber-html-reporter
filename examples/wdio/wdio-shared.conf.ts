@@ -1,10 +1,13 @@
+import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
+import os from 'node:os';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
 let startTime: number;
 let endTime: number;
+export const isCI = !!process.env.CI;
 
 export const config: WebdriverIO.Config = {
   //
@@ -14,7 +17,7 @@ export const config: WebdriverIO.Config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: 'local',
   tsConfigPath: './tsconfig.json',
-
+  outputDir: './logs',
   //
   // ==================
   // Specify Test Files
@@ -60,6 +63,14 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: 'chrome',
+      browserVersion: process.env.WDIO_CHROME_VERSION || '148',
+      'wdio:chromedriverOptions': {
+        binary: process.env.WDIO_CHROME_DRIVER || undefined,
+      },
+      'goog:chromeOptions': {
+        binary: process.env.WDIO_CHROME_PATH || undefined,
+        args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
+      },
     },
   ],
 
@@ -70,7 +81,7 @@ export const config: WebdriverIO.Config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: 'info',
+  logLevel: 'trace',
   //
   // Set specific log levels per logger
   // loggers:
@@ -81,10 +92,9 @@ export const config: WebdriverIO.Config = {
   // - @wdio/sumologic-reporter
   // - @wdio/cli, @wdio/config, @wdio/utils
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  // logLevels: {
-  //     webdriver: 'info',
-  //     '@wdio/appium-service': 'info'
-  // },
+  logLevels: {
+    webdriver: 'trace',
+  },
   //
   // If you only want to run your tests until a specific amount of tests have failed use
   // bail (default is 0 - don't bail, run all tests).
@@ -133,15 +143,7 @@ export const config: WebdriverIO.Config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [
-    'spec',
-    [
-      'cucumberjs-json',
-      {
-        jsonFolder: 'reports/json',
-      },
-    ],
-  ],
+  reporters: ['spec'],
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
@@ -185,7 +187,9 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: async () => {
-    await rm('reports', { recursive: true });
+    if (existsSync('reports')) {
+      await rm('reports', { recursive: true });
+    }
     startTime = Date.now();
   },
   /**
@@ -313,7 +317,7 @@ export const config: WebdriverIO.Config = {
   /**
    * Gets executed after all workers got shut down and the process is about to exit. An error
    * thrown in the onComplete hook will result in the test run failing.
-   * @param {object} _exitCode 0 - success, 1 - fail
+   * @param {number} _exitCode 0 - success, 1 - fail
    * @param {object} _config wdio configuration object
    * @param {Array.<Object>} _capabilities list of capabilities details
    * @param {<Object>} _results object containing test results
@@ -334,11 +338,11 @@ export const config: WebdriverIO.Config = {
       metadata: {
         browser: {
           name: 'chrome',
-          version: '148',
+          version: process.env.WDIO_CHROME_VERSION || '148',
         },
         platform: {
-          name: 'osx',
-          version: '26.5',
+          name: os.platform().trim(),
+          version: os.release().trim(),
         },
       },
       customData: {

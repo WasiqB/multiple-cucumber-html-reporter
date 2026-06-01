@@ -1,9 +1,8 @@
 {
   "$schema": "https://unpkg.com/release-it@latest/schema/release-it.json",
   "plugins": {
-    "release-it-pnpm": {},
     "@release-it-plugins/lerna-changelog": {
-      "infile": "../CHANGELOG.md"
+      "infile": "CHANGELOG.md"
     }
   },
   "git": {
@@ -19,6 +18,7 @@
   "github": {
     "release": true,
     "tokenRef": "PUSH_TOKEN",
+    "discussionCategoryName": "Announcements",
     "comments": {
       "submit": true,
       "issue": ":rocket: _This issue has been resolved in v${version}. See [${releaseName}](${releaseUrl}) for release notes._",
@@ -26,6 +26,10 @@
     }
   },
   "npm": {
+    "publishPackageManager": "pnpm",
+    "publishPath": "reporter",
+    "versionArgs": ["--prefix", "reporter"],
+    "publishArgs": ["--no-git-checks"],
     "publish": true,
     "skipChecks": true
   }

@@ -23,6 +23,9 @@ export const metadata: Metadata = createMetadata({
   description:
     'Multiple Cucumber HTML Reporter is a feature-rich, fast, and highly configurable HTML reporter for CucumberJS reports, optimized for performance and user experience.',
   metadataBase: baseUrl,
+  icons: {
+    icon: '/images/logo.png',
+  },
 });
 
 async function AnalyticsWrapper() {

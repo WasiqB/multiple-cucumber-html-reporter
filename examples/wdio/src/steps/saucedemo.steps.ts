@@ -1,12 +1,22 @@
-import { type DataTable, Given, Then, When } from '@wdio/cucumber-framework';
+import { After, type DataTable, Given, Status, Then, When } from '@wdio/cucumber-framework';
 import { browser, expect } from '@wdio/globals';
 import SauceDemoPage from '@/pages/saucedemo.page.js';
+
+After(async function ({ result }) {
+  if (result?.status !== Status.PASSED) {
+    const screenshot = await browser.takeScreenshot();
+    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');
+  }
+});
 
 Given('I am on the Sauce Demo login page', async () => {
   await SauceDemoPage.open();
 });
 
-When('I enter username {string} and password {string}', async (username: string, password: string) => {
+When('I enter username {string} and password {string}', async function (username: string, password: string) {
+  this.attach(`Perform login for user data: ${username}`);
+  this.attach(JSON.stringify({ username, password }), 'application/json');
+
   await SauceDemoPage.usernameInput.clearValue();
   await SauceDemoPage.usernameInput.setValue(username);
   await SauceDemoPage.passwordInput.clearValue();
@@ -44,7 +54,7 @@ Then('I should see {string} in the cart', async (productName: string) => {
   const cartItems = SauceDemoPage.cartItems;
   const texts = await cartItems.map(async (element) => await element.getText());
   const found = texts.some((text) => text.includes(productName));
-  await expect(found).toBe(true);
+  expect(found).toBeTruthy();
 });
 
 When('I click the checkout button', async () => {
@@ -66,7 +76,7 @@ Then('I should see the checkout overview for {string}', async (productName: stri
   const cartItems = SauceDemoPage.cartItems;
   const texts = await cartItems.map((el) => el.getText());
   const found = texts.some((text) => text.includes(productName));
-  await expect(found).toBe(true);
+  expect(found).toBeTruthy();
 });
 
 When('I click the finish button', async () => {
@@ -75,7 +85,7 @@ When('I click the finish button', async () => {
 
 Then('I should see the success page with message {string}', async (message: string) => {
   const url = await browser.getUrl();
-  await expect(url).toContain('/checkout-complete.html');
+  expect(url).toContain('/checkout-complete.html');
   await expect(SauceDemoPage.completeHeader).toBeDisplayed();
   await expect(SauceDemoPage.completeHeader).toHaveText(expect.stringContaining(message));
 });
@@ -91,4 +101,24 @@ When('I click the logout button', async () => {
 
 Then('I should see the login page', async () => {
   await expect(SauceDemoPage.usernameInput).toBeDisplayed();
+});
+
+Then('Here is a {string} step', async (step: string) => {
+  if (step === 'pending') return 'pending';
+});
+
+Then(/Here is a "([^"]*)" step/, async (step: string) => {
+  console.log(step);
+});
+
+When('This will fail', async () => {
+  throw new Error('This will fail');
+});
+
+Then('This will be pending', async () => {
+  return 'pending';
+});
+
+Then('This will get skipped', async () => {
+  throw new Error('This will get skipped');
 });

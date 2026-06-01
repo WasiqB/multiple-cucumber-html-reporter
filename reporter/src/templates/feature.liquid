@@ -37,18 +37,30 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-3 md:gap-4 shrink-0 lg:ml-6">
-                <div class="flex flex-col items-center justify-center bg-green-500/10 rounded-xl py-3 px-3 border border-green-500/20 min-w-[80px] md:min-w-[100px]">
-                    <div class="text-xl md:text-2xl font-bold text-green-600 leading-none">{{ data.feature.passed | default: 0 }}</div>
-                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-green-700/70 mt-1 tracking-wider">Passed</div>
+            <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-6 gap-3 md:gap-4 shrink-0 lg:ml-6 w-full sm:w-auto">
+                <div class="flex flex-col items-center justify-center bg-status-passed/10 rounded-xl py-3 px-3 border border-status-passed/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-passed leading-none">{{ data.feature.passed | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-passed/70 dark:text-status-passed/30 mt-1 tracking-wider">Passed</div>
                 </div>
-                <div class="flex flex-col items-center justify-center bg-red-500/10 rounded-xl py-3 px-3 border border-red-500/20 min-w-[80px] md:min-w-[100px]">
-                    <div class="text-xl md:text-2xl font-bold text-red-600 leading-none">{{ data.feature.failed | default: 0 }}</div>
-                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-red-700/70 mt-1 tracking-wider">Failed</div>
+                <div class="flex flex-col items-center justify-center bg-status-failed/10 rounded-xl py-3 px-3 border border-status-failed/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-failed leading-none">{{ data.feature.failed | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-failed/70 dark:text-status-failed/30 mt-1 tracking-wider">Failed</div>
                 </div>
-                <div class="flex flex-col items-center justify-center bg-yellow-500/10 rounded-xl py-3 px-3 border border-yellow-500/20 min-w-[80px] md:min-w-[100px]">
-                    <div class="text-xl md:text-2xl font-bold text-yellow-600 leading-none">{{ data.feature.skipped | default: 0 }}</div>
-                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-yellow-700/70 mt-1 tracking-wider">Skipped</div>
+                <div class="flex flex-col items-center justify-center bg-status-ambiguous/10 rounded-xl py-3 px-3 border border-status-ambiguous/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-ambiguous leading-none">{{ data.feature.ambiguous | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-ambiguous/70 dark:text-status-ambiguous/30 mt-1 tracking-wider">Ambiguous</div>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-status-undefined/10 rounded-xl py-3 px-3 border border-status-undefined/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-undefined leading-none">{{ data.feature.notDefined | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-undefined/70 dark:text-status-undefined/30 mt-1 tracking-wider">Not Defined</div>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-status-pending/10 rounded-xl py-3 px-3 border border-status-pending/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-pending leading-none">{{ data.feature.pending | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-pending/70 dark:text-status-pending/30 mt-1 tracking-wider">Pending</div>
+                </div>
+                <div class="flex flex-col items-center justify-center bg-status-skipped/10 rounded-xl py-3 px-3 border border-status-skipped/20 w-full">
+                    <div class="text-xl md:text-2xl font-bold text-status-skipped leading-none">{{ data.feature.skipped | default: 0 }}</div>
+                    <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-skipped/70 dark:text-status-skipped/30 mt-1 tracking-wider">Skipped</div>
                 </div>
             </div>
         </div>
@@ -98,9 +110,12 @@
                 </div>
                 <div class="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border w-full md:w-auto overflow-x-auto">
                     <button class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm" data-status="all">ALL</button>
-                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-green-600 dark:text-green-500" data-status="passed">PASSED</button>
-                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-red-600 dark:text-red-500" data-status="failed">FAILED</button>
-                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-yellow-600 dark:text-yellow-500" data-status="skipped">SKIPPED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-passed dark:text-status-passed" data-status="passed">PASSED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-failed dark:text-status-failed" data-status="failed">FAILED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-ambiguous dark:text-status-ambiguous" data-status="ambiguous">AMBIGUOUS</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-undefined dark:text-status-undefined" data-status="undefined">NOT DEFINED</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-pending dark:text-status-pending" data-status="pending">PENDING</button>
+                    <button class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-skipped dark:text-status-skipped" data-status="skipped">SKIPPED</button>
                 </div>
             </div>
         </div>

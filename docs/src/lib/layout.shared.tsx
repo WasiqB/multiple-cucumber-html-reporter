@@ -5,7 +5,7 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <div className='flex flex-col items-center justify-center leading-[0.8] py-1 select-none group cursor-default'>
+        <div className='flex flex-col items-start justify-center leading-[0.8] py-1 select-none group cursor-default'>
           <span className='text-[10px] font-black uppercase tracking-[0.45em] text-emerald-600/80 dark:text-emerald-400/80 group-hover:text-emerald-500 transition-colors duration-300'>
             multiple
           </span>

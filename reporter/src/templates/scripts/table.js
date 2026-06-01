@@ -22,6 +22,45 @@ window.ReportTable = {
     let sortColumn = null;
     let sortDirection = 'asc';
 
+    const iconForDevice = (value = '') =>
+      /iPhone|Android|Mobile/i.test(value)
+        ? 'fa-solid fa-mobile-screen-button'
+        : /Tablet|iPad/i.test(value)
+          ? 'fa-solid fa-tablet-screen-button'
+          : 'fa-solid fa-desktop';
+
+    const iconForOs = (value = '') =>
+      /Windows/i.test(value)
+        ? 'fa-brands fa-windows'
+        : /Mac|iOS|macOS|darwin|osx/i.test(value)
+          ? 'fa-brands fa-apple'
+          : /Android/i.test(value)
+            ? 'fa-brands fa-android'
+            : /Linux|Ubuntu/i.test(value)
+              ? 'fa-brands fa-linux'
+              : 'fa-solid fa-laptop-code';
+
+    const iconForBrowser = (value = '') =>
+      /Chrome/i.test(value)
+        ? 'fa-brands fa-chrome'
+        : /Firefox/i.test(value)
+          ? 'fa-brands fa-firefox'
+          : /Safari/i.test(value)
+            ? 'fa-brands fa-safari'
+            : /Edge/i.test(value)
+              ? 'fa-brands fa-edge'
+              : 'fa-solid fa-globe';
+
+    const platformIcon = (platform = 'local') => {
+      if (platform === 'browserstack') {
+        return '<span title="BrowserStack" class="text-[#e1660a]"><i class="fa-solid fa-cloud text-base"></i></span>';
+      }
+      if (platform === 'testmu') {
+        return '<span title="TestMu AI" class="text-indigo-500"><i class="fa-solid fa-cloud text-base"></i></span>';
+      }
+      return '<span title="Local machine"><i class="fa-solid fa-computer text-base"></i></span>';
+    };
+
     const renderTable = () => {
       const start = (currentPage - 1) * pageSize;
       const end = Math.min(start + pageSize, filteredFeatures.length);
@@ -29,34 +68,15 @@ window.ReportTable = {
 
       tableBody.innerHTML = paginatedItems
         .map((feature) => {
-          const total = (feature.passed || 0) + (feature.failed || 0) + (feature.skipped || 0);
+          const total = (feature.passed || 0) + (feature.failed || 0) + (feature.ambiguous || 0) + (feature.notDefined || 0) + (feature.pending || 0) + (feature.skipped || 0);
           const passPercentage = total > 0 ? Math.round((feature.passed / total) * 100) : 0;
 
-          const deviceIcon = feature.device.match(/iPhone|Android|Mobile/i)
-            ? 'fa-solid fa-mobile-screen-button'
-            : feature.device.match(/Tablet|iPad/i)
-              ? 'fa-solid fa-tablet-screen-button'
-              : 'fa-solid fa-desktop';
-
-          const osIcon = feature.os.match(/Windows/i)
-            ? 'fa-brands fa-microsoft'
-            : feature.os.match(/Mac|iOS|macOS/i)
-              ? 'fa-brands fa-apple'
-              : feature.os.match(/Android/i)
-                ? 'fa-brands fa-android'
-                : feature.os.match(/Linux|Ubuntu/i)
-                  ? 'fa-brands fa-linux'
-                  : 'fa-solid fa-laptop-code';
-
-          const browserIcon = feature.browser.match(/Chrome/i)
-            ? 'fa-brands fa-chrome'
-            : feature.browser.match(/Firefox/i)
-              ? 'fa-brands fa-firefox'
-              : feature.browser.match(/Safari/i)
-                ? 'fa-brands fa-safari'
-                : feature.browser.match(/Edge/i)
-                  ? 'fa-brands fa-edge'
-                  : 'fa-solid fa-globe';
+          const device = feature.device || 'Desktop';
+          const os = feature.os || '';
+          const browser = feature.browser || '';
+          const deviceIcon = iconForDevice(device);
+          const osIcon = os ? iconForOs(os) : '';
+          const browserIcon = browser ? iconForBrowser(browser) : '';
 
           return `
             <tr class="hover:bg-muted/50 transition-colors">
@@ -69,7 +89,7 @@ window.ReportTable = {
                     .map(
                       (tag) => `
                     <span class="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
-                      ${tag}
+                      ${tag.name}
                     </span>
                   `,
                     )
@@ -77,39 +97,36 @@ window.ReportTable = {
                 </div>
               </td>
               <td class="px-4 md:px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center gap-2 text-foreground font-medium">
-                  <i class="${deviceIcon} text-muted-foreground w-4"></i>
-                  ${feature.device}
-                </div>
-                <div class="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                  <span class="flex items-center gap-1">
-                    <i class="${osIcon} w-3"></i>
-                    ${feature.os}
-                  </span>
-                  <span class="opacity-30">/</span>
-                  <span class="flex items-center gap-1">
-                    <i class="${browserIcon} w-3"></i>
-                    ${feature.browser}
-                  </span>
+                <div class="flex items-center gap-2.5 text-muted-foreground">
+                  <span title="${device}"><i class="${deviceIcon} text-base"></i></span>
+                  ${osIcon ? `<span title="${os}"><i class="${osIcon} text-base"></i></span>` : ''}
+                  ${browserIcon ? `<span title="${browser}"><i class="${browserIcon} text-base"></i></span>` : ''}
+                  ${platformIcon(feature.executionPlatform)}
                 </div>
               </td>
-              <td class="px-4 md:px-6 py-4 whitespace-nowrap">
-                <div class="flex h-2 w-24 md:w-32 overflow-hidden rounded-full bg-secondary">
-                  ${feature.passed > 0 ? `<div class="h-full bg-green-500" style="width: ${(feature.passed / total) * 100}%"></div>` : ''}
-                  ${feature.failed > 0 ? `<div class="h-full bg-red-500" style="width: ${(feature.failed / total) * 100}%"></div>` : ''}
-                  ${feature.skipped > 0 ? `<div class="h-full bg-yellow-500" style="width: ${(feature.skipped / total) * 100}%"></div>` : ''}
+              <td class="px-4 md:px-6 py-4 min-w-[240px] whitespace-nowrap">
+                <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
+                  ${feature.passed > 0 ? `<div class="h-full bg-status-passed" style="width: ${(feature.passed / total) * 100}%"></div>` : ''}
+                  ${feature.failed > 0 ? `<div class="h-full bg-status-failed" style="width: ${(feature.failed / total) * 100}%"></div>` : ''}
+                  ${feature.ambiguous > 0 ? `<div class="h-full bg-status-ambiguous" style="width: ${(feature.ambiguous / total) * 100}%"></div>` : ''}
+                  ${feature.notDefined > 0 ? `<div class="h-full bg-status-undefined" style="width: ${(feature.notDefined / total) * 100}%"></div>` : ''}
+                  ${feature.pending > 0 ? `<div class="h-full bg-status-pending" style="width: ${(feature.pending / total) * 100}%"></div>` : ''}
+                  ${feature.skipped > 0 ? `<div class="h-full bg-status-skipped" style="width: ${(feature.skipped / total) * 100}%"></div>` : ''}
                 </div>
-                <div class="mt-1 flex gap-2 text-[10px] font-medium uppercase">
-                  <span class="text-green-600">${feature.passed} Passed</span>
-                  <span class="text-red-600">${feature.failed} Failed</span>
-                  <span class="text-yellow-600">${feature.skipped} Skipped</span>
+                <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
+                  <span class="text-status-passed">${feature.passed} Passed</span>
+                  <span class="text-status-failed">${feature.failed} Failed</span>
+                  ${feature.ambiguous > 0 ? `<span class="text-status-ambiguous">${feature.ambiguous} Ambiguous</span>` : ''}
+                  ${feature.notDefined > 0 ? `<span class="text-status-undefined">${feature.notDefined} Not Defined</span>` : ''}
+                  ${feature.pending > 0 ? `<span class="text-status-pending">${feature.pending} Pending</span>` : ''}
+                  <span class="text-status-skipped">${feature.skipped} Skipped</span>
                 </div>
               </td>
               <td class="px-4 md:px-6 py-4 text-right whitespace-nowrap">
                 <div class="inline-flex items-center justify-end relative h-12 w-12">
                   <svg class="h-12 w-12 transform -rotate-90">
                     <circle class="text-muted/20" stroke-width="3" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
-                    <circle class="text-green-500 transition-all duration-500 ease-out" stroke-width="3" 
+                    <circle class="text-status-passed transition-all duration-500 ease-out" stroke-width="3" 
                       stroke-dasharray="125.6" 
                       stroke-dashoffset="${125.66 - (passPercentage * 1.2566)}" 
                       stroke-linecap="round" stroke="currentColor" fill="transparent" r="20" cx="24" cy="24" />
@@ -140,8 +157,8 @@ window.ReportTable = {
 
       filteredFeatures.sort((a, b) => {
         let valA, valB;
-        const totalA = (a.passed || 0) + (a.failed || 0) + (a.skipped || 0);
-        const totalB = (b.passed || 0) + (b.failed || 0) + (b.skipped || 0);
+        const totalA = (a.passed || 0) + (a.failed || 0) + (a.ambiguous || 0) + (a.notDefined || 0) + (a.pending || 0) + (a.skipped || 0);
+        const totalB = (b.passed || 0) + (b.failed || 0) + (b.ambiguous || 0) + (b.notDefined || 0) + (b.pending || 0) + (b.skipped || 0);
 
         switch (column) {
           case 0:
@@ -223,9 +240,9 @@ window.ReportTable = {
       filteredFeatures = data.features.filter(
         (f) =>
           f.name.toLowerCase().includes(query) ||
-          f.device.toLowerCase().includes(query) ||
-          f.os.toLowerCase().includes(query) ||
-          f.browser.toLowerCase().includes(query) ||
+          (f.device || '').toLowerCase().includes(query) ||
+          (f.os || '').toLowerCase().includes(query) ||
+          (f.browser || '').toLowerCase().includes(query) ||
           (f.tags || []).some((t) => t.toLowerCase().includes(query)),
       );
       currentPage = 1;

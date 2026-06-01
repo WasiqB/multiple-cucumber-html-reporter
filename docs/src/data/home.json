@@ -1,12 +1,15 @@
 {
   "hero": {
-    "badge": "Coming soon!! Version 4.0",
+    "badge": "Coming soon!! Version 4.0 Beta",
     "titleLine1": "Beautiful Cucumber Reports,",
     "titleLine2": "Made Easy",
     "description": "The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.",
     "primaryLink": { "label": "Try It Now", "url": "/docs" },
-    "secondaryLink": { "label": "GitHub Docs", "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter" },
-    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
+    "secondaryLink": {
+      "label": "Check out on GitHub",
+      "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter"
+    },
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q"
   },
   "features": {
     "title": "Precision Reporting",
@@ -30,7 +33,7 @@
       {
         "icon": "Layers",
         "title": "Deep Integration",
-        "description": "Supports screenshots, video and logs attachments, and custom metadata for every failing scenario."
+        "description": "Supports screenshots, videos, text, json and logs attachments, and custom metadata for every scenario."
       }
     ]
   },
@@ -50,7 +53,7 @@
         "title": "Sponsor",
         "description": "Help us maintain the project with your support.",
         "buttonText": "Support Project",
-        "href": "https://github.com/sponsors/WasiqB"
+        "href": "/sponsors"
       },
       {
         "icon": "Star",
