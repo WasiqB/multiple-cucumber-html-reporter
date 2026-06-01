@@ -9,7 +9,7 @@
       "number": 1,
       "title": "Simple Installation",
       "description": "Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.",
-      "badges": ["zero dependencies", "lightweight"],
+      "badges": ["lightweight", "insightful", "fast"],
       "lang": "shell",
       "commands": [
         {
@@ -37,7 +37,7 @@
         "Attach screenshots on failure",
         "Attach video on failure"
       ],
-      "lang": "js",
+      "lang": "typescript",
       "commands": [
         {
           "command": "import { generate } from 'multiple-cucumber-html-reporter';\n\ngenerate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});",
@@ -71,15 +71,15 @@
       {
         "icon": "ChevronDown",
         "title": "Smart Filtering",
-        "description": "Drill down into specific tags, features, or failure reasons with lightning-fast search and filters."
+        "description": "Drill down into specific features, and scenarios with lightning-fast navigation, search and filters."
       },
       {
         "icon": "FileJson",
         "title": "Rich Artifacts",
-        "description": "Embedded screenshots and video links attached directly to failed test steps for rapid debugging."
+        "description": "Embedded screenshots and videos attached directly to failed test steps for rapid debugging."
       }
     ],
-    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo"
+    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q"
   },
   "cicd": {
     "stepNumber": 5,

@@ -972,6 +972,9 @@
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
   }
+  .text-balance {
+    text-wrap: balance;
+  }
   .whitespace-nowrap {
     white-space: nowrap;
   }

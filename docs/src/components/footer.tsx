@@ -31,7 +31,7 @@ export function Footer({ className }: { className?: string }) {
           >
             Changelog
           </Link>
-          <Link href='https://github.com/sponsors/WasiqB' className='hover:text-emerald-500 transition-colors'>
+          <Link href='/sponsors' className='hover:text-emerald-500 transition-colors'>
             Sponsor
           </Link>
           <Link

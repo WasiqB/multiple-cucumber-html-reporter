@@ -16,19 +16,19 @@ There are two primary ways to add metadata:
 
 If you provide metadata when instantiating the reporter, it will be added to each feature in the report.
 
-```javascript
-report.generate({
-    metadata: {
-        browser: {
-            name: 'chrome',
-            version: '60'
-        },
-        device: 'Local test machine',
-        platform: {
-            name: 'ubuntu',
-            version: '16.04'
-        }
+```typescript
+generate({
+  metadata: {
+    browser: {
+      name: 'chrome',
+      version: '60'
+    },
+    device: 'Local test machine',
+    platform: {
+      name: 'ubuntu',
+      version: '16.04'
     }
+  }
 });
 ```
 
@@ -36,7 +36,7 @@ report.generate({
 
 If your test scenarios are running in different environments, you can add metadata to the Cucumber JSON file before saving it to your tests.
 
-```javascript
+```typescript
 const metadata = {
   "browser": {
     "name": "chrome",

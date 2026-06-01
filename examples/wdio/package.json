@@ -9,7 +9,7 @@
     "@wdio/globals": "^9.27.2",
     "@wdio/local-runner": "^9.27.2",
     "@wdio/spec-reporter": "^9.27.2",
-    "expect-webdriverio": "^5.6.5",
+    "expect-webdriverio": "^5.6.7",
     "multiple-cucumber-html-reporter": "workspace:*",
     "wdio-cucumberjs-json-reporter": "^6.0.1",
     "wdio-wait-for": "^3.1.1",

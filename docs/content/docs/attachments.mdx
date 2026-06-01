@@ -6,38 +6,179 @@ icon: Paperclip
 
 Multiple Cucumber HTML Reporter allows you to attach media and data to help debug and review results effectively.
 
+## Attach method
+
+To attach any content to the Cucumber JSON report, which will be displayed in the HTML report, you need to use the `attach` method. The `attach` method is available in all supported frameworks as shown below:
+
+<Tabs groupId='framework' items={['webdriverio', 'playwright', 'cypress']} persist>
+  <Tab value="webdriverio">
+
+```typescript
+import { After } from '@wdio/cucumber-framework';
+
+After(async function ({ result }) {
+  if (result?.status !== 'PASSED') {
+    const screenshot = await browser.takeScreenshot();
+    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');  // [!code highlight]
+  }
+});
+```
+
+<Callout type="info" title='Note'>
+  The `attach` method is available in the anonymous function callback parameter of the hook or step methods. It will not be available in the arrow function callbacks, as `this` will be undefined in arrow functions.
+</Callout>
+
+  </Tab>
+  <Tab value="playwright">
+
+```typescript
+After(async function ({ pickle, result }) {
+  const screenshotPath = `./test-results/screenshots/${pickle.id}.png`;
+  
+  if (result?.status !== Status.PASSED) {
+    const img = await page.screenshot({ path: screenshotPath, type: 'png', fullPage: true });
+    this.attach(img, 'image/png');  // [!code highlight]
+  }
+});
+```
+
+<Callout type="info" title='Note'>
+  The `attach` method is available in the anonymous function callback parameter of the hook or step methods. It will not be available in the arrow function callbacks, as `this` will be undefined in arrow functions.
+</Callout>
+
+  </Tab>
+  <Tab value="cypress">
+
+```typescript
+import { attach, Before } from '@badeball/cypress-cucumber-preprocessor';
+
+Before({ tags: '@saucedemo' }, (scenario) => {
+  attach(`Starting scenario: ${scenario.pickle.name}`);  // [!code highlight]
+});
+```
+
+<Callout type="info" title='Note'>
+  In Cypress, the `attach` method is not available by default. You need to install the `@badeball/cypress-cucumber-preprocessor` package to use it.
+</Callout>
+
+  </Tab>
+</Tabs>
+
+The `attach` method has a couple of variations in different frameworks. Below are the most common ways to use it:
+
+- `this.attach(data)`: This is the most common way to use it. It takes one arguments: the string data to attach. 
+- `this.attach(data, mimeType)`: This is also common way to use it. It takes two arguments: the string data to attach and the mime type of the data.
+
+Following are the mime types supported by the `attach` method:
+
+- Image types:
+  - `image/png`
+  - `image/jpeg`
+  - `image/gif`
+  - `image/bmp`
+  - `image/svg+xml`
+- Text types:
+  - `text/plain`
+  - `text/html`
+  - `text/css`
+  - `text/uri-list`
+- Structured data types:
+  - `application/json`
+  - `application/xml`
+- Video types:
+  - `video/mp4`
+  - `video/webm`
+
 ## Attaching Screenshots
 
 Screenshots can be added at any time to your Cucumber JSON report. The best way is to use a `scenario`-hook that automatically captures a screenshot upon failure.
 
-```javascript
-import { After, Status } from "cucumber";
+<Tabs groupId='framework' items={['webdriverio', 'playwright', 'cypress']} persist>
+  <Tab value="webdriverio">
 
-After(function (scenarioResult) {
-  if (scenarioResult.status === Status.FAILED) {
-    // Attach a screenshot of the original state
-    const screenshot = browser.saveScreenshot();
-    world.attach(screenshot, "image/png");
+```typescript
+import { After } from '@wdio/cucumber-framework';
+
+After(async function ({ result }) {
+  if (result?.status !== 'PASSED') {
+    const screenshot = await browser.takeScreenshot();
+    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');  // [!code highlight]
   }
+});
+```
 
-  return Promise.resolve(scenarioResult.status);
+  </Tab>
+  <Tab value="playwright">
+
+```typescript
+After(async function ({ pickle, result }) {
+  const screenshotPath = `./test-results/screenshots/${pickle.id}.png`;
+  
+  if (result?.status !== Status.PASSED) {
+    const img = await page.screenshot({ path: screenshotPath, type: 'png', fullPage: true });
+    this.attach(img, 'image/png');  // [!code highlight]
+  }
+});
+```
+
+  </Tab>
+  <Tab value="cypress">
+
+```typescript
+import { After } from '@badeball/cypress-cucumber-preprocessor';
+
+After(async function ({ result }) {
+  cy.screenshot(screenshotName, { capture: 'viewport' }); // [!code highlight]
 });
 ```
 
 <Callout title="Tip" type="idea">
-Use this feature to give your test reports a professional, visual dimension and quickly identify UI or styling regressions.
+In Cypress, when you call `cy.screenshot` method, it automatically attaches the screenshot to the Cucumber JSON report. You do not need to use the `attach` method to attach screenshots in Cypress.
+
+However, you can use the `attach` method to attach other types of data to the Cucumber JSON report, such as plain text or pretty JSON.
 </Callout>
+
+  </Tab>
+</Tabs>
 
 ## Attaching Plain Text
 
 Attach logs or plain-text / data at any time to help you better understand the failure.
 
-```javascript
-// Attach raw text
-scenario.attach("Simple log message");
+<Tabs groupId='framework' items={['webdriverio', 'playwright', 'cypress']} persist>
+  <Tab value="webdriverio">
+
+```typescript
+When('I enter username {string} and password {string}', async function (username: string, password: string) {
+  this.attach(`Perform login for user data: ${username}`);  // [!code highlight]
+});
 ```
 
-<Callout title="Important" type="info">
+  </Tab>
+  <Tab value="playwright">
+
+```typescript
+When('I click the logout button', async function () {
+  this.attach('Logging out of the application');  // [!code highlight]
+  // ...
+});
+```
+
+  </Tab>
+  <Tab value="cypress">
+
+```typescript
+import { After, attach } from '@badeball/cypress-cucumber-preprocessor';
+
+After((scenario) => {
+  attach(`Scenario finished: ${scenario.pickle.name}.`);  // [!code highlight]
+});
+```
+
+  </Tab>
+</Tabs>
+
+<Callout title="Tip" type="idea">
 When attaching data, ensure non-readable binary data is properly encoded (e.g., via Base64).
 </Callout>
 
@@ -46,8 +187,25 @@ When attaching data, ensure non-readable binary data is properly encoded (e.g., 
 You can also attach JSON-formatted data for API or configuration tests. This will be formatted for better readability.
 
 ```javascript
-const responseData = { id: 1, name: "Antigravity" };
-scenario.attach(JSON.stringify(responseData), "application/json");
+When('I enter username {string} and password {string}', async function (username: string, password: string) {
+  // ...
+  this.attach(JSON.stringify({ username, password }), 'application/json');  // [!code highlight]
+  // ...
+});
 ```
 
 Check the specific framework you are using to attach these results directly to the Cucumber JSON file.
+
+## Attach Video
+
+You can attach video recordings to your test results using the `attach` method. Below are the most common ways to use it:
+
+```typescript
+After(async function ({ pickle, result }) {
+  const video = page.video();
+  const videoPath = await video?.path();
+  if (videoPath && existsSync(videoPath)) {
+    this.attach(readFileSync(videoPath), 'video/webm');  // [!code highlight]
+  }
+});
+```
