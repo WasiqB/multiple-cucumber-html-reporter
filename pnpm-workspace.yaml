@@ -11,9 +11,3 @@ allowBuilds:
   geckodriver: false
   msw: false
   sharp: true
-minimumReleaseAgeExclude:
-  - '@types/node@25.9.0'
-  - framer-motion@12.39.0
-  - motion-dom@12.39.0
-  - motion-utils@12.39.0
-  - motion@12.39.0

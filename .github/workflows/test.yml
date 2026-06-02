@@ -4,14 +4,10 @@ on:
   push:
     branches:
       - main
-    paths:
-      - reporter/**
 
   pull_request:
     branches:
       - main
-    paths:
-      - reporter/**
 
 jobs:
   build:
@@ -29,31 +25,7 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Cache dependencies
-        id: cache-dependencies
-        uses: actions/cache@v5
-        with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            node_modules
-            docs/node_modules
-            examples/cypress/node_modules
-            examples/playwright/node_modules
-            examples/wdio/node_modules
-            reporter/node_modules
-            reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: pnpm install --frozen-lockfile
 
       - name: Format Check
@@ -82,31 +54,12 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Restore dependencies cache
-        uses: actions/cache/restore@v5
-        with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            node_modules
-            docs/node_modules
-            examples/cypress/node_modules
-            examples/playwright/node_modules
-            examples/wdio/node_modules
-            reporter/node_modules
-            reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-          fail-on-cache-miss: true
-
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
 
       - name: Run Unit Tests and generate coverage report
         run: pnpm unit.test.coverage

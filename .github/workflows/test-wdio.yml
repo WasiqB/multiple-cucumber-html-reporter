@@ -31,31 +31,12 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Restore dependencies cache
-        uses: actions/cache/restore@v5
-        with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            node_modules
-            docs/node_modules
-            examples/cypress/node_modules
-            examples/playwright/node_modules
-            examples/wdio/node_modules
-            reporter/node_modules
-            reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-          fail-on-cache-miss: true
-
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v2
@@ -99,31 +80,12 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Restore dependencies cache
-        uses: actions/cache/restore@v5
-        with:
-          path: |
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-            node_modules
-            docs/node_modules
-            examples/cypress/node_modules
-            examples/playwright/node_modules
-            examples/wdio/node_modules
-            reporter/node_modules
-            reporter/dist
-          key: ${{ runner.os }}-pnpm-store-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-          fail-on-cache-miss: true
-
       - name: Install Root Dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v2
