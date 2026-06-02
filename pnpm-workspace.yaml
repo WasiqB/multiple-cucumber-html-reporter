@@ -11,3 +11,5 @@ allowBuilds:
   geckodriver: false
   msw: false
   sharp: true
+minimumReleaseAge: 1440
+trustLockfile: true
