@@ -86,11 +86,11 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 ### Feature List Page
 
-![Feature List Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo)
+![Feature List Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q)
 
 ### Feature Details Page
 
-![Feature Details Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHPqiXBwZdhNxDiWyGMp7wlS2tBRa8TjPIQco3)
+![Feature Details Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrRZ0l6Vnro8S9IAVk0MmygGfwCKQLeR7sEhZ)
 
 ---
 
