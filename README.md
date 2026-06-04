@@ -15,8 +15,6 @@
 
 ---
 
-![Multiple Cucumber HTML Reporter Hero](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHggv6ZktUDRdg6Q2jyeOKb3sVunz0vik8ZlLo)
-
 ## 🌟 Why this reporter?
 
 **Multiple Cucumber HTML Reporter** is a robust reporting module that transforms standard Cucumber JSON output into stunning, feature-rich HTML reports. Unlike generic reporters, it is designed for scale and clarity.
@@ -113,6 +111,14 @@ Contributions are what make the open source community such an amazing place to l
 ## ❤️ Support the project
 
 If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB). Your support helps keep the project maintained and improved!
+
+## 💗 Repo Activity
+
+![Multiple Cucumber HTML Reporter Repo activity](https://repobeats.axiom.co/api/embed/b0964ed36e8c350255ca9b3f357459af82d712a4.svg "Repobeats analytics image")
+
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/chart?repos=WasiqB/multiple-cucumber-html-reporter&type=timeline&legend=bottom-right)](https://www.star-history.com/?repos=WasiqB%2Fmultiple-cucumber-html-reporter&type=timeline&legend=bottom-right)
 
 ## ⚖️ License
 

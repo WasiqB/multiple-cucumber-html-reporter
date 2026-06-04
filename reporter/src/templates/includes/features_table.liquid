@@ -9,6 +9,18 @@
                 <input type="text" id="feature-search" placeholder="Search features..." 
                         class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-shadow shadow-sm">
             </div>
+            <!-- Tag Filter Dropdown -->
+            <div class="relative w-full md:w-56" id="feature-tag-filter-container">
+                <button type="button" id="feature-tag-filter-button" 
+                        class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer">
+                    <span class="truncate text-muted-foreground text-xs" id="feature-tag-filter-label">Filter by tags...</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
+                </button>
+                <div id="feature-tag-filter-dropdown" 
+                     class="hidden absolute left-0 md:left-auto md:right-0 mt-1 w-full md:w-56 rounded-md border border-border bg-card text-card-foreground shadow-md z-50 max-h-60 overflow-y-auto p-1.5 space-y-1">
+                    <!-- Dynamic tag options injected via JS -->
+                </div>
+            </div>
             <div class="flex items-center gap-2">
                 <span class="text-xs font-medium text-muted-foreground whitespace-nowrap">Show:</span>
                 <select id="records-per-page" 
@@ -155,6 +167,14 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+    
+    <div id="no-features-message" class="hidden py-12 text-center bg-muted/20 border-t border-border">
+        <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
+            <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
+        </div>
+        <h4 class="text-sm font-semibold text-foreground">No feature found</h4>
+        <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
     </div>
 
     <!-- Pagination -->

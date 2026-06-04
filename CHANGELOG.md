@@ -5,7 +5,7 @@
 <a name="1.11.3"></a>
 
 
-## 4.0.0-beta.0 (2026-06-02)
+## 4.0.0 (2026-06-04)
 
 #### :boom: Breaking Change
 * [#512](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/512) feat!: :sparkles: redesigning report UI ([@WasiqB](https://github.com/WasiqB))

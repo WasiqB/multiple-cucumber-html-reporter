@@ -15,7 +15,7 @@
   "author": "Waqas Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@cucumber/cucumber": "^12.9.0",
+    "@cucumber/cucumber": "^13.0.0",
     "@mchr/tsconfig": "workspace:*",
     "@playwright/test": "^1.40.0",
     "@types/node": "^25.9.1",
