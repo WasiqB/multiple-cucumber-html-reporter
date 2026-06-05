@@ -289,24 +289,46 @@ window.ReportTable = {
     const filterLabel = document.getElementById('feature-tag-filter-label');
 
     if (filterDropdown && filterButton) {
-      filterDropdown.innerHTML = `
-        <div class="flex items-center justify-between p-1 border-b border-border mb-1 sticky top-0 bg-card z-10">
-          <span class="text-[10px] font-bold text-muted-foreground uppercase px-1">Tags</span>
-          <button type="button" class="clear-tags-btn text-[10px] font-bold text-primary hover:underline px-1 cursor-pointer">Clear</button>
-        </div>
-        <div class="space-y-1">
-          ${sortedTags
-            .map(
-              (tag) => `
-            <label class="flex items-center gap-2 px-2 py-1.5 rounded text-xs hover:bg-muted cursor-pointer transition-colors text-foreground">
-              <input type="checkbox" value="${tag}" class="rounded border-input text-primary focus:ring-ring h-3.5 w-3.5 tag-checkbox">
-              <span class="truncate">${tag}</span>
-            </label>
-          `,
-            )
-            .join('')}
-        </div>
-      `;
+      filterDropdown.innerHTML = '';
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'flex items-center justify-between p-1 border-b border-border mb-1 sticky top-0 bg-card z-10';
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'text-[10px] font-bold text-muted-foreground uppercase px-1';
+      titleSpan.textContent = 'Tags';
+
+      const clearBtn = document.createElement('button');
+      clearBtn.type = 'button';
+      clearBtn.className = 'clear-tags-btn text-[10px] font-bold text-primary hover:underline px-1 cursor-pointer';
+      clearBtn.textContent = 'Clear';
+
+      headerDiv.appendChild(titleSpan);
+      headerDiv.appendChild(clearBtn);
+      filterDropdown.appendChild(headerDiv);
+
+      const listContainer = document.createElement('div');
+      listContainer.className = 'space-y-1';
+
+      sortedTags.forEach((tag) => {
+        const label = document.createElement('label');
+        label.className = 'flex items-center gap-2 px-2 py-1.5 rounded text-xs hover:bg-muted cursor-pointer transition-colors text-foreground';
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.value = tag;
+        input.className = 'rounded border-input text-primary focus:ring-ring h-3.5 w-3.5 tag-checkbox';
+
+        const span = document.createElement('span');
+        span.className = 'truncate';
+        span.textContent = tag;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        listContainer.appendChild(label);
+      });
+
+      filterDropdown.appendChild(listContainer);
 
       filterButton.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -319,8 +341,7 @@ window.ReportTable = {
         }
       });
 
-      const clearBtn = filterDropdown.querySelector('.clear-tags-btn');
-      clearBtn?.addEventListener('click', (e) => {
+      clearBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const checkedBoxes = filterDropdown.querySelectorAll('.tag-checkbox:checked');
         checkedBoxes.forEach((cb) => {
