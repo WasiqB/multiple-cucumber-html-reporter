@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Coming soon!! Version 4.0 Beta",
+    "badge": "Released!! Version 4.0.0",
     "titleLine1": "Beautiful Cucumber Reports,",
     "titleLine2": "Made Easy",
     "description": "The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.",
