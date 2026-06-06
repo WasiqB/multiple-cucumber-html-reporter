@@ -21,6 +21,27 @@ window.ReportTable = {
     let pageSize = parseInt(pageSizeSelect?.value || '10', 10);
     let sortColumn = null;
     let sortDirection = 'asc';
+    let selectedTags = [];
+    let searchQuery = '';
+
+    const applyAllFilters = () => {
+      filteredFeatures = data.features.filter((f) => {
+        const matchesSearch = searchQuery === '' ||
+          f.name.toLowerCase().includes(searchQuery) ||
+          (f.device || '').toLowerCase().includes(searchQuery) ||
+          (f.os || '').toLowerCase().includes(searchQuery) ||
+          (f.browser || '').toLowerCase().includes(searchQuery) ||
+          (f.tags || []).some((t) => (t.name || '').toLowerCase().includes(searchQuery));
+
+        const matchesTags = selectedTags.length === 0 ||
+          (f.tags || []).some((t) => selectedTags.includes(t.name));
+
+        return matchesSearch && matchesTags;
+      });
+
+      currentPage = 1;
+      renderTable();
+    };
 
     const iconForDevice = (value = '') =>
       /iPhone|Android|Mobile/i.test(value)
@@ -145,6 +166,20 @@ window.ReportTable = {
 
       renderPagination();
       updateSortIcons();
+
+      const noFeaturesMessage = document.getElementById('no-features-message');
+      const tableWrapper = tableContainer.querySelector('.overflow-x-auto');
+      const paginationWrapper = tableContainer.querySelector('.px-6.py-4.border-t');
+
+      if (filteredFeatures.length === 0) {
+        noFeaturesMessage?.classList.remove('hidden');
+        tableWrapper?.classList.add('hidden');
+        paginationWrapper?.classList.add('hidden');
+      } else {
+        noFeaturesMessage?.classList.add('hidden');
+        tableWrapper?.classList.remove('hidden');
+        paginationWrapper?.classList.remove('hidden');
+      }
     };
 
     const handleSort = (column) => {
@@ -236,18 +271,102 @@ window.ReportTable = {
     });
 
     searchInput?.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase();
-      filteredFeatures = data.features.filter(
-        (f) =>
-          f.name.toLowerCase().includes(query) ||
-          (f.device || '').toLowerCase().includes(query) ||
-          (f.os || '').toLowerCase().includes(query) ||
-          (f.browser || '').toLowerCase().includes(query) ||
-          (f.tags || []).some((t) => t.toLowerCase().includes(query)),
-      );
-      currentPage = 1;
-      renderTable();
+      searchQuery = e.target.value.toLowerCase();
+      applyAllFilters();
     });
+
+    // Tag Dropdown Setup
+    const allTags = new Set();
+    data.features.forEach((f) => {
+      (f.tags || []).forEach((t) => {
+        if (t.name) allTags.add(t.name);
+      });
+    });
+    const sortedTags = Array.from(allTags).sort();
+
+    const filterDropdown = document.getElementById('feature-tag-filter-dropdown');
+    const filterButton = document.getElementById('feature-tag-filter-button');
+    const filterLabel = document.getElementById('feature-tag-filter-label');
+
+    if (filterDropdown && filterButton) {
+      filterDropdown.innerHTML = '';
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'flex items-center justify-between p-1 border-b border-border mb-1 sticky top-0 bg-card z-10';
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'text-[10px] font-bold text-muted-foreground uppercase px-1';
+      titleSpan.textContent = 'Tags';
+
+      const clearBtn = document.createElement('button');
+      clearBtn.type = 'button';
+      clearBtn.className = 'clear-tags-btn text-[10px] font-bold text-primary hover:underline px-1 cursor-pointer';
+      clearBtn.textContent = 'Clear';
+
+      headerDiv.appendChild(titleSpan);
+      headerDiv.appendChild(clearBtn);
+      filterDropdown.appendChild(headerDiv);
+
+      const listContainer = document.createElement('div');
+      listContainer.className = 'space-y-1';
+
+      sortedTags.forEach((tag) => {
+        const label = document.createElement('label');
+        label.className = 'flex items-center gap-2 px-2 py-1.5 rounded text-xs hover:bg-muted cursor-pointer transition-colors text-foreground';
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.value = tag;
+        input.className = 'rounded border-input text-primary focus:ring-ring h-3.5 w-3.5 tag-checkbox';
+
+        const span = document.createElement('span');
+        span.className = 'truncate';
+        span.textContent = tag;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        listContainer.appendChild(label);
+      });
+
+      filterDropdown.appendChild(listContainer);
+
+      filterButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        filterDropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!filterDropdown.contains(e.target) && e.target !== filterButton) {
+          filterDropdown.classList.add('hidden');
+        }
+      });
+
+      clearBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const checkedBoxes = filterDropdown.querySelectorAll('.tag-checkbox:checked');
+        checkedBoxes.forEach((cb) => {
+          cb.checked = false;
+        });
+        selectedTags = [];
+        filterLabel.textContent = 'Filter by tags...';
+        filterLabel.classList.add('text-muted-foreground');
+        applyAllFilters();
+      });
+
+      filterDropdown.addEventListener('change', () => {
+        const checkedBoxes = filterDropdown.querySelectorAll('.tag-checkbox:checked');
+        selectedTags = Array.from(checkedBoxes).map((cb) => cb.value);
+
+        if (selectedTags.length === 0) {
+          filterLabel.textContent = 'Filter by tags...';
+          filterLabel.classList.add('text-muted-foreground');
+        } else {
+          filterLabel.textContent = selectedTags.join(', ');
+          filterLabel.classList.remove('text-muted-foreground');
+        }
+        applyAllFilters();
+      });
+    }
 
     pageSizeSelect?.addEventListener('change', (e) => {
       pageSize = parseInt(e.target.value, 10);

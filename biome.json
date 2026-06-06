@@ -7,13 +7,7 @@
   },
   "files": {
     "includes": [
-      "**/*.ts",
-      "**/*.{ts,tsx,json,jsonc,mjs}",
-      "**/*.json",
-      "**/*.js",
-      "!!**/dist",
-      "!!**/node_modules",
-      "!!**/.run",
+      "**/*.{ts,js,tsx,json,jsonc,mjs}",
       "!!docs/src/components/ui",
       "!!reporter/src/templates",
       "!!reporter/src/test/unit/data/**/*.json"

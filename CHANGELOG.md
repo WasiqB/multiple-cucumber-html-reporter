@@ -7,8 +7,6 @@
 
 ## 4.0.0 (2026-06-04)
 
-## 4.0.0-beta.0 (2026-06-02)
-
 #### :boom: Breaking Change
 * [#512](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/512) feat!: :sparkles: redesigning report UI ([@WasiqB](https://github.com/WasiqB))
 * [#503](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/503) feat: :sparkles: migrated cjs code to typescript esm ([@WasiqB](https://github.com/WasiqB))

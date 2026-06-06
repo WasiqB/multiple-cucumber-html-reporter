@@ -41,14 +41,20 @@
   "bugs": {
     "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter/issues"
   },
-  "funding": {
-    "type": "GitHub Sponsor",
-    "url": "https://github.com/sponsors/WasiqB"
-  },
+  "funding": [
+    {
+      "type": "GitHub Sponsor",
+      "url": "https://github.com/sponsors/WasiqB"
+    },
+    {
+      "type": "Patreon",
+      "url": "https://www.patreon.com/c/wasiqbhamla"
+    }
+  ],
   "engines": {
     "node": ">=24"
   },
-  "homepage": "https://github.com/WasiqB/multiple-cucumber-html-reporter#readme",
+  "homepage": "https://multiple-cucumber-html-reporter.vercel.app/",
   "dependencies": {
     "find": "^0.3.0",
     "fs-extra": "^11.3.5",

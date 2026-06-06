@@ -25,6 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Feature Details (if on feature page)
   if (typeof featureData !== 'undefined' && window.ReportCharts) {
     window.ReportCharts.initFeature(featureData);
-    if (window.ReportScenarios) window.ReportScenarios.init();
+    if (window.ReportScenarios) window.ReportScenarios.init(featureData);
   }
 });

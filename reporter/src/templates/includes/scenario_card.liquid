@@ -11,7 +11,15 @@
     {% assign scenario_status = "skipped" %}
 {% endif %}
 
-<div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden scenario-card" data-status="{{ scenario_status }}">
+{% assign tag_names = "" %}
+{% for tag in scenario.tags %}
+  {% if forloop.first %}
+    {% assign tag_names = tag.name %}
+  {% else %}
+    {% assign tag_names = tag_names | append: "," | append: tag.name %}
+  {% endif %}
+{% endfor %}
+<div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden scenario-card" data-status="{{ scenario_status }}" data-tags="{{ tag_names | escape }}">
     <button class="w-full text-left px-4 md:px-6 py-4 flex items-center justify-between hover:bg-muted/50 transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden')">
         <div class="flex items-center gap-3 overflow-hidden">
             

@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Coming soon!! Version 4.0 Beta",
+    "badge": "Released!! Version 4.0.0",
     "titleLine1": "Beautiful Cucumber Reports,",
     "titleLine2": "Made Easy",
     "description": "The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.",
@@ -9,7 +9,7 @@
       "label": "Check out on GitHub",
       "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter"
     },
-    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q"
+    "image": "featureListPage"
   },
   "features": {
     "title": "Precision Reporting",

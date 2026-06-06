@@ -9,8 +9,9 @@ import { buttonVariants } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import featuresDataJson from '@/data/features.json';
+import imagesDataJson from '@/data/image-links.json';
 import statsDataJson from '@/data/stats.json';
-import type { FeaturesData, ProjectStats } from '@/data/types';
+import type { FeaturesData, ImageLinks, ProjectStats } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -22,6 +23,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function FeaturesPage() {
   const { hero, accordion, cta } = featuresDataJson as FeaturesData;
+  const images = imagesDataJson as ImageLinks;
   const { stats } = statsDataJson as ProjectStats;
 
   return (
@@ -74,26 +76,24 @@ export default function FeaturesPage() {
               </div>
             </motion.div>
 
-            {hero.image && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className='relative'
-              >
-                <div className='absolute -inset-4 bg-sky-500/10 blur-3xl rounded-full opacity-50' />
-                <div className='relative rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden aspect-4/3'>
-                  <Image
-                    src={hero.image}
-                    alt='Analytics Dashboard'
-                    width={2070}
-                    height={1552}
-                    className='object-cover w-full h-full filter brightness-90 contrast-125'
-                  />
-                  <div className='absolute inset-0 bg-linear-to-tr from-emerald-900/40 to-transparent' />
-                </div>
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className='relative'
+            >
+              <div className='absolute -inset-4 bg-sky-500/10 blur-3xl rounded-full opacity-50' />
+              <div className='relative rounded-3xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden aspect-4/3'>
+                <Image
+                  src={images[hero.image]}
+                  alt='Analytics Dashboard'
+                  width={2070}
+                  height={1552}
+                  className='object-cover w-full h-full filter brightness-90 contrast-125'
+                />
+                <div className='absolute inset-0 bg-linear-to-tr from-emerald-900/40 to-transparent' />
+              </div>
+            </motion.div>
           </div>
         </section>
       )}
@@ -186,7 +186,7 @@ export default function FeaturesPage() {
                                     className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xl aspect-video cursor-zoom-in group/img'
                                   >
                                     <Image
-                                      src={img}
+                                      src={images[img]}
                                       alt={`${item.title} - ${imgIdx + 1}`}
                                       fill
                                       className='object-cover transition-transform duration-500 group-hover/img:scale-105'
@@ -201,7 +201,7 @@ export default function FeaturesPage() {
                                 <DialogContent className='max-w-[95vw] sm:max-w-[95vw] h-[90vh] p-0 border-none bg-black/40 backdrop-blur-sm shadow-none focus:outline-none flex items-center justify-center'>
                                   <div className='relative w-full h-full p-4 md:p-12'>
                                     <Image
-                                      src={img}
+                                      src={images[img]}
                                       alt={item.title}
                                       fill
                                       className='object-contain transition-all duration-300'

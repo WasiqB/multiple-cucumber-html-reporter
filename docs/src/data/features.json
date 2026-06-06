@@ -5,8 +5,7 @@
     "titleLine2": "modern BDD",
     "description": "Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.",
     "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
-    "secondaryLink": { "label": "View Demo", "url": "#" },
-    "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEwIl4TWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
+    "image": "featureCharts1"
   },
   "accordion": {
     "title": "Unmatched Capabilities",
@@ -20,10 +19,7 @@
           "Environment-specific tags and labels",
           "Automated platform detection"
         ],
-        "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHLdB2QaKGWNPDQEC3jYK6MoeiI91lm5brXqgx",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHzc7voas2l3phtzWYkLH5mjZuCGw8yDbBqPdI"
-        ]
+        "images": ["featureListMetadata", "featureDetailMetadata"]
       },
       {
         "title": "Interactive Analytics Dashboards",
@@ -34,11 +30,7 @@
           "OS, Browser, and Device-specific charts",
           "Top tags and slow steps featured charts"
         ],
-        "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEwIl4TWCelPrOgYXAUs4yKHobpxcd3hGq5I2",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHvXhBZZcerLDP9nWGNx8mTEzf7lpo1U2ZVQSC",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHEjzkcXWCelPrOgYXAUs4yKHobpxcd3hGq5I2"
-        ]
+        "images": ["featureCharts1", "featureCharts2", "featureDetailChart"]
       },
       {
         "title": "Advanced Diagnostics",
@@ -48,14 +40,7 @@
           "Attached logs for better debugging",
           "Step-by-step execution logs"
         ],
-        "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHGm8i1E6q2RTyigwK7O1nYkt4Fr8DcbQmhAEo",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHsWhgirPo7cMZLNHAUEqG50QlfawkFr3BRCxi",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIH7mCbp6E3snmf0ExP6I4HKDeiZTVCv5z9jrWS",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHxCCp9O0rrvT17za2GAlImDop3L0qNbMgE6WQ",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHwZ1ssH0J4iq8PVZ6BWUzynNgxapK32T1fk0r",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHjTvUraw6JmGLNE8ZvlyWDKCnXdSUAx2VeQRT"
-        ]
+        "images": ["scenarioSuccess", "attachErrorLog", "attachLog", "attachScreenshot", "attachJson", "attachVideo"]
       },
       {
         "title": "Rich and Detailed Feature and Scenario Tables",
@@ -65,10 +50,7 @@
           "User friendly filtering of records",
           "Quick navigation between features and scenarios"
         ],
-        "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHDlF3OoRHWIEji5xaV8oOT3RsuClPdXGr0KBh",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHmN7SzsuMlKqFBR6WmNgoh8YJxSCDpVZfUA9G"
-        ]
+        "images": ["featureListTable", "scenarioListTable"]
       },
       {
         "title": "Customize report to your Brand",
@@ -77,10 +59,7 @@
           "Customize the report logo (Coming soon!)",
           "Customize the report footer"
         ],
-        "images": [
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHV8thL8CxEHL41ki6dXyfNYl5QVDqK3Ra7sPT",
-          "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHqeE3Dqm4cI7fWbCaP9sh3oUkELOGdMrnQpw4"
-        ]
+        "images": ["reportHeader", "reportFooter"]
       }
     ]
   },

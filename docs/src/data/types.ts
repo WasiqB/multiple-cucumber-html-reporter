@@ -4,7 +4,27 @@ export interface LinkData {
 }
 
 export interface ImageLinks {
-  images: LinkData[];
+  featureListMetadata: string;
+  featureCharts1: string;
+  featureCharts2: string;
+  featureListTable: string;
+  featureListPage: string;
+  featureDetailMetadata: string;
+  featureDetailChart: string;
+  featureDetailPage: string;
+  scenarioListTable: string;
+  scenarioSuccess: string;
+  scenarioFailed: string;
+  scenarioPending: string;
+  scenarioUndefined: string;
+  scenarioAmbiguous: string;
+  attachErrorLog: string;
+  attachLog: string;
+  attachScreenshot: string;
+  attachJson: string;
+  attachVideo: string;
+  reportHeader: string;
+  reportFooter: string;
 }
 
 export interface StatItem {
@@ -28,7 +48,7 @@ export interface HomeHero {
   description?: string;
   primaryLink?: LinkData;
   secondaryLink?: LinkData;
-  image?: string;
+  image: keyof ImageLinks;
 }
 
 export interface HomeFeatureItem {
@@ -113,7 +133,7 @@ export interface HowItWorksAnalysis {
   title: string;
   description: string;
   cards: HowItWorksAnalysisCard[];
-  image?: string;
+  image: keyof ImageLinks;
 }
 
 export interface HowItWorksCiCd {
@@ -140,7 +160,7 @@ export interface FeaturesHero {
   description: string;
   primaryLink?: LinkData;
   secondaryLink?: LinkData;
-  image?: string;
+  image: keyof ImageLinks;
 }
 
 export interface FeaturesCard {
@@ -206,7 +226,7 @@ export interface FeaturesCta {
 export interface FeaturesAccordionItem {
   title: string;
   pointers: string[];
-  images: string[];
+  images: (keyof ImageLinks)[];
 }
 
 export interface FeaturesAccordion {
