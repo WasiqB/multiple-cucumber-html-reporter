@@ -1,4 +1,4 @@
-import { remarkSteps } from 'fumadocs-core/mdx-plugins';
+import { remarkImage, remarkSteps } from 'fumadocs-core/mdx-plugins';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import lastModified from 'fumadocs-mdx/plugins/last-modified';
@@ -21,6 +21,6 @@ export const docs = defineDocs({
 export default defineConfig({
   plugins: [lastModified()],
   mdxOptions: {
-    remarkPlugins: [remarkSteps],
+    remarkPlugins: [remarkSteps, remarkImage],
   },
 });

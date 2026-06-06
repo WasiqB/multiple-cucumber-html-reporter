@@ -8,7 +8,8 @@ import Image from 'next/image';
 import { FaGithub, FaGitlab, FaJenkins } from 'react-icons/fa6';
 import { Terminal } from '@/components/ui/terminal';
 import howItWorksDataJson from '@/data/how-it-works.json';
-import type { HowItWorksData } from '@/data/types';
+import imageDataJson from '@/data/image-links.json';
+import type { HowItWorksData, ImageLinks } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -31,6 +32,7 @@ const platformIconMap: Record<string, React.ReactNode> = {
 
 export default function HowItWorksPage() {
   const { hero, steps, analysis, cicd } = howItWorksDataJson as HowItWorksData;
+  const image = (imageDataJson as ImageLinks)[analysis.image];
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -163,22 +165,20 @@ export default function HowItWorksPage() {
               </div>
             )}
 
-            {analysis.image && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950 p-2 shadow-2xl overflow-hidden'
-              >
-                <Image
-                  src={analysis.image}
-                  alt='Cucumber Report Dashboard'
-                  width={1200}
-                  height={600}
-                  className='rounded-xl object-cover w-full h-auto opacity-90'
-                />
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950 p-2 shadow-2xl overflow-hidden'
+            >
+              <Image
+                src={image}
+                alt='Cucumber Report Dashboard'
+                width={1200}
+                height={600}
+                className='rounded-xl object-cover w-full h-auto opacity-90'
+              />
+            </motion.div>
           </section>
         )}
 

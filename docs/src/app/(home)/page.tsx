@@ -8,8 +8,9 @@ import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa6';
 import { buttonVariants } from '@/components/ui/button';
 import homeDataJson from '@/data/home.json';
+import imagesDataJson from '@/data/image-links.json';
 import statsDataJson from '@/data/stats.json';
-import type { HomeData, ProjectStats } from '@/data/types';
+import type { HomeData, ImageLinks, ProjectStats } from '@/data/types';
 import { cn } from '@/lib/cn';
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -28,6 +29,7 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function HomePage() {
   const { hero, features, setup, community, trustedBy } = homeDataJson as HomeData;
   const { stats } = statsDataJson as ProjectStats;
+  const heroImage = (imagesDataJson as ImageLinks)[hero.image];
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -94,27 +96,24 @@ export default function HomePage() {
                 )}
               </div>
             </motion.div>
-
-            {hero.image && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className='relative'
-              >
-                <div className='absolute -inset-4 bg-emerald-500/20 blur-3xl rounded-full opacity-50' />
-                <div className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-sm overflow-hidden shadow-2xl p-1'>
-                  <Image
-                    src={hero.image}
-                    alt='Cucumber Report Dashboard'
-                    width={800}
-                    height={500}
-                    className='rounded-xl object-contain w-full h-auto'
-                    priority
-                  />
-                </div>
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className='relative'
+            >
+              <div className='absolute -inset-4 bg-emerald-500/20 blur-3xl rounded-full opacity-50' />
+              <div className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-sm overflow-hidden shadow-2xl p-1'>
+                <Image
+                  src={heroImage}
+                  alt='Cucumber Report Dashboard'
+                  width={800}
+                  height={500}
+                  className='rounded-xl object-contain w-full h-auto'
+                  priority
+                />
+              </div>
+            </motion.div>
           </div>
         </section>
       )}

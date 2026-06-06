@@ -68,9 +68,9 @@ export const config: WebdriverIO.Config = {
 Check out all the supported options for the reporter [here](https://webdriver.io/docs/wdio-cucumberjs-json-reporter#options).
 </Callout>
 
-#### Create Reports Folder [step]
+#### Delete Reports Folder [step]
 
-In the `onPrepare` hook, we create the reports folder if it doesn't exist.
+In the `onPrepare` hook, we delete the reports folder if it exists. This helps in generating a fresh report every time the tests are run.
 
 This can be done as shown in the below example:
 
@@ -269,9 +269,9 @@ export const config: WebdriverIO.Config = {
 };
 ```
 
-#### Create Reports Folder [step]
+#### Delete Reports Folder [step]
 
-In the `onPrepare` hook, we create the reports folder if it doesn't exist.
+In the `onPrepare` hook, we delete the reports folder if it exists. This helps in generating a fresh report every time the tests are run.
 
 This can be done as shown in the below example:
 

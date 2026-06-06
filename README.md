@@ -41,10 +41,11 @@ pnpm add multiple-cucumber-html-reporter --save-dev
 ### 2. Generate Report
 Add this to your test teardown or a separate reporting script:
 
-```javascript
-const report = require("multiple-cucumber-html-reporter");
+```typescript
+// generate-report.ts
+import { generate } from 'multiple-cucumber-html-reporter';
 
-report.generate({
+generate({
   jsonDir: "./path-to-your-json-output/",
   reportPath: "./path-where-the-report-needs-to-be/",
   metadata: {
@@ -84,11 +85,11 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 ### Feature List Page
 
-![Feature List Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHBmX5z0Dl65wyMSJIi1uf9NR8mDb2hxsUvg0q)
+![Feature List Page](./docs/public/images/feature-list-page.jpeg)
 
 ### Feature Details Page
 
-![Feature Details Page](https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHrRZ0l6Vnro8S9IAVk0MmygGfwCKQLeR7sEhZ)
+![Feature Details Page](./docs/public/images/feature-detail-page.jpeg)
 
 ---
 
