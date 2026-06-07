@@ -74,7 +74,7 @@
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "c8": "^11.0.0",
     "jasmine": "^6.2.0",
     "tailwindcss": "^4.2.4",

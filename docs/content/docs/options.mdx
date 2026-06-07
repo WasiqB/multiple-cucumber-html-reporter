@@ -4,128 +4,143 @@ description: Full details for all available configuration options for Multiple C
 icon: Menu
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
 Multiple Cucumber HTML Reporter offers a wide range of configuration options to customize your test reports.
 
 ## Main Options
 
-### `jsonDir`
-
-- **Type**: `String`
-- **Mandatory**: Yes
-
-The directory containing all the generated JSON files from your test runs.
-
-### `reportPath`
-
-- **Type**: `String`
-- **Mandatory**: Yes
-
-The directory in which the final report needs to be saved. Both `jsonDir` and `reportPath` are relative from where the script is started.
-
-### `staticFilePath`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-If true, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests.
+<TypeTable
+  type={{
+    jsonDir: {
+      description: 'The directory containing all the generated JSON files from your test runs',
+      type: 'string',
+      required: true,
+    },
+    reportPath: {
+      description: 'The directory in which the final report needs to be saved. Both jsonDir and reportPath are relative from where the script is started',
+      type: 'string',
+      required: true,
+    },
+    staticFilePath: {
+      description: 'If true, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests',
+      type: 'boolean',
+      default: false,
+    },
+  }}
+/>
 
 ## Report Behavior Options
 
-### `openReportInBrowser`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-If true, the report will automatically be opened in the default browser of the operating system.
-
-### `saveCollectedJSON`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-This module will first merge all the JSON files to a single file and then enrich it with data that is used for the report. Setting this to `true` saves the merged JSON AND the enriched JSON in the `reportPath`.
-
-### `disableLog`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-Disables the summary report log in the console.
+<TypeTable
+  type={{
+    openReportInBrowser: {
+      description: 'If true, the report will automatically be opened in the default browser of the operating system',
+      type: 'boolean',
+      default: false,
+    },
+    saveCollectedJSON: {
+      description: 'This module will first merge all the JSON files to a single file and then enrich it with data that is used for the report. Setting this to `true` saves the merged JSON and the enriched JSON in the `reportPath`.',
+      type: 'boolean',
+      default: false,
+    },
+    disableLog: {
+      description: 'Disables the summary report log in the console.',
+      type: 'boolean',
+      default: false,
+    },
+  }}
+/>
 
 ## Visual Customization Options
 
-### `pageTitle`
-
-- **Type**: `string`
-- **Default**: `Multiple Cucumber HTML Reporter`
-
-The report title in the HTML `<head>` tag.
-
-### `reportName`
-
-- **Type**: `string`
-
-You can change the report name as displayed in the UI.
-
-### `pageFooter`
-
-- **Type**: `string`
-
-Customizes the page footer if required. You can provide a HTML string like `<div><p>A custom footer</p></div>`.
-
-### `plainDescription`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-If your description already contains formatting tags (e.g., `<div>`, `<strong>`), set this to `true` to include it "as-is" without extra formatting.
+<TypeTable
+  type={{
+    customMetadata: {
+      description: 'If true, the custom metadata will be displayed in the report',
+      type: 'boolean',
+      default: false,
+    },
+    customData: {
+      description: 'Allows you to pass custom data to the report. The data is passed as JSON and can be accessed in the report as `customData`',
+      type: 'any',
+    },
+    pageTitle: {
+      description: 'The report title in the HTML <head> tag.',
+      type: 'string',
+      default: 'Multiple Cucumber HTML Reporter',
+    },
+    reportName: {
+      description: 'You can change the report name as displayed in the UI.',
+      type: 'string',
+    },
+    pageFooter: {
+      description: 'Customizes the page footer if required. You can provide a HTML string like <div><p>A custom footer</p></div>.',
+      type: 'string',
+    },
+    plainDescription: {
+      description: 'If your description already contains formatting tags (e.g., <div>, <strong>), set this to `true` to include it "as-is" without extra formatting.',
+      type: 'boolean',
+      default: false,
+    },
+  }}
+/>
 
 ## Duration Options
 
-### `displayDuration`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-If set to `true`, the duration of steps, scenarios, and features is displayed on the Features overview and single feature page in an easily readable format.
-
-<Callout title="Note" type="info">
-CucumberJS 2 and 3 use milliseconds, while others use nanoseconds. You may need to use `durationInMS: true` if your durations are not showing correctly.
-</Callout>
-
-### `durationInMS`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-If set to `true`, step durations are expected to be in **milliseconds**. This parameter relies on `displayDuration: true`.
-
-### `durationAggregation`
-
-- **Type**: `string` (Possible values: `sum | wallClock`)
-- **Default**: `sum`
-
-Controls how feature duration is calculated:
-- `sum`: sum all scenario durations in a feature (default)
-- `wallClock`: use elapsed wall-clock time (`latest scenario end - earliest scenario start`). Each timed scenario must provide `start_timestamp`.
+<TypeTable
+  type={{
+    displayDuration: {
+      description: (
+        <>
+          If set to <code>true</code>, the duration of steps, scenarios, and features is displayed on the Features overview and single feature page in an easily readable format.
+          <Callout title="Note" type="info">
+            CucumberJS 2 and 3 use milliseconds, while others use nanoseconds. You may need to use <code>durationInMS: true</code> if your durations are not showing correctly.
+          </Callout>
+        </>
+      ),
+      type: 'boolean',
+      default: false,
+    },
+    durationInMS: {
+      description: <>
+        If set to <code>true</code>, step durations are expected to be in <strong>milliseconds</strong>. This parameter relies on <code>displayDuration: true</code>.
+      </>,
+      type: 'boolean',
+      default: false,
+    },
+    durationAggregation: {
+      description: (
+        <>
+          Controls how feature duration is calculated:
+          <ul>
+            <li><code>sum</code>: sum all scenario durations in a feature (default)</li>
+            <li><code>wallClock</code>: use elapsed wall-clock time (<code>latest scenario end - earliest scenario start</code>). Each timed scenario must provide <code>start_timestamp</code>.</li>
+          </ul>
+        </>
+      ),
+      type: 'sum | wallClock',
+      default: 'sum',
+    },
+  }}
+/>
 
 ## Custom Styling Options
 
-### `useCDN`
-
-- **Type**: `boolean`
-- **Default**: `false`
-
-Whether to use a CDN for external assets.
-
-### `customStyle`
-
-- **Type**: `path`
-
-Adds custom CSS to your report. Provide the path to your custom CSS file.
-
-### `overrideStyle`
-
-- **Type**: `path`
-
-Completely replaces the default CSS with your own custom style.
+<TypeTable
+  type={{
+    useCDN: {
+      description: 'Whether to use a CDN for external assets.',
+      type: 'boolean',
+      default: false,
+    },
+    customStyle: {
+      description: 'Adds custom CSS to your report. Provide the path to your custom CSS file.',
+      type: 'path',
+    },
+    overrideStyle: {
+      description: 'Completely replaces the default CSS with your own custom style.',
+      type: 'path',
+    },
+  }}
+/>

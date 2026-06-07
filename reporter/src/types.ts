@@ -13,6 +13,11 @@ export type Metadata =
         name: string;
         version: string;
       };
+      username?: string;
+      nodeVersion?: string;
+      reportVersion?: string;
+      hostname?: string;
+      architecture?: string;
       [key: string]: any;
     }
   | Array<{ name: string; value: string }>;
@@ -145,6 +150,7 @@ export interface Feature {
   browser: string;
   os: string;
   device: string;
+  username?: string;
   totalTime: number;
   passed: number;
   failed: number;

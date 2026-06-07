@@ -8,6 +8,8 @@ Multiple Cucumber HTML Reporter can display the browser, version, platform, and 
 
 Metadata can be displayed either in the Features overview table or within each scenario's details.
 
+When metadata is not provided, the reporter automatically adds the local platform name and version, current machine username, device hostname, Node.js version, reporter version, hostname, and CPU architecture. If partial metadata is provided, for example only browser details, the missing standard fields are still filled automatically.
+
 ## Adding Metadata
 
 There are two primary ways to add metadata:
@@ -31,6 +33,8 @@ generate({
   }
 });
 ```
+
+Any values you provide take precedence over automatic defaults.
 
 ### Method 2: Per Scenario (Dynamic)
 

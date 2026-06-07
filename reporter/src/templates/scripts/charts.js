@@ -348,32 +348,84 @@ window.ReportCharts = {
       }).render();
     }
 
-    // 2. Scenario Distribution (Line)
-    clear('#feature-execution-chart');
-    const durations = (feature.elements || []).map((s) => s.duration || 0);
-    const hasDurations = durations.length > 0 && durations.some((v) => v > 0);
-    toggleChart('#feature-execution-chart', hasDurations);
-    if (hasDurations) {
-      new ApexCharts(document.querySelector('#feature-execution-chart'), {
-        series: [{ name: 'Duration (s)', data: durations }],
-        chart: { type: 'line', height: 250, toolbar: { show: false }, animations: { enabled: false } },
-        stroke: { curve: 'smooth', width: 3 },
-        xaxis: {
-          categories: (feature.elements || []).map((s) =>
-            s.name.length > 25 ? s.name.substring(0, 22) + '...' : s.name,
-          ),
-          labels: { style: { colors: textColor, fontSize: '10px' }, rotate: -30 },
+    // 2. Top 10 Slowest Scenarios (Horizontal Bar)
+    clear('#slowest-scenarios-chart');
+    const allScenarios = (feature.elements || [])
+      .filter((s) => s.type !== 'background' && (s.duration || 0) > 0)
+      .map((s) => ({ label: s.name, duration: parseFloat((s.duration || 0).toFixed(3)) }))
+      .sort((a, b) => b.duration - a.duration)
+      .slice(0, 10);
+    const hasSlowestScenarios = allScenarios.length > 0;
+    toggleChart('#slowest-scenarios-chart', hasSlowestScenarios);
+    if (hasSlowestScenarios) {
+      new ApexCharts(document.querySelector('#slowest-scenarios-chart'), {
+        series: [{ name: 'Duration', data: allScenarios.map((s) => s.duration) }],
+        chart: {
+          type: 'bar',
+          height: 250,
+          toolbar: { show: false },
+          animations: { enabled: false },
         },
-        yaxis: { labels: { style: { colors: textColor } } },
-        colors: ['#3b82f6'],
-        markers: { size: 4 },
-        grid: { borderColor: gridColor, padding: { bottom: 40 } },
-        tooltip: { theme, y: { formatter: (v) => v + 's' } },
+        theme: { mode: theme },
+        dataLabels: {
+          enabled: true,
+          textAnchor: 'start',
+          style: {
+            colors: [textColor],
+            fontSize: '10px',
+            fontWeight: 'bold',
+          },
+          offsetX: 5,
+          formatter: (v) => v.toFixed(3) + 's',
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            borderRadius: 4,
+            barHeight: '70%',
+            distributed: true,
+            dataLabels: { position: 'top' },
+          },
+        },
+        xaxis: {
+          categories: allScenarios.map((s) => s.label),
+          labels: {
+            style: { colors: textColor },
+            formatter: (v) => (typeof v === 'number' ? v.toFixed(2) + 's' : v),
+          },
+        },
+        yaxis: {
+          labels: {
+            style: { colors: textColor, fontSize: '10px' },
+            maxWidth: 140,
+            formatter: (v) => (v && v.length > 25 ? v.substring(0, 22) + '...' : v),
+          },
+        },
+        colors: [
+          '#ef4444',
+          '#f97316',
+          '#f59e0b',
+          '#eab308',
+          '#84cc16',
+          '#22c55e',
+          '#10b981',
+          '#06b6d4',
+          '#3b82f6',
+          '#6366f1',
+        ],
+        grid: { borderColor: gridColor },
+        legend: { show: false },
+        tooltip: {
+          theme,
+          shared: true,
+          intersect: false,
+          y: { formatter: (v) => v.toFixed(3) + 's' },
+        },
       }).render();
     }
 
     // 2.5 Top 10 Slowest Steps
-    clear('#feature-time-dist-chart');
+    clear('#slowest-steps-chart');
     const allSteps = [];
     (feature.elements || []).forEach((s) => {
       (s.steps || []).forEach((step) => {
@@ -390,9 +442,9 @@ window.ReportCharts = {
     const slowestSteps = allSteps.sort((a, b) => b.duration - a.duration).slice(0, 10);
 
     const hasSlowSteps = slowestSteps.length > 0;
-    toggleChart('#feature-time-dist-chart', hasSlowSteps);
+    toggleChart('#slowest-steps-chart', hasSlowSteps);
     if (hasSlowSteps) {
-      new ApexCharts(document.querySelector('#feature-time-dist-chart'), {
+      new ApexCharts(document.querySelector('#slowest-steps-chart'), {
         series: [{ name: 'Duration', data: slowestSteps.map((s) => s.duration) }],
         chart: {
           type: 'bar',
@@ -462,28 +514,52 @@ window.ReportCharts = {
       }).render();
     }
 
-    // 3. Scenario Step Time Trend
-    clear('#feature-step-trend-chart');
-    const stepDurations = [];
+    // 3. Step Status Breakdown (Donut)
+    clear('#feature-step-status-chart');
+    const stepStatus = { passed: 0, failed: 0, ambiguous: 0, undefined: 0, pending: 0, skipped: 0 };
     (feature.elements || []).forEach((s) => {
-      s.steps.forEach((step) => {
-        const duration = step.result?.duration || 0;
-        stepDurations.push(duration / 1000000000); // ns to s
+      (s.steps || []).forEach((step) => {
+        const status = step.result?.status;
+        if (status === 'passed') stepStatus.passed++;
+        else if (status === 'failed') stepStatus.failed++;
+        else if (status === 'ambiguous') stepStatus.ambiguous++;
+        else if (status === 'undefined') stepStatus.undefined++;
+        else if (status === 'pending') stepStatus.pending++;
+        else stepStatus.skipped++;
       });
     });
-    const hasStepTrend = stepDurations.some((v) => v > 0);
-    toggleChart('#feature-step-trend-chart', hasStepTrend);
-    if (hasStepTrend) {
-      new ApexCharts(document.querySelector('#feature-step-trend-chart'), {
-        series: [{ name: 'Step duration', data: stepDurations }],
-        chart: { type: 'line', height: 250, toolbar: { show: false }, animations: { enabled: false } },
-        stroke: { curve: 'smooth', width: 2 },
-        xaxis: { labels: { show: false } },
-        yaxis: { labels: { style: { colors: textColor } } },
-        colors: ['#8b5cf6'],
-        markers: { size: 3 },
-        grid: { borderColor: gridColor },
+    const stepStatusSeries = [
+      stepStatus.passed,
+      stepStatus.failed,
+      stepStatus.ambiguous,
+      stepStatus.undefined,
+      stepStatus.pending,
+      stepStatus.skipped,
+    ];
+    const hasStepStatus = stepStatusSeries.some((v) => v > 0);
+    toggleChart('#feature-step-status-chart', hasStepStatus);
+    if (hasStepStatus) {
+      new ApexCharts(document.querySelector('#feature-step-status-chart'), {
+        series: stepStatusSeries,
+        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
+        colors: colors,
         tooltip: { theme },
+        legend: { position: 'bottom', labels: { colors: textColor } },
+        dataLabels: { enabled: false },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '70%',
+              labels: {
+                show: true,
+                total: { show: true, label: 'Steps', color: textColor, fontSize: '12px' },
+                value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
+              },
+            },
+          },
+        },
+        stroke: { width: 0 },
       }).render();
     }
 

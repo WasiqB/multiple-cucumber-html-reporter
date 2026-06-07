@@ -17,9 +17,28 @@
         <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-primary text-base"></i>
     </span>
     {% endif %}
-    {% if feature.app and feature.app != "" %}
-    <span class="flex items-center gap-1.5" title="{{ feature.app }}">
-        <i class="fa-solid fa-cube text-primary text-base"></i>
+    {% if feature.username %}
+    <span class="flex items-center gap-1.5" title="{{ feature.username }}">
+        <i class="fa-solid fa-user text-primary text-base"></i>
+        <span class="text-xs text-foreground font-medium">{{ feature.username }}</span>
+    </span>
+    {% endif %}
+    {% if feature.metadata.nodeVersion %}
+    <span class="flex items-center gap-1.5" title="Node {{ feature.metadata.nodeVersion }}">
+        <i class="fa-brands fa-node-js text-primary text-base"></i>
+        <span class="text-xs text-foreground font-medium">{{ feature.metadata.nodeVersion }}</span>
+    </span>
+    {% endif %}
+    {% if feature.metadata.reportVersion %}
+    <span class="flex items-center gap-1.5" title="Reporter {{ feature.metadata.reportVersion }}">
+        <i class="fa-solid fa-code-branch text-primary text-base"></i>
+        <span class="text-xs text-foreground font-medium">{{ feature.metadata.reportVersion }}</span>
+    </span>
+    {% endif %}
+    {% if feature.metadata.architecture %}
+    <span class="flex items-center gap-1.5" title="{{ feature.metadata.architecture }}">
+        <i class="fa-solid fa-microchip text-primary text-base"></i>
+        <span class="text-xs text-foreground font-medium">{{ feature.metadata.architecture }}</span>
     </span>
     {% endif %}
 
@@ -38,11 +57,17 @@
         <i class="fa-solid fa-computer text-primary text-sm"></i>
     </span>
     {% endif %}
+    {% if feature.app and feature.app != "" %}
+    <span class="flex items-center gap-1.5" title="{{ feature.app }}">
+        <i class="fa-solid fa-cube text-primary text-base"></i>
+    </span>
+    {% endif %}
 
+    <div class="w-full my-2"></div>
     {% if feature.uri and feature.uri != "" %}
-    <span class="flex items-center gap-1.5 min-w-0" title="{{ feature.uri }}">
+    <span class="flex items-center gap-1.5 min-w-0 max-w-full" title="{{ feature.uri }}">
         <i class="fa-solid fa-file-code text-primary text-base shrink-0"></i>
-        <span class="text-xs font-mono text-muted-foreground text-balance max-w-[200px]">{{ feature.uri }}</span>
+        <span class="text-xs font-mono text-muted-foreground truncate">{{ feature.uri }}</span>
     </span>
     {% endif %}
     {% if feature.metadata %}
