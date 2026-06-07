@@ -16,6 +16,8 @@ generate({
       name: 'chrome',
       version: '148',
     },
+    username: 'Wasiq Bhamla',
+    device: 'MacBook Pro 14 inch',
     platform: {
       name: 'osx',
       version: '26.5',

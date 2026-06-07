@@ -3,7 +3,7 @@
   "type": "module",
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "@wdio/cli": "^9.27.2",
     "@wdio/cucumber-framework": "^9.27.2",
     "@wdio/globals": "^9.27.2",

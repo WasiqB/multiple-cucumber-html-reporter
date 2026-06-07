@@ -1,3 +1,4 @@
+import os from 'node:os';
 import { resolve } from 'node:path';
 import find from 'find';
 import fs from 'fs-extra';
@@ -51,10 +52,11 @@ export default function collectJSONS(options: Options): Feature[] {
                   name: 'not known',
                   version: 'not known',
                 },
+                username: os.userInfo().username,
                 device: 'not known',
                 platform: {
-                  name: 'not known',
-                  version: 'not known',
+                  name: os.platform().trim(),
+                  version: os.release().trim(),
                 },
               },
             },

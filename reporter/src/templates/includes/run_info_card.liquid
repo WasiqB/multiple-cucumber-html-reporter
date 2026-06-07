@@ -8,7 +8,7 @@
                     <i class="fa-solid fa-rocket text-sm"></i>
                 </div>
                 <div class="truncate">
-                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Project & Release</p>
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Project &amp; Release</p>
                     <p class="text-sm font-bold text-foreground truncate">{{ data.report.project }} {% if data.report.release %}<span class="text-xs font-medium text-muted-foreground ml-1">v{{ data.report.release }}</span>{% endif %}</p>
                 </div>
             </div>
@@ -41,6 +41,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Username -->
+            {% if data.report.username %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-user text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Username</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.username }}</p>
+                </div>
+            </div>
+            {% endif %}
 
             <!-- Custom User Metadata -->
             {% if data.report.metadata %}

@@ -37,7 +37,7 @@
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
     "@release-it-plugins/lerna-changelog": "^8.0.1",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
     "lint-staged": "^17.0.7",

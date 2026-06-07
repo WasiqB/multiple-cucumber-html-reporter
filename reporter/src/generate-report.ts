@@ -1,3 +1,4 @@
+import os from 'node:os';
 import path, { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
@@ -236,6 +237,7 @@ async function generateReport(options: Options) {
             if (label.includes('os') || label.includes('platform')) feature.os = value;
             if (label.includes('browser')) feature.browser = value;
             if (label.includes('app')) feature.app = value;
+            if (label.includes('username')) feature.username = value;
           });
         } else {
           if (feature.metadata.device) feature.device = feature.metadata.device;
@@ -248,6 +250,9 @@ async function generateReport(options: Options) {
           if (feature.metadata.app) {
             feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
           }
+          if (feature.metadata.username) {
+            feature.username = feature.metadata.username;
+          }
         }
       }
 
@@ -259,24 +264,6 @@ async function generateReport(options: Options) {
           (feature.browser || '').toLowerCase(),
           (feature.app || '').toLowerCase(),
         ];
-        // if (feature.metadata && Array.isArray(feature.metadata)) {
-        //   feature.metadata.forEach((item: any) => {
-        //     platformCheckValues.push((item.name || '').toLowerCase());
-        //     platformCheckValues.push((item.label || '').toLowerCase());
-        //     platformCheckValues.push((item.value || '').toLowerCase());
-        //   });
-        // } else if (feature.metadata) {
-        //   Object.entries(feature.metadata).forEach(([key, value]) => {
-        //     platformCheckValues.push(key.toLowerCase());
-        //     if (typeof value === 'string') {
-        //       platformCheckValues.push(value.toLowerCase());
-        //     } else if (value && typeof value === 'object') {
-        //       Object.values(value).forEach((nestedValue) => {
-        //         if (typeof nestedValue === 'string') platformCheckValues.push(nestedValue.toLowerCase());
-        //       });
-        //     }
-        //   });
-        // }
         const platformStr = platformCheckValues.join(' ');
         if (platformStr.includes('browserstack')) {
           feature.executionPlatform = 'browserstack';
@@ -642,6 +629,10 @@ async function generateReport(options: Options) {
       executionEndTime: formatDuration(suite.totalTime), // Total duration
       executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
       metadata: options.customData?.data,
+      username:
+        options.metadata && !Array.isArray(options.metadata)
+          ? (options.metadata.username ?? os.userInfo().username)
+          : os.userInfo().username,
       useCDN: suite.useCDN,
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
@@ -687,6 +678,10 @@ async function generateReport(options: Options) {
         executionEndTime: formatDuration(suite.totalTime),
         executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
         metadata: options.customData?.data,
+        username:
+          options.metadata && !Array.isArray(options.metadata)
+            ? (options.metadata.username ?? os.userInfo().username)
+            : os.userInfo().username,
         useCDN: suite.useCDN,
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,
