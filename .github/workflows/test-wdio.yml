@@ -59,7 +59,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: wdio-report
+          name: wdio-report-formatter
           if-no-files-found: error
           path: |
             examples/wdio/reports
@@ -108,7 +108,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: wdio-report
+          name: wdio-report-reporter
           if-no-files-found: error
           path: |
             examples/wdio/reports
