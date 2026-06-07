@@ -36,6 +36,7 @@ const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
 
 const projectRoot = path.resolve(__dirname);
 const templatesDir = path.join(projectRoot, 'templates');
+const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
 
 async function generateReport(options: Options) {
   if (!options) {
@@ -150,6 +151,20 @@ async function generateReport(options: Options) {
    */
   function _calculatePercentage(amount: number, total: number): string {
     return ((amount / total) * 100).toFixed(2);
+  }
+
+  function getReportRuntimeMetadata(suite: Suite) {
+    const featureMetadata = suite.features.find((feature) => feature.metadata && !Array.isArray(feature.metadata))
+      ?.metadata as Exclude<Metadata, Array<{ name: string; value: string }>> | undefined;
+    const optionMetadata = options.metadata && !Array.isArray(options.metadata) ? options.metadata : undefined;
+    const metadata = optionMetadata || featureMetadata;
+
+    return {
+      username: metadata?.username ?? os.userInfo().username,
+      nodeVersion: metadata?.nodeVersion ?? process.version,
+      reportVersion: metadata?.reportVersion ?? packageJson.version,
+      architecture: metadata?.architecture ?? os.arch(),
+    };
   }
 
   if (saveCollectedJSON) {
@@ -616,6 +631,7 @@ async function generateReport(options: Options) {
    */
   async function _createFeaturesOverviewIndexPage(suite: Suite) {
     const featuresOverviewIndex = resolve(reportPath, INDEX_HTML);
+    const runtimeMetadata = getReportRuntimeMetadata(suite);
 
     const report = {
       reportName: suite.reportName,
@@ -629,10 +645,10 @@ async function generateReport(options: Options) {
       executionEndTime: formatDuration(suite.totalTime), // Total duration
       executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
       metadata: options.customData?.data,
-      username:
-        options.metadata && !Array.isArray(options.metadata)
-          ? (options.metadata.username ?? os.userInfo().username)
-          : os.userInfo().username,
+      username: runtimeMetadata.username,
+      nodeVersion: runtimeMetadata.nodeVersion,
+      reportVersion: runtimeMetadata.reportVersion,
+      architecture: runtimeMetadata.architecture,
       useCDN: suite.useCDN,
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
@@ -662,6 +678,8 @@ async function generateReport(options: Options) {
    * @private
    */
   async function _createFeatureIndexPages(suite: Suite) {
+    const runtimeMetadata = getReportRuntimeMetadata(suite);
+
     for (const feature of suite.features) {
       const featurePage = join(reportPath, FEATURE_FOLDER, `${feature.id}.html`);
 
@@ -678,10 +696,10 @@ async function generateReport(options: Options) {
         executionEndTime: formatDuration(suite.totalTime),
         executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
         metadata: options.customData?.data,
-        username:
-          options.metadata && !Array.isArray(options.metadata)
-            ? (options.metadata.username ?? os.userInfo().username)
-            : os.userInfo().username,
+        username: runtimeMetadata.username,
+        nodeVersion: runtimeMetadata.nodeVersion,
+        reportVersion: runtimeMetadata.reportVersion,
+        architecture: runtimeMetadata.architecture,
         useCDN: suite.useCDN,
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,

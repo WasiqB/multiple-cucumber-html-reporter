@@ -1,18 +1,37 @@
+import os from 'node:os';
 import path from 'node:path';
+import fs from 'fs-extra';
 import jsonFile from 'jsonfile';
 import collectJSONS from '../../collect-jsons.js';
 
 const reportPath = path.resolve(process.cwd(), './.tmp/test');
+const packageJson = fs.readJsonSync(path.resolve(process.cwd(), './package.json'));
 
 describe('collect-jsons.js', () => {
   describe('Happy flows', () => {
     it('should return an output from the merged found json files', () => {
-      expect(
-        collectJSONS({
-          jsonDir: './src/test/unit/data/json',
-          reportPath: reportPath,
+      const collectedJSONs = collectJSONS({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: reportPath,
+      });
+
+      expect(collectedJSONs.length).toEqual(
+        jsonFile.readFileSync(path.resolve(process.cwd(), './src/test/unit/data/output/merged-output.json')).length,
+      );
+      expect(collectedJSONs[0].metadata).toEqual(
+        jasmine.objectContaining({
+          username: os.userInfo().username,
+          device: os.hostname(),
+          platform: {
+            name: os.type().trim(),
+            version: os.release().trim(),
+          },
+          nodeVersion: process.version,
+          reportVersion: packageJson.version,
+          hostname: os.hostname(),
+          architecture: os.arch(),
         }),
-      ).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './src/test/unit/data/output/merged-output.json')));
+      );
     });
 
     it('should return an output from the merged found json files and add the provided metadata', () => {
@@ -32,19 +51,70 @@ describe('collect-jsons.js', () => {
             },
           },
         }),
-      ).toEqual(
-        jsonFile.readFileSync(path.resolve(process.cwd(), './src/test/unit/data/output/provided-metadata.json')),
+      ).toEqual([
+        jasmine.objectContaining({
+          metadata: jasmine.objectContaining({
+            browser: {
+              name: 'chrome',
+              version: '1',
+            },
+            device: 'Local test machine',
+            platform: {
+              name: 'Ubuntu',
+              version: '16.04',
+            },
+            username: os.userInfo().username,
+            nodeVersion: process.version,
+            reportVersion: packageJson.version,
+            hostname: os.hostname(),
+            architecture: os.arch(),
+          }),
+        }),
+      ]);
+    });
+
+    it('should fill platform and username when only browser metadata is provided', () => {
+      const [collectedJSON] = collectJSONS({
+        jsonDir: './src/test/unit/data/collect-json',
+        reportPath: reportPath,
+        metadata: {
+          browser: {
+            name: 'firefox',
+            version: 'latest',
+          },
+        },
+      });
+
+      expect(collectedJSON.metadata).toEqual(
+        jasmine.objectContaining({
+          browser: {
+            name: 'firefox',
+            version: 'latest',
+          },
+          username: os.userInfo().username,
+          device: os.hostname(),
+          platform: {
+            name: os.type().trim(),
+            version: os.release().trim(),
+          },
+          nodeVersion: process.version,
+          reportVersion: packageJson.version,
+          hostname: os.hostname(),
+          architecture: os.arch(),
+        }),
       );
     });
 
     it('should save an output from the merged found json files', () => {
-      expect(
-        collectJSONS({
-          jsonDir: './src/test/unit/data/json',
-          reportPath: reportPath,
-          saveCollectedJSON: true,
-        }),
-      ).toEqual(jsonFile.readFileSync(path.resolve(process.cwd(), './src/test/unit/data/output/merged-output.json')));
+      const collectedJSONs = collectJSONS({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: reportPath,
+        saveCollectedJSON: true,
+      });
+
+      expect(collectedJSONs.length).toEqual(
+        jsonFile.readFileSync(path.resolve(process.cwd(), './src/test/unit/data/output/merged-output.json')).length,
+      );
     });
 
     it('should collect the creation date of json files', () => {

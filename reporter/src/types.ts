@@ -14,6 +14,10 @@ export type Metadata =
         version: string;
       };
       username?: string;
+      nodeVersion?: string;
+      reportVersion?: string;
+      hostname?: string;
+      architecture?: string;
       [key: string]: any;
     }
   | Array<{ name: string; value: string }>;

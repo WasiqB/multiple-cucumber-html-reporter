@@ -55,6 +55,45 @@
             </div>
             {% endif %}
 
+            <!-- Node Version -->
+            {% if data.report.nodeVersion %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-brands fa-node-js text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Node Version</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.nodeVersion }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Reporter Version -->
+            {% if data.report.reportVersion %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-code-branch text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Report Version</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.reportVersion }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Machine Architecture -->
+            {% if data.report.architecture %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-microchip text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Machine Arch</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.architecture }}</p>
+                </div>
+            </div>
+            {% endif %}
+
             <!-- Custom User Metadata -->
             {% if data.report.metadata %}
                 {% for item in data.report.metadata %}

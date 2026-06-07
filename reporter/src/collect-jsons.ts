@@ -1,5 +1,6 @@
 import os from 'node:os';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import find from 'find';
 import fs from 'fs-extra';
 import jsonfile from 'jsonfile';
@@ -9,6 +10,9 @@ import type { Feature, Options, Step } from './types.js';
 const { fileSync } = find;
 const { readFileSync, statSync, ensureDirSync } = fs;
 const { writeFileSync } = jsonfile;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
 
 /**
  * Formats input date to yyyy/MM/dd HH:mm:ss
@@ -20,6 +24,46 @@ function formatToLocalIso(date: Date | string): string {
   return typeof date === 'string'
     ? DateTime.fromISO(date).toFormat('yyyy/MM/dd HH:mm:ss')
     : DateTime.fromJSDate(date).toFormat('yyyy/MM/dd HH:mm:ss');
+}
+
+function getDefaultMetadata() {
+  return {
+    browser: {
+      name: 'not known',
+      version: 'not known',
+    },
+    username: os.userInfo().username,
+    device: os.hostname(),
+    platform: {
+      name: os.type().trim(),
+      version: os.release().trim(),
+    },
+    nodeVersion: process.version,
+    reportVersion: packageJson.version,
+    hostname: os.hostname(),
+    architecture: os.arch(),
+  };
+}
+
+function enrichMetadata(metadata: Feature['metadata'] | undefined): Feature['metadata'] {
+  if (Array.isArray(metadata)) {
+    return metadata;
+  }
+
+  const defaultMetadata = getDefaultMetadata();
+
+  return {
+    ...defaultMetadata,
+    ...metadata,
+    browser: {
+      ...defaultMetadata.browser,
+      ...metadata?.browser,
+    },
+    platform: {
+      ...defaultMetadata.platform,
+      ...metadata?.platform,
+    },
+  };
 }
 
 export default function collectJSONS(options: Options): Feature[] {
@@ -42,27 +86,7 @@ export default function collectJSONS(options: Options): Feature[] {
       const features: Feature[] = JSON.parse(data);
 
       features.forEach((json) => {
-        if (options.metadata && !json.metadata) {
-          json.metadata = options.metadata;
-        } else {
-          json = Object.assign(
-            {
-              metadata: {
-                browser: {
-                  name: 'not known',
-                  version: 'not known',
-                },
-                username: os.userInfo().username,
-                device: 'not known',
-                platform: {
-                  name: os.platform().trim(),
-                  version: os.release().trim(),
-                },
-              },
-            },
-            json,
-          );
-        }
+        json.metadata = enrichMetadata(json.metadata || options.metadata);
 
         if (json.metadata && options.displayReportTime && reportTime) {
           if (!Array.isArray(json.metadata)) {
