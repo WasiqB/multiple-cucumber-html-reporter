@@ -54,6 +54,7 @@
             "embeddings": [
               {
                 "data": "eyJzb21lIjoianNvbiJ9",
+                "name": "API Response Payload",
                 "media": {
                   "type": "application/json"
                 }
@@ -66,6 +67,7 @@
               },
               {
                 "data": "Some plain text message",
+                "name": "Browser Console",
                 "media": {
                   "type": "text/plain"
                 }

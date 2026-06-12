@@ -79,12 +79,19 @@ export interface Step {
     location: string;
   };
   embeddings?: any[];
-  attachments?: any[];
+  attachments?: Array<{ data: string; type: string; name?: string }>;
   json?: any[];
   html?: any[];
   text?: string[];
   image?: string[];
   video?: string[];
+  // Custom names for each attachment, lined up index-for-index with the arrays
+  // above. A missing entry just means "use the default label" for that one.
+  jsonNames?: Array<string | undefined>;
+  htmlNames?: Array<string | undefined>;
+  textNames?: Array<string | undefined>;
+  imageNames?: Array<string | undefined>;
+  videoNames?: Array<string | undefined>;
   id?: string;
   restWireData?: string;
   doc_string?: {

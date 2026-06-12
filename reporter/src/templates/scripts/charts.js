@@ -22,8 +22,40 @@ window.ReportCharts = {
     };
   },
 
+  // Cramming "9 (35%)" onto a thin ring gets ugly fast, so we split it up: the
+  // slice shows the percentage, the legend carries the count ("Passed: 9"), and
+  // the tooltip has both ("9 (35.0%)").
+  donutPercentOptions: (theme, textColor) => ({
+    dataLabels: {
+      enabled: true,
+      // A tiny slice should still say something, not round down to a fake "0%"
+      formatter: (val) => (val > 0 && val < 1 ? '<1%' : `${Math.round(val)}%`),
+      style: { fontSize: '11px', fontWeight: '600' },
+      dropShadow: { enabled: true, blur: 1, opacity: 0.45 },
+    },
+    legend: {
+      position: 'bottom',
+      labels: { colors: textColor },
+      formatter: (name, opts) => {
+        const count = opts.w.globals.series[opts.seriesIndex];
+        return count === undefined ? name : `${name}: ${count}`;
+      },
+    },
+    tooltip: {
+      theme,
+      y: {
+        formatter: (val, opts) => {
+          const total = opts.w.globals.series.reduce((a, b) => a + b, 0);
+          const pct = total ? ((val / total) * 100).toFixed(1) : '0.0';
+          return `${val} (${pct}%)`;
+        },
+      },
+    },
+  }),
+
   initDashboard: (data) => {
     const { textColor, gridColor, theme, colors } = window.ReportCharts.getCommonOptions();
+    const donutOpts = window.ReportCharts.donutPercentOptions(theme, textColor);
     const clear = window.ReportUtils.clear;
 
     const toggleChart = (selector, hasData) => {
@@ -55,13 +87,12 @@ window.ReportCharts = {
         labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
-        tooltip: { theme },
-        legend: { position: 'bottom', labels: { colors: textColor } },
-        dataLabels: { enabled: false },
+        ...donutOpts,
         plotOptions: {
           pie: {
+            dataLabels: { offset: 0, minAngleToShowLabel: 0 },
             donut: {
-              size: '70%',
+              size: '66%',
               labels: {
                 show: true,
                 total: { show: true, label: 'Features', color: textColor, fontSize: '12px' },
@@ -92,13 +123,12 @@ window.ReportCharts = {
         labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
-        tooltip: { theme },
-        legend: { position: 'bottom', labels: { colors: textColor } },
-        dataLabels: { enabled: false },
+        ...donutOpts,
         plotOptions: {
           pie: {
+            dataLabels: { offset: 0, minAngleToShowLabel: 0 },
             donut: {
-              size: '70%',
+              size: '66%',
               labels: {
                 show: true,
                 total: { show: true, label: 'Scenarios', color: textColor, fontSize: '12px' },
@@ -222,13 +252,12 @@ window.ReportCharts = {
         labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
-        tooltip: { theme },
-        legend: { position: 'bottom', labels: { colors: textColor } },
-        dataLabels: { enabled: false },
+        ...donutOpts,
         plotOptions: {
           pie: {
+            dataLabels: { offset: 0, minAngleToShowLabel: 0 },
             donut: {
-              size: '70%',
+              size: '66%',
               labels: {
                 show: true,
                 total: { show: true, label: 'Steps', color: textColor, fontSize: '12px' },
@@ -298,6 +327,7 @@ window.ReportCharts = {
 
   initFeature: (feature) => {
     const { textColor, gridColor, theme, colors } = window.ReportCharts.getCommonOptions();
+    const donutOpts = window.ReportCharts.donutPercentOptions(theme, textColor);
     const clear = window.ReportUtils.clear;
     const isDark = window.ReportUtils.isDark();
 
@@ -330,12 +360,12 @@ window.ReportCharts = {
         labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false } },
         colors: colors,
-        tooltip: { theme },
-        legend: { position: 'bottom', labels: { colors: textColor } },
+        ...donutOpts,
         plotOptions: {
           pie: {
+            dataLabels: { offset: 0, minAngleToShowLabel: 0 },
             donut: {
-              size: '70%',
+              size: '66%',
               labels: {
                 show: true,
                 total: { show: true, label: 'Total', color: textColor, fontSize: '12px' },
@@ -544,13 +574,12 @@ window.ReportCharts = {
         labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
-        tooltip: { theme },
-        legend: { position: 'bottom', labels: { colors: textColor } },
-        dataLabels: { enabled: false },
+        ...donutOpts,
         plotOptions: {
           pie: {
+            dataLabels: { offset: 0, minAngleToShowLabel: 0 },
             donut: {
-              size: '70%',
+              size: '66%',
               labels: {
                 show: true,
                 total: { show: true, label: 'Steps', color: textColor, fontSize: '12px' },

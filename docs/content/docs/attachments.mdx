@@ -196,6 +196,44 @@ When('I enter username {string} and password {string}', async function (username
 
 Check the specific framework you are using to attach these results directly to the Cucumber JSON file.
 
+## Custom Attachment Names
+
+By default every attachment is labelled generically in the report, e.g. `Log 1`, `Screenshot 1`, `JSON 1` or `Attachment 1`. You can override these with a meaningful, human-readable name to make large reports easier to scan.
+
+To do this, attach your data with a custom name. In Cucumber.js you can pass an options object with a `fileName` to the `attach` method:
+
+```typescript
+When('I call the login API', async function () {
+  // The name shows up as the attachment label in the report
+  this.attach(JSON.stringify(response), { mediaType: 'application/json', fileName: 'API Response Payload' }); // [!code highlight]
+  this.attach(consoleLogs, { mediaType: 'text/plain', fileName: 'Browser Console' }); // [!code highlight]
+});
+```
+
+The reporter picks up the custom name from the embedding's `name` or `fileName` field, either at the top level or nested under `media`. If no name is provided, it falls back to the default label (`Log 1`, `Screenshot 1`, and so on).
+
+If your tooling writes the Cucumber JSON directly, just add a `name` (or `fileName`) next to the embedding's `data`:
+
+```json
+{
+  "embeddings": [
+    {
+      "data": "eyJzdGF0dXMiOiJvayJ9",
+      "name": "API Response Payload",   // [!code highlight]
+      "media": { "type": "application/json" }
+    },
+    {
+      "data": "Q29uc29sZSBvdXRwdXQ=",
+      "media": { "type": "text/plain", "fileName": "Browser Console" }   // [!code highlight]
+    }
+  ]
+}
+```
+
+<Callout title="Tip" type="idea">
+Custom names work for every attachment type — screenshots, logs, JSON, video and other files. Attachments without a name keep the default numbered labels, so you can mix named and unnamed attachments freely.
+</Callout>
+
 ## Attach Video
 
 You can attach video recordings to your test results using the `attach` method. Below are the most common ways to use it:
