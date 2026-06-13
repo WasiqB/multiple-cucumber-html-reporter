@@ -22,36 +22,52 @@ window.ReportCharts = {
     };
   },
 
-  // Cramming "9 (35%)" onto a thin ring gets ugly fast, so we split it up: the
-  // slice shows the percentage, the legend carries the count ("Passed: 9"), and
-  // the tooltip has both ("9 (35.0%)").
-  donutPercentOptions: (theme, textColor) => ({
-    dataLabels: {
-      enabled: true,
-      // A tiny slice should still say something, not round down to a fake "0%"
-      formatter: (val) => (val > 0 && val < 1 ? '<1%' : `${Math.round(val)}%`),
-      style: { fontSize: '11px', fontWeight: '600' },
-      dropShadow: { enabled: true, blur: 1, opacity: 0.45 },
-    },
-    legend: {
-      position: 'bottom',
-      labels: { colors: textColor },
-      formatter: (name, opts) => {
-        const count = opts.w.globals.series[opts.seriesIndex];
-        return count === undefined ? name : `${name}: ${count}`;
+  // Percentage labels are opt-in (reporter option `displayChartPercentages`).
+  // When the option is off we keep the original plain donut: no slice labels,
+  // a simple legend and a count-only tooltip.
+  //
+  // When it is on we split things up, because cramming "9 (35%)" onto a thin
+  // ring gets ugly fast: the slice shows the percentage, the legend carries the
+  // count ("Passed: 9"), and the tooltip has both ("9 (35.0%)").
+  donutPercentOptions: (theme, textColor) => {
+    const showPercentages = !!(window.ReportConfig && window.ReportConfig.displayChartPercentages);
+
+    if (!showPercentages) {
+      return {
+        dataLabels: { enabled: false },
+        legend: { position: 'bottom', labels: { colors: textColor } },
+        tooltip: { theme },
+      };
+    }
+
+    return {
+      dataLabels: {
+        enabled: true,
+        // A tiny slice should still say something, not round down to a fake "0%"
+        formatter: (val) => (val > 0 && val < 1 ? '<1%' : `${Math.round(val)}%`),
+        style: { fontSize: '11px', fontWeight: '600' },
+        dropShadow: { enabled: true, blur: 1, opacity: 0.45 },
       },
-    },
-    tooltip: {
-      theme,
-      y: {
-        formatter: (val, opts) => {
-          const total = opts.w.globals.series.reduce((a, b) => a + b, 0);
-          const pct = total ? ((val / total) * 100).toFixed(1) : '0.0';
-          return `${val} (${pct}%)`;
+      legend: {
+        position: 'bottom',
+        labels: { colors: textColor },
+        formatter: (name, opts) => {
+          const count = opts.w.globals.series[opts.seriesIndex];
+          return count === undefined ? name : `${name}: ${count}`;
         },
       },
-    },
-  }),
+      tooltip: {
+        theme,
+        y: {
+          formatter: (val, opts) => {
+            const total = opts.w.globals.series.reduce((a, b) => a + b, 0);
+            const pct = total ? ((val / total) * 100).toFixed(1) : '0.0';
+            return `${val} (${pct}%)`;
+          },
+        },
+      },
+    };
+  },
 
   initDashboard: (data) => {
     const { textColor, gridColor, theme, colors } = window.ReportCharts.getCommonOptions();

@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import os from 'node:os';
 import dayjs from 'dayjs';
@@ -324,6 +324,12 @@ export const config: WebdriverIO.Config = {
    */
   onComplete: async (_exitCode, _config, _capabilities, _results) => {
     endTime = Date.now();
+
+    // Ship a curated sample JSON with named + unnamed attachments alongside the
+    // real WDIO run so the generated report demonstrates custom attachment names.
+    mkdirSync('reports/json/', { recursive: true });
+    copyFileSync('sample-data/custom-attachment-names.json', 'reports/json/custom-attachment-names.json');
+
     await generate({
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',

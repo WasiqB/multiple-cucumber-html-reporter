@@ -62,6 +62,7 @@ async function generateReport(options: Options) {
   const saveCollectedJSON = !!options.saveCollectedJSON;
   const displayDuration = !!options.displayDuration;
   const displayReportTime = !!options.displayReportTime;
+  const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
@@ -84,6 +85,7 @@ async function generateReport(options: Options) {
     hideMetadata,
     displayReportTime,
     displayDuration,
+    displayChartPercentages,
     durationAggregation,
     durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
     browser: 0,
@@ -664,6 +666,7 @@ async function generateReport(options: Options) {
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
       displayDuration: suite.displayDuration,
+      displayChartPercentages: suite.displayChartPercentages,
       plainDescription,
       customStyle: suite.customStyle || '',
     };

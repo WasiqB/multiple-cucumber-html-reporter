@@ -162,11 +162,12 @@ describe('generate-report.js', () => {
       expect(featureHtml).toContain('JSON 2');
     });
 
-    it('should render donut charts that combine the count with the percentage on labels and tooltips', async () => {
+    it('should render donut charts that combine the count with the percentage when displayChartPercentages is on', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
         jsonDir: './src/test/unit/data/json',
         reportPath: REPORT_PATH,
+        displayChartPercentages: true,
       });
 
       // First, make sure the dashboard actually ships the script and the donut divs
@@ -174,14 +175,19 @@ describe('generate-report.js', () => {
       expect(indexHtml).toContain('features-chart');
       expect(indexHtml).toContain('scenarios-chart');
       expect(indexHtml).toContain('steps-status-chart');
+      // The opt-in flag should be wired through to the page config
+      expect(indexHtml).toContain('displayChartPercentages: true');
 
       // ApexCharts hides labels on slices under 10° by default, so double-check we turned that off
       const chartsSrc = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'scripts', 'charts.js'), 'utf8');
       expect(chartsSrc).toContain('minAngleToShowLabel: 0');
 
       // charts.js is browser code that hangs everything off window, so run it in
-      // a throwaway VM context and poke at the real formatters it sets up.
-      const sandbox: { window: { ReportCharts?: any } } = { window: {} };
+      // a throwaway VM context and poke at the real formatters it sets up. The
+      // option is read from window.ReportConfig, so opt in before asking.
+      const sandbox: { window: { ReportConfig?: any; ReportCharts?: any } } = {
+        window: { ReportConfig: { displayChartPercentages: true } },
+      };
       vm.createContext(sandbox);
       vm.runInContext(chartsSrc, sandbox);
 
@@ -201,6 +207,66 @@ describe('generate-report.js', () => {
       // Tooltip gets the count from ApexCharts; we add the percentage
       expect(opts.tooltip.y.formatter(3, ctx)).toEqual('3 (75.0%)');
     });
+
+    it('should keep donut charts plain (no slice percentages) by default', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+      });
+
+      // The page config should report the feature as off
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).toContain('displayChartPercentages: false');
+
+      const chartsSrc = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'scripts', 'charts.js'), 'utf8');
+
+      // No ReportConfig (or the flag off) means slice labels stay disabled and the
+      // tooltip is left to ApexCharts' default count-only rendering.
+      const sandbox: { window: { ReportConfig?: any; ReportCharts?: any } } = { window: {} };
+      vm.createContext(sandbox);
+      vm.runInContext(chartsSrc, sandbox);
+
+      const opts = sandbox.window.ReportCharts.donutPercentOptions('light', '#000');
+      expect(opts.dataLabels.enabled).toBeFalse();
+      expect(opts.tooltip.y).toBeUndefined();
+      expect(opts.legend.formatter).toBeUndefined();
+    });
+
+    // The example projects ship a curated sample JSON (named + unnamed attachments)
+    // that their report step copies into the jsonDir, since the frameworks' own
+    // Cucumber JSON formatters drop the attachment name/fileName. Guard those files
+    // so a typo in one can't silently ship a sample that renders nothing.
+    const sampleExamples = [
+      { fw: 'cypress', id: 'custom-attachment-names-cypress', namedAttachment: 'Browser Console' },
+      { fw: 'playwright', id: 'custom-attachment-names-playwright', namedAttachment: 'Navigation Log' },
+      { fw: 'wdio', id: 'custom-attachment-names-wdio', namedAttachment: 'Browser Console' },
+    ];
+
+    for (const { fw, id, namedAttachment } of sampleExamples) {
+      it(`should render the ${fw} example's sample attachment names (and fall back for unnamed ones)`, async () => {
+        fs.removeSync(REPORT_PATH);
+        const sampleDir = path.join(__dirname, '../../../../examples', fw, 'sample-data');
+
+        await multiCucumberHTMLReporter.generate({
+          jsonDir: sampleDir,
+          reportPath: REPORT_PATH,
+          staticFilePath: true, // keep the feature id (and thus the html filename) deterministic
+        });
+
+        const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', `${id}.html`), 'utf8');
+
+        // The custom names should be used as labels...
+        expect(featureHtml).toContain(namedAttachment);
+        expect(featureHtml).toContain('Login Request Payload');
+        expect(featureHtml).toContain('Login Screenshot');
+        expect(featureHtml).toContain('Rendered Confirmation');
+
+        // ...while the unnamed attachments keep the default numbered labels.
+        expect(featureHtml).toContain('JSON 2');
+        expect(featureHtml).toContain('Screenshot 2');
+      });
+    }
 
     it('should calculate feature duration with wall clock when durationAggregation is wallClock', async () => {
       fs.removeSync(REPORT_PATH);

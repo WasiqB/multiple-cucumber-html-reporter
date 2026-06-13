@@ -40,6 +40,7 @@ export interface Options {
   saveCollectedJSON?: boolean;
   displayDuration?: boolean;
   displayReportTime?: boolean;
+  displayChartPercentages?: boolean;
   durationInMS?: boolean;
   durationAggregation?: 'wallClock' | 'sum';
   hideMetadata?: boolean;
@@ -178,6 +179,7 @@ export interface Suite {
   hideMetadata: boolean;
   displayReportTime: boolean;
   displayDuration: boolean;
+  displayChartPercentages: boolean;
   durationAggregation: 'wallClock' | 'sum';
   durationColumnTitle: string;
   browser: number;

@@ -147,6 +147,11 @@
 </div>
 
 <script>
+    // Report-wide UI config (opt-in features toggled from the reporter options)
+    window.ReportConfig = Object.assign({}, window.ReportConfig, {
+        displayChartPercentages: {{ data.report.displayChartPercentages | json }}
+    });
+
     // Embedded data for charts
     const featureData = {{ data.feature | json }};
 </script>
