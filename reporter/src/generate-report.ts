@@ -718,6 +718,7 @@ async function generateReport(options: Options) {
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,
         displayDuration: suite.displayDuration,
+        displayChartPercentages: suite.displayChartPercentages,
         plainDescription,
         customStyle: suite.customStyle || '',
       };

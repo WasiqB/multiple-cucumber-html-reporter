@@ -168,6 +168,7 @@ describe('generate-report.js', () => {
         jsonDir: './src/test/unit/data/json',
         reportPath: REPORT_PATH,
         displayChartPercentages: true,
+        saveCollectedJSON: true,
       });
 
       // First, make sure the dashboard actually ships the script and the donut divs
@@ -177,6 +178,18 @@ describe('generate-report.js', () => {
       expect(indexHtml).toContain('steps-status-chart');
       // The opt-in flag should be wired through to the page config
       expect(indexHtml).toContain('displayChartPercentages: true');
+
+      // The feature page must wire the flag through too. If it isn't passed, the
+      // liquid `json` filter renders an empty value ("displayChartPercentages:")
+      // which is a syntax error that kills the whole inline script - and with it
+      // the feature data the charts need. Guard against that regression here.
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      const featureId = enriched.features[0].id;
+      const featureHtml = fs.readFileSync(
+        path.join(process.cwd(), REPORT_PATH, 'features', `${featureId}.html`),
+        'utf8',
+      );
+      expect(featureHtml).toContain('displayChartPercentages: true');
 
       // ApexCharts hides labels on slices under 10° by default, so double-check we turned that off
       const chartsSrc = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'scripts', 'charts.js'), 'utf8');
