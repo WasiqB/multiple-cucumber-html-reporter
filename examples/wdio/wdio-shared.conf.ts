@@ -333,6 +333,7 @@ export const config: WebdriverIO.Config = {
       displayReportTime: true,
       durationInMS: false,
       displayDuration: true,
+      displayChartPercentages: true,
       pageTitle: 'My WDIO Typescript Sample',
       reportName: 'Cucumber JS Report',
       metadata: {
