@@ -233,41 +233,6 @@ describe('generate-report.js', () => {
       expect(opts.legend.formatter).toBeUndefined();
     });
 
-    // The example projects ship a curated sample JSON (named + unnamed attachments)
-    // that their report step copies into the jsonDir, since the frameworks' own
-    // Cucumber JSON formatters drop the attachment name/fileName. Guard those files
-    // so a typo in one can't silently ship a sample that renders nothing.
-    const sampleExamples = [
-      { fw: 'cypress', id: 'custom-attachment-names-cypress', namedAttachment: 'Browser Console' },
-      { fw: 'playwright', id: 'custom-attachment-names-playwright', namedAttachment: 'Navigation Log' },
-      { fw: 'wdio', id: 'custom-attachment-names-wdio', namedAttachment: 'Browser Console' },
-    ];
-
-    for (const { fw, id, namedAttachment } of sampleExamples) {
-      it(`should render the ${fw} example's sample attachment names (and fall back for unnamed ones)`, async () => {
-        fs.removeSync(REPORT_PATH);
-        const sampleDir = path.join(__dirname, '../../../../examples', fw, 'sample-data');
-
-        await multiCucumberHTMLReporter.generate({
-          jsonDir: sampleDir,
-          reportPath: REPORT_PATH,
-          staticFilePath: true, // keep the feature id (and thus the html filename) deterministic
-        });
-
-        const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', `${id}.html`), 'utf8');
-
-        // The custom names should be used as labels...
-        expect(featureHtml).toContain(namedAttachment);
-        expect(featureHtml).toContain('Login Request Payload');
-        expect(featureHtml).toContain('Login Screenshot');
-        expect(featureHtml).toContain('Rendered Confirmation');
-
-        // ...while the unnamed attachments keep the default numbered labels.
-        expect(featureHtml).toContain('JSON 2');
-        expect(featureHtml).toContain('Screenshot 2');
-      });
-    }
-
     it('should calculate feature duration with wall clock when durationAggregation is wallClock', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({

@@ -1,15 +1,7 @@
-import { copyFileSync, mkdirSync } from 'node:fs';
 import { generate } from 'multiple-cucumber-html-reporter';
 
-const JSON_DIR = 'reports/';
-
-// Ship a curated sample JSON with named + unnamed attachments alongside the real
-// Playwright run so the generated report demonstrates custom attachment names.
-mkdirSync(JSON_DIR, { recursive: true });
-copyFileSync('sample-data/custom-attachment-names.json', `${JSON_DIR}custom-attachment-names.json`);
-
 generate({
-  jsonDir: JSON_DIR,
+  jsonDir: 'reports/',
   reportPath: 'reports/report/',
   useCDN: false,
   openReportInBrowser: true,

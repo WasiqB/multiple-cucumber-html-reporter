@@ -14,7 +14,7 @@ import {
  * Global setup before each scenario tagged with @saucedemo.
  */
 Before({ tags: '@saucedemo' }, (scenario) => {
-  attach(`Starting scenario: ${scenario.pickle.name}`);
+  attach(`Starting scenario: ${scenario.pickle.name}`, { fileName: 'Scenario Name' });
 });
 
 /**

@@ -1,13 +1,6 @@
-import { copyFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
-
-const JSON_DIR = './.run/reports/json/';
-
-// Ship a curated sample JSON with named + unnamed attachments alongside the real
-// Cypress run so the generated report demonstrates custom attachment names.
-mkdirSync(JSON_DIR, { recursive: true });
-copyFileSync('./sample-data/custom-attachment-names.json', `${JSON_DIR}custom-attachment-names.json`);
 
 const data = readFileSync('./.run/results.json', {
   encoding: 'utf8',
@@ -33,7 +26,7 @@ const mapOs = (os: string) => {
 };
 
 generate({
-  jsonDir: JSON_DIR,
+  jsonDir: './.run/reports/json/',
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,

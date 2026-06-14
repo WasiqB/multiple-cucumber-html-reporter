@@ -57,7 +57,7 @@ After(async function ({ pickle, result }) {
   if (!page.isClosed()) {
     video = page.video();
     img = await page.screenshot({ path: screenshotPath, type: 'png', fullPage: true });
-    this.attach(img, 'image/png');
+    this.attach(img, { mediaType: 'image/png', fileName: pickle.name });
   }
 
   await context.tracing.stop({ path: tracePath });
