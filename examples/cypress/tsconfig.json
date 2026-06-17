@@ -5,5 +5,5 @@
     "rootDir": "./",
     "types": ["node"]
   },
-  "include": ["cucumber-html-report.ts", "cypress.config.ts", "cypress/**/*.ts"]
+  "include": ["cucumber-html-report.ts", "cypress.config.ts", "src/**/*.ts"]
 }

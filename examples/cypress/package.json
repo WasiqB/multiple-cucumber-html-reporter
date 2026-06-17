@@ -8,6 +8,8 @@
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
     "test": "pnpm build && cypress run --browser chrome --headless",
+    "test:chrome": "cypress run --browser chrome --spec \"src/features/sauce-demo-login.feature\" --headless",
+    "test:firefox": "cypress run --browser firefox --spec \"src/features/saucedemo.feature\" --headless",
     "report": "node dist/cucumber-html-report.js"
   },
   "author": "Wasiq Bhamla",
@@ -16,8 +18,8 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^25.9.2",
-    "cypress": "^15.16.0",
+    "@types/node": "^25.9.3",
+    "cypress": "^15.17.0",
     "multiple-cucumber-html-reporter": "workspace:*",
     "typescript": "^6.0.3"
   },

@@ -5,7 +5,7 @@ import SauceDemoPage from '@/pages/saucedemo.page.js';
 After(async function ({ result }) {
   if (result?.status !== Status.PASSED) {
     const screenshot = await browser.takeScreenshot();
-    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');
+    this.attach(Buffer.from(screenshot, 'base64'), { mediaType: 'image/png', fileName: 'Error Screenshot' });
   }
 });
 

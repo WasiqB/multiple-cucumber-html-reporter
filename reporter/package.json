@@ -26,8 +26,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "pnpm generate:css && pnpm generate:css:min && rm -rf dist/",
-    "build": "tsc && cp -r src/templates dist/templates",
-    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
+    "build": "tsc",
+    "postbuild": "tsx src/run-build.ts",
     "test": "tsx src/test/test.ts",
     "unit.test": "tsx node_modules/jasmine/bin/jasmine.js JASMINE_CONFIG_PATH=src/test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=src/test/unit/jasmine.json c8 tsx node_modules/jasmine/bin/jasmine.js",
@@ -67,17 +67,17 @@
   },
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
-    "@tailwindcss/cli": "^4.2.4",
+    "@tailwindcss/cli": "^4.3.1",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^6.0.0",
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.9.2",
+    "@types/node": "^25.9.3",
     "c8": "^11.0.0",
-    "jasmine": "^6.2.0",
-    "tailwindcss": "^4.2.4",
+    "jasmine": "^6.3.0",
+    "tailwindcss": "^4.3.1",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }

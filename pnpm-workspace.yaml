@@ -10,6 +10,7 @@ allowBuilds:
   esbuild: false
   geckodriver: false
   msw: false
+  protobufjs: true
   sharp: true
 minimumReleaseAge: 1440
 trustLockfile: true

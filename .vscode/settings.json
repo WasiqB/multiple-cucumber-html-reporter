@@ -31,5 +31,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
-  }
+  },
+  "[cucumber]": {
+    "editor.defaultFormatter": "CucumberOpen.cucumber-official"
+  },
+  "cucumber.features": ["examples/**/src/features/*.feature"],
+  "cucumber.glue": ["examples/**/src/steps/*.steps.ts"]
 }

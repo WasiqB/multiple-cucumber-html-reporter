@@ -113,3 +113,54 @@ jobs:
           path: |
             examples/wdio/reports
             examples/wdio/logs
+
+  test-browserstack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        with:
+          chrome-version: stable
+          install-chromedriver: true
+
+      - name: Run WDIO
+        working-directory: examples/wdio
+        run: pnpm test:browserstack
+        env:
+          CI: true
+          BS_USER: ${{ secrets.BS_USER }}
+          BS_KEY: ${{ secrets.BS_KEY }}
+          WDIO_CHROME_DRIVER: ${{ steps.setup-chrome.outputs.chromedriver-path }}
+          WDIO_CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
+        continue-on-error: true
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wdio-report-bs-reporter
+          if-no-files-found: error
+          path: |
+            examples/wdio/reports
+            examples/wdio/logs

@@ -249,6 +249,7 @@ async function generateReport(options: Options) {
             const label = (item.name || item.label || '').toLowerCase();
             const value = item.value || '';
             if (label.includes('device')) feature.device = value;
+            if (label.includes('executionPlatform')) feature.executionPlatform = value;
             if (label.includes('os') || label.includes('platform')) feature.os = value;
             if (label.includes('browser')) feature.browser = value;
             if (label.includes('app')) feature.app = value;
@@ -256,6 +257,7 @@ async function generateReport(options: Options) {
           });
         } else {
           if (feature.metadata.device) feature.device = feature.metadata.device;
+          if (feature.metadata.executionPlatform) feature.executionPlatform = feature.metadata.executionPlatform;
           if (feature.metadata.platform) {
             feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
           }
@@ -268,28 +270,6 @@ async function generateReport(options: Options) {
           if (feature.metadata.username) {
             feature.username = feature.metadata.username;
           }
-        }
-      }
-
-      // Detect execution platform (local vs cloud)
-      {
-        const platformCheckValues = [
-          (feature.device || '').toLowerCase(),
-          (feature.os || '').toLowerCase(),
-          (feature.browser || '').toLowerCase(),
-          (feature.app || '').toLowerCase(),
-        ];
-        const platformStr = platformCheckValues.join(' ');
-        if (platformStr.includes('browserstack')) {
-          feature.executionPlatform = 'browserstack';
-        } else if (
-          platformStr.includes('testmu') ||
-          platformStr.includes('testmu ai') ||
-          platformStr.includes('testmuai')
-        ) {
-          feature.executionPlatform = 'testmu';
-        } else {
-          feature.executionPlatform = 'local';
         }
       }
 

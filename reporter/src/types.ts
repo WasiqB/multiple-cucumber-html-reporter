@@ -13,6 +13,7 @@ export type Metadata =
         name: string;
         version: string;
       };
+      executionPlatform?: 'browserstack' | 'testmu' | 'local';
       username?: string;
       nodeVersion?: string;
       reportVersion?: string;

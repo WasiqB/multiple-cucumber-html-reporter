@@ -5,7 +5,7 @@ import find from 'find';
 import fs from 'fs-extra';
 import jsonfile from 'jsonfile';
 import { DateTime } from 'luxon';
-import type { Feature, Options, Step } from './types.js';
+import type { Feature, Metadata, Options, Step } from './types.js';
 
 const { fileSync } = find;
 const { readFileSync, statSync, ensureDirSync } = fs;
@@ -26,12 +26,13 @@ function formatToLocalIso(date: Date | string): string {
     : DateTime.fromJSDate(date).toFormat('yyyy/MM/dd HH:mm:ss');
 }
 
-function getDefaultMetadata() {
+function getDefaultMetadata(): Metadata {
   return {
     browser: {
       name: 'not known',
       version: 'not known',
     },
+    executionPlatform: 'local',
     username: os.userInfo().username,
     device: os.hostname(),
     platform: {
@@ -45,7 +46,7 @@ function getDefaultMetadata() {
   };
 }
 
-function enrichMetadata(metadata: Feature['metadata'] | undefined): Feature['metadata'] {
+function enrichMetadata(metadata: Metadata | undefined): Metadata {
   if (Array.isArray(metadata)) {
     return metadata;
   }
@@ -55,14 +56,6 @@ function enrichMetadata(metadata: Feature['metadata'] | undefined): Feature['met
   return {
     ...defaultMetadata,
     ...metadata,
-    browser: {
-      ...defaultMetadata.browser,
-      ...metadata?.browser,
-    },
-    platform: {
-      ...defaultMetadata.platform,
-      ...metadata?.platform,
-    },
   };
 }
 

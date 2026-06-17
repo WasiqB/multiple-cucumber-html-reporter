@@ -340,6 +340,8 @@ export const config: WebdriverIO.Config = {
           name: 'chrome',
           version: process.env.WDIO_CHROME_VERSION || '148',
         },
+        device: 'MacBook Pro',
+        executionPlatform: 'local',
         platform: {
           name: os.platform().trim(),
           version: os.release().trim(),

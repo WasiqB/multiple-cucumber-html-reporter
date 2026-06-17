@@ -14,11 +14,11 @@ Feature: Sauce Demo Web Application Testing
     Then I should see the login result as "<result>" with message "<message>"
 
     Examples:
-      | username                | password     | result  | message                                                                   |
-      | standard_user           | secret_sauce | success | Products                                                                  |
-      | locked_out_user         | secret_sauce | failure | Epic sadface: Sorry, this user has been locked out.                       |
-      | standard_user           | wrong_pass   | failure | Epic sadface: Username and password do not match any user in this service |
-      | invalid_user            | secret_sauce | failure | Epic sadface: Username and password do not match any user in this service |
+      | username        | password     | result  | message                                                                   |
+      | standard_user   | secret_sauce | success | Products                                                                  |
+      | locked_out_user | secret_sauce | failure | Epic sadface: Sorry, this user has been locked out.                       |
+      | standard_user   | wrong_pass   | failure | Epic sadface: Username and password do not match any user in this service |
+      | invalid_user    | secret_sauce | failure | Epic sadface: Username and password do not match any user in this service |
 
   @checkout @e2e
   Scenario: End-to-end checkout flow and logout
@@ -32,7 +32,7 @@ Feature: Sauce Demo Web Application Testing
     When I click the checkout button
     And I fill checkout information with:
       | First Name | Last Name | Zip Code |
-      | John       | Doe       | 12345    |
+      | John       | Doe       |    12345 |
     And I click the continue button
     Then I should see the checkout overview for "Sauce Labs Backpack"
     When I click the finish button
@@ -65,4 +65,3 @@ Feature: Sauce Demo Web Application Testing
   @Status
   Scenario: Verify ambiguous status
     Then Here is a "ambiguous" step
-

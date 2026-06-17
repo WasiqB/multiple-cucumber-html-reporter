@@ -47,16 +47,16 @@ async function setupNodeEvents(
 
 export default defineConfig({
   e2e: {
-    specPattern: 'cypress/e2e/**/*.feature',
+    specPattern: 'src/features/*.feature',
     setupNodeEvents,
     defaultCommandTimeout: 60000,
     pageLoadTimeout: 60000,
     video: false,
     experimentalInteractiveRunEvents: true,
-    downloadsFolder: './cypress/.run/downloads',
-    fixturesFolder: './cypress/.run/fixtures',
-    screenshotsFolder: './cypress/.run/screenshots',
-    videosFolder: './cypress/.run/videos',
+    downloadsFolder: './src/.run/downloads',
+    fixturesFolder: './src/.run/fixtures',
+    screenshotsFolder: './src/.run/screenshots',
+    videosFolder: './src/.run/videos',
   },
 });
 ```
@@ -75,8 +75,7 @@ export default defineConfig({
     "output": ".run/reports/messages/cucumber-report.json"
   },
   "stepDefinitions": [
-    "cypress/e2e/[filepath].step.{js,ts}",
-    "cypress/e2e/[filepath]/*.step.{js,ts}"
+    "src/steps/saucedemo.steps.ts"
   ]
 }
 ```
