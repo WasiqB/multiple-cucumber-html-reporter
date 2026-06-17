@@ -18,6 +18,11 @@ const config = {
         hostname: 'avatars.githubusercontent.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'vercel.com',
+        pathname: '/**',
+      },
     ],
   },
 };
