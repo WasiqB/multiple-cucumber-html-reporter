@@ -18,7 +18,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function SponsorsPage() {
-  const { hero, benefits, tiers, curators, faq, cta } = sponsorsDataJson as SponsorsData;
+  const { hero, benefits, tiers, curators, licenses, faq, cta } = sponsorsDataJson as SponsorsData;
   const hasSponsors =
     (curators?.goldSponsors?.length ?? 0) > 0 ||
     (curators?.silverAndBronze?.length ?? 0) > 0 ||
@@ -300,6 +300,42 @@ export default function SponsorsPage() {
                 </div>
               </>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* License Sponsors Section */}
+      {licenses?.items && licenses.items.length > 0 && (
+        <section className='container mx-auto px-6 max-w-4xl py-12 text-center'>
+          <div className='mb-12 flex flex-col items-center'>
+            <h2 className='text-3xl md:text-4xl font-bold mb-4'>{licenses.title}</h2>
+            <p className='text-zinc-600 dark:text-zinc-400'>{licenses.description}</p>
+          </div>
+
+          <div className='flex flex-wrap justify-center gap-8'>
+            {licenses.items.map((s, idx) => (
+              <Link
+                key={idx}
+                href={s.url || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='group flex flex-col items-center transition-transform hover:scale-105'
+              >
+                <div className='w-24 h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-3'>
+                  {s.image ? (
+                    <Image src={s.image} alt={s.name} width={96} height={96} className='w-full h-full object-cover' />
+                  ) : (
+                    <div className='text-xl font-bold text-emerald-600'>{s.name[0]}</div>
+                  )}
+                </div>
+                <span className='text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-500'>
+                  {s.name}
+                </span>
+                <span className='text-[10px] font-medium text-zinc-500 dark:text-zinc-400 mt-1 max-w-[180px] text-center'>
+                  {s.license}
+                </span>
+              </Link>
+            ))}
           </div>
         </section>
       )}

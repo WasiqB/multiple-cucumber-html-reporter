@@ -397,11 +397,25 @@ export interface SponsorsCta {
   secondaryLink?: LinkData;
 }
 
+export interface SponsorsLicenseItem {
+  name: string;
+  image?: string;
+  url?: string;
+  license: string;
+}
+
+export interface SponsorsLicenses {
+  title: string;
+  description: string;
+  items: SponsorsLicenseItem[];
+}
+
 export interface SponsorsData {
   hero: SponsorsHero;
   benefits: SponsorsBenefit[];
   tiers: SponsorsTiers;
   curators: SponsorsCurators;
+  licenses?: SponsorsLicenses;
   faq: SponsorsFaq;
   cta: SponsorsCta;
 }

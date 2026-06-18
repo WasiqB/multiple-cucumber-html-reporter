@@ -113,6 +113,16 @@ Contributions are what make the open source community such an amazing place to l
 
 If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB). Your support helps keep the project maintained and improved!
 
+## 🙏🏻 Open Source Supporter
+
+Following are the awesome supporters to the project who has sponsored their applications paid license:
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <a href="https://vercel.com/open-source-program">
+    <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge-2026.svg" />
+  </a>
+</div>
+
 ## 💗 Repo Activity
 
 ![Multiple Cucumber HTML Reporter Repo activity](https://repobeats.axiom.co/api/embed/b0964ed36e8c350255ca9b3f357459af82d712a4.svg "Repobeats analytics image")

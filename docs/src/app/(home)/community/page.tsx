@@ -190,10 +190,10 @@ export default function CommunityPage() {
             ))}
 
             <div className='flex flex-col items-center gap-3 w-28'>
-              <div className='w-20 h-20 rounded-full border-2 border-dashed border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500 transition-colors cursor-pointer group'>
-                <Plus className='h-8 w-8 group-hover:scale-110 transition-transform' />
-              </div>
               <Link href='/docs/contributing' className='text-center mt-2'>
+                <div className='w-20 h-20 rounded-full border-2 border-dashed border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500 transition-colors cursor-pointer group'>
+                  <Plus className='h-8 w-8 group-hover:scale-110 transition-transform' />
+                </div>
                 <div className='text-sm font-bold'>You!</div>
                 <div className='text-[10px] uppercase font-bold text-zinc-500 tracking-wider mt-0.5'>JOIN US</div>
               </Link>
