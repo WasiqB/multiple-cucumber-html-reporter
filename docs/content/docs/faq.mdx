@@ -38,6 +38,18 @@ You can attach screenshots during test execution as Base64 strings using the Cuc
 
 Yes, just pass the JSON string and set the MIME type to `application/json` when calling `attach`.
 
+### Can I give my logs and attachments custom names?
+
+Yes. By default attachments are labelled `Log 1`, `Screenshot 1`, `Attachment 1`, etc. Attach with a `fileName` (or add a `name`/`fileName` to the embedding in the JSON) and the reporter uses it as the label. See [Custom Attachment Names](/docs/attachments#custom-attachment-names) for details.
+
+## Dashboard & Charts
+
+### What do the numbers on the pie/donut charts mean?
+
+The dashboard donut charts (Features, Scenarios, Steps) show the breakdown by status. The **legend shows the count** for each status (e.g. `Passed: 9`), the centre of the donut shows the **total**, and hovering a slice shows the count in the tooltip.
+
+If you set the `displayChartPercentages: true` option, each slice is additionally labelled with its **percentage** (e.g. `35%`) and the tooltip shows both the count and the percentage together (e.g. `9 (35.0%)`). This is **off by default** — see the [Options](/docs/options#dashboard-options) page.
+
 ## Other Questions
 
 ### Can I run this in Parallel?

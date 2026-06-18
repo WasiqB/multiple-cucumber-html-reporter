@@ -62,6 +62,7 @@ async function generateReport(options: Options) {
   const saveCollectedJSON = !!options.saveCollectedJSON;
   const displayDuration = !!options.displayDuration;
   const displayReportTime = !!options.displayReportTime;
+  const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
@@ -84,6 +85,7 @@ async function generateReport(options: Options) {
     hideMetadata,
     displayReportTime,
     displayDuration,
+    displayChartPercentages,
     durationAggregation,
     durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
     browser: 0,
@@ -472,6 +474,11 @@ async function generateReport(options: Options) {
         step.attachments = [];
         const embeddings = step.embeddings || [];
         embeddings.forEach((embedding: any, embeddingIndex: number) => {
+          // Grab a custom name if the test gave us one. Cucumber frameworks tuck
+          // it away under name/fileName (sometimes nested in media), so check all
+          // the usual spots. No name? The template falls back to "Log 1" etc.
+          const customName: string | undefined =
+            embedding.name ?? embedding.fileName ?? embedding.media?.name ?? embedding.media?.fileName ?? undefined;
           /* Decode Base64 for Text-ish attachements */
           if (embedding.mime_type === 'text/html' || embedding.mime_type === 'text/plain') {
             embedding.data = Buffer.from(embedding.data.toString(), 'base64');
@@ -485,25 +492,30 @@ async function generateReport(options: Options) {
             step.json = (step.json ? step.json : []).concat([
               typeof embedding.data === 'string' ? JSON.parse(embedding.data) : embedding.data,
             ]);
+            step.jsonNames = (step.jsonNames ? step.jsonNames : []).concat([customName]);
           } else if (embedding.mime_type === 'text/html' || (embedding.media && embedding.media.type === 'text/html')) {
             step.html = (step.html ? step.html : []).concat([embedding.data]);
+            step.htmlNames = (step.htmlNames ? step.htmlNames : []).concat([customName]);
           } else if (
             embedding.mime_type === 'text/plain' ||
             (embedding.media && embedding.media.type === 'text/plain')
           ) {
             step.text = (step.text ? step.text : []).concat([_escapeHtml(embedding.data)]);
+            step.textNames = (step.textNames ? step.textNames : []).concat([customName]);
           } else if (
             ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.mime_type ?? '') ||
             (embedding.media && ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.media.type))
           ) {
             const mimeType = embedding.mime_type ?? embedding.media?.type ?? 'image/png';
             step.image = (step.image ? step.image : []).concat([`data:${mimeType};base64,${embedding.data}`]);
+            step.imageNames = (step.imageNames ? step.imageNames : []).concat([customName]);
             step.embeddings![embeddingIndex] = {};
           } else if (
             embedding.mime_type === 'video/webm' ||
             (embedding.media && embedding.media.type === 'video/webm')
           ) {
             step.video = (step.video ? step.video : []).concat([`data:video/webm;base64,${embedding.data}`]);
+            step.videoNames = (step.videoNames ? step.videoNames : []).concat([customName]);
             step.embeddings![embeddingIndex] = {};
           } else {
             let embeddingType = 'text/plain';
@@ -515,6 +527,7 @@ async function generateReport(options: Options) {
             step.attachments?.push({
               data: `data:${embeddingType};base64,${embedding.data}`,
               type: embeddingType,
+              name: customName,
             });
             step.embeddings![embeddingIndex] = {};
           }
@@ -633,6 +646,7 @@ async function generateReport(options: Options) {
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
       displayDuration: suite.displayDuration,
+      displayChartPercentages: suite.displayChartPercentages,
       plainDescription,
       customStyle: suite.customStyle || '',
     };
@@ -684,6 +698,7 @@ async function generateReport(options: Options) {
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,
         displayDuration: suite.displayDuration,
+        displayChartPercentages: suite.displayChartPercentages,
         plainDescription,
         customStyle: suite.customStyle || '',
       };

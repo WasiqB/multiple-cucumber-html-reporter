@@ -1,0 +1,49 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Custom attachment names",
+    "line": 1,
+    "id": "custom-attachment-names",
+    "tags": [],
+    "uri": "features/custom-names.feature",
+    "metadata": {
+      "browser": { "name": "chrome", "version": "latest" },
+      "device": "Local test machine",
+      "platform": { "name": "osx", "version": "Sonoma" }
+    },
+    "elements": [
+      {
+        "id": "custom-names;a-step-with-named-and-unnamed-attachments",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "A step with named and unnamed attachments",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 3,
+            "name": "all attachment types are embedded",
+            "match": { "location": "src/steps.js:1" },
+            "result": { "status": "passed", "duration": 1000 },
+            "embeddings": [
+              { "data": "SGVsbG8gbG9n", "name": "Step Trace", "media": { "type": "text/plain" } },
+              { "data": "cGxhaW4gdHdv", "media": { "type": "text/plain" } },
+              { "data": "iVBORw0KGgo=", "fileName": "Login Screenshot", "media": { "type": "image/png" } },
+              { "data": "iVBORw0KGgo=", "media": { "type": "image/png" } },
+              { "data": "AAAA", "media": { "type": "video/webm", "name": "Session Recording" } },
+              { "data": "AAAB", "media": { "type": "video/webm" } },
+              { "data": "eyJrIjoxfQ==", "name": "Request Body", "media": { "type": "application/json" } },
+              { "data": "eyJrIjoyfQ==", "media": { "type": "application/json" } },
+              { "data": "PGI+aGk8L2I+", "media": { "type": "text/html", "fileName": "Rendered Email" } },
+              { "data": "PGk+eWE8L2k+", "media": { "type": "text/html" } },
+              { "data": "JVBERi0=", "name": "Invoice PDF", "media": { "type": "application/pdf" } },
+              { "data": "JVBERi0=", "media": { "type": "application/pdf" } }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

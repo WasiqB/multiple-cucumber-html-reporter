@@ -125,6 +125,18 @@
     "silverAndBronze": [],
     "individuals": []
   },
+  "licenses": {
+    "title": "Software License Sponsors",
+    "description": "We are extremely grateful to the following companies who provide paid licenses of their professional software tools to support open source development.",
+    "items": [
+      {
+        "name": "Vercel",
+        "image": "https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWHFJSVzuXbQxU14FIfOCKwTlo7qcWJn02GYZ",
+        "url": "https://vercel.com/open-source-program",
+        "license": "Vercel Open Source Program"
+      }
+    ]
+  },
   "faq": {
     "title": "Frequently Asked Questions",
     "items": [

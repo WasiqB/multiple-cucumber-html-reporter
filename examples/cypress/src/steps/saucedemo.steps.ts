@@ -14,7 +14,10 @@ import {
  * Global setup before each scenario tagged with @saucedemo.
  */
 Before({ tags: '@saucedemo' }, (scenario) => {
-  attach(JSON.stringify(scenario, null, 2), { mediaType: 'application/json', fileName: 'Scenario JSON' });
+  attach(`Starting scenario: ${scenario.pickle.name}`, {
+    mediaType: 'text/plain',
+    fileName: 'Scenario Name',
+  });
 });
 
 /**
