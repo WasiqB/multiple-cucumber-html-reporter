@@ -117,7 +117,11 @@ If you find this project useful, please consider [sponsoring the maintainer](htt
 
 Following are the awesome supporters to the project who has sponsored their applications paid license:
 
-[![Vercel OSS Program](https://vercel.com/oss/program-badge-2026.svg)](https://vercel.com/open-source-program)
+<br />
+<br />
+<a href="https://vercel.com/open-source-program">
+  <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge-2026.svg" />
+</a>
 
 ## 💗 Repo Activity
 
