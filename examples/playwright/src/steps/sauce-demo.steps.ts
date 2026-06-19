@@ -25,7 +25,7 @@ BeforeAll(async () => {
   browser = await chromium.launch({ headless: !!process.env.CI });
 });
 
-Before(async () => {
+Before({ tags: 'not @api' }, async () => {
   context = await browser.newContext({
     recordVideo: {
       dir: './test-results/videos',
@@ -48,7 +48,7 @@ AfterAll(async () => {
   await browser?.close();
 });
 
-After(async function ({ pickle, result }) {
+After({ tags: 'not @api' }, async function ({ pickle, result }) {
   const tracePath = `./test-results/trace/${pickle.id}.zip`;
   const screenshotPath = `./test-results/screenshots/${pickle.id}.png`;
   let img: Buffer | undefined;
