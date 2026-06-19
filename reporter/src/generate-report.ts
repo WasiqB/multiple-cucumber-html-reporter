@@ -1,3 +1,4 @@
+import { readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path, { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -38,6 +39,11 @@ const projectRoot = path.resolve(__dirname);
 const templatesDir = path.join(projectRoot, 'templates');
 const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
 
+/**
+ * Generates the cucumber report.
+ *
+ * @param options Report options.
+ */
 async function generateReport(options: Options) {
   if (!options) {
     throw new Error('Options need to be provided.');
@@ -264,7 +270,7 @@ async function generateReport(options: Options) {
             feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
           }
           if (feature.metadata.browser) {
-            feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`;
+            feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`.trim();
           }
           if (feature.metadata.app) {
             feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
@@ -798,5 +804,29 @@ async function generateReport(options: Options) {
   }
 }
 
+/**
+ * Updates the metadata of each feature in the cucumber-report.json file.
+ *
+ * @param {string} reportPath Path to the cucumber-report.json file
+ * @param {{ [key: string]: Metadata }} metadata Metadata to update for feature file name as key.
+ */
+function updateReportMetadata(reportPath: string, metadata: { [key: string]: Metadata }) {
+  try {
+    const fileContent = readFileSync(reportPath, 'utf8');
+    const reportData = JSON.parse(fileContent);
+
+    if (Array.isArray(reportData)) {
+      for (const feature of reportData) {
+        const featureFileName = feature.uri.split('/').pop();
+        feature.metadata = metadata[featureFileName];
+      }
+      writeFileSync(reportPath, JSON.stringify(reportData, null, 2), 'utf8');
+    }
+  } catch (error) {
+    console.warn(`Could not update [${reportPath}] metadata. Proceeding with report generation.`, error);
+  }
+}
+
 export const generate = generateReport;
+export const updateMetadata = updateReportMetadata;
 export type { Metadata };

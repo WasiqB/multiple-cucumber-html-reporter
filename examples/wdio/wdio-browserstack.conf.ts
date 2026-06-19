@@ -34,7 +34,7 @@ export const config: WebdriverIO.Config = {
           version: process.env.WDIO_CHROME_VERSION || '148',
         },
         device: 'MacBook Pro',
-        executionPlatform: 'local',
+        executionPlatform: 'browserstack',
         platform: {
           name: os.platform().trim(),
           version: os.release().trim(),

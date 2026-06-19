@@ -70,7 +70,9 @@ window.ReportTable = {
             ? 'fa-brands fa-safari'
             : /Edge/i.test(value)
               ? 'fa-brands fa-edge'
-              : 'fa-solid fa-globe';
+              : /api/i.test(value)
+                ? 'fa-solid fa-plug'
+                : 'fa-solid fa-globe';
 
     const platformIcon = (platform = 'local') => {
       if (platform === 'browserstack') {
