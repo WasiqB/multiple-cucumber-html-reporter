@@ -26,8 +26,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "pnpm generate:css && pnpm generate:css:min && rm -rf dist/",
-    "build": "tsc && cp -r src/templates dist/templates",
-    "postbuild": "mkdir -p dist/test/unit && cp src/test/*.css dist/test/ && sed 's|src/test|dist/test|g' src/test/unit/jasmine.json > dist/test/unit/jasmine.json",
+    "build": "tsc",
+    "postbuild": "tsx src/run-build.ts",
     "test": "tsx src/test/test.ts",
     "unit.test": "tsx node_modules/jasmine/bin/jasmine.js JASMINE_CONFIG_PATH=src/test/unit/jasmine.json",
     "unit.test.coverage": "JASMINE_CONFIG_PATH=src/test/unit/jasmine.json c8 tsx node_modules/jasmine/bin/jasmine.js",

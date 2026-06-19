@@ -31,15 +31,16 @@ async function setupNodeEvents(
 
 export default defineConfig({
   e2e: {
-    specPattern: 'cypress/e2e/**/*.feature',
+    specPattern: 'src/features/*.feature',
     setupNodeEvents,
     defaultCommandTimeout: 60000,
     pageLoadTimeout: 60000,
     video: false,
     experimentalInteractiveRunEvents: true,
-    downloadsFolder: './cypress/.run/downloads',
-    fixturesFolder: './cypress/.run/fixtures',
-    screenshotsFolder: './cypress/.run/screenshots',
-    videosFolder: './cypress/.run/videos',
+    supportFile: 'src/support/e2e.ts',
+    downloadsFolder: './src/.run/downloads',
+    fixturesFolder: './src/.run/fixtures',
+    screenshotsFolder: './src/.run/screenshots',
+    videosFolder: './src/.run/videos',
   },
 });

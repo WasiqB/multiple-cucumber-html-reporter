@@ -17,7 +17,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout Repository
@@ -56,5 +60,5 @@ jobs:
       - name: Upload Report
         uses: actions/upload-artifact@v7
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.os }}
           path: examples/playwright/reports

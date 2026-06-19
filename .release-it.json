@@ -5,6 +5,10 @@
       "infile": "CHANGELOG.md"
     }
   },
+  "hooks": {
+    "before:npm:release": "cp README.md reporter/ && cp LICENSE reporter/",
+    "after:npm:release": "rm reporter/README.md reporter/LICENSE"
+  },
   "git": {
     "requireBranch": "main",
     "commitMessage": "chore: release v${version}",

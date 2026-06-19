@@ -8,6 +8,8 @@
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
     "test": "pnpm build && cypress run --browser chrome --headless",
+    "test:chrome": "cypress run --browser chrome --spec \"src/features/sauce-demo-login.feature\" --headless",
+    "test:firefox": "cypress run --browser firefox --spec \"src/features/saucedemo.feature\" --headless",
     "report": "node dist/cucumber-html-report.js"
   },
   "author": "Wasiq Bhamla",

@@ -94,7 +94,7 @@
                             {% comment %} Browser icon {% endcomment %}
                             {% if browser != "" %}
                             <span title="{{ feature.browser | default: feature.metadata.browser.name }}">
-                                <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% else %}fa-solid fa-globe{% endif %} text-base"></i>
+                                <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% elsif browser contains 'api' %}fa-solid fa-plug{% else %}fa-solid fa-globe{% endif %} text-base"></i>
                             </span>
                             {% endif %}
                             {% comment %} Cloud platform divider + icon {% endcomment %}
