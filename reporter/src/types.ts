@@ -26,11 +26,11 @@ export type Metadata =
 export interface Options {
   jsonDir: string;
   reportPath: string;
-  metadata?: Metadata;
+  metadata?: Metadata | Record<string, Metadata> | { name: string; value: string }[];
   customMetadata?: boolean;
   customData?: {
     title: string;
-    data: Array<{ label: string; value: string }>;
+    data: { label: string; value: string }[];
   };
   plainDescription?: boolean;
   overrideStyle?: string;

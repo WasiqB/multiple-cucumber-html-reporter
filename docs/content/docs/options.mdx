@@ -40,7 +40,9 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       default: false,
     },
     saveCollectedJSON: {
-      description: 'This module will first merge all the JSON files to a single file and then enrich it with data that is used for the report. Setting this to `true` saves the merged JSON and the enriched JSON in the `reportPath`.',
+      description: <>
+        This module will first merge all the JSON files to a single file and then enrich it with data that is used for the report. Setting this to <code>true</code> saves the merged JSON and the enriched JSON in the <code>reportPath</code>.
+      </>,
       type: 'boolean',
       default: false,
     },
@@ -61,9 +63,27 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       type: 'boolean',
       default: false,
     },
+    hideMetadata: {
+      description: <>
+        If set to <code>true</code>, the metadata will be hidden from the report
+      </>,
+      type: 'boolean',
+      default: false,
+    },
+    metadata: {
+      description: <>
+        Allows you to pass custom metadata to the report. The data is passed as JSON and can be accessed in the report as <code>metadata</code>
+      </>,
+      type: `Metadata | Record<string, Metadata> | { name: string; value: string }[]`,
+    },
     customData: {
-      description: 'Allows you to pass custom data to the report. The data is passed as JSON and can be accessed in the report as `customData`',
-      type: 'any',
+      description: <>
+        Allows you to pass custom data to the report. The data is passed as JSON and can be accessed in the report as <code>customData</code>
+      </>,
+      type: `{
+        title: string;
+        data: Array<{ label: string; value: string }>;
+      }`,
     },
     pageTitle: {
       description: 'The report title in the HTML <head> tag.',
@@ -79,7 +99,9 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       type: 'string',
     },
     plainDescription: {
-      description: 'If your description already contains formatting tags (e.g., <div>, <strong>), set this to `true` to include it "as-is" without extra formatting.',
+      description: <>
+        If your description already contains formatting tags (e.g., <code>{'<div>'}</code>, <code>{'<strong>'}</code>), set this to <code>true</code> to include it "as-is" without extra formatting.
+      </>,
       type: 'boolean',
       default: false,
     },
@@ -122,6 +144,11 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       type: 'sum | wallClock',
       default: 'sum',
     },
+    displayReportTime: {
+      description: 'If set to `true`, the report will display the time of the feature.',
+      type: 'boolean',
+      default: false,
+    }
   }}
 />
 

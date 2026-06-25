@@ -59,11 +59,11 @@
     "find": "^0.3.0",
     "fs-extra": "^11.3.5",
     "jsonfile": "^6.2.1",
-    "liquidjs": "^10.25.7",
+    "liquidjs": "^10.27.1",
     "lodash": "^4.18.1",
     "luxon": "^3.7.2",
     "open": "^11.0.0",
-    "uuid": "^14.0.0"
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
@@ -73,8 +73,8 @@
     "@types/jasmine": "^6.0.0",
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.24",
-    "@types/luxon": "^3.7.1",
-    "@types/node": "^25.9.3",
+    "@types/luxon": "^3.7.2",
+    "@types/node": "^26.0.0",
     "c8": "^11.0.0",
     "jasmine": "^6.3.0",
     "tailwindcss": "^4.3.1",

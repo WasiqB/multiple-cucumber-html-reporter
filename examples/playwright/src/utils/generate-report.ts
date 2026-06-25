@@ -1,4 +1,4 @@
-import { generate, type Metadata, updateMetadata } from 'multiple-cucumber-html-reporter';
+import { generate, type Metadata } from 'multiple-cucumber-html-reporter';
 
 const metadata: { [key: string]: Metadata } = {
   'saucedemo.feature': {
@@ -6,28 +6,14 @@ const metadata: { [key: string]: Metadata } = {
       name: 'chrome',
       version: '148',
     },
-    username: 'Wasiq Bhamla',
-    device: 'MacBook Pro 14 inch',
-    platform: {
-      name: 'osx',
-      version: '26.5',
-    },
   },
   'restful-booker.feature': {
     browser: {
       name: 'api',
       version: '',
     },
-    username: 'Wasiq Bhamla',
-    device: 'MacBook Pro 14 inch',
-    platform: {
-      name: 'osx',
-      version: '26.5',
-    },
   },
 };
-
-updateMetadata('reports/cucumber-report.json', metadata);
 
 generate({
   jsonDir: 'reports/',
@@ -36,10 +22,13 @@ generate({
   openReportInBrowser: true,
   saveCollectedJSON: false,
   displayReportTime: true,
-  durationInMS: true,
+  durationAggregation: 'wallClock',
+  displayChartPercentages: true,
+  durationInMS: false,
   displayDuration: true,
   pageTitle: 'My Playwright Typescript Sample',
   reportName: 'Cucumber JS Report',
+  metadata,
   customData: {
     title: 'Playwright Sample',
     data: [

@@ -14,12 +14,12 @@ When metadata is not provided, the reporter automatically adds the local platfor
 
 There are two primary ways to add metadata:
 
-### Method 1: On Instance Initialization (Global)
+### Option 1: Same metadata for all the Features
 
-If you provide metadata when instantiating the reporter, it will be added to each feature in the report.
+If you provide metadata object, same metadata will be added to all the features in the report.
 
 ```typescript
-generate({
+await generate({
   metadata: {
     browser: {
       name: 'chrome',
@@ -36,26 +36,37 @@ generate({
 
 Any values you provide take precedence over automatic defaults.
 
-### Method 2: Per Scenario (Dynamic)
+### Option 2: Feature specific metadata
 
-If your test scenarios are running in different environments, you can add metadata to the Cucumber JSON file before saving it to your tests.
+If your test scenarios are running in different environments, you can define metadata based on the feature file name.
+
+The `metadata` object should be defined as follows:
 
 ```typescript
-const metadata = {
-  "browser": {
-    "name": "chrome",
-    "version": "58"
+const metadata: { [key: string]: Metadata } = {
+  'saucedemo.feature': {  // [!code highlight]
+    browser: {
+      name: 'chrome',
+      version: '148',
+    },
   },
-  "device": "Custom Machine",
-  "platform": {
-    "name": "osx",
-    "version": "10.12"
-  }
-}
+  'restful-booker.feature': { // [!code highlight]
+    browser: {
+      name: 'api',
+      version: '',
+    },
+  },
+};
 
-// Add metadata directly to the scenario
-cucumberJSON[0].metadata = metadata;
+await generate({
+  // other options
+  metadata,
+});
 ```
+
+<Callout title="Note" type='idea'>
+The highlighted lines in the above example is the actual feature file name along with their respective set of Metadata object.
+</Callout>
 
 ## Supported Metadata Values
 
@@ -67,6 +78,7 @@ To ensure proper icons are displayed, use the following predefined values for ce
 - `chrome`
 - `firefox`
 - `safari`
+- `api`
 
 ### `platform.name`
 - `windows`

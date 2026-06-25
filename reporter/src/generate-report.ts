@@ -162,16 +162,16 @@ async function generateReport(options: Options) {
   }
 
   function getReportRuntimeMetadata(suite: Suite) {
+    // All features have been enriched with auto-detected defaults by collectJSONS,
+    // so we just pick the first object-form metadata from the suite.
     const featureMetadata = suite.features.find((feature) => feature.metadata && !Array.isArray(feature.metadata))
       ?.metadata as Exclude<Metadata, Array<{ name: string; value: string }>> | undefined;
-    const optionMetadata = options.metadata && !Array.isArray(options.metadata) ? options.metadata : undefined;
-    const metadata = optionMetadata || featureMetadata;
 
     return {
-      username: metadata?.username ?? os.userInfo().username,
-      nodeVersion: metadata?.nodeVersion ?? process.version,
-      reportVersion: metadata?.reportVersion ?? packageJson.version,
-      architecture: metadata?.architecture ?? os.arch(),
+      username: featureMetadata?.username ?? os.userInfo().username,
+      nodeVersion: featureMetadata?.nodeVersion ?? process.version,
+      reportVersion: featureMetadata?.reportVersion ?? packageJson.version,
+      architecture: featureMetadata?.architecture ?? os.arch(),
     };
   }
 
@@ -808,17 +808,50 @@ async function generateReport(options: Options) {
  * Updates the metadata of each feature in the cucumber-report.json file.
  *
  * @param {string} reportPath Path to the cucumber-report.json file
- * @param {{ [key: string]: Metadata }} metadata Metadata to update for feature file name as key.
+ * @param {Metadata | Record<string, Metadata>} metadata
+ *   - When a `Metadata` object is provided, the same metadata is applied to every feature.
+ *   - When a `Record<string, Metadata>` is provided, each key must be a feature filename
+ *     (e.g. `"login.feature"`), and the corresponding metadata is applied only to that feature.
  */
-function updateReportMetadata(reportPath: string, metadata: { [key: string]: Metadata }) {
+function updateReportMetadata(reportPath: string, metadata: Metadata | Record<string, Metadata>) {
   try {
     const fileContent = readFileSync(reportPath, 'utf8');
     const reportData = JSON.parse(fileContent);
 
     if (Array.isArray(reportData)) {
+      // Determine whether metadata is a plain Metadata object or a per-feature map.
+      // A per-feature map has string keys whose values are Metadata objects; a plain
+      // Metadata object has keys like 'browser', 'platform', 'device', etc.
+      const isPerFeatureMap =
+        !Array.isArray(metadata) &&
+        Object.keys(metadata).some((k) => {
+          const v = (metadata as Record<string, Metadata>)[k];
+          return (
+            v !== null &&
+            typeof v === 'object' &&
+            !Array.isArray(v) &&
+            ('browser' in v ||
+              'platform' in v ||
+              'device' in v ||
+              'app' in v ||
+              'username' in v ||
+              'nodeVersion' in v ||
+              'reportVersion' in v ||
+              'architecture' in v ||
+              'executionPlatform' in v)
+          );
+        });
+
       for (const feature of reportData) {
-        const featureFileName = feature.uri.split('/').pop();
-        feature.metadata = metadata[featureFileName];
+        if (isPerFeatureMap) {
+          const featureFileName = feature.uri?.split('/').pop();
+          if (featureFileName && (metadata as Record<string, Metadata>)[featureFileName] !== undefined) {
+            feature.metadata = (metadata as Record<string, Metadata>)[featureFileName];
+          }
+        } else {
+          // Shared Metadata: apply the same metadata to every feature
+          feature.metadata = metadata as Metadata;
+        }
       }
       writeFileSync(reportPath, JSON.stringify(reportData, null, 2), 'utf8');
     }
