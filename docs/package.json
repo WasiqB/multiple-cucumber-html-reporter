@@ -45,7 +45,7 @@
     "@mchr/tsconfig": "workspace:*",
     "@tailwindcss/postcss": "^4.3.1",
     "@types/mdx": "^2.0.14",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
