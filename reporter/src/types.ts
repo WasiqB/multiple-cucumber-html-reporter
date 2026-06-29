@@ -1,37 +1,64 @@
-export type Metadata =
-  | {
-      browser?: {
-        name: string;
-        version: string;
-      };
-      device?: string;
-      platform?: {
-        name: string;
-        version: string;
-      };
-      app?: {
-        name: string;
-        version: string;
-      };
-      executionPlatform?: 'browserstack' | 'testmu' | 'local';
-      username?: string;
-      nodeVersion?: string;
-      reportVersion?: string;
-      hostname?: string;
-      architecture?: string;
-      [key: string]: any;
-    }
-  | Array<{ name: string; value: string }>;
+export type CustomData = {
+  username?: string;
+  nodeVersion?: string;
+  reportVersion?: string;
+  hostname?: string;
+  architecture?: string;
+  /** Name of the project under test. Displayed in the run info card. */
+  projectName?: string;
+  /** Release or version label (e.g. "2.1.0"). Displayed in the run info card. */
+  release?: string;
+  /** Test cycle identifier (e.g. "Regression", "Smoke"). */
+  testCycle?: string;
+  /** CI build number (e.g. "CI-4521"). */
+  buildNumber?: string;
+  /** Target environment (e.g. "staging", "production"). */
+  environment?: string;
+  /** CI pipeline / workflow name (e.g. "GitHub Actions", "Jenkins"). */
+  ciPipeline?: string;
+  [key: string]: any;
+};
+
+export type Metadata = {
+  browser?: {
+    name: string;
+    version: string;
+  };
+  device?: string;
+  platform?: {
+    name: string;
+    version: string;
+  };
+  app?: {
+    name: string;
+    version: string;
+  };
+  executionPlatform?: 'browserstack' | 'testmu' | 'local';
+  // Allow arbitrary extra keys for fully-custom use-cases
+  [key: string]: any;
+};
 
 export interface Options {
   jsonDir: string;
   reportPath: string;
+  customData?: CustomData;
+  /**
+   * Metadata to attach to features.
+   *
+   * Three accepted shapes:
+   * 1. `Metadata` object — applied to **every** feature.
+   * 2. `Record<string, Metadata>` — keyed by feature filename; each feature
+   *    gets its own metadata object.
+   * 3. `{ name: string; value: string }[]` — custom key/value pairs. Requires
+   *    `customMetadata: true`; throws an error if that flag is omitted.
+   */
   metadata?: Metadata | Record<string, Metadata> | { name: string; value: string }[];
+  /**
+   * Set to `true` when `metadata` is provided as a `{ name; value }[]` array.
+   * If `metadata` is array-shaped and this flag is `false` (or absent), the
+   * reporter will throw an error explaining the mismatch.
+   */
   customMetadata?: boolean;
-  customData?: {
-    title: string;
-    data: { label: string; value: string }[];
-  };
   plainDescription?: boolean;
   overrideStyle?: string;
   customStyle?: string;
@@ -132,7 +159,7 @@ export interface Feature {
   uri: string;
   elements: Scenario[];
   executionPlatform: 'browserstack' | 'testmu' | 'local';
-  metadata: Metadata;
+  metadata: Metadata | { name: string; value: string }[];
   scenarios: {
     passed: number;
     failed: number;
@@ -173,7 +200,7 @@ export interface Feature {
 export interface Suite {
   app: number;
   customMetadata: boolean;
-  customData: any;
+  customData?: CustomData;
   style: string;
   customStyle?: string;
   useCDN: boolean;

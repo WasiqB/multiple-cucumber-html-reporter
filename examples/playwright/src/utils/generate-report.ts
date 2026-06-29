@@ -30,13 +30,11 @@ generate({
   reportName: 'Cucumber JS Report',
   metadata,
   customData: {
-    title: 'Playwright Sample',
-    data: [
-      { label: 'Project', value: 'Sample Playwright Typescript' },
-      { label: 'Release', value: '1.0.0' },
-      { label: 'Cycle', value: 'Build-1002' },
-      { label: 'Playwright Version', value: '1.61.0' },
-      { label: 'Test Environment', value: 'Dev' },
-    ],
+    projectName: 'Playwright sample project',
+    release: '1.2.0',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
   },
 });

@@ -16,16 +16,19 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'The directory containing all the generated JSON files from your test runs',
       type: 'string',
       required: true,
+      typeDescription: 'string',
     },
     reportPath: {
       description: 'The directory in which the final report needs to be saved. Both jsonDir and reportPath are relative from where the script is started',
       type: 'string',
       required: true,
+      typeDescription: 'string'
     },
     staticFilePath: {
       description: 'If true, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests',
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
   }}
 />
@@ -38,6 +41,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'If true, the report will automatically be opened in the default browser of the operating system',
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
     saveCollectedJSON: {
       description: <>
@@ -45,11 +49,13 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       </>,
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
     disableLog: {
       description: 'Disables the summary report log in the console.',
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
   }}
 />
@@ -62,6 +68,8 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'If true, the custom metadata will be displayed in the report',
       type: 'boolean',
       default: false,
+      deprecated: true,
+      typeDescription: 'boolean'
     },
     hideMetadata: {
       description: <>
@@ -69,34 +77,54 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       </>,
       type: 'boolean',
       default: false,
+      deprecated: true,
+      typeDescription: 'boolean'
     },
     metadata: {
       description: <>
         Allows you to pass custom metadata to the report. The data is passed as JSON and can be accessed in the report as <code>metadata</code>
+
+        <Callout title="Deprecated" type='warning'>
+          Metadata type of <code>Metadata</code>, <code>Array&lt;{"{"}: string; value: string {"}"}&gt;</code> and <code>customMetadata</code> property is deprecated and will be removed in the next major version.
+
+          Use metadata of <code>Record&lt;string, Metadata&gt;</code> type instead.
+        </Callout>
       </>,
-      type: `Metadata | Record<string, Metadata> | { name: string; value: string }[]`,
+      type: <>
+        <code className='text-red-500 line-through'>Metadata</code> &#40;deprecated&#41; |
+        <code>Record&lt;string, Metadata&gt;</code> &#40;Recommended&#41; |
+        <code className='text-red-500 line-through'>{"{"} name: string; value: string {"}"}[]</code> &#40;Deprecated&#41;
+      </>,
+      typeDescription: 'Metadata | Record<string, Metadata> | {"{"}: string; value: string {"}"}[]',
+      typeDescriptionLink: '#metadata'
     },
     customData: {
       description: <>
-        Allows you to pass custom data to the report. The data is passed as JSON and can be accessed in the report as <code>customData</code>
+        <code>customData</code> allows you to pass run specific data to the report. It can be used to display any data that is specific to the test run.
+
+        These data is displayed in the feature list page in the run infomration card.
       </>,
-      type: `{
-        title: string;
-        data: Array<{ label: string; value: string }>;
-      }`,
+      type: 'CustomData',
+      typeDescription: 'CustomData',
+      typeDescriptionLink: '#custom-data',
+      required: false,
+      deprecated: false
     },
     pageTitle: {
       description: 'The report title in the HTML <head> tag.',
       type: 'string',
+      typeDescription: 'string',
       default: 'Multiple Cucumber HTML Reporter',
     },
     reportName: {
       description: 'You can change the report name as displayed in the UI.',
       type: 'string',
+      typeDescription: 'string',
     },
     pageFooter: {
       description: 'Customizes the page footer if required. You can provide a HTML string like <div><p>A custom footer</p></div>.',
       type: 'string',
+      typeDescription: 'string'
     },
     plainDescription: {
       description: <>
@@ -104,6 +132,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       </>,
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
   }}
 />
@@ -123,6 +152,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       ),
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
     durationInMS: {
       description: <>
@@ -130,6 +160,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       </>,
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
     durationAggregation: {
       description: (
@@ -143,11 +174,13 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       ),
       type: 'sum | wallClock',
       default: 'sum',
+      typeDescription: 'sum | wallClock'
     },
     displayReportTime: {
       description: 'If set to `true`, the report will display the time of the feature.',
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     }
   }}
 />
@@ -164,6 +197,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       ),
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
   }}
 />
@@ -176,14 +210,123 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'Whether to use a CDN for external assets.',
       type: 'boolean',
       default: false,
+      typeDescription: 'boolean'
     },
     customStyle: {
-      description: 'Adds custom CSS to your report. Provide the path to your custom CSS file.',
-      type: 'path',
+      description: 'Provide your custom CSS styles which will be added to the reports default CSS file.',
+      type: 'string',
+      typeDescription: 'string'
     },
     overrideStyle: {
-      description: 'Completely replaces the default CSS with your own custom style.',
-      type: 'path',
+      description: 'CSS file path, which will completely replaces the default CSS with your own custom style.',
+      type: 'string',
+      typeDescription: 'string'
+    },
+  }}
+/>
+
+## Metadata
+
+<TypeTable
+  type={{
+    browser: {
+      description: 'The browser used for the tests.',
+      type: 'Browser',
+      typeDescription: 'Browser',
+      typeDescriptionLink: '#app-browser-and-platform',
+    },
+    device: {
+      description: 'The device used for the tests.',
+      type: 'string',
+    },
+    platform: {
+      description: 'The platform used for the tests.',
+      type: 'Platform',
+      typeDescription: 'Platform',
+      typeDescriptionLink: '#app-browser-and-platform',
+    },
+    app: {
+      description: 'The app used for the tests.',
+      type: 'App',
+      typeDescription: 'App',
+      typeDescriptionLink: '#app-browser-and-platform',
+    },
+    executionPlatform: {
+      description: 'The execution platform used for the tests.',
+      type: <>
+        <code>browserstack | testmu | local</code>
+      </>,
+      typeDescription: <>
+        <code>browserstack | testmu | local</code>
+      </>,
+      default: 'local',
+      required: true
+    },
+  }}
+/>
+
+### App, Browser and Platform
+
+<TypeTable type={{
+  name: {
+    description: <>App, Browser and Platform name</>,
+    type: 'string',
+    required: true
+  },
+  version: {
+    description: <>App, Browser and Platform version</>,
+    type: 'string',
+    required: true
+  }
+}} />
+
+## Custom data
+
+<TypeTable
+  type={{
+    username: {
+      description: 'The username of the user who ran the tests.',
+      type: 'string',
+    },
+    nodeVersion: {
+      description: 'The version of Node.js used to run the tests.',
+      type: 'string',
+    },
+    reportVersion: {
+      description: 'The version of the report.',
+      type: 'string',
+    },
+    hostname: {
+      description: 'The hostname of the machine that ran the tests.',
+      type: 'string',
+    },
+    architecture: {
+      description: 'The architecture of the machine that ran the tests.',
+      type: 'string',
+    },
+    projectName: {
+      description: 'The name of the project.',
+      type: 'string',
+    },
+    release: {
+      description: 'The release version of the project.',
+      type: 'string',
+    },
+    testCycle: {
+      description: 'The test cycle name.',
+      type: 'string',
+    },
+    buildNumber: {
+      description: 'The build number of the project.',
+      type: 'string',
+    },
+    environment: {
+      description: 'The environment in which the tests were run.',
+      type: 'string',
+    },
+    ciPipeline: {
+      description: 'The CI/CD pipeline name.',
+      type: 'string',
     },
   }}
 />

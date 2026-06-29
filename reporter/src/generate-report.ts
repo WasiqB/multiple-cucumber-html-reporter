@@ -10,7 +10,7 @@ import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
-import type { Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
+import type { CustomData, Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
 
 const { size } = _;
 const { writeFileSync: _writeFileSync } = jsonfile;
@@ -58,7 +58,7 @@ async function generateReport(options: Options) {
   }
 
   const customMetadata = !!options.customMetadata;
-  const customData = options.customData || null;
+  const customData = options.customData;
   const plainDescription = !!options.plainDescription;
   const customStyle = options.customStyle;
   const disableLog = !!options.disableLog;
@@ -76,6 +76,13 @@ async function generateReport(options: Options) {
   const pageFooter = options.pageFooter || null;
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
+
+  // Validate metadata format: array-form requires customMetadata: true
+  if (Array.isArray(options.metadata) && !customMetadata) {
+    throw new Error(
+      `Invalid metadata format: you provided metadata as an array of { name, value } objects but did not set the "customMetadata" option to "true". Either change your metadata to a Metadata object / per-feature Record<string, Metadata>, or set "customMetadata: true" to enable custom key/value metadata.`,
+    );
+  }
 
   fs.ensureDirSync(reportPath);
   fs.ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
@@ -175,6 +182,30 @@ async function generateReport(options: Options) {
     };
   }
 
+  function getCustomDataItems(customData: CustomData | undefined) {
+    if (!customData) return undefined;
+
+    const predefinedKeys = new Set([
+      'username',
+      'nodeVersion',
+      'reportVersion',
+      'hostname',
+      'architecture',
+      'projectName',
+      'release',
+      'testCycle',
+      'buildNumber',
+      'environment',
+      'ciPipeline',
+    ]);
+
+    return Object.entries(customData)
+      .filter(([key, value]) => !predefinedKeys.has(key) && value !== undefined && value !== null && value !== '')
+      .map(([name, value]) => ({ name, value: String(value) }));
+  }
+
+  const customDataItems = getCustomDataItems(customData);
+
   if (saveCollectedJSON) {
     /* istanbul ignore else */
     _writeFileSync(resolve(reportPath, 'enriched-output.json'), suite, { spaces: 2 });
@@ -253,27 +284,41 @@ async function generateReport(options: Options) {
       // Metadata shortcuts for templates
       if (feature.metadata) {
         if (Array.isArray(feature.metadata)) {
+          // customMetadata: true path — array of { name, value } pairs.
+          // Map well-known names to the feature's structured display fields so
+          // that the Environment column and feature detail page show the right
+          // icons/values. Matching is case-insensitive and checks common aliases.
           feature.metadata.forEach((item: any) => {
-            const label = (item.name || item.label || '').toLowerCase();
+            const rawName = (item.name || item.label || '').trim();
+            const label = rawName.toLowerCase();
             const value = item.value || '';
-            if (label.includes('device')) feature.device = value;
-            if (label.includes('executionPlatform')) feature.executionPlatform = value;
-            if (label.includes('os') || label.includes('platform')) feature.os = value;
-            if (label.includes('browser')) feature.browser = value;
-            if (label.includes('app')) feature.app = value;
-            if (label.includes('username')) feature.username = value;
+            if (!value) return;
+
+            if (label === 'device') {
+              feature.device = value;
+            } else if (label === 'executionplatform' || label === 'execution platform' || label === 'platform type') {
+              feature.executionPlatform = value as any;
+            } else if (label === 'os' || label === 'platform' || label === 'operating system') {
+              feature.os = value;
+            } else if (label === 'browser') {
+              feature.browser = value;
+            } else if (label === 'app' || label === 'application') {
+              feature.app = value;
+            } else if (label === 'username' || label === 'user') {
+              feature.username = value;
+            }
           });
         } else {
           if (feature.metadata.device) feature.device = feature.metadata.device;
           if (feature.metadata.executionPlatform) feature.executionPlatform = feature.metadata.executionPlatform;
           if (feature.metadata.platform) {
-            feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`;
+            feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`.trim();
           }
           if (feature.metadata.browser) {
             feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`.trim();
           }
           if (feature.metadata.app) {
-            feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`;
+            feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`.trim();
           }
           if (feature.metadata.username) {
             feature.username = feature.metadata.username;
@@ -636,18 +681,20 @@ async function generateReport(options: Options) {
       reportName: suite.reportName,
       pageTitle: pageTitle,
       pageFooter: pageFooter,
-      project: options.customData?.title,
-      release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
-        ?.value,
-      cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')?.value,
-      executionStartTime: formatDuration(0), // Placeholder
-      executionEndTime: formatDuration(suite.totalTime), // Total duration
+      projectName: customData?.projectName,
+      release: customData?.release,
+      testCycle: customData?.testCycle,
+      buildNumber: customData?.buildNumber,
+      environment: customData?.environment,
+      ciPipeline: customData?.ciPipeline,
+      customDataItems,
+      executionEndTime: formatDuration(suite.totalTime),
       executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
-      metadata: options.customData?.data,
-      username: runtimeMetadata.username,
-      nodeVersion: runtimeMetadata.nodeVersion,
-      reportVersion: runtimeMetadata.reportVersion,
-      architecture: runtimeMetadata.architecture,
+      username: customData?.username ?? runtimeMetadata.username,
+      nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
+      reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
+      hostname: customData?.hostname,
+      architecture: customData?.architecture ?? runtimeMetadata.architecture,
       useCDN: suite.useCDN,
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
@@ -687,19 +734,20 @@ async function generateReport(options: Options) {
         reportName: suite.reportName,
         pageTitle: pageTitle,
         pageFooter: pageFooter,
-        project: options.customData?.title,
-        release: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Release')
-          ?.value,
-        cycle: options.customData?.data?.find((item: { label: string; value: string }) => item.label === 'Cycle')
-          ?.value,
-        executionStartTime: formatDuration(0),
+        projectName: customData?.projectName,
+        release: customData?.release,
+        testCycle: customData?.testCycle,
+        buildNumber: customData?.buildNumber,
+        environment: customData?.environment,
+        ciPipeline: customData?.ciPipeline,
+        customDataItems,
         executionEndTime: formatDuration(suite.totalTime),
         executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
-        metadata: options.customData?.data,
-        username: runtimeMetadata.username,
-        nodeVersion: runtimeMetadata.nodeVersion,
-        reportVersion: runtimeMetadata.reportVersion,
-        architecture: runtimeMetadata.architecture,
+        username: customData?.username ?? runtimeMetadata.username,
+        nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
+        reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
+        hostname: customData?.hostname,
+        architecture: customData?.architecture ?? runtimeMetadata.architecture,
         useCDN: suite.useCDN,
         hideMetadata: suite.hideMetadata,
         displayReportTime: suite.displayReportTime,
@@ -805,6 +853,15 @@ async function generateReport(options: Options) {
 }
 
 /**
+ * Returns `true` when `metadata` contains feature-filename keys.
+ * Used both in `generateReport` and `updateReportMetadata`.
+ */
+function _isPerFeatureMap(metadata: Record<string, any>): boolean {
+  if (Array.isArray(metadata)) return false;
+  return Object.keys(metadata).some((key) => key.endsWith('.feature'));
+}
+
+/**
  * Updates the metadata of each feature in the cucumber-report.json file.
  *
  * @param {string} reportPath Path to the cucumber-report.json file
@@ -819,31 +876,12 @@ function updateReportMetadata(reportPath: string, metadata: Metadata | Record<st
     const reportData = JSON.parse(fileContent);
 
     if (Array.isArray(reportData)) {
-      // Determine whether metadata is a plain Metadata object or a per-feature map.
-      // A per-feature map has string keys whose values are Metadata objects; a plain
-      // Metadata object has keys like 'browser', 'platform', 'device', etc.
-      const isPerFeatureMap =
-        !Array.isArray(metadata) &&
-        Object.keys(metadata).some((k) => {
-          const v = (metadata as Record<string, Metadata>)[k];
-          return (
-            v !== null &&
-            typeof v === 'object' &&
-            !Array.isArray(v) &&
-            ('browser' in v ||
-              'platform' in v ||
-              'device' in v ||
-              'app' in v ||
-              'username' in v ||
-              'nodeVersion' in v ||
-              'reportVersion' in v ||
-              'architecture' in v ||
-              'executionPlatform' in v)
-          );
-        });
+      // Determine whether metadata is a plain Metadata object or a per-feature map
+      // using the same robust heuristic as the rest of the reporter.
+      const isMap = !Array.isArray(metadata) && _isPerFeatureMap(metadata as Record<string, any>);
 
       for (const feature of reportData) {
-        if (isPerFeatureMap) {
+        if (isMap) {
           const featureFileName = feature.uri?.split('/').pop();
           if (featureFileName && (metadata as Record<string, Metadata>)[featureFileName] !== undefined) {
             feature.metadata = (metadata as Record<string, Metadata>)[featureFileName];
@@ -862,4 +900,4 @@ function updateReportMetadata(reportPath: string, metadata: Metadata | Record<st
 
 export const generate = generateReport;
 export const updateMetadata = updateReportMetadata;
-export type { Metadata };
+export type { CustomData, Metadata };

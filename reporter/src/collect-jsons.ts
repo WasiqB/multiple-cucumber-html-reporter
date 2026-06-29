@@ -97,6 +97,10 @@ function enrichMetadata(metadata: Metadata | undefined): Metadata {
  * Resolves the metadata to use for a given feature from options.metadata.
  * Handles both a shared `Metadata` object (applied to all features) and a
  * per-feature `Record<string, Metadata>` keyed by feature filename.
+ *
+ * Per-feature metadata is keyed by the cucumber feature filename. If the current
+ * feature's filename is present, return that entry; otherwise treat the object
+ * as shared metadata unless it contains other feature-file keys.
  */
 function resolveOptionsMetadata(
   optionsMetadata: Metadata | Record<string, Metadata> | undefined,
@@ -109,31 +113,15 @@ function resolveOptionsMetadata(
     return optionsMetadata as Metadata;
   }
 
-  // Detect per-feature map: values must be Metadata-shaped objects
-  const keys = Object.keys(optionsMetadata);
-  const isPerFeatureMap = keys.some((k) => {
-    const v = (optionsMetadata as Record<string, Metadata>)[k];
-    if (v === null || typeof v !== 'object' || Array.isArray(v)) {
-      return false;
-    }
-    const obj = v as Exclude<Metadata, Array<any>>;
-    return (
-      'browser' in obj ||
-      'platform' in obj ||
-      'device' in obj ||
-      'app' in obj ||
-      'username' in obj ||
-      'nodeVersion' in obj ||
-      'reportVersion' in obj ||
-      'architecture' in obj ||
-      'executionPlatform' in obj
-    );
-  });
+  const featureFileName = featureUri?.split('/').pop();
+  const metadataMap = optionsMetadata as Record<string, Metadata>;
 
-  if (isPerFeatureMap) {
-    const featureFileName = featureUri?.split('/').pop();
-    if (!featureFileName) return undefined;
-    return (optionsMetadata as Record<string, Metadata>)[featureFileName];
+  if (featureFileName && metadataMap[featureFileName] !== undefined) {
+    return metadataMap[featureFileName];
+  }
+
+  if (Object.keys(metadataMap).some((key) => key.endsWith('.feature'))) {
+    return undefined;
   }
 
   // Plain shared Metadata

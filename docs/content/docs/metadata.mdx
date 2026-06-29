@@ -36,7 +36,14 @@ await generate({
 
 Any values you provide take precedence over automatic defaults.
 
-### Option 2: Feature specific metadata
+
+<Callout title="Deprecated" type='warning'>
+Metadata type of `Metadata` is deprecated and will be removed in the next major version.
+
+Use metadata of `Record<string, Metadata>` type instead.
+</Callout>
+
+### Option 2: Feature specific metadata (Recommended)
 
 If your test scenarios are running in different environments, you can define metadata based on the feature file name.
 
@@ -93,6 +100,12 @@ To ensure proper icons are displayed, use the following predefined values for ce
 If you need more than just the standard browser and platform information, you can use **Custom Metadata**.
 
 ### Configuration
+
+<Callout title="Deprecated" type='warning'>
+Metadata type of `Array<{ name: string, value: string }>` and `customMetadata` property is deprecated and will be removed in the next major version.
+
+Use metadata of `Record<string, Metadata>` type instead.
+</Callout>
 
 Set `customMetadata: true` in your options:
 
