@@ -85,13 +85,13 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
         Allows you to pass custom metadata to the report. The data is passed as JSON and can be accessed in the report as <code>metadata</code>
 
         <Callout title="Deprecated" type='warning'>
-          Metadata type of <code>Array&lt;{"{"}: string; value: string {"}"}&gt;</code> and <code>customMetadata</code> property is deprecated and will be removed in the next major version.
+          Metadata type of <code>Array&lt;{"{"} name: string; value: string {"}"}&gt;</code> and <code>customMetadata</code> property is deprecated and will be removed in the next major version.
 
           Use metadata of <code>Record&lt;string, Metadata&gt;</code> type for feature specific metadata or <code>Metadata</code> for common metadata across run.
         </Callout>
       </>,
       type: <>
-        <code>Metadata</code> | 
+        <code>Metadata</code> | {' '}
         <code>Record&lt;string, Metadata&gt;</code> &#40;Recommended&#41; | <code className='text-red-500 line-through'>{"{"} name: string; value: string {"}"}[]</code> &#40;Deprecated&#41;
       </>,
       typeDescription: 'Metadata | Record<string, Metadata> | { name: string; value: string }[]',
