@@ -85,13 +85,13 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
         Allows you to pass custom metadata to the report. The data is passed as JSON and can be accessed in the report as <code>metadata</code>
 
         <Callout title="Deprecated" type='warning'>
-          Metadata type of <code>Metadata</code>, <code>Array&lt;{"{"}: string; value: string {"}"}&gt;</code> and <code>customMetadata</code> property is deprecated and will be removed in the next major version.
+          Metadata type of <code>Array&lt;{"{"}: string; value: string {"}"}&gt;</code> and <code>customMetadata</code> property is deprecated and will be removed in the next major version.
 
-          Use metadata of <code>Record&lt;string, Metadata&gt;</code> type instead.
+          Use metadata of <code>Record&lt;string, Metadata&gt;</code> type for feature specific metadata or <code>Metadata</code> for common metadata across run.
         </Callout>
       </>,
       type: <>
-        <code className='text-red-500 line-through'>Metadata</code> &#40;deprecated&#41; |
+        <code>Metadata</code> |
         <code>Record&lt;string, Metadata&gt;</code> &#40;Recommended&#41; |
         <code className='text-red-500 line-through'>{"{"} name: string; value: string {"}"}[]</code> &#40;Deprecated&#41;
       </>,
@@ -262,6 +262,12 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       default: 'local',
       required: true
     },
+    '[key: string]': {
+      description: 'This is free key value pair which you can provide.',
+      required: false,
+      type: 'any',
+      typeDescription: 'any'
+    }
   }}
 />
 
@@ -328,5 +334,11 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'The CI/CD pipeline name.',
       type: 'string',
     },
+    '[key: string]': {
+      description: 'This is free key value pair which you can provide.',
+      required: false,
+      type: 'any',
+      typeDescription: 'any'
+    }
   }}
 />
