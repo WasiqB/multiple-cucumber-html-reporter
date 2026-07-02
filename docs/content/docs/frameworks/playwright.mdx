@@ -66,21 +66,19 @@ generate({
       name: 'chrome',
       version: '148',
     },
+    executionPlatform: 'local',
     platform: {
       name: 'osx',
       version: '26.5',
     },
   },
   customData: {
-    title: 'Run Info',
-    data: [
-      { label: 'Project', value: 'Sample Playwright' },
-      { label: 'Release', value: '1.0.0' },
-      { label: 'Test Cycle', value: 'Smoke' },
-      { label: 'Test Environment', value: 'Dev' },
-      { label: 'Playwright Version', value: '1.40.0' },
-      { label: 'Node Version', value: '24.0.0' },
-    ],
+    projectName: 'Playwright sample project',
+    release: '1.2.0',
+    testCycle: 'Cycle 1',
+    buildNumber: 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
   },
 });
 ```

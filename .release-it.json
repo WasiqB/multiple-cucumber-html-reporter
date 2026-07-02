@@ -2,7 +2,8 @@
   "$schema": "https://unpkg.com/release-it@latest/schema/release-it.json",
   "plugins": {
     "@release-it-plugins/lerna-changelog": {
-      "infile": "CHANGELOG.md"
+      "infile": "CHANGELOG.md",
+      "prettier": true
     }
   },
   "hooks": {

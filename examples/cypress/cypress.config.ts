@@ -38,9 +38,9 @@ export default defineConfig({
     video: false,
     experimentalInteractiveRunEvents: true,
     supportFile: 'src/support/e2e.ts',
-    downloadsFolder: './src/.run/downloads',
-    fixturesFolder: './src/.run/fixtures',
-    screenshotsFolder: './src/.run/screenshots',
-    videosFolder: './src/.run/videos',
+    downloadsFolder: 'src/.run/downloads',
+    fixturesFolder: 'src/.run/fixtures',
+    screenshotsFolder: 'src/.run/screenshots',
+    videosFolder: 'src/.run/videos',
   },
 });

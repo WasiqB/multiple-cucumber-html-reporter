@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs';
-import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 
 const data = readFileSync('./.run/results.json', {
@@ -35,28 +34,19 @@ generate({
       name: runInfos.browserName === 'chromium' ? 'chrome' : runInfos.browserName,
       version: runInfos.browserVersion,
     },
+    executionPlatform: 'local',
     platform: {
       name: mapOs(runInfos.osName),
       version: runInfos.osVersion,
     },
   },
   customData: {
-    title: 'Cypress Sample',
-    data: [
-      { label: 'Project', value: 'Sample Cypress Typescript' },
-      { label: 'Release', value: '1.0.0' },
-      { label: 'Cycle', value: 'Build-1002' },
-      { label: 'Cypress Version', value: '15.16.0' },
-      { label: 'Test Environment', value: 'QA' },
-      {
-        label: 'Execution Start Time',
-        value: dayjs(runInfos.startedTestsAt).format('YYYY-MM-DD HH:mm:ss.SSS'),
-      },
-      {
-        label: 'Execution End Time',
-        value: dayjs(runInfos.endedTestsAt).format('YYYY-MM-DD HH:mm:ss.SSS'),
-      },
-    ],
+    projectName: 'Cypress sample project',
+    release: '1.2.0',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
   },
   pageTitle: 'Cypress Sample',
   reportName: 'Cypress Sample',

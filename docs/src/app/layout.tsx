@@ -1,6 +1,8 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Geist, Inter } from 'next/font/google';
 import { Suspense } from 'react';
@@ -28,11 +30,19 @@ export const metadata: Metadata = createMetadata({
   },
 });
 
-async function AnalyticsWrapper() {
-  if (!isProd) return null;
+function AnalyticsWrapper() {
   const analyticsId = analytics?.gaId;
-  if (!analyticsId) return null;
-  return <GoogleAnalytics gaId={analyticsId} />;
+  return (
+    <>
+      {isProd && analyticsId && <GoogleAnalytics gaId={analyticsId} />}
+      {isProd && (
+        <>
+          <SpeedInsights />
+          <Analytics />
+        </>
+      )}
+    </>
+  );
 }
 
 export default function Layout({ children }: LayoutProps<'/'>) {

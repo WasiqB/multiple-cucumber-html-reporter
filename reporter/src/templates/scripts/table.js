@@ -76,10 +76,10 @@ window.ReportTable = {
 
     const platformIcon = (platform = 'local') => {
       if (platform === 'browserstack') {
-        return '<span title="BrowserStack" class="text-[#e1660a]"><i class="fa-solid fa-cloud text-base"></i></span>';
+        return '<span title="BrowserStack"><i class="fa-solid fa-cloud text-base"></i></span>';
       }
       if (platform === 'testmu') {
-        return '<span title="TestMu AI" class="text-indigo-500"><i class="fa-solid fa-cloud text-base"></i></span>';
+        return '<span title="TestMu AI"><i class="fa-solid fa-cloud text-base"></i></span>';
       }
       return '<span title="Local machine"><i class="fa-solid fa-computer text-base"></i></span>';
     };

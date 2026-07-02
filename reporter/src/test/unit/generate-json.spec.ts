@@ -44,7 +44,7 @@ describe('generate-report.js', () => {
         .withContext('Index file exists')
         .toBeTrue();
     });
-    it('should create a report from the merged found json files with custom data with static file paths', async () => {
+    it('should create a report from the merged found json files with run-level custom data fields', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
         jsonDir: './src/test/unit/data/json',
@@ -53,14 +53,24 @@ describe('generate-report.js', () => {
         saveCollectedJSON: true,
         reportName: 'You can adjust this report name',
         customData: {
-          title: 'Run info',
-          data: [
-            { label: 'Project', value: 'Custom project' },
-            { label: 'Release', value: '1.2.3' },
-            { label: 'Cycle', value: 'B11221.34321' },
-            { label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST' },
-            { label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST' },
-          ],
+          projectName: 'Custom project',
+          release: '1.2.3',
+          testCycle: 'B11221.34321',
+          buildNumber: 'CI-100',
+          environment: 'staging',
+          ciPipeline: 'GitHub Actions',
+          hostname: 'runner-01',
+          extraField: 'Extra run data',
+        },
+        metadata: {
+          browser: {
+            name: 'chrome',
+            version: '120',
+          },
+          platform: {
+            name: 'linux',
+            version: 'x64',
+          },
         },
         displayDuration: true,
         durationInMS: true,
@@ -78,6 +88,21 @@ describe('generate-report.js', () => {
       expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json')).isFile())
         .withContext('temp-output.json file exists')
         .toBeTrue();
+
+      // Verify that the run-level customData values appear in the generated index page
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('projectName rendered').toContain('Custom project');
+      expect(indexHtml).withContext('release rendered').toContain('1.2.3');
+      expect(indexHtml).withContext('testCycle rendered').toContain('B11221.34321');
+      expect(indexHtml).withContext('buildNumber rendered').toContain('CI-100');
+      expect(indexHtml).withContext('environment rendered').toContain('staging');
+      expect(indexHtml).withContext('ciPipeline rendered').toContain('GitHub Actions');
+      expect(indexHtml).withContext('hostname rendered').toContain('runner-01');
+      expect(indexHtml).withContext('extra customData rendered').toContain('Extra run data');
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      expect(enriched.features[0].metadata.browser.name).toEqual('chrome');
+      expect(enriched.features[0].metadata.platform.name).toEqual('linux');
     });
     it('should create a report from the merged found json files with custom metadata', async () => {
       fs.removeSync(REPORT_PATH);
@@ -289,6 +314,45 @@ describe('generate-report.js', () => {
       const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
       expect(enriched.features[0].time).toEqual('00:00:20.000');
       // expect(fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8')).toContain('>Duration<');
+    });
+  });
+
+  describe('Metadata validation', () => {
+    it('should throw an error when array metadata is provided without customMetadata: true', async () => {
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+          metadata: [{ name: 'Browser', value: 'Chrome 120' }],
+          // customMetadata intentionally omitted (defaults to false)
+        }),
+      ).toBeRejectedWithError(/Invalid metadata format/);
+    });
+
+    it('should not throw when array metadata is provided with customMetadata: true', async () => {
+      fs.removeSync(REPORT_PATH);
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/custom-metadata-json/',
+          reportPath: REPORT_PATH,
+          customMetadata: true,
+        }),
+      ).toBeResolved();
+    });
+
+    it('should map well-known array metadata names to feature display fields', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-metadata-json/',
+        reportPath: REPORT_PATH,
+        customMetadata: true,
+        saveCollectedJSON: true,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      // Features should have their metadata array intact in the enriched output
+      const feature = enriched.features[0];
+      expect(Array.isArray(feature.metadata)).toBeTrue();
     });
   });
 
