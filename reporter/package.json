@@ -53,7 +53,7 @@
   "homepage": "https://multiple-cucumber-html-reporter.vercel.app/",
   "dependencies": {
     "find": "^0.3.0",
-    "fs-extra": "^11.3.5",
+    "fs-extra": "^11.3.6",
     "jsonfile": "^6.2.1",
     "liquidjs": "^10.27.1",
     "lodash": "^4.18.1",
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
-    "@tailwindcss/cli": "^4.3.1",
+    "@tailwindcss/cli": "^4.3.2",
     "@types/find": "^0.2.4",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^6.0.0",
@@ -73,7 +73,7 @@
     "@types/node": "^26.0.1",
     "c8": "^11.0.0",
     "jasmine": "^6.3.0",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.2",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }
