@@ -54,17 +54,19 @@ generate({
       version: "latest",
     },
     device: "Local test machine",
+    executionPlatform: 'local',
     platform: {
       name: "osx",
       version: "Sonoma",
     },
   },
   customData: {
-    title: "Run info",
-    data: [
-      { label: "Project", value: "My Awesome Project" },
-      { label: "Release", value: "1.0.0" },
-    ],
+    projectName: 'WebDriverIO sample project',
+    release: '1.2.0',
+    testCycle: 'Cycle 1',
+    buildNumber: 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
   },
 });
 ```

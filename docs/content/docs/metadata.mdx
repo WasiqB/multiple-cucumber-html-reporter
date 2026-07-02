@@ -96,12 +96,12 @@ To ensure proper icons are displayed, use the following predefined values for ce
 
 If you need more than just the standard browser and platform information, you can use **Custom Metadata**.
 
-### Configuration
+### Configuration (Deprecated)
 
 <Callout title="Deprecated" type='warning'>
 Metadata type of `Array<{ name: string, value: string }>` and `customMetadata` property is deprecated and will be removed in the next major version.
 
-Use metadata of `Record<string, Metadata>` type instead.
+Use metadata of `Metadata` or `Record<string, Metadata>` type instead.
 </Callout>
 
 Set `customMetadata: true` in your options:

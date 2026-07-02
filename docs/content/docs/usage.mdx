@@ -22,20 +22,19 @@ report.generate({
       version: "60",
     },
     device: "Local test machine",
+    executionPlatform: 'local',
     platform: {
       name: "ubuntu",
       version: "16.04",
     },
   },
   customData: {
-    title: "Run info",
-    data: [
-      { label: "Project", value: "Custom project" },
-      { label: "Release", value: "1.2.3" },
-      { label: "Cycle", value: "B11221.34321" },
-      { label: "Execution Start Time", value: "Nov 19th 2017, 02:31 PM EST" },
-      { label: "Execution End Time", value: "Nov 19th 2017, 02:56 PM EST" },
-    ],
+    projectName: 'WebDriverIO sample project',
+    release: '1.2.0',
+    testCycle: 'Cycle 1',
+    buildNumber: 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
   },
 });
 ```
