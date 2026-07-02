@@ -1,4 +1,4 @@
-/*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -11,7 +11,6 @@
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-950: oklch(25.8% 0.092 26.042);
-    --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-green-400: oklch(79.2% 0.209 151.711);
     --color-emerald-500: oklch(69.6% 0.17 162.48);
@@ -625,12 +624,6 @@
       border-color: color-mix(in oklab, var(--border) 50%, transparent);
     }
   }
-  .border-indigo-500\/30 {
-    border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 30%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-indigo-500) 30%, transparent);
-    }
-  }
   .border-input {
     border-color: var(--input);
   }
@@ -641,12 +634,6 @@
     border-color: var(--muted);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--muted) 50%, transparent);
-    }
-  }
-  .border-orange-500\/30 {
-    border-color: color-mix(in srgb, oklch(70.5% 0.213 47.604) 30%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-orange-500) 30%, transparent);
     }
   }
   .border-primary {
@@ -718,12 +705,6 @@
   .bg-card {
     background-color: var(--card);
   }
-  .bg-indigo-500\/10 {
-    background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 10%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-indigo-500) 10%, transparent);
-    }
-  }
   .bg-muted {
     background-color: var(--muted);
   }
@@ -749,12 +730,6 @@
     background-color: var(--muted);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--muted) 50%, transparent);
-    }
-  }
-  .bg-orange-500\/10 {
-    background-color: color-mix(in srgb, oklch(70.5% 0.213 47.604) 10%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-orange-500) 10%, transparent);
     }
   }
   .bg-primary {
@@ -1015,9 +990,6 @@
   .whitespace-pre-wrap {
     white-space: pre-wrap;
   }
-  .text-\[\#e1660a\] {
-    color: #e1660a;
-  }
   .text-amber-500 {
     color: var(--color-amber-500);
   }
@@ -1041,9 +1013,6 @@
   }
   .text-green-400 {
     color: var(--color-green-400);
-  }
-  .text-indigo-500 {
-    color: var(--color-indigo-500);
   }
   .text-muted-foreground {
     color: var(--muted-foreground);

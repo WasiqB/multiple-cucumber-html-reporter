@@ -26,7 +26,7 @@ function formatToLocalIso(date: Date | string): string {
     : DateTime.fromJSDate(date).toFormat('yyyy/MM/dd HH:mm:ss');
 }
 
-function getDefaultMetadata(): Metadata {
+function getDefaultMetadata(): Exclude<Metadata, Array<any>> {
   return {
     browser: {
       name: 'not known',
@@ -46,17 +46,86 @@ function getDefaultMetadata(): Metadata {
   };
 }
 
+/**
+ * Merges user-supplied metadata with auto-detected defaults.
+ * User-supplied values always take priority; defaults fill any gaps.
+ * Array-form metadata (legacy key/value pairs) is returned as-is.
+ */
 function enrichMetadata(metadata: Metadata | undefined): Metadata {
   if (Array.isArray(metadata)) {
     return metadata;
   }
 
   const defaultMetadata = getDefaultMetadata();
+  const userMetadata = metadata as Exclude<Metadata, Array<any>> | undefined;
 
-  return {
+  // Deep-merge: user values win, defaults fill missing keys.
+  // For nested objects (browser, platform, app) merge one level deep so that
+  // a user who only specifies `browser.name` still gets `browser.version` from defaults.
+  const merged: Exclude<Metadata, Array<any>> = {
     ...defaultMetadata,
-    ...metadata,
+    ...userMetadata,
   };
+
+  // Merge nested browser object
+  if (userMetadata?.browser || defaultMetadata.browser) {
+    merged.browser = {
+      ...defaultMetadata.browser,
+      ...(userMetadata?.browser ?? {}),
+    } as any;
+  }
+
+  // Merge nested platform object
+  if (userMetadata?.platform || defaultMetadata.platform) {
+    merged.platform = {
+      ...defaultMetadata.platform,
+      ...(userMetadata?.platform ?? {}),
+    } as any;
+  }
+
+  // Merge nested app object (only when user provided it — no default for app)
+  if (userMetadata?.app) {
+    merged.app = userMetadata.app;
+  } else {
+    delete merged.app;
+  }
+
+  return merged;
+}
+
+/**
+ * Resolves the metadata to use for a given feature from options.metadata.
+ * Handles both a shared `Metadata` object (applied to all features) and a
+ * per-feature `Record<string, Metadata>` keyed by feature filename.
+ *
+ * Per-feature metadata is keyed by the cucumber feature filename. If the current
+ * feature's filename is present, return that entry; otherwise treat the object
+ * as shared metadata unless it contains other feature-file keys.
+ */
+function resolveOptionsMetadata(
+  optionsMetadata: Metadata | Record<string, Metadata> | undefined,
+  featureUri: string | undefined,
+): Metadata | undefined {
+  if (!optionsMetadata) return undefined;
+
+  // Array-form Metadata is always treated as a shared value for all features
+  if (Array.isArray(optionsMetadata)) {
+    return optionsMetadata as Metadata;
+  }
+
+  const featureFileName = featureUri?.split('/').pop();
+  const metadataMap = optionsMetadata as Record<string, Metadata>;
+
+  if (featureFileName && metadataMap[featureFileName] !== undefined) {
+    return metadataMap[featureFileName];
+  }
+
+  if (Object.keys(metadataMap).some((key) => key.endsWith('.feature'))) {
+    return undefined;
+  }
+
+  // Plain shared Metadata
+  return optionsMetadata as Metadata;
 }
 
 export default function collectJSONS(options: Options): Feature[] {
@@ -79,7 +148,18 @@ export default function collectJSONS(options: Options): Feature[] {
       const features: Feature[] = JSON.parse(data);
 
       features.forEach((json) => {
-        json.metadata = enrichMetadata(json.metadata || options.metadata);
+        // Resolve options.metadata for this specific feature (handles both shared
+        // Metadata and per-feature Record<string, Metadata>), then merge with the
+        // metadata embedded in the JSON report. Feature-embedded metadata wins over
+        // options.metadata; both fill gaps with auto-detected system defaults.
+        const optionsMeta = resolveOptionsMetadata(options.metadata, json.uri);
+        const baseMeta = json.metadata || optionsMeta;
+        // If both exist and neither is an array, deep-merge: embedded > options > defaults
+        if (json.metadata && !Array.isArray(json.metadata) && optionsMeta && !Array.isArray(optionsMeta)) {
+          json.metadata = enrichMetadata({ ...optionsMeta, ...json.metadata });
+        } else {
+          json.metadata = enrichMetadata(baseMeta);
+        }
 
         if (json.metadata && options.displayReportTime && reportTime) {
           if (!Array.isArray(json.metadata)) {

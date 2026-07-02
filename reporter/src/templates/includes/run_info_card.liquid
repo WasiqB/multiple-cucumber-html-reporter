@@ -1,33 +1,80 @@
 <div class="rounded-xl border bg-card text-card-foreground shadow p-4 md:p-6">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div class="flex flex-wrap items-center gap-6 md:gap-8 flex-1">
-            <!-- Project Info -->
-            {% if data.report.project %}
+
+            {% comment %} Run-level customData fields {% endcomment %}
+
+            {% if data.report.projectName %}
             <div class="flex items-center gap-3 min-w-[150px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <i class="fa-solid fa-rocket text-sm"></i>
                 </div>
                 <div class="truncate">
                     <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Project &amp; Release</p>
-                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.project }} {% if data.report.release %}<span class="text-xs font-medium text-muted-foreground ml-1">v{{ data.report.release }}</span>{% endif %}</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.projectName }} {% if data.report.release %}<span class="text-xs font-medium text-muted-foreground ml-1">v{{ data.report.release }}</span>{% endif %}</p>
+                </div>
+            </div>
+            {% elsif data.report.release %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-tag text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Release</p>
+                    <p class="text-sm font-bold text-foreground truncate">v{{ data.report.release }}</p>
                 </div>
             </div>
             {% endif %}
 
-            <!-- Cycle Info -->
-            {% if data.report.cycle %}
+            {% if data.report.testCycle %}
             <div class="flex items-center gap-3 min-w-[150px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <i class="fa-solid fa-rotate text-sm"></i>
                 </div>
                 <div class="truncate">
                     <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Test Cycle</p>
-                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.cycle }}</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.testCycle }}</p>
                 </div>
             </div>
             {% endif %}
 
-            <!-- Execution Period -->
+            {% if data.report.buildNumber %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-hammer text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Build</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.buildNumber }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if data.report.environment %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-server text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Environment</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.environment }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if data.report.ciPipeline %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-gears text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">CI Pipeline</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.ciPipeline }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% comment %} ── Execution Period ── {% endcomment %}
             <div class="flex items-center gap-3 min-w-[200px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <i class="fa-solid fa-clock text-sm"></i>
@@ -42,7 +89,8 @@
                 </div>
             </div>
 
-            <!-- Username -->
+            {% comment %} ── Runtime / system info ── {% endcomment %}
+
             {% if data.report.username %}
             <div class="flex items-center gap-3 min-w-[120px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -55,7 +103,6 @@
             </div>
             {% endif %}
 
-            <!-- Node Version -->
             {% if data.report.nodeVersion %}
             <div class="flex items-center gap-3 min-w-[120px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -68,7 +115,6 @@
             </div>
             {% endif %}
 
-            <!-- Reporter Version -->
             {% if data.report.reportVersion %}
             <div class="flex items-center gap-3 min-w-[120px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -81,7 +127,18 @@
             </div>
             {% endif %}
 
-            <!-- Machine Architecture -->
+            {% if data.report.hostname %}
+            <div class="flex items-center gap-3 min-w-[120px]">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <i class="fa-solid fa-network-wired text-sm"></i>
+                </div>
+                <div class="truncate">
+                    <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Hostname</p>
+                    <p class="text-sm font-bold text-foreground truncate">{{ data.report.hostname }}</p>
+                </div>
+            </div>
+            {% endif %}
+
             {% if data.report.architecture %}
             <div class="flex items-center gap-3 min-w-[120px]">
                 <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -94,16 +151,15 @@
             </div>
             {% endif %}
 
-            <!-- Custom User Metadata -->
-            {% if data.report.metadata %}
-                {% for item in data.report.metadata %}
+            {% if data.report.customDataItems %}
+                {% for item in data.report.customDataItems %}
                 {% if item.value %}
                 <div class="flex items-center gap-3 min-w-[120px]">
                     <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                         <i class="fa-solid fa-circle-info text-sm"></i>
                     </div>
                     <div class="truncate">
-                        <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">{{ item.label }}</p>
+                        <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">{{ item.name | default: item.label }}</p>
                         <p class="text-sm font-bold text-foreground truncate">{{ item.value }}</p>
                     </div>
                 </div>

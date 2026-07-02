@@ -17,8 +17,8 @@
   "devDependencies": {
     "@cucumber/cucumber": "^13.0.0",
     "@mchr/tsconfig": "workspace:*",
-    "@playwright/test": "^1.61.0",
-    "@types/node": "^25.9.3",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1",
     "multiple-cucumber-html-reporter": "workspace:*",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"

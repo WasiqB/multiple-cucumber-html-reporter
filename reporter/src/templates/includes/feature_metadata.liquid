@@ -45,15 +45,15 @@
     {% comment %} Cloud / Local platform badge {% endcomment %}
     {% assign exec_platform = feature.executionPlatform | default: "local" %}
     {% if exec_platform == "browserstack" %}
-    <span class="flex items-center gap-1.5 rounded-full bg-orange-500/10 px-2.5 py-1 border border-orange-500/30" title="Running on BrowserStack">
-        <i class="fa-solid fa-cloud text-[#e1660a] text-sm"></i>
+    <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on BrowserStack">
+        <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
     {% elsif exec_platform == "testmu" %}
-    <span class="flex items-center gap-1.5 rounded-full bg-indigo-500/10 px-2.5 py-1 border border-indigo-500/30" title="Running on TestMu AI">
-        <i class="fa-solid fa-cloud text-indigo-500 text-sm"></i>
+    <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on TestMu AI">
+        <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
     {% else %}
-    <span class="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1 border border-border" title="Running locally">
+    <span class="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1" title="Running locally">
         <i class="fa-solid fa-computer text-primary text-sm"></i>
     </span>
     {% endif %}
@@ -73,9 +73,10 @@
     {% if feature.metadata %}
         {% for item in feature.metadata %}
         {% if item.value %}
-        <span class="flex items-center gap-1.5" title="{{ item.label }}: {{ item.value }}">
+        <span class="flex items-center gap-1.5" title="{{ item.name | default: item.label }}: {{ item.value }}">
             <i class="fa-solid fa-circle-info text-primary text-base shrink-0"></i>
-            <span class="text-xs text-foreground font-medium">{{ item.value }}</span>
+            <span class="text-xs text-muted-foreground font-medium">{{ item.name | default: item.label }}:</span>
+            <span class="text-xs text-foreground font-semibold">{{ item.value }}</span>
         </span>
         {% endif %}
         {% endfor %}

@@ -33,15 +33,15 @@
     "node": ">=24"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
-    "@commitlint/cli": "^21.0.2",
-    "@commitlint/config-conventional": "^21.0.2",
-    "@release-it-plugins/lerna-changelog": "^8.0.1",
-    "@types/node": "^25.9.3",
+    "@biomejs/biome": "2.5.2",
+    "@commitlint/cli": "^21.2.0",
+    "@commitlint/config-conventional": "^21.2.0",
+    "@release-it-plugins/lerna-changelog": "^9.0.0",
+    "@types/node": "^26.0.1",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
-    "lint-staged": "^17.0.7",
-    "release-it": "^19.2.4",
+    "lint-staged": "^17.0.8",
+    "release-it": "^20.2.1",
     "typescript": "^6.0.3"
   },
   "lint-staged": {
@@ -52,5 +52,5 @@
       "pnpm lint"
     ]
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }

@@ -1,12 +1,9 @@
 import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
 import os from 'node:os';
-import dayjs from 'dayjs';
 import { generate } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
-let startTime: number;
-let endTime: number;
 export const isCI = !!process.env.CI;
 
 export const config: WebdriverIO.Config = {
@@ -190,7 +187,6 @@ export const config: WebdriverIO.Config = {
     if (existsSync('reports')) {
       await rm('reports', { recursive: true });
     }
-    startTime = Date.now();
   },
   /**
    * Gets executed before a worker process is spawned and can be used to initialize specific service
@@ -323,7 +319,6 @@ export const config: WebdriverIO.Config = {
    * @param {<Object>} _results object containing test results
    */
   onComplete: async (_exitCode, _config, _capabilities, _results) => {
-    endTime = Date.now();
     await generate({
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
@@ -335,7 +330,7 @@ export const config: WebdriverIO.Config = {
       displayDuration: true,
       displayChartPercentages: true,
       pageTitle: 'My WDIO Typescript Sample',
-      reportName: 'Cucumber JS Report',
+      reportName: 'WDIO Cucumber JS Report',
       metadata: {
         browser: {
           name: 'chrome',
@@ -349,21 +344,12 @@ export const config: WebdriverIO.Config = {
         },
       },
       customData: {
-        title: 'Run Info',
-        data: [
-          { label: 'Project', value: 'Sample WDIO Typescript' },
-          { label: 'Release', value: '1.0.0' },
-          { label: 'WDIO Version', value: '9.0.0' },
-          { label: 'Node Version', value: '24.0.0' },
-          {
-            label: 'Execution Start Time',
-            value: dayjs(startTime).format('YYYY-MM-DD HH:mm:ss.SSS'),
-          },
-          {
-            label: 'Execution End Time',
-            value: dayjs(endTime).format('YYYY-MM-DD HH:mm:ss.SSS'),
-          },
-        ],
+        projectName: 'WebDriverIO sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
       },
     });
   },

@@ -17,19 +17,17 @@ test.generate({
   displayDuration: true,
   durationInMS: true,
   customData: {
-    title: 'Run info',
-    data: [
-      { label: 'Project', value: 'Custom project' },
-      { label: 'Release', value: '1.2.3' },
-      { label: 'Cycle', value: 'B11221.34321' },
-      { label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST' },
-      { label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST' },
-    ],
+    projectName: 'Custom project',
+    release: '1.2.3',
+    testCycle: 'B11221.34321',
+    buildNumber: 'CI-001',
+    environment: 'staging',
+    ciPipeline: 'GitHub Actions',
   },
 });
 
 /**
- * Generate a report for browsers wit useCDN true
+ * Generate a report for browsers with useCDN true
  */
 test.generate({
   saveCollectedJSON: true,
@@ -41,14 +39,9 @@ test.generate({
   durationInMS: true,
   useCDN: true,
   customData: {
-    title: 'Run info',
-    data: [
-      { label: 'Project', value: 'Custom project' },
-      { label: 'Release', value: '1.2.3' },
-      { label: 'Cycle', value: 'B11221.34321' },
-      { label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST' },
-      { label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST' },
-    ],
+    projectName: 'Custom project',
+    release: '1.2.3',
+    testCycle: 'B11221.34321',
   },
 });
 
@@ -66,11 +59,8 @@ test.generate({
   pageFooter: '<div><p>Some custom footer data can be placed here</p></div>',
   plainDescription: true,
   customData: {
-    title: 'Run info',
-    data: [
-      { label: 'Project', value: 'Custom embedded project' },
-      { label: 'Release', value: '4.5.6' },
-    ],
+    projectName: 'Custom embedded project',
+    release: '4.5.6',
   },
 });
 
@@ -88,14 +78,9 @@ test.generate({
   hideMetadata: true,
   durationInMS: true,
   customData: {
-    title: 'Run info',
-    data: [
-      { label: 'Project', value: 'Custom project' },
-      { label: 'Release', value: '1.2.3' },
-      { label: 'Cycle', value: 'B11221.34321' },
-      { label: 'Execution Start Time', value: 'Nov 19th 2017, 02:31 PM EST' },
-      { label: 'Execution End Time', value: 'Nov 19th 2017, 02:56 PM EST' },
-    ],
+    projectName: 'Custom project',
+    release: '1.2.3',
+    testCycle: 'B11221.34321',
   },
 });
 
