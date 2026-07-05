@@ -1,15 +1,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ report.pageTitle | default: "Cucumber Test Report" }}</title>
-<link rel="icon" type="image/x-icon" href="{{ base_url | default: "." }}/assets/images/logo.png">
+<title>{{ report.pageTitle | default: 'Cucumber Test Report' }}</title>
+<link
+  rel="icon"
+  type="image/x-icon"
+  href="{{ base_url | default: "." }}/assets/{% if report.logo %}{{ report.logo }}{% else %}images/logo.png{% endif %}"
+>
 <link rel="stylesheet" href="{{ base_url | default: "." }}/styles.min.css">
 {% if report.useCDN %}
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css">
 {% else %}
-    <script src="{{ base_url | default: "." }}/assets/js/apex-charts.js"></script>
-    <link rel="stylesheet" href="{{ base_url | default: "." }}/assets/css/font-awesome.css">
+  <script src="{{ base_url | default: "." }}/assets/js/apex-charts.js"></script>
+  <link rel="stylesheet" href="{{ base_url | default: "." }}/assets/css/font-awesome.css">
 {% endif %}
 <style>
-    [v-cloak] { display: none; }
+  [v-cloak] {
+    display: none;
+  }
 </style>

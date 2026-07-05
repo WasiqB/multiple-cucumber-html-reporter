@@ -72,10 +72,19 @@ async function generateReport(options: Options) {
   const durationInMS = !!options.durationInMS;
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
-  const pageTitle = options.pageTitle || 'Multiple Cucumber HTML Reporter';
+  const pageTitle = options.pageTitle || DEFAULT_REPORT_NAME;
   const pageFooter = options.pageFooter || null;
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
+  const brandLogo = options.brandLogo;
+
+  let logoPathName: string | undefined;
+  if (brandLogo) {
+    const resolvedLogoPath = resolve(process.cwd(), brandLogo);
+    if (await fs.pathExists(resolvedLogoPath)) {
+      logoPathName = `images/${path.basename(brandLogo)}`;
+    }
+  }
 
   // Validate metadata format: array-form requires customMetadata: true
   if (Array.isArray(options.metadata) && !customMetadata) {
@@ -702,6 +711,7 @@ async function generateReport(options: Options) {
       displayChartPercentages: suite.displayChartPercentages,
       plainDescription,
       customStyle: suite.customStyle || '',
+      logo: logoPathName,
     };
 
     const data = {
@@ -755,6 +765,7 @@ async function generateReport(options: Options) {
         displayChartPercentages: suite.displayChartPercentages,
         plainDescription,
         customStyle: suite.customStyle || '',
+        logo: logoPathName,
       };
 
       const data = {
@@ -775,6 +786,13 @@ async function generateReport(options: Options) {
 
     // Copy the assets
     await fs.copy(resolve(templatesDir, 'assets'), resolve(reportPath, 'assets'));
+    if (brandLogo) {
+      const resolvedLogoPath = resolve(process.cwd(), brandLogo);
+      if (await fs.pathExists(resolvedLogoPath)) {
+        const logoBasename = path.basename(brandLogo);
+        await fs.copy(resolvedLogoPath, resolve(reportPath, 'assets', 'images', logoBasename));
+      }
+    }
   }
 
   async function _createCssFile(suite: Suite) {

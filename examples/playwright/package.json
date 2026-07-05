@@ -20,7 +20,7 @@
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "tsx": "^4.22.4",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   }
 }

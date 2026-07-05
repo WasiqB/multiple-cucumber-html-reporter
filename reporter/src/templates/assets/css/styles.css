@@ -249,6 +249,9 @@
   .z-50 {
     z-index: 50;
   }
+  .mx-1\.5 {
+    margin-inline: calc(var(--spacing) * 1.5);
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -272,6 +275,9 @@
   }
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
+  }
+  .mr-0\.5 {
+    margin-right: calc(var(--spacing) * 0.5);
   }
   .mr-4 {
     margin-right: calc(var(--spacing) * 4);
@@ -1016,6 +1022,12 @@
   .text-muted-foreground {
     color: var(--muted-foreground);
   }
+  .text-muted-foreground\/50 {
+    color: var(--muted-foreground);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--muted-foreground) 50%, transparent);
+    }
+  }
   .text-muted-foreground\/80 {
     color: var(--muted-foreground);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1378,6 +1390,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--foreground);
+      }
+    }
+  }
+  .hover\:text-primary {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--primary);
       }
     }
   }

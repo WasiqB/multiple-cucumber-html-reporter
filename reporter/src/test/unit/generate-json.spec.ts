@@ -51,6 +51,7 @@ describe('generate-report.js', () => {
         reportPath: REPORT_PATH,
         staticFilePath: true,
         saveCollectedJSON: true,
+        brandLogo: './src/templates/assets/images/logo.png',
         reportName: 'You can adjust this report name',
         customData: {
           projectName: 'Custom project',

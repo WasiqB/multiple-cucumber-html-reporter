@@ -36,5 +36,8 @@
     "editor.defaultFormatter": "CucumberOpen.cucumber-official"
   },
   "cucumber.features": ["examples/**/src/features/*.feature"],
-  "cucumber.glue": ["examples/**/src/steps/*.steps.ts"]
+  "cucumber.glue": ["examples/**/src/steps/*.steps.ts"],
+  "[liquid]": {
+    "editor.defaultFormatter": "Shopify.theme-check-vscode"
+  }
 }

@@ -76,6 +76,7 @@ export interface Options {
   pageFooter?: string | null;
   useCDN?: boolean;
   staticFilePath?: boolean;
+  brandLogo?: string;
 }
 
 export interface Hook {

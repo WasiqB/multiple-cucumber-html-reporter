@@ -1,84 +1,90 @@
 <div class="flex flex-wrap items-center gap-3 md:gap-4 text-sm text-muted-foreground">
-    {% if feature.device %}
+  {% if feature.device %}
     {% assign device = feature.device | downcase %}
     <span class="flex items-center gap-1.5" title="{{ feature.device }}">
-        <i class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-primary text-base"></i>
+      <i
+        class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-primary text-base"
+      ></i>
     </span>
-    {% endif %}
-    {% if feature.os %}
+  {% endif %}
+  {% if feature.os %}
     {% assign os = feature.os | downcase %}
     <span class="flex items-center gap-1.5" title="{{ feature.os }}">
-        <i class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'darwin' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-primary text-base"></i>
+      <i
+        class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'darwin' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %} text-primary text-base"
+      ></i>
     </span>
-    {% endif %}
-    {% if feature.browser %}
+  {% endif %}
+  {% if feature.browser %}
     {% assign browser = feature.browser | downcase %}
     <span class="flex items-center gap-1.5" title="{{ feature.browser }}">
-        <i class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% elsif browser contains 'api' %}fa-solid fa-plug{% else %}fa-solid fa-globe{% endif %} text-primary text-base"></i>
+      <i
+        class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% elsif browser contains 'api' %}fa-solid fa-plug{% else %}fa-solid fa-globe{% endif %} text-primary text-base"
+      ></i>
     </span>
-    {% endif %}
-    {% if feature.username %}
+  {% endif %}
+  {% if feature.username %}
     <span class="flex items-center gap-1.5" title="{{ feature.username }}">
-        <i class="fa-solid fa-user text-primary text-base"></i>
-        <span class="text-xs text-foreground font-medium">{{ feature.username }}</span>
+      <i class="fa-solid fa-user text-primary text-base"></i>
+      <span class="text-xs text-foreground font-medium">{{ feature.username }}</span>
     </span>
-    {% endif %}
-    {% if feature.metadata.nodeVersion %}
+  {% endif %}
+  {% if feature.metadata.nodeVersion %}
     <span class="flex items-center gap-1.5" title="Node {{ feature.metadata.nodeVersion }}">
-        <i class="fa-brands fa-node-js text-primary text-base"></i>
-        <span class="text-xs text-foreground font-medium">{{ feature.metadata.nodeVersion }}</span>
+      <i class="fa-brands fa-node-js text-primary text-base"></i>
+      <span class="text-xs text-foreground font-medium">{{ feature.metadata.nodeVersion }}</span>
     </span>
-    {% endif %}
-    {% if feature.metadata.reportVersion %}
+  {% endif %}
+  {% if feature.metadata.reportVersion %}
     <span class="flex items-center gap-1.5" title="Reporter {{ feature.metadata.reportVersion }}">
-        <i class="fa-solid fa-code-branch text-primary text-base"></i>
-        <span class="text-xs text-foreground font-medium">{{ feature.metadata.reportVersion }}</span>
+      <i class="fa-solid fa-code-branch text-primary text-base"></i>
+      <span class="text-xs text-foreground font-medium">{{ feature.metadata.reportVersion }}</span>
     </span>
-    {% endif %}
-    {% if feature.metadata.architecture %}
+  {% endif %}
+  {% if feature.metadata.architecture %}
     <span class="flex items-center gap-1.5" title="{{ feature.metadata.architecture }}">
-        <i class="fa-solid fa-microchip text-primary text-base"></i>
-        <span class="text-xs text-foreground font-medium">{{ feature.metadata.architecture }}</span>
+      <i class="fa-solid fa-microchip text-primary text-base"></i>
+      <span class="text-xs text-foreground font-medium">{{ feature.metadata.architecture }}</span>
     </span>
-    {% endif %}
+  {% endif %}
 
-    {% comment %} Cloud / Local platform badge {% endcomment %}
-    {% assign exec_platform = feature.executionPlatform | default: "local" %}
-    {% if exec_platform == "browserstack" %}
+  {% comment %} Cloud / Local platform badge {% endcomment %}
+  {% assign exec_platform = feature.executionPlatform | default: 'local' %}
+  {% if exec_platform == 'browserstack' %}
     <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on BrowserStack">
-        <i class="fa-solid fa-cloud text-primary text-sm"></i>
+      <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
-    {% elsif exec_platform == "testmu" %}
+  {% elsif exec_platform == 'testmu' %}
     <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on TestMu AI">
-        <i class="fa-solid fa-cloud text-primary text-sm"></i>
+      <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
-    {% else %}
+  {% else %}
     <span class="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1" title="Running locally">
-        <i class="fa-solid fa-computer text-primary text-sm"></i>
+      <i class="fa-solid fa-computer text-primary text-sm"></i>
     </span>
-    {% endif %}
-    {% if feature.app and feature.app != "" %}
+  {% endif %}
+  {% if feature.app and feature.app != '' %}
     <span class="flex items-center gap-1.5" title="{{ feature.app }}">
-        <i class="fa-solid fa-cube text-primary text-base"></i>
+      <i class="fa-solid fa-cube text-primary text-base"></i>
     </span>
-    {% endif %}
+  {% endif %}
 
-    <div class="w-full my-2"></div>
-    {% if feature.uri and feature.uri != "" %}
+  <div class="w-full my-2"></div>
+  {% if feature.uri and feature.uri != '' %}
     <span class="flex items-center gap-1.5 min-w-0 max-w-full" title="{{ feature.uri }}">
-        <i class="fa-solid fa-file-code text-primary text-base shrink-0"></i>
-        <span class="text-xs font-mono text-muted-foreground truncate">{{ feature.uri }}</span>
+      <i class="fa-solid fa-file-code text-primary text-base shrink-0"></i>
+      <span class="text-xs font-mono text-muted-foreground truncate">{{ feature.uri }}</span>
     </span>
-    {% endif %}
-    {% if feature.metadata %}
-        {% for item in feature.metadata %}
-        {% if item.value %}
+  {% endif %}
+  {% if feature.metadata %}
+    {% for item in feature.metadata %}
+      {% if item.value %}
         <span class="flex items-center gap-1.5" title="{{ item.name | default: item.label }}: {{ item.value }}">
-            <i class="fa-solid fa-circle-info text-primary text-base shrink-0"></i>
-            <span class="text-xs text-muted-foreground font-medium">{{ item.name | default: item.label }}:</span>
-            <span class="text-xs text-foreground font-semibold">{{ item.value }}</span>
+          <i class="fa-solid fa-circle-info text-primary text-base shrink-0"></i>
+          <span class="text-xs text-muted-foreground font-medium">{{ item.name | default: item.label }}:</span>
+          <span class="text-xs text-foreground font-semibold">{{ item.value }}</span>
         </span>
-        {% endif %}
-        {% endfor %}
-    {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 </div>
