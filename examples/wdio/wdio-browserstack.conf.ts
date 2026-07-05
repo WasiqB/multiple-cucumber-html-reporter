@@ -144,6 +144,7 @@ export const config: WebdriverIO.Config = {
       jsonDir: 'reports/json/',
       reportPath: 'reports/report/',
       useCDN: false,
+      brandLogo: '../../docs/public/images/logo.png',
       openReportInBrowser: true,
       saveCollectedJSON: true,
       displayReportTime: true,

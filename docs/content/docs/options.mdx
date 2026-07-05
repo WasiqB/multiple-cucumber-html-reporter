@@ -25,7 +25,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       typeDescription: 'string'
     },
     staticFilePath: {
-      description: 'If true, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests',
+      description: <>If <code>true</code>, each feature will get a static filename for the HTML. Use this feature only if you are not running multiple instances of the same tests</>,
       type: 'boolean',
       default: false,
       typeDescription: 'boolean'
@@ -38,7 +38,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
 <TypeTable
   type={{
     openReportInBrowser: {
-      description: 'If true, the report will automatically be opened in the default browser of the operating system',
+      description: <>If <code>true</code>, the report will automatically be opened in the default browser of the operating system</>,
       type: 'boolean',
       default: false,
       typeDescription: 'boolean'
@@ -65,7 +65,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
 <TypeTable
   type={{
     customMetadata: {
-      description: 'If true, the custom metadata will be displayed in the report',
+      description: <>If <code>true</code>, the custom metadata will be displayed in the report</>,
       type: 'boolean',
       default: false,
       deprecated: true,
@@ -110,18 +110,19 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       deprecated: false
     },
     pageTitle: {
-      description: 'The report title in the HTML <head> tag.',
+      description: <>The report title in the HTML <code>{'<head>'}</code> tag. It is also displayed as sub title on the report page</>,
       type: 'string',
       typeDescription: 'string',
       default: 'Multiple Cucumber HTML Reporter',
     },
     reportName: {
-      description: 'You can change the report name as displayed in the UI.',
+      description: 'You can change the report name as displayed in the report page.',
       type: 'string',
       typeDescription: 'string',
+      default: 'Multiple Cucumber HTML Reporter'
     },
     pageFooter: {
-      description: 'Customizes the page footer if required. You can provide a HTML string like <div><p>A custom footer</p></div>.',
+      description: <>Customizes the page footer if required. You can provide a HTML string like <code lang='html'>{'<div><p className="text-2xl">A custom footer</p></div>'}</code> along with Tailwind CSS based class names.</>,
       type: 'string',
       typeDescription: 'string'
     },
@@ -176,7 +177,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       typeDescription: 'sum | wallClock'
     },
     displayReportTime: {
-      description: 'If set to `true`, the report will display the time of the feature.',
+      description: <>If set to <code>true</code>, the report will display the time of the feature.</>,
       type: 'boolean',
       default: false,
       typeDescription: 'boolean'
@@ -237,6 +238,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
     device: {
       description: 'The device used for the tests.',
       type: 'string',
+      typeDescription: 'string'
     },
     platform: {
       description: 'The platform used for the tests.',
@@ -276,12 +278,14 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
   name: {
     description: <>App, Browser and Platform name</>,
     type: 'string',
-    required: true
+    required: true,
+    typeDescription: 'string'
   },
   version: {
     description: <>App, Browser and Platform version</>,
     type: 'string',
-    required: true
+    required: true,
+    typeDescription: 'string'
   }
 }} />
 
@@ -292,46 +296,57 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
     username: {
       description: 'The username of the user who ran the tests.',
       type: 'string',
+      typeDescription: 'string'
     },
     nodeVersion: {
       description: 'The version of Node.js used to run the tests.',
       type: 'string',
+      typeDescription: 'string'
     },
     reportVersion: {
       description: 'The version of the report.',
       type: 'string',
+      typeDescription: 'string'
     },
     hostname: {
       description: 'The hostname of the machine that ran the tests.',
       type: 'string',
+      typeDescription: 'string'
     },
     architecture: {
       description: 'The architecture of the machine that ran the tests.',
       type: 'string',
+      typeDescription: 'string'
     },
     projectName: {
       description: 'The name of the project.',
       type: 'string',
+      typeDescription: 'string'
     },
     release: {
       description: 'The release version of the project.',
       type: 'string',
+      typeDescription: 'string'
     },
     testCycle: {
       description: 'The test cycle name.',
       type: 'string',
+      typeDescription: 'string'
     },
     buildNumber: {
       description: 'The build number of the project.',
       type: 'string',
+      typeDescription: 'string'
     },
     environment: {
       description: 'The environment in which the tests were run.',
       type: 'string',
+      typeDescription: 'string'
     },
     ciPipeline: {
       description: 'The CI/CD pipeline name.',
       type: 'string',
+      typeDescription: 'string'
     },
     '[key: string]': {
       description: 'This is free key value pair which you can provide.',

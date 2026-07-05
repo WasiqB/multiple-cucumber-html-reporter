@@ -102,3 +102,18 @@ test.generate({
     { name: 'platform version', value: '16.04' },
   ],
 });
+
+/**
+ * Generate a report with a custom brand logo
+ */
+test.generate({
+  saveCollectedJSON: true,
+  jsonDir: './src/test/unit/data/json/',
+  reportPath: './.tmp/brand-logo-report/',
+  reportName: 'Report with Custom Brand Logo',
+  brandLogo: './src/templates/assets/images/logo.png',
+  customData: {
+    projectName: 'Brand Logo Project',
+    release: '1.0.0',
+  },
+});
