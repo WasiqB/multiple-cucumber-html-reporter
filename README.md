@@ -1,17 +1,53 @@
-# Multiple Cucumber HTML Reporter
+<div align="center">
+  <img src="docs/public/images/logo.png" alt="logo" width="200" height="auto" />
 
-<p align="center">
-  <strong>Generate beautiful, interactive, and customizable HTML reports for Cucumber runs.</strong>
-</p>
+  <h2>
+    Multiple Cucumber HTML Reporter
+  </h2>
 
-<p align="center">
-  <a href="https://discord.gg/d6rfHkSDjc"><img src="https://img.shields.io/discord/1057960728692260975?label=Chat%20on%20Discord&logo=Discord&style=for-the-badge" alt="Discord"></a>
-  <a href="https://github.com/WasiqB/multiple-cucumber-html-reporter/actions"><img src="https://img.shields.io/github/actions/workflow/status/WasiqB/multiple-cucumber-html-reporter/test.yml?label=Tests&logo=GitHub&style=for-the-badge" alt="GitHub Workflow Status"></a>
-  <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter"><img src="https://img.shields.io/npm/v/multiple-cucumber-html-reporter?logo=npm&style=for-the-badge" alt="NPM Version"></a>
-  <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter"><img src="https://img.shields.io/npm/dm/multiple-cucumber-html-reporter?label=Downloads&logo=npm&style=for-the-badge" alt="NPM Downloads"></a>
-  <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/WasiqB/multiple-cucumber-html-reporter?logo=open-source-initiative&style=for-the-badge" alt="License"></a>
-  <a href="https://github.com/sponsors/WasiqB"><img src="https://img.shields.io/badge/Sponsor-WasiqB-ea4aaa?style=for-the-badge&logo=github-sponsors" alt="Sponsor"></a>
-</p>
+  <h3>
+    Generate beautiful, interactive and customizable HTML reports for Cucumber runs.
+  </h3>
+
+  <p>
+    <a href="https://discord.gg/d6rfHkSDjc" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/discord/online-members/d6rfHkSDjc.svg?variant=branded&amp;size=sm&amp;mode=dark">
+        <img alt="Discord Online" src="https://www.shieldcn.dev/discord/online-members/d6rfHkSDjc.svg?variant=branded&amp;size=sm&amp;mode=light">
+      </picture>
+    </a>
+    <a href="https://github.com/WasiqB/multiple-cucumber-html-reporter/actions" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/ci/WasiqB/multiple-cucumber-html-reporter.svg?variant=secondary&amp;size=sm&amp;mode=dark">
+        <img alt="CI" src="https://www.shieldcn.dev/github/ci/WasiqB/multiple-cucumber-html-reporter.svg?variant=secondary&amp;size=sm&amp;mode=light">
+      </picture>
+    </a>
+    <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/release/WasiqB/multiple-cucumber-html-reporter.svg?size=sm&amp;mode=dark">
+        <img alt="Release" src="https://www.shieldcn.dev/github/release/WasiqB/multiple-cucumber-html-reporter.svg?size=sm&amp;mode=light">
+      </picture>
+    </a>
+    <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/npm/dm/multiple-cucumber-html-reporter.svg?variant=secondary&amp;mode=dark">
+        <img alt="npm downloads" src="https://shieldcn.dev/npm/dm/multiple-cucumber-html-reporter.svg?variant=secondary&amp;mode=light">
+      </picture>
+    </a>
+    <a href="http://opensource.org/licenses/MIT">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/license/WasiqB/multiple-cucumber-html-reporter.svg?variant=ghost&amp;size=sm&amp;mode=dark">
+        <img alt="License" src="https://www.shieldcn.dev/github/license/WasiqB/multiple-cucumber-html-reporter.svg?variant=ghost&amp;size=sm&amp;mode=light">
+      </picture>
+    </a>
+    <a href="https://github.com/sponsors/WasiqB" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/badge/Sponsor-GitHub-ea4aaa.svg?logo=githubsponsors&amp;variant=secondary&amp;size=sm&amp;mode=dark">
+        <img alt="GitHub Sponsors" src="https://www.shieldcn.dev/badge/Sponsor-GitHub-ea4aaa.svg?logo=githubsponsors&amp;variant=secondary&amp;size=sm&amp;mode=light">
+      </picture>
+    </a>
+  </p>
+</div>
 
 ---
 
@@ -26,7 +62,7 @@
 -   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
--   🎨 **Fully Customizable**: Add custom data blocks, brand colors, and additional CSS styles.
+-   🎨 **Fully Customizable**: Add custom data blocks, brand colors, logo, footer, and additional CSS styles.
 
 ---
 
@@ -108,8 +144,8 @@ Contributions are what make the open source community such an amazing place to l
 - **Discord**: [Join our Discord server](https://discord.gg/d6rfHkSDjc) for real-time support.
 - **GitHub Issues**: [Report bugs or request features](https://github.com/WasiqB/multiple-cucumber-html-reporter/issues).
 - **GitHub Discussions**: [Join our GitHub Discussions](https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions).
-- **Project Milestones**: [View Project Milestones](https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones).
-- **Twitter / X**: Follow [@WasiqBhamla](https://x.com/WasiqBhamla) for project updates.
+- **Project Milestones**: [View complete Roadmap in Project Milestones](https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones).
+- **Follow project updates**: Follow the latest project updates on [X (formerly Twitter)](https://x.com/WasiqBhamla) and [LinkedIn](https://www.linkedin.com/in/wasiqbhamla).
 
 ## ❤️ Support the project
 
