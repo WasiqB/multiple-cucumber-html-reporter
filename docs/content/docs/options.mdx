@@ -121,6 +121,12 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       typeDescription: 'string',
       default: 'Multiple Cucumber HTML Reporter'
     },
+    brandLogo: {
+      description: <>Customizes the brand logo as displayed in the report title and header. Pass relative or absolute path to the logo</>,
+      type: 'string',
+      typeDescription: 'string',
+      default: './reporter/src/templates/assets/images/logo.png'
+    },
     pageFooter: {
       description: <>Customizes the page footer if required. You can provide a HTML string like <code lang='html'>{'<div><p className="text-2xl">A custom footer</p></div>'}</code> along with Tailwind CSS based class names.</>,
       type: 'string',
