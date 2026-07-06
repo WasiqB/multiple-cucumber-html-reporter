@@ -11,14 +11,12 @@
     "after:npm:release": "rm reporter/README.md reporter/LICENSE"
   },
   "git": {
-    "requireBranch": "main",
+    "requireBranch": "issue-583",
     "commitMessage": "chore: release v${version}",
     "commit": true,
     "tag": true,
     "push": true,
-    "commitArgs": ["-S", "--no-verify"],
-    "tagArgs": ["-s"],
-    "requireCleanWorkingDir": true
+    "requireCleanWorkingDir": false
   },
   "github": {
     "release": true,
@@ -33,7 +31,6 @@
   "npm": {
     "publishPackageManager": "pnpm",
     "publishPath": "reporter",
-    "versionArgs": ["--prefix", "reporter"],
     "publishArgs": ["--no-git-checks"],
     "publish": true,
     "skipChecks": true
