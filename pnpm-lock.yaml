@@ -20,6 +20,9 @@ importers:
       '@release-it-plugins/lerna-changelog':
         specifier: ^9.0.0
         version: 9.0.0(prettier@3.9.4)(release-it@20.2.1(@types/node@26.1.0))
+      '@release-it/bumper':
+        specifier: ^7.0.6
+        version: 7.0.6(release-it@20.2.1(@types/node@26.1.0))
       '@types/node':
         specifier: ^26.1.0
         version: 26.1.0
@@ -173,8 +176,8 @@ importers:
         version: 1.11.21
     devDependencies:
       '@badeball/cypress-cucumber-preprocessor':
-        specifier: ^25.0.0
-        version: 25.0.0(@babel/core@7.29.7)(cypress@15.17.0)(typescript@6.0.3)
+        specifier: ^26.0.0
+        version: 26.0.0(@babel/core@7.29.7)(cypress@15.18.0)(typescript@6.0.3)
       '@bahmutov/cypress-esbuild-preprocessor':
         specifier: ^2.2.8
         version: 2.2.8(esbuild@0.28.1)
@@ -185,8 +188,8 @@ importers:
         specifier: ^26.1.0
         version: 26.1.0
       cypress:
-        specifier: ^15.17.0
-        version: 15.17.0
+        specifier: ^15.18.0
+        version: 15.18.0
       multiple-cucumber-html-reporter:
         specifier: workspace:*
         version: link:../../reporter
@@ -490,12 +493,12 @@ packages:
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
 
-  '@badeball/cypress-cucumber-preprocessor@25.0.0':
-    resolution: {integrity: sha512-cZ8aeamjatUub3lj3qiTD6d0ITnrwoquxYP6vfj426kQ8Obc79uBaJHVGCQA6wt680uolDlZo104XVDw/W9r6w==}
+  '@badeball/cypress-cucumber-preprocessor@26.0.0':
+    resolution: {integrity: sha512-pAY1MrN/H0DztwQkLoiRA8GSduDiJOjCD17Tn525v3GxL5pzXSXsQoalzo77jCVXg8CAl75QoZ/5PsJF34WPsA==}
     engines: {node: ^20.12.0 || ^21.7.0 || >=22}
     hasBin: true
     peerDependencies:
-      cypress: ^12.0.0 || ^13.0.0 || ^14.0.0 || >=15.0.0 <=15.17.0
+      cypress: ^12.0.0 || ^13.0.0 || ^14.0.0 || >=15.0.0 <=15.17.0 || ^15.18.0
 
   '@bahmutov/cypress-esbuild-preprocessor@2.2.8':
     resolution: {integrity: sha512-pN90es4T1DYcQbBuDEpa7yotC/VhE+BgfHIEGpS0uxibTIqt7g4ZITQZbTFcaQATZh3QmPIMMkeZyBE7PWf1LA==}
@@ -819,6 +822,10 @@ packages:
   '@cypress/xvfb@1.2.4':
     resolution: {integrity: sha512-skbBzPggOVYCbnGgV+0dmBdW/s77ZkAOXIC1knS8NagwDjBrNC1LuXtQJeiN6l+m7lzmHtaoUw/ctJKdqkG57Q==}
 
+  '@decimalturn/toml-patch@1.3.0':
+    resolution: {integrity: sha512-lnnGHUF8RhnPq0XiOenQCv0O6TO840bofShFrIr+Xu87x1Rm3bozgaCDQz6eTErO9rYf7YXCuK7ZHz65BtBwsA==}
+    engines: {node: '>=12'}
+
   '@dependents/detective-less@5.0.3':
     resolution: {integrity: sha512-v6oD9Ukp+N7V4n6p5I/+mM5fIohSfkrDSGlFm5w/pYmchvbk+sMIHsLxrFJ5Lnujewj1BzWL0K84d88lwZAMQA==}
     engines: {node: '>=18'}
@@ -1046,6 +1053,9 @@ packages:
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
+
+  '@iarna/toml@3.0.0':
+    resolution: {integrity: sha512-td6ZUkz2oS3VeleBcN+m//Q6HlCFCPrnI0FZhrt/h4XqLEdOyYp2u21nd8MdsR+WJy5r9PTDaHTDDfhf4H4l6Q==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2699,6 +2709,12 @@ packages:
       prettier:
         optional: true
 
+  '@release-it/bumper@7.0.6':
+    resolution: {integrity: sha512-vzKrEGPac/yim5WUjMmIQ9k+n3NlWHYraUIlLkHna2Ka0+zmmB1peW8POMjA6Fb7TwcIsNMuoXj2wLc8NFzgRg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
+    peerDependencies:
+      release-it: ^18.0.0 || ^19.0.0 || ^20.0.0
+
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
@@ -3946,8 +3962,8 @@ packages:
   csv-writer@1.6.0:
     resolution: {integrity: sha512-NOx7YDFWEsM/fTRAJjRpPp8t+MKRVvniAg9wQlUKx20MFrPs73WLJhFf5iteqrxNYnsy924K3Iroh3yNHeYd2g==}
 
-  cypress@15.17.0:
-    resolution: {integrity: sha512-WL5Gcqi1GaDWozBwXmkSAtOPafTsVSRS764iX6xvuz3DPzvBAxbkRyEi4BreVdVWxLDpiYRgZCyJUafBw44njw==}
+  cypress@15.18.0:
+    resolution: {integrity: sha512-aLfOYSLlVt1b6QSoVUjbCY27taZlYAT8ST47xQbwd9pvQrY/g5gXi12yItZTB+kxkkj+ZcvUYmRLUC95SlCJsw==}
     engines: {node: ^20.1.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
 
@@ -4090,6 +4106,10 @@ packages:
 
   destr@2.0.5:
     resolution: {integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==}
+
+  detect-indent@7.0.2:
+    resolution: {integrity: sha512-y+8xyqdGLL+6sh0tVeHcfP/QDd8gUgbasolJJpY7NgeQGSZ739bDtSiaiDgtoicy+mtYB81dKLxO9xRhCyIB3A==}
+    engines: {node: '>=12.20'}
 
   detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
@@ -4487,6 +4507,10 @@ packages:
 
   extsprintf@1.3.0:
     resolution: {integrity: sha512-11Ndz7Nv+mvAC1j0ktTa7fAb0vLyGGX+rMHNBYQviQDGU0Hw7lhctJANqbPhu9nV9/izT/IntTgZ7Im/9LJs9g==}
+    engines: {'0': node >=0.6.0}
+
+  extsprintf@1.4.1:
+    resolution: {integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==}
     engines: {'0': node >=0.6.0}
 
   fast-deep-equal@2.0.1:
@@ -5742,6 +5766,9 @@ packages:
   locate-path@7.2.0:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  lodash-es@4.18.1:
+    resolution: {integrity: sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==}
 
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
@@ -7481,6 +7508,12 @@ packages:
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
 
+  systeminformation@5.31.13:
+    resolution: {integrity: sha512-iUJXJoKzm4vtLSeT3nwe2s9QjoJAxHg7wYJ0KaQ54Xy2u9jsTq0ULWQQ0+T72FXjX2XnGqubazNx9lUfng7ELw==}
+    engines: {node: '>=8.0.0'}
+    os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
+    hasBin: true
+
   tagged-tag@1.0.0:
     resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
     engines: {node: '>=20'}
@@ -8293,7 +8326,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@badeball/cypress-cucumber-preprocessor@25.0.0(@babel/core@7.29.7)(cypress@15.17.0)(typescript@6.0.3)':
+  '@badeball/cypress-cucumber-preprocessor@26.0.0(@babel/core@7.29.7)(cypress@15.18.0)(typescript@6.0.3)':
     dependencies:
       '@cucumber/ci-environment': 14.0.0
       '@cucumber/cucumber': 13.0.0
@@ -8309,7 +8342,7 @@ snapshots:
       cli-table: 0.3.11
       common-ancestor-path: 2.0.0
       cosmiconfig: 9.0.2(typescript@6.0.3)
-      cypress: 15.17.0
+      cypress: 15.18.0
       debug: 4.4.3
       error-stack-parser: 2.1.4
       find-cypress-specs: 1.54.12(@babel/core@7.29.7)
@@ -8779,6 +8812,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@decimalturn/toml-patch@1.3.0': {}
+
   '@dependents/detective-less@5.0.3':
     dependencies:
       gonzales-pe: 4.3.0
@@ -8936,6 +8971,8 @@ snapshots:
   '@hono/node-server@1.19.14(hono@4.12.27)':
     dependencies:
       hono: 4.12.27
+
+  '@iarna/toml@3.0.0': {}
 
   '@img/colour@1.1.0':
     optional: true
@@ -10589,6 +10626,19 @@ snapshots:
       - bluebird
       - supports-color
 
+  '@release-it/bumper@7.0.6(release-it@20.2.1(@types/node@26.1.0))':
+    dependencies:
+      '@decimalturn/toml-patch': 1.3.0
+      '@iarna/toml': 3.0.0
+      cheerio: 1.2.0
+      detect-indent: 7.0.2
+      fast-glob: 3.3.3
+      ini: 6.0.0
+      js-yaml: 4.3.0
+      lodash-es: 4.18.1
+      release-it: 20.2.1(@types/node@26.1.0)
+      semver: 7.8.5
+
   '@sec-ant/readable-stream@0.4.1': {}
 
   '@shikijs/core@4.3.0':
@@ -11936,7 +11986,7 @@ snapshots:
 
   csv-writer@1.6.0: {}
 
-  cypress@15.17.0:
+  cypress@15.18.0:
     dependencies:
       '@cypress/request': 4.0.1
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
@@ -11971,7 +12021,7 @@ snapshots:
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
       supports-color: 8.1.1
-      systeminformation: 5.31.11
+      systeminformation: 5.31.13
       tmp: 0.2.7
       tree-kill: 1.2.2
       tslib: 1.14.1
@@ -12115,6 +12165,8 @@ snapshots:
   dequal@2.0.3: {}
 
   destr@2.0.5: {}
+
+  detect-indent@7.0.2: {}
 
   detect-libc@1.0.3: {}
 
@@ -12610,6 +12662,8 @@ snapshots:
       - supports-color
 
   extsprintf@1.3.0: {}
+
+  extsprintf@1.4.1: {}
 
   fast-deep-equal@2.0.1: {}
 
@@ -13930,6 +13984,8 @@ snapshots:
   locate-path@7.2.0:
     dependencies:
       p-locate: 6.0.0
+
+  lodash-es@4.18.1: {}
 
   lodash.camelcase@4.3.0: {}
 
@@ -16204,6 +16260,8 @@ snapshots:
 
   systeminformation@5.31.11: {}
 
+  systeminformation@5.31.13: {}
+
   tagged-tag@1.0.0: {}
 
   tailwind-merge@3.6.0: {}
@@ -16540,7 +16598,7 @@ snapshots:
     dependencies:
       assert-plus: 1.0.0
       core-util-is: 1.0.2
-      extsprintf: 1.3.0
+      extsprintf: 1.4.1
 
   vfile-location@5.0.3:
     dependencies:

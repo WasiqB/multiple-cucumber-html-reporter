@@ -1,6 +1,6 @@
 {
   "name": "mchr",
-  "version": "3.10.0",
+  "version": "4.0.0",
   "description": "Generate beautiful Cucumber.js reports for multiple instances (browsers / devices)",
   "type": "module",
   "keywords": [
@@ -37,6 +37,7 @@
     "@commitlint/cli": "^21.2.0",
     "@commitlint/config-conventional": "^21.2.0",
     "@release-it-plugins/lerna-changelog": "^9.0.0",
+    "@release-it/bumper": "^7.0.6",
     "@types/node": "^26.1.0",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
@@ -53,5 +54,5 @@
       "pnpm lint"
     ]
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@11.10.0"
 }

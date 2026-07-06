@@ -3,38 +3,6 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
-## 3.11.0 (2026-07-05)
-
-#### :rocket: New Feature
-
-- [#581](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/581) feat: :sparkles: added support to customise report logo ([@WasiqB](https://github.com/WasiqB))
-- [#577](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/577) feat: :sparkles: optimised metadata option in reporter ([@WasiqB](https://github.com/WasiqB))
-- [#574](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/574) feat: :sparkles: updating example project by adding browserstack samp… ([@WasiqB](https://github.com/WasiqB))
-- [#571](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/571) feat: add percentage labels to charts and custom attachment names ([@psubrambe](https://github.com/psubrambe))
-- [#561](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/561) feat: :sparkles: add support to filter report by tags ([@WasiqB](https://github.com/WasiqB))
-
-#### :bug: Bug Fix
-
-- [#565](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/565) fix: :bug: fixing ui issues in the report ([@WasiqB](https://github.com/WasiqB))
-
-#### :nail_care: Polish
-
-- [#579](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/579) chore(deps): bump the dependencies group with 3 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
-- [#578](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/578) chore(deps): bump actions/checkout from 6 to 7 in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
-- [#576](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/576) chore(deps): bump the dependencies group with 3 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
-- [#569](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/569) chore(deps): bump the dependencies group with 13 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
-- [#562](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/562) chore(deps): bump the dependencies group with 7 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
-
-#### :memo: Documentation
-
-- [#575](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/575) docs: :memo: updated readme and docs for oss sponsor program ([@WasiqB](https://github.com/WasiqB))
-
-#### Committers: 2
-
-- Subram Panaiyadiyan ([@psubrambe](https://github.com/psubrambe))
-- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
-
-
 ## 4.0.0 (2026-06-04)
 
 #### :boom: Breaking Change
