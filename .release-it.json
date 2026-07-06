@@ -4,19 +4,23 @@
     "@release-it-plugins/lerna-changelog": {
       "infile": "CHANGELOG.md",
       "prettier": true
+    },
+    "@release-it/bumper": {
+      "out": ["reporter/package.json"]
     }
   },
   "hooks": {
+    "after:bump": "pnpm install --no-frozen-lockfile",
     "before:npm:release": "cp README.md reporter/ && cp LICENSE reporter/",
     "after:npm:release": "rm reporter/README.md reporter/LICENSE"
   },
   "git": {
-    "requireBranch": "issue-583",
+    "requireBranch": "main",
     "commitMessage": "chore: release v${version}",
     "commit": true,
     "tag": true,
     "push": true,
-    "requireCleanWorkingDir": false
+    "requireCleanWorkingDir": true
   },
   "github": {
     "release": true,
