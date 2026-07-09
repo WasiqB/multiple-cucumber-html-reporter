@@ -3,6 +3,9 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "types": ["jasmine", "node"]
   },
   "include": ["src/**/*.ts"]
