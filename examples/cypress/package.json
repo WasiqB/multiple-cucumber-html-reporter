@@ -18,10 +18,10 @@
     "@badeball/cypress-cucumber-preprocessor": "^26.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^26.1.0",
+    "@types/node": "^26.1.1",
     "cypress": "^15.18.0",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "dependencies": {
     "dayjs": "^1.11.20"
