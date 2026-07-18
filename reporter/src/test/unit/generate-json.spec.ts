@@ -425,4 +425,51 @@ describe('generate-report.js', () => {
       expect(featureHtml).toContain('Attachment 2');
     });
   });
+
+  describe('Metadata from files', () => {
+    const tempMetadataDir = path.resolve(process.cwd(), './.tmp/metadata-files-test');
+
+    beforeEach(async () => {
+      await fs.ensureDir(tempMetadataDir);
+    });
+
+    afterEach(async () => {
+      await fs.remove(tempMetadataDir);
+    });
+
+    it('should load metadata from a JSON file', async () => {
+      fs.removeSync(REPORT_PATH);
+      await fs.ensureDir(tempMetadataDir);
+
+      const jsonPath = path.join(tempMetadataDir, 'metadata.json');
+      const mockMetadata = {
+        browser: { name: 'chrome-json', version: '121' },
+        platform: { name: 'linux-json', version: 'x64' },
+      };
+      await fs.writeJson(jsonPath, mockMetadata);
+
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        staticFilePath: true,
+        saveCollectedJSON: true,
+        metadataFilePath: jsonPath,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      expect(enriched.features[0].metadata.browser.name).toEqual('chrome-json');
+      expect(enriched.features[0].metadata.platform.name).toEqual('linux-json');
+    });
+
+    it('should throw an error if the metadata file does not exist', async () => {
+      const missingPath = path.join(tempMetadataDir, 'does-not-exist.json');
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+          metadataFilePath: missingPath,
+        }),
+      ).toBeRejectedWithError(/Metadata file not found at/);
+    });
+  });
 });

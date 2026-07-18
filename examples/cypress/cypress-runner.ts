@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync 
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import cypress from 'cypress';
-import { generate, type Metadata } from 'multiple-cucumber-html-reporter';
+import type { Metadata } from 'multiple-cucumber-html-reporter';
 
 const browsers = ['chrome', 'firefox'];
 const __filename = fileURLToPath(import.meta.url);
@@ -14,6 +14,9 @@ function updateFeatureFileNameByBrowser(filePath: string, browser: string): Reco
     device: 'Local Test Machine',
   };
   const customMetadata: Record<string, Metadata> = {};
+
+  if (!existsSync(filePath)) return customMetadata;
+
   const rawData = readFileSync(filePath, 'utf-8');
 
   if (!rawData.trim()) return customMetadata;
@@ -74,25 +77,7 @@ async function executeCrossBrowserTests() {
       console.log(`✅ Saved browser JSON to: ${targetedJsonPath}`);
     }
   }
-
-  // 3. Trigger multiple-cucumber-html-reporter to build the final dashboard
-  console.log('📊 Generating merged HTML Report...');
-  await generate({
-    jsonDir: rawJsonDir,
-    reportPath: join(__dirname, './.run/html-report/'),
-    metadata,
-    useCDN: true,
-    pageTitle: 'Cypress Typescript Sample',
-    reportName: 'Cypress Cucumber TS Report',
-    customData: {
-      projectName: 'Cypress Sample project',
-      testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
-      buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
-      environment: 'production',
-      ciPipeline: 'GitHub Actions',
-    },
-    openReportInBrowser: true,
-  });
+  writeFileSync(join(rawJsonDir, 'metadata.json'), JSON.stringify(metadata, null, 2), 'utf8');
 }
 
 executeCrossBrowserTests().catch(console.error);

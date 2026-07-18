@@ -77,6 +77,7 @@ export interface Options {
   useCDN?: boolean;
   staticFilePath?: boolean;
   brandLogo?: string;
+  metadataFilePath?: string;
 }
 
 export interface Hook {

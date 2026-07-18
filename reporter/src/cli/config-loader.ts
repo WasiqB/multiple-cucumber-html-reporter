@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { interpolate } from 'env-interpolation';
 import { createJiti } from 'jiti';
 import { load } from 'js-yaml';
 import type { Options } from '../types.js';
@@ -75,13 +76,13 @@ export async function loadConfig(cwd: string = process.cwd()): Promise<{ options
 async function loadJsonConfig(filePath: string): Promise<Options> {
   const { readFile } = await import('node:fs/promises');
   const content = await readFile(filePath, 'utf-8');
-  return JSON.parse(content) as Options;
+  return interpolate(JSON.parse(content)) as Options;
 }
 
 async function loadYamlConfig(filePath: string): Promise<Options> {
   const { readFile } = await import('node:fs/promises');
   const content = await readFile(filePath, 'utf-8');
-  return load(content) as Options;
+  return load(interpolate(content)) as Options;
 }
 
 async function loadModuleConfig(filePath: string): Promise<Options> {

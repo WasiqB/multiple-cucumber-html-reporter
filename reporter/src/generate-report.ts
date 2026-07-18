@@ -1,4 +1,3 @@
-import { readFileSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path, { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -55,6 +54,13 @@ async function generateReport(options: Options) {
 
   if (!options.reportPath) {
     throw new Error('An output path for the reports should be defined, no path was provided.');
+  }
+
+  // If metadata file path is provided, then load meatdata from file.
+  if (options.metadataFilePath) {
+    const resolvedPath = resolve(process.cwd(), options.metadataFilePath);
+    options.metadataFilePath = resolvedPath;
+    options.metadata = await loadMetadataFile(resolvedPath);
   }
 
   const customMetadata = !!options.customMetadata;
@@ -871,51 +877,25 @@ async function generateReport(options: Options) {
 }
 
 /**
- * Returns `true` when `metadata` contains feature-filename keys.
- * Used both in `generateReport` and `updateReportMetadata`.
+ * Loads a metadata file asynchronously.
+ * Supports JSON.
  */
-function _isPerFeatureMap(metadata: Record<string, any>): boolean {
-  if (Array.isArray(metadata)) return false;
-  return Object.keys(metadata).some((key) => key.endsWith('.feature'));
-}
-
-/**
- * Updates the metadata of each feature in the cucumber-report.json file.
- *
- * @param {string} reportPath Path to the cucumber-report.json file
- * @param {Metadata | Record<string, Metadata>} metadata
- *   - When a `Metadata` object is provided, the same metadata is applied to every feature.
- *   - When a `Record<string, Metadata>` is provided, each key must be a feature filename
- *     (e.g. `"login.feature"`), and the corresponding metadata is applied only to that feature.
- */
-function updateReportMetadata(reportPath: string, metadata: Metadata | Record<string, Metadata>) {
-  try {
-    const fileContent = readFileSync(reportPath, 'utf8');
-    const reportData = JSON.parse(fileContent);
-
-    if (Array.isArray(reportData)) {
-      // Determine whether metadata is a plain Metadata object or a per-feature map
-      // using the same robust heuristic as the rest of the reporter.
-      const isMap = !Array.isArray(metadata) && _isPerFeatureMap(metadata as Record<string, any>);
-
-      for (const feature of reportData) {
-        if (isMap) {
-          const featureFileName = feature.uri?.split('/').pop();
-          if (featureFileName && (metadata as Record<string, Metadata>)[featureFileName] !== undefined) {
-            feature.metadata = (metadata as Record<string, Metadata>)[featureFileName];
-          }
-        } else {
-          // Shared Metadata: apply the same metadata to every feature
-          feature.metadata = metadata as Metadata;
-        }
-      }
-      writeFileSync(reportPath, JSON.stringify(reportData, null, 2), 'utf8');
-    }
-  } catch (error) {
-    console.warn(`Could not update [${reportPath}] metadata. Proceeding with report generation.`, error);
+async function loadMetadataFile(filePath: string): Promise<
+  | Metadata
+  | Record<string, Metadata>
+  | {
+      name: string;
+      value: string;
+    }[]
+  | undefined
+> {
+  if (!(await fs.pathExists(filePath))) {
+    throw new Error(`Metadata file not found at: ${filePath}`);
   }
+
+  const content = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(content);
 }
 
 export const generate = generateReport;
-export const updateMetadata = updateReportMetadata;
 export type { CustomData, Metadata };

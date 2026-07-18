@@ -79,10 +79,6 @@ function isCI(): boolean {
   return process.env.CI === 'true' || process.env.CI === '1';
 }
 
-// ---------------------------------------------------------------------------
-// Entry point
-// ---------------------------------------------------------------------------
-
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
 
@@ -99,11 +95,11 @@ async function main(): Promise<void> {
 
   const cwd = process.cwd();
 
-  // ── 1. Try to load an existing config ────────────────────────────────────
+  // ── 1. Try to load an existing config
   let configResult = await loadConfig(cwd);
 
   if (!configResult) {
-    // ── 2a. CI mode: no config → hard fail ─────────────────────────────────
+    // ── 2a. CI mode: no config → hard fail
     if (isCI()) {
       console.error(
         '\n  ✖ No config file found in the current directory.\n' +
@@ -113,7 +109,7 @@ async function main(): Promise<void> {
       process.exit(1);
     }
 
-    // ── 2b. Interactive mode: run onboarding ───────────────────────────────
+    // ── 2b. Interactive mode: run onboarding
     const { options, configPath } = await runOnboarding(cwd);
     configResult = { options, filePath: configPath };
   } else {
@@ -121,7 +117,7 @@ async function main(): Promise<void> {
     console.log(`  Config: ${path.relative(cwd, configResult.filePath)}`);
   }
 
-  // ── 3. Generate the report ────────────────────────────────────────────────
+  // ── 3. Generate the report
   const spinner = p.spinner();
   spinner.start('Generating HTML report…');
 
@@ -133,9 +129,13 @@ async function main(): Promise<void> {
     p.outro(`Report ready: ${reportIndex}`);
     process.exit(0);
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
     spinner.stop(`Report generation failed.`);
-    p.log.error(message);
+    if (error instanceof Error) {
+      const message = error.message;
+      p.log.error(message);
+    } else {
+      p.log.error(String(error));
+    }
     p.outro('See the error above for details.');
     process.exit(1);
   }
