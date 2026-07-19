@@ -898,4 +898,4 @@ async function loadMetadataFile(filePath: string): Promise<
 }
 
 export const generate = generateReport;
-export type { CustomData, Metadata };
+export type { CustomData, Metadata, Options };

@@ -1,0 +1,6 @@
+{
+  "title": "v3.x.x",
+  "icon": "Clock",
+  "root": true,
+  "pages": ["index"]
+}

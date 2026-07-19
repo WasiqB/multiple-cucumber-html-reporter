@@ -1,3 +1,5 @@
+import type { Options } from 'multiple-cucumber-html-reporter';
+
 const metadata = {
   'saucedemo.feature': {
     browser: {
@@ -13,7 +15,7 @@ const metadata = {
   },
 };
 
-export default {
+const config: Options = {
   jsonDir: 'reports/',
   reportPath: 'reports/report/',
   useCDN: false,
@@ -36,3 +38,5 @@ export default {
     ciPipeline: 'GitHub Actions',
   },
 };
+
+export default config;

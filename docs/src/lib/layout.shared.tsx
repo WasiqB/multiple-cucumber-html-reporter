@@ -32,7 +32,7 @@ export function baseOptions(): BaseLayoutProps {
       },
       {
         text: 'Documentation',
-        url: '/docs',
+        url: '/docs/latest',
         active: 'nested-url',
       },
       // {

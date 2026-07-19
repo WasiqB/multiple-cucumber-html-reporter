@@ -1,0 +1,6 @@
+{
+  "title": "v4.1.0",
+  "icon": "Zap",
+  "root": true,
+  "pages": ["index", "installation", "usage", "options", "metadata", "faq", "attachments", "frameworks", "contributing"]
+}
