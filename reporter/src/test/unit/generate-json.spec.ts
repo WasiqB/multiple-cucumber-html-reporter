@@ -461,6 +461,32 @@ describe('generate-report.js', () => {
       expect(enriched.features[0].metadata.platform.name).toEqual('linux-json');
     });
 
+    it('should override metadata property if metadataFilePath is set', async () => {
+      fs.removeSync(REPORT_PATH);
+      await fs.ensureDir(tempMetadataDir);
+
+      const jsonPath = path.join(tempMetadataDir, 'metadata-override.json');
+      const mockFileMetadata = {
+        browser: { name: 'file-browser', version: '1.0' },
+        platform: { name: 'file-platform', version: '2.0' },
+      };
+      await fs.writeJson(jsonPath, mockFileMetadata);
+
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        saveCollectedJSON: true,
+        metadata: {
+          browser: { name: 'option-browser', version: '9.0' },
+        },
+        metadataFilePath: jsonPath,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      expect(enriched.features[0].metadata.browser.name).toEqual('file-browser');
+      expect(enriched.features[0].metadata.platform.name).toEqual('file-platform');
+    });
+
     it('should throw an error if the metadata file does not exist', async () => {
       const missingPath = path.join(tempMetadataDir, 'does-not-exist.json');
       await expectAsync(

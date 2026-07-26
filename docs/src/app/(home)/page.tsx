@@ -76,7 +76,7 @@ export default function HomePage() {
                     href={hero.primaryLink.url}
                     className={cn(
                       buttonVariants({ size: 'default' }),
-                      'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-xl px-8 h-12 text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98]',
+                      'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98]',
                     )}
                   >
                     {hero.primaryLink.label}
@@ -87,7 +87,7 @@ export default function HomePage() {
                     href={hero.secondaryLink.url}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'default' }),
-                      'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-8 h-12 text-base font-semibold group',
+                      'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-8 h-12 text-base font-semibold group',
                     )}
                   >
                     <FaGithub className='mr-2 h-5 w-5 transition-transform group-hover:scale-110' />

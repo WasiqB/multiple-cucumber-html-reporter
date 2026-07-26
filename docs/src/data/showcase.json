@@ -5,7 +5,7 @@
     "titleLine2": "Showcase",
     "description": "Discover how engineers worldwide leverage CucumberHTML to create stunning, high-performance test reports across Playwright, Cypress, Selenium, and Puppeteer.",
     "primaryLink": { "label": "Submit Your Project", "url": "#" },
-    "secondaryLink": { "label": "Browse Docs", "url": "/docs" },
+    "secondaryLink": { "label": "Browse Docs", "url": "/docs/latest" },
     "verifiedProjects": {
       "label": "Verified Projects",
       "count": "1,240+"

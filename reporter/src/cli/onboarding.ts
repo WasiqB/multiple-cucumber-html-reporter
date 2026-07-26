@@ -1,11 +1,16 @@
 import path from 'node:path';
-import * as p from '@clack/prompts';
 import type { Options } from '../types.js';
+import { prompts as p } from './prompts.js';
 
 export type OnboardingResult = {
   options: Options;
   configPath: string;
 };
+
+function cancelOnboarding(): never {
+  p.cancel('Setup cancelled.');
+  process.exit(0);
+}
 
 /**
  * Runs the interactive Clack onboarding flow to collect reporter options
@@ -38,8 +43,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     },
     {
       onCancel: () => {
-        p.cancel('Setup cancelled.');
-        process.exit(0);
+        cancelOnboarding();
       },
     },
   );
@@ -52,6 +56,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       { value: 'charts', label: 'Chart percentages' },
       { value: 'browser', label: 'Open report in browser after generation' },
       { value: 'customData', label: 'Custom run data (project, release, environment…)' },
+      { value: 'metadataFilePath', label: 'Path to metadata JSON file' },
       { value: 'metadata', label: 'Execution metadata (browser, platform, device)' },
       { value: 'cdn', label: 'Load assets from CDN (faster for CI)' },
     ],
@@ -59,8 +64,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
   });
 
   if (p.isCancel(extras)) {
-    p.cancel('Setup cancelled.');
-    process.exit(0);
+    return cancelOnboarding();
   }
 
   const selected = extras as string[];
@@ -91,8 +95,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
         }),
     });
     if (p.isCancel(meta)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
     if (((meta.reportName as string) || '').trim()) options.reportName = (meta.reportName as string).trim();
     if (((meta.pageTitle as string) || '').trim()) options.pageTitle = (meta.pageTitle as string).trim();
@@ -118,8 +121,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
         }),
     });
     if (p.isCancel(dur)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
     options.displayDuration = dur.displayDuration as boolean;
     options.displayReportTime = dur.displayReportTime as boolean;
@@ -134,8 +136,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       initialValue: true,
     });
     if (p.isCancel(chart)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
     options.displayChartPercentages = chart as boolean;
   }
@@ -146,8 +147,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       initialValue: false,
     });
     if (p.isCancel(openBrowser)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
     options.openReportInBrowser = openBrowser as boolean;
   }
@@ -158,8 +158,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       initialValue: true,
     });
     if (p.isCancel(useCDN)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
     options.useCDN = useCDN as boolean;
   }
@@ -175,8 +174,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       ciPipeline: () => p.text({ message: 'CI pipeline name', placeholder: 'GitHub Actions' }),
     });
     if (p.isCancel(cd)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
 
     const customData: Record<string, string> = {};
@@ -190,7 +188,20 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     }
   }
 
-  if (selected.includes('metadata')) {
+  if (selected.includes('metadataFilePath')) {
+    const mdfp = await p.text({
+      message: 'Path to metadata JSON file',
+      placeholder: './metadata.json',
+    });
+    if (p.isCancel(mdfp)) {
+      return cancelOnboarding();
+    }
+    if ((mdfp as string).trim()) {
+      options.metadataFilePath = (mdfp as string).trim();
+    }
+  }
+
+  if (selected.includes('metadata') && !options.metadataFilePath) {
     p.note('Leave any field blank to skip it.', 'Execution metadata');
     const md = await p.group({
       browserName: () => p.text({ message: 'Browser name', placeholder: 'chrome' }),
@@ -200,8 +211,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       device: () => p.text({ message: 'Device name (leave blank for desktop)', placeholder: '' }),
     });
     if (p.isCancel(md)) {
-      p.cancel('Setup cancelled.');
-      process.exit(0);
+      return cancelOnboarding();
     }
 
     const metadata: Record<string, any> = {};

@@ -22,7 +22,7 @@ export function Footer({ className }: { className?: string }) {
           </p>
         </div>
         <div className='flex flex-wrap justify-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400'>
-          <Link href='/docs' className='hover:text-emerald-500 transition-colors'>
+          <Link href='/docs/latest' className='hover:text-emerald-500 transition-colors'>
             Documentation
           </Link>
           <Link

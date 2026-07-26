@@ -80,6 +80,21 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       deprecated: true,
       typeDescription: 'boolean'
     },
+    metadataFilePath: {
+      description: <>
+        Allows you to set the path to a JSON file that contains metadata to be displayed in the report.
+
+        <Callout title="Important" type='warning'>
+          If you are using <code>metadataFilePath</code>, you do not need to use <code>metadata</code> property. The metadata from the JSON file will take precedence over <code>metadata</code> property.
+        </Callout>
+
+        <Callout title="Note" type="info">
+          The JSON file should be of type <code>Metadata</code> or <code>Record&lt;string, Metadata&gt;</code>.
+        </Callout>
+      </>,
+      type: 'string',
+      typeDescription: 'string'
+    },
     metadata: {
       description: <>
         Allows you to pass custom metadata to the report. The data is passed as JSON and can be accessed in the report as <code>metadata</code>
