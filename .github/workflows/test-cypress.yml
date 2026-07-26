@@ -54,6 +54,9 @@ jobs:
       - name: Link the CLI Globally
         run: pnpm link --global ./reporter
 
+      - name: Re-install after linking CLI
+        run: pnpm install --no-frozen-lockfile
+
       - name: Sanity check CLI command
         working-directory: examples/cypress
         run: mchr --version
