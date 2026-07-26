@@ -51,6 +51,9 @@ jobs:
         run: pnpm test
         continue-on-error: true
 
+      - name: Link the CLI
+        run: pnpm link --global ./reporter -y
+
       - name: Generate Report
         working-directory: examples/cypress
         run: pnpm report
