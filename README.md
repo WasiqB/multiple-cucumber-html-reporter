@@ -34,6 +34,12 @@
         <img alt="npm downloads" src="https://shieldcn.dev/npm/dm/multiple-cucumber-html-reporter.svg?variant=secondary&amp;mode=light">
       </picture>
     </a>
+    <a href="https://www.npmjs.com/package/multiple-cucumber-html-reporter" target="_blank">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/npm/dw/multiple-cucumber-html-reporter.svg?variant=secondary&amp;mode=dark">
+        <img alt="npm downloads" src="https://shieldcn.dev/npm/dw/multiple-cucumber-html-reporter.svg?variant=secondary&amp;mode=light">
+      </picture>
+    </a>
     <a href="http://opensource.org/licenses/MIT">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/license/WasiqB/multiple-cucumber-html-reporter.svg?variant=ghost&amp;size=sm&amp;mode=dark">
@@ -164,10 +170,6 @@ Following are the awesome supporters to the project who has sponsored their appl
 ## 💗 Repo Activity
 
 ![Multiple Cucumber HTML Reporter Repo activity](https://repobeats.axiom.co/api/embed/b0964ed36e8c350255ca9b3f357459af82d712a4.svg "Repobeats analytics image")
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/chart?repos=WasiqB/multiple-cucumber-html-reporter&type=timeline&legend=bottom-right)](https://www.star-history.com/?repos=WasiqB%2Fmultiple-cucumber-html-reporter&type=timeline&legend=bottom-right)
 
 ## ⚖️ License
 

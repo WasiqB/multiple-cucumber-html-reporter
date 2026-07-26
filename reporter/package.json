@@ -13,10 +13,17 @@
   ],
   "main": "dist/generate-report.js",
   "types": "dist/generate-report.d.ts",
+  "bin": {
+    "mchr": "./dist/cli/index.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/generate-report.d.ts",
       "import": "./dist/generate-report.js"
+    },
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.js"
     }
   },
   "publishConfig": {
@@ -52,8 +59,12 @@
   },
   "homepage": "https://multiple-cucumber-html-reporter.vercel.app/",
   "dependencies": {
+    "@clack/prompts": "^1.7.0",
+    "env-interpolation": "^1.1.1",
     "find": "^0.3.0",
-    "fs-extra": "^11.3.6",
+    "fs-extra": "^11.4.0",
+    "jiti": "^2.7.0",
+    "js-yaml": "^5.2.2",
     "jsonfile": "^6.2.1",
     "liquidjs": "^10.27.2",
     "lodash": "^4.18.1",

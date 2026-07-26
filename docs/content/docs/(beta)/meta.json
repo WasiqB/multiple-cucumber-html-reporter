@@ -1,0 +1,17 @@
+{
+  "title": "Upcoming Features",
+  "icon": "Sparkles",
+  "root": true,
+  "pages": [
+    "index",
+    "installation",
+    "usage",
+    "cli",
+    "options",
+    "metadata",
+    "faq",
+    "attachments",
+    "frameworks",
+    "contributing"
+  ]
+}

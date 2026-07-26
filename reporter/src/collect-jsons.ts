@@ -139,7 +139,11 @@ export default function collectJSONS(options: Options): Feature[] {
   }
 
   if (files.length > 0) {
+    const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
     files.forEach((file) => {
+      if (metadataFilePath && resolve(file) === metadataFilePath) {
+        return;
+      }
       // Cucumber json can be  empty, it's likely being created by another process (#47)
       const data = readFileSync(file).toString() || '[]';
       const stats = statSync(file);

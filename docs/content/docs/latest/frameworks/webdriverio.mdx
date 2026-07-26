@@ -1,0 +1,443 @@
+---
+title: WebdriverIO
+description: How to use Multiple Cucumber HTML Reporter with WebdriverIO.
+---
+
+Integrating with WebdriverIO allows you to automatically generate beautiful reports and attach screenshots on failure.
+
+## WebdriverIO Support
+
+There are two approaches which you can use to generate beautiful reports using multiple Cucumber HTML reporter.
+
+- WebDriverIO Cucumber JSON reporter
+- WebDriverIO Cucumber JSON native formatter
+
+### Using WebDriverIO Cucumber JSON Reporter
+
+<Callout title="Idea" type="idea">
+When you are setting up WebDriverIO or you already have an existing project for WebDriverIO, you need to use their community reporter i.e., `wdio-cucumberjs-json-reporter` to generate the JSON report files, which will be used by the `multiple-cucumber-html-reporter` to generate the HTML report.
+
+Checkout [WebdriverIO Cucumber JSON reporter](https://webdriver.io/docs/wdio-cucumberjs-json-reporter).
+</Callout>
+
+#### Add WebDriverIO Reporter Dependency [step]
+
+First, install `wdio-cucumberjs-json-reporter` as a dev dependency in your project:
+
+<Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
+  <Tab value="npm">
+  ```bash
+  npm install -D wdio-cucumberjs-json-reporter
+  ```
+  </Tab>
+  <Tab value="yarn">
+  ```bash
+  yarn add -D wdio-cucumberjs-json-reporter
+  ```
+  </Tab>
+  <Tab value="pnpm">
+  ```bash
+  pnpm add -D wdio-cucumberjs-json-reporter
+  ```
+  </Tab>
+</Tabs>
+
+#### Configure WebDriverIO Reporters [step]
+
+Following is the key configuration changes required for generating Cucumber JSON reports and the beautiful HTML report:
+
+```typescript
+// wdio.conf.ts
+export const config: WebdriverIO.Config = {
+  // . . .
+  framework: 'cucumber',
+  reporters: [
+    'spec',
+    [
+      'cucumberjs-json',  // [!code highlight]
+      {
+        jsonFolder: 'reports/json', // [!code highlight]
+      },
+    ],
+  ],
+  // . . .
+};
+```
+
+<Callout title="Reporter Options" type="idea">
+Check out all the supported options for the reporter [here](https://webdriver.io/docs/wdio-cucumberjs-json-reporter#options).
+</Callout>
+
+#### Delete Reports Folder [step]
+
+In the `onPrepare` hook, we delete the reports folder if it exists. This helps in generating a fresh report every time the tests are run.
+
+This can be done as shown in the below example:
+
+```typescript
+// wdio.conf.ts
+import { existsSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
+
+export const config: WebdriverIO.Config = {
+  //. . .
+  onPrepare: async () => {
+    if (existsSync('reports')) {
+      await rm('reports', { recursive: true });
+    }
+  },
+  //. . .
+};
+```
+
+#### Handle Failures [step]
+
+To automatically capture screenshots and attach them on failure globally:
+
+```typescript
+// wdio.conf.ts
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
+
+export const config: WebdriverIO.Config = {
+  //. . .
+  afterScenario: async (_world, result, _context) => {
+    if (!result.passed) {
+      cucumberJson.attach(await browser.takeScreenshot(), 'image/png');  // [!code highlight]
+    }
+  },
+  //. . .
+};
+```
+
+#### Generate Report after Test execution [step]
+
+Add the report logic to the `onComplete` hook as shown in the below example:
+
+```typescript
+// wdio.conf.ts
+import { generate } from 'multiple-cucumber-html-reporter';
+
+export const config: WebdriverIO.Config = {
+  // ... other configs ...
+  onComplete: async (_exitCode, _config, _capabilities, _results) => {
+    await generate({
+      jsonDir: 'reports/json/', // [!code highlight]
+      reportPath: 'reports/report/', // [!code highlight]
+      useCDN: false,
+      openReportInBrowser: true,
+      saveCollectedJSON: true,
+      displayReportTime: true,
+      durationInMS: false,
+      displayDuration: true,
+      pageTitle: 'My WDIO Typescript Sample',
+      reportName: 'Cucumber JS Report',
+      customData: {
+        projectName: 'WebDriverIO sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+    });
+  },
+};
+```
+
+<Callout title="Info" type="info">
+Note that the `jsonDir` points to a directory, inside which there will be JSON result files created by the Cucumber JSON reporter as configured earlier.
+
+The HTML report will be generated inside a timestamped folder within the `reportPath` directory.
+
+Check out all the supported options [here](/docs/options).
+</Callout>
+
+If you want to add your test specific metadata, you can do that by passing the metadata from the `cjson:metadata` capability object for each capabilities as shown below:
+
+```typescript
+// wdio.conf.ts
+import { generate, type Metadata } from 'multiple-cucumber-html-reporter';
+
+export const config: WebdriverIO.Config = {
+  // ... other configs ...
+  capabilities: [
+    {
+      browserName: 'chrome',
+      browserVersion: '148',
+      'cjson:metadata': { // [!code highlight]
+        browser: {  // [!code highlight]
+          name: 'chrome', // [!code highlight]
+          version: '148', // [!code highlight]
+        },  // [!code highlight]
+        platform: { // [!code highlight]
+          name: os.platform().trim(), // [!code highlight]
+          version: os.release().trim(), // [!code highlight]
+        },  // [!code highlight]
+      },  // [!code highlight]
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
+  ],
+
+  onComplete: async (
+    _exitCode: number,
+    _config: WebdriverIO.Config,
+    capabilities: WebdriverIO.Capabilities[],
+    _results: any,
+  ) => {
+    const capability = capabilities[0] as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata };
+    const reportMetadata: Metadata = capability['cjson:metadata'];
+
+    await generate({
+      jsonDir: 'reports/json/',
+      reportPath: 'reports/report/',
+      useCDN: false,
+      openReportInBrowser: true,
+      saveCollectedJSON: true,
+      displayReportTime: true,
+      durationInMS: false,
+      displayDuration: true,
+      displayChartPercentages: true,
+      pageTitle: 'My WDIO Typescript Sample',
+      reportName: 'WDIO Cucumber JS Report',
+      metadata: reportMetadata,
+      customData: {
+        projectName: 'WebDriverIO sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+    });
+  },
+};
+```
+
+<Callout title="Tip" type="idea">
+Before we generate the report, we need to capture the `metadata` defined in the capabilities, and pass it to the `metadata` option of the `generate` method.
+</Callout>
+
+#### Configure `package.json` for test script [step]
+
+```json
+// package.json
+"scripts": {
+  "test:reporter": "wdio run ./wdio-cc-reporter.conf.ts"
+}
+```
+
+#### Run the Tests and generate HTML report [step]
+
+Execute the following command to run the tests and generate the HTML report:
+
+```shell
+pnpm test:reporter
+```
+
+### Using WebDriverIO Cucumber in-built JSON formatter
+
+Cucumber framework has an in-built JSON formatter which can be used to generate JSON reports. In WebDriverIO, it has `@wdio/cucumber-framework` integration for Cucumber.
+
+#### Add dependency [step]
+
+Install the Cucumber framework for WebdriverIO:
+
+<Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
+  <Tab value="npm">
+  ```bash
+  npm install -D @wdio/cucumber-framework
+  ```
+  </Tab>
+  <Tab value="yarn">
+  ```bash
+  yarn add -D @wdio/cucumber-framework
+  ```
+  </Tab>
+  <Tab value="pnpm">
+  ```bash
+  pnpm add -D @wdio/cucumber-framework
+  ```
+  </Tab>
+</Tabs>
+
+#### Configure `tsconfig.json` [step]
+
+The types section in `tsconfig.json` must include the types for the Cucumber framework.
+
+```json
+// tsconfig.json (in your project root)
+{
+  "compilerOptions": {
+    // ...
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "expect-webdriverio",
+      "@wdio/cucumber-framework"  // [!code highlight]
+    ]
+    // ...
+  }
+}
+```
+
+#### Configure Cucumber Options [step]
+
+Add Cucumber configuration in the `cucumberOpts` section as shown in the below example:
+
+```typescript
+// wdio.conf.ts
+export const config: WebdriverIO.Config = {
+  // ... other options
+  cucumberOpts: {
+    // ... other Cucumber options
+    format: [
+      `json:reports/json/cucumber-report-${process.env.WDIO_WORKER_ID || '0-0'}.json`  // [!code highlight]
+    ],
+  },
+};
+```
+
+<Callout type="idea" title="Tip">
+  The `process.env.WDIO_WORKER_ID` is used to generate a unique JSON report file for each capability, which is then used to generate the HTML report. This is only applicable when running tests in parallel and the same feature file has multiple capabilies set.
+</Callout>
+
+#### Delete Reports Folder [step]
+
+In the `onPrepare` hook, we delete the reports folder if it exists. This helps in generating a fresh report every time the tests are run.
+
+This can be done as shown in the below example:
+
+```typescript
+// wdio.conf.ts
+import { existsSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
+
+export const config: WebdriverIO.Config = {
+  //. . .
+  onPrepare: async () => {
+    if (existsSync('reports')) {
+      await rm('reports', { recursive: true });
+    }
+  },
+  //. . .
+};
+```
+
+#### Handle Failures [step]
+
+To automatically capture screenshots and attach them on failure globally:
+
+```typescript
+// steps.ts
+import { After } from '@wdio/cucumber-framework';
+import { browser } from '@wdio/globals';
+
+// ... Other Hooks
+
+After(async function ({ result }) {
+  if (result?.status !== 'PASSED') {
+    const screenshot = await browser.takeScreenshot();
+    this.attach(Buffer.from(screenshot, 'base64'), 'image/png');
+  }
+});
+
+// ... Other steps definition
+```
+
+#### Generate Report after Test execution [step]
+
+Add the report logic to the `onComplete` hook as shown in the below example:
+
+<Callout title="Idea" type='idea'>
+This example also demonstrates a scenario where one feature file gets executed on multiple browsers on BrowserStack cloud platform. In such scenario, the HTML report will show the results for each browser separately.
+
+In the `onComplete` hook, we iterate through all the JSON files generated by the Cucumber JSON reporter. We then update the feature file URI and append `browserName` to indicate on which browser did this feature file got executed. We also get the `metadata` for each capabilities and use the feature file name as the key to store metadata. Finally, we generate the HTML report using the `generate` method.
+</Callout>
+
+```typescript
+// wdio.conf.ts
+import { generate, type Metadata } from 'multiple-cucumber-html-reporter';
+import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+export const config: WebdriverIO.Config = {
+  // ... other configs ...
+  onComplete: async (
+    _exitCode: number,
+    _config: WebdriverIO.Config,
+    capabilities: WebdriverIO.Capabilities[],
+    _results: any,
+  ) => {
+    const jsonDir = './reports/json/';
+    const files = readdirSync(jsonDir).filter((file) => file.endsWith('.json'));
+
+    const customMetadata: Record<string, Metadata> = {};  // [!code highlight]
+
+    files.forEach((file, index) => {
+      const filePath = join(jsonDir, file);
+      const rawData = readFileSync(filePath, 'utf-8');
+      const capability = capabilities[index] as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata };  // [!code highlight]
+      const reportMetadata = capability['cjson:metadata'];  // [!code highlight]
+      const browserName = capability.browserName || 'chrome'; // [!code highlight]
+
+      if (!rawData.trim()) return;
+
+      const suiteData = JSON.parse(rawData);
+
+      suiteData.forEach((feature: any) => {
+        const originalName = feature.name;
+        feature.name = `${originalName} [${browserName.toUpperCase()}]`;
+        feature.id = `${feature.id}-${browserName}`;
+        const fileName = feature.uri as string;
+        feature.uri = fileName.replace('.feature', `-${browserName}.feature`); // [!code highlight]
+
+        const metaKey = (feature.uri as string).split('/').pop();
+        if (metaKey) {
+          customMetadata[metaKey] = reportMetadata; // [!code highlight]
+        }
+      });
+
+      writeFileSync(filePath, JSON.stringify(suiteData, null, 2));
+    });
+
+    await generate({
+      jsonDir: 'reports/json/',
+      reportPath: 'reports/report/',
+      useCDN: false,
+      openReportInBrowser: true,
+      saveCollectedJSON: true,
+      displayReportTime: true,
+      durationInMS: false,
+      displayDuration: true,
+      displayChartPercentages: true,
+      pageTitle: 'My WDIO Typescript Sample',
+      reportName: 'WDIO Cucumber JS Report',
+      metadata: customMetadata, // [!code highlight]
+      customData: {
+        projectName: 'WebDriverIO sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+    });
+  },
+};
+```
+
+#### Configure `package.json` for test script [step]
+
+```json
+// package.json
+"scripts": {
+  "test:formatter": "wdio run ./wdio-cc-formatter.conf.ts"
+}
+```
+
+#### Run the Tests and generate HTML report [step]
+
+Execute the following command to run the tests and generate the HTML report:
+
+```shell
+pnpm test:formatter
+```

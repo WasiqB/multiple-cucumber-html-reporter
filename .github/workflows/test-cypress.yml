@@ -30,26 +30,36 @@ jobs:
       - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: "pnpm"
 
-      - name: Install Root Dependencies
+      - name: Install Monorepo Dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
         working-directory: reporter
+        run: pnpm build
 
-      - name: Install Cypress
+      - name: Install Cypress Binary
         working-directory: examples/cypress
         run: pnpm cypress install
 
-      - name: Run Cypress
+      - name: Run Cypress Tests
         working-directory: examples/cypress
         run: pnpm test
         continue-on-error: true
+
+      - name: Link the CLI Globally
+        run: pnpm link --global ./reporter
+
+      - name: Re-install after linking CLI
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Sanity check CLI command
+        working-directory: examples/cypress
+        run: mchr --version
 
       - name: Generate Report
         working-directory: examples/cypress

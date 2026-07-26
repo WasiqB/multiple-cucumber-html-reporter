@@ -1,0 +1,73 @@
+---
+title: CLI
+description: Command line interface for Multiple Cucumber HTML Reporter.
+icon: Terminal
+---
+
+You can use the command line tool which is newly added to the Multiple Cucumber HTML Reporter. To use it, you need to install it globally on your machine. Run the following command:
+
+<Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
+  <Tab value="npm">
+  ```bash
+  npm install multiple-cucumber-html-reporter --global
+  ```
+  </Tab>
+  <Tab value="yarn">
+  ```bash
+  yarn global add multiple-cucumber-html-reporter
+  ```
+  </Tab>
+  <Tab value="pnpm">
+  ```bash
+  pnpm add multiple-cucumber-html-reporter --global
+  ```
+  </Tab>
+</Tabs>
+
+## Reporter configuration file
+
+The reporter now supports the following configuration files, which you can use to add the common configuration options for the reporter:
+
+- `.multiple-cucumber-html-reporterrc`: This file is a JSON format file.
+- `.multiple-cucumber-html-reporter.json`: In case if you want to explicitly specify the JSON file extension, you can use this file.
+- `.multiple-cucumber-html-reporter.js`: In case if you want to handle to dynamically set the metadata, you can use this file.
+- `.multiple-cucumber-html-reporter.ts`: In case you prefer Typescript, then use this file.
+- `.multiple-cucumber-html-reporter.yml` / `.multiple-cucumber-html-reporter.yaml`: In case you prefer YAML format, then use this file.
+
+## Generate the config file
+
+Run the command line tool by using the `mchr` command in the terminal.
+
+If the config file is not there in the directory in which you are running the command, the CLI will ask you onboarding questions to generate the config file.
+
+<Callout title="Tip" type='idea'>
+The CLI command will be default generate the config file in JSON format.
+
+You can later change the format to .yml or .js format as per your preference.
+</Callout>
+
+## Generate the report
+
+Once the config file is generated, you can generate the report by running the `mchr` command in the terminal.
+
+```shell
+mchr
+```
+
+<Callout title="Tip" type='idea'>
+If the Cucumber generated JSON file is not generated, then the report would still be generated but it will be empty.
+
+So, it is better to generate the Cucumber JSON report first and then generate the HTML report by using the `mchr` command.
+</Callout>
+
+## Configure in CI/CD Pipeline
+
+To generate the report in your CI/CD pipeline, you can use the `mchr` command in your pipeline script. For example, in case of GitLab CI/CD, you can use the following script:
+
+```shell
+# Run the tests
+pnpm test
+
+# Generate the report
+mchr
+```

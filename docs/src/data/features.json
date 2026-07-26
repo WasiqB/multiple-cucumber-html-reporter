@@ -75,6 +75,6 @@
   "cta": {
     "title": "Ready to upgrade your reports?",
     "description": "Join over 6K+ engineers and teams delivering clearer BDD results every single day.",
-    "primaryLink": { "label": "Get Started", "url": "/docs" }
+    "primaryLink": { "label": "Get Started", "url": "/docs/latest" }
   }
 }
