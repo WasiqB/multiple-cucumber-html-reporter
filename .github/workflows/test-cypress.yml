@@ -35,24 +35,24 @@ jobs:
           node-version: 24
           cache: "pnpm"
 
-      - name: Install Root Dependencies
-        run: pnpm install
+      - name: Install Monorepo Dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
-        working-directory: reporter
+        run: pnpm --filter reporter build
 
-      - name: Install Cypress
-        working-directory: examples/cypress
-        run: pnpm cypress install
+      - name: Install Cypress Binary
+        run: pnpm --filter cypress cypress install
 
-      - name: Run Cypress
-        working-directory: examples/cypress
-        run: pnpm test
+      - name: Run Cypress Tests
+        run: pnpm --filter cypress test
         continue-on-error: true
 
-      - name: Link the CLI
-        run: pnpm link --global ./reporter -y
+      - name: Link the CLI Globally
+        run: pnpm link --global ./reporter
+
+      - name: Sanity check CLI command
+        run: mchr --version
 
       - name: Generate Report
         working-directory: examples/cypress
