@@ -39,21 +39,23 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm --filter reporter build
+        working-directory: reporter
+        run: pnpm reporter build
 
       - name: Install Cypress Binary
-        run: pnpm cypress install
         working-directory: examples/cypress
+        run: pnpm cypress install
 
       - name: Run Cypress Tests
-        run: pnpm test
         working-directory: examples/cypress
+        run: pnpm test
         continue-on-error: true
 
       - name: Link the CLI Globally
         run: pnpm link --global ./reporter
 
       - name: Sanity check CLI command
+        working-directory: examples/cypress
         run: mchr --version
 
       - name: Generate Report
