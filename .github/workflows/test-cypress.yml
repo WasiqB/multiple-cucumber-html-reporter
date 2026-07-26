@@ -40,7 +40,7 @@ jobs:
 
       - name: Build Project
         working-directory: reporter
-        run: pnpm reporter build
+        run: pnpm build
 
       - name: Install Cypress Binary
         working-directory: examples/cypress
