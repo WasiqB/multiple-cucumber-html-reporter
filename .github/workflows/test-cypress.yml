@@ -42,10 +42,12 @@ jobs:
         run: pnpm --filter reporter build
 
       - name: Install Cypress Binary
-        run: pnpm --filter cypress cypress install
+        run: pnpm cypress install
+        working-directory: examples/cypress
 
       - name: Run Cypress Tests
-        run: pnpm --filter cypress test
+        run: pnpm test
+        working-directory: examples/cypress
         continue-on-error: true
 
       - name: Link the CLI Globally
