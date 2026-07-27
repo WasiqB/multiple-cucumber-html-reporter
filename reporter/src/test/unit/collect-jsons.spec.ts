@@ -148,12 +148,12 @@ describe('collect-jsons.js', () => {
     });
 
     it('should print a console message when no json files could be found', () => {
-      spyOn(console, 'log');
+      spyOn(console, 'warn');
       collectJSONS({
         jsonDir: './src/test/unit/data/no-jsons',
         reportPath: reportPath,
       });
-      expect(console.log).toHaveBeenCalledWith(
+      expect(console.warn).toHaveBeenCalledWith(
         '\x1b[33m%s\x1b[0m',
         `WARNING: No JSON files found in './src/test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`,
       );
