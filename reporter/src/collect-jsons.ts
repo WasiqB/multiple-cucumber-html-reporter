@@ -203,7 +203,7 @@ export default function collectJSONS(options: Options): Feature[] {
     return jsonOutput;
   }
 
-  console.log('\x1b[33m%s\x1b[0m', `WARNING: No JSON files found in '${options.jsonDir}'. NO REPORT CAN BE CREATED!`);
+  console.warn('\x1b[33m%s\x1b[0m', `WARNING: No JSON files found in '${options.jsonDir}'. NO REPORT CAN BE CREATED!`);
   return [];
 }
 
