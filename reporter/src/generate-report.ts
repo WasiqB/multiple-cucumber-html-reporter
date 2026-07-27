@@ -802,9 +802,7 @@ async function generateReport(options: Options) {
   }
 
   async function _createCssFile(suite: Suite) {
-    console.log('Creating Report CSS file...');
     if (!suite.customStyle) {
-      console.log('Creating TailwindCSS file...');
       const cssIn = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
       const cssOut = path.join(reportPath, 'styles.min.css');
 
@@ -813,22 +811,18 @@ async function generateReport(options: Options) {
     } else {
       const cssFile = resolve(reportPath, 'styles.css');
       const cssContent = suite.customStyle;
-      console.log('Using Custom CSS file...');
       await fs.writeFile(cssFile, cssContent);
     }
   }
 
   async function _createJsFiles() {
     // Copy JS
-    console.log('Copying JS...');
     const jsInDir = path.join(templatesDir, 'scripts');
     const jsOutDir = path.join(reportPath, 'scripts');
     if (await fs.pathExists(jsInDir)) {
       await fs.ensureDir(jsOutDir);
       await fs.copy(jsInDir, jsOutDir);
     }
-
-    console.log('Build complete!');
   }
 
   /**
