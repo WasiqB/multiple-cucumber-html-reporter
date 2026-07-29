@@ -16,6 +16,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as p from '@clack/prompts';
 import { generate } from '../generate-report.js';
+import { LOG_LEVELS } from '../logger.js';
+import type { LogLevel, Options } from '../types.js';
 import { loadConfig } from './config-loader.js';
 import { runOnboarding } from './onboarding.js';
 
@@ -40,8 +42,11 @@ function printHelp(): void {
     mchr [options]
 
   OPTIONS
-    --help, -h      Show this help message and exit
-    --version, -v   Print the version number and exit
+    --help, -h                 Show this help message and exit
+    --version, -v              Print the version number and exit
+    --log-level <level>        Set logging level: silent, error, warn, info,
+                               debug, or trace
+    --silent, --no-logging     Hide reporter logging completely
 
   CONFIG FILES
     The CLI looks for a config file in the current working directory in this
@@ -61,6 +66,7 @@ function printHelp(): void {
       "jsonDir": "./reports",
       "reportPath": "./reports/html",
       "reportName": "My Test Report",
+      "logging": "warn",
       "displayDuration": true,
       "displayChartPercentages": true
     }
@@ -77,6 +83,44 @@ function printHelp(): void {
 
 function isCI(): boolean {
   return process.env.CI === 'true' || process.env.CI === '1';
+}
+
+function applyCliOptions(options: Options, args: string[]): Options {
+  const nextOptions = { ...options };
+  const silentAliases = new Set(['--silent', '--no-logging']);
+
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
+
+    if (silentAliases.has(arg)) {
+      nextOptions.logging = 'silent';
+      continue;
+    }
+
+    if (arg === '--log-level') {
+      const level = args[index + 1];
+      if (!level || !isLogLevel(level)) {
+        throw new Error(`Invalid --log-level value. Expected one of: ${LOG_LEVELS.join(', ')}.`);
+      }
+      nextOptions.logging = level;
+      index++;
+      continue;
+    }
+
+    if (arg.startsWith('--log-level=')) {
+      const level = arg.slice('--log-level='.length);
+      if (!isLogLevel(level)) {
+        throw new Error(`Invalid --log-level value. Expected one of: ${LOG_LEVELS.join(', ')}.`);
+      }
+      nextOptions.logging = level;
+    }
+  }
+
+  return nextOptions;
+}
+
+function isLogLevel(value: string): value is LogLevel {
+  return LOG_LEVELS.includes(value as LogLevel);
 }
 
 async function main(): Promise<void> {
@@ -115,6 +159,14 @@ async function main(): Promise<void> {
   } else {
     p.intro(`Multiple Cucumber HTML Reporter v${readVersion()}`);
     console.log(`  Config: ${path.relative(cwd, configResult.filePath)}`);
+  }
+
+  try {
+    configResult.options = applyCliOptions(configResult.options, args);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    p.log.error(message);
+    process.exit(1);
   }
 
   // ── 3. Generate the report

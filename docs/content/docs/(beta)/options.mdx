@@ -54,9 +54,20 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
     disableLog: {
       description: 'Disables the summary report log in the console.',
       type: 'boolean',
+      deprecated: true,
       default: false,
       typeDescription: 'boolean'
     },
+    logging: {
+      description: <>
+        Controls reporter logging.
+
+        LogLevel: <code>silent</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code>
+      </>,
+      type: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }',
+      default: 'info',
+      typeDescription: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }'
+    }
   }}
 />
 
@@ -65,7 +76,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
 <TypeTable
   type={{
     customMetadata: {
-      description: <>If <code>true</code>, the custom metadata will be displayed in the report</>,
+      description: <>If <code>true</code>, the custom metadata will be displayed in the report. Use <code>metadata</code> property instead.</>,
       type: 'boolean',
       default: false,
       deprecated: true,

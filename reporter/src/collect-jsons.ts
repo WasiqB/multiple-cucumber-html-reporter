@@ -1,10 +1,11 @@
 import os from 'node:os';
-import { dirname, resolve } from 'node:path';
+import { basename, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import find from 'find';
 import fs from 'fs-extra';
 import jsonfile from 'jsonfile';
 import { DateTime } from 'luxon';
+import { createLogger } from './logger.js';
 import type { Feature, Metadata, Options, Step } from './types.js';
 
 const { fileSync } = find;
@@ -130,34 +131,67 @@ function resolveOptionsMetadata(
 
 export default function collectJSONS(options: Options): Feature[] {
   const jsonOutput: Feature[] = [];
+  const logger = createLogger(options.logging, options.disableLog);
   let files: string[];
+  const jsonDir = resolve(process.cwd(), options.jsonDir);
+
+  logger.debug('Collecting Cucumber JSON files.', { jsonDir });
 
   try {
-    files = fileSync(/\.json$/, resolve(process.cwd(), options.jsonDir));
-  } catch (_e) {
+    files = fileSync(/\.json$/, jsonDir);
+  } catch (error) {
+    logger.error('Failed to read Cucumber JSON files.', { jsonDir: options.jsonDir, resolvedJsonDir: jsonDir });
+    logger.debug('JSON directory read error details.', { error });
     throw new Error(`There were issues reading JSON-files from '${options.jsonDir}'.`);
   }
 
   if (files.length > 0) {
     const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
+    logger.info('Found Cucumber JSON files.', { count: files.length, jsonDir: options.jsonDir });
+    if (metadataFilePath) {
+      logger.debug('Metadata file will be skipped during JSON collection.', { metadataFilePath });
+    }
+
     files.forEach((file) => {
       if (metadataFilePath && resolve(file) === metadataFilePath) {
+        logger.trace('Skipped metadata file.', { file });
         return;
       }
-      // Cucumber json can be  empty, it's likely being created by another process (#47)
-      const data = readFileSync(file).toString() || '[]';
-      const stats = statSync(file);
-      const reportTime = stats.birthtime;
 
-      const features: Feature[] = JSON.parse(data);
+      logger.debug('Reading Cucumber JSON file.', { file });
+
+      let features: Feature[];
+      let stats: ReturnType<typeof statSync>;
+
+      try {
+        // Cucumber json can be empty, it's likely being created by another process (#47).
+        const data = readFileSync(file).toString() || '[]';
+        stats = statSync(file);
+        features = JSON.parse(data);
+      } catch (error) {
+        logger.error('Failed to parse Cucumber JSON file.', { file });
+        logger.debug('Cucumber JSON parse error details.', { file, error });
+        throw error;
+      }
+
+      const reportTime = stats.birthtime;
+      logger.debug('Parsed Cucumber JSON file.', { file: basename(file), featureCount: features.length });
 
       features.forEach((json) => {
+        logger.trace('Processing feature.', {
+          feature: json.name || 'Unnamed feature',
+          uri: json.uri || basename(file),
+        });
         // Resolve options.metadata for this specific feature (handles both shared
         // Metadata and per-feature Record<string, Metadata>), then merge with the
         // metadata embedded in the JSON report. Feature-embedded metadata wins over
         // options.metadata; both fill gaps with auto-detected system defaults.
         const optionsMeta = resolveOptionsMetadata(options.metadata, json.uri);
         const baseMeta = json.metadata || optionsMeta;
+        logger.trace('Resolved feature metadata source.', {
+          feature: json.name || json.uri || basename(file),
+          source: json.metadata ? 'feature-json' : optionsMeta ? 'reporter-options' : 'auto-detected-defaults',
+        });
         // If both exist and neither is an array, deep-merge: embedded > options > defaults
         if (json.metadata && !Array.isArray(json.metadata) && optionsMeta && !Array.isArray(optionsMeta)) {
           json.metadata = enrichMetadata({ ...optionsMeta, ...json.metadata });
@@ -176,18 +210,32 @@ export default function collectJSONS(options: Options): Feature[] {
         const { elements } = json;
 
         if (elements) {
+          logger.trace('Feature scenarios found.', {
+            feature: json.name || json.uri || basename(file),
+            scenarioCount: elements.length,
+          });
           json.elements = elements.map((scenario) => {
             const { before, after } = scenario;
 
             if (before) {
+              logger.trace('Adding before hooks to scenario.', {
+                scenario: scenario.name,
+                hookCount: before.length,
+              });
               scenario.steps = parseFeatureHooks(before, 'Before').concat(scenario.steps);
             }
             if (after) {
+              logger.trace('Adding after hooks to scenario.', {
+                scenario: scenario.name,
+                hookCount: after.length,
+              });
               scenario.steps = scenario.steps.concat(parseFeatureHooks(after, 'After'));
             }
 
             return scenario;
           });
+        } else {
+          logger.warn('Feature has no scenarios or elements.', { feature: json.name || json.uri || basename(file) });
         }
 
         jsonOutput.push(json);
@@ -196,14 +244,16 @@ export default function collectJSONS(options: Options): Feature[] {
 
     if (options.saveCollectedJSON) {
       const file = resolve(options.reportPath, 'merged-output.json');
+      logger.debug('Writing collected JSON output.', { file });
       ensureDirSync(options.reportPath);
       writeFileSync(file, jsonOutput, { spaces: 2 });
     }
 
+    logger.info('Collected Cucumber features.', { featureCount: jsonOutput.length, jsonFileCount: files.length });
     return jsonOutput;
   }
 
-  console.warn('\x1b[33m%s\x1b[0m', `WARNING: No JSON files found in '${options.jsonDir}'. NO REPORT CAN BE CREATED!`);
+  logger.warn('No Cucumber JSON files found; report cannot be created.', { jsonDir: options.jsonDir });
   return [];
 }
 

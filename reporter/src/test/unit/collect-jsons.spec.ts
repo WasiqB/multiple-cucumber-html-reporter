@@ -153,9 +153,10 @@ describe('collect-jsons.js', () => {
         jsonDir: './src/test/unit/data/no-jsons',
         reportPath: reportPath,
       });
-      expect(console.warn).toHaveBeenCalledWith(
-        '\x1b[33m%s\x1b[0m',
-        `WARNING: No JSON files found in './src/test/unit/data/no-jsons'. NO REPORT CAN BE CREATED!`,
+      expect(console.warn).toHaveBeenCalledOnceWith(
+        jasmine.stringMatching(
+          /^.+ WARN\s+\[multiple-cucumber-html-reporter\] No Cucumber JSON files found; report cannot be created\. jsonDir="\.\/src\/test\/unit\/data\/no-jsons"$/,
+        ),
       );
     });
 

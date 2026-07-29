@@ -3,8 +3,8 @@
   "type": "module",
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^26.1.1",
-    "@wdio/browserstack-service": "^9.32.0",
+    "@types/node": "^26.1.2",
+    "@wdio/browserstack-service": "^9.32.1",
     "@wdio/cli": "^9.30.0",
     "@wdio/cucumber-framework": "^9.30.0",
     "@wdio/globals": "^9.29.1",

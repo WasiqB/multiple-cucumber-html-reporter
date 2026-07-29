@@ -38,6 +38,21 @@ export type Metadata = {
   [key: string]: any;
 };
 
+export type LogLevel = 'silent' | 'error' | 'warn' | 'info' | 'debug' | 'trace';
+
+export type LoggingOptions =
+  | LogLevel
+  | false
+  | {
+      /**
+       * Minimum log level to emit. Use `silent` or `enabled: false` to hide all
+       * reporter logging.
+       */
+      level?: LogLevel;
+      /** Set to false to hide all reporter logging. */
+      enabled?: boolean;
+    };
+
 export interface Options {
   jsonDir: string;
   reportPath: string;
@@ -57,11 +72,23 @@ export interface Options {
    * Set to `true` when `metadata` is provided as a `{ name; value }[]` array.
    * If `metadata` is array-shaped and this flag is `false` (or absent), the
    * reporter will throw an error explaining the mismatch.
+   * @deprecated Use `metadata` property of type `Record<string, Metadata>` instead.
    */
   customMetadata?: boolean;
   plainDescription?: boolean;
   overrideStyle?: string;
   customStyle?: string;
+  /**
+   * Controls reporter logging. Defaults to `info`.
+   *
+   * Examples:
+   * - `logging: 'warn'`
+   * - `logging: 'silent'`
+   * - `logging: false`
+   * - `logging: { level: 'debug' }`
+   */
+  logging?: LoggingOptions;
+  /** @deprecated Use `logging: 'silent'` or `logging: false` instead. */
   disableLog?: boolean;
   openReportInBrowser?: boolean;
   reportName?: string;
