@@ -9,7 +9,18 @@ import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS from './collect-jsons.js';
-import type { CustomData, Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
+import { createLogger } from './logger.js';
+import type {
+  CustomData,
+  Feature,
+  LoggingOptions,
+  LogLevel,
+  Metadata,
+  Options,
+  Scenario,
+  Step,
+  Suite,
+} from './types.js';
 
 const { size } = _;
 const { writeFileSync: _writeFileSync } = jsonfile;
@@ -56,18 +67,28 @@ async function generateReport(options: Options) {
     throw new Error('An output path for the reports should be defined, no path was provided.');
   }
 
-  // If metadata file path is provided, then load meatdata from file.
+  const logger = createLogger(options.logging, options.disableLog);
+
+  logger.info('Starting report generation.');
+  logger.debug('Resolved report generation paths.', {
+    cwd: process.cwd(),
+    jsonDir: resolve(process.cwd(), options.jsonDir),
+    reportPath: resolve(process.cwd(), options.reportPath),
+  });
+
+  // If metadata file path is provided, then load metadata from file.
   if (options.metadataFilePath) {
     const resolvedPath = resolve(process.cwd(), options.metadataFilePath);
+    logger.debug('Loading metadata file.', { metadataFilePath: resolvedPath });
     options.metadataFilePath = resolvedPath;
     options.metadata = await loadMetadataFile(resolvedPath);
+    logger.info('Loaded metadata file.', { metadataFilePath: resolvedPath });
   }
 
   const customMetadata = !!options.customMetadata;
   const customData = options.customData;
   const plainDescription = !!options.plainDescription;
   const customStyle = options.customStyle;
-  const disableLog = !!options.disableLog;
   const openReportInBrowser = !!options.openReportInBrowser;
   const reportName = options.reportName || DEFAULT_REPORT_NAME;
   const reportPath = resolve(process.cwd(), options.reportPath);
@@ -89,6 +110,9 @@ async function generateReport(options: Options) {
     const resolvedLogoPath = resolve(process.cwd(), brandLogo);
     if (await fs.pathExists(resolvedLogoPath)) {
       logoPathName = `images/${path.basename(brandLogo)}`;
+      logger.debug('Using brand logo.', { brandLogo: resolvedLogoPath });
+    } else {
+      logger.warn('Configured brand logo was not found.', { brandLogo: resolvedLogoPath });
     }
   }
 
@@ -99,10 +123,15 @@ async function generateReport(options: Options) {
     );
   }
 
+  logger.debug('Ensuring report output folders exist.', {
+    reportPath,
+    featureFolder: resolve(reportPath, FEATURE_FOLDER),
+  });
   fs.ensureDirSync(reportPath);
   fs.ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
 
   const allFeatures: Feature[] = collectJSONS(options);
+  logger.info('Preparing report data.', { featureCount: allFeatures.length });
 
   const suite: Suite = {
     app: 0,
@@ -160,6 +189,14 @@ async function generateReport(options: Options) {
   };
 
   _parseFeatures(suite);
+  logger.debug('Parsed feature statuses.', {
+    passed: suite.featureCount.passed,
+    failed: suite.featureCount.failed,
+    skipped: suite.featureCount.skipped,
+    pending: suite.featureCount.pending,
+    undefined: suite.featureCount.notDefined,
+    ambiguous: suite.featureCount.ambiguous,
+  });
 
   // Percentages
   suite.featureCount.ambiguousPercentage = _calculatePercentage(suite.featureCount.ambiguous, suite.featureCount.total);
@@ -223,30 +260,33 @@ async function generateReport(options: Options) {
 
   if (saveCollectedJSON) {
     /* istanbul ignore else */
+    logger.debug('Writing enriched report data.', { file: resolve(reportPath, 'enriched-output.json') });
     _writeFileSync(resolve(reportPath, 'enriched-output.json'), suite, { spaces: 2 });
   }
 
+  logger.debug('Rendering report overview page.');
   await _createFeaturesOverviewIndexPage(suite);
+  logger.debug('Rendering feature detail pages.');
   await _createFeatureIndexPages(suite);
+  logger.debug('Writing report CSS assets.');
   await _createCssFile(suite);
+  logger.debug('Writing report JavaScript assets.');
   await _createJsFiles();
 
-  if (!disableLog) {
-    /* istanbul ignore else */
-    console.log(
-      '\x1b[34m%s\x1b[0m',
-      `\n
-=====================================================================================
-    Multiple Cucumber HTML report generated in:
+  if (logger.level === 'trace') {
+    logger.trace('Report output directory resolved.', { reportPath });
+  }
 
-    ${join(reportPath, INDEX_HTML)}
-=====================================================================================\n`,
-    );
+  if (logger.level !== 'silent') {
+    /* istanbul ignore else */
+    logger.info('Report generated successfully.', { report: join(reportPath, INDEX_HTML) });
   }
 
   if (openReportInBrowser) {
     /* istanbul ignore if */
-    open(join(reportPath, INDEX_HTML));
+    const reportIndex = join(reportPath, INDEX_HTML);
+    logger.info('Opening report in browser.', { report: reportIndex });
+    open(reportIndex);
   }
 
   function _parseFeatures(suite: Suite) {
@@ -691,6 +731,7 @@ async function generateReport(options: Options) {
   async function _createFeaturesOverviewIndexPage(suite: Suite) {
     const featuresOverviewIndex = resolve(reportPath, INDEX_HTML);
     const runtimeMetadata = getReportRuntimeMetadata(suite);
+    logger.trace('Rendering overview template.', { file: featuresOverviewIndex });
 
     const report = {
       reportName: suite.reportName,
@@ -733,6 +774,7 @@ async function generateReport(options: Options) {
     });
 
     await fs.writeFile(featuresOverviewIndex, html);
+    logger.debug('Wrote report overview page.', { file: featuresOverviewIndex });
   }
 
   /**
@@ -745,6 +787,11 @@ async function generateReport(options: Options) {
 
     for (const feature of suite.features) {
       const featurePage = join(reportPath, FEATURE_FOLDER, `${feature.id}.html`);
+      logger.trace('Rendering feature template.', {
+        feature: feature.name,
+        featureId: feature.id,
+        file: featurePage,
+      });
 
       const report = {
         reportName: suite.reportName,
@@ -788,15 +835,21 @@ async function generateReport(options: Options) {
       });
 
       await fs.writeFile(featurePage, html);
+      logger.trace('Wrote feature page.', { feature: feature.name, featureId: feature.id, file: featurePage });
     }
 
     // Copy the assets
-    await fs.copy(resolve(templatesDir, 'assets'), resolve(reportPath, 'assets'));
+    const assetsSource = resolve(templatesDir, 'assets');
+    const assetsTarget = resolve(reportPath, 'assets');
+    logger.debug('Copying report assets.', { source: assetsSource, target: assetsTarget });
+    await fs.copy(assetsSource, assetsTarget);
     if (brandLogo) {
       const resolvedLogoPath = resolve(process.cwd(), brandLogo);
       if (await fs.pathExists(resolvedLogoPath)) {
         const logoBasename = path.basename(brandLogo);
-        await fs.copy(resolvedLogoPath, resolve(reportPath, 'assets', 'images', logoBasename));
+        const logoTarget = resolve(reportPath, 'assets', 'images', logoBasename);
+        logger.debug('Copying brand logo asset.', { source: resolvedLogoPath, target: logoTarget });
+        await fs.copy(resolvedLogoPath, logoTarget);
       }
     }
   }
@@ -807,10 +860,12 @@ async function generateReport(options: Options) {
       const cssOut = path.join(reportPath, 'styles.min.css');
 
       await fs.ensureDir(path.dirname(cssOut));
+      logger.trace('Copying default stylesheet.', { source: cssIn, target: cssOut });
       await fs.copy(cssIn, cssOut);
     } else {
       const cssFile = resolve(reportPath, 'styles.css');
       const cssContent = suite.customStyle;
+      logger.trace('Writing custom stylesheet.', { file: cssFile });
       await fs.writeFile(cssFile, cssContent);
     }
   }
@@ -821,7 +876,10 @@ async function generateReport(options: Options) {
     const jsOutDir = path.join(reportPath, 'scripts');
     if (await fs.pathExists(jsInDir)) {
       await fs.ensureDir(jsOutDir);
+      logger.trace('Copying report scripts.', { source: jsInDir, target: jsOutDir });
       await fs.copy(jsInDir, jsOutDir);
+    } else {
+      logger.warn('Report script source directory was not found.', { source: jsInDir });
     }
   }
 
@@ -892,4 +950,4 @@ async function loadMetadataFile(filePath: string): Promise<
 }
 
 export const generate = generateReport;
-export type { CustomData, Metadata, Options };
+export type { CustomData, LoggingOptions, LogLevel, Metadata, Options };
