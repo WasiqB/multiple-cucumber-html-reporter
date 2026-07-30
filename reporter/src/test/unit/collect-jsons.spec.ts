@@ -168,5 +168,17 @@ describe('collect-jsons.js', () => {
       expect(Array.isArray(results)).toBeTruthy();
       expect(results.length).toBe(0);
     });
+
+    it('should not print warnings when logging is disabled', () => {
+      spyOn(console, 'warn');
+
+      collectJSONS({
+        jsonDir: './src/test/unit/data/no-jsons',
+        reportPath: reportPath,
+        logging: false,
+      });
+
+      expect(console.warn).not.toHaveBeenCalled();
+    });
   });
 });
