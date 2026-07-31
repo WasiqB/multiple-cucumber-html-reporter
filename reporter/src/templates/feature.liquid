@@ -210,7 +210,7 @@
     </div>
     <div id="scenarios-container" class="space-y-4">
       {% for scenario in data.feature.elements %}
-        {% render 'includes/scenario_card.liquid', scenario: scenario %}
+        {% render 'includes/scenario_card.liquid', scenario: scenario, report: data.report, scenario_index: forloop.index0 %}
       {% endfor %}
     </div>
   </div>
@@ -219,10 +219,15 @@
 <script>
   // Report-wide UI config (opt-in features toggled from the reporter options)
   window.ReportConfig = Object.assign({}, window.ReportConfig, {
-      displayChartPercentages: {{ data.report.displayChartPercentages | json }}
+      displayChartPercentages: {{ data.report.displayChartPercentages | json }},
+      modalBackdrop: {{ data.report.modalBackdrop | json }},
+      modalDraggable: {{ data.report.modalDraggable | json }},
+      modalResizable: {{ data.report.modalResizable | json }},
+      modalShowContext: {{ data.report.modalShowContext | json }}
   });
 
-  // Embedded data for charts
-  const featureData = {{ data.feature | json }};
+  // Embedded data for charts (status/duration/tags only — never embeddings,
+  // which would make this inline blob scale with attachment size)
+  const featureData = {{ data.featureSummary | json }};
 </script>
 {% endblock %}

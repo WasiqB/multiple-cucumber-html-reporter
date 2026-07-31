@@ -78,6 +78,47 @@ export interface Options {
   staticFilePath?: boolean;
   brandLogo?: string;
   metadataFilePath?: string;
+  /**
+   * Write image/video attachments to separate files under
+   * `<reportPath>/assets/media/` instead of inlining them as `data:` URIs in
+   * the feature page's HTML. Keeps feature pages small and lets the browser
+   * load each screenshot/video lazily (normal `<img>`/`<video>` src) instead
+   * of parsing a multi-gigabyte inline blob before the page is interactive.
+   * Text/JSON/HTML log attachments are unaffected — always inlined.
+   */
+  externalizeMedia?: boolean;
+  /**
+   * How step attachments (text/json/html/image/video/misc) are presented on
+   * feature pages:
+   * - `'modal'` (default) — a compact "Attachments" list; clicking an item
+   *   opens it in a popup (see the `modal*` options below for its behavior).
+   * - `'inline'` — the pre-4.x classic style: one link per attachment type
+   *   ("+ Show Info", "+ Screenshot", etc.) inline next to the step text,
+   *   each expanding its content directly below the step in place.
+   */
+  attachmentLayout?: 'modal' | 'inline';
+  /**
+   * Whether the attachment popup (see `attachmentLayout: 'modal'`) shows a
+   * dark backdrop, blocks interaction with the rest of the page, and closes
+   * on click-outside. Default `true` matches the original behavior.
+   */
+  modalBackdrop?: boolean;
+  /**
+   * Whether the attachment popup can be repositioned by dragging its header.
+   * Default `false` matches the original (fixed, centered) behavior.
+   */
+  modalDraggable?: boolean;
+  /**
+   * Whether the attachment popup can be resized from any edge or corner.
+   * Default `false` matches the original (fixed max-size) behavior.
+   */
+  modalResizable?: boolean;
+  /**
+   * Whether the attachment popup shows the step (or, for a detected video,
+   * scenario) text as a caption above its content. Default `false` matches
+   * the original behavior, which showed no such caption.
+   */
+  modalShowContext?: boolean;
 }
 
 export interface Hook {

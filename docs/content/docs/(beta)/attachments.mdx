@@ -247,3 +247,17 @@ After(async function ({ pickle, result }) {
   }
 });
 ```
+
+<Callout title="Note" type="info">
+  Some tooling attaches a video wrapped in an HTML `<video>` tag as `text/html` instead of a native `video/webm` embedding. The reporter detects a `<video` tag in an HTML attachment and renders it as a video, so it still plays correctly either way.
+</Callout>
+
+## Attachment Display Layout
+
+By default (`attachmentLayout: 'modal'`), attachments are listed under each step and open in a popup when clicked. Set `attachmentLayout: 'inline'` for the classic layout: one link per attachment type ("+ Show Info", "+ Screenshot", etc.) next to the step text, expanding directly below the step.
+
+The popup used by `modal` layout has its own behavior options — backdrop, drag, resize, and a step/scenario context caption. See [Attachment Display Options](/docs/options#attachment-display-options) for the full list.
+
+## Externalizing Media
+
+Image and video attachments are inlined as `data:` URIs in the feature page's HTML by default. On suites with many or large screenshots/videos this makes feature pages very large. Set `externalizeMedia: true` to write image and video attachments to separate files under `<reportPath>/assets/media/` instead, referenced from the HTML by path. Text, JSON and HTML attachments are always inlined regardless of this setting.
