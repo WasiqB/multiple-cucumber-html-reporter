@@ -1,18 +1,23 @@
 import os from 'node:os';
 import path, { dirname, join, resolve } from 'node:path';
+import { pipeline as streamPipeline } from 'node:stream/promises';
 import { fileURLToPath } from 'node:url';
 import fs from 'fs-extra';
-import jsonfile from 'jsonfile';
 import { Liquid } from 'liquidjs';
 import _ from 'lodash';
 import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
-import collectJSONS from './collect-jsons.js';
+import collectJSONS, { listJsonFiles } from './collect-jsons.js';
+import { applyMetadataAndHooks, enrichStepEmbeddings, escapeHtml, type MediaFileWriter } from './report-helpers.js';
+import {
+  createJsonArrayFileWriter,
+  createJsonSuiteFileWriter,
+  streamFeaturesFromFile,
+} from './streaming/json-stream.js';
 import type { CustomData, Feature, Metadata, Options, Scenario, Step, Suite } from './types.js';
 
 const { size } = _;
-const { writeFileSync: _writeFileSync } = jsonfile;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -37,6 +42,35 @@ const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
 const projectRoot = path.resolve(__dirname);
 const templatesDir = path.join(projectRoot, 'templates');
 const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
+
+const MEDIA_EXTENSION_BY_MIME_TYPE: Record<string, string> = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/webp': 'webp',
+  'image/avif': 'avif',
+  'video/webm': 'webm',
+};
+
+/**
+ * Creates a `MediaFileWriter` for `options.externalizeMedia` — writes
+ * decoded image/video bytes to `<reportPath>/assets/media/<uuid>.<ext>`
+ * (created once, reused for every attachment in the run) and returns the
+ * relative path to use as the `src`, resolved from `<reportPath>/features/`
+ * where feature pages live.
+ */
+function createMediaFileWriter(reportPath: string): MediaFileWriter {
+  const mediaDir = resolve(reportPath, 'assets', 'media');
+  fs.ensureDirSync(mediaDir);
+
+  return {
+    write(buffer: Buffer, mimeType: string): string {
+      const extension = MEDIA_EXTENSION_BY_MIME_TYPE[mimeType] ?? 'bin';
+      const filename = `${uuid()}.${extension}`;
+      fs.writeFileSync(join(mediaDir, filename), buffer);
+      return `../assets/media/${filename}`;
+    },
+  };
+}
 
 /**
  * Generates the cucumber report.
@@ -82,6 +116,7 @@ async function generateReport(options: Options) {
   const pageFooter = options.pageFooter || null;
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
+  const externalizeMedia = !!options.externalizeMedia;
   const brandLogo = options.brandLogo;
 
   let logoPathName: string | undefined;
@@ -99,10 +134,26 @@ async function generateReport(options: Options) {
     );
   }
 
+  // Validate attachmentLayout: only "modal" and "inline" are recognised (unset defaults to "modal")
+  if (
+    options.attachmentLayout !== undefined &&
+    options.attachmentLayout !== 'modal' &&
+    options.attachmentLayout !== 'inline'
+  ) {
+    throw new Error(
+      `Invalid attachmentLayout: "${options.attachmentLayout}". Expected "modal" or "inline" (or leave it unset to use the default, "modal").`,
+    );
+  }
+  const attachmentLayout = options.attachmentLayout ?? 'modal';
+  const modalBackdrop = options.modalBackdrop ?? true;
+  const modalDraggable = options.modalDraggable ?? false;
+  const modalResizable = options.modalResizable ?? false;
+  const modalShowContext = options.modalShowContext ?? false;
+
   fs.ensureDirSync(reportPath);
   fs.ensureDirSync(resolve(reportPath, FEATURE_FOLDER));
 
-  const allFeatures: Feature[] = collectJSONS(options);
+  const allFeatures: Feature[] = await collectJSONS(options);
 
   const suite: Suite = {
     app: 0,
@@ -221,11 +272,6 @@ async function generateReport(options: Options) {
 
   const customDataItems = getCustomDataItems(customData);
 
-  if (saveCollectedJSON) {
-    /* istanbul ignore else */
-    _writeFileSync(resolve(reportPath, 'enriched-output.json'), suite, { spaces: 2 });
-  }
-
   await _createFeaturesOverviewIndexPage(suite);
   await _createFeatureIndexPages(suite);
   await _createCssFile(suite);
@@ -251,102 +297,126 @@ async function generateReport(options: Options) {
 
   function _parseFeatures(suite: Suite) {
     suite.features.forEach((feature: Feature) => {
-      feature.scenarios = {
-        passed: 0,
-        failed: 0,
-        notDefined: 0,
-        skipped: 0,
-        pending: 0,
-        ambiguous: 0,
-        passedPercentage: 0,
-        failedPercentage: 0,
-        notDefinedPercentage: 0,
-        skippedPercentage: 0,
-        pendingPercentage: 0,
-        ambiguousPercentage: 0,
-        total: 0,
-      };
-      feature.duration = 0;
-      feature.time = '00:00:00.000';
-      feature.isFailed = false;
-      feature.isAmbiguous = false;
-      feature.isSkipped = false;
-      feature.isNotdefined = false;
-      feature.isPending = false;
-      feature.passed = 0;
-      feature.failed = 0;
-      feature.notDefined = 0;
-      feature.skipped = 0;
-      feature.pending = 0;
-      feature.ambiguous = 0;
-      feature.totalTime = 0;
+      _parseSingleFeature(suite, feature, true);
+    });
+  }
+
+  /**
+   * Derives all per-feature/scenario/step fields (counts, percentages,
+   * duration, id, metadata shortcuts) for one feature. When `trackAggregates`
+   * is true, also folds the feature into the suite-wide totals used by
+   * index.html (featureCount, scenarios, totalTime, app/browser counters).
+   * Feature pages (Pass 2, see `_createFeatureIndexPages`) call this once per
+   * feature with `trackAggregates: false` — the suite totals are already
+   * final from Pass 1 by then, and re-adding here would double-count them.
+   * `mediaWriter`, when set, diverts image/video attachments to separate
+   * files instead of inlining them (see `enrichStepEmbeddings`).
+   */
+  function _parseSingleFeature(
+    suite: Suite,
+    feature: Feature,
+    trackAggregates: boolean,
+    mediaWriter?: MediaFileWriter,
+  ) {
+    feature.scenarios = {
+      passed: 0,
+      failed: 0,
+      notDefined: 0,
+      skipped: 0,
+      pending: 0,
+      ambiguous: 0,
+      passedPercentage: 0,
+      failedPercentage: 0,
+      notDefinedPercentage: 0,
+      skippedPercentage: 0,
+      pendingPercentage: 0,
+      ambiguousPercentage: 0,
+      total: 0,
+    };
+    feature.duration = 0;
+    feature.time = '00:00:00.000';
+    feature.isFailed = false;
+    feature.isAmbiguous = false;
+    feature.isSkipped = false;
+    feature.isNotdefined = false;
+    feature.isPending = false;
+    feature.passed = 0;
+    feature.failed = 0;
+    feature.notDefined = 0;
+    feature.skipped = 0;
+    feature.pending = 0;
+    feature.ambiguous = 0;
+    feature.totalTime = 0;
+    if (trackAggregates) {
       suite.featureCount.total++;
-      const idPrefix = staticFilePath ? '' : `${uuid()}.`;
-      feature.id = `${idPrefix}${feature.id}`.replace(/[^a-zA-Z0-9-_]/g, '-');
-      feature.app = '';
-      feature.browser = '';
+    }
+    const idPrefix = staticFilePath ? '' : `${uuid()}.`;
+    feature.id = `${idPrefix}${feature.id}`.replace(/[^a-zA-Z0-9-_]/g, '-');
+    feature.app = '';
+    feature.browser = '';
 
-      if (feature.uri) {
-        let uriPath = feature.uri;
-        if (uriPath.startsWith('file://')) {
-          uriPath = uriPath.substring(7);
+    if (feature.uri) {
+      let uriPath = feature.uri;
+      if (uriPath.startsWith('file://')) {
+        uriPath = uriPath.substring(7);
+      }
+      if (path.isAbsolute(uriPath)) {
+        feature.uri = path.relative(process.cwd(), uriPath);
+      }
+    }
+
+    // Metadata shortcuts for templates
+    if (feature.metadata) {
+      if (Array.isArray(feature.metadata)) {
+        // customMetadata: true path — array of { name, value } pairs.
+        // Map well-known names to the feature's structured display fields so
+        // that the Environment column and feature detail page show the right
+        // icons/values. Matching is case-insensitive and checks common aliases.
+        feature.metadata.forEach((item: any) => {
+          const rawName = (item.name || item.label || '').trim();
+          const label = rawName.toLowerCase();
+          const value = item.value || '';
+          if (!value) return;
+
+          if (label === 'device') {
+            feature.device = value;
+          } else if (label === 'executionplatform' || label === 'execution platform' || label === 'platform type') {
+            feature.executionPlatform = value as any;
+          } else if (label === 'os' || label === 'platform' || label === 'operating system') {
+            feature.os = value;
+          } else if (label === 'browser') {
+            feature.browser = value;
+          } else if (label === 'app' || label === 'application') {
+            feature.app = value;
+          } else if (label === 'username' || label === 'user') {
+            feature.username = value;
+          }
+        });
+      } else {
+        if (feature.metadata.device) feature.device = feature.metadata.device;
+        if (feature.metadata.executionPlatform) feature.executionPlatform = feature.metadata.executionPlatform;
+        if (feature.metadata.platform) {
+          feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`.trim();
         }
-        if (path.isAbsolute(uriPath)) {
-          feature.uri = path.relative(process.cwd(), uriPath);
+        if (feature.metadata.browser) {
+          feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`.trim();
+        }
+        if (feature.metadata.app) {
+          feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`.trim();
+        }
+        if (feature.metadata.username) {
+          feature.username = feature.metadata.username;
         }
       }
+    }
 
-      // Metadata shortcuts for templates
-      if (feature.metadata) {
-        if (Array.isArray(feature.metadata)) {
-          // customMetadata: true path — array of { name, value } pairs.
-          // Map well-known names to the feature's structured display fields so
-          // that the Environment column and feature detail page show the right
-          // icons/values. Matching is case-insensitive and checks common aliases.
-          feature.metadata.forEach((item: any) => {
-            const rawName = (item.name || item.label || '').trim();
-            const label = rawName.toLowerCase();
-            const value = item.value || '';
-            if (!value) return;
+    if (!feature.elements) {
+      return;
+    }
 
-            if (label === 'device') {
-              feature.device = value;
-            } else if (label === 'executionplatform' || label === 'execution platform' || label === 'platform type') {
-              feature.executionPlatform = value as any;
-            } else if (label === 'os' || label === 'platform' || label === 'operating system') {
-              feature.os = value;
-            } else if (label === 'browser') {
-              feature.browser = value;
-            } else if (label === 'app' || label === 'application') {
-              feature.app = value;
-            } else if (label === 'username' || label === 'user') {
-              feature.username = value;
-            }
-          });
-        } else {
-          if (feature.metadata.device) feature.device = feature.metadata.device;
-          if (feature.metadata.executionPlatform) feature.executionPlatform = feature.metadata.executionPlatform;
-          if (feature.metadata.platform) {
-            feature.os = `${feature.metadata.platform.name} ${feature.metadata.platform.version}`.trim();
-          }
-          if (feature.metadata.browser) {
-            feature.browser = `${feature.metadata.browser.name} ${feature.metadata.browser.version}`.trim();
-          }
-          if (feature.metadata.app) {
-            feature.app = `${feature.metadata.app.name} ${feature.metadata.app.version}`.trim();
-          }
-          if (feature.metadata.username) {
-            feature.username = feature.metadata.username;
-          }
-        }
-      }
+    _parseScenarios(feature, trackAggregates, mediaWriter);
 
-      if (!feature.elements) {
-        return;
-      }
-
-      _parseScenarios(feature);
-
+    if (trackAggregates) {
       if (feature.isFailed) {
         suite.featureCount.failed++;
       } else if (feature.isAmbiguous) {
@@ -360,39 +430,40 @@ async function generateReport(options: Options) {
       } else {
         suite.featureCount.passed++;
       }
+    }
 
-      if (feature.duration) {
-        feature.totalTime += feature.duration;
+    if (feature.duration) {
+      feature.totalTime += feature.duration;
+      if (trackAggregates) {
         suite.totalTime += feature.duration;
-        feature.time = formatDuration(feature.duration);
       }
+      feature.time = formatDuration(feature.duration);
+    }
 
-      // Check if browser / app is used
-      if (!Array.isArray(feature.metadata)) {
-        suite.app = feature.metadata.app ? suite.app + 1 : suite.app;
-        suite.browser = feature.metadata.browser ? suite.browser + 1 : suite.browser;
-      }
+    // Check if browser / app is used
+    if (trackAggregates && !Array.isArray(feature.metadata)) {
+      suite.app = feature.metadata.app ? suite.app + 1 : suite.app;
+      suite.browser = feature.metadata.browser ? suite.browser + 1 : suite.browser;
+    }
 
-      // Percentages
-      feature.scenarios.ambiguousPercentage = _calculatePercentage(
-        feature.scenarios.ambiguous,
-        feature.scenarios.total,
-      );
-      feature.scenarios.failedPercentage = _calculatePercentage(feature.scenarios.failed, feature.scenarios.total);
-      feature.scenarios.notDefinedPercentage = _calculatePercentage(
-        feature.scenarios.notDefined,
-        feature.scenarios.total,
-      );
-      feature.scenarios.passedPercentage = _calculatePercentage(feature.scenarios.passed, feature.scenarios.total);
-      feature.scenarios.pendingPercentage = _calculatePercentage(feature.scenarios.pending, feature.scenarios.total);
-      feature.scenarios.skippedPercentage = _calculatePercentage(feature.scenarios.skipped, feature.scenarios.total);
+    // Percentages
+    feature.scenarios.ambiguousPercentage = _calculatePercentage(feature.scenarios.ambiguous, feature.scenarios.total);
+    feature.scenarios.failedPercentage = _calculatePercentage(feature.scenarios.failed, feature.scenarios.total);
+    feature.scenarios.notDefinedPercentage = _calculatePercentage(
+      feature.scenarios.notDefined,
+      feature.scenarios.total,
+    );
+    feature.scenarios.passedPercentage = _calculatePercentage(feature.scenarios.passed, feature.scenarios.total);
+    feature.scenarios.pendingPercentage = _calculatePercentage(feature.scenarios.pending, feature.scenarios.total);
+    feature.scenarios.skippedPercentage = _calculatePercentage(feature.scenarios.skipped, feature.scenarios.total);
+    if (trackAggregates) {
       suite.scenarios.ambiguousPercentage = _calculatePercentage(suite.scenarios.ambiguous, suite.scenarios.total);
       suite.scenarios.failedPercentage = _calculatePercentage(suite.scenarios.failed, suite.scenarios.total);
       suite.scenarios.notDefinedPercentage = _calculatePercentage(suite.scenarios.notDefined, suite.scenarios.total);
       suite.scenarios.passedPercentage = _calculatePercentage(suite.scenarios.passed, suite.scenarios.total);
       suite.scenarios.pendingPercentage = _calculatePercentage(suite.scenarios.pending, suite.scenarios.total);
       suite.scenarios.skippedPercentage = _calculatePercentage(suite.scenarios.skipped, suite.scenarios.total);
-    });
+    }
   }
 
   /**
@@ -401,7 +472,7 @@ async function generateReport(options: Options) {
    * @return {object} return the parsed feature
    * @private
    */
-  function _parseScenarios(feature: Feature) {
+  function _parseScenarios(feature: Feature, trackAggregates: boolean, mediaWriter?: MediaFileWriter) {
     let earliestScenarioStart = Number.POSITIVE_INFINITY;
     let latestScenarioEnd = 0;
     let scenarioWithDurationCount = 0;
@@ -417,7 +488,7 @@ async function generateReport(options: Options) {
       scenario.pending = 0;
       scenario.ambiguous = 0;
 
-      scenario = _parseSteps(scenario);
+      scenario = _parseSteps(scenario, trackAggregates, mediaWriter);
 
       if (scenario.duration > 0) {
         scenarioWithDurationCount++;
@@ -446,8 +517,10 @@ async function generateReport(options: Options) {
       }
 
       if (scenario.failed > 0) {
-        suite.scenarios.total++;
-        suite.scenarios.failed++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+          suite.scenarios.failed++;
+        }
         feature.isFailed = true;
         feature.failed++;
         feature.scenarios.total++;
@@ -456,8 +529,10 @@ async function generateReport(options: Options) {
       }
 
       if (scenario.ambiguous > 0) {
-        suite.scenarios.total++;
-        suite.scenarios.ambiguous++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+          suite.scenarios.ambiguous++;
+        }
         feature.isAmbiguous = true;
         feature.ambiguous++;
         feature.scenarios.total++;
@@ -466,8 +541,10 @@ async function generateReport(options: Options) {
       }
 
       if (scenario.notDefined > 0) {
-        suite.scenarios.total++;
-        suite.scenarios.notDefined++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+          suite.scenarios.notDefined++;
+        }
         feature.isNotdefined = true;
         feature.notDefined++;
         feature.scenarios.total++;
@@ -476,8 +553,10 @@ async function generateReport(options: Options) {
       }
 
       if (scenario.pending > 0) {
-        suite.scenarios.total++;
-        suite.scenarios.pending++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+          suite.scenarios.pending++;
+        }
         feature.isPending = true;
         feature.pending++;
         feature.scenarios.total++;
@@ -486,15 +565,21 @@ async function generateReport(options: Options) {
       }
 
       if (scenario.skipped > 0) {
-        suite.scenarios.total++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+        }
         if (scenario.pending > 0) {
-          suite.scenarios.pending++;
+          if (trackAggregates) {
+            suite.scenarios.pending++;
+          }
           feature.pending++;
           feature.scenarios.total++;
           feature.scenarios.pending++;
           return;
         }
-        suite.scenarios.skipped++;
+        if (trackAggregates) {
+          suite.scenarios.skipped++;
+        }
         feature.skipped++;
         feature.scenarios.total++;
         feature.scenarios.skipped++;
@@ -503,8 +588,10 @@ async function generateReport(options: Options) {
 
       /* istanbul ignore else */
       if (scenario.passed && scenario.passed > 0) {
-        suite.scenarios.total++;
-        suite.scenarios.passed++;
+        if (trackAggregates) {
+          suite.scenarios.total++;
+          suite.scenarios.passed++;
+        }
         feature.passed++;
         feature.scenarios.total++;
         feature.scenarios.passed++;
@@ -534,75 +621,13 @@ async function generateReport(options: Options) {
    * @return {Scenario} A parsed scenario
    * @private
    */
-  function _parseSteps(scenario: Scenario): Scenario {
+  function _parseSteps(scenario: Scenario, trackAggregates: boolean, mediaWriter?: MediaFileWriter): Scenario {
     scenario.steps.forEach((step: Step) => {
-      if (step.embeddings !== undefined) {
-        step.attachments = [];
-        const embeddings = step.embeddings || [];
-        embeddings.forEach((embedding: any, embeddingIndex: number) => {
-          // Grab a custom name if the test gave us one. Cucumber frameworks tuck
-          // it away under name/fileName (sometimes nested in media), so check all
-          // the usual spots. No name? The template falls back to "Log 1" etc.
-          const customName: string | undefined =
-            embedding.name ?? embedding.fileName ?? embedding.media?.name ?? embedding.media?.fileName ?? undefined;
-          /* Decode Base64 for Text-ish attachements */
-          if (embedding.mime_type === 'text/html' || embedding.mime_type === 'text/plain') {
-            embedding.data = Buffer.from(embedding.data.toString(), 'base64');
-          }
-          /* istanbul ignore else */
-          if (
-            embedding.mime_type === 'application/json' ||
-            (embedding.media && embedding.media.type === 'application/json')
-          ) {
-            embedding.data = Buffer.from(embedding.data, 'base64').toString();
-            step.json = (step.json ? step.json : []).concat([
-              typeof embedding.data === 'string' ? JSON.parse(embedding.data) : embedding.data,
-            ]);
-            step.jsonNames = (step.jsonNames ? step.jsonNames : []).concat([customName]);
-          } else if (embedding.mime_type === 'text/html' || (embedding.media && embedding.media.type === 'text/html')) {
-            step.html = (step.html ? step.html : []).concat([embedding.data]);
-            step.htmlNames = (step.htmlNames ? step.htmlNames : []).concat([customName]);
-          } else if (
-            embedding.mime_type === 'text/plain' ||
-            (embedding.media && embedding.media.type === 'text/plain')
-          ) {
-            step.text = (step.text ? step.text : []).concat([_escapeHtml(embedding.data)]);
-            step.textNames = (step.textNames ? step.textNames : []).concat([customName]);
-          } else if (
-            ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.mime_type ?? '') ||
-            (embedding.media && ['image/png', 'image/avif', 'image/webp', 'image/jpeg'].includes(embedding.media.type))
-          ) {
-            const mimeType = embedding.mime_type ?? embedding.media?.type ?? 'image/png';
-            step.image = (step.image ? step.image : []).concat([`data:${mimeType};base64,${embedding.data}`]);
-            step.imageNames = (step.imageNames ? step.imageNames : []).concat([customName]);
-            step.embeddings![embeddingIndex] = {};
-          } else if (
-            embedding.mime_type === 'video/webm' ||
-            (embedding.media && embedding.media.type === 'video/webm')
-          ) {
-            step.video = (step.video ? step.video : []).concat([`data:video/webm;base64,${embedding.data}`]);
-            step.videoNames = (step.videoNames ? step.videoNames : []).concat([customName]);
-            step.embeddings![embeddingIndex] = {};
-          } else {
-            let embeddingType = 'text/plain';
-            if (embedding.mime_type) {
-              embeddingType = embedding.mime_type;
-            } else if (embedding.media?.type) {
-              embeddingType = embedding.media.type;
-            }
-            step.attachments?.push({
-              data: `data:${embeddingType};base64,${embedding.data}`,
-              type: embeddingType,
-              name: customName,
-            });
-            step.embeddings![embeddingIndex] = {};
-          }
-        });
-      }
+      enrichStepEmbeddings(step, mediaWriter);
 
       if (step.doc_string !== undefined) {
         step.id = `${uuid()}.${scenario.id}.${step.name}`.replace(/[^a-zA-Z0-9-_]/g, '-');
-        step.restWireData = _escapeHtml(step.doc_string.value).replace(/\r?\n/g, '<br />');
+        step.restWireData = escapeHtml(step.doc_string.value).replace(/\r?\n/g, '<br />');
       }
       if (step.result.status === RESULT_STATUS.pending) {
         scenario.pending = (scenario.pending || 0) + 1;
@@ -656,7 +681,7 @@ async function generateReport(options: Options) {
       scenario.pending = (scenario.pending || 0) + 1;
 
       // Global step stats
-      if (suite.featureCount.steps) {
+      if (trackAggregates && suite.featureCount.steps) {
         suite.featureCount.steps.total++;
         if (step.result.status === RESULT_STATUS.passed) {
           suite.featureCount.steps.passed++;
@@ -669,18 +694,6 @@ async function generateReport(options: Options) {
     });
 
     return scenario;
-  }
-
-  /**
-   * Escape html in string
-   * @param string
-   * @return {string}
-   * @private
-   */
-  function _escapeHtml(string: any): string {
-    return typeof string === 'string' || string instanceof String
-      ? string.replace(/[^0-9A-Za-z ]/g, (chr) => `&#${chr.charCodeAt(0)};`)
-      : string;
   }
 
   /**
@@ -718,6 +731,10 @@ async function generateReport(options: Options) {
       plainDescription,
       customStyle: suite.customStyle || '',
       logo: logoPathName,
+      modalBackdrop,
+      modalDraggable,
+      modalResizable,
+      modalShowContext,
     };
 
     const data = {
@@ -743,51 +760,109 @@ async function generateReport(options: Options) {
   async function _createFeatureIndexPages(suite: Suite) {
     const runtimeMetadata = getReportRuntimeMetadata(suite);
 
-    for (const feature of suite.features) {
-      const featurePage = join(reportPath, FEATURE_FOLDER, `${feature.id}.html`);
+    const report = {
+      reportName: suite.reportName,
+      pageTitle: pageTitle,
+      pageFooter: pageFooter,
+      projectName: customData?.projectName,
+      release: customData?.release,
+      testCycle: customData?.testCycle,
+      buildNumber: customData?.buildNumber,
+      environment: customData?.environment,
+      ciPipeline: customData?.ciPipeline,
+      customDataItems,
+      executionEndTime: formatDuration(suite.totalTime),
+      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      username: customData?.username ?? runtimeMetadata.username,
+      nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
+      reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
+      hostname: customData?.hostname,
+      architecture: customData?.architecture ?? runtimeMetadata.architecture,
+      useCDN: suite.useCDN,
+      hideMetadata: suite.hideMetadata,
+      displayReportTime: suite.displayReportTime,
+      displayDuration: suite.displayDuration,
+      displayChartPercentages: suite.displayChartPercentages,
+      plainDescription,
+      customStyle: suite.customStyle || '',
+      logo: logoPathName,
+      attachmentLayout,
+      modalBackdrop,
+      modalDraggable,
+      modalResizable,
+      modalShowContext,
+    };
 
-      const report = {
-        reportName: suite.reportName,
-        pageTitle: pageTitle,
-        pageFooter: pageFooter,
-        projectName: customData?.projectName,
-        release: customData?.release,
-        testCycle: customData?.testCycle,
-        buildNumber: customData?.buildNumber,
-        environment: customData?.environment,
-        ciPipeline: customData?.ciPipeline,
-        customDataItems,
-        executionEndTime: formatDuration(suite.totalTime),
-        executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
-        username: customData?.username ?? runtimeMetadata.username,
-        nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
-        reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
-        hostname: customData?.hostname,
-        architecture: customData?.architecture ?? runtimeMetadata.architecture,
-        useCDN: suite.useCDN,
-        hideMetadata: suite.hideMetadata,
-        displayReportTime: suite.displayReportTime,
-        displayDuration: suite.displayDuration,
-        displayChartPercentages: suite.displayChartPercentages,
-        plainDescription,
-        customStyle: suite.customStyle || '',
-        logo: logoPathName,
-      };
+    // Pass 2: re-stream every JSON file a second time, this time keeping
+    // embedding payloads, one feature at a time. Each feature is fully
+    // derived (metadata, hooks, counts, embeddings), rendered, and written
+    // before moving to the next — peak memory is bounded to one feature's
+    // attachments rather than the whole suite's, however large the suite is.
+    // The feature's `id` is overwritten with the one Pass 1 already assigned
+    // it (same file/array order in both passes) so index.html's
+    // `features/<id>.html` links resolve correctly.
+    const files = listJsonFiles(options);
+    let mergedWriter: ReturnType<typeof createJsonArrayFileWriter> | null = null;
+    let enrichedWriter: ReturnType<typeof createJsonSuiteFileWriter> | null = null;
+    if (saveCollectedJSON) {
+      mergedWriter = createJsonArrayFileWriter(resolve(reportPath, 'merged-output.json'));
+      const { features: _features, ...suiteEnvelope } = suite;
+      enrichedWriter = createJsonSuiteFileWriter(resolve(reportPath, 'enriched-output.json'), suiteEnvelope);
+    }
+    const mediaWriter = externalizeMedia ? createMediaFileWriter(reportPath) : undefined;
 
-      const data = {
-        report,
-        feature: {
-          ...feature,
-          elements: feature.elements,
-        },
-      };
+    let featureIndex = 0;
+    for (const file of files) {
+      const reportTime = fs.statSync(file).birthtime;
 
-      const html = await engine.renderFile('feature', {
-        data,
-        base_url: '..',
-      });
+      for await (const rawFeature of streamFeaturesFromFile(file, { keepEmbeddingData: true })) {
+        const feature = applyMetadataAndHooks(rawFeature, options, reportTime);
 
-      await fs.writeFile(featurePage, html);
+        // merged-output.json mirrors merged/hook-flattened but otherwise raw
+        // cucumber JSON — real embeddings intact, no tally/enrichment fields.
+        // Written (and fully awaited) before `_parseSingleFeature` mutates
+        // `feature` in place below.
+        if (mergedWriter) {
+          await mergedWriter.write(feature);
+        }
+
+        // Pass 1's already-tallied, embeddings-free feature at this same
+        // position — reused as-is for the page's inline chart JSON so that
+        // blob never scales with attachment size either (mirrors index.html).
+        const featureSummary = suite.features[featureIndex];
+
+        _parseSingleFeature(suite, feature, false, mediaWriter);
+        feature.id = featureSummary.id;
+        featureIndex++;
+
+        if (enrichedWriter) {
+          await enrichedWriter.write(feature);
+        }
+
+        const featurePage = join(reportPath, FEATURE_FOLDER, `${feature.id}.html`);
+        const data = {
+          report,
+          featureSummary,
+          feature: {
+            ...feature,
+            elements: feature.elements,
+          },
+        };
+
+        const htmlStream = await engine.renderFileToNodeStream('feature', {
+          data,
+          base_url: '..',
+        });
+
+        await streamPipeline(htmlStream, fs.createWriteStream(featurePage));
+      }
+    }
+
+    if (mergedWriter) {
+      await mergedWriter.close();
+    }
+    if (enrichedWriter) {
+      await enrichedWriter.close();
     }
 
     // Copy the assets

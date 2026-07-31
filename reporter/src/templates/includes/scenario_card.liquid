@@ -93,8 +93,73 @@
               <p class="text-sm">
                 <span class="font-bold text-foreground">{{ step.keyword }}</span>
                 <span>{{ step.name }}</span>
+                {% if report.attachmentLayout == 'inline' %}
+                  {% comment %}
+                    Same best-effort video sniff as the modal layout - a
+                    text/html attachment could be anything, but a hand-built
+                    <video> tag is common enough (frameworks with no native
+                    video mime type) to special-case the link label for.
+                  {% endcomment %}
+                  {% assign step_html_is_video = false %}
+                  {% for item in step.html %}
+                    {% if item contains '<video' %}
+                      {% assign step_html_is_video = true %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if step.text.size > 0 %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.index0 }}-text').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">+ Show Info</button>
+                  {% endif %}
+                  {% if step.json.size > 0 %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.index0 }}-json').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">+ Show Info</button>
+                  {% endif %}
+                  {% if step.html.size > 0 %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.index0 }}-html').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">{% if step_html_is_video %}+ Video{% else %}+ Show Info{% endif %}</button>
+                  {% endif %}
+                  {% if step.image.size > 0 %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.index0 }}-image').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">+ Screenshot</button>
+                  {% endif %}
+                  {% if step.video.size > 0 %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.index0 }}-video').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">+ Video</button>
+                  {% endif %}
+                  {% for attachment in step.attachments %}
+                    <button type="button" onclick="document.getElementById('sa-{{ scenario_index }}-{{ forloop.parentloop.index0 }}-attachment-{{ forloop.index0 }}').classList.toggle('hidden')" class="bg-transparent border-0 p-0 text-primary text-xs hover:underline">{% if attachment.name %}{{ attachment.name | escape }}{% else %}+ Attachment {{ forloop.index }}{% endif %}</button>
+                  {% endfor %}
+                {% endif %}
               </p>
               <p class="text-[10px] text-muted-foreground mt-1 font-mono">{{ step.time }}</p>
+
+              {% if report.attachmentLayout == 'inline' %}
+                {% comment %}
+                  Classic pre-4.x style: one link per attachment type inline
+                  next to the step text (above), each toggling its own panel
+                  here via a unique id - no floating panel involved.
+                {% endcomment %}
+                {% if step.text.size > 0 %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.index0 }}-text" class="hidden mt-2 p-3 bg-muted/30 border border-border rounded-lg text-[11px] font-mono text-muted-foreground/80 whitespace-pre-wrap leading-relaxed">{% for item in step.text %}{{ item }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</div>
+                {% endif %}
+                {% if step.json.size > 0 %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.index0 }}-json" class="hidden mt-2 p-3 bg-muted/30 border border-border rounded-lg text-[11px] font-mono text-muted-foreground/80 whitespace-pre-wrap leading-relaxed overflow-x-auto">{% for item in step.json %}<pre>{{ item | json }}</pre>{% endfor %}</div>
+                {% endif %}
+                {% if step.html.size > 0 %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.index0 }}-html" class="hidden mt-2 p-3 bg-muted/30 border border-border rounded-lg text-[11px]">
+                    {% if step_html_is_video %}<p class="text-muted-foreground mb-2">Recording of: {{ scenario.name }}</p>{% endif %}
+                    {% for item in step.html %}{{ item }}{% endfor %}
+                  </div>
+                {% endif %}
+                {% if step.image.size > 0 %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.index0 }}-image" class="hidden mt-2">{% for item in step.image %}<img class="max-w-full rounded border border-border" src="{{ item }}"/>{% endfor %}</div>
+                {% endif %}
+                {% if step.video.size > 0 %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.index0 }}-video" class="hidden mt-2">{% for item in step.video %}<video controls class="max-w-full rounded border border-border" src="{{ item }}"></video>{% endfor %}</div>
+                {% endif %}
+                {% for attachment in step.attachments %}
+                  <div id="sa-{{ scenario_index }}-{{ forloop.parentloop.index0 }}-attachment-{{ forloop.index0 }}" class="hidden mt-2 p-3 bg-muted/30 border border-border rounded-lg text-[11px]">
+                    <object class="w-full h-96 border border-border rounded" type="{{ attachment.type }}" data="{{ attachment.data }}">
+                      Preview not available. <a href="{{ attachment.data }}" download class="text-primary hover:underline">Download</a>
+                    </object>
+                  </div>
+                {% endfor %}
+              {% endif %}
 
               {% if step.arguments %}
                 {% for argument in step.arguments %}
@@ -145,7 +210,7 @@
                 </div>
               {% endif %}
 
-              {% assign has_attachments = false %}
+              {% assign has_any_attachment = false %}
               {% if step.attachments.size > 0
                 or step.image.size > 0
                 or step.text.size > 0
@@ -153,6 +218,11 @@
                 or step.json.size > 0
                 or step.html.size > 0
               %}
+                {% assign has_any_attachment = true %}
+              {% endif %}
+
+              {% assign has_attachments = false %}
+              {% if has_any_attachment and report.attachmentLayout != 'inline' %}
                 {% assign has_attachments = true %}
               {% endif %}
 
@@ -167,6 +237,7 @@
                         data-attachment-type="screenshot"
                         data-attachment-name="{% if att_name %}{{ att_name | escape }}{% else %}Screenshot - {{ forloop.index }}{% endif %}"
                         data-attachment-content="{{ item }}"
+                        {% if report.modalShowContext %}data-step-context="{{ step.keyword | append: step.name | escape }}"{% endif %}
                       >
                         <div class="flex items-center gap-2">
                           <svg class="h-4 w-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,6 +269,7 @@
                         data-attachment-type="log"
                         data-attachment-name="{% if att_name %}{{ att_name | escape }}{% else %}Log - {{ forloop.index }}{% endif %}"
                         data-attachment-content="{{ item | escape }}"
+                        {% if report.modalShowContext %}data-step-context="{{ step.keyword | append: step.name | escape }}"{% endif %}
                       >
                         <div class="flex items-center gap-2">
                           <svg class="h-4 w-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,6 +290,56 @@
                       </div>
                     {% endfor %}
 
+                    {% for item in step.html %}
+                      {% assign att_name = step.htmlNames[forloop.index0] %}
+                      {% comment %}
+                        A `text/html` attachment could be literally anything a
+                        test suite chooses to attach - MCHR can't know its
+                        intent. Best-effort sniff for a couple of recognisable
+                        cases (currently: a hand-built <video> tag, common
+                        when a framework has no native video mime type to
+                        attach with) so the label is more useful than a bare
+                        index when we CAN tell; falls back to generic "HTML"
+                        when we can't.
+                      {% endcomment %}
+                      {% assign is_video_html = false %}
+                      {% if item contains '<video' %}
+                        {% assign is_video_html = true %}
+                      {% endif %}
+                      <div
+                        class="flex items-center justify-between gap-2 bg-background p-2 rounded border border-muted/50 text-xs hover:border-primary/50 transition-colors cursor-pointer modal-trigger"
+                        data-attachment-type="html"
+                        data-is-video="{{ is_video_html }}"
+                        data-attachment-name="{% if att_name %}{{ att_name | escape }}{% elsif is_video_html %}Video{% if step.html.size > 1 %} - {{ forloop.index }}{% endif %}{% else %}HTML - {{ forloop.index }}{% endif %}"
+                        data-attachment-content="{{ item | escape }}"
+                        {% if report.modalShowContext %}data-step-context="{{ step.keyword | append: step.name | escape }}"{% endif %}
+                        {% if report.modalShowContext %}data-scenario-context="{{ scenario.name | escape }}"{% endif %}
+                      >
+                        <div class="flex items-center gap-2">
+                          {% if is_video_html %}
+                            <svg class="h-4 w-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                          {% else %}
+                            <svg class="h-4 w-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                            </svg>
+                          {% endif %}
+                          <span class="font-medium cursor-pointer">
+                            {%- if att_name %}{{ att_name | escape }}{% elsif is_video_html %}Video{% if step.html.size > 1 %} {{ forloop.index }}{% endif %}{% else %}HTML {{ forloop.index }}{% endif -%}
+                          </span>
+                        </div>
+                        <svg
+                          class="h-3 w-3 text-muted-foreground outline-none"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </div>
+                    {% endfor %}
+
                     {% for item in step.video %}
                       {% assign att_name = step.videoNames[forloop.index0] %}
                       <div
@@ -225,6 +347,7 @@
                         data-attachment-type="video"
                         data-attachment-name="{% if att_name %}{{ att_name | escape }}{% else %}Video - {{ forloop.index }}{% endif %}"
                         data-attachment-content="{{ item }}"
+                        {% if report.modalShowContext %}data-step-context="{{ step.keyword | append: step.name | escape }}"{% endif %}
                       >
                         <div class="flex items-center gap-2">
                           <svg class="h-4 w-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

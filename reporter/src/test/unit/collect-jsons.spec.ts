@@ -9,8 +9,8 @@ const packageJson = fs.readJsonSync(path.resolve(process.cwd(), './package.json'
 
 describe('collect-jsons.js', () => {
   describe('Happy flows', () => {
-    it('should return an output from the merged found json files', () => {
-      const collectedJSONs = collectJSONS({
+    it('should return an output from the merged found json files', async () => {
+      const collectedJSONs = await collectJSONS({
         jsonDir: './src/test/unit/data/json',
         reportPath: reportPath,
       });
@@ -34,24 +34,24 @@ describe('collect-jsons.js', () => {
       );
     });
 
-    it('should return an output from the merged found json files and add the provided metadata', () => {
-      expect(
-        collectJSONS({
-          jsonDir: './src/test/unit/data/collect-json',
-          reportPath: reportPath,
-          metadata: {
-            browser: {
-              name: 'chrome',
-              version: '1',
-            },
-            device: 'Local test machine',
-            platform: {
-              name: 'Ubuntu',
-              version: '16.04',
-            },
+    it('should return an output from the merged found json files and add the provided metadata', async () => {
+      const collectedJSONs = await collectJSONS({
+        jsonDir: './src/test/unit/data/collect-json',
+        reportPath: reportPath,
+        metadata: {
+          browser: {
+            name: 'chrome',
+            version: '1',
           },
-        }),
-      ).toEqual([
+          device: 'Local test machine',
+          platform: {
+            name: 'Ubuntu',
+            version: '16.04',
+          },
+        },
+      });
+
+      expect(collectedJSONs).toEqual([
         jasmine.objectContaining({
           metadata: jasmine.objectContaining({
             browser: {
@@ -73,8 +73,8 @@ describe('collect-jsons.js', () => {
       ]);
     });
 
-    it('should fill platform and username when only browser metadata is provided', () => {
-      const [collectedJSON] = collectJSONS({
+    it('should fill platform and username when only browser metadata is provided', async () => {
+      const [collectedJSON] = await collectJSONS({
         jsonDir: './src/test/unit/data/collect-json',
         reportPath: reportPath,
         metadata: {
@@ -105,8 +105,8 @@ describe('collect-jsons.js', () => {
       );
     });
 
-    it('should save an output from the merged found json files', () => {
-      const collectedJSONs = collectJSONS({
+    it('should save an output from the merged found json files', async () => {
+      const collectedJSONs = await collectJSONS({
         jsonDir: './src/test/unit/data/json',
         reportPath: reportPath,
         saveCollectedJSON: true,
@@ -117,7 +117,7 @@ describe('collect-jsons.js', () => {
       );
     });
 
-    it('should collect the creation date of json files', () => {
+    it('should collect the creation date of json files', async () => {
       // Given
       const options = {
         jsonDir: './src/test/unit/data/json',
@@ -126,7 +126,7 @@ describe('collect-jsons.js', () => {
       };
 
       // When
-      const collectedJSONs = collectJSONS(options);
+      const collectedJSONs = await collectJSONS(options);
 
       // Then
       collectedJSONs.forEach((json) => {
@@ -138,18 +138,18 @@ describe('collect-jsons.js', () => {
   });
 
   describe('failures', () => {
-    it('should throw an error when the json folder does not exist', () => {
-      expect(() =>
+    it('should throw an error when the json folder does not exist', async () => {
+      await expectAsync(
         collectJSONS({
           jsonDir: './src/test/unit/data/bla',
           reportPath: reportPath,
         }),
-      ).toThrow(new Error(`There were issues reading JSON-files from './src/test/unit/data/bla'.`));
+      ).toBeRejectedWithError(`There were issues reading JSON-files from './src/test/unit/data/bla'.`);
     });
 
-    it('should print a console message when no json files could be found', () => {
+    it('should print a console message when no json files could be found', async () => {
       spyOn(console, 'warn');
-      collectJSONS({
+      await collectJSONS({
         jsonDir: './src/test/unit/data/no-jsons',
         reportPath: reportPath,
       });
@@ -159,8 +159,8 @@ describe('collect-jsons.js', () => {
       );
     });
 
-    it('should return an empty array when no json files could be found', () => {
-      const results = collectJSONS({
+    it('should return an empty array when no json files could be found', async () => {
+      const results = await collectJSONS({
         jsonDir: './src/test/unit/data/no-jsons',
         reportPath: reportPath,
       });

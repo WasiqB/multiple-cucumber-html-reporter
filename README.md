@@ -69,6 +69,7 @@
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
 -   🎨 **Fully Customizable**: Add custom data blocks, brand colors, logo, footer, and additional CSS styles.
+-   ⚡ **Built for Scale**: Streams report generation, so suites with heavy screenshot/video attachments don't run out of memory.
 
 ---
 
