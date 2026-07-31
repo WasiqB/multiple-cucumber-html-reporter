@@ -37,13 +37,13 @@
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@release-it-plugins/lerna-changelog": "^9.0.0",
-    "@release-it/bumper": "^7.0.6",
+    "@release-it/bumper": "^8.0.0",
     "@types/node": "^26.1.2",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
     "lint-staged": "^17.2.0",
     "prettier": "^3.9.6",
-    "release-it": "^20.2.1",
+    "release-it": "^21.0.0",
     "typescript": "^6.0.3"
   },
   "lint-staged": {
