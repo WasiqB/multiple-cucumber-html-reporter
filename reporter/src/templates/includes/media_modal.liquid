@@ -1,14 +1,53 @@
-<div
-  id="media-modal"
-  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
-  onclick="closeModal()"
->
+{% comment %}
+  Two independent structures, not one markup tree with everything
+  conditional: when every modal option is at its default (backdrop on,
+  draggable off, resizable off), this renders the exact original markup
+  byte-for-byte, so that path carries zero risk of regression. Any
+  customization (backdrop off, or draggable/resizable on) switches to the
+  floating-panel structure, where each trait is independently conditional.
+{% endcomment %}
+{% assign use_classic_modal = true %}
+{% if report.modalDraggable or report.modalResizable or report.modalBackdrop == false %}
+  {% assign use_classic_modal = false %}
+{% endif %}
+
+{% if use_classic_modal %}
   <div
-    class="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-lg shadow-lg flex flex-col overflow-hidden"
-    onclick="event.stopPropagation()"
+    id="media-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4"
+    onclick="closeModal()"
   >
-    <!-- Header -->
-    <div class="flex items-center justify-between border-b p-4 text-card-foreground">
+    <div
+      class="relative w-full max-w-4xl max-h-[90vh] bg-background rounded-lg shadow-lg flex flex-col overflow-hidden"
+      onclick="event.stopPropagation()"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b p-4 text-card-foreground">
+        <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
+        <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Content -->
+      <div id="modal-content" class="overflow-auto flex-1 p-4 bg-muted/10">
+        <!-- Content will be injected here -->
+      </div>
+    </div>
+  </div>
+{% else %}
+  {% if report.modalBackdrop %}
+    <div id="media-modal-backdrop" class="fixed inset-0 z-40 hidden bg-black/50" onclick="closeModal()"></div>
+  {% endif %}
+  <div
+    id="media-modal"
+    class="fixed hidden flex-col bg-background rounded-lg shadow-2xl border overflow-hidden z-50"
+    style="top: 5rem; right: 2rem; width: min(56rem, 90vw); height: min(80vh, 40rem); min-width: 20rem; min-height: 12rem; max-width: 95vw; max-height: 95vh;"
+  >
+    <!-- Header (drag handle when modalDraggable is on) -->
+    <div id="modal-drag-handle" class="flex items-center justify-between border-b p-4 text-card-foreground select-none shrink-0{% if report.modalDraggable %} cursor-move{% endif %}">
       <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
       <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,5 +60,17 @@
     <div id="modal-content" class="overflow-auto flex-1 p-4 bg-muted/10">
       <!-- Content will be injected here -->
     </div>
+
+    {% if report.modalResizable %}
+      <!-- Resize handles: 4 edges + 4 corners -->
+      <div data-resize-dir="n" class="absolute inset-x-0 top-0 h-1.5 cursor-ns-resize"></div>
+      <div data-resize-dir="s" class="absolute inset-x-0 bottom-0 h-1.5 cursor-ns-resize"></div>
+      <div data-resize-dir="w" class="absolute inset-y-0 left-0 w-1.5 cursor-ew-resize"></div>
+      <div data-resize-dir="e" class="absolute inset-y-0 right-0 w-1.5 cursor-ew-resize"></div>
+      <div data-resize-dir="nw" class="absolute top-0 left-0 h-3 w-3 cursor-nwse-resize"></div>
+      <div data-resize-dir="ne" class="absolute top-0 right-0 h-3 w-3 cursor-nesw-resize"></div>
+      <div data-resize-dir="sw" class="absolute bottom-0 left-0 h-3 w-3 cursor-nesw-resize"></div>
+      <div data-resize-dir="se" class="absolute bottom-0 right-0 h-3 w-3 cursor-nwse-resize"></div>
+    {% endif %}
   </div>
-</div>
+{% endif %}

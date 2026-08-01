@@ -1,136 +1,22 @@
-import os from 'node:os';
-import { basename, dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import find from 'find';
 import fs from 'fs-extra';
-import jsonfile from 'jsonfile';
-import { DateTime } from 'luxon';
 import { createLogger } from './logger.js';
-import type { Feature, Metadata, Options, Step } from './types.js';
+import { applyMetadataAndHooks } from './report-helpers.js';
+import { streamFeaturesFromFile } from './streaming/json-stream.js';
+import type { Feature, Options } from './types.js';
 
 const { fileSync } = find;
-const { readFileSync, statSync, ensureDirSync } = fs;
-const { writeFileSync } = jsonfile;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
+const { statSync } = fs;
 
 /**
- * Formats input date to yyyy/MM/dd HH:mm:ss
- *
- * @param {Date | string} date
- * @returns {string} formatted date in ISO format local time
+ * Lists the JSON report files for a run, excluding the metadata file (if
+ * configured). Shared between the lightweight aggregate pass and the
+ * per-feature enrichment pass so both walk the exact same files in the exact
+ * same order — the enrichment pass depends on this to line up each feature
+ * with the id assigned to it during the aggregate pass.
  */
-function formatToLocalIso(date: Date | string): string {
-  return typeof date === 'string'
-    ? DateTime.fromISO(date).toFormat('yyyy/MM/dd HH:mm:ss')
-    : DateTime.fromJSDate(date).toFormat('yyyy/MM/dd HH:mm:ss');
-}
-
-function getDefaultMetadata(): Exclude<Metadata, Array<any>> {
-  return {
-    browser: {
-      name: 'not known',
-      version: 'not known',
-    },
-    executionPlatform: 'local',
-    username: os.userInfo().username,
-    device: os.hostname(),
-    platform: {
-      name: os.type().trim(),
-      version: os.release().trim(),
-    },
-    nodeVersion: process.version,
-    reportVersion: packageJson.version,
-    hostname: os.hostname(),
-    architecture: os.arch(),
-  };
-}
-
-/**
- * Merges user-supplied metadata with auto-detected defaults.
- * User-supplied values always take priority; defaults fill any gaps.
- * Array-form metadata (legacy key/value pairs) is returned as-is.
- */
-function enrichMetadata(metadata: Metadata | undefined): Metadata {
-  if (Array.isArray(metadata)) {
-    return metadata;
-  }
-
-  const defaultMetadata = getDefaultMetadata();
-  const userMetadata = metadata as Exclude<Metadata, Array<any>> | undefined;
-
-  // Deep-merge: user values win, defaults fill missing keys.
-  // For nested objects (browser, platform, app) merge one level deep so that
-  // a user who only specifies `browser.name` still gets `browser.version` from defaults.
-  const merged: Exclude<Metadata, Array<any>> = {
-    ...defaultMetadata,
-    ...userMetadata,
-  };
-
-  // Merge nested browser object
-  if (userMetadata?.browser || defaultMetadata.browser) {
-    merged.browser = {
-      ...defaultMetadata.browser,
-      ...(userMetadata?.browser ?? {}),
-    } as any;
-  }
-
-  // Merge nested platform object
-  if (userMetadata?.platform || defaultMetadata.platform) {
-    merged.platform = {
-      ...defaultMetadata.platform,
-      ...(userMetadata?.platform ?? {}),
-    } as any;
-  }
-
-  // Merge nested app object (only when user provided it — no default for app)
-  if (userMetadata?.app) {
-    merged.app = userMetadata.app;
-  } else {
-    delete merged.app;
-  }
-
-  return merged;
-}
-
-/**
- * Resolves the metadata to use for a given feature from options.metadata.
- * Handles both a shared `Metadata` object (applied to all features) and a
- * per-feature `Record<string, Metadata>` keyed by feature filename.
- *
- * Per-feature metadata is keyed by the cucumber feature filename. If the current
- * feature's filename is present, return that entry; otherwise treat the object
- * as shared metadata unless it contains other feature-file keys.
- */
-function resolveOptionsMetadata(
-  optionsMetadata: Metadata | Record<string, Metadata> | undefined,
-  featureUri: string | undefined,
-): Metadata | undefined {
-  if (!optionsMetadata) return undefined;
-
-  // Array-form Metadata is always treated as a shared value for all features
-  if (Array.isArray(optionsMetadata)) {
-    return optionsMetadata as Metadata;
-  }
-
-  const featureFileName = featureUri?.split('/').pop();
-  const metadataMap = optionsMetadata as Record<string, Metadata>;
-
-  if (featureFileName && metadataMap[featureFileName] !== undefined) {
-    return metadataMap[featureFileName];
-  }
-
-  if (Object.keys(metadataMap).some((key) => key.endsWith('.feature'))) {
-    return undefined;
-  }
-
-  // Plain shared Metadata
-  return optionsMetadata as Metadata;
-}
-
-export default function collectJSONS(options: Options): Feature[] {
-  const jsonOutput: Feature[] = [];
+export function listJsonFiles(options: Options): string[] {
   const logger = createLogger(options.logging, options.disableLog);
   let files: string[];
   const jsonDir = resolve(process.cwd(), options.jsonDir);
@@ -145,137 +31,55 @@ export default function collectJSONS(options: Options): Feature[] {
     throw new Error(`There were issues reading JSON-files from '${options.jsonDir}'.`);
   }
 
-  if (files.length > 0) {
-    const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
-    logger.info('Found Cucumber JSON files.', { count: files.length, jsonDir: options.jsonDir });
+  const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
+  const jsonFiles = metadataFilePath ? files.filter((file) => resolve(file) !== metadataFilePath) : files;
+
+  if (jsonFiles.length > 0) {
+    logger.info('Found Cucumber JSON files.', { count: jsonFiles.length, jsonDir: options.jsonDir });
     if (metadataFilePath) {
       logger.debug('Metadata file will be skipped during JSON collection.', { metadataFilePath });
     }
-
-    files.forEach((file) => {
-      if (metadataFilePath && resolve(file) === metadataFilePath) {
-        logger.trace('Skipped metadata file.', { file });
-        return;
-      }
-
-      logger.debug('Reading Cucumber JSON file.', { file });
-
-      let features: Feature[];
-      let stats: ReturnType<typeof statSync>;
-
-      try {
-        // Cucumber json can be empty, it's likely being created by another process (#47).
-        const data = readFileSync(file).toString() || '[]';
-        stats = statSync(file);
-        features = JSON.parse(data);
-      } catch (error) {
-        logger.error('Failed to parse Cucumber JSON file.', { file });
-        logger.debug('Cucumber JSON parse error details.', { file, error });
-        throw error;
-      }
-
-      const reportTime = stats.birthtime;
-      logger.debug('Parsed Cucumber JSON file.', { file: basename(file), featureCount: features.length });
-
-      features.forEach((json) => {
-        logger.trace('Processing feature.', {
-          feature: json.name || 'Unnamed feature',
-          uri: json.uri || basename(file),
-        });
-        // Resolve options.metadata for this specific feature (handles both shared
-        // Metadata and per-feature Record<string, Metadata>), then merge with the
-        // metadata embedded in the JSON report. Feature-embedded metadata wins over
-        // options.metadata; both fill gaps with auto-detected system defaults.
-        const optionsMeta = resolveOptionsMetadata(options.metadata, json.uri);
-        const baseMeta = json.metadata || optionsMeta;
-        logger.trace('Resolved feature metadata source.', {
-          feature: json.name || json.uri || basename(file),
-          source: json.metadata ? 'feature-json' : optionsMeta ? 'reporter-options' : 'auto-detected-defaults',
-        });
-        // If both exist and neither is an array, deep-merge: embedded > options > defaults
-        if (json.metadata && !Array.isArray(json.metadata) && optionsMeta && !Array.isArray(optionsMeta)) {
-          json.metadata = enrichMetadata({ ...optionsMeta, ...json.metadata });
-        } else {
-          json.metadata = enrichMetadata(baseMeta);
-        }
-
-        if (json.metadata && options.displayReportTime && reportTime) {
-          if (!Array.isArray(json.metadata)) {
-            json.metadata = Object.assign({ reportTime: reportTime }, json.metadata);
-            (json.metadata as any).reportTime = formatToLocalIso((json.metadata as any).reportTime);
-          }
-        }
-
-        // Only check the feature hooks if there are elements (fail-safe)
-        const { elements } = json;
-
-        if (elements) {
-          logger.trace('Feature scenarios found.', {
-            feature: json.name || json.uri || basename(file),
-            scenarioCount: elements.length,
-          });
-          json.elements = elements.map((scenario) => {
-            const { before, after } = scenario;
-
-            if (before) {
-              logger.trace('Adding before hooks to scenario.', {
-                scenario: scenario.name,
-                hookCount: before.length,
-              });
-              scenario.steps = parseFeatureHooks(before, 'Before').concat(scenario.steps);
-            }
-            if (after) {
-              logger.trace('Adding after hooks to scenario.', {
-                scenario: scenario.name,
-                hookCount: after.length,
-              });
-              scenario.steps = scenario.steps.concat(parseFeatureHooks(after, 'After'));
-            }
-
-            return scenario;
-          });
-        } else {
-          logger.warn('Feature has no scenarios or elements.', { feature: json.name || json.uri || basename(file) });
-        }
-
-        jsonOutput.push(json);
-      });
-    });
-
-    if (options.saveCollectedJSON) {
-      const file = resolve(options.reportPath, 'merged-output.json');
-      logger.debug('Writing collected JSON output.', { file });
-      ensureDirSync(options.reportPath);
-      writeFileSync(file, jsonOutput, { spaces: 2 });
-    }
-
-    logger.info('Collected Cucumber features.', { featureCount: jsonOutput.length, jsonFileCount: files.length });
-    return jsonOutput;
   }
 
-  logger.warn('No Cucumber JSON files found; report cannot be created.', { jsonDir: options.jsonDir });
-  return [];
+  return jsonFiles;
 }
 
 /**
- * Add the feature hooks to the steps so the report will pick them up properly
+ * Streams every JSON report file, stripping step embedding payloads
+ * (`embeddings[].data`) as it parses — never reads a whole file, or a whole
+ * feature, into memory as a single string. Metadata (mime types, names) is
+ * preserved so step-visibility decisions (e.g. a hidden hook step with an
+ * attached screenshot) still come out correct downstream, without ever
+ * materializing the actual base64 payload.
  *
- * @param {object} data
- * @param {string} keyword
- * @returns {Step[]}
+ * This is "Pass 1": its output is what index.html is rendered from. Feature
+ * pages are rendered separately (see generate-report.ts's
+ * `_createFeatureIndexPages`) by re-streaming each file a second time with
+ * embeddings intact, one feature at a time — that second pass is also where
+ * `merged-output.json` gets written (if `saveCollectedJSON` is set), since
+ * that file is expected to carry real attachment data, which this
+ * (deliberately embeddings-free) pass never has.
  */
-function parseFeatureHooks(data: any[], keyword: string): Step[] {
-  return data.map((step) => {
-    const match = step.match?.location ? step.match : { location: 'can not be determined' };
+export default async function collectJSONS(options: Options): Promise<Feature[]> {
+  const logger = createLogger(options.logging, options.disableLog);
+  const files = listJsonFiles(options);
 
-    return {
-      arguments: step.arguments || [],
-      keyword: keyword,
-      name: 'Hook',
-      result: step.result,
-      line: '',
-      match,
-      embeddings: step.embeddings || [],
-    };
-  });
+  if (files.length === 0) {
+    logger.warn('No Cucumber JSON files found; report cannot be created.', { jsonDir: options.jsonDir });
+    return [];
+  }
+
+  const jsonOutput: Feature[] = [];
+
+  for (const file of files) {
+    const reportTime = statSync(file).birthtime;
+
+    for await (const rawFeature of streamFeaturesFromFile(file, { keepEmbeddingData: false })) {
+      const feature = applyMetadataAndHooks(rawFeature, options, reportTime);
+      jsonOutput.push(feature);
+    }
+  }
+
+  logger.info('Collected Cucumber features.', { featureCount: jsonOutput.length, jsonFileCount: files.length });
+  return jsonOutput;
 }

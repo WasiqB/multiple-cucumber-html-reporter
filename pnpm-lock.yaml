@@ -310,6 +310,12 @@ importers:
       open:
         specifier: ^11.0.0
         version: 11.0.0
+      stream-chain:
+        specifier: ^4.2.5
+        version: 4.2.5
+      stream-json:
+        specifier: ^3.5.0
+        version: 3.5.0
       uuid:
         specifier: ^14.0.1
         version: 14.0.1
@@ -7354,6 +7360,14 @@ packages:
   stream-buffers@3.0.3:
     resolution: {integrity: sha512-pqMqwQCso0PBJt2PQmDO0cFj0lyqmiwOMiMSkVtRokl7e+ZTRYgDHKnuZNbqjiJXgsg4nuqtD/zxuo9KqTp0Yw==}
     engines: {node: '>= 0.10.0'}
+
+  stream-chain@4.2.5:
+    resolution: {integrity: sha512-Wtyq3bNE3ggLR0v2vftqvuhltym3WbZAkZpfIrkr5F/6vpeUmWmwTgXa16zD87gpahwJ/Qulq3zVfUlgIc0J2A==}
+    engines: {node: '>=22'}
+
+  stream-json@3.5.0:
+    resolution: {integrity: sha512-dobB7zipGW8o11PvdRljQSWuyMxifADLvoHeA4elwNWOTbZo6+BlNa+P6aCq7Y9jRiWTy2Ucu2xSv0Y2/T+/kQ==}
+    engines: {node: '>=22'}
 
   streamx@2.28.0:
     resolution: {integrity: sha512-1Yowhzjf0ivGMrTIkY9hav5TxobO9qIVqUE41fiCGMGgc3CLlf4MY+9AHmZqBWgDTue0fY9zWjYFVyf6Diuobw==}
@@ -16149,6 +16163,12 @@ snapshots:
       internal-slot: 1.1.0
 
   stream-buffers@3.0.3: {}
+
+  stream-chain@4.2.5: {}
+
+  stream-json@3.5.0:
+    dependencies:
+      stream-chain: 4.2.5
 
   streamx@2.28.0:
     dependencies:

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "video-html-attachment",
+    "keyword": "Feature",
+    "name": "Video html attachment sniffing",
+    "line": 1,
+    "tags": [],
+    "uri": "features/video-sniff.feature",
+    "elements": [
+      {
+        "id": "video-html-attachment;a-recorded-scenario",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "A recorded scenario",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a step with a plain html attachment",
+            "match": { "location": "src/steps.js:1" },
+            "result": { "status": "passed", "duration": 1000000 },
+            "embeddings": [
+              { "data": "PHA+SGVsbG88L3A+", "media": { "type": "text/html" } }
+            ]
+          },
+          {
+            "keyword": "After",
+            "name": "",
+            "hidden": true,
+            "line": 0,
+            "result": { "status": "passed", "duration": 1000000 },
+            "embeddings": [
+              {
+                "data": "PHZpZGVvIGNvbnRyb2xzPjxzb3VyY2Ugc3JjPSJkYXRhOnZpZGVvL3dlYm07YmFzZTY0LEFBQUEiIHR5cGU9InZpZGVvL3dlYm0iPjwvdmlkZW8+",
+                "media": { "type": "text/html" }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

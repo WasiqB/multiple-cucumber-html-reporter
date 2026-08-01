@@ -58,6 +58,18 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       default: false,
       typeDescription: 'boolean'
     },
+    externalizeMedia: {
+      description: <>
+        If <code>true</code>, image and video attachments are written to separate files under <code>{'<reportPath>/assets/media/'}</code> instead of being inlined as <code>data:</code> URIs in the feature page's HTML. Keeps feature pages small and lets the browser load each screenshot or video lazily instead of parsing everything up front.
+
+        <Callout title="Note" type="info">
+          Only image and video attachments are affected. Text, JSON and HTML log attachments are always inlined.
+        </Callout>
+      </>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
     logging: {
       description: <>
         Controls reporter logging.
@@ -253,6 +265,51 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'CSS file path, which will completely replaces the default CSS with your own custom style.',
       type: 'string',
       typeDescription: 'string'
+    },
+  }}
+/>
+
+## Attachment Display Options
+
+<TypeTable
+  type={{
+    attachmentLayout: {
+      description: (
+        <>
+          Controls how step attachments (text, JSON, HTML, image, video, other) are presented on feature pages.
+          <ul>
+            <li><code>modal</code>: attachments are listed under each step; clicking one opens it in a popup (see the <code>modal*</code> options below).</li>
+            <li><code>inline</code>: classic pre-4.x style. One link per attachment type ("+ Show Info", "+ Screenshot", etc.) next to the step text; each expands its content directly below the step.</li>
+          </ul>
+        </>
+      ),
+      type: 'modal | inline',
+      default: 'modal',
+      typeDescription: 'modal | inline'
+    },
+    modalBackdrop: {
+      description: <>If <code>true</code>, the attachment popup (<code>attachmentLayout: 'modal'</code>) shows a dark backdrop, blocks interaction with the rest of the page, and closes on click-outside.</>,
+      type: 'boolean',
+      default: true,
+      typeDescription: 'boolean'
+    },
+    modalDraggable: {
+      description: <>If <code>true</code>, the attachment popup can be repositioned by dragging its header.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    modalResizable: {
+      description: <>If <code>true</code>, the attachment popup can be resized from its edges and corners.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    modalShowContext: {
+      description: <>If <code>true</code>, the attachment popup header shows the step text (or, for a detected video, the scenario text) as context.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
     },
   }}
 />

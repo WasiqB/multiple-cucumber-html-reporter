@@ -357,6 +357,240 @@ describe('generate-report.js', () => {
     });
   });
 
+  describe('attachmentLayout validation', () => {
+    it('should throw an error when attachmentLayout is not "modal" or "inline"', async () => {
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+          attachmentLayout: 'wibble' as never,
+        }),
+      ).toBeRejectedWithError(/Invalid attachmentLayout/);
+    });
+
+    it('should not throw when attachmentLayout is left unset, "modal", or "inline"', async () => {
+      fs.removeSync(REPORT_PATH);
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+        }),
+      ).toBeResolved();
+
+      fs.removeSync(REPORT_PATH);
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+          attachmentLayout: 'modal',
+        }),
+      ).toBeResolved();
+
+      fs.removeSync(REPORT_PATH);
+      await expectAsync(
+        multiCucumberHTMLReporter.generate({
+          jsonDir: './src/test/unit/data/json',
+          reportPath: REPORT_PATH,
+          attachmentLayout: 'inline',
+        }),
+      ).toBeResolved();
+    });
+  });
+
+  describe('externalizeMedia', () => {
+    it('should write image/video attachments to separate files and reference them by relative path', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        externalizeMedia: true,
+      });
+
+      const mediaDir = path.join(process.cwd(), REPORT_PATH, 'assets', 'media');
+      const mediaFiles = fs.readdirSync(mediaDir);
+      expect(mediaFiles.length).toBeGreaterThan(0);
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('../assets/media/');
+      // The page's inline chart-data blob (Pass 1's embeddings-free summary)
+      // legitimately contains the bare "data:image/png;base64," prefix with
+      // no payload - only a REAL (non-empty) inline payload would indicate
+      // externalizeMedia didn't work.
+      expect(featureHtml).not.toMatch(/data:image\/png;base64,[A-Za-z0-9+/=]{4,}/);
+      expect(featureHtml).not.toMatch(/data:video\/webm;base64,[A-Za-z0-9+/=]{4,}/);
+    });
+
+    it('should inline image/video as data: URIs by default (no assets/media directory)', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+      });
+
+      expect(fs.pathExistsSync(path.join(process.cwd(), REPORT_PATH, 'assets', 'media'))).toBeFalse();
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toMatch(/data:image\/png;base64,[A-Za-z0-9+/=]{4,}/);
+    });
+  });
+
+  describe('attachmentLayout rendering', () => {
+    it('should render inline "+ Show Info"/"+ Screenshot" links and omit the modal-trigger block when set to "inline"', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        attachmentLayout: 'inline',
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('+ Show Info');
+      expect(featureHtml).toContain('+ Screenshot');
+      expect(featureHtml).toContain('+ Video');
+      expect(featureHtml).not.toContain('modal-trigger');
+    });
+
+    it('should render the modal-trigger attachments block and no inline links by default', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('modal-trigger');
+      expect(featureHtml).not.toContain('+ Show Info');
+    });
+  });
+
+  describe('html attachments in modal layout', () => {
+    it('should render a clickable item for text/html attachments (previously silently missing)', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('data-attachment-type="html"');
+    });
+  });
+
+  describe('video-in-html sniffing', () => {
+    it('should label a text/html attachment containing a <video> tag as "Video" in modal layout, and leave a plain html attachment alone', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/video-html-attachment/',
+        reportPath: REPORT_PATH,
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('data-is-video="true"');
+      expect(featureHtml).toContain('data-attachment-name="Video"');
+      expect(featureHtml).toContain('data-is-video="false"');
+      expect(featureHtml).toContain('data-attachment-name="HTML - 1"');
+    });
+
+    it('should show a "+ Video" link and a scenario-recording caption in inline layout, and "+ Show Info" for the plain html attachment', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/video-html-attachment/',
+        reportPath: REPORT_PATH,
+        attachmentLayout: 'inline',
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).toContain('+ Video');
+      expect(featureHtml).toContain('+ Show Info');
+      expect(featureHtml).toContain('Recording of: A recorded scenario');
+    });
+  });
+
+  describe('modal popup behavior options', () => {
+    it('should render the original classic backdrop modal by default', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+      });
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).toContain('bg-black/50');
+      expect(indexHtml).not.toContain('media-modal-backdrop');
+      expect(indexHtml).not.toContain('data-resize-dir');
+    });
+
+    it('should render a separate backdrop-less floating panel when modalBackdrop is false', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        modalBackdrop: false,
+      });
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).not.toContain('media-modal-backdrop');
+      expect(indexHtml).not.toContain('bg-black/50');
+    });
+
+    it('should add drag styling when modalDraggable is true', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        modalDraggable: true,
+      });
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).toContain('cursor-move');
+    });
+
+    it('should add 8 resize handles when modalResizable is true', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        modalResizable: true,
+      });
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect((indexHtml.match(/data-resize-dir/g) || []).length).toBe(8);
+    });
+
+    it('should emit step-context attributes on attachment triggers when modalShowContext is true, and omit them by default', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+        modalShowContext: true,
+      });
+
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const withContext = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(withContext).toContain('data-step-context=');
+
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/custom-attachment-names/',
+        reportPath: REPORT_PATH,
+      });
+
+      const defaultFeatureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const withoutContext = fs.readFileSync(
+        path.join(process.cwd(), REPORT_PATH, 'features', defaultFeatureFiles[0]),
+        'utf8',
+      );
+      expect(withoutContext).not.toContain('data-step-context=');
+    });
+  });
+
   describe('Logging', () => {
     it('should suppress reporter logs when logging is disabled', async () => {
       fs.removeSync(REPORT_PATH);
