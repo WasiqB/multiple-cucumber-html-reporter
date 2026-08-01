@@ -3,6 +3,31 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.2.0 (2026-08-01)
+
+#### :rocket: New Feature
+
+- [#594](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/594) feat: :sparkles: added proper logging to the reporter ([@WasiqB](https://github.com/WasiqB))
+- [#587](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/587) feat: :sparkles: introduced cli tool to generate report ([@WasiqB](https://github.com/WasiqB))
+
+#### :bug: Bug Fix
+
+- [#598](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/598) fix: :bug: Stream report generation to avoid OOM on large suites and improve Liquid display ([@v-mwalk](https://github.com/v-mwalk))
+
+#### :nail_care: Polish
+
+- [#599](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/599) chore(deps): bump github/codeql-action from 4 to 4.37.3 in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#593](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/593) refactor: :recycle: removed unnecessary console logs from the reporter ([@WasiqB](https://github.com/WasiqB))
+- [#592](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/592) chore(deps): bump the dependencies group with 23 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#591](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/591) chore(deps): bump the dependencies group with 9 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#589](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/589) chore(deps): bump the dependencies group across 1 directory with 13 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 2
+
+- Mat Walker ([@v-mwalk](https://github.com/v-mwalk))
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.1.0 (2026-07-06)
 
 #### :rocket: New Feature
