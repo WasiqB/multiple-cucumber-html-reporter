@@ -59,6 +59,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       { value: 'metadataFilePath', label: 'Path to metadata JSON file' },
       { value: 'metadata', label: 'Execution metadata (browser, platform, device)' },
       { value: 'cdn', label: 'Load assets from CDN (faster for CI)' },
+      { value: 'logging', label: 'Reporter logging level' },
     ],
     required: false,
   });
@@ -161,6 +162,24 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       return cancelOnboarding();
     }
     options.useCDN = useCDN as boolean;
+  }
+
+  if (selected.includes('logging')) {
+    const logging = await p.select<'silent' | 'error' | 'warn' | 'info' | 'debug' | 'trace'>({
+      message: 'Which reporter log level should be used?',
+      options: [
+        { value: 'info', label: 'info', hint: 'default' },
+        { value: 'warn', label: 'warn' },
+        { value: 'error', label: 'error' },
+        { value: 'debug', label: 'debug' },
+        { value: 'trace', label: 'trace' },
+        { value: 'silent', label: 'silent', hint: 'hide reporter logs' },
+      ],
+    });
+    if (p.isCancel(logging)) {
+      return cancelOnboarding();
+    }
+    options.logging = logging;
   }
 
   if (selected.includes('customData')) {

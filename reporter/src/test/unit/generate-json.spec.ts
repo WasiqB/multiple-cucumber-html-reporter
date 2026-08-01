@@ -591,6 +591,29 @@ describe('generate-report.js', () => {
     });
   });
 
+  describe('Logging', () => {
+    it('should suppress reporter logs when logging is disabled', async () => {
+      fs.removeSync(REPORT_PATH);
+      spyOn(console, 'error');
+      spyOn(console, 'warn');
+      spyOn(console, 'log');
+      spyOn(console, 'debug');
+      spyOn(console, 'trace');
+
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        logging: false,
+      });
+
+      expect(console.error).not.toHaveBeenCalled();
+      expect(console.warn).not.toHaveBeenCalled();
+      expect(console.log).not.toHaveBeenCalled();
+      expect(console.debug).not.toHaveBeenCalled();
+      expect(console.trace).not.toHaveBeenCalled();
+    });
+  });
+
   describe('Custom attachment names', () => {
     let step: any;
     let featureHtml: string;

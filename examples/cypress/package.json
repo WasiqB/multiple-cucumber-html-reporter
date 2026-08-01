@@ -16,7 +16,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^26.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "cypress": "^15.19.0",
     "multiple-cucumber-html-reporter": "workspace:*",
     "tsx": "^4.23.1",

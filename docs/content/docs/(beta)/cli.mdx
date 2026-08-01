@@ -4,6 +4,8 @@ description: Command line interface for Multiple Cucumber HTML Reporter.
 icon: Terminal
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
 You can use the command line tool which is newly added to the Multiple Cucumber HTML Reporter. To use it, you need to install it globally on your machine. Run the following command:
 
 <Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
@@ -34,6 +36,173 @@ The reporter now supports the following configuration files, which you can use t
 - `.multiple-cucumber-html-reporter.ts`: In case you prefer Typescript, then use this file.
 - `.multiple-cucumber-html-reporter.yml` / `.multiple-cucumber-html-reporter.yaml`: In case you prefer YAML format, then use this file.
 
+<Callout title='Tip!' type='idea'>
+The CLI will try to find the config file in the order mentioned above.
+</Callout>
+
+## CLI Options
+
+Following are the allowed options in the command line tool:
+
+<TypeTable
+  type={{
+    '--silent | --no-logging': {
+      description: 'Disables the report logging in the console',
+      type: 'boolean',
+      typeDescription: 'boolean'
+    },
+    '--log-level <level>': {
+      description: 'Changes the log level of the report generation logging',
+      type: 'silent, error, warn, info, debug, or trace',
+      typeDescription: 'silent, error, warn, info, debug, or trace',
+      default: 'info'
+    },
+    '--version': {
+      description: 'Prints the reporter version',
+      type: 'boolean',
+      typeDescription: 'boolean'
+    },
+    '--help': {
+      description: 'Prints the help message',
+      type: 'boolean',
+      typeDescription: 'boolean'
+    }
+  }} />
+
+## Sample configuration file
+
+This is how the sample configuration file for the CLI tool looks like:
+
+<Tabs groupId='config-file' items={['JSON', 'YAML', 'TypeScript', 'JavaScript']}>
+  <Tab value="JSON">
+    ```json
+    {
+      "jsonDir": "./.run/reports/json/",
+      "reportPath": "./.run/html-report/",
+      "openReportInBrowser": true,
+      "useCDN": true,
+      "metadataFilePath": "./.run/reports/json/metadata.json",
+      "customData": {
+        "projectName": "Cypress sample project",
+        "release": "1.2.0",
+        "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
+        "buildNumber": "${GITHUB_RUN_NUMBER:'Build 1'}",
+        "environment": "production",
+        "ciPipeline": "GitHub Actions",
+      },
+      "pageTitle": "Cypress Sample",
+      "reportName": "Cypress Sample",
+      "displayDuration": true,
+      "displayReportTime": true,
+    }
+    ```
+  </Tab>
+  <Tab value="YAML">
+    ```yaml
+    jsonDir: './.run/reports/json/'
+    reportPath: './.run/html-report/'
+    openReportInBrowser: true
+    useCDN: true
+    metadataFilePath: './.run/reports/json/metadata.json'
+    customData:
+      projectName: 'Cypress sample project'
+      release: '1.2.0'
+      testCycle: "${GITHUB_RUN_ID:'Cycle 1'}"
+      buildNumber: "${GITHUB_RUN_NUMBER:'Build 1'}"
+      environment: 'production'
+      ciPipeline: 'GitHub Actions'
+    pageTitle: 'Cypress Sample'
+    reportName: 'Cypress Sample'
+    displayDuration: true
+    displayReportTime: true
+    ```
+  </Tab>
+  <Tab value="TypeScript">
+    ```typescript
+    import type { Options } from 'multiple-cucumber-html-reporter';
+
+    const config: Option = {
+      jsonDir: './.run/reports/json/',
+      reportPath: './.run/html-report/',
+      openReportInBrowser: true,
+      useCDN: true,
+      metadataFilePath: './.run/reports/json/metadata.json',
+      customData: {
+        projectName: 'Cypress sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+      pageTitle: 'Cypress Sample',
+      reportName: 'Cypress Sample',
+      displayDuration: true,
+      displayReportTime: true,
+    };
+
+    export default config;
+    ```
+  </Tab>
+  <Tab value="JavaScript">
+    ```javascript
+    const config = {
+      jsonDir: './.run/reports/json/',
+      reportPath: './.run/html-report/',
+      openReportInBrowser: true,
+      useCDN: true,
+      metadataFilePath: './.run/reports/json/metadata.json',
+      customData: {
+        projectName: 'Cypress sample project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+      pageTitle: 'Cypress Sample',
+      reportName: 'Cypress Sample',
+      displayDuration: true,
+      displayReportTime: true,
+    };
+
+    module.exports = config;
+    ```
+  </Tab>
+</Tabs>
+
+<Callout title="Note" type='info'>
+Refer the [Reporter options](/docs/options) to know more about the configuration options.
+</Callout>
+
+## Using environment variable in config file
+
+You can use environment variables in the config file to set the values of the configuration options. If you are having config file in JavaScript / Typescript format, then it is pretty straight forward of using the environment variable as shown below:
+
+```typescript
+import type { Options } from 'multiple-cucumber-html-reporter';
+
+const config: Option = {
+  . . .
+  testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+  . . .
+};
+
+export default config;
+```
+
+<Callout title='Tip' type='idea'>
+When using Typescript config file, make sure to add the config file name in `tsconfig.json` file to use `process.env` in the config file.
+</Callout>
+
+In case if you are having config file in JSON / YAML format, then you can use the following syntax to set the values of the configuration options:
+
+```json
+{
+  "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
+}
+```
+
 ## Generate the config file
 
 Run the command line tool by using the `mchr` command in the terminal.
@@ -44,6 +213,12 @@ If the config file is not there in the directory in which you are running the co
 The CLI command will be default generate the config file in JSON format.
 
 You can later change the format to .yml or .js format as per your preference.
+</Callout>
+
+<Callout title='Important' type='warning'>
+When this command line tool is run in a CI environment, it will automatically Error out if there is no config file present in the folder in which this command is executed.
+
+Basically the interactive onboarding step will be completely skipped on CI environment.
 </Callout>
 
 ## Generate the report
@@ -60,9 +235,9 @@ If the Cucumber generated JSON file is not generated, then the report would stil
 So, it is better to generate the Cucumber JSON report first and then generate the HTML report by using the `mchr` command.
 </Callout>
 
-## Configure in CI/CD Pipeline
+## Configure in CI / CD Pipeline
 
-To generate the report in your CI/CD pipeline, you can use the `mchr` command in your pipeline script. For example, in case of GitLab CI/CD, you can use the following script:
+To generate the report in your CI / CD pipeline, you can use the `mchr` command in your pipeline script. For example, in case of GitLab CI / CD, you can use the following script:
 
 ```shell
 # Run the tests

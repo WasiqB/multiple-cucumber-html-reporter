@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 import find from 'find';
 import fs from 'fs-extra';
+import { createLogger } from './logger.js';
 import { applyMetadataAndHooks } from './report-helpers.js';
 import { streamFeaturesFromFile } from './streaming/json-stream.js';
 import type { Feature, Options } from './types.js';
@@ -16,16 +17,31 @@ const { statSync } = fs;
  * with the id assigned to it during the aggregate pass.
  */
 export function listJsonFiles(options: Options): string[] {
+  const logger = createLogger(options.logging, options.disableLog);
   let files: string[];
+  const jsonDir = resolve(process.cwd(), options.jsonDir);
+
+  logger.debug('Collecting Cucumber JSON files.', { jsonDir });
 
   try {
-    files = fileSync(/\.json$/, resolve(process.cwd(), options.jsonDir));
-  } catch (_e) {
+    files = fileSync(/\.json$/, jsonDir);
+  } catch (error) {
+    logger.error('Failed to read Cucumber JSON files.', { jsonDir: options.jsonDir, resolvedJsonDir: jsonDir });
+    logger.debug('JSON directory read error details.', { error });
     throw new Error(`There were issues reading JSON-files from '${options.jsonDir}'.`);
   }
 
   const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
-  return metadataFilePath ? files.filter((file) => resolve(file) !== metadataFilePath) : files;
+  const jsonFiles = metadataFilePath ? files.filter((file) => resolve(file) !== metadataFilePath) : files;
+
+  if (jsonFiles.length > 0) {
+    logger.info('Found Cucumber JSON files.', { count: jsonFiles.length, jsonDir: options.jsonDir });
+    if (metadataFilePath) {
+      logger.debug('Metadata file will be skipped during JSON collection.', { metadataFilePath });
+    }
+  }
+
+  return jsonFiles;
 }
 
 /**
@@ -45,13 +61,11 @@ export function listJsonFiles(options: Options): string[] {
  * (deliberately embeddings-free) pass never has.
  */
 export default async function collectJSONS(options: Options): Promise<Feature[]> {
+  const logger = createLogger(options.logging, options.disableLog);
   const files = listJsonFiles(options);
 
   if (files.length === 0) {
-    console.warn(
-      '\x1b[33m%s\x1b[0m',
-      `WARNING: No JSON files found in '${options.jsonDir}'. NO REPORT CAN BE CREATED!`,
-    );
+    logger.warn('No Cucumber JSON files found; report cannot be created.', { jsonDir: options.jsonDir });
     return [];
   }
 
@@ -66,5 +80,6 @@ export default async function collectJSONS(options: Options): Promise<Feature[]>
     }
   }
 
+  logger.info('Collected Cucumber features.', { featureCount: jsonOutput.length, jsonFileCount: files.length });
   return jsonOutput;
 }

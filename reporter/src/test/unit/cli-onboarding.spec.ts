@@ -146,6 +146,48 @@ describe('CLI Onboarding', () => {
     });
   });
 
+  it('should configure the reporter logging level', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    spyOn(p, 'isCancel').and.returnValue(false);
+    spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.callFake((async (prompts: any) => {
+      if (prompts.jsonDir) {
+        return { jsonDir: './reports', reportPath: './html' };
+      }
+      return {};
+    }) as any);
+
+    spyOn(p, 'multiselect').and.resolveTo(['logging'] as any);
+    spyOn(p, 'select').and.resolveTo('debug' as any);
+
+    const result = await runOnboarding(tempDir);
+
+    expect(result.options.logging).toBe('debug');
+
+    const writtenConfig = await fs.readJson(result.configPath);
+    expect(writtenConfig.logging).toBe('debug');
+  });
+
+  it('should exit when the logging prompt is cancelled', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    const exitSpy = spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './reports', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo(['logging'] as any);
+    spyOn(p, 'select').and.resolveTo(Symbol('cancel') as any);
+    spyOn(p, 'isCancel').and.callFake(((val: any) => typeof val === 'symbol') as any);
+
+    await runOnboarding(tempDir);
+
+    expect(p.cancel).toHaveBeenCalledWith('Setup cancelled.');
+    expect(exitSpy).toHaveBeenCalledWith(0);
+  });
+
   it('should validate jsonDir and reportPath text prompts', async () => {
     spyOn(p, 'intro');
     spyOn(p, 'note');
