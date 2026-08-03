@@ -13,15 +13,15 @@
       "lang": "shell",
       "commands": [
         {
-          "command": "npm install multiple-cucumber-html-reporter --save-dev",
+          "command": "npm install multiple-cucumber-html-reporter --global",
           "tabValue": "npm"
         },
         {
-          "command": "yarn add multiple-cucumber-html-reporter -D",
+          "command": "yarn global add multiple-cucumber-html-reporter",
           "tabValue": "yarn"
         },
         {
-          "command": "pnpm add multiple-cucumber-html-reporter --save-dev",
+          "command": "pnpm add multiple-cucumber-html-reporter --global",
           "tabValue": "pnpm"
         }
       ]

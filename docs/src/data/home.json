@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Released!! Version 4.1.0",
+    "badge": "Released!! Version 4.2.0",
     "titleLine1": "Beautiful Cucumber Reports,",
     "titleLine2": "Made Easy",
     "description": "The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.",
@@ -41,7 +41,7 @@
     "titleLine1": "Simple Setup,",
     "titleLine2": "Powerful Results",
     "description": "Integration takes minutes. Just pass your JSON output files and let our engine handle the rest.",
-    "link": { "label": "Read the full installation guide", "url": "/docs" },
+    "link": { "label": "Read the full installation guide", "url": "/docs/latest" },
     "code": "import { generate } from 'multiple-cucumber-html-reporter';\n\ngenerate({\n  jsonDir: './reports/json/',\n  reportPath: './reports/html/',\n  metadata: {\n    browser: {\n      name: 'chrome',\n      version: '112'\n    },\n    platform: {\n      name: 'osx',\n      version: 'Ventura'\n    }\n  }\n});"
   },
   "community": {

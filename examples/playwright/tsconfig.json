@@ -8,5 +8,5 @@
     "rootDir": "./",
     "types": ["node"]
   },
-  "include": ["src/**/*", ".multiple-cucumber-html-reporter.ts"]
+  "include": ["src/**/*"]
 }

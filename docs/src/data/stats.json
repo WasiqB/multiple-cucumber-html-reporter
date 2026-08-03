@@ -1,8 +1,8 @@
 {
   "stats": [
-    { "label": "GitHub Stars", "value": "280+", "icon": "Star" },
+    { "label": "GitHub Stars", "value": "281+", "icon": "Star" },
     { "label": "Dependents", "value": "6.2K+", "icon": "Users" },
-    { "label": "NPM Monthly Downloads", "value": "1M+", "icon": "Download" },
-    { "label": "NPM Weekly Downloads", "value": "230K+", "icon": "Activity" }
+    { "label": "NPM Monthly Downloads", "value": "1.1M+", "icon": "Download" },
+    { "label": "NPM Weekly Downloads", "value": "260K+", "icon": "Activity" }
   ]
 }

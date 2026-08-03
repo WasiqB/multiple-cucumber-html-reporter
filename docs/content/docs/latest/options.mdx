@@ -54,9 +54,32 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
     disableLog: {
       description: 'Disables the summary report log in the console.',
       type: 'boolean',
+      deprecated: true,
       default: false,
       typeDescription: 'boolean'
     },
+    externalizeMedia: {
+      description: <>
+        If <code>true</code>, image and video attachments are written to separate files under <code>{'<reportPath>/assets/media/'}</code> instead of being inlined as <code>data:</code> URIs in the feature page's HTML. Keeps feature pages small and lets the browser load each screenshot or video lazily instead of parsing everything up front.
+
+        <Callout title="Note" type="info">
+          Only image and video attachments are affected. Text, JSON and HTML log attachments are always inlined.
+        </Callout>
+      </>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    logging: {
+      description: <>
+        Controls reporter logging.
+
+        LogLevel: <code>silent</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code>
+      </>,
+      type: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }',
+      default: 'info',
+      typeDescription: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }'
+    }
   }}
 />
 
@@ -65,7 +88,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
 <TypeTable
   type={{
     customMetadata: {
-      description: <>If <code>true</code>, the custom metadata will be displayed in the report</>,
+      description: <>If <code>true</code>, the custom metadata will be displayed in the report. Use <code>metadata</code> property instead.</>,
       type: 'boolean',
       default: false,
       deprecated: true,
@@ -79,6 +102,21 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       default: false,
       deprecated: true,
       typeDescription: 'boolean'
+    },
+    metadataFilePath: {
+      description: <>
+        Allows you to set the path to a JSON file that contains metadata to be displayed in the report.
+
+        <Callout title="Important" type='warning'>
+          If you are using <code>metadataFilePath</code>, you do not need to use <code>metadata</code> property. The metadata from the JSON file will take precedence over <code>metadata</code> property.
+        </Callout>
+
+        <Callout title="Note" type="info">
+          The JSON file should be of type <code>Metadata</code> or <code>Record&lt;string, Metadata&gt;</code>.
+        </Callout>
+      </>,
+      type: 'string',
+      typeDescription: 'string'
     },
     metadata: {
       description: <>
@@ -227,6 +265,51 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       description: 'CSS file path, which will completely replaces the default CSS with your own custom style.',
       type: 'string',
       typeDescription: 'string'
+    },
+  }}
+/>
+
+## Attachment Display Options
+
+<TypeTable
+  type={{
+    attachmentLayout: {
+      description: (
+        <>
+          Controls how step attachments (text, JSON, HTML, image, video, other) are presented on feature pages.
+          <ul>
+            <li><code>modal</code>: attachments are listed under each step; clicking one opens it in a popup (see the <code>modal*</code> options below).</li>
+            <li><code>inline</code>: classic pre-4.x style. One link per attachment type ("+ Show Info", "+ Screenshot", etc.) next to the step text; each expands its content directly below the step.</li>
+          </ul>
+        </>
+      ),
+      type: 'modal | inline',
+      default: 'modal',
+      typeDescription: 'modal | inline'
+    },
+    modalBackdrop: {
+      description: <>If <code>true</code>, the attachment popup (<code>attachmentLayout: 'modal'</code>) shows a dark backdrop, blocks interaction with the rest of the page, and closes on click-outside.</>,
+      type: 'boolean',
+      default: true,
+      typeDescription: 'boolean'
+    },
+    modalDraggable: {
+      description: <>If <code>true</code>, the attachment popup can be repositioned by dragging its header.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    modalResizable: {
+      description: <>If <code>true</code>, the attachment popup can be resized from its edges and corners.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    modalShowContext: {
+      description: <>If <code>true</code>, the attachment popup header shows the step text (or, for a detected video, the scenario text) as context.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
     },
   }}
 />

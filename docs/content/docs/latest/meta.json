@@ -1,6 +1,17 @@
 {
-  "title": "v4.1.0",
+  "title": "v4.2.0",
   "icon": "Zap",
   "root": true,
-  "pages": ["index", "installation", "usage", "options", "metadata", "faq", "attachments", "frameworks", "contributing"]
+  "pages": [
+    "index",
+    "installation",
+    "usage",
+    "cli",
+    "options",
+    "metadata",
+    "faq",
+    "attachments",
+    "frameworks",
+    "contributing"
+  ]
 }

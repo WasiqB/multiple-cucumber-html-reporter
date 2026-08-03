@@ -6,31 +6,35 @@ icon: Download
 
 Multiple Cucumber HTML Reporter can be installed easily using your favorite package manager.
 
-## Install Locally
+## Install globally
 
-Run the following command in your project directory:
+The reporter comes with an in-built command line tool which helps in generating the report without requiring you to write any script to generate the report.
+
+To install globally, run the following command in your terminal:
 
 <Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
   <Tab value="npm">
   ```bash
-  npm install multiple-cucumber-html-reporter
+  npm install multiple-cucumber-html-reporter --global
   ```
   </Tab>
   <Tab value="yarn">
   ```bash
-  yarn add multiple-cucumber-html-reporter
+  yarn global add multiple-cucumber-html-reporter
   ```
   </Tab>
   <Tab value="pnpm">
   ```bash
-  pnpm add multiple-cucumber-html-reporter
+  pnpm add multiple-cucumber-html-reporter --global
   ```
   </Tab>
 </Tabs>
 
-## Save to Dependencies
+Check out more about the [command line tool](/docs/latest/cli).
 
-If you want to save it to your `dependencies` or `dev-dependencies`, use the following flags:
+## Install Locally
+
+If you want to generate the report programmatically by creating a script, then you need to install the package locally in your project by running the following command in your terminal in your project directory:
 
 <Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
   <Tab value="npm">
@@ -60,5 +64,5 @@ This reporter is highly compatible with different versions of **CucumberJS**:
 - **CucumberJS 4**: Fully supported.
 
 <Callout title="Note" type="idea">
-For WebdriverIO users, please check our [WebdriverIO Integration Guide](/docs/frameworks/webdriverio) for a simplified setup.
+For WebdriverIO users, please check our [WebdriverIO Integration Guide](/docs/latest/frameworks/webdriverio) for a simplified setup.
 </Callout>

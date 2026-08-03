@@ -4,7 +4,7 @@
     "titleLine1": "Powerful reporting for",
     "titleLine2": "modern BDD",
     "description": "Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.",
-    "primaryLink": { "label": "Install Library", "url": "/docs/installation" },
+    "primaryLink": { "label": "Install Library", "url": "/docs/latest/installation" },
     "image": "featureCharts1"
   },
   "accordion": {

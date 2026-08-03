@@ -25,6 +25,7 @@ export interface ImageLinks {
   attachVideo: string;
   reportHeader: string;
   reportFooter: string;
+  legacyAttachment: string;
 }
 
 export interface StatItem {
