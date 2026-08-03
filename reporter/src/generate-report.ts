@@ -695,6 +695,9 @@ async function generateReport(options: Options) {
       if (step.result.duration) {
         scenario.duration = (scenario.duration || 0) + step.result.duration;
         step.time = formatDuration(step.result.duration);
+        // Normalize to nanoseconds for the client-side chart in charts.js,
+        // which assumes nanoseconds regardless of the durationInMS option.
+        step.result.duration = durationInMS ? step.result.duration * 1_000_000 : step.result.duration;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.passed) {
