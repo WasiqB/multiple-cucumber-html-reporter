@@ -5,6 +5,13 @@ description: How to use Multiple Cucumber HTML Reporter with Cypress.
 
 Here you will learn how to configure the Cypress Cucumber project to generate Cucumber JSON reports and the beautiful HTML report using Multiple Cucumber HTML Reporter.
 
+<Callout title='Tip' type='idea'>
+
+- Check out the example project under `examples/cypress` folder in the [reporter repository](https://github.com/WasiqB/multiple-cucumber-html-reporter).
+- You can also refer to the [GitHub Actions workflow](https://github.com/WasiqB/multiple-cucumber-html-reporter/actions/workflows/test-cypress.yml) for Cypress along with the generated reports attached.
+
+</Callout>
+
 ## Steps to generate Multiple Cucumber HTML reporter
 
 ### Generate Cucumber JSON reports [step]
@@ -88,60 +95,25 @@ Add the following configuration to your `.cypress-cucumber-preprocessorrc.json` 
 }
 ```
 
-### Script to generate the report [step]
+### Reporter config file [step]
 
-Create a typescript file at the root of the project as shown below:
+Create a typescript reporter config file at the root of the project as shown below:
 
 ```typescript
-// cucumber-html-report.ts
-import { readFileSync } from 'node:fs';
-import dayjs from 'dayjs';
-import { generate } from 'multiple-cucumber-html-reporter';
+// .multiple-cucumber-html-reporter.ts
+import type { Options } from 'multiple-cucumber-html-reporter';
 
-const data = readFileSync('./.run/results.json', {
-  encoding: 'utf8',
-  flag: 'r',
-});
-const runInfos = JSON.parse(data);
-
-const mapOs = (os: string) => {
-  if (os.startsWith('win')) {
-    return 'windows';
-  } else if (os.startsWith('darwin')) {
-    return 'osx';
-  } else if (os.startsWith('linux')) {
-    return 'linux';
-  } else if (os.startsWith('ubuntu')) {
-    return 'ubuntu';
-  } else if (os.startsWith('android')) {
-    return 'android';
-  } else if (os.startsWith('ios')) {
-    return 'ios';
-  }
-  return 'unknown';
-};
-
-generate({
+const config: Options = {
   jsonDir: './.run/reports/json/',
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,
-  metadata: {
-    browser: {
-      name: runInfos.browserName === 'chromium' ? 'chrome' : runInfos.browserName,
-      version: runInfos.browserVersion,
-    },
-    executionPlatform: 'local',
-    platform: {
-      name: mapOs(runInfos.osName),
-      version: runInfos.osVersion,
-    },
-  },
+  metadataFilePath: './.run/reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',
     release: '1.2.0',
-    testCycle: 'Cycle 1',
-    buildNumber: 'Build 1',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
     environment: 'production',
     ciPipeline: 'GitHub Actions',
   },
@@ -149,7 +121,9 @@ generate({
   reportName: 'Cypress Sample',
   displayDuration: true,
   displayReportTime: true,
-});
+};
+
+export default config;
 ```
 
 ### Configure the scripts in `package.json` [step]
@@ -160,8 +134,8 @@ generate({
   "scripts": {
     "clean": "rm -rf dist .run",
     "build": "pnpm clean && tsc",
-    "test": "pnpm build && cypress run --browser chrome --headed",
-    "report": "node dist/cucumber-html-report.js"
+    "test": "pnpm build && tsx cypress-runner.ts",
+    "report": "mchr --silent"
   },
 }
 ```

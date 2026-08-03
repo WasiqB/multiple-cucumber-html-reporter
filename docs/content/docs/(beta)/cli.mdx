@@ -1,30 +1,22 @@
 ---
-title: CLI
+title: Command Line tool
 description: Command line interface for Multiple Cucumber HTML Reporter.
 icon: Terminal
 ---
 
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 
-You can use the command line tool which is newly added to the Multiple Cucumber HTML Reporter. To use it, you need to install it globally on your machine. Run the following command:
+You can use the command line tool which is newly added to the Multiple Cucumber HTML Reporter. To use it, you need to install it globally on your machine.
 
-<Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
-  <Tab value="npm">
-  ```bash
-  npm install multiple-cucumber-html-reporter --global
-  ```
-  </Tab>
-  <Tab value="yarn">
-  ```bash
-  yarn global add multiple-cucumber-html-reporter
-  ```
-  </Tab>
-  <Tab value="pnpm">
-  ```bash
-  pnpm add multiple-cucumber-html-reporter --global
-  ```
-  </Tab>
-</Tabs>
+Check out the [installation step](/docs/installation) to install the CLI globally.
+
+## Check the installation
+
+After you have installed the reporter command line tool globally, run the following command to check if the tool is installed successfully:
+
+```shell
+mchr --version
+```
 
 ## Reporter configuration file
 
@@ -40,13 +32,51 @@ The reporter now supports the following configuration files, which you can use t
 The CLI will try to find the config file in the order mentioned above.
 </Callout>
 
+## Generate configuration file
+
+For your initial setup, you can generate the initial configuration file by running the following command in your terminal:
+
+```shell
+mchr
+```
+
+This command will do the following:
+
+- When run for the first time, the CLI will start interactive onboarding process where it will ask you some questions, when you answer these questions, it will then create the JSON format config file named `.multiple-cucumber-html-reporter.json`.
+- In preceding execution will not trigger onboarding if there is already a configuration file available in the project directory.
+- Next, if will use this configuration file to generate the report, provided that there is Cucucmber JSON reports already generated.
+- The CLI will also print some informative logs while generating the report. You can turn off this info logs by passing the flag `--silent` or `--no-logging` with the command.
+
+<Callout title="Tip" type='idea'>
+If the Cucumber generated JSON file is not generated, then the report would still be generated but it will be empty.
+
+So, it is better to generate the Cucumber JSON report first and then generate the HTML report by using the `mchr` command.
+</Callout>
+
+<Callout title="Tip" type='idea'>
+The CLI command will default generate the config file in JSON format.
+
+You can later change the format to `.yml` or `.js` format as per your preference.
+</Callout>
+
+<Callout title='Important' type='warning'>
+When this command line tool is run in a CI environment, it will automatically Error out if there is no config file present in the folder in which this command is executed.
+
+Basically the interactive onboarding step will be completely skipped on CI environment.
+</Callout>
+
 ## CLI Options
 
 Following are the allowed options in the command line tool:
 
 <TypeTable
   type={{
-    '--silent | --no-logging': {
+    '--silent': {
+      description: 'Disables the report logging in the console',
+      type: 'boolean',
+      typeDescription: 'boolean'
+    },
+    '--no-logging': {
       description: 'Disables the report logging in the console',
       type: 'boolean',
       typeDescription: 'boolean'
@@ -202,38 +232,6 @@ In case if you are having config file in JSON / YAML format, then you can use th
   "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
 }
 ```
-
-## Generate the config file
-
-Run the command line tool by using the `mchr` command in the terminal.
-
-If the config file is not there in the directory in which you are running the command, the CLI will ask you onboarding questions to generate the config file.
-
-<Callout title="Tip" type='idea'>
-The CLI command will be default generate the config file in JSON format.
-
-You can later change the format to .yml or .js format as per your preference.
-</Callout>
-
-<Callout title='Important' type='warning'>
-When this command line tool is run in a CI environment, it will automatically Error out if there is no config file present in the folder in which this command is executed.
-
-Basically the interactive onboarding step will be completely skipped on CI environment.
-</Callout>
-
-## Generate the report
-
-Once the config file is generated, you can generate the report by running the `mchr` command in the terminal.
-
-```shell
-mchr
-```
-
-<Callout title="Tip" type='idea'>
-If the Cucumber generated JSON file is not generated, then the report would still be generated but it will be empty.
-
-So, it is better to generate the Cucumber JSON report first and then generate the HTML report by using the `mchr` command.
-</Callout>
 
 ## Configure in CI / CD Pipeline
 

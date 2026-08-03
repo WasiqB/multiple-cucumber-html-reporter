@@ -23,7 +23,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "fumadocs-core": "16.14.0",
-    "fumadocs-mdx": "15.2.1",
+    "fumadocs-mdx": "15.2.2",
     "fumadocs-typescript": "^5.3.0",
     "fumadocs-ui": "16.14.0",
     "lucide-react": "^1.28.0",

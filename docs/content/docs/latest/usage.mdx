@@ -6,11 +6,17 @@ icon: Boxes
 
 Multiple Cucumber HTML Reporter can be run in two primary ways: using a command line tool or programmatically.
 
-## Using Command Line Tool
+## Generate report with Command Line Tool
 
+Once you have [installed the command line](/docs/latest/installation#install-globally) tool properly and the [configuration file](/docs/latest/cli) is setup as per your requirements, then you can generate the report by running the following command on your terminal:
 
+```shell
+mchr
+```
 
-## Basic Usage
+## Generate report programmatically
+
+### Basic Usage
 
 To generate a report, use the following code structure:
 
@@ -43,11 +49,11 @@ report.generate({
 });
 ```
 
-## Integration with Cucumber Versions
+### Integration with Cucumber Versions
 
 The way you execute the report depends on which version of CucumberJS you are using:
 
-### CucumberJS 2.x and Lower
+#### CucumberJS 2.x and Lower
 
 You can integrate the reporter directly into your `AfterFeatures` hook:
 
@@ -60,17 +66,17 @@ report.generate({
 });
 ```
 
-### CucumberJS 3.x and 4.x
+#### CucumberJS 3.x and 4.x
 
 Since `AfterFeatures` hook is no longer supported in newer versions, you must run the reporter as a separate node executable **after** the cucumber-js process finishes.
 
-#### Run your tests [step]
+##### Run your tests [step]
 Ensure your tests generate JSON results correctly.
 
-#### Create a separate generate script [step]
+##### Create a separate generate script [step]
 Create a file (e.g., `generate-report.js`) with the reporting logic.
 
-#### Execute the script [step]
+##### Execute the script [step]
 Update your `package.json` scripts:
 
 ```json

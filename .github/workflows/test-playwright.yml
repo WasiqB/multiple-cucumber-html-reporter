@@ -53,6 +53,16 @@ jobs:
           CI: true
         continue-on-error: true
 
+      - name: Link the CLI Globally
+        run: pnpm link --global ./reporter
+
+      - name: Re-install after linking CLI
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Sanity check CLI command
+        working-directory: examples/playwright
+        run: mchr --version
+
       - name: Generate Report
         working-directory: examples/playwright
         run: pnpm report

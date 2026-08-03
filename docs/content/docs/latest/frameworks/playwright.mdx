@@ -5,6 +5,13 @@ description: How to use Multiple Cucumber HTML Reporter with Playwright.
 
 Here you will learn how to configure the Playwright Cucumber project to generate Cucumber JSON report and convert it to beautiful HTML report using Multiple Cucumber HTML Reporer.
 
+<Callout title='Tip' type='idea'>
+
+- Check out the example project under `examples/playwright` folder in the [reporter repository](https://github.com/WasiqB/multiple-cucumber-html-reporter).
+- You can also refer to the [GitHub Actions workflow](https://github.com/WasiqB/multiple-cucumber-html-reporter/actions/workflows/test-playwright.yml) for Playwright along with the generated reports attached.
+
+</Callout>
+
 ## Steps to generate Multiple Cucumber HTML reporter
 
 ### Generate Cucumber JSON reports [step]
@@ -42,45 +49,40 @@ await mkdir('test-results/screenshots', { recursive: true });
 await mkdir('test-results/trace', { recursive: true });
 ```
 
-### Script to generate the report [step]
+### Reporter configuration file [step]
 
-This script will generate beautiful HTML reports by using the Cucumber generated JSON reports. This script will be executed after the Cucumber tests are completed.
+Create a Yaml reporter config file at the root of the project as shown below:
 
-```typescript
-// generate-report.ts
-import { generate } from 'multiple-cucumber-html-reporter';
-
-generate({
-  jsonDir: 'reports/',
-  reportPath: 'reports/report/',
-  useCDN: false,
-  openReportInBrowser: true,
-  saveCollectedJSON: true,
-  displayReportTime: true,
-  durationInMS: false,
-  displayDuration: true,
-  pageTitle: 'My Playwright Typescript Sample',
-  reportName: 'Cucumber JS Report',
-  metadata: {
-    browser: {
-      name: 'chrome',
-      version: '148',
-    },
-    executionPlatform: 'local',
-    platform: {
-      name: 'osx',
-      version: '26.5',
-    },
-  },
-  customData: {
-    projectName: 'Playwright sample project',
-    release: '1.2.0',
-    testCycle: 'Cycle 1',
-    buildNumber: 'Build 1',
-    environment: 'production',
-    ciPipeline: 'GitHub Actions',
-  },
-});
+```yaml
+# .multiple-cucumber-html-reporter.yml
+jsonDir: 'reports/'
+reportPath: 'reports/report/'
+useCDN: false
+openReportInBrowser: true
+saveCollectedJSON: false
+displayReportTime: true
+durationAggregation: 'wallClock'
+displayChartPercentages: true
+durationInMS: false
+displayDuration: true
+pageTitle: 'My Playwright Typescript Sample'
+reportName: 'Cucumber JS Report'
+metadata:
+  'saucedemo.feature':
+    browser:
+      name: 'firefox'
+      version: '148'
+  'restful-booker.feature':
+    browser:
+      name: 'api'
+      version: ''
+customData:
+  projectName: 'Playwright sample project'
+  release: '1.2.0'
+  testCycle: ${GITHUB_RUN_ID:'Cycle 1'}
+  buildNumber: ${GITHUB_RUN_NUMBER:'Build 1'}
+  environment: 'production'
+  ciPipeline: 'GitHub Actions'
 ```
 
 ### Configure the scripts in `package.json` [step]
@@ -93,7 +95,7 @@ Following scripts are configured in `package.json` to execute `prepare-run.ts` s
   "scripts": {
     "pretest": "tsx src/utils/prepare-run.ts",
     "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
-    "report": "tsx src/utils/generate-report.ts"
+    "report": "mchr --silent"
   },
 }
 ```

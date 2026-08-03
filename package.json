@@ -30,7 +30,7 @@
   },
   "author": "Wasiq Bhamla",
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.6",
