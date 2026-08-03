@@ -7,10 +7,209 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import { FaGithub, FaGitlab, FaJenkins } from 'react-icons/fa6';
 import { Terminal } from '@/components/ui/terminal';
-import howItWorksDataJson from '@/data/how-it-works.json';
 import imageDataJson from '@/data/image-links.json';
-import type { HowItWorksData, ImageLinks } from '@/data/types';
+import type { ImageLinks } from '@/data/types';
 import { cn } from '@/lib/cn';
+
+type Command = {
+  command: string;
+  tabValue?: string;
+  output?: string;
+};
+
+const howItWorksData = {
+  hero: {
+    titleLine1: 'From Test Run to',
+    titleLine2: 'Visual Insight.',
+    description:
+      'Streamline your Cucumber testing workflow with our lightweight, high-performance reporting engine. Zero dependencies, maximum clarity.',
+  },
+  steps: [
+    {
+      number: 1,
+      title: 'Simple Installation',
+      description:
+        'Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.',
+      badges: ['lightweight', 'insightful', 'fast'],
+      lang: 'shell',
+      commands: [
+        {
+          command: 'npm install multiple-cucumber-html-reporter --global',
+          tabValue: 'npm',
+        },
+        {
+          command: 'yarn global add multiple-cucumber-html-reporter',
+          tabValue: 'yarn',
+        },
+        {
+          command: 'pnpm add multiple-cucumber-html-reporter --global',
+          tabValue: 'pnpm',
+        },
+      ],
+    },
+    {
+      number: 2,
+      title: 'Declarative Configuration',
+      description:
+        'Customize your HTML report with metadata about your environment and report branding by adding options in report options.',
+      checklist: [
+        'Customize the report branding',
+        'Add metadata about your environment',
+        'Attach logs on each test step',
+        'Attach screenshots on failure',
+        'Attach video on failure',
+      ],
+      lang: 'typescript',
+      commands: [
+        {
+          command: `// .multiple-cucumber-html-reporter.js
+const config = {
+  jsonDir: './.run/reports/json/',
+  reportPath: './.run/html-report/',
+  openReportInBrowser: true,
+  useCDN: true,
+  metadataFilePath: './.run/reports/json/metadata.json',
+  customData: {
+    projectName: 'Cypress sample project',
+    release: '1.2.0',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
+  },
+  pageTitle: 'Cypress Sample',
+  reportName: 'Cypress Sample',
+  displayDuration: true,
+  displayReportTime: true,
+};
+
+module.exports = config;`,
+          tabValue: 'Javascript',
+        },
+        {
+          command: `// .multiple-cucumber-html-reporter.ts
+import type { Options } from 'multiple-cucumber-html-reporter';
+
+const config: Option = {
+  jsonDir: './.run/reports/json/',
+  reportPath: './.run/html-report/',
+  openReportInBrowser: true,
+  useCDN: true,
+  metadataFilePath: './.run/reports/json/metadata.json',
+  customData: {
+    projectName: 'Cypress sample project',
+    release: '1.2.0',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
+  },
+  pageTitle: 'Cypress Sample',
+  reportName: 'Cypress Sample',
+  displayDuration: true,
+  displayReportTime: true,
+};
+
+export default config;`,
+          tabValue: 'Typescript',
+        },
+        {
+          command: `// .multiple-cucumber-html-reporter.yml
+jsonDir: './.run/reports/json/'
+reportPath: './.run/html-report/'
+openReportInBrowser: true
+useCDN: true
+metadataFilePath: './.run/reports/json/metadata.json'
+customData:
+  projectName: 'Cypress sample project'
+  release: '1.2.0'
+  testCycle: "$\{GITHUB_RUN_ID:'Cycle 1'}"
+  buildNumber: "$\{GITHUB_RUN_NUMBER:'Build 1'}"
+  environment: 'production'
+  ciPipeline: 'GitHub Actions'
+pageTitle: 'Cypress Sample'
+reportName: 'Cypress Sample'
+displayDuration: true
+displayReportTime: true`,
+          tabValue: 'Yaml',
+        },
+        {
+          command: `// .multiple-cucumber-html-reporter.json
+{
+  "jsonDir": "./.run/reports/json/",
+  "reportPath": "./.run/html-report/",
+  "openReportInBrowser": true,
+  "useCDN": true,
+  "metadataFilePath": "./.run/reports/json/metadata.json",
+  "customData": {
+    "projectName": "Cypress sample project",
+    "release": "1.2.0",
+    "testCycle": "$\{GITHUB_RUN_ID:'Cycle 1'}",
+    "buildNumber": "$\{GITHUB_RUN_NUMBER:'Build 1'}",
+    "environment": "production",
+    "ciPipeline": "GitHub Actions",
+  },
+  "pageTitle": "Cypress Sample",
+  "reportName": "Cypress Sample",
+  "displayDuration": true,
+  "displayReportTime": true,
+}`,
+          tabValue: 'JSON',
+        },
+      ],
+    },
+    {
+      number: 3,
+      title: 'Execute & Generate',
+      description:
+        'Run your tests as you normally would. Then execute the Cucumber Reporter method, it will parse the Cucumber JSON output and transforms it into a beautiful interactive dashboard instantly.',
+      lang: 'bash',
+      commands: [
+        {
+          command: 'mchr --no-logging',
+          output: `┌  Multiple Cucumber HTML Reporter v4.2.0
+  Config: .multiple-cucumber-html-reporter.ts
+│
+◇  Report generated successfully!
+│
+└  Report ready: /Users/wasiqbhamla/Developer/github/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html`,
+        },
+      ],
+    },
+  ],
+  analysis: {
+    stepNumber: 4,
+    title: 'Interactive Analysis',
+    description:
+      'Experience the results through a sophisticated lens. High-density data curated for clarity, featuring real-time filtering, failure diagnostics, and performance trends.',
+    cards: [
+      {
+        icon: 'PieChart',
+        title: 'Visual Analytics',
+        description: 'Beautiful charts providing an immediate overview of test pass/fail rates and suite health.',
+      },
+      {
+        icon: 'ChevronDown',
+        title: 'Smart Filtering',
+        description:
+          'Drill down into specific features, and scenarios with lightning-fast navigation, search and filters.',
+      },
+      {
+        icon: 'FileJson',
+        title: 'Rich Artifacts',
+        description: 'Embedded screenshots and videos attached directly to failed test steps for rapid debugging.',
+      },
+    ],
+    image: 'featureListPage' as keyof ImageLinks,
+  },
+  cicd: {
+    stepNumber: 5,
+    title: 'CI/CD Ready',
+    description:
+      'Automate your quality reporting. Perfect for GitHub Actions, GitLab CI, or Jenkins. Generate and publish reports automatically on every push.',
+    platforms: ['GitHub Actions', 'Jenkins', 'GitLab'],
+  },
+};
 
 const iconMap: Record<string, React.ReactNode> = {
   PieChart: <PieChart className='h-5 w-5 text-emerald-600 dark:text-emerald-400' />,
@@ -31,7 +230,7 @@ const platformIconMap: Record<string, React.ReactNode> = {
 };
 
 export default function HowItWorksPage() {
-  const { hero, steps, analysis, cicd } = howItWorksDataJson as HowItWorksData;
+  const { hero, steps, analysis, cicd } = howItWorksData;
   const image = (imageDataJson as ImageLinks)[analysis.image];
 
   return (
@@ -104,7 +303,7 @@ export default function HowItWorksPage() {
                   transition={{ duration: 0.6 }}
                   className={cn('w-full', isReversed && 'lg:order-1')}
                 >
-                  {step.commands?.map((command, i) => {
+                  {step.commands?.map((command: Command, i) => {
                     return (
                       <div key={i}>
                         {command.output && (
@@ -121,13 +320,17 @@ export default function HowItWorksPage() {
                     );
                   })}
 
-                  {(step.commands?.filter((command) => !command.output).length ?? 0) > 0 && (
+                  {(step.commands?.filter((command: Command) => !command.output).length ?? 0) > 0 && (
                     <div className='relative group'>
                       <div className='absolute -inset-1 bg-linear-to-r from-emerald-500/20 to-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none' />
-                      <Tabs items={step.commands?.filter((c) => !c.output).map((command) => command.tabValue ?? '')}>
+                      <Tabs
+                        items={step.commands
+                          ?.filter((c: Command) => !c.output)
+                          .map((command: Command) => command.tabValue ?? '')}
+                      >
                         {step.commands
-                          ?.filter((c) => !c.output)
-                          .map((command, i) => {
+                          ?.filter((c: Command) => !c.output)
+                          .map((command: Command, i) => {
                             return (
                               <Tab key={i} value={command.tabValue ?? ''}>
                                 <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
