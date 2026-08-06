@@ -4,54 +4,153 @@ description: Guidelines and best practices for contributing to Multiple Cucumber
 icon: Handshake
 ---
 
-We love contributions! Following these simple guidelines will help us maintain a high-quality codebase.
+We love contributions! Following these guidelines will help ensure a smooth contribution process and maintain a high-quality codebase.
 
-## Prerequisites
+## 1. Before You Start
 
-To contribute, ensure you have the following installed:
-- **Node.js** (LTS Recommended)
-- **pnpm** (Our preferred package manager)
+- **Search Existing Issues & Discussions**: Before creating a new issue or discussion, please check the existing [GitHub Issues](https://github.com/WasiqB/multiple-cucumber-html-reporter/issues) and [GitHub Discussions](https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions) to prevent duplicates.
+- **AI Usage Policy**: Using AI tools (e.g., ChatGPT, GitHub Copilot) to help write code or documentation is fine, provided that you carefully verify, test, and take ownership of all submitted changes.
 
-## Getting Started
+## 2. Environment & Local Setup
 
-1. **Clone the Repo**: Clone the repository to your local machine.
-2. **Install Dependencies**: Use `pnpm install` to set up your development environment.
+### Prerequisites
+- **Node.js**: `v22` (Recommended / Required version)
+- **pnpm**: Our preferred package manager (`pnpm v9+`)
 
-## Running Tests
+### Setting Up the Project (Forking & Cloning)
 
-We strive for 100% code coverage. Please ensure any new code or fixes include appropriate tests.
+#### Fork the Repository [step]
 
-### Run Tests
+Click the **Fork** button at the top right of the [GitHub Repository](https://github.com/WasiqB/multiple-cucumber-html-reporter) to create a copy under your GitHub account.
+
+#### Clone your Fork [step]
+
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/multiple-cucumber-html-reporter.git
+   cd multiple-cucumber-html-reporter
+   ```
+#### Add Upstream Remote [step]
+
+   ```bash
+   git remote add upstream https://github.com/WasiqB/multiple-cucumber-html-reporter.git
+   ```
+#### Install Dependencies [step]
+
+   ```bash
+   pnpm install
+   ```
+
+   <Callout title='Note' type='info'>
+   Running `pnpm install` initializes Git pre-commit hooks via Husky.
+    </Callout>
+
+#### Verify Setup by Running Tests [step]
+
+   ```bash
+   pnpm test
+   ```
+
+### Pre-commit Git Hooks (Linting & Formatting)
+
+This repository uses **Husky** and **lint-staged** to run pre-commit checks automatically.
+- Every time you execute `git commit`, `lint-staged` automatically formats and lints your staged TypeScript and JSON files using **Biome** (`pnpm format:fix`, `pnpm lint:fix`).
+- Commit message linting (`commitlint`) is also enforced on pre-commit to maintain Conventional Commit history.
+
+### Recommended IDE Setup
+
+- **Editor**: We recommend using **VS Code**.
+- **Extensions**: Install the **Biome** VS Code extension (`biomejs.biome`) for consistent code formatting and linting directly inside your editor.
+
+## 3. Project Structure
+
+Understanding the workspace organization:
+
+```text
+multiple-cucumber-html-reporter/
+├── .github/          # GitHub Actions workflows and templates
+├── docs/             # Documentation site (Fumadocs / Next.js)
+│   └── content/docs/
+│       ├── (beta)/   # Documentation for upcoming / unreleased beta features
+│       └── latest/   # Documentation for stable releases
+├── examples/         # Sample projects for debugging & manual testing
+└── reporter/         # Core reporter package source code
+```
+
+## 4. Development & Debugging
+
+### Debugging with Sample Projects
+
+To test and debug your changes against realistic setups, utilize the sample projects in the `examples/` directory:
+
+1. Build/link the core package if necessary.
+2. Navigate to one of the example directories under `examples/`.
+3. Install dependencies and run the example scripts to verify report generation behavior.
+
+### Running Test Suite
 
 ```bash
+# Run unit tests
 pnpm test
-```
 
-### Run Coverage Report
-
-```bash
+# Run test coverage report
 pnpm unit.test.coverage
-```
 
-### Generate Report
-
-```bash
+# Generate test report output
 pnpm report
 ```
 
-## Code Style & Commits
+## 5. Updating GitHub Workflows
 
-### Commit Messages
+Update files under `.github/workflows/` only when:
+- Adding or modifying CI/CD automation steps.
+- Updating matrix test configurations (e.g., Node version matrix).
+- Adjusting release, lint, or security workflow triggers.
 
-We strictly follow the [Conventional Commits](https://www.conventionalcommits.org/) format using `commitlint`. This ensures a clear, consistent, and automated way to generate our changelogs and releases.
+## 6. Updating Documentation
 
-Example: `feat: add support for new browser engine`
+When adding new features, fixing bugs, or changing APIs, update the docs in `docs/content/docs/`:
+- **`docs/content/docs/(beta)/`**: Add or update documentation for upcoming / beta features.
+- **`docs/content/docs/latest/`**: Update documentation applicable to current stable releases.
 
-## Submitting Pull Requests
+## 7. Commits & GPG Signing
 
-- Create a new branch for your feature or fix.
-- Ensure all tests pass and coverage goals are met.
-- Update documentation if applicable.
-- Open a Pull Request with a clear description of your changes.
+### Commit Message Format
+
+We strictly follow [Conventional Commits](https://www.conventionalcommits.org/) format enforced via `commitlint`.
+
+Example:
+```text
+feat: add support for custom execution metrics
+```
+
+### GPG Signed Commits
+
+All commits must be **GPG signed** for security and verification:
+1. Set up a GPG key in Git following GitHub's [Managing commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification) guide.
+2. Ensure commit signing is enabled:
+   ```bash
+   git config --global user.signingkey <YOUR_KEY_ID>
+   git config --global commit.gpgsign true
+   ```
+
+## 8. Submitting a Pull Request (PR)
+
+1. Sync your local `main` branch with `upstream`:
+   ```bash
+   git checkout main
+   git fetch upstream
+   git merge upstream/main
+   ```
+2. Create a descriptive topic branch:
+   ```bash
+   git checkout -b feat/my-awesome-feature
+   ```
+3. Make your changes, then commit with signed conventional commit messages (`git commit -S -m "feat: ..."`). Git pre-commit hooks will automatically lint and format staged files.
+4. Push the branch to your fork:
+   ```bash
+   git push origin feat/my-awesome-feature
+   ```
+5. Navigate to the main repository on GitHub and open a Pull Request from your fork's branch into `WasiqB:main`.
+6. Fill out the PR template with details of the changes and link related issues.
 
 Thank you for helping make `multiple-cucumber-html-reporter` better!
