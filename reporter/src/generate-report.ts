@@ -131,6 +131,28 @@ async function generateReport(options: Options) {
   const displayReportTime = !!options.displayReportTime;
   const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
+  /**
+   * A millisecond duration for a single step/scenario/feature realistically
+   * never reaches this magnitude (it is ~11.5 days). Nanosecond durations,
+   * on the other hand, cross this threshold for anything that takes longer
+   * than one second. Some upstream tools emit cucumber durations in
+   * nanoseconds regardless of what a user configures for the
+   * {@link Options.durationInMS} option, so we use this gap to detect and
+   * correct for that mismatch instead of trusting the option blindly.
+   */
+  const NANOSECOND_SANITY_THRESHOLD_MS = 1_000_000_000;
+  /**
+   * Determines whether a raw duration value is already expressed in
+   * nanoseconds even though {@link durationInMS} says the source reports
+   * milliseconds. Only relevant when {@link durationInMS} is enabled; when
+   * it is disabled the value is always treated as nanoseconds already.
+   *
+   * @param {number} duration a raw duration value as read from the Cucumber JSON.
+   * @returns {boolean} true if the duration should be treated as nanoseconds.
+   */
+  function isAlreadyNanoseconds(duration: number): boolean {
+    return durationInMS && duration > NANOSECOND_SANITY_THRESHOLD_MS;
+  }
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
   const pageTitle = options.pageTitle || DEFAULT_REPORT_NAME;
@@ -697,7 +719,12 @@ async function generateReport(options: Options) {
         step.time = formatDuration(step.result.duration);
         // Normalize to nanoseconds for the client-side chart in charts.js,
         // which assumes nanoseconds regardless of the durationInMS option.
-        step.result.duration = durationInMS ? step.result.duration * 1_000_000 : step.result.duration;
+        // Some sources report durations in nanoseconds even when durationInMS
+        // is enabled, so only convert values that don't already look like ns.
+        step.result.duration =
+          durationInMS && !isAlreadyNanoseconds(step.result.duration)
+            ? step.result.duration * 1_000_000
+            : step.result.duration;
       }
 
       if (step.result.status.toLowerCase() === RESULT_STATUS.passed) {
@@ -969,7 +996,8 @@ async function generateReport(options: Options) {
    * @return {string} the duration formatted as a string
    */
   function formatDuration(duration: number): string {
-    return Duration.fromMillis(durationInMS ? duration : duration / 1000000).toFormat('hh:mm:ss.SSS');
+    const treatAsMillis = durationInMS && !isAlreadyNanoseconds(duration);
+    return Duration.fromMillis(treatAsMillis ? duration : duration / 1000000).toFormat('hh:mm:ss.SSS');
   }
 
   /**
@@ -978,7 +1006,8 @@ async function generateReport(options: Options) {
    * @returns {number}
    */
   function toMillis(duration: number): number {
-    return durationInMS ? duration : duration / 1000000;
+    const treatAsMillis = durationInMS && !isAlreadyNanoseconds(duration);
+    return treatAsMillis ? duration : duration / 1000000;
   }
 
   /**

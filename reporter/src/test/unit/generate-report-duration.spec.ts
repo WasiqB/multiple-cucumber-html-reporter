@@ -36,6 +36,33 @@ describe('generate-report.js duration handling', () => {
       expect(step.time).toEqual('00:00:05.000');
     });
 
+    // Some sources (e.g. certain Cypress cucumber-json setups) always report
+    // step durations in nanoseconds, regardless of what a user configures
+    // for `durationInMS`. Blindly trusting the option and multiplying an
+    // already-nanosecond value by 1,000,000 produces a wildly inflated,
+    // garbled duration in the UI. Detect this mismatch and leave the value
+    // untouched instead.
+    it('leaves step.result.duration untouched when it is already nanoseconds, even if durationInMS is true', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/duration-already-ns-json',
+        reportPath: REPORT_PATH,
+        durationInMS: true,
+        displayDuration: true,
+        saveCollectedJSON: true,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      const feature = enriched.features[0];
+      const step = feature.elements[0].steps[0];
+
+      // The source duration (5,000,000,000) is already nanoseconds (5
+      // seconds). Even though durationInMS is true, it must not be
+      // multiplied again into a nonsensical value.
+      expect(step.result.duration).toEqual(5_000_000_000);
+      expect(step.time).toEqual('00:00:05.000');
+    });
+
     it('leaves step.result.duration untouched (nanoseconds) when durationInMS is false', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
