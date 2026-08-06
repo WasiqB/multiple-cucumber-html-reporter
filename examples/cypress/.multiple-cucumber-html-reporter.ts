@@ -18,6 +18,7 @@ const config: Options = {
   reportName: 'Cypress Sample',
   displayDuration: true,
   displayReportTime: true,
+  durationInMS: true,
 };
 
 export default config;
