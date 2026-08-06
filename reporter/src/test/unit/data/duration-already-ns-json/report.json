@@ -1,0 +1,36 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "a step takes five seconds",
+        "description": "",
+        "id": "duration-in-ms-feature;a-step-takes-five-seconds",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "a step that takes 5 seconds",
+            "match": {
+              "location": "step.js:1"
+            },
+            "keyword": "Given "
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "name": "Duration in MS feature",
+    "description": "",
+    "id": "duration-in-ms-feature",
+    "keyword": "Feature",
+    "uri": "features/duration-in-ms.feature",
+    "tags": []
+  }
+]
