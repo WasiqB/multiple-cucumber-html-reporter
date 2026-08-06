@@ -132,15 +132,15 @@ async function generateReport(options: Options) {
   const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
   /**
-   * A millisecond duration for a single step/scenario/feature realistically
-   * never reaches this magnitude (it is ~11.5 days). Nanosecond durations,
-   * on the other hand, cross this threshold for anything that takes longer
-   * than one second. Some upstream tools emit cucumber durations in
-   * nanoseconds regardless of what a user configures for the
-   * {@link Options.durationInMS} option, so we use this gap to detect and
+   * A millisecond duration for a single step realistically rarely reaches
+   * 1,000,000 ms (which is ~16.6 minutes). Nanosecond durations, on the other
+   * hand, cross 1,000,000 for anything that takes longer than 1 millisecond.
+   * Some upstream tools (e.g. Cypress cucumber reporters) emit cucumber durations
+   * in nanoseconds regardless of what a user configures for the
+   * {@link Options.durationInMS} option, so we use this threshold to detect and
    * correct for that mismatch instead of trusting the option blindly.
    */
-  const NANOSECOND_SANITY_THRESHOLD_MS = 1_000_000_000;
+  const NANOSECOND_SANITY_THRESHOLD_MS = 1_000_000;
   /**
    * Determines whether a raw duration value is already expressed in
    * nanoseconds even though {@link durationInMS} says the source reports
