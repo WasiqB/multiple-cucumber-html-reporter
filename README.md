@@ -70,19 +70,60 @@
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
 -   🎨 **Fully Customizable**: Add custom data blocks, brand colors, logo, footer, and additional CSS styles.
 -   ⚡ **Built for Scale**: Streams report generation, so suites with heavy screenshot/video attachments don't run out of memory.
+-   🖥️ **CLI Tool** *(new in v4.2.0)*: Generate reports instantly with the `mchr` CLI — no scripting required.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Install
+> [!IMPORTANT]
+> **v4.2.0+** introduces the `mchr` CLI tool — the recommended way to generate reports. No scripting needed!
 
-```bash
-pnpm add multiple-cucumber-html-reporter --save-dev
+### Option A: CLI Tool *(Recommended — v4.2.0+)*
+
+#### 1. Install globally
+
+```shell
+npm install multiple-cucumber-html-reporter --global
+# or
+pnpm add multiple-cucumber-html-reporter --global
 ```
 
-### 2. Generate Report
-Add this to your test teardown or a separate reporting script:
+#### 2. Create a config file
+
+Create a `.multiple-cucumber-html-reporter.json` file in your project root:
+
+```json
+{
+  "jsonDir": "./path-to-your-json-output/",
+  "reportPath": "./path-where-the-report-needs-to-be/",
+  "pageTitle": "My Project Report",
+  "reportName": "My Project",
+  "displayDuration": true,
+  "displayReportTime": true
+}
+```
+
+> [!TIP]
+> Run `mchr` for the first time without a config file to launch an interactive onboarding wizard that creates the config file for you.
+
+#### 3. Generate the report
+
+```shell
+mchr
+```
+
+That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/latest/cli) for all available config options.
+
+---
+
+### Option B: Programmatic API
+
+If you prefer to generate the report from a Node.js script, install locally and call `generate()` directly:
+
+```shell
+pnpm add multiple-cucumber-html-reporter --save-dev
+```
 
 ```typescript
 // generate-report.ts
@@ -122,7 +163,7 @@ Check out the [examples](./examples) folder for integration with frameworks like
 
 Looking for advanced configurations, framework integrations (WebdriverIO, Cypress, etc.), or FAQs? Visit our comprehensive documentation site:
 
-### [👉 Read the Full Documentation](https://multiple-cucumber-html-reporter.vercel.app/docs)
+### [👉 Read the Full Documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/latest)
 
 ---
 
@@ -142,7 +183,7 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create.
 
-- **Contributing**: Read our [Contributing Guide](https://multiple-cucumber-html-reporter.vercel.app/docs/contributing) to get started.
+- **Contributing**: Read our [Contributing Guide](https://multiple-cucumber-html-reporter.vercel.app/docs/latest/contributing) to get started.
 - **Security**: Please report vulnerabilities via our [Security Policy](./.github/SECURITY.md).
 - **Code of Conduct**: We expect all contributors to follow our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 

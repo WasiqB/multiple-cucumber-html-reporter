@@ -34,7 +34,7 @@ export function Footer({ className }: { className?: string }) {
           <Link href='/sponsors' className='hover:text-emerald-500 transition-colors'>
             Sponsor
           </Link>
-          <Link href='/docs/contributing' className='hover:text-emerald-500 transition-colors'>
+          <Link href='/docs/latest/contributing' className='hover:text-emerald-500 transition-colors'>
             Contributing
           </Link>
         </div>

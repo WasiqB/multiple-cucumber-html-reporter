@@ -6,9 +6,174 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa6';
 import { buttonVariants } from '@/components/ui/button';
-import sponsorsDataJson from '@/data/sponsors.json';
-import type { SponsorsData } from '@/data/types';
 import { cn } from '@/lib/cn';
+
+const sponsorsData = {
+  hero: {
+    titleLine1: 'Support the future of',
+    titleLine2: 'Multiple CucumberHTML Reporter',
+    description:
+      'Multiple CucumberHTML Reporter is built on the belief that technical precision should be accessible to everyone. Your sponsorship directly funds independent development, ensuring the ecosystem remains modern, secure, and sustainable for the long term.',
+    action: {
+      text: 'Sponsor on GitHub',
+      href: 'https://github.com/sponsors/WasiqB',
+    },
+  },
+  benefits: [
+    {
+      icon: 'Rocket',
+      title: 'Faster Core Development',
+      description:
+        'Sponsorship allows our core maintainers to dedicate full-time hours to performance optimizations and new feature implementations.',
+      type: 'light',
+    },
+    {
+      icon: 'FileText',
+      title: 'Editorial Quality Docs',
+      description:
+        'We believe documentation is a first-class feature. Funds help us maintain high-fidelity tutorials and API references.',
+      type: 'green',
+    },
+    {
+      icon: 'ShieldCheck',
+      title: 'Security Audits',
+      description: 'Dedicated maintenance includes quarterly security sweeps and dependency hardening.',
+      type: 'light',
+    },
+    {
+      icon: 'Bug',
+      title: 'Priority Bug Fixes',
+      description:
+        'Community-reported issues are triaged and resolved with precision, ensuring the stable branch remains production-ready at all times for enterprises and individuals alike.',
+      type: 'light',
+    },
+  ],
+  tiers: {
+    title: 'Choose Your Tier',
+    description:
+      'Support the project at a level that fits your contribution capacity. Every bit counts towards engineering excellence.',
+    items: [
+      {
+        name: '🚶🏻 Starter',
+        price: '$5',
+        period: 'per month',
+        features: ['You get a shoutout on my Socials', 'Get your name listed on my personal website'],
+        button: 'Join',
+        type: 'outline',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=157962',
+      },
+      {
+        name: '🤝 Backer',
+        price: '$25',
+        period: 'per month',
+        features: ['Including previous tier benefits', 'Get your name listed on README of all my repositories'],
+        button: 'Join',
+        type: 'outline',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=157963',
+      },
+      {
+        name: '🥉 Bronze',
+        price: '$50',
+        period: 'per month',
+        features: [
+          'Including previous tier benefits',
+          'Get special sponsor role on my Discord server with access to private sponsor channel where you will get priority over other discussions',
+        ],
+        button: 'Join',
+        type: 'solid',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=157964',
+      },
+      {
+        name: '🥈 Silver',
+        price: '$100',
+        period: 'per month',
+        features: [
+          'Including previous tier benefits',
+          'Get 30 minutes / month of call with me anytime during the month for any consulting or mentorship',
+        ],
+        button: 'Join',
+        type: 'primary',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=157967',
+      },
+      {
+        name: '🥇 Gold',
+        price: '$350',
+        period: 'per month',
+        features: [
+          'Including previous tier benefits',
+          'Get 1 hour / month of call with me anytime during the month for any consulting or mentorship',
+        ],
+        button: 'Join',
+        type: 'dark',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=206957',
+      },
+      {
+        name: '💎 Diamond',
+        price: '$500',
+        period: 'per month',
+        features: [
+          'Including previous tier benefits',
+          'Get 4 hour / month of call with me anytime during the month for any consulting or mentorship',
+        ],
+        button: 'Join',
+        type: 'dark',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=235804',
+      },
+      {
+        name: '👑 Platinum',
+        price: '$1000',
+        period: 'per month',
+        features: [
+          'Including previous tier benefits',
+          'Get 12 hour / month call with me anytime during the month for any consulting or mentorship',
+        ],
+        button: 'Join',
+        type: 'dark',
+        href: 'https://github.com/sponsors/WasiqB/sponsorships?tier_id=206958',
+      },
+    ],
+  },
+  curators: {
+    title: 'Meet the Curators',
+    description: 'The organizations and individuals keeping the project alive.',
+    goldSponsors: [] as { name: string; image?: string; url?: string }[],
+    silverAndBronze: [] as { name: string; image?: string; url?: string }[],
+    individuals: [] as { name: string; image?: string; url?: string }[],
+  },
+  licenses: {
+    title: 'Software License Sponsors',
+    description:
+      'We are extremely grateful to the following companies who provide paid licenses of their professional software tools to support open source development.',
+    items: [
+      {
+        name: 'Vercel',
+        image: 'https://k9v00w0cps.ufs.sh/f/RyRlUroX9tIHWHFJSVzuXbQxU14FIfOCKwTlo7qcWJn02GYZ',
+        url: 'https://vercel.com/open-source-program',
+        license: 'Vercel Open Source Program - Spring 2026 Cohort',
+      },
+    ],
+  },
+  faq: {
+    title: 'Frequently Asked Questions',
+    items: [
+      {
+        question: 'Where does the money go?',
+        answer:
+          '100% of funds (after platform fees) go towards project expenses: paying maintainers for focused dev time, hosting our documentation infrastructure, and sponsoring upstream dependencies we rely on.',
+      },
+      {
+        question: 'Can I manage or cancel my sponsorship?',
+        answer:
+          'Yes, all billing is handled through GitHub Sponsors. You can upgrade, downgrade, or cancel your recurring contribution at any time through the dashboard.',
+      },
+    ],
+  },
+  cta: {
+    title: 'Ready to curate the future with us?',
+    primaryLink: { label: 'Sponsor on GitHub', url: 'https://github.com/sponsors/WasiqB' },
+    secondaryLink: { label: 'Other ways to help', url: '/community' },
+  },
+};
 
 const iconMap: Record<string, React.ReactNode> = {
   Rocket: <Rocket className='h-6 w-6' />,
@@ -18,7 +183,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function SponsorsPage() {
-  const { hero, benefits, tiers, curators, licenses, faq, cta } = sponsorsDataJson as SponsorsData;
+  const { hero, benefits, tiers, curators, licenses, faq, cta } = sponsorsData;
   const hasSponsors =
     (curators?.goldSponsors?.length ?? 0) > 0 ||
     (curators?.silverAndBronze?.length ?? 0) > 0 ||
@@ -257,10 +422,10 @@ export default function SponsorsPage() {
                                   className='w-full h-full object-cover'
                                 />
                               ) : (
-                                <div className='text-sm font-bold text-emerald-600'>{s.name[0]}</div>
+                                <div className='text-lg font-bold text-emerald-600'>{s.name[0]}</div>
                               )}
                             </div>
-                            <span className='text-[10px] font-medium text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500'>
+                            <span className='text-xs font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500'>
                               {s.name}
                             </span>
                           </Link>
@@ -271,29 +436,31 @@ export default function SponsorsPage() {
 
                   {curators.individuals && curators.individuals.length > 0 && (
                     <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
-                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>Individuals</h3>
-                      <div className='flex flex-wrap gap-3 items-center'>
-                        {curators.individuals.map((u, idx) => (
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                        Individual Backers
+                      </h3>
+                      <div className='flex flex-wrap gap-3'>
+                        {curators.individuals.map((s, idx) => (
                           <Link
                             key={idx}
-                            href={u.url || '#'}
+                            href={s.url || '#'}
                             target='_blank'
-                            className='w-10 h-10 bg-zinc-200 dark:bg-zinc-800 rounded-full border border-zinc-300 dark:border-zinc-700 shadow-sm overflow-hidden transition-transform hover:scale-110'
+                            className='w-10 h-10 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center shadow-xs hover:border-emerald-500 transition-all overflow-hidden'
+                            title={s.name}
                           >
-                            <Image
-                              width={40}
-                              height={40}
-                              src={u.image || `https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=${u.name}`}
-                              alt={u.name}
-                              className='w-full h-full object-cover'
-                            />
+                            {s.image ? (
+                              <Image
+                                src={s.image}
+                                alt={s.name}
+                                width={40}
+                                height={40}
+                                className='w-full h-full object-cover'
+                              />
+                            ) : (
+                              <span className='text-xs font-bold text-zinc-500'>{s.name[0]}</span>
+                            )}
                           </Link>
                         ))}
-                        {curators.moreCount && (
-                          <div className='w-10 h-10 bg-zinc-100 dark:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-800 shadow-sm flex items-center justify-center text-xs font-bold text-zinc-500'>
-                            {curators.moreCount}
-                          </div>
-                        )}
                       </div>
                     </div>
                   )}
@@ -304,36 +471,38 @@ export default function SponsorsPage() {
         </section>
       )}
 
-      {/* License Sponsors Section */}
+      {/* Software Licenses Section */}
       {licenses?.items && licenses.items.length > 0 && (
-        <section className='container mx-auto px-6 max-w-4xl py-12 text-center'>
-          <div className='mb-12 flex flex-col items-center'>
+        <section className='container mx-auto px-6 max-w-4xl py-12 border-t border-zinc-200 dark:border-zinc-800'>
+          <div className='text-center mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold mb-4'>{licenses.title}</h2>
-            <p className='text-zinc-600 dark:text-zinc-400'>{licenses.description}</p>
+            <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>{licenses.description}</p>
           </div>
 
-          <div className='flex flex-wrap justify-center gap-8'>
-            {licenses.items.map((s, idx) => (
-              <Link
-                key={idx}
-                href={s.url || '#'}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='group flex flex-col items-center transition-transform hover:scale-105'
-              >
-                <div className='w-24 h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-3'>
-                  {s.image ? (
-                    <Image src={s.image} alt={s.name} width={96} height={96} className='w-full h-full object-cover' />
-                  ) : (
-                    <div className='text-xl font-bold text-emerald-600'>{s.name[0]}</div>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            {licenses.items.map((item, idx) => (
+              <Link href={item.url || '#'} target='_blank' className='mb-6 block transition-transform hover:scale-105'>
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -4 }}
+                  className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all'
+                >
+                  {item.image && (
+                    <div className='w-20 h-20 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-lg overflow-hidden p-0.5'>
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={80}
+                        height={80}
+                        className='w-full h-full object-cover rounded-full dark:invert'
+                      />
+                    </div>
                   )}
-                </div>
-                <span className='text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-500'>
-                  {s.name}
-                </span>
-                <span className='text-[10px] font-medium text-zinc-500 dark:text-zinc-400 mt-1 max-w-[180px] text-center'>
-                  {s.license}
-                </span>
+                  <h3 className='text-xl font-bold mb-2'>{item.name}</h3>
+                  <p className='text-sm text-emerald-600 dark:text-emerald-400 font-semibold leading-relaxed'>
+                    {item.license}
+                  </p>
+                </motion.div>
               </Link>
             ))}
           </div>
@@ -342,16 +511,12 @@ export default function SponsorsPage() {
 
       {/* FAQ */}
       {faq?.items && faq.items.length > 0 && (
-        <section className='container mx-auto px-6 max-w-4xl text-center py-12 mb-12'>
-          <h2 className='text-3xl md:text-4xl font-bold mb-12'>{faq.title}</h2>
-
-          <div className='flex flex-col gap-6 text-left'>
+        <section className='container mx-auto px-6 max-w-3xl py-12 border-t border-zinc-200 dark:border-zinc-800'>
+          <h2 className='text-3xl md:text-4xl font-bold text-center mb-12'>{faq.title}</h2>
+          <div className='flex flex-col gap-8'>
             {faq.items.map((item, idx) => (
-              <div
-                key={idx}
-                className='bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-8'
-              >
-                <h4 className='font-bold text-lg mb-3'>{item.question}</h4>
+              <div key={idx} className='flex flex-col gap-2'>
+                <h3 className='text-xl font-bold'>{item.question}</h3>
                 <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{item.answer}</p>
               </div>
             ))}
@@ -359,41 +524,26 @@ export default function SponsorsPage() {
         </section>
       )}
 
-      {/* Ready to CTA */}
+      {/* CTA */}
       {cta && (
-        <section className='container mx-auto px-6 max-w-5xl mb-12'>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className='bg-emerald-900 rounded-[3rem] p-16 text-center flex flex-col items-center shadow-2xl relative overflow-hidden'
-          >
+        <section className='container mx-auto px-6 max-w-4xl'>
+          <div className='bg-emerald-900 rounded-[3rem] p-12 text-center flex flex-col items-center shadow-2xl relative overflow-hidden'>
             <div className='absolute -top-32 -right-32 w-96 h-96 bg-emerald-500/20 blur-3xl rounded-full' />
-
-            <h2 className='text-3xl md:text-5xl font-extrabold text-white mb-10 relative z-10'>{cta.title}</h2>
-
-            <div className='flex flex-wrap justify-center items-center gap-6 relative z-10'>
+            <h2 className='text-3xl md:text-5xl font-extrabold text-white mb-8 relative z-10'>{cta.title}</h2>
+            <div className='flex flex-wrap justify-center gap-4 relative z-10'>
               {cta.primaryLink && (
                 <Link
-                  href={cta.primaryLink.url || '#'}
+                  href={cta.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-white hover:bg-zinc-100 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-8 shadow-lg',
+                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-8 shadow-lg',
                   )}
                 >
                   {cta.primaryLink.label}
                 </Link>
               )}
-              {cta.secondaryLink && (
-                <Link
-                  href={cta.secondaryLink.url || '#'}
-                  className='text-emerald-100 hover:text-white font-bold text-sm underline decoration-emerald-500 underline-offset-4 decoration-2 transition-colors'
-                >
-                  {cta.secondaryLink.label}
-                </Link>
-              )}
             </div>
-          </motion.div>
+          </div>
         </section>
       )}
     </main>

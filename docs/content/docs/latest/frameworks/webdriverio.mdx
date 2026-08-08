@@ -5,6 +5,13 @@ description: How to use Multiple Cucumber HTML Reporter with WebdriverIO.
 
 Integrating with WebdriverIO allows you to automatically generate beautiful reports and attach screenshots on failure.
 
+<Callout title='Tip' type='idea'>
+
+- Check out the example project under `examples/wdio` folder in the [reporter repository](https://github.com/WasiqB/multiple-cucumber-html-reporter).
+- You can also refer to the [GitHub Actions workflow](https://github.com/WasiqB/multiple-cucumber-html-reporter/actions/workflows/test-wdio.yml) for WebDriverIO along with the generated reports attached.
+
+</Callout>
+
 ## WebdriverIO Support
 
 There are two approaches which you can use to generate beautiful reports using multiple Cucumber HTML reporter.
@@ -149,7 +156,7 @@ Note that the `jsonDir` points to a directory, inside which there will be JSON r
 
 The HTML report will be generated inside a timestamped folder within the `reportPath` directory.
 
-Check out all the supported options [here](/docs/options).
+Check out all the supported options [here](/docs/latest/options).
 </Callout>
 
 If you want to add your test specific metadata, you can do that by passing the metadata from the `cjson:metadata` capability object for each capabilities as shown below:

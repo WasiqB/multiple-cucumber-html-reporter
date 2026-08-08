@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, Plus, Rss } from 'lucide-react';
+import { Calendar, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,9 +8,147 @@ import { FaDiscord, FaGithub, FaStackOverflow } from 'react-icons/fa6';
 import { FiBookOpen } from 'react-icons/fi';
 import { buttonVariants } from '@/components/ui/button';
 import { Terminal } from '@/components/ui/terminal';
-import communityDataJson from '@/data/community.json';
-import type { CommunityData } from '@/data/types';
 import { cn } from '@/lib/cn';
+
+const communityData = {
+  hero: {
+    badge: 'Open Source First',
+    titleLine1: 'Join the',
+    titleLine2: 'Multiple CucumberHTML Reporter',
+    titleLine3: 'Community',
+    description:
+      'We believe in the power of precision and collaboration. Join thousands of developers building the future of clean, automated HTML scaffolding. Every line of code counts.',
+    primaryLink: { label: 'Become a Contributor', url: '/docs/latest/contributing' },
+    secondaryLink: {
+      label: 'View Roadmap',
+      url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones',
+    },
+  },
+  supportChannels: {
+    title: 'Support Channels',
+    description:
+      "Whether you're stuck on a bug or looking for architectural advice, our community is here to help you move faster.",
+    items: [
+      {
+        icon: 'Discord',
+        title: 'Discord',
+        description: 'Join our vibrant real-time chat for quick questions, community hangouts, and live announcements.',
+        linkText: 'Join Server',
+        href: 'https://discord.gg/d6rfHkSDjc',
+      },
+      {
+        icon: 'GitHub',
+        title: 'GitHub Issues',
+        description: 'Found a bug or have a feature request? Open an issue on our repository to track progress.',
+        linkText: 'Submit Issue',
+        href: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/issues',
+      },
+      {
+        icon: 'GitHub',
+        title: 'GitHub Discussions',
+        description: 'Join our GitHub Discussions to ask questions, share ideas, and connect with other users.',
+        linkText: 'Join Discussions',
+        href: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions',
+      },
+    ],
+  },
+  contributing: {
+    title: 'Start contributing today',
+    description:
+      'New to open source? No problem. We have a dedicated path for beginners to help you make your first pull request.',
+    primaryLink: {
+      label: 'Good First Issues',
+      url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/issues',
+    },
+    secondaryLink: { label: 'Contributing Guide', url: '/docs/latest/contributing' },
+    code: [
+      'git clone git@github.com:WasiqB/multiple-cucumber-html-reporter.git',
+      'cd multiple-cucumber-html-reporter',
+      'pnpm install',
+    ],
+  },
+  spotlight: {
+    title: 'Community Spotlight',
+    description:
+      'Recognizing the incredible individuals who dedicate their time to making Multiple CucumberHTML Reporter better for everyone.',
+    items: [
+      {
+        name: 'Wasiq Bhamla',
+        role: 'Core Maintainer',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/9130909?v=4',
+        link: 'https://github.com/WasiqB',
+      },
+      {
+        name: 'Mat Walker',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/12616918?v=4',
+        link: 'https://github.com/v-mwalk',
+      },
+    ],
+  },
+  alumni: {
+    title: 'Alumni Community',
+    description:
+      'A huge thank you to the former contributors and maintainers whose efforts built the foundation of Multiple CucumberHTML Reporter.',
+    items: [
+      {
+        name: 'Wim Selles',
+        role: 'Former Core Maintainer',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/11979740?v=4',
+        link: 'https://github.com/wswebcreation',
+      },
+      {
+        name: 'Federico Buti',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/10329968?v=4',
+        link: 'https://github.com/BaCaRoZzo',
+      },
+      {
+        name: 'Basker Peram Subramaniyan',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/6072775?v=4',
+        link: 'https://github.com/Baskercarrer',
+      },
+      {
+        name: 'Stefano Tamagnini',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/226824?v=4',
+        link: 'https://github.com/yoghi',
+      },
+      {
+        name: "Henri d'Orgeval",
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/9698924?v=4',
+        link: 'https://github.com/hdorgeval',
+      },
+      {
+        name: 'Kevin Kuszyk',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/2734580?v=4',
+        link: 'https://github.com/kevinkuszyk',
+      },
+    ],
+  },
+  eventsAndUpdates: {
+    eventsTitle: 'Upcoming Events',
+    events: [] as {
+      month?: string;
+      day?: string;
+      title: string;
+      description: string;
+      link?: { text: string; url: string };
+      status?: string;
+    }[],
+    updatesTitle: 'Latest Updates',
+    updates: [] as {
+      category: string;
+      title: string;
+      description: string;
+      type?: string;
+      link?: { text: string; url: string };
+    }[],
+  },
+};
 
 const supportIconMap: Record<string, React.ReactNode> = {
   Discord: <FaDiscord className='h-6 w-6 text-indigo-500' />,
@@ -25,8 +163,7 @@ const supportBgMap: Record<string, string> = {
 };
 
 export default function CommunityPage() {
-  const { hero, supportChannels, contributing, spotlight, alumni, eventsAndUpdates } =
-    communityDataJson as CommunityData;
+  const { hero, supportChannels, contributing, spotlight, alumni, eventsAndUpdates } = communityData;
 
   return (
     <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
@@ -156,7 +293,7 @@ export default function CommunityPage() {
             </div>
 
             {contributing.code && (
-              <div className='w-full lg:w-[420px] relative z-10'>
+              <div className='w-full lg:w-105 relative z-10'>
                 <Terminal
                   commands={contributing.code}
                   typingSpeed={45}
@@ -190,7 +327,7 @@ export default function CommunityPage() {
             ))}
 
             <div className='flex flex-col items-center gap-3 w-28'>
-              <Link href='/docs/contributing' className='text-center mt-2'>
+              <Link href='/docs/latest/contributing' className='text-center mt-2'>
                 <div className='w-20 h-20 rounded-full border-2 border-dashed border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500 transition-colors cursor-pointer group'>
                   <Plus className='h-8 w-8 group-hover:scale-110 transition-transform' />
                 </div>
@@ -248,73 +385,64 @@ export default function CommunityPage() {
                     className={cn(
                       'flex flex-col items-center justify-center rounded-xl px-4 py-2 h-fit border',
                       evt.status
-                        ? 'bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700'
-                        : 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-800/50',
+                        ? 'bg-zinc-200/50 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700'
+                        : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400',
                     )}
                   >
-                    <span className='text-[10px] font-bold uppercase tracking-wider'>{evt.month}</span>
-                    <span className='text-xl md:text-2xl font-black'>{evt.day}</span>
+                    <span className='text-xs font-bold uppercase tracking-wider'>{evt.month}</span>
+                    <span className='text-2xl font-black'>{evt.day}</span>
                   </div>
-                  <div className='flex flex-col'>
-                    <h4 className={cn('font-bold text-lg', evt.status && 'text-zinc-800 dark:text-zinc-200')}>
-                      {evt.title}
-                    </h4>
-                    <p
-                      className={cn(
-                        'text-sm mt-1 mb-3',
-                        evt.status ? 'text-zinc-500' : 'text-zinc-600 dark:text-zinc-400',
+                  <div className='flex flex-col gap-2 flex-1'>
+                    <div className='flex items-center justify-between gap-2'>
+                      <h3 className='font-bold text-lg'>{evt.title}</h3>
+                      {evt.status && (
+                        <span className='text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700'>
+                          {evt.status}
+                        </span>
                       )}
-                    >
-                      {evt.description}
-                    </p>
+                    </div>
+                    <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{evt.description}</p>
                     {evt.link && (
                       <Link
                         href={evt.link.url}
-                        className='text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline inline-flex items-center gap-1 w-fit transition-colors'
+                        className='text-emerald-600 dark:text-emerald-400 font-bold text-sm mt-2 hover:underline inline-flex items-center gap-1'
                       >
-                        {evt.link.text}{' '}
-                        <span className='transform -rotate-45 font-sans group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform'>
-                          →
-                        </span>
+                        {evt.link.text} <span>→</span>
                       </Link>
                     )}
-                    {evt.status && <span className='text-xs font-semibold text-zinc-400 italic'>{evt.status}</span>}
                   </div>
                 </div>
               ))}
             </div>
           )}
 
-          {eventsAndUpdates.updates.length > 0 && (
+          {eventsAndUpdates?.updates?.length > 0 && (
             <div className='flex flex-col gap-6'>
-              <div className='flex items-center gap-3 mb-2 text-xl font-bold'>
-                <Rss className='h-6 w-6 text-zinc-600 dark:text-zinc-400' /> {eventsAndUpdates.updatesTitle}
-              </div>
+              <div className='flex items-center gap-3 mb-2 text-xl font-bold'>{eventsAndUpdates.updatesTitle}</div>
 
-              {eventsAndUpdates.updates?.map((update, idx) => (
+              {eventsAndUpdates.updates?.map((upd, idx) => (
                 <div
                   key={idx}
-                  className={cn(
-                    'flex flex-col pl-5 border-l-2 py-1 ml-3 hover:translate-x-1 transition-transform',
-                    update.type === 'primary' ? 'border-emerald-500' : 'border-zinc-200 dark:border-zinc-800 mt-6',
-                  )}
+                  className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3'
                 >
-                  <div
-                    className={cn(
-                      'text-[10px] font-bold tracking-widest uppercase mb-1.5',
-                      update.type === 'primary' ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500',
+                  <div className='flex items-center justify-between'>
+                    <span className='text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider'>
+                      {upd.category}
+                    </span>
+                    {upd.type && (
+                      <span className='text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'>
+                        {upd.type}
+                      </span>
                     )}
-                  >
-                    {update.category}
                   </div>
-                  <h4 className='font-bold text-lg'>{update.title}</h4>
-                  <p className='text-sm text-zinc-600 dark:text-zinc-400 mt-1 mb-3'>{update.description}</p>
-                  {update.link && (
+                  <h3 className='font-bold text-lg'>{upd.title}</h3>
+                  <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{upd.description}</p>
+                  {upd.link && (
                     <Link
-                      href={update.link.url}
-                      className='text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline transition-colors'
+                      href={upd.link.url}
+                      className='text-emerald-600 dark:text-emerald-400 font-bold text-sm mt-2 hover:underline inline-flex items-center gap-1'
                     >
-                      {update.link.text}
+                      {upd.link.text} <span>→</span>
                     </Link>
                   )}
                 </div>
@@ -345,17 +473,17 @@ function SupportChannelCard({
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all flex flex-col items-start gap-4'
+      className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all flex flex-col items-start'
     >
-      <div className={cn('w-12 h-12 rounded-2xl flex items-center justify-center', iconBg)}>{icon}</div>
-      <h3 className='text-xl font-bold mt-2'>{title}</h3>
-      <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm'>{description}</p>
+      <div className={cn('w-12 h-12 rounded-2xl flex items-center justify-center mb-6', iconBg)}>{icon}</div>
+      <h3 className='text-xl font-bold mb-3'>{title}</h3>
+      <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-8 flex-1'>{description}</p>
       <Link
         href={href}
         target='_blank'
-        className='mt-auto pt-4 text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 group hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors text-sm'
+        className='text-emerald-600 dark:text-emerald-400 font-bold text-sm hover:gap-2 transition-all flex items-center gap-1 mt-auto'
       >
-        {linkText} <span className='transition-transform group-hover:translate-x-1 font-sans'>→</span>
+        {linkText} <span className='text-base'>→</span>
       </Link>
     </motion.div>
   );
@@ -369,7 +497,7 @@ function AvatarProfile({
 }: {
   name: string;
   sponsorRole: string;
-  avatarUrl?: string;
+  avatarUrl: string;
   link: string;
 }) {
   return (

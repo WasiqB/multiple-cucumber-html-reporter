@@ -1,0 +1,28 @@
+jsonDir: 'reports/'
+reportPath: 'reports/report/'
+useCDN: false
+openReportInBrowser: true
+saveCollectedJSON: false
+displayReportTime: true
+durationAggregation: 'wallClock'
+displayChartPercentages: true
+durationInMS: false
+displayDuration: true
+pageTitle: 'My Playwright Typescript Sample'
+reportName: 'Cucumber JS Report'
+metadata:
+  'saucedemo.feature':
+    browser:
+      name: 'firefox'
+      version: '148'
+  'restful-booker.feature':
+    browser:
+      name: 'api'
+      version: ''
+customData:
+  projectName: 'Playwright sample project'
+  release: '1.2.0'
+  testCycle: ${GITHUB_RUN_ID:'Cycle 1'}
+  buildNumber: ${GITHUB_RUN_NUMBER:'Build 1'}
+  environment: 'production'
+  ciPipeline: 'GitHub Actions'
