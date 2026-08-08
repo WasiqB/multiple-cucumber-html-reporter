@@ -1,7 +1,6 @@
 'use client';
 
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
-import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { Activity, BarChart3, Heart, Layers, MessageSquare, Star, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
@@ -26,11 +25,7 @@ const heroData = {
     url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter',
   },
   image: 'featureListPage' as keyof ImageLinks,
-  installCommands: [
-    { label: 'npm', code: 'npm install multiple-cucumber-html-reporter --save-dev' },
-    { label: 'yarn', code: 'yarn add multiple-cucumber-html-reporter --dev' },
-    { label: 'pnpm', code: 'pnpm add -D multiple-cucumber-html-reporter' },
-  ],
+  installCommands: { code: 'npm install multiple-cucumber-html-reporter --global' },
 };
 
 const featuresData = {
@@ -74,7 +69,7 @@ const setupData = {
       title: 'Install Command line tool',
       description: 'Install the reporter CLI tool on your machine using your preferred package manager.',
       lang: 'bash',
-      code: `npm install multiple-cucumber-html-reporter --save-dev`,
+      code: `npm install multiple-cucumber-html-reporter --global`,
     },
     {
       stepNumber: 2,
@@ -213,22 +208,16 @@ export default function HomePage() {
             )}
 
             <div className='w-full max-w-xl mt-2'>
-              <Tabs items={heroData.installCommands.map((c) => c.label)}>
-                {heroData.installCommands.map((cmd) => (
-                  <Tab key={cmd.label} value={cmd.label}>
-                    <DynamicCodeBlock
-                      lang='bash'
-                      code={cmd.code}
-                      options={{
-                        themes: {
-                          light: 'github-light',
-                          dark: 'github-dark',
-                        },
-                      }}
-                    />
-                  </Tab>
-                ))}
-              </Tabs>
+              <DynamicCodeBlock
+                lang='bash'
+                code={heroData.installCommands.code}
+                options={{
+                  themes: {
+                    light: 'github-light',
+                    dark: 'github-dark',
+                  },
+                }}
+              />
             </div>
 
             <div className='flex flex-wrap gap-4 mt-2'>

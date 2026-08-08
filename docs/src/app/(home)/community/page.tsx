@@ -78,6 +78,12 @@ const communityData = {
         avatarUrl: 'https://avatars.githubusercontent.com/u/9130909?v=4',
         link: 'https://github.com/WasiqB',
       },
+      {
+        name: 'Mat Walker',
+        role: 'Contributor',
+        avatarUrl: 'https://avatars.githubusercontent.com/u/12616918?v=4',
+        link: 'https://github.com/v-mwalk',
+      },
     ],
   },
   alumni: {

@@ -63,6 +63,7 @@ const accordionData = {
         'attachScreenshot',
         'attachJson',
         'attachVideo',
+        'legacyAttachment',
       ] as (keyof ImageLinks)[],
     },
     {

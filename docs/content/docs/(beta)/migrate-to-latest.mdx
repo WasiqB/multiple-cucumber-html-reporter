@@ -1,0 +1,232 @@
+---
+title: Migrate to v4.2.0
+description: Migrate to the latest v4.2.0 from v4.1.0 or earlier.
+icon: ArrowLeftRight
+---
+
+## What changed in v4.2.0?
+
+Starting from **v4.2.0**, the Multiple Cucumber HTML Reporter introduces a dedicated **CLI tool (`mchr`)** that replaces the need for creating a separate report generation script.
+
+| | v4.1.0 and earlier | v4.2.0 and later |
+|---|---|---|
+| **How to generate** | Create a dedicated Node.js script and call `report.generate(options)` | Run `mchr` CLI command with a config file |
+| **Configuration** | Passed directly as options to `report.generate()` | Stored in a config file (JSON, YAML, JS, or TS) |
+| **Script required** | Yes | No |
+| **CI/CD usage** | Run the script with `node ./generate-report.js` | Run `mchr` directly |
+
+---
+
+## Before: v4.1.0 and earlier
+
+In the older approach, you had to:
+
+1. Install the package locally as a dev dependency.
+2. Create a dedicated script (e.g., `generate-report.js`) that called `report.generate()`.
+3. Add the script to your `package.json` and run it after your tests.
+
+### Example: `generate-report.js`
+
+```javascript
+const report = require('multiple-cucumber-html-reporter');
+
+report.generate({
+  jsonDir: './.run/reports/json/',
+  reportPath: './.run/html-report/',
+  openReportInBrowser: true,
+  useCDN: true,
+  pageTitle: 'My Project Report',
+  reportName: 'My Project',
+  displayDuration: true,
+  displayReportTime: true,
+  customData: {
+    projectName: 'My Project',
+    release: '1.2.0',
+    testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+    buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+    environment: 'production',
+    ciPipeline: 'GitHub Actions',
+  },
+});
+```
+
+### Example: `package.json` scripts
+
+```json
+{
+  "scripts": {
+    "test": "cucumber-js -f json:./.run/reports/json/report.json",
+    "generate-report": "node ./generate-report.js"
+  }
+}
+```
+
+---
+
+## After: v4.2.0 and later
+
+In the new approach, you no longer need a dedicated script. Instead:
+
+1. Install the package **globally** (or use `npx`).
+2. Create a **config file** with your reporter options.
+3. Run `mchr` in your terminal or CI pipeline to generate the report.
+
+### Step 1: Install globally
+
+<Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
+  <Tab value="npm">
+  ```bash
+  npm install multiple-cucumber-html-reporter --global
+  ```
+  </Tab>
+  <Tab value="yarn">
+  ```bash
+  yarn global add multiple-cucumber-html-reporter
+  ```
+  </Tab>
+  <Tab value="pnpm">
+  ```bash
+  pnpm add multiple-cucumber-html-reporter --global
+  ```
+  </Tab>
+</Tabs>
+
+### Step 2: Create a config file
+
+Replace the contents of your old `generate-report.js` with a config file in the root of your project. The CLI supports JSON, YAML, JavaScript, and TypeScript formats.
+
+<Tabs groupId='config-file' items={['JSON', 'YAML', 'TypeScript', 'JavaScript']}>
+  <Tab value="JSON">
+    ```json
+    {
+      "jsonDir": "./.run/reports/json/",
+      "reportPath": "./.run/html-report/",
+      "openReportInBrowser": true,
+      "useCDN": true,
+      "pageTitle": "My Project Report",
+      "reportName": "My Project",
+      "displayDuration": true,
+      "displayReportTime": true,
+      "customData": {
+        "projectName": "My Project",
+        "release": "1.2.0",
+        "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
+        "buildNumber": "${GITHUB_RUN_NUMBER:'Build 1'}",
+        "environment": "production",
+        "ciPipeline": "GitHub Actions"
+      }
+    }
+    ```
+  </Tab>
+  <Tab value="YAML">
+    ```yaml
+    jsonDir: './.run/reports/json/'
+    reportPath: './.run/html-report/'
+    openReportInBrowser: true
+    useCDN: true
+    pageTitle: 'My Project Report'
+    reportName: 'My Project'
+    displayDuration: true
+    displayReportTime: true
+    customData:
+      projectName: 'My Project'
+      release: '1.2.0'
+      testCycle: "${GITHUB_RUN_ID:'Cycle 1'}"
+      buildNumber: "${GITHUB_RUN_NUMBER:'Build 1'}"
+      environment: 'production'
+      ciPipeline: 'GitHub Actions'
+    ```
+  </Tab>
+  <Tab value="TypeScript">
+    ```typescript
+    import type { Options } from 'multiple-cucumber-html-reporter';
+
+    const config: Options = {
+      jsonDir: './.run/reports/json/',
+      reportPath: './.run/html-report/',
+      openReportInBrowser: true,
+      useCDN: true,
+      pageTitle: 'My Project Report',
+      reportName: 'My Project',
+      displayDuration: true,
+      displayReportTime: true,
+      customData: {
+        projectName: 'My Project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+    };
+
+    export default config;
+    ```
+  </Tab>
+  <Tab value="JavaScript">
+    ```javascript
+    const config = {
+      jsonDir: './.run/reports/json/',
+      reportPath: './.run/html-report/',
+      openReportInBrowser: true,
+      useCDN: true,
+      pageTitle: 'My Project Report',
+      reportName: 'My Project',
+      displayDuration: true,
+      displayReportTime: true,
+      customData: {
+        projectName: 'My Project',
+        release: '1.2.0',
+        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
+        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
+        environment: 'production',
+        ciPipeline: 'GitHub Actions',
+      },
+    };
+
+    module.exports = config;
+    ```
+  </Tab>
+</Tabs>
+
+<Callout title="Tip" type="idea">
+You can also run `mchr` for the first time to launch an interactive onboarding wizard that will generate the config file for you automatically.
+</Callout>
+
+### Step 3: Generate the report
+
+After setting up the config file, simply run the following command after your tests have completed:
+
+```shell
+mchr
+```
+
+You can now remove your old `generate-report.js` script and the corresponding `generate-report` entry from your `package.json`.
+
+### Updated `package.json` scripts
+
+```json
+{
+  "scripts": {
+    "test": "cucumber-js -f json:./.run/reports/json/report.json",
+    "generate-report": "mchr"
+  }
+}
+```
+
+---
+
+## Summary of migration steps
+
+1. ✅ **Uninstall** the locally installed package (if only used for report generation) and **install it globally**.
+2. ✅ **Delete** your old `generate-report.js` (or equivalent) script.
+3. ✅ **Create** a config file (`.multiple-cucumber-html-reporter.json` or preferred format) with the same options you previously passed to `report.generate()`.
+4. ✅ **Update** your `package.json` or CI pipeline script to call `mchr` instead of `node ./generate-report.js`.
+
+<Callout title="Note" type="info">
+The programmatic API (`report.generate()`) is still supported for users who prefer it. See the [Usage](/docs/latest/usage) page for details.
+</Callout>
+
+<Callout title="Important" type="warning">
+When running in a CI environment, make sure the config file is present in the directory where `mchr` is executed. The interactive onboarding wizard is automatically skipped on CI, and the CLI will error out if no config file is found.
+</Callout>

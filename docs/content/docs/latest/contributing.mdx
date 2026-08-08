@@ -6,16 +6,39 @@ icon: Handshake
 
 We love contributions! Following these guidelines will help ensure a smooth contribution process and maintain a high-quality codebase.
 
-## 1. Before You Start
+## Before You Start [step]
 
 - **Search Existing Issues & Discussions**: Before creating a new issue or discussion, please check the existing [GitHub Issues](https://github.com/WasiqB/multiple-cucumber-html-reporter/issues) and [GitHub Discussions](https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions) to prevent duplicates.
 - **AI Usage Policy**: Using AI tools (e.g., ChatGPT, GitHub Copilot) to help write code or documentation is fine, provided that you carefully verify, test, and take ownership of all submitted changes.
 
-## 2. Environment & Local Setup
+## Environment & Local Setup [step]
 
 ### Prerequisites
+
 - **Node.js**: `v22` (Recommended / Required version)
-- **pnpm**: Our preferred package manager (`pnpm v9+`)
+- **pnpm**: Our preferred package manager (`pnpm v11+`)
+
+#### Setting up Node JS with PNPM
+
+```bash
+# Download and install latest nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
+
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+nvm install 22
+
+# Verify the Node.js version:
+node -v # Should print "v22.x.x".
+
+# Download and install pnpm:
+corepack enable pnpm
+
+# Verify pnpm version:
+pnpm -v
+```
 
 ### Setting Up the Project (Forking & Cloning)
 
@@ -25,34 +48,50 @@ Click the **Fork** button at the top right of the [GitHub Repository](https://gi
 
 #### Clone your Fork [step]
 
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/multiple-cucumber-html-reporter.git
-   cd multiple-cucumber-html-reporter
-   ```
+```bash
+git clone https://github.com/YOUR-USERNAME/multiple-cucumber-html-reporter.git
+
+cd multiple-cucumber-html-reporter
+```
+
 #### Add Upstream Remote [step]
 
-   ```bash
-   git remote add upstream https://github.com/WasiqB/multiple-cucumber-html-reporter.git
-   ```
+```bash
+git remote add upstream https://github.com/WasiqB/multiple-cucumber-html-reporter.git
+```
+
 #### Install Dependencies [step]
 
-   ```bash
-   pnpm install
-   ```
+```bash
+pnpm install
+```
 
-   <Callout title='Note' type='info'>
-   Running `pnpm install` initializes Git pre-commit hooks via Husky.
-    </Callout>
+<Callout title='Note' type='info'>
+Running `pnpm install` initializes Git pre-commit hooks via Husky.
+</Callout>
 
-#### Verify Setup by Running Tests [step]
+#### Build the reporter [step]
 
-   ```bash
-   pnpm test
-   ```
+From the `reporter` directory in the repository, run the following command to build the reporter:
+
+```bash
+pnpm build
+```
+
+#### Setup Command line tool locally [step]
+
+For debugging the reporter, you need to setup the CLI tool locally by running the following commands from the root folder of the repository:
+
+```bash
+pnpm link --global ./reporter
+
+pnpm install
+```
 
 ### Pre-commit Git Hooks (Linting & Formatting)
 
 This repository uses **Husky** and **lint-staged** to run pre-commit checks automatically.
+
 - Every time you execute `git commit`, `lint-staged` automatically formats and lints your staged TypeScript and JSON files using **Biome** (`pnpm format:fix`, `pnpm lint:fix`).
 - Commit message linting (`commitlint`) is also enforced on pre-commit to maintain Conventional Commit history.
 
@@ -61,7 +100,7 @@ This repository uses **Husky** and **lint-staged** to run pre-commit checks auto
 - **Editor**: We recommend using **VS Code**.
 - **Extensions**: Install the **Biome** VS Code extension (`biomejs.biome`) for consistent code formatting and linting directly inside your editor.
 
-## 3. Project Structure
+## Project Structure [step]
 
 Understanding the workspace organization:
 
@@ -76,17 +115,20 @@ multiple-cucumber-html-reporter/
 └── reporter/         # Core reporter package source code
 ```
 
-## 4. Development & Debugging
+## Development & Debugging [step]
 
 ### Debugging with Sample Projects
 
 To test and debug your changes against realistic setups, utilize the sample projects in the `examples/` directory:
 
-1. Build/link the core package if necessary.
+1. [Build / link](/docs/latest/contributing#build-the-reporter-step) the core package if necessary.
 2. Navigate to one of the example directories under `examples/`.
-3. Install dependencies and run the example scripts to verify report generation behavior.
+3. Run the example test scripts by running `pnpm test`.
+4. Run the command `mchr` or `pnpm report` to generate and view the report.
 
 ### Running Test Suite
+
+To verify your changes, run the following command from the `reporter` folder:
 
 ```bash
 # Run unit tests
@@ -94,25 +136,39 @@ pnpm test
 
 # Run test coverage report
 pnpm unit.test.coverage
-
-# Generate test report output
-pnpm report
 ```
 
-## 5. Updating GitHub Workflows
+## Updating GitHub Workflows [step]
 
 Update files under `.github/workflows/` only when:
+
 - Adding or modifying CI/CD automation steps.
 - Updating matrix test configurations (e.g., Node version matrix).
-- Adjusting release, lint, or security workflow triggers.
+- Adjusting release, lint, or test workflow triggers.
 
-## 6. Updating Documentation
+## Updating Documentation [step]
 
 When adding new features, fixing bugs, or changing APIs, update the docs in `docs/content/docs/`:
 - **`docs/content/docs/(beta)/`**: Add or update documentation for upcoming / beta features.
 - **`docs/content/docs/latest/`**: Update documentation applicable to current stable releases.
 
-## 7. Commits & GPG Signing
+### Building the documentation site
+
+Run the following command from the `docs` folder in the repository:
+
+```bash
+pnpm build
+```
+
+### Run the local dev server
+
+Run the command:
+
+```bash
+pnpm dev
+```
+
+## Commits & GPG Signing [step]
 
 ### Commit Message Format
 
@@ -128,29 +184,59 @@ feat: add support for custom execution metrics
 All commits must be **GPG signed** for security and verification:
 1. Set up a GPG key in Git following GitHub's [Managing commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification) guide.
 2. Ensure commit signing is enabled:
-   ```bash
-   git config --global user.signingkey <YOUR_KEY_ID>
-   git config --global commit.gpgsign true
-   ```
 
-## 8. Submitting a Pull Request (PR)
+```bash
+git config --global user.signingkey <YOUR_KEY_ID>
+git config --global commit.gpgsign true
+```
 
-1. Sync your local `main` branch with `upstream`:
-   ```bash
-   git checkout main
-   git fetch upstream
-   git merge upstream/main
-   ```
-2. Create a descriptive topic branch:
-   ```bash
-   git checkout -b feat/my-awesome-feature
-   ```
-3. Make your changes, then commit with signed conventional commit messages (`git commit -S -m "feat: ..."`). Git pre-commit hooks will automatically lint and format staged files.
-4. Push the branch to your fork:
-   ```bash
-   git push origin feat/my-awesome-feature
-   ```
-5. Navigate to the main repository on GitHub and open a Pull Request from your fork's branch into `WasiqB:main`.
-6. Fill out the PR template with details of the changes and link related issues.
+## Submitting a Pull Request (PR) [step]
 
-Thank you for helping make `multiple-cucumber-html-reporter` better!
+### Sync local branch [step]
+
+Sync your local `main` branch with `upstream`:
+
+```bash
+git checkout main
+git fetch upstream
+git merge upstream/main
+```
+
+### Create a branch [step]
+
+Create a descriptive topic branch:
+
+```bash
+git checkout -b feat/my-awesome-feature
+```
+
+### Commit your changes [step]
+
+Make your changes, then commit with signed conventional commit messages (`git commit -S -m "feat: ..."`). Git pre-commit hooks will automatically lint and format staged files.
+
+### Push your changes [step]
+
+Push the branch to your fork:
+
+```bash
+git push origin feat/my-awesome-feature
+```
+
+### Open PR in main repository [step]
+
+Navigate to the main repository on GitHub and open a Pull Request from your fork's branch into `WasiqB:main`.
+
+Fill out the PR template with details of the changes and link related issues.
+
+## Recognition
+
+For contributors who wants to get recognized and get showcase on our [Community page](/community), you must have any one of the following eligibility:
+
+- Get 3 PRs merged to `main` branch.
+- Get 1 critical PR with important feature merged to `main` branch.
+
+## Conclusion
+
+Looking forward for your contribution to the project.
+
+Thank you ❤️ for helping make `multiple-cucumber-html-reporter` better!

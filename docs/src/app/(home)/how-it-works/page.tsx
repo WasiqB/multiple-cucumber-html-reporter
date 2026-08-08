@@ -29,21 +29,12 @@ const howItWorksData = {
       number: 1,
       title: 'Simple Installation',
       description:
-        'Get started in seconds. Cucumber Reporter is distributed via NPM and integrates seamlessly into your existing JavaScript or TypeScript project.',
+        'Get started in seconds. Cucumber Reporter is distributed via NPM as a command line tool and is also able to integrate seamlessly into your existing JavaScript or TypeScript project.',
       badges: ['lightweight', 'insightful', 'fast'],
       lang: 'shell',
       commands: [
         {
           command: 'npm install multiple-cucumber-html-reporter --global',
-          tabValue: 'npm',
-        },
-        {
-          command: 'yarn global add multiple-cucumber-html-reporter',
-          tabValue: 'yarn',
-        },
-        {
-          command: 'pnpm add multiple-cucumber-html-reporter --global',
-          tabValue: 'pnpm',
         },
       ],
     },
@@ -331,11 +322,14 @@ export default function HowItWorksPage() {
                         {step.commands
                           ?.filter((c: Command) => !c.output)
                           .map((command: Command, i) => {
-                            return (
-                              <Tab key={i} value={command.tabValue ?? ''}>
-                                <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
-                              </Tab>
-                            );
+                            if (command.tabValue) {
+                              return (
+                                <Tab key={i} value={command.tabValue}>
+                                  <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
+                                </Tab>
+                              );
+                            }
+                            return <DynamicCodeBlock key={i} code={command.command} lang={step.lang || 'js'} />;
                           })}
                       </Tabs>
                     </div>
