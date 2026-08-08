@@ -83,7 +83,7 @@
 
 #### 1. Install globally
 
-```bash
+```shell
 npm install multiple-cucumber-html-reporter --global
 # or
 pnpm add multiple-cucumber-html-reporter --global
@@ -109,7 +109,7 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
 
 #### 3. Generate the report
 
-```bash
+```shell
 mchr
 ```
 
@@ -121,7 +121,7 @@ That's it! No separate script needed. See the [CLI documentation](https://multip
 
 If you prefer to generate the report from a Node.js script, install locally and call `generate()` directly:
 
-```bash
+```shell
 pnpm add multiple-cucumber-html-reporter --save-dev
 ```
 
