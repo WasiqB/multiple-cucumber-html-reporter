@@ -4,19 +4,29 @@ description: Everything you need to know about metadata in Multiple Cucumber HTM
 icon: Tags
 ---
 
-Multiple Cucumber HTML Reporter can display the browser, version, platform, and device type each feature was executed on.
+Multiple Cucumber HTML Reporter can display the browser, version, platform, and device type that each feature was executed on.
 
-Metadata can be displayed either in the Features overview table or within each scenario's details.
+Metadata can be shown in the Features overview table and within each scenario's detail view.
 
-When metadata is not provided, the reporter automatically adds the local platform name and version, current machine username, device hostname, Node.js version, reporter version, hostname, and CPU architecture. If partial metadata is provided, for example only browser details, the missing standard fields are still filled automatically.
+<Callout title="Default metadata" type="info">
+When no metadata is provided, the reporter automatically fills in the local platform name and version, current machine username, device hostname, Node.js version, reporter version, hostname, and CPU architecture. If only partial metadata is provided (e.g., browser details only), the missing standard fields are still populated automatically.
+</Callout>
 
 ## Adding Metadata
 
-There are two primary ways to add metadata:
+There are three ways to add metadata to the report:
 
-### Option 1: Same metadata for all the Features
+| Method | Best for |
+|---|---|
+| [Inline `metadata` object](#option-1-same-metadata-for-all-features) | All features run in the same environment |
+| [Per-feature `metadata` map](#option-2-per-feature-metadata-recommended) | Features run across different browsers or platforms |
+| [`metadataFilePath`](#option-3-metadata-from-a-json-file) | CI/CD pipelines or dynamic environments where metadata is written at runtime |
 
-If you provide metadata object, same metadata will be added to all the features in the report.
+---
+
+### Option 1: Same metadata for all features
+
+Pass a single `metadata` object to apply identical metadata to every feature in the report.
 
 ```typescript
 await generate({
@@ -37,17 +47,17 @@ await generate({
 Any values you provide take precedence over automatic defaults.
 
 <Callout title="When to use this option?" type='idea'>
-It is suggested to use this option only when all the feature files have executed on the same browser, platform or app.
+Use this option only when all features were executed on the same browser, platform, or app.
 </Callout>
 
-### Option 2: Feature specific metadata (Recommended)
+---
 
-If your test scenarios are running in different environments, you can define metadata based on the feature file name.
+### Option 2: Per-feature metadata (Recommended)
 
-The `metadata` object should be defined as follows:
+If your test scenarios run in different environments, you can define metadata per feature file name. The `metadata` object keys must match the feature file names (without the directory path).
 
 ```typescript
-const metadata: { [key: string]: Metadata } = {
+const metadata: Record<string, Metadata> = {
   'saucedemo.feature': {  // [!code highlight]
     browser: {
       name: 'chrome',
@@ -69,12 +79,75 @@ await generate({
 ```
 
 <Callout title="Note" type='idea'>
-The highlighted lines in the above example is the actual feature file name along with their respective set of Metadata object.
+The highlighted keys are the actual feature file names. Each key maps to its own `Metadata` object.
 </Callout>
+
+---
+
+### Option 3: Metadata from a JSON file
+
+Use `metadataFilePath` to load metadata from an external JSON file. This is particularly useful in CI/CD pipelines where your test runner writes metadata at runtime — for example, the browser version resolved by a Selenium Grid, or the device name assigned by a device farm.
+
+```typescript
+await generate({
+  jsonDir: './.run/reports/json/',
+  reportPath: './.run/html-report/',
+  metadataFilePath: './.run/reports/json/metadata.json',
+});
+```
+
+The JSON file must follow either the `Metadata` shape (to apply to all features) or a `Record<string, Metadata>` shape (per-feature), exactly as you would pass them inline.
+
+**Per-feature `metadata.json`:**
+
+```json
+{
+  "sauce-demo-login-chrome.feature": {
+    "device": "Local Test Machine",
+    "browser": {
+      "name": "chrome",
+      "version": "latest"
+    }
+  },
+  "saucedemo-chrome.feature": {
+    "device": "Local Test Machine",
+    "browser": {
+      "name": "chrome",
+      "version": "latest"
+    }
+  }
+}
+```
+
+**Common `metadata.json` (same for all features):**
+
+```json
+{
+  "browser": {
+    "name": "chrome",
+    "version": "136"
+  },
+  "platform": {
+    "name": "linux",
+    "version": "22.04"
+  },
+  "device": "GitHub Actions Runner"
+}
+```
+
+<Callout title="Important" type="warn">
+`metadataFilePath` takes precedence over the inline `metadata` option. When both are set, the file is used and the inline value is ignored.
+</Callout>
+
+<Callout title="Placing the file inside jsonDir" type="idea">
+You can safely place the metadata JSON file inside your `jsonDir`. The reporter automatically excludes it from the Cucumber JSON collection pass, so it will not be treated as a test result file.
+</Callout>
+
+---
 
 ## Supported Metadata Values
 
-To ensure proper icons are displayed, use the following predefined values for certain fields:
+To ensure the correct icons are displayed in the report, use the following predefined values for the relevant fields.
 
 ### `browser.name`
 - `internet explorer`
@@ -92,16 +165,18 @@ To ensure proper icons are displayed, use the following predefined values for ce
 - `android`
 - `ios`
 
+---
+
 ## Custom Metadata
 
-If you need more than just the standard browser and platform information, you can use **Custom Metadata**.
+If you need to display information beyond the standard browser and platform fields, you can use **Custom Metadata**.
 
 ### Configuration (Deprecated)
 
 <Callout title="Deprecated" type='warning'>
-Metadata type of `Array<{ name: string, value: string }>` and `customMetadata` property is deprecated and will be removed in the next major version.
+The `Array<{ name: string, value: string }>` metadata type and the `customMetadata` property are deprecated and will be removed in the next major version.
 
-Use metadata of `Metadata` or `Record<string, Metadata>` type instead.
+Use `Metadata` or `Record<string, Metadata>` instead.
 </Callout>
 
 Set `customMetadata: true` in your options:
@@ -118,5 +193,5 @@ report.generate({
 ```
 
 <Callout title="Caution" type="warn">
-Custom metadata will override regular metadata completely. Try to avoid using more than 10 metadata variables, as it can cause layout issues.
+Custom metadata overrides regular metadata completely. Avoid using more than 10 metadata variables, as it can cause layout issues.
 </Callout>
