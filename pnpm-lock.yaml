@@ -13,19 +13,19 @@ importers:
         version: 2.5.7
       '@commitlint/cli':
         specifier: ^21.2.1
-        version: 21.2.1(@types/node@26.1.2)(conventional-commits-parser@7.0.1)(typescript@6.0.3)
+        version: 21.2.1(@types/node@26.2.0)(conventional-commits-parser@7.0.1)(typescript@6.0.3)
       '@commitlint/config-conventional':
         specifier: ^21.2.0
         version: 21.2.0
       '@release-it-plugins/lerna-changelog':
         specifier: ^9.0.0
-        version: 9.0.0(bluebird@3.7.2)(prettier@3.9.6)(release-it@20.2.1(@types/node@26.1.2)(supports-color@11.0.0))(supports-color@10.2.2)
+        version: 9.0.0(bluebird@3.7.2)(prettier@3.9.6)(release-it@20.2.1(@types/node@26.2.0)(supports-color@11.0.0))(supports-color@10.2.2)
       '@release-it/bumper':
         specifier: ^7.0.6
-        version: 7.0.6(release-it@20.2.1(@types/node@26.1.2)(supports-color@11.0.0))
+        version: 7.0.6(release-it@20.2.1(@types/node@26.2.0)(supports-color@11.0.0))
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -40,7 +40,7 @@ importers:
         version: 3.9.6
       release-it:
         specifier: ^20.2.1
-        version: 20.2.1(@types/node@26.1.2)(supports-color@11.0.0)
+        version: 20.2.1(@types/node@26.2.0)(supports-color@11.0.0)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -49,7 +49,7 @@ importers:
     dependencies:
       '@next/third-parties':
         specifier: ^16.3.0
-        version: 16.3.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        version: 16.3.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       '@radix-ui/react-collapsible':
         specifier: ^1.1.20
         version: 1.1.20(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -67,10 +67,10 @@ importers:
         version: 3.46.0(react@19.2.8)
       '@vercel/analytics':
         specifier: ^2.0.1
-        version: 2.0.1(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        version: 2.0.1(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       '@vercel/speed-insights':
         specifier: ^2.0.0
-        version: 2.0.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        version: 2.0.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -81,17 +81,17 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.8)
       fumadocs-core:
-        specifier: 16.14.1
-        version: 16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
+        specifier: 16.14.2
+        version: 16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
       fumadocs-mdx:
         specifier: 15.2.2
-        version: 15.2.2(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.2.18)(fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)
+        version: 15.2.2(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.2.18)(fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)
       fumadocs-typescript:
         specifier: ^5.3.0
-        version: 5.3.0(db5537df0f43cfc06dadf6a1110ffc69)
+        version: 5.3.0(48bdf16030ae2c3d13cfadd548cb4b66)
       fumadocs-ui:
-        specifier: 16.14.1
-        version: 16.14.1(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3)
+        specifier: 16.14.2
+        version: 16.14.2(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3)
       lucide-react:
         specifier: ^1.30.0
         version: 1.30.0(react@19.2.8)
@@ -100,7 +100,7 @@ importers:
         version: 13.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       next:
         specifier: 16.3.0
-        version: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -148,8 +148,8 @@ importers:
         specifier: ^2.0.14
         version: 2.0.14
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       '@types/react':
         specifier: ^19.2.18
         version: 19.2.18
@@ -185,8 +185,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       cypress:
         specifier: ^15.20.0
         version: 15.20.0
@@ -212,8 +212,8 @@ importers:
         specifier: ^1.62.1
         version: 1.62.1
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       tsx:
         specifier: ^4.23.11
         version: 4.23.11
@@ -231,14 +231,14 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       '@wdio/browserstack-service':
         specifier: ^9.33.1
-        version: 9.33.1(@wdio/cli@9.30.1(@types/node@26.1.2)(expect-webdriverio@6.0.1)(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
+        version: 9.33.1(@wdio/cli@9.30.1(@types/node@26.2.0)(expect-webdriverio@6.0.1)(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       '@wdio/cli':
         specifier: ^9.30.1
-        version: 9.30.1(@types/node@26.1.2)(expect-webdriverio@6.0.1)(supports-color@8.1.1)
+        version: 9.30.1(@types/node@26.2.0)(expect-webdriverio@6.0.1)(supports-color@8.1.1)
       '@wdio/cucumber-framework':
         specifier: ^9.30.1
         version: 9.30.1(supports-color@8.1.1)
@@ -339,11 +339,11 @@ importers:
         specifier: ^4.17.25
         version: 4.17.25
       '@types/luxon':
-        specifier: ^3.7.3
-        version: 3.7.3
+        specifier: ^3.7.4
+        version: 3.7.4
       '@types/node':
-        specifier: ^26.1.2
-        version: 26.1.2
+        specifier: ^26.2.0
+        version: 26.2.0
       c8:
         specifier: ^12.0.0
         version: 12.0.0
@@ -2878,8 +2878,8 @@ packages:
   '@types/lodash@4.17.25':
     resolution: {integrity: sha512-+K1NIO8I+F9/wNulfVvu23QYd0Pe9/OCqRrim4NoYIf1VoEDL90Ve4ClzpyqBLc7NpGGWRvYNCKZ1BE/Jpf8dQ==}
 
-  '@types/luxon@3.7.3':
-    resolution: {integrity: sha512-pE7BSbKHiojpl4v7iEzdfFLXXJaH5RPJxI3Wr4x3HU59l83PJfhcUx4mGPWq245+DCAENAzRF/+ZoYr2tJCe/g==}
+  '@types/luxon@3.7.4':
+    resolution: {integrity: sha512-V536ZAd6ZJztrrBlLcDFaaZrXNAL2E5uGmssWf/dpSiLkmkLScXUYhUBnWPmtW+cIqnNHzf6//TCMpIc9SCRRQ==}
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -2893,8 +2893,8 @@ packages:
   '@types/node@20.19.43':
     resolution: {integrity: sha512-6oYBAi5ikg4Pl+kGsoYtawUMBT2zZMCvPNF7pVLnHZfd1zf38DRiWn/gT01RYCdUqkv7Fhr+C9ot4/tb+2sVvA==}
 
-  '@types/node@26.1.2':
-    resolution: {integrity: sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg==}
+  '@types/node@26.2.0':
+    resolution: {integrity: sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4758,8 +4758,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fumadocs-core@16.14.1:
-    resolution: {integrity: sha512-Bhyd0J8gMWtX9o1eFvR/9/Cc0/5Al/jMIf4ukeNtHhjRCkT0fXsPFXiFgKPtWMBdKpffx9WRbVewtcc0py0rnw==}
+  fumadocs-core@16.14.2:
+    resolution: {integrity: sha512-Wk4111Q0YdRN+ZEzm4cQaJaUCd3a70exPi70ibhIK/QpCiMwyAhypQ1us+LEDQphRW6IhcL0mBlIuNsxk1YFcA==}
     peerDependencies:
       '@mdx-js/mdx': '*'
       '@mixedbread/sdk': 0.x.x
@@ -4877,12 +4877,12 @@ packages:
       fumadocs-ui:
         optional: true
 
-  fumadocs-ui@16.14.1:
-    resolution: {integrity: sha512-bKWEN0zZbjI5D2ywY7aSLXP/SetIeixpn3HmLpLey0TqlmkPc+0JNJfhQ5L8enKprhGMndDfBeehqWVCYam6oA==}
+  fumadocs-ui@16.14.2:
+    resolution: {integrity: sha512-Z3td3R8WQGHApwtSFDrZT4t7xsVi3ZIBA6BsVtfrLdHY8ivwildci7CcP7ELO3/BcEPopSiUDxIMwKz+DklmyA==}
     peerDependencies:
       '@types/mdx': '*'
       '@types/react': '*'
-      fumadocs-core: 16.14.1
+      fumadocs-core: 16.14.2
       next: 16.x.x
       react: ^19.2.0
       react-dom: ^19.2.0
@@ -8620,12 +8620,12 @@ snapshots:
 
   '@colors/colors@1.6.0': {}
 
-  '@commitlint/cli@21.2.1(@types/node@26.1.2)(conventional-commits-parser@7.0.1)(typescript@6.0.3)':
+  '@commitlint/cli@21.2.1(@types/node@26.2.0)(conventional-commits-parser@7.0.1)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-conventional': 21.2.0
       '@commitlint/format': 21.2.0
       '@commitlint/lint': 21.2.0
-      '@commitlint/load': 21.2.0(@types/node@26.1.2)(typescript@6.0.3)
+      '@commitlint/load': 21.2.0(@types/node@26.2.0)(typescript@6.0.3)
       '@commitlint/read': 21.2.1(conventional-commits-parser@7.0.1)
       '@commitlint/types': 21.2.0
       tinyexec: 1.2.4
@@ -8670,14 +8670,14 @@ snapshots:
       '@commitlint/rules': 21.2.0
       '@commitlint/types': 21.2.0
 
-  '@commitlint/load@21.2.0(@types/node@26.1.2)(typescript@6.0.3)':
+  '@commitlint/load@21.2.0(@types/node@26.2.0)(typescript@6.0.3)':
     dependencies:
       '@commitlint/config-validator': 21.2.0
       '@commitlint/execute-rule': 21.0.1
       '@commitlint/resolve-extends': 21.2.0
       '@commitlint/types': 21.2.0
       cosmiconfig: 9.0.2(typescript@6.0.3)
-      cosmiconfig-typescript-loader: 6.3.0(@types/node@26.1.2)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3)
+      cosmiconfig-typescript-loader: 6.3.0(@types/node@26.2.0)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3)
       es-toolkit: 1.49.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
@@ -9378,245 +9378,245 @@ snapshots:
 
   '@inquirer/ansi@2.0.7': {}
 
-  '@inquirer/checkbox@4.3.2(@types/node@26.1.2)':
+  '@inquirer/checkbox@4.3.2(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/checkbox@5.2.1(@types/node@26.1.2)':
+  '@inquirer/checkbox@5.2.1(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 2.0.7
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
       '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/confirm@5.1.21(@types/node@26.1.2)':
+  '@inquirer/confirm@5.1.21(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/confirm@6.1.1(@types/node@26.1.2)':
+  '@inquirer/confirm@6.1.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/core@10.3.2(@types/node@26.1.2)':
+  '@inquirer/core@10.3.2(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/core@11.2.1(@types/node@26.1.2)':
+  '@inquirer/core@11.2.1(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 2.0.7
       '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
       cli-width: 4.1.0
       fast-wrap-ansi: 0.2.2
       mute-stream: 3.0.0
       signal-exit: 4.1.0
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/editor@4.2.23(@types/node@26.1.2)':
+  '@inquirer/editor@4.2.23(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/external-editor': 1.0.3(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/external-editor': 1.0.3(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/editor@5.2.2(@types/node@26.1.2)':
+  '@inquirer/editor@5.2.2(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/external-editor': 3.0.3(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/external-editor': 3.0.3(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/expand@4.0.23(@types/node@26.1.2)':
+  '@inquirer/expand@4.0.23(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/expand@5.1.1(@types/node@26.1.2)':
+  '@inquirer/expand@5.1.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/external-editor@1.0.3(@types/node@26.1.2)':
+  '@inquirer/external-editor@1.0.3(@types/node@26.2.0)':
     dependencies:
       chardet: 2.2.0
       iconv-lite: 0.7.3
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/external-editor@3.0.3(@types/node@26.1.2)':
+  '@inquirer/external-editor@3.0.3(@types/node@26.2.0)':
     dependencies:
       chardet: 2.2.0
       iconv-lite: 0.7.2
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   '@inquirer/figures@1.0.15': {}
 
   '@inquirer/figures@2.0.7': {}
 
-  '@inquirer/input@4.3.1(@types/node@26.1.2)':
+  '@inquirer/input@4.3.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/input@5.1.2(@types/node@26.1.2)':
+  '@inquirer/input@5.1.2(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/number@3.0.23(@types/node@26.1.2)':
+  '@inquirer/number@3.0.23(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/number@4.1.1(@types/node@26.1.2)':
+  '@inquirer/number@4.1.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/password@4.0.23(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/password@5.1.1(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/ansi': 2.0.7
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/prompts@7.10.1(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/checkbox': 4.3.2(@types/node@26.1.2)
-      '@inquirer/confirm': 5.1.21(@types/node@26.1.2)
-      '@inquirer/editor': 4.2.23(@types/node@26.1.2)
-      '@inquirer/expand': 4.0.23(@types/node@26.1.2)
-      '@inquirer/input': 4.3.1(@types/node@26.1.2)
-      '@inquirer/number': 3.0.23(@types/node@26.1.2)
-      '@inquirer/password': 4.0.23(@types/node@26.1.2)
-      '@inquirer/rawlist': 4.1.11(@types/node@26.1.2)
-      '@inquirer/search': 3.2.2(@types/node@26.1.2)
-      '@inquirer/select': 4.4.2(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/prompts@8.4.2(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/checkbox': 5.2.1(@types/node@26.1.2)
-      '@inquirer/confirm': 6.1.1(@types/node@26.1.2)
-      '@inquirer/editor': 5.2.2(@types/node@26.1.2)
-      '@inquirer/expand': 5.1.1(@types/node@26.1.2)
-      '@inquirer/input': 5.1.2(@types/node@26.1.2)
-      '@inquirer/number': 4.1.1(@types/node@26.1.2)
-      '@inquirer/password': 5.1.1(@types/node@26.1.2)
-      '@inquirer/rawlist': 5.3.1(@types/node@26.1.2)
-      '@inquirer/search': 4.2.1(@types/node@26.1.2)
-      '@inquirer/select': 5.2.1(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/rawlist@4.1.11(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/rawlist@5.3.1(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/search@3.2.2(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
-      yoctocolors-cjs: 2.1.3
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/search@4.2.1(@types/node@26.1.2)':
-    dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
-      '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
-    optionalDependencies:
-      '@types/node': 26.1.2
-
-  '@inquirer/select@4.4.2(@types/node@26.1.2)':
+  '@inquirer/password@4.0.23(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
-      yoctocolors-cjs: 2.1.3
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/select@5.2.1(@types/node@26.1.2)':
+  '@inquirer/password@5.1.1(@types/node@26.2.0)':
     dependencies:
       '@inquirer/ansi': 2.0.7
-      '@inquirer/core': 11.2.1(@types/node@26.1.2)
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/prompts@7.10.1(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/checkbox': 4.3.2(@types/node@26.2.0)
+      '@inquirer/confirm': 5.1.21(@types/node@26.2.0)
+      '@inquirer/editor': 4.2.23(@types/node@26.2.0)
+      '@inquirer/expand': 4.0.23(@types/node@26.2.0)
+      '@inquirer/input': 4.3.1(@types/node@26.2.0)
+      '@inquirer/number': 3.0.23(@types/node@26.2.0)
+      '@inquirer/password': 4.0.23(@types/node@26.2.0)
+      '@inquirer/rawlist': 4.1.11(@types/node@26.2.0)
+      '@inquirer/search': 3.2.2(@types/node@26.2.0)
+      '@inquirer/select': 4.4.2(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/prompts@8.4.2(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/checkbox': 5.2.1(@types/node@26.2.0)
+      '@inquirer/confirm': 6.1.1(@types/node@26.2.0)
+      '@inquirer/editor': 5.2.2(@types/node@26.2.0)
+      '@inquirer/expand': 5.1.1(@types/node@26.2.0)
+      '@inquirer/input': 5.1.2(@types/node@26.2.0)
+      '@inquirer/number': 4.1.1(@types/node@26.2.0)
+      '@inquirer/password': 5.1.1(@types/node@26.2.0)
+      '@inquirer/rawlist': 5.3.1(@types/node@26.2.0)
+      '@inquirer/search': 4.2.1(@types/node@26.2.0)
+      '@inquirer/select': 5.2.1(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/rawlist@4.1.11(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/rawlist@5.3.1(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/search@3.2.2(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
+      yoctocolors-cjs: 2.1.3
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/search@4.2.1(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
       '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.1.2)
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/type@3.0.10(@types/node@26.1.2)':
+  '@inquirer/select@4.4.2(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/ansi': 1.0.2
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/figures': 1.0.15
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
+      yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
-  '@inquirer/type@4.0.7(@types/node@26.1.2)':
+  '@inquirer/select@5.2.1(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/ansi': 2.0.7
+      '@inquirer/core': 11.2.1(@types/node@26.2.0)
+      '@inquirer/figures': 2.0.7
+      '@inquirer/type': 4.0.7(@types/node@26.2.0)
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
+
+  '@inquirer/type@3.0.10(@types/node@26.2.0)':
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/type@4.0.7(@types/node@26.2.0)':
+    optionalDependencies:
+      '@types/node': 26.2.0
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -9647,7 +9647,7 @@ snapshots:
 
   '@jest/pattern@30.4.0':
     dependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       jest-regex-util: 30.4.0
 
   '@jest/schemas@30.4.1':
@@ -9660,7 +9660,7 @@ snapshots:
       '@jest/schemas': 30.4.1
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       '@types/yargs': 17.0.35
       chalk: 4.1.2
 
@@ -9763,9 +9763,9 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.3.0':
     optional: true
 
-  '@next/third-parties@16.3.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+  '@next/third-parties@16.3.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
     dependencies:
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
       third-party-capital: 1.0.20
 
@@ -10739,13 +10739,13 @@ snapshots:
 
   '@radix-ui/rect@1.1.3': {}
 
-  '@release-it-plugins/lerna-changelog@9.0.0(bluebird@3.7.2)(prettier@3.9.6)(release-it@20.2.1(@types/node@26.1.2)(supports-color@11.0.0))(supports-color@10.2.2)':
+  '@release-it-plugins/lerna-changelog@9.0.0(bluebird@3.7.2)(prettier@3.9.6)(release-it@20.2.1(@types/node@26.2.0)(supports-color@11.0.0))(supports-color@10.2.2)':
     dependencies:
       execa: 9.6.1
       lerna-changelog: 2.2.0(bluebird@3.7.2)(supports-color@11.0.0)
       lodash: 4.18.1
       mdast-util-from-markdown: 2.0.3(supports-color@10.2.2)
-      release-it: 20.2.1(@types/node@26.1.2)(supports-color@11.0.0)
+      release-it: 20.2.1(@types/node@26.2.0)(supports-color@11.0.0)
       tmp: 0.2.7
       validate-peer-dependencies: 2.2.0
       which: 6.0.1
@@ -10755,7 +10755,7 @@ snapshots:
       - bluebird
       - supports-color
 
-  '@release-it/bumper@7.0.6(release-it@20.2.1(@types/node@26.1.2)(supports-color@11.0.0))':
+  '@release-it/bumper@7.0.6(release-it@20.2.1(@types/node@26.2.0)(supports-color@11.0.0))':
     dependencies:
       '@decimalturn/toml-patch': 1.3.0
       '@iarna/toml': 3.0.0
@@ -10765,7 +10765,7 @@ snapshots:
       ini: 6.0.0
       js-yaml: 4.3.0
       lodash-es: 4.18.1
-      release-it: 20.2.1(@types/node@26.1.2)(supports-color@11.0.0)
+      release-it: 20.2.1(@types/node@26.2.0)(supports-color@11.0.0)
       semver: 7.8.5
 
   '@sec-ant/readable-stream@0.4.1': {}
@@ -10983,7 +10983,7 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   '@types/gitconfiglocal@2.0.3': {}
 
@@ -11009,11 +11009,11 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   '@types/lodash@4.17.25': {}
 
-  '@types/luxon@3.7.3': {}
+  '@types/luxon@3.7.4': {}
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -11027,7 +11027,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@26.1.2':
+  '@types/node@26.2.0':
     dependencies:
       undici-types: 8.3.0
 
@@ -11077,7 +11077,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -11087,7 +11087,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
     optional: true
 
   '@typescript-eslint/project-service@8.62.1(supports-color@8.1.1)(typescript@5.9.3)':
@@ -11127,14 +11127,14 @@ snapshots:
 
   '@ungap/structured-clone@1.3.3': {}
 
-  '@vercel/analytics@2.0.1(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+  '@vercel/analytics@2.0.1(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
     optionalDependencies:
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
 
-  '@vercel/speed-insights@2.0.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+  '@vercel/speed-insights@2.0.0(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
     optionalDependencies:
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
 
   '@vitest/pretty-format@2.1.9':
@@ -11213,7 +11213,7 @@ snapshots:
 
   '@vue/shared@3.5.39': {}
 
-  '@wdio/browserstack-service@9.33.1(@wdio/cli@9.30.1(@types/node@26.1.2)(expect-webdriverio@6.0.1)(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)':
+  '@wdio/browserstack-service@9.33.1(@wdio/cli@9.30.1(@types/node@26.2.0)(expect-webdriverio@6.0.1)(supports-color@8.1.1))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)':
     dependencies:
       '@browserstack/ai-sdk-node': 1.5.17(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       '@bufbuild/protobuf': 2.13.0
@@ -11221,7 +11221,7 @@ snapshots:
       '@percy/appium-app': 2.1.0(supports-color@8.1.1)
       '@percy/selenium-webdriver': 2.2.7(supports-color@8.1.1)
       '@types/gitconfiglocal': 2.0.3
-      '@wdio/cli': 9.30.1(@types/node@26.1.2)(expect-webdriverio@6.0.1)(supports-color@8.1.1)
+      '@wdio/cli': 9.30.1(@types/node@26.2.0)(expect-webdriverio@6.0.1)(supports-color@8.1.1)
       '@wdio/logger': 9.29.1
       '@wdio/reporter': 9.29.1
       '@wdio/types': 9.30.1
@@ -11247,7 +11247,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@wdio/cli@9.30.1(@types/node@26.1.2)(expect-webdriverio@6.0.1)(supports-color@8.1.1)':
+  '@wdio/cli@9.30.1(@types/node@26.2.0)(expect-webdriverio@6.0.1)(supports-color@8.1.1)':
     dependencies:
       '@vitest/snapshot': 2.1.9
       '@wdio/config': 9.30.1(supports-color@8.1.1)
@@ -11259,7 +11259,7 @@ snapshots:
       async-exit-hook: 2.0.1
       chalk: 5.6.2
       chokidar: 4.0.3
-      create-wdio: 9.30.1(@types/node@26.1.2)
+      create-wdio: 9.30.1(@types/node@26.2.0)
       dotenv: 17.4.2
       import-meta-resolve: 4.2.0
       lodash.flattendeep: 4.4.0
@@ -12167,9 +12167,9 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@6.3.0(@types/node@26.1.2)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3):
+  cosmiconfig-typescript-loader@6.3.0(@types/node@26.2.0)(cosmiconfig@9.0.2(typescript@6.0.3))(typescript@6.0.3):
     dependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       cosmiconfig: 9.0.2(typescript@6.0.3)
       jiti: 2.6.1
       typescript: 6.0.3
@@ -12190,7 +12190,7 @@ snapshots:
       crc-32: 1.2.2
       readable-stream: 4.7.0
 
-  create-wdio@9.30.1(@types/node@26.1.2):
+  create-wdio@9.30.1(@types/node@26.2.0):
     dependencies:
       chalk: 5.6.2
       commander: 14.0.3
@@ -12198,7 +12198,7 @@ snapshots:
       ejs: 3.1.10
       execa: 9.6.1
       import-meta-resolve: 4.2.0
-      inquirer: 12.11.1(@types/node@26.1.2)
+      inquirer: 12.11.1(@types/node@26.2.0)
       normalize-package-data: 7.0.1
       read-pkg-up: 10.1.0
       recursive-readdir: 2.2.3
@@ -13162,7 +13162,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3):
+  fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3):
     dependencies:
       estree-util-value-to-estree: 3.5.0
       github-slugger: 2.0.0
@@ -13189,21 +13189,21 @@ snapshots:
       '@types/mdast': 4.0.4
       '@types/react': 19.2.18
       lucide-react: 1.30.0(react@19.2.8)
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
       zod: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-mdx@15.2.2(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.2.18)(fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(supports-color@11.0.0):
+  fumadocs-mdx@15.2.2(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.2.18)(fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(supports-color@11.0.0):
     dependencies:
       '@mdx-js/mdx': 3.1.1(supports-color@11.0.0)
       '@standard-schema/spec': 1.1.0
       chokidar: 5.0.0
       esbuild: 0.28.1
       estree-util-value-to-estree: 3.5.0
-      fumadocs-core: 16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
+      fumadocs-core: 16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
       github-slugger: 2.0.0
       magic-string: 1.1.0
       mdast-util-mdx: 3.0.0(supports-color@11.0.0)
@@ -13222,15 +13222,15 @@ snapshots:
       '@types/mdast': 4.0.4
       '@types/mdx': 2.0.14
       '@types/react': 19.2.18
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-typescript@5.3.0(db5537df0f43cfc06dadf6a1110ffc69):
+  fumadocs-typescript@5.3.0(48bdf16030ae2c3d13cfadd548cb4b66):
     dependencies:
       estree-util-value-to-estree: 3.5.0
-      fumadocs-core: 16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
+      fumadocs-core: 16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
       hast-util-to-estree: 3.1.3(supports-color@11.0.0)
       hast-util-to-jsx-runtime: 2.3.6(supports-color@11.0.0)
       react: 19.2.8
@@ -13246,11 +13246,11 @@ snapshots:
       '@types/hast': 3.0.5
       '@types/mdast': 4.0.4
       '@types/react': 19.2.18
-      fumadocs-ui: 16.14.1(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3)
+      fumadocs-ui: 16.14.2(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3)
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-ui@16.14.1(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3):
+  fumadocs-ui@16.14.2(@types/mdx@2.0.14)(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(fumadocs-core@16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(tailwindcss@4.3.3):
     dependencies:
       '@fuma-translate/react': 1.0.2(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@fumadocs/tailwind': 0.1.1(tailwindcss@4.3.3)
@@ -13266,7 +13266,7 @@ snapshots:
       '@radix-ui/react-tabs': 1.1.21(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       class-variance-authority: 0.7.1
       cnfast: 0.1.0
-      fumadocs-core: 16.14.1(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
+      fumadocs-core: 16.14.2(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.2.18)(lucide-react@1.30.0(react@19.2.8))(next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(supports-color@11.0.0)(zod@4.4.3)
       lucide-react: 1.30.0(react@19.2.8)
       motion: 12.43.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       next-themes: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -13280,7 +13280,7 @@ snapshots:
     optionalDependencies:
       '@types/mdx': 2.0.14
       '@types/react': 19.2.18
-      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
       - '@types/react-dom'
@@ -13766,17 +13766,17 @@ snapshots:
 
   inline-style-parser@0.2.7: {}
 
-  inquirer@12.11.1(@types/node@26.1.2):
+  inquirer@12.11.1(@types/node@26.2.0):
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@26.1.2)
-      '@inquirer/prompts': 7.10.1(@types/node@26.1.2)
-      '@inquirer/type': 3.0.10(@types/node@26.1.2)
+      '@inquirer/core': 10.3.2(@types/node@26.2.0)
+      '@inquirer/prompts': 7.10.1(@types/node@26.2.0)
+      '@inquirer/type': 3.0.10(@types/node@26.2.0)
       mute-stream: 2.0.0
       run-async: 4.0.6
       rxjs: 7.8.2
     optionalDependencies:
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
 
   internal-slot@1.1.0:
     dependencies:
@@ -14051,7 +14051,7 @@ snapshots:
   jest-mock@30.4.1:
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       jest-util: 30.4.1
 
   jest-regex-util@30.4.0: {}
@@ -14059,7 +14059,7 @@ snapshots:
   jest-util@30.4.1:
     dependencies:
       '@jest/types': 30.4.1
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       chalk: 4.1.2
       ci-info: 4.4.0
       graceful-fs: 4.2.11
@@ -15077,7 +15077,7 @@ snapshots:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  next@16.3.0(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.62.1)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@next/env': 16.3.0
       '@swc/helpers': 0.5.15
@@ -15097,7 +15097,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 16.3.0
       '@next/swc-win32-x64-msvc': 16.3.0
       '@playwright/test': 1.62.1
-      sharp: 0.35.3(@types/node@26.1.2)
+      sharp: 0.35.3(@types/node@26.2.0)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -15604,7 +15604,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
       long: 5.3.2
 
   protocols@2.0.2: {}
@@ -15960,9 +15960,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  release-it@20.2.1(@types/node@26.1.2)(supports-color@11.0.0):
+  release-it@20.2.1(@types/node@26.2.0)(supports-color@11.0.0):
     dependencies:
-      '@inquirer/prompts': 8.4.2(@types/node@26.1.2)
+      '@inquirer/prompts': 8.4.2(@types/node@26.2.0)
       '@octokit/rest': 22.0.1
       '@phun-ky/typeof': 2.0.3
       async-retry: 1.3.3
@@ -16289,7 +16289,7 @@ snapshots:
       - supports-color
       - typescript
 
-  sharp@0.35.3(@types/node@26.1.2):
+  sharp@0.35.3(@types/node@26.2.0):
     dependencies:
       '@img/colour': 1.1.0
       detect-libc: 2.1.2
@@ -16320,7 +16320,7 @@ snapshots:
       '@img/sharp-win32-arm64': 0.35.3
       '@img/sharp-win32-ia32': 0.35.3
       '@img/sharp-win32-x64': 0.35.3
-      '@types/node': 26.1.2
+      '@types/node': 26.2.0
     optional: true
 
   shebang-command@2.0.0:

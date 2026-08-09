@@ -123,6 +123,7 @@ async function generateReport(options: Options) {
   const customData = options.customData;
   const plainDescription = !!options.plainDescription;
   const customStyle = options.customStyle;
+  const customScript = options.customScript;
   const openReportInBrowser = !!options.openReportInBrowser;
   const reportName = options.reportName || DEFAULT_REPORT_NAME;
   const reportPath = resolve(process.cwd(), options.reportPath);
@@ -210,8 +211,19 @@ async function generateReport(options: Options) {
     app: 0,
     customMetadata,
     customData,
-    style: options.overrideStyle || 'styles.css',
+    style: 'styles.min.css',
     useCDN,
+    customScript: (() => {
+      if (!customScript) return undefined;
+      const resolvedScriptPath = resolve(process.cwd(), customScript);
+      if (fs.pathExistsSync(resolvedScriptPath)) {
+        return `assets/js/${path.basename(customScript)}`;
+      }
+      logger.warn('Configured customScript file was not found, skipping.', {
+        customScript: resolvedScriptPath,
+      });
+      return undefined;
+    })(),
     hideMetadata,
     displayReportTime,
     displayDuration,
@@ -336,7 +348,7 @@ async function generateReport(options: Options) {
   logger.debug('Rendering feature detail pages.');
   await _createFeatureIndexPages(suite);
   logger.debug('Writing report CSS assets.');
-  await _createCssFile(suite);
+  await _createCssFile();
   logger.debug('Writing report JavaScript assets.');
   await _createJsFiles();
 
@@ -800,6 +812,7 @@ async function generateReport(options: Options) {
       displayChartPercentages: suite.displayChartPercentages,
       plainDescription,
       customStyle: suite.customStyle || '',
+      customScript: suite.customScript,
       logo: logoPathName,
       modalBackdrop,
       modalDraggable,
@@ -856,6 +869,7 @@ async function generateReport(options: Options) {
       displayChartPercentages: suite.displayChartPercentages,
       plainDescription,
       customStyle: suite.customStyle || '',
+      customScript: suite.customScript,
       logo: logoPathName,
       attachmentLayout,
       modalBackdrop,
@@ -958,24 +972,35 @@ async function generateReport(options: Options) {
     }
   }
 
-  async function _createCssFile(suite: Suite) {
-    if (!suite.customStyle) {
-      const cssIn = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
-      const cssOut = path.join(reportPath, 'styles.min.css');
+  async function _createCssFile() {
+    const cssOut = path.join(reportPath, 'styles.min.css');
+    await fs.ensureDir(path.dirname(cssOut));
 
-      await fs.ensureDir(path.dirname(cssOut));
+    if (options.overrideStyle) {
+      // overrideStyle: completely replace the default CSS with the user-provided file.
+      const resolvedOverridePath = resolve(process.cwd(), options.overrideStyle);
+      if (fs.pathExistsSync(resolvedOverridePath)) {
+        logger.trace('Copying override stylesheet.', { source: resolvedOverridePath, target: cssOut });
+        await fs.copy(resolvedOverridePath, cssOut);
+      } else {
+        logger.warn('Configured overrideStyle file was not found, using default stylesheet.', {
+          overrideStyle: resolvedOverridePath,
+        });
+        const cssIn = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
+        await fs.copy(cssIn, cssOut);
+      }
+    } else {
+      // Default: copy the bundled stylesheet. customStyle content is injected
+      // inline by the template via report.customStyle, so we always need the
+      // default CSS as the base.
+      const cssIn = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
       logger.trace('Copying default stylesheet.', { source: cssIn, target: cssOut });
       await fs.copy(cssIn, cssOut);
-    } else {
-      const cssFile = resolve(reportPath, 'styles.css');
-      const cssContent = suite.customStyle;
-      logger.trace('Writing custom stylesheet.', { file: cssFile });
-      await fs.writeFile(cssFile, cssContent);
     }
   }
 
   async function _createJsFiles() {
-    // Copy JS
+    // Copy built-in scripts
     const jsInDir = path.join(templatesDir, 'scripts');
     const jsOutDir = path.join(reportPath, 'scripts');
     if (await fs.pathExists(jsInDir)) {
@@ -984,6 +1009,18 @@ async function generateReport(options: Options) {
       await fs.copy(jsInDir, jsOutDir);
     } else {
       logger.warn('Report script source directory was not found.', { source: jsInDir });
+    }
+
+    // Copy custom script if provided
+    if (customScript) {
+      const resolvedScriptPath = resolve(process.cwd(), customScript);
+      if (await fs.pathExists(resolvedScriptPath)) {
+        const jsAssetsDir = path.join(reportPath, 'assets', 'js');
+        await fs.ensureDir(jsAssetsDir);
+        const destPath = path.join(jsAssetsDir, path.basename(customScript));
+        logger.trace('Copying custom script.', { source: resolvedScriptPath, target: destPath });
+        await fs.copy(resolvedScriptPath, destPath);
+      }
     }
   }
 

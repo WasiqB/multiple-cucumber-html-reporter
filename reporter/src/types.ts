@@ -79,6 +79,12 @@ export interface Options {
   overrideStyle?: string;
   customStyle?: string;
   /**
+   * Path to a custom JavaScript file that will be copied to
+   * `assets/js/custom.js` in the report output and loaded via a `<script>`
+   * tag at the end of the script list on every report page.
+   */
+  customScript?: string;
+  /**
    * Controls reporter logging. Defaults to `info`.
    *
    * Examples:
@@ -273,6 +279,7 @@ export interface Suite {
   customData?: CustomData;
   style: string;
   customStyle?: string;
+  customScript?: string;
   useCDN: boolean;
   hideMetadata: boolean;
   displayReportTime: boolean;

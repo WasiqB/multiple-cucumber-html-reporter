@@ -118,7 +118,7 @@ describe('generate-report.js', () => {
         .toBeTrue();
     });
 
-    it('should create a report from the merged found json files and with array of embedded items', async () => {
+    it('should inject customStyle content as an inline style block in the generated HTML', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
         jsonDir: './src/test/unit/data/embedded-array-json/',
@@ -131,6 +131,64 @@ describe('generate-report.js', () => {
       expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
         .withContext('Index file exists')
         .toBeTrue();
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('custom-style block present').toContain('<style id="custom-style">');
+      // A distinctive selector from my.css
+      expect(indexHtml).withContext('custom CSS content injected').toContain('mycss');
+
+      // The default styles.min.css should still be referenced so the custom
+      // rules layer on top of the base styles (additive, not replacing).
+      expect(indexHtml).withContext('default stylesheet still linked').toContain('styles.min.css');
+
+      // The default CSS file must exist on disk too.
+      expect(fs.existsSync(path.join(process.cwd(), REPORT_PATH, 'styles.min.css')))
+        .withContext('styles.min.css exists on disk')
+        .toBeTrue();
+    });
+
+    it('should replace the default stylesheet with the overrideStyle file', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        overrideStyle: path.join(__dirname, '../my.css'),
+      });
+
+      expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
+        .withContext('Index file exists')
+        .toBeTrue();
+
+      // styles.min.css on disk should now contain the override CSS, not the default.
+      const stylesheetContent = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'styles.min.css'), 'utf8');
+      expect(stylesheetContent).withContext('override CSS written to styles.min.css').toContain('mycss');
+
+      // The HTML should still reference styles.min.css (same filename, replaced content).
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('stylesheet link preserved').toContain('styles.min.css');
+
+      // No custom-style inline block should appear (overrideStyle, not customStyle).
+      expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
+    });
+
+    it('should add the custom JS file', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        customScript: path.join(__dirname, '../custom.js'),
+      });
+
+      expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
+        .withContext('Index file exists')
+        .toBeTrue();
+
+      // The HTML should still reference custom.js.
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('custom script found').toContain('custom.js');
+
+      // No custom-style inline block should appear (overrideStyle, not customStyle).
+      expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
     });
 
     it('should render avif, webp and jpeg embeddings as screenshots (img tags) not as attachments', async () => {
