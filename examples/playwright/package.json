@@ -18,8 +18,8 @@
     "@cucumber/cucumber": "^13.2.1",
     "@mchr/tsconfig": "workspace:*",
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.1.2",
-    "tsx": "^4.23.11",
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
     "typescript": "^6.0.3"
   }
 }
