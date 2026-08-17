@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { Options } from '../types.js';
+import type { Options } from '@/types.js';
 import { prompts as p } from './prompts.js';
 
 export type OnboardingResult = {

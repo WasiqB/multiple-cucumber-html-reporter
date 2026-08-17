@@ -2,232 +2,238 @@
 {% assign base_url = '..' %}
 
 {% block content %}
-<div class="space-y-6">
-  <!-- Back Button & Breadcrumbs -->
-  <div class="flex items-center gap-2 text-sm text-muted-foreground">
-    <a href="../index.html" class="hover:text-foreground transition-colors">Dashboard</a>
-    <span>/</span>
-    <span class="text-foreground font-medium">Feature Detail</span>
-  </div>
+  <div class="space-y-6">
+    <!-- Back Button & Breadcrumbs -->
+    <div class="flex items-center gap-2 text-sm text-muted-foreground">
+      <a href="../index.html" class="hover:text-foreground transition-colors">Dashboard</a>
+      <span>/</span>
+      <span class="text-foreground font-medium">Feature Detail</span>
+    </div>
 
-  <!-- Feature Header -->
-  <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden">
-    <div class="p-4 md:p-6 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-      <div class="space-y-4 flex-1">
-        <div class="space-y-2">
-          <h2 class="text-xl md:text-2xl font-bold text-foreground leading-tight">{{ data.feature.name }}</h2>
-          {% if data.feature.tags.size > 0 %}
-            <div class="flex flex-wrap gap-1.5">
-              {% for tag in data.feature.tags %}
-                <span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
-                  {{ tag.name }}
-                </span>
-              {% endfor %}
+    <!-- Feature Header -->
+    <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden">
+      <div class="p-4 md:p-6 flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+        <div class="space-y-4 flex-1">
+          <div class="space-y-2">
+            <h2 class="text-xl md:text-2xl font-bold text-foreground leading-tight">{{ data.feature.name }}</h2>
+            {% if data.feature.tags.size > 0 %}
+              <div class="flex flex-wrap gap-1.5">
+                {% for tag in data.feature.tags %}
+                  <span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
+                    {{ tag.name }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if data.feature.description and data.feature.description != '' %}
+              <div class="mt-4 text-sm text-muted-foreground whitespace-pre-line bg-muted/20 p-3 rounded-lg border border-border/50">
+                {{ data.feature.description | escape | strip }}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="pt-2 border-t lg:border-t-0">
+            {% render 'includes/feature_metadata.liquid', feature: data.feature %}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-6 gap-3 md:gap-4 shrink-0 lg:ml-6 w-full sm:w-auto">
+          <div class="flex flex-col items-center justify-center bg-status-passed/10 rounded-xl py-3 px-3 border border-status-passed/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-passed leading-none">
+              {{ data.feature.passed | default: 0 }}
             </div>
-          {% endif %}
-          {% if data.feature.description and data.feature.description != '' %}
-            <div class="mt-4 text-sm text-muted-foreground whitespace-pre-line bg-muted/20 p-3 rounded-lg border border-border/50">
-              {{ data.feature.description | escape | strip }}
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-passed/70 dark:text-status-passed/30 mt-1 tracking-wider">
+              Passed
             </div>
-          {% endif %}
-        </div>
-
-        <div class="pt-2 border-t lg:border-t-0">
-          {% render 'includes/feature_metadata.liquid', feature: data.feature %}
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-6 gap-3 md:gap-4 shrink-0 lg:ml-6 w-full sm:w-auto">
-        <div class="flex flex-col items-center justify-center bg-status-passed/10 rounded-xl py-3 px-3 border border-status-passed/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-passed leading-none">
-            {{ data.feature.passed | default: 0 }}
           </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-passed/70 dark:text-status-passed/30 mt-1 tracking-wider">
-            Passed
+          <div class="flex flex-col items-center justify-center bg-status-failed/10 rounded-xl py-3 px-3 border border-status-failed/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-failed leading-none">
+              {{ data.feature.failed | default: 0 }}
+            </div>
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-failed/70 dark:text-status-failed/30 mt-1 tracking-wider">
+              Failed
+            </div>
           </div>
-        </div>
-        <div class="flex flex-col items-center justify-center bg-status-failed/10 rounded-xl py-3 px-3 border border-status-failed/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-failed leading-none">
-            {{ data.feature.failed | default: 0 }}
+          <div class="flex flex-col items-center justify-center bg-status-ambiguous/10 rounded-xl py-3 px-3 border border-status-ambiguous/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-ambiguous leading-none">
+              {{ data.feature.ambiguous | default: 0 }}
+            </div>
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-ambiguous/70 dark:text-status-ambiguous/30 mt-1 tracking-wider">
+              Ambiguous
+            </div>
           </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-failed/70 dark:text-status-failed/30 mt-1 tracking-wider">
-            Failed
+          <div class="flex flex-col items-center justify-center bg-status-undefined/10 rounded-xl py-3 px-3 border border-status-undefined/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-undefined leading-none">
+              {{ data.feature.notDefined | default: 0 }}
+            </div>
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-undefined/70 dark:text-status-undefined/30 mt-1 tracking-wider">
+              Not Defined
+            </div>
           </div>
-        </div>
-        <div class="flex flex-col items-center justify-center bg-status-ambiguous/10 rounded-xl py-3 px-3 border border-status-ambiguous/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-ambiguous leading-none">
-            {{ data.feature.ambiguous | default: 0 }}
+          <div class="flex flex-col items-center justify-center bg-status-pending/10 rounded-xl py-3 px-3 border border-status-pending/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-pending leading-none">
+              {{ data.feature.pending | default: 0 }}
+            </div>
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-pending/70 dark:text-status-pending/30 mt-1 tracking-wider">
+              Pending
+            </div>
           </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-ambiguous/70 dark:text-status-ambiguous/30 mt-1 tracking-wider">
-            Ambiguous
-          </div>
-        </div>
-        <div class="flex flex-col items-center justify-center bg-status-undefined/10 rounded-xl py-3 px-3 border border-status-undefined/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-undefined leading-none">
-            {{ data.feature.notDefined | default: 0 }}
-          </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-undefined/70 dark:text-status-undefined/30 mt-1 tracking-wider">
-            Not Defined
-          </div>
-        </div>
-        <div class="flex flex-col items-center justify-center bg-status-pending/10 rounded-xl py-3 px-3 border border-status-pending/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-pending leading-none">
-            {{ data.feature.pending | default: 0 }}
-          </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-pending/70 dark:text-status-pending/30 mt-1 tracking-wider">
-            Pending
-          </div>
-        </div>
-        <div class="flex flex-col items-center justify-center bg-status-skipped/10 rounded-xl py-3 px-3 border border-status-skipped/20 w-full">
-          <div class="text-xl md:text-2xl font-bold text-status-skipped leading-none">
-            {{ data.feature.skipped | default: 0 }}
-          </div>
-          <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-skipped/70 dark:text-status-skipped/30 mt-1 tracking-wider">
-            Skipped
+          <div class="flex flex-col items-center justify-center bg-status-skipped/10 rounded-xl py-3 px-3 border border-status-skipped/20 w-full">
+            <div class="text-xl md:text-2xl font-bold text-status-skipped leading-none">
+              {{ data.feature.skipped | default: 0 }}
+            </div>
+            <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-skipped/70 dark:text-status-skipped/30 mt-1 tracking-wider">
+              Skipped
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Charts Rows -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Scenario Distribution</h3>
-      <div id="feature-scenarios-chart" class="h-64"></div>
+    <!-- Charts Rows -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Scenario Distribution</h3>
+        <div id="feature-scenarios-chart" class="h-64"></div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          Top 10 Slowest Scenarios
+        </h3>
+        <div id="slowest-scenarios-chart" class="h-64"></div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Slowest Steps</h3>
+        <div id="slowest-steps-chart" class="h-64"></div>
+      </div>
     </div>
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
-        Top 10 Slowest Scenarios
-      </h3>
-      <div id="slowest-scenarios-chart" class="h-64"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Step Status Breakdown</h3>
+        <div id="feature-step-status-chart" class="h-64"></div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Steps per Scenarios</h3>
+        <div id="feature-steps-per-scenario-chart" class="h-64"></div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Tags</h3>
+        <div id="tag-distribution-chart" class="h-64"></div>
+      </div>
     </div>
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Slowest Steps</h3>
-      <div id="slowest-steps-chart" class="h-64"></div>
-    </div>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Step Status Breakdown</h3>
-      <div id="feature-step-status-chart" class="h-64"></div>
-    </div>
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Steps per Scenarios</h3>
-      <div id="feature-steps-per-scenario-chart" class="h-64"></div>
-    </div>
-    <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Tags</h3>
-      <div id="tag-distribution-chart" class="h-64"></div>
-    </div>
-  </div>
 
-  <!-- Scenarios -->
-  <div class="space-y-4">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <h3 class="text-xl font-bold text-foreground">Scenarios</h3>
-      <div class="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
-        <div class="relative w-full md:w-64">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
-            <i class="fa-solid fa-magnifying-glass text-xs"></i>
-          </span>
-          <input
-            type="text"
-            id="scenario-search"
-            placeholder="Search scenarios..."
-            class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm"
-          >
-        </div>
-        <!-- Tag Filter Dropdown -->
-        <div class="relative w-full md:w-56" id="scenario-tag-filter-container">
-          <button
-            type="button"
-            id="scenario-tag-filter-button"
-            class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer"
-          >
-            <span class="truncate text-muted-foreground text-xs" id="scenario-tag-filter-label">Filter by tags...</span>
-            <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
-          </button>
-          <div
-            id="scenario-tag-filter-dropdown"
-            class="hidden absolute left-0 md:left-auto md:right-0 mt-1 w-full md:w-56 rounded-md border border-border bg-card text-card-foreground shadow-md z-50 max-h-60 overflow-y-auto p-1.5 space-y-1"
-          >
-            <!-- Dynamic tag options injected via JS -->
+    <!-- Scenarios -->
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <h3 class="text-xl font-bold text-foreground">Scenarios</h3>
+        <div class="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
+          <div class="relative w-full md:w-64">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </span>
+            <input
+              type="text"
+              id="scenario-search"
+              placeholder="Search scenarios..."
+              class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm"
+            >
+          </div>
+          <!-- Tag Filter Dropdown -->
+          <div class="relative w-full md:w-56" id="scenario-tag-filter-container">
+            <button
+              type="button"
+              id="scenario-tag-filter-button"
+              class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer"
+            >
+              <span class="truncate text-muted-foreground text-xs" id="scenario-tag-filter-label"
+                >Filter by tags...</span
+              >
+              <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
+            </button>
+            <div
+              id="scenario-tag-filter-dropdown"
+              class="hidden absolute left-0 md:left-auto md:right-0 mt-1 w-full md:w-56 rounded-md border border-border bg-card text-card-foreground shadow-md z-50 max-h-60 overflow-y-auto p-1.5 space-y-1"
+            >
+              <!-- Dynamic tag options injected via JS -->
+            </div>
+          </div>
+          <div class="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border w-full md:w-auto overflow-x-auto">
+            <button
+              class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm"
+              data-status="all"
+            >
+              ALL
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-passed dark:text-status-passed"
+              data-status="passed"
+            >
+              PASSED
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-failed dark:text-status-failed"
+              data-status="failed"
+            >
+              FAILED
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-ambiguous dark:text-status-ambiguous"
+              data-status="ambiguous"
+            >
+              AMBIGUOUS
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-undefined dark:text-status-undefined"
+              data-status="undefined"
+            >
+              NOT DEFINED
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-pending dark:text-status-pending"
+              data-status="pending"
+            >
+              PENDING
+            </button>
+            <button
+              class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-skipped dark:text-status-skipped"
+              data-status="skipped"
+            >
+              SKIPPED
+            </button>
           </div>
         </div>
-        <div class="flex items-center gap-2 bg-muted/30 p-1 rounded-lg border w-full md:w-auto overflow-x-auto">
-          <button
-            class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm"
-            data-status="all"
-          >
-            ALL
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-passed dark:text-status-passed"
-            data-status="passed"
-          >
-            PASSED
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-failed dark:text-status-failed"
-            data-status="failed"
-          >
-            FAILED
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-ambiguous dark:text-status-ambiguous"
-            data-status="ambiguous"
-          >
-            AMBIGUOUS
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-undefined dark:text-status-undefined"
-            data-status="undefined"
-          >
-            NOT DEFINED
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-pending dark:text-status-pending"
-            data-status="pending"
-          >
-            PENDING
-          </button>
-          <button
-            class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-skipped dark:text-status-skipped"
-            data-status="skipped"
-          >
-            SKIPPED
-          </button>
+      </div>
+      <div id="no-scenarios-message" class="hidden py-12 text-center bg-muted/20 rounded-xl border border-dashed">
+        <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
+          <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
         </div>
+        <h4 class="text-sm font-semibold text-foreground">No scenario found</h4>
+        <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
       </div>
-    </div>
-    <div id="no-scenarios-message" class="hidden py-12 text-center bg-muted/20 rounded-xl border border-dashed">
-      <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
-        <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
+      <div id="scenarios-container" class="space-y-4">
+        {% for scenario in data.feature.elements %}
+          {% render 'includes/scenario_card.liquid',
+            scenario: scenario,
+            report: data.report,
+            scenario_index: forloop.index0
+          %}
+        {% endfor %}
       </div>
-      <h4 class="text-sm font-semibold text-foreground">No scenario found</h4>
-      <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
-    </div>
-    <div id="scenarios-container" class="space-y-4">
-      {% for scenario in data.feature.elements %}
-        {% render 'includes/scenario_card.liquid', scenario: scenario, report: data.report, scenario_index: forloop.index0 %}
-      {% endfor %}
     </div>
   </div>
-</div>
 
-<script>
-  // Report-wide UI config (opt-in features toggled from the reporter options)
-  window.ReportConfig = Object.assign({}, window.ReportConfig, {
-      displayChartPercentages: {{ data.report.displayChartPercentages | json }},
-      modalBackdrop: {{ data.report.modalBackdrop | json }},
-      modalDraggable: {{ data.report.modalDraggable | json }},
-      modalResizable: {{ data.report.modalResizable | json }},
-      modalShowContext: {{ data.report.modalShowContext | json }}
-  });
+  <script>
+    // Report-wide UI config (opt-in features toggled from the reporter options)
+    window.ReportConfig = Object.assign({}, window.ReportConfig, {
+        displayChartPercentages: {{ data.report.displayChartPercentages | json }},
+        modalBackdrop: {{ data.report.modalBackdrop | json }},
+        modalDraggable: {{ data.report.modalDraggable | json }},
+        modalResizable: {{ data.report.modalResizable | json }},
+        modalShowContext: {{ data.report.modalShowContext | json }}
+    });
 
-  // Embedded data for charts (status/duration/tags only — never embeddings,
-  // which would make this inline blob scale with attachment size)
-  const featureData = {{ data.featureSummary | json }};
-</script>
+    // Embedded data for charts (status/duration/tags only — never embeddings,
+    // which would make this inline blob scale with attachment size)
+    const featureData = {{ data.featureSummary | json }};
+  </script>
 {% endblock %}

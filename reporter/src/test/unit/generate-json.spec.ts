@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import fs from 'fs-extra';
-import * as multiCucumberHTMLReporter from '../../generate-report.js';
+import * as multiCucumberHTMLReporter from '@/generate-report.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -171,11 +171,12 @@ describe('generate-report.js', () => {
       expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
     });
 
-    it('should add the custom JS file', async () => {
+    it('should copy customScript to assets/js and inject a script tag on every page', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
         jsonDir: './src/test/unit/data/json',
         reportPath: REPORT_PATH,
+        staticFilePath: true,
         customScript: path.join(__dirname, '../custom.js'),
       });
 
@@ -183,11 +184,30 @@ describe('generate-report.js', () => {
         .withContext('Index file exists')
         .toBeTrue();
 
-      // The HTML should still reference custom.js.
-      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
-      expect(indexHtml).withContext('custom script found').toContain('custom.js');
+      // The script must be physically copied to assets/js/custom.js.
+      const copiedScriptPath = path.join(process.cwd(), REPORT_PATH, 'assets', 'js', 'custom.js');
+      expect(fs.existsSync(copiedScriptPath)).withContext('custom.js copied to assets/js').toBeTrue();
 
-      // No custom-style inline block should appear (overrideStyle, not customStyle).
+      // Copied file content must match the source fixture.
+      const copiedContent = fs.readFileSync(copiedScriptPath, 'utf8');
+      expect(copiedContent).withContext('copied file content matches source').toContain('custom-script-marker');
+
+      // index.html must have a <script> tag pointing to assets/js/custom.js
+      // (no double-prefix like assets/js/assets/js/custom.js).
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('script tag with correct path in index').toContain('src="./assets/js/custom.js"');
+      expect(indexHtml).withContext('no double-prefix in index').not.toContain('assets/js/assets/js/custom.js');
+
+      // Feature pages must also include the custom script tag.
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      expect(featureFiles.length).withContext('at least one feature page generated').toBeGreaterThan(0);
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).withContext('script tag present in feature page').toContain('assets/js/custom.js');
+      expect(featureHtml)
+        .withContext('no double-prefix in feature page')
+        .not.toContain('assets/js/assets/js/custom.js');
+
+      // No customStyle inline block should be emitted (customScript, not customStyle).
       expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
     });
 
