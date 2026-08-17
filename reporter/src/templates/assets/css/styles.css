@@ -451,20 +451,20 @@
   .min-w-0 {
     min-width: 0px;
   }
-  .min-w-\[70px\] {
-    min-width: 70px;
+  .min-w-17\.5 {
+    min-width: calc(var(--spacing) * 17.5);
   }
-  .min-w-\[120px\] {
-    min-width: 120px;
+  .min-w-30 {
+    min-width: calc(var(--spacing) * 30);
   }
-  .min-w-\[150px\] {
-    min-width: 150px;
+  .min-w-37\.5 {
+    min-width: calc(var(--spacing) * 37.5);
   }
-  .min-w-\[200px\] {
-    min-width: 200px;
+  .min-w-50 {
+    min-width: calc(var(--spacing) * 50);
   }
-  .min-w-\[240px\] {
-    min-width: 240px;
+  .min-w-60 {
+    min-width: calc(var(--spacing) * 60);
   }
   .flex-1 {
     flex: 1;
@@ -1021,7 +1021,7 @@
   .text-balance {
     text-wrap: balance;
   }
-  .break-words {
+  .wrap-break-word {
     overflow-wrap: break-word;
   }
   .whitespace-nowrap {

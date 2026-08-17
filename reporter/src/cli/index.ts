@@ -15,9 +15,9 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as p from '@clack/prompts';
-import { generate } from '@/generate-report.js';
-import { LOG_LEVELS } from '@/logger.js';
-import type { LogLevel, Options } from '@/types.js';
+import { generate } from '../generate-report.js';
+import { LOG_LEVELS } from '../logger.js';
+import type { LogLevel, Options } from '../types.js';
 import { loadConfig } from './config-loader.js';
 import { runOnboarding } from './onboarding.js';
 
