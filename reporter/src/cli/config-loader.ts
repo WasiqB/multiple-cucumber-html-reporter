@@ -2,7 +2,7 @@ import path from 'node:path';
 import { interpolate } from 'env-interpolation';
 import { createJiti } from 'jiti';
 import { load } from 'js-yaml';
-import type { Options } from '../types.js';
+import type { Options } from '@/types.js';
 
 /**
  * Supported config file names in priority order.

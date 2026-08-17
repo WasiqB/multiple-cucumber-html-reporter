@@ -103,7 +103,7 @@ window.ReportTable = {
 
           return `
             <tr class="hover:bg-muted/50 transition-colors">
-              <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+              <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-50">
                 <a href="features/${feature.id}.html" class="font-medium text-primary hover:underline">
                   ${feature.name}
                 </a>
@@ -127,7 +127,7 @@ window.ReportTable = {
                   ${platformIcon(feature.executionPlatform)}
                 </div>
               </td>
-              <td class="px-4 md:px-6 py-4 min-w-[240px] whitespace-nowrap">
+              <td class="px-4 md:px-6 py-4 min-w-60 whitespace-nowrap">
                 <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
                   ${feature.passed > 0 ? `<div class="h-full bg-status-passed" style="width: ${(feature.passed / total) * 100}%"></div>` : ''}
                   ${feature.failed > 0 ? `<div class="h-full bg-status-failed" style="width: ${(feature.failed / total) * 100}%"></div>` : ''}

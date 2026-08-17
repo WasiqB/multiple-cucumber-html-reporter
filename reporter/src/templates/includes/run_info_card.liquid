@@ -3,7 +3,7 @@
     <div class="flex flex-wrap items-center gap-6 md:gap-8 flex-1">
       {% comment %} Run-level customData fields {% endcomment %}
       {% if data.report.projectName %}
-        <div class="flex items-center gap-3 min-w-[150px]">
+        <div class="flex items-center gap-3 min-w-37.5">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-rocket text-sm"></i>
           </div>
@@ -20,7 +20,7 @@
           </div>
         </div>
       {% elsif data.report.release %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-tag text-sm"></i>
           </div>
@@ -32,7 +32,7 @@
       {% endif %}
 
       {% if data.report.testCycle %}
-        <div class="flex items-center gap-3 min-w-[150px]">
+        <div class="flex items-center gap-3 min-w-37.5">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-rotate text-sm"></i>
           </div>
@@ -44,7 +44,7 @@
       {% endif %}
 
       {% if data.report.buildNumber %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-hammer text-sm"></i>
           </div>
@@ -56,7 +56,7 @@
       {% endif %}
 
       {% if data.report.environment %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-server text-sm"></i>
           </div>
@@ -68,7 +68,7 @@
       {% endif %}
 
       {% if data.report.ciPipeline %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-gears text-sm"></i>
           </div>
@@ -80,7 +80,7 @@
       {% endif %}
 
       {% comment %} ── Execution Period ── {% endcomment %}
-      <div class="flex items-center gap-3 min-w-[200px]">
+      <div class="flex items-center gap-3 min-w-50">
         <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <i class="fa-solid fa-clock text-sm"></i>
         </div>
@@ -97,7 +97,7 @@
       {% comment %} ── Runtime / system info ── {% endcomment %}
 
       {% if data.report.username %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-user text-sm"></i>
           </div>
@@ -109,7 +109,7 @@
       {% endif %}
 
       {% if data.report.nodeVersion %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-brands fa-node-js text-sm"></i>
           </div>
@@ -121,7 +121,7 @@
       {% endif %}
 
       {% if data.report.reportVersion %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-code-branch text-sm"></i>
           </div>
@@ -133,7 +133,7 @@
       {% endif %}
 
       {% if data.report.hostname %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-network-wired text-sm"></i>
           </div>
@@ -145,7 +145,7 @@
       {% endif %}
 
       {% if data.report.architecture %}
-        <div class="flex items-center gap-3 min-w-[120px]">
+        <div class="flex items-center gap-3 min-w-30">
           <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <i class="fa-solid fa-microchip text-sm"></i>
           </div>
@@ -159,7 +159,7 @@
       {% if data.report.customDataItems %}
         {% for item in data.report.customDataItems %}
           {% if item.value %}
-            <div class="flex items-center gap-3 min-w-[120px]">
+            <div class="flex items-center gap-3 min-w-30">
               <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <i class="fa-solid fa-circle-info text-sm"></i>
               </div>

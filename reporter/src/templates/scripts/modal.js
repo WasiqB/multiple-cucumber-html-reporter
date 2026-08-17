@@ -151,7 +151,7 @@ window.ReportModal = {
         <div class="flex flex-col h-full overflow-hidden">
           ${
             stepContext
-              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap break-words">${window.ReportUtils.escape(stepContext)}</div>`
+              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap wrap-break-word">${window.ReportUtils.escape(stepContext)}</div>`
               : ''
           }
           <div class="flex-1 min-h-0 flex items-center justify-center bg-slate-900 rounded p-2 overflow-auto">
@@ -163,7 +163,7 @@ window.ReportModal = {
         <div class="flex flex-col h-full overflow-hidden">
           ${
             stepContext
-              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap break-words">${window.ReportUtils.escape(stepContext)}</div>`
+              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap wrap-break-word">${window.ReportUtils.escape(stepContext)}</div>`
               : ''
           }
           <div class="flex-1 min-h-0 flex items-center justify-center bg-slate-900 rounded p-2">
@@ -182,7 +182,7 @@ window.ReportModal = {
         <div class="flex flex-col h-full overflow-hidden">
           ${
             stepContext
-              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap break-words">${window.ReportUtils.escape(stepContext)}</div>`
+              ? `<div class="shrink-0 px-4 py-2 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs whitespace-pre-wrap wrap-break-word">${window.ReportUtils.escape(stepContext)}</div>`
               : ''
           }
           <div class="flex-1 min-h-0 overflow-auto p-4 bg-white rounded-b">${content}</div>
@@ -200,7 +200,7 @@ window.ReportModal = {
             </div>
             ${
               stepContext
-                ? `<div class="text-slate-400 text-xs whitespace-pre-wrap break-words">${window.ReportUtils.escape(stepContext)}</div>`
+                ? `<div class="text-slate-400 text-xs whitespace-pre-wrap wrap-break-word">${window.ReportUtils.escape(stepContext)}</div>`
                 : ''
             }
           </div>

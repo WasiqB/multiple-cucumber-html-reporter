@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import fs from 'fs-extra';
-import * as multiCucumberHTMLReporter from '../../generate-report.js';
+import * as multiCucumberHTMLReporter from '@/generate-report.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -118,7 +118,7 @@ describe('generate-report.js', () => {
         .toBeTrue();
     });
 
-    it('should create a report from the merged found json files and with array of embedded items', async () => {
+    it('should inject customStyle content as an inline style block in the generated HTML', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
         jsonDir: './src/test/unit/data/embedded-array-json/',
@@ -131,6 +131,84 @@ describe('generate-report.js', () => {
       expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
         .withContext('Index file exists')
         .toBeTrue();
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('custom-style block present').toContain('<style id="custom-style">');
+      // A distinctive selector from my.css
+      expect(indexHtml).withContext('custom CSS content injected').toContain('mycss');
+
+      // The default styles.min.css should still be referenced so the custom
+      // rules layer on top of the base styles (additive, not replacing).
+      expect(indexHtml).withContext('default stylesheet still linked').toContain('styles.min.css');
+
+      // The default CSS file must exist on disk too.
+      expect(fs.existsSync(path.join(process.cwd(), REPORT_PATH, 'styles.min.css')))
+        .withContext('styles.min.css exists on disk')
+        .toBeTrue();
+    });
+
+    it('should replace the default stylesheet with the overrideStyle file', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        overrideStyle: path.join(__dirname, '../my.css'),
+      });
+
+      expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
+        .withContext('Index file exists')
+        .toBeTrue();
+
+      // styles.min.css on disk should now contain the override CSS, not the default.
+      const stylesheetContent = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'styles.min.css'), 'utf8');
+      expect(stylesheetContent).withContext('override CSS written to styles.min.css').toContain('mycss');
+
+      // The HTML should still reference styles.min.css (same filename, replaced content).
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('stylesheet link preserved').toContain('styles.min.css');
+
+      // No custom-style inline block should appear (overrideStyle, not customStyle).
+      expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
+    });
+
+    it('should copy customScript to assets/js and inject a script tag on every page', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/json',
+        reportPath: REPORT_PATH,
+        staticFilePath: true,
+        customScript: path.join(__dirname, '../custom.js'),
+      });
+
+      expect(fs.statSync(path.join(process.cwd(), REPORT_PATH, 'index.html')).isFile())
+        .withContext('Index file exists')
+        .toBeTrue();
+
+      // The script must be physically copied to assets/js/custom.js.
+      const copiedScriptPath = path.join(process.cwd(), REPORT_PATH, 'assets', 'js', 'custom.js');
+      expect(fs.existsSync(copiedScriptPath)).withContext('custom.js copied to assets/js').toBeTrue();
+
+      // Copied file content must match the source fixture.
+      const copiedContent = fs.readFileSync(copiedScriptPath, 'utf8');
+      expect(copiedContent).withContext('copied file content matches source').toContain('custom-script-marker');
+
+      // index.html must have a <script> tag pointing to assets/js/custom.js
+      // (no double-prefix like assets/js/assets/js/custom.js).
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).withContext('script tag with correct path in index').toContain('src="./assets/js/custom.js"');
+      expect(indexHtml).withContext('no double-prefix in index').not.toContain('assets/js/assets/js/custom.js');
+
+      // Feature pages must also include the custom script tag.
+      const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      expect(featureFiles.length).withContext('at least one feature page generated').toBeGreaterThan(0);
+      const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
+      expect(featureHtml).withContext('script tag present in feature page').toContain('assets/js/custom.js');
+      expect(featureHtml)
+        .withContext('no double-prefix in feature page')
+        .not.toContain('assets/js/assets/js/custom.js');
+
+      // No customStyle inline block should be emitted (customScript, not customStyle).
+      expect(indexHtml).withContext('no inline custom-style block').not.toContain('id="custom-style"');
     });
 
     it('should render avif, webp and jpeg embeddings as screenshots (img tags) not as attachments', async () => {

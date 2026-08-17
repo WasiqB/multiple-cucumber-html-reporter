@@ -5,3 +5,6 @@
 <script src="{{ base_url | default: "." }}/scripts/table.js"></script>
 <script src="{{ base_url | default: "." }}/scripts/scenarios.js"></script>
 <script src="{{ base_url | default: "." }}/scripts/main.js"></script>
+{% if report.customScript != blank %}
+  <script src="{{ base_url | default: "." }}/{{ report.customScript }}"></script>
+{% endif %}

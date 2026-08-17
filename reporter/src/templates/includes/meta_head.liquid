@@ -6,7 +6,7 @@
   type="image/x-icon"
   href="{{ base_url | default: "." }}/assets/{% if report.logo %}{{ report.logo }}{% else %}images/logo.png{% endif %}"
 >
-<link rel="stylesheet" href="{{ base_url | default: "." }}/styles.min.css">
+<link rel="stylesheet" href="{{ base_url | default: "." }}/{{ report.style | default: 'styles.min.css' }}">
 {% if report.useCDN %}
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css">
@@ -19,3 +19,8 @@
     display: none;
   }
 </style>
+{% if report.customStyle != blank %}
+  <style id="custom-style">
+    {{ report.customStyle }}
+  </style>
+{% endif %}

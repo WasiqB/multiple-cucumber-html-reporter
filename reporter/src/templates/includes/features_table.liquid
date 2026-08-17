@@ -34,7 +34,7 @@
         <span class="text-xs font-medium text-muted-foreground whitespace-nowrap">Show:</span>
         <select
           id="records-per-page"
-          class="h-9 px-2 rounded-md border border-input bg-background text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm min-w-[70px]"
+          class="h-9 px-2 rounded-md border border-input bg-background text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm min-w-17.5"
         >
           <option value="10">10</option>
           <option value="25">25</option>
@@ -73,7 +73,7 @@
         {% comment %} Initial render by Liquid for SEO/no-JS {% endcomment %}
         {% for feature in data.features limit: 10 %}
           <tr class="hover:bg-muted/50 transition-colors">
-            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-[200px]">
+            <td class="px-4 md:px-6 py-4 whitespace-nowrap md:whitespace-normal min-w-50">
               <a href="features/{{ feature.id }}.html" class="font-medium text-primary hover:underline">
                 {{ feature.name }}
               </a>
@@ -132,7 +132,7 @@
                 {% endif %}
               </div>
             </td>
-            <td class="px-4 md:px-6 py-4 min-w-[240px]">
+            <td class="px-4 md:px-6 py-4 min-w-60">
               <div class="flex h-2 w-full overflow-hidden rounded-full bg-secondary">
                 {% if feature.scenarios.passed > 0 %}
                   <div

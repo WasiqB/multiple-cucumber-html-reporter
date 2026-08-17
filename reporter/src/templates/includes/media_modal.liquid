@@ -47,7 +47,10 @@
     style="top: 5rem; right: 2rem; width: min(56rem, 90vw); height: min(80vh, 40rem); min-width: 20rem; min-height: 12rem; max-width: 95vw; max-height: 95vh;"
   >
     <!-- Header (drag handle when modalDraggable is on) -->
-    <div id="modal-drag-handle" class="flex items-center justify-between border-b p-4 text-card-foreground select-none shrink-0{% if report.modalDraggable %} cursor-move{% endif %}">
+    <div
+      id="modal-drag-handle"
+      class="flex items-center justify-between border-b p-4 text-card-foreground select-none shrink-0{% if report.modalDraggable %} cursor-move{% endif %}"
+    >
       <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
       <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

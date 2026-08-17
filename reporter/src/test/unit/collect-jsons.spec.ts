@@ -2,7 +2,7 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'fs-extra';
 import jsonFile from 'jsonfile';
-import collectJSONS from '../../collect-jsons.js';
+import collectJSONS from '@/collect-jsons.js';
 
 const reportPath = path.resolve(process.cwd(), './.tmp/test');
 const packageJson = fs.readJsonSync(path.resolve(process.cwd(), './package.json'));

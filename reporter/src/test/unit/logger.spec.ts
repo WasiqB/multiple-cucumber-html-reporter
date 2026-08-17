@@ -1,4 +1,4 @@
-import { createLogger, normalizeLogLevel } from '../../logger.js';
+import { createLogger, normalizeLogLevel } from '@/logger.js';
 
 describe('logger.js', () => {
   afterEach(() => {

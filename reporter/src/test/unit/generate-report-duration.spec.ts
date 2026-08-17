@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'fs-extra';
-import * as multiCucumberHTMLReporter from '../../generate-report.js';
+import * as multiCucumberHTMLReporter from '@/generate-report.js';
 
 const REPORT_PATH = './.tmp/';
 
