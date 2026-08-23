@@ -424,7 +424,9 @@ async function generateReport(options: Options) {
       suite.featureCount.total++;
     }
     const idPrefix = staticFilePath ? '' : `${uuid()}.`;
-    feature.id = `${idPrefix}${feature.id}`.replace(/[^a-zA-Z0-9-_]/g, '-');
+    // Keep letters and numbers from every language in the feature page name.
+    // Combining marks are included so scripts such as Devanagari remain intact.
+    feature.id = `${idPrefix}${feature.id}`.replace(/[^\p{L}\p{M}\p{N}_-]/gu, '-');
     feature.app = '';
     feature.browser = '';
 
