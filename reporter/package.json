@@ -72,7 +72,7 @@
     "open": "^11.0.1",
     "stream-chain": "^4.2.5",
     "stream-json": "^3.5.0",
-    "uuid": "^14.0.1"
+    "uuid": "^14.0.2"
   },
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
@@ -82,7 +82,7 @@
     "@types/jasmine": "^6.0.0",
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.25",
-    "@types/luxon": "^3.7.4",
+    "@types/luxon": "^3.7.5",
     "@types/node": "^26.2.0",
     "c8": "^12.0.0",
     "jasmine": "^7.0.0",

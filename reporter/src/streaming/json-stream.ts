@@ -4,8 +4,8 @@ import chain from 'stream-chain';
 import { parser } from 'stream-json';
 import { disassembler } from 'stream-json/disassembler.js';
 import { ignore } from 'stream-json/filters/ignore.js';
-import { stringer } from 'stream-json/stringer.js';
 import { streamArray } from 'stream-json/streamers/stream-array.js';
+import { stringer } from 'stream-json/stringer.js';
 
 /**
  * Matches `embeddings.<index>.data` at any depth — the base64 payload of a

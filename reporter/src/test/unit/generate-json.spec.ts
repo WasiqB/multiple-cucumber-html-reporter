@@ -105,6 +105,29 @@ describe('generate-report.js', () => {
       expect(enriched.features[0].metadata.browser.name).toEqual('chrome');
       expect(enriched.features[0].metadata.platform.name).toEqual('linux');
     });
+    it('should preserve non-English feature IDs in feature page filenames', async () => {
+      const jsonDir = path.join(REPORT_PATH, 'unicode-feature-id');
+      const sourceFeature = fs.readJsonSync('./src/test/unit/data/json/happy_flow_v3.json');
+      sourceFeature[0].id = '로그인-테스트';
+
+      fs.removeSync(REPORT_PATH);
+      fs.ensureDirSync(jsonDir);
+      fs.writeJsonSync(path.join(jsonDir, 'cucumber.json'), sourceFeature);
+
+      await multiCucumberHTMLReporter.generate({
+        jsonDir,
+        reportPath: REPORT_PATH,
+        saveCollectedJSON: true,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      const featureId = enriched.features[0].id;
+      expect(featureId).toMatch(/^[0-9a-f-]+-로그인-테스트$/u);
+      expect(fs.existsSync(path.join(process.cwd(), REPORT_PATH, 'features', `${featureId}.html`))).toBeTrue();
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).toContain(`features/${featureId}.html`);
+    });
     it('should create a report from the merged found json files with custom metadata', async () => {
       fs.removeSync(REPORT_PATH);
       await multiCucumberHTMLReporter.generate({
