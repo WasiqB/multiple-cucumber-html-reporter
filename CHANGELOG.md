@@ -3,6 +3,33 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.3.0 (2026-08-23)
+
+#### :rocket: New Feature
+
+- [#606](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/606) feat: :sparkles: added support for customScript and also implemented custom CSS ([@WasiqB](https://github.com/WasiqB))
+
+#### :bug: Bug Fix
+
+- [#609](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/609) fix: :bug: fixed file name issue when feature name is in non-english language ([@WasiqB](https://github.com/WasiqB))
+- [#602](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/602) fix: normalize step duration for Slowest Steps chart ([@PYesare](https://github.com/PYesare))
+
+#### :nail_care: Polish
+
+- [#608](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/608) chore(deps): bump the dependencies group with 5 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#607](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/607) chore(deps): bump the dependencies group with 10 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#605](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/605) chore(deps): bump the dependencies group with 24 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### :memo: Documentation
+
+- [#604](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/604) docs: 📝 updating docs for latest release ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 2
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+- [@PYesare](https://github.com/PYesare)
+
+
 ## 4.2.0 (2026-08-01)
 
 #### :rocket: New Feature
