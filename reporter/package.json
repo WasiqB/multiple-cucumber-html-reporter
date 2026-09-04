@@ -64,14 +64,14 @@
     "find": "^0.3.0",
     "fs-extra": "^11.4.0",
     "jiti": "^2.7.0",
-    "js-yaml": "^5.4.0",
+    "js-yaml": "^5.4.1",
     "jsonfile": "^6.2.1",
     "liquidjs": "^10.29.0",
     "lodash": "^4.18.1",
     "luxon": "^3.7.2",
     "open": "^11.0.1",
     "stream-chain": "^4.2.5",
-    "stream-json": "^3.5.0",
+    "stream-json": "^3.6.0",
     "uuid": "^14.0.2"
   },
   "devDependencies": {
@@ -83,11 +83,11 @@
     "@types/jsonfile": "^6.1.4",
     "@types/lodash": "^4.17.25",
     "@types/luxon": "^3.7.5",
-    "@types/node": "^26.3.0",
+    "@types/node": "^26.4.0",
     "c8": "^12.0.0",
     "jasmine": "^7.0.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   }
 }
