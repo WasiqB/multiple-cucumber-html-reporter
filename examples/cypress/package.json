@@ -13,10 +13,10 @@
   "author": "Wasiq Bhamla",
   "license": "MIT",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^27.0.0",
+    "@badeball/cypress-cucumber-preprocessor": "^28.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@mchr/tsconfig": "workspace:*",
-    "@types/node": "^26.4.0",
+    "@types/node": "^26.5.0",
     "cypress": "^15.21.0",
     "multiple-cucumber-html-reporter": "workspace:*",
     "tsx": "^4.23.13",
