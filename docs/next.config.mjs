@@ -5,6 +5,14 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/docs/:slug*.md',
+        destination: '/llms.mdx/docs/:slug*/content.md',
+      },
+    ];
+  },
   images: {
     minimumCacheTTL: 60 * 60 * 24,
     remotePatterns: [

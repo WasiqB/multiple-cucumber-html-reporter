@@ -18,7 +18,7 @@ const communityData = {
     titleLine3: 'Community',
     description:
       'We believe in the power of precision and collaboration. Join thousands of developers building the future of clean, automated HTML scaffolding. Every line of code counts.',
-    primaryLink: { label: 'Become a Contributor', url: '/docs/latest/contributing' },
+    primaryLink: { label: 'Become a Contributor', url: '/docs/contributing' },
     secondaryLink: {
       label: 'View Roadmap',
       url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/milestones',
@@ -60,7 +60,7 @@ const communityData = {
       label: 'Good First Issues',
       url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter/issues',
     },
-    secondaryLink: { label: 'Contributing Guide', url: '/docs/latest/contributing' },
+    secondaryLink: { label: 'Contributing Guide', url: '/docs/contributing' },
     code: [
       'git clone git@github.com:WasiqB/multiple-cucumber-html-reporter.git',
       'cd multiple-cucumber-html-reporter',
@@ -327,7 +327,7 @@ export default function CommunityPage() {
             ))}
 
             <div className='flex flex-col items-center gap-3 w-28'>
-              <Link href='/docs/latest/contributing' className='text-center mt-2'>
+              <Link href='/docs/contributing' className='text-center mt-2'>
                 <div className='w-20 h-20 rounded-full border-2 border-dashed border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:border-emerald-500 transition-colors cursor-pointer group'>
                   <Plus className='h-8 w-8 group-hover:scale-110 transition-transform' />
                 </div>
