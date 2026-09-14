@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { Options } from '@/types.js';
+import type { LogLevel, Options } from '@/types.js';
 import { prompts as p } from './prompts.js';
 
 export type OnboardingResult = {
@@ -165,7 +165,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
   }
 
   if (selected.includes('logging')) {
-    const logging = await p.select<'silent' | 'error' | 'warn' | 'info' | 'debug' | 'trace'>({
+    const logging = await p.select<LogLevel>({
       message: 'Which reporter log level should be used?',
       options: [
         { value: 'info', label: 'info', hint: 'default' },
@@ -179,7 +179,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     if (p.isCancel(logging)) {
       return cancelOnboarding();
     }
-    options.logging = logging;
+    options.logging = logging as LogLevel;
   }
 
   if (selected.includes('customData')) {

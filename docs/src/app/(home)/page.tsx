@@ -19,7 +19,7 @@ const heroData = {
   titleLine2: 'Made Easy',
   description:
     'The ultimate open-source HTML reporter for Cucumber. Transform messy JSON output into sleek, interactive, and insightful test reports that your team will actually love to read.',
-  primaryLink: { label: 'Try It Now', url: '/docs/latest' },
+  primaryLink: { label: 'Try It Now', url: '/docs' },
   secondaryLink: {
     label: 'Check out on GitHub',
     url: 'https://github.com/WasiqB/multiple-cucumber-html-reporter',
@@ -62,7 +62,7 @@ const setupData = {
   titleLine2: 'Quick Setup',
   description:
     'Generate comprehensive reports in a few simple steps. Follow these setup steps to integrate the reporter into your project.',
-  link: { label: 'Read the full usage guide', url: '/docs/latest' },
+  link: { label: 'Read the full usage guide', url: '/docs' },
   steps: [
     {
       stepNumber: 1,

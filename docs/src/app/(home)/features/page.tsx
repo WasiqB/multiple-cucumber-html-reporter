@@ -19,7 +19,7 @@ const heroData = {
   titleLine2: 'modern BDD',
   description:
     'Discover the features that make multiple CucumberHTML reporter the preferred reporter for engineering teams. Build trust through visibility.',
-  primaryLink: { label: 'Install Library', url: '/docs/latest/installation' },
+  primaryLink: { label: 'Install Library', url: '/docs/installation' },
   image: 'featureCharts1' as keyof ImageLinks,
 };
 
@@ -91,7 +91,7 @@ const accordionData = {
 const ctaData = {
   title: 'Ready to upgrade your reports?',
   description: 'Join over 6K+ engineers and teams delivering clearer BDD results every single day.',
-  primaryLink: { label: 'Get Started', url: '/docs/latest' },
+  primaryLink: { label: 'Get Started', url: '/docs' },
 };
 
 const iconMap: Record<string, React.ReactNode> = {

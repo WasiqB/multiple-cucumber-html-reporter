@@ -113,7 +113,7 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
 mchr
 ```
 
-That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/latest/cli) for all available config options.
+That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/cli) for all available config options.
 
 ---
 
@@ -163,7 +163,7 @@ Check out the [examples](./examples) folder for integration with frameworks like
 
 Looking for advanced configurations, framework integrations (WebdriverIO, Cypress, etc.), or FAQs? Visit our comprehensive documentation site:
 
-### [👉 Read the Full Documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/latest)
+### [👉 Read the Full Documentation](https://multiple-cucumber-html-reporter.vercel.app/docs)
 
 ---
 
@@ -183,7 +183,7 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create.
 
-- **Contributing**: Read our [Contributing Guide](https://multiple-cucumber-html-reporter.vercel.app/docs/latest/contributing) to get started.
+- **Contributing**: Read our [Contributing Guide](https://multiple-cucumber-html-reporter.vercel.app/docs/contributing) to get started.
 - **Security**: Please report vulnerabilities via our [Security Policy](./.github/SECURITY.md).
 - **Code of Conduct**: We expect all contributors to follow our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 
