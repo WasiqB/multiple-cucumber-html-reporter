@@ -1,7 +1,7 @@
 'use client';
 
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
-import { Activity, BarChart3, Heart, Layers, MessageSquare, Star, Zap } from 'lucide-react';
+import { Activity, BarChart3, Heart, Layers, Mail, MessageSquare, Star, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -54,6 +54,11 @@ const featuresData = {
       description:
         'Supports screenshots, videos, text, json and logs attachments, and custom metadata for every scenario.',
     },
+    {
+      icon: 'Mail',
+      title: 'Email Report',
+      description: 'Generate HTML test reports and email them to your stakeholders directly.',
+    },
   ],
 };
 
@@ -81,6 +86,7 @@ jsonDir: 'reports/'
 reportPath: 'reports/report/'
 useCDN: false
 openReportInBrowser: true
+emailReport: true 
 saveCollectedJSON: false
 displayReportTime: true
 durationAggregation: 'wallClock'
@@ -163,6 +169,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Download: <Activity className='h-6 w-6 text-emerald-500' />,
   Users: <Layers className='h-6 w-6 text-emerald-500' />,
   StarFill: <Star className='h-6 w-6 text-emerald-500' />,
+  Mail: <Mail className='h-6 w-6 text-emerald-500' />,
 };
 
 export default function HomePage() {

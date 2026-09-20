@@ -85,6 +85,11 @@ const accordionData = {
       ],
       images: ['reportHeader', 'reportFooter'] as (keyof ImageLinks)[],
     },
+    {
+      title: 'Email Report',
+      pointers: ['Generate Emailable Report', 'Send report to stakeholders directly'],
+      images: ['emailableReport'] as (keyof ImageLinks)[],
+    },
   ],
 };
 

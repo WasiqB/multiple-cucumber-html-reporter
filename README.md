@@ -65,6 +65,7 @@
 
 -   📊 **Interactive Dashboard**: Scored overview of all tested features and scenarios.
 -   🌓 **Dark Mode Support**: Built-in support for light and dark themes for better accessibility.
+-   📬 **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
 -   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
@@ -77,9 +78,9 @@
 ## 🚀 Quick Start
 
 > [!IMPORTANT]
-> **v4.2.0+** introduces the `mchr` CLI tool — the recommended way to generate reports. No scripting needed!
+> **v4.2.0** introduces the `mchr` CLI tool — the recommended way to generate reports. No scripting needed!
 
-### Option A: CLI Tool *(Recommended — v4.2.0+)*
+### Option A: CLI Tool *(Recommended — v4.2.0)*
 
 #### 1. Install globally
 
@@ -111,6 +112,8 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
 
 ```shell
 mchr
+# OR, generate report with Emailable report
+mchr --email
 ```
 
 That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.vercel.app/docs/cli) for all available config options.
@@ -132,6 +135,7 @@ import { generate } from 'multiple-cucumber-html-reporter';
 generate({
   jsonDir: "./path-to-your-json-output/",
   reportPath: "./path-where-the-report-needs-to-be/",
+  emailReport: true,
   metadata: {
     browser: {
       name: "chrome",
@@ -176,6 +180,10 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 ### Feature Details Page
 
 ![Feature Details Page](./docs/public/images/feature-detail-page.jpeg)
+
+### Emailable Report
+
+![Emailable Report](./docs/public/images/emailable-report.png)
 
 ---
 
