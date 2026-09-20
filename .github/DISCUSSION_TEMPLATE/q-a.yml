@@ -1,0 +1,98 @@
+title: "[Q&A] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Ask a question
+        Thanks for reaching out! Please provide as much detail as possible so others can help you quickly.
+        Before posting, please search existing discussions to avoid duplicates.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: A clear and concise question. Include code if it helps explain the issue.
+      placeholder: |
+        What are you trying to do, and what's stopping you?
+        If it's about a specific piece of code, paste the relevant snippet here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Describe what you've already tried or researched so far.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Environment (please complete the following information)
+
+  - type: input
+    id: reporter-version
+    attributes:
+      label: multiple-cucumber-html-reporter version
+      placeholder: e.g. 1.10.0
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: e.g. 8.9.1
+    validations:
+      required: true
+
+  - type: input
+    id: npm-version
+    attributes:
+      label: NPM version
+      placeholder: e.g. 5.8.0
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform name and version
+      placeholder: e.g. Windows 10
+    validations:
+      required: true
+
+  - type: input
+    id: cucumber-version
+    attributes:
+      label: Cucumber version
+      placeholder: e.g. 4.2.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Relevant log output (optional)
+      description: Paste any relevant logs. Enable 'debug:true' in the config for verbose output.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context (optional)
+      description: Add any other context, links, or screenshots here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing discussions and this question has not already been asked.
+          required: true

@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
-    "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
     "@release-it-plugins/lerna-changelog": "^9.0.0",
     "@release-it/bumper": "^7.0.6",
     "@types/node": "^26.6.2",

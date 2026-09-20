@@ -1,0 +1,65 @@
+title: "[Poll] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Create a poll
+        Please fill in the poll question and options below.
+        After submitting, use GitHub's built-in **Add poll** option to turn these into a clickable poll.
+
+  - type: textarea
+    id: poll-question
+    attributes:
+      label: Poll question
+      description: The question you want people to vote on.
+      placeholder: e.g. Which Node.js version should we target next?
+    validations:
+      required: true
+
+  - type: textarea
+    id: poll-options
+    attributes:
+      label: Poll options
+      description: List each option on its own line (aim for 2–10 options).
+      placeholder: |
+        1. Node.js 18
+        2. Node.js 20
+        3. Node.js 22
+    validations:
+      required: true
+
+  - type: dropdown
+    id: poll-type
+    attributes:
+      label: Poll type
+      description: How should the poll behave?
+      options:
+        - Single choice
+        - Multiple choice
+    validations:
+      required: true
+
+  - type: input
+    id: duration
+    attributes:
+      label: Suggested duration (optional)
+      description: How long should the poll stay open?
+      placeholder: e.g. 1 week, 30 days, no limit
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context (optional)
+      description: Add any background, links, or context that helps people vote.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing polls and this topic has not already been posted.
+          required: true
