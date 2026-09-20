@@ -5,6 +5,7 @@ const config: Options = {
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,
+  emailReport: true,
   metadataFilePath: './.run/reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',

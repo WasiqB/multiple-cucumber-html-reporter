@@ -148,6 +148,7 @@ export const config: WebdriverIO.Config = {
       openReportInBrowser: true,
       saveCollectedJSON: true,
       displayReportTime: true,
+      emailReport: true,
       durationInMS: false,
       displayDuration: true,
       displayChartPercentages: true,

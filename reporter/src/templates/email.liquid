@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {{ data.report.reportName | default: 'Multiple Cucumber HTML Reporter' }}
+      - Executive Summary
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
+    >
+    <style>
+      {{ data.inlineCss }}
+    </style>
+    <style>
+      /* ── Email Report: Force Light Mode ── */
+      :root {
+        color-scheme: light only;
+        --background: #f8fafc;
+        --foreground: #1e293b;
+        --card: #ffffff;
+        --card-foreground: #1e293b;
+        --border: #e2e8f0;
+        --muted: #f1f5f9;
+        --muted-foreground: #64748b;
+        --secondary: #f1f5f9;
+        --secondary-foreground: #475569;
+        --primary: #2563eb;
+        --primary-foreground: #ffffff;
+      }
+      .dark,
+      :is(.dark *) {
+        --background: #f8fafc !important;
+        --foreground: #1e293b !important;
+        --card: #ffffff !important;
+        --card-foreground: #1e293b !important;
+        --border: #e2e8f0 !important;
+        --muted: #f1f5f9 !important;
+        --muted-foreground: #64748b !important;
+        --secondary: #f1f5f9 !important;
+        --secondary-foreground: #475569 !important;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #f8fafc;
+          --foreground: #1e293b;
+          --card: #ffffff;
+          --card-foreground: #1e293b;
+          --border: #e2e8f0;
+          --muted: #f1f5f9;
+          --muted-foreground: #64748b;
+          --secondary: #f1f5f9;
+          --secondary-foreground: #475569;
+        }
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--background, #f8fafc);
+        color: var(--foreground, #1e293b);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .email-container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px 16px 8px;
+      }
+      .email-header {
+        background-color: var(--background, #f8fafc);
+        border: 1px solid var(--border, #e2e8f0);
+        border-bottom: none;
+        border-radius: 12px 12px 0 0;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+      }
+      .email-header-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .email-header-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: var(--primary, #2563eb);
+        color: var(--primary-foreground, #ffffff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+      }
+      .email-header-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .email-header-title {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--foreground, #1e293b);
+        margin: 0;
+        line-height: 1.2;
+      }
+      .email-header-subtitle {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted-foreground, #64748b);
+        margin: 2px 0 0 0;
+        opacity: 0.8;
+      }
+      .email-card {
+        background-color: var(--card, #ffffff);
+        border: 1px solid var(--border, #e2e8f0);
+        border-radius: 12px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .email-card-header {
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border, #e2e8f0);
+        background-color: var(--card, #ffffff);
+      }
+      .email-card-body {
+        padding: 20px;
+      }
+      .email-card-section-title {
+        margin: 0;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--foreground, #1e293b);
+      }
+      .meta-bar {
+        background-color: var(--muted, #f1f5f9);
+        border: 1px solid var(--border, #e2e8f0);
+        border-top: none;
+        border-radius: 0 0 12px 12px;
+        padding: 12px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px 28px;
+        margin-bottom: 24px;
+      }
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+      }
+      .meta-label {
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted-foreground, #64748b);
+        margin-bottom: 1px;
+      }
+      .meta-value {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--foreground, #1e293b);
+      }
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 2px 8px;
+        border-radius: 9999px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+      }
+      .badge-passed {
+        background-color: rgba(34, 197, 94, 0.12);
+        color: #16a34a;
+        border: 1px solid rgba(34, 197, 94, 0.25);
+      }
+      .badge-failed {
+        background-color: rgba(239, 68, 68, 0.12);
+        color: #dc2626;
+        border: 1px solid rgba(239, 68, 68, 0.25);
+      }
+      .badge-ambiguous {
+        background-color: rgba(249, 115, 22, 0.12);
+        color: #ea580c;
+        border: 1px solid rgba(249, 115, 22, 0.25);
+      }
+      .badge-undefined {
+        background-color: rgba(234, 179, 8, 0.12);
+        color: #ca8a04;
+        border: 1px solid rgba(234, 179, 8, 0.25);
+      }
+      .badge-pending {
+        background-color: rgba(168, 85, 247, 0.12);
+        color: #9333ea;
+        border: 1px solid rgba(168, 85, 247, 0.25);
+      }
+      .badge-skipped {
+        background-color: rgba(14, 165, 233, 0.12);
+        color: #0284c7;
+        border: 1px solid rgba(14, 165, 233, 0.25);
+      }
+      .metric-box {
+        border-radius: 10px;
+        padding: 14px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .metric-box-total {
+        background-color: var(--muted, #f1f5f9);
+      }
+      .progress-bar-container {
+        display: flex;
+        height: 8px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 9999px;
+        background-color: var(--secondary, #f1f5f9);
+      }
+      .progress-fill-passed {
+        background-color: #22c55e;
+      }
+      .progress-fill-failed {
+        background-color: #ef4444;
+      }
+      .progress-fill-ambiguous {
+        background-color: #f97316;
+      }
+      .progress-fill-undefined {
+        background-color: #eab308;
+      }
+      .progress-fill-pending {
+        background-color: #a855f7;
+      }
+      .progress-fill-skipped {
+        background-color: #0ea5e9;
+      }
+      .tag-chip {
+        display: inline-block;
+        border-radius: 9999px;
+        background-color: var(--secondary, #f1f5f9);
+        padding: 2px 8px;
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--secondary-foreground, #475569);
+        margin: 1px 2px;
+      }
+      table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 13px;
+      }
+      table.data-table th {
+        background-color: var(--muted, #f1f5f9);
+        color: var(--muted-foreground, #64748b);
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border, #e2e8f0);
+      }
+      table.data-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border, #e2e8f0);
+        vertical-align: middle;
+      }
+      table.data-table tr:last-child td {
+        border-bottom: none;
+      }
+      .env-icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted-foreground, #64748b);
+      }
+      .env-icons i {
+        font-size: 14px;
+        line-height: 1;
+      }
+      .email-footer {
+        border-top: 1px solid var(--border, #e2e8f0);
+        background-color: var(--background, #f8fafc);
+        padding: 16px 20px;
+        margin-top: 8px;
+        text-align: center;
+      }
+      .email-footer p {
+        margin: 0 0 6px 0;
+        font-size: 11px;
+        color: var(--muted-foreground, #64748b);
+      }
+      .email-footer p:last-child {
+        margin-bottom: 0;
+      }
+      .email-footer a {
+        color: var(--primary, #2563eb);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .email-footer a:hover {
+        text-decoration: underline;
+      }
+      .email-footer .sep {
+        margin: 0 6px;
+        color: rgba(100, 116, 139, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header (mirrors main report header) -->
+      <div class="email-header">
+        <div class="email-header-logo">
+          <div class="email-header-icon">
+            {% if data.report.logo %}
+              <img src="{{ base_url | default: '.' }}/assets/{{ data.report.logo }}" alt="Logo">
+            {% else %}
+              <i class="fa-solid fa-vial-circle-check"></i>
+            {% endif %}
+          </div>
+          <div>
+            <h1 class="email-header-title">
+              {{ data.report.reportName | default: 'Multiple Cucumber HTML Reporter' }}
+            </h1>
+            <p class="email-header-subtitle">
+              {{ data.report.pageTitle | default: 'Automated Execution Insights' }}
+            </p>
+          </div>
+        </div>
+        <div>
+          <span class="status-pill {% if data.summary.failed > 0 or data.scenarios.failed > 0 %}badge-failed{% else %}badge-passed{% endif %}">
+            {% if data.summary.failed > 0 or data.scenarios.failed > 0 %}
+              <i class="fa-solid fa-circle-xmark"></i> FAILED
+            {% else %}
+              <i class="fa-solid fa-circle-check"></i> PASSED
+            {% endif %}
+          </span>
+        </div>
+      </div>
+
+      <!-- Execution Context Metadata Bar -->
+      <div class="meta-bar">
+        {% if data.report.projectName %}
+          <div class="meta-item">
+            <span class="meta-label">Project</span>
+            <span class="meta-value">
+              {{- data.report.projectName -}}
+              {%- if data.report.release %}
+                <span style="color: var(--muted-foreground,#64748b);font-size:11px;font-weight:400;"
+                  >v{{ data.report.release -}}
+                </span>
+              {%- endif -%}
+            </span>
+          </div>
+        {% elsif data.report.release %}
+          <div class="meta-item">
+            <span class="meta-label">Release</span>
+            <span class="meta-value">v{{ data.report.release }}</span>
+          </div>
+        {% endif %}
+        {% if data.report.environment %}
+          <div class="meta-item">
+            <span class="meta-label">Environment</span>
+            <span class="meta-value">{{ data.report.environment }}</span>
+          </div>
+        {% endif %}
+        {% if data.report.testCycle %}
+          <div class="meta-item">
+            <span class="meta-label">Test Cycle</span>
+            <span class="meta-value">{{ data.report.testCycle }}</span>
+          </div>
+        {% endif %}
+        {% if data.report.ciPipeline %}
+          <div class="meta-item">
+            <span class="meta-label">CI Pipeline</span>
+            <span class="meta-value">{{ data.report.ciPipeline }}</span>
+          </div>
+        {% endif %}
+        {% if data.report.buildNumber %}
+          <div class="meta-item">
+            <span class="meta-label">Build</span>
+            <span class="meta-value">{{ data.report.buildNumber }}</span>
+          </div>
+        {% endif %}
+        <div class="meta-item">
+          <span class="meta-label">Execution Date</span>
+          <span class="meta-value" style="font-family:ui-monospace,monospace;font-size:11px;">
+            {{- data.report.executionPeriod -}}
+          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Total Duration</span>
+          <span class="meta-value" style="font-family:ui-monospace,monospace;font-size:11px;">
+            {{- data.report.executionEndTime -}}
+          </span>
+        </div>
+      </div>
+
+      <!-- High-Level KPI Summary Cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:20px;">
+        <!-- Features KPI Card -->
+        <div class="email-card" style="margin-bottom:0;">
+          <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="email-card-section-title">Features Summary</span>
+            <span style="font-size:14px;font-weight:700;color:#16a34a;">{{ data.summary.passedPercentage }}% Pass</span>
+          </div>
+          <div class="email-card-body">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;">
+              <div class="metric-box metric-box-total">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.total }}</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
+                  >Total</span
+                >
+              </div>
+              <div class="metric-box badge-passed">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.passed }}</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">Passed</span>
+              </div>
+              <div class="metric-box badge-failed">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.failed }}</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">Failed</span>
+              </div>
+            </div>
+            <div class="progress-bar-container" style="margin-top:16px;">
+              {% if data.summary.passed > 0 %}
+                <div class="progress-fill-passed" style="width:{{ data.summary.passedPercentage }}%;"></div>
+              {% endif %}
+              {% if data.summary.failed > 0 %}
+                <div class="progress-fill-failed" style="width:{{ data.summary.failedPercentage }}%;"></div>
+              {% endif %}
+              {% if data.summary.skipped > 0 %}
+                <div class="progress-fill-skipped" style="width:{{ data.summary.skippedPercentage }}%;"></div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenarios KPI Card -->
+        <div class="email-card" style="margin-bottom:0;">
+          <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+            <span class="email-card-section-title">Scenarios Summary</span>
+            <span style="font-size:14px;font-weight:700;color:#16a34a;">
+              {{- data.scenarios.passedPercentage }}% Pass</span
+            >
+          </div>
+          <div class="email-card-body">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">
+              <div class="metric-box metric-box-total">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.total }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
+                  >Total</span
+                >
+              </div>
+              <div class="metric-box badge-passed">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.passed }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Passed</span>
+              </div>
+              <div class="metric-box badge-failed">
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.failed }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Failed</span>
+              </div>
+              <div class="metric-box badge-skipped">
+                {% assign others = data.scenarios.skipped
+                  | plus: data.scenarios.ambiguous
+                  | plus: data.scenarios.notDefined
+                  | plus: data.scenarios.pending
+                %}
+                <span style="font-size:24px;font-weight:800;line-height:1;">{{ others }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Other</span>
+              </div>
+            </div>
+            <div class="progress-bar-container" style="margin-top:16px;">
+              {% if data.scenarios.passed > 0 %}
+                <div class="progress-fill-passed" style="width:{{ data.scenarios.passedPercentage }}%;"></div>
+              {% endif %}
+              {% if data.scenarios.failed > 0 %}
+                <div class="progress-fill-failed" style="width:{{ data.scenarios.failedPercentage }}%;"></div>
+              {% endif %}
+              {% if data.scenarios.skipped > 0 %}
+                <div class="progress-fill-skipped" style="width:{{ data.scenarios.skippedPercentage }}%;"></div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features & Scenarios Stats Table -->
+      <div class="email-card">
+        <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
+          <h2 class="email-card-section-title">
+            <i class="fa-solid fa-list-check" style="margin-right:6px;color:var(--primary,#2563eb);"></i>
+            Features &amp; Scenario Statistics ({{ data.features.size }})
+          </h2>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="min-width:180px;">Feature</th>
+                <th>Environment</th>
+                <th style="text-align:center;">Total</th>
+                <th style="text-align:center;">Passed</th>
+                <th style="text-align:center;">Failed</th>
+                <th style="text-align:center;">Other</th>
+                <th style="min-width:150px;">Progress</th>
+                <th style="text-align:right;min-width:90px;">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for feature in data.features %}
+                <tr>
+                  <td>
+                    <div style="font-weight:600;color:var(--foreground,#1e293b);">{{ feature.name }}</div>
+                    {% if feature.tags.size > 0 %}
+                      <div style="margin-top:4px;">
+                        {% for tag in feature.tags limit: 3 -%}
+                          <span class="tag-chip">{{ tag.name }}</span>
+                        {%- endfor %}
+                        {% if feature.tags.size > 3 -%}
+                          <span class="tag-chip">+{{ feature.tags.size | minus: 3 }}</span>
+                        {%- endif %}
+                      </div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% assign device = feature.device
+                      | default: feature.metadata.device
+                      | default: 'desktop'
+                      | downcase
+                    %}
+                    {% assign os = feature.os | default: feature.metadata.platform.name | default: '' | downcase %}
+                    {% assign browser = feature.browser
+                      | default: feature.metadata.browser.name
+                      | default: ''
+                      | downcase
+                    %}
+                    {% assign exec_platform = feature.executionPlatform | default: 'local' %}
+                    <div class="env-icons">
+                      <span title="{{ feature.device | default: 'Desktop' }}">
+                        <i
+                          class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %}"
+                        ></i>
+                      </span>
+                      {% if os != '' %}
+                        <span title="{{ feature.os | default: feature.metadata.platform.name }}">
+                          <i
+                            class="{% if os contains 'windows' %}fa-brands fa-windows{% elsif os contains 'osx' or os contains 'darwin' or os contains 'ios' or os contains 'macos' or os contains 'mac' %}fa-brands fa-apple{% elsif os contains 'android' %}fa-brands fa-android{% elsif os contains 'linux' or os contains 'ubuntu' %}fa-brands fa-linux{% else %}fa-solid fa-laptop-code{% endif %}"
+                          ></i>
+                        </span>
+                      {% endif %}
+                      {% if browser != '' %}
+                        <span title="{{ feature.browser | default: feature.metadata.browser.name }}">
+                          <i
+                            class="{% if browser contains 'chrome' %}fa-brands fa-chrome{% elsif browser contains 'firefox' %}fa-brands fa-firefox{% elsif browser contains 'safari' %}fa-brands fa-safari{% elsif browser contains 'edge' %}fa-brands fa-edge{% elsif browser contains 'api' %}fa-solid fa-plug{% else %}fa-solid fa-globe{% endif %}"
+                          ></i>
+                        </span>
+                      {% endif %}
+                      {% if exec_platform != 'local' %}
+                        {% if exec_platform == 'browserstack' -%}
+                          <span title="BrowserStack"><i class="fa-solid fa-cloud"></i></span>
+                        {% elsif exec_platform == 'testmu' -%}
+                          <span title="TestMu AI"><i class="fa-solid fa-cloud"></i></span>
+                        {% endif %}
+                      {% else %}
+                        <span title="Local machine"><i class="fa-solid fa-computer"></i></span>
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td style="text-align:center;font-weight:600;">{{ feature.scenarios.total }}</td>
+                  <td style="text-align:center;color:#16a34a;font-weight:700;">{{ feature.scenarios.passed }}</td>
+                  <td style="text-align:center;color:#dc2626;font-weight:700;">{{ feature.scenarios.failed }}</td>
+                  <td style="text-align:center;color:#ca8a04;font-weight:600;">
+                    {{
+                      feature.scenarios.skipped
+                      | plus: feature.scenarios.ambiguous
+                      | plus: feature.scenarios.notDefined
+                      | plus: feature.scenarios.pending
+                    }}
+                  </td>
+                  <td>
+                    <div class="progress-bar-container">
+                      {% if feature.scenarios.passed > 0 %}
+                        <div
+                          class="progress-fill-passed"
+                          style="width:{{ feature.scenarios.passedPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                      {% if feature.scenarios.failed > 0 %}
+                        <div
+                          class="progress-fill-failed"
+                          style="width:{{ feature.scenarios.failedPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                      {% if feature.scenarios.ambiguous > 0 %}
+                        <div
+                          class="progress-fill-ambiguous"
+                          style="width:{{ feature.scenarios.ambiguousPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                      {% if feature.scenarios.notDefined > 0 %}
+                        <div
+                          class="progress-fill-undefined"
+                          style="width:{{ feature.scenarios.notDefinedPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                      {% if feature.scenarios.pending > 0 %}
+                        <div
+                          class="progress-fill-pending"
+                          style="width:{{ feature.scenarios.pendingPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                      {% if feature.scenarios.skipped > 0 %}
+                        <div
+                          class="progress-fill-skipped"
+                          style="width:{{ feature.scenarios.skippedPercentage }}%;"
+                        ></div>
+                      {% endif %}
+                    </div>
+                    <div style="font-size:10px;font-weight:700;color:var(--muted-foreground,#64748b);margin-top:3px;text-align:right;">
+                      {{ feature.scenarios.passedPercentage }}%
+                    </div>
+                  </td>
+                  <td style="text-align:right;font-family:ui-monospace,monospace;font-size:12px;color:var(--muted-foreground,#64748b);white-space:nowrap;">
+                    {{ feature.time }}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top 5 Slowest Scenarios -->
+      {% if data.slowestScenarios and data.slowestScenarios.size > 0 %}
+        <div class="email-card">
+          <div class="email-card-header">
+            <h2 class="email-card-section-title">
+              <i class="fa-solid fa-stopwatch" style="margin-right:6px;color:#f97316;"></i>
+              Top 5 Slowest Scenarios
+            </h2>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width:40px;text-align:center;">#</th>
+                  <th>Scenario</th>
+                  <th>Feature</th>
+                  <th style="text-align:center;width:120px;">Status</th>
+                  <th style="text-align:right;width:120px;">Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for scenario in data.slowestScenarios limit: 5 %}
+                  <tr>
+                    <td style="text-align:center;font-weight:700;color:var(--muted-foreground,#64748b);">
+                      {{ forloop.index }}
+                    </td>
+                    <td>
+                      <div style="font-weight:600;color:var(--foreground,#1e293b);">{{ scenario.name }}</div>
+                    </td>
+                    <td style="color:var(--muted-foreground,#64748b);font-size:12px;">{{ scenario.featureName }}</td>
+                    <td style="text-align:center;">
+                      {% if scenario.status == 'passed' -%}
+                        <span class="status-pill badge-passed"><i class="fa-solid fa-circle-check"></i> Passed</span>
+                      {% elsif scenario.status == 'failed' -%}
+                        <span class="status-pill badge-failed"><i class="fa-solid fa-circle-xmark"></i> Failed</span>
+                      {% elsif scenario.status == 'ambiguous' -%}
+                        <span class="status-pill badge-ambiguous"
+                          ><i class="fa-solid fa-circle-exclamation"></i> Ambiguous</span
+                        >
+                      {% elsif scenario.status == 'undefined' -%}
+                        <span class="status-pill badge-undefined"
+                          ><i class="fa-solid fa-circle-question"></i> Undefined</span
+                        >
+                      {% elsif scenario.status == 'pending' -%}
+                        <span class="status-pill badge-pending"><i class="fa-solid fa-clock"></i> Pending</span>
+                      {% else -%}
+                        <span class="status-pill badge-skipped"><i class="fa-solid fa-forward"></i> Skipped</span>
+                      {% endif %}
+                    </td>
+                    <td style="text-align:right;font-family:ui-monospace,monospace;font-size:12px;font-weight:600;color:var(--foreground,#1e293b);white-space:nowrap;">
+                      {{ scenario.time }}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Footer (mirrors main report footer) -->
+      <div class="email-footer">
+        {% if data.report.pageFooter %}
+          {{ data.report.pageFooter }}
+        {% else %}
+          <p>
+            Generated by
+            <a href="https://github.com/WasiqB/multiple-cucumber-html-reporter" target="_blank"
+              >Multiple Cucumber HTML Reporter</a
+            >
+          </p>
+          <p>
+            Built with &#x2764;&#xFE0F; by
+            <a href="https://wasiqbhamla.com/" target="_blank">Wasiq Bhamla</a>
+            <span class="sep">•</span>
+            <a
+              href="https://github.com/WasiqB"
+              target="_blank"
+              style="color:var(--muted-foreground,#64748b);font-weight:400;"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <span class="sep">•</span>
+            <a
+              href="https://x.com/WasiqBhamla"
+              target="_blank"
+              style="color:var(--muted-foreground,#64748b);font-weight:400;"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+            <span class="sep">•</span>
+            <a
+              href="https://www.linkedin.com/in/wasiqbhamla/"
+              target="_blank"
+              style="color:var(--muted-foreground,#64748b);font-weight:400;"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

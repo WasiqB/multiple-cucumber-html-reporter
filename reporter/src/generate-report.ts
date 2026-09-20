@@ -39,6 +39,7 @@ const engine = new Liquid({
 });
 
 const INDEX_HTML = 'index.html';
+const EMAIL_REPORT_HTML = 'email-report.html';
 const FEATURE_FOLDER = 'features';
 const RESULT_STATUS = {
   passed: 'passed',
@@ -154,6 +155,7 @@ async function generateReport(options: Options) {
   function isAlreadyNanoseconds(duration: number): boolean {
     return durationInMS && duration > NANOSECOND_SANITY_THRESHOLD_MS;
   }
+
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
   const pageTitle = options.pageTitle || DEFAULT_REPORT_NAME;
@@ -161,6 +163,7 @@ async function generateReport(options: Options) {
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
   const externalizeMedia = !!options.externalizeMedia;
+  const emailReport = !!options.emailReport;
   const brandLogo = options.brandLogo;
 
   let logoPathName: string | undefined;
@@ -347,6 +350,10 @@ async function generateReport(options: Options) {
   await _createFeaturesOverviewIndexPage(suite);
   logger.debug('Rendering feature detail pages.');
   await _createFeatureIndexPages(suite);
+  if (emailReport) {
+    logger.debug('Rendering emailable report page.');
+    await _createEmailableReport(suite);
+  }
   logger.debug('Writing report CSS assets.');
   await _createCssFile();
   logger.debug('Writing report JavaScript assets.');
@@ -358,7 +365,10 @@ async function generateReport(options: Options) {
 
   if (logger.level !== 'silent') {
     /* istanbul ignore else */
-    logger.info('Report generated successfully.', { report: join(reportPath, INDEX_HTML) });
+    logger.info('Report generated successfully.', {
+      report: join(reportPath, INDEX_HTML),
+      ...(emailReport ? { emailReport: join(reportPath, EMAIL_REPORT_HTML) } : {}),
+    });
   }
 
   if (openReportInBrowser) {
@@ -836,6 +846,108 @@ async function generateReport(options: Options) {
 
     await fs.writeFile(featuresOverviewIndex, html);
     logger.debug('Wrote report overview page.', { file: featuresOverviewIndex });
+  }
+
+  /**
+   * Generate the emailable report (self-contained executive summary)
+   * @param suite suite JSON object with all the features and scenarios
+   * @private
+   */
+  async function _createEmailableReport(suite: Suite) {
+    const emailReportFile = resolve(reportPath, EMAIL_REPORT_HTML);
+    const runtimeMetadata = getReportRuntimeMetadata(suite);
+    logger.trace('Rendering emailable report template.', { file: emailReportFile });
+
+    const report = {
+      reportName: suite.reportName,
+      pageTitle: pageTitle,
+      pageFooter: pageFooter,
+      projectName: customData?.projectName,
+      release: customData?.release,
+      testCycle: customData?.testCycle,
+      buildNumber: customData?.buildNumber,
+      environment: customData?.environment,
+      ciPipeline: customData?.ciPipeline,
+      customDataItems,
+      executionEndTime: formatDuration(suite.totalTime),
+      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      username: customData?.username ?? runtimeMetadata.username,
+      nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
+      reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
+      hostname: customData?.hostname,
+      architecture: customData?.architecture ?? runtimeMetadata.architecture,
+      useCDN: suite.useCDN,
+      hideMetadata: suite.hideMetadata,
+      displayReportTime: suite.displayReportTime,
+      displayDuration: suite.displayDuration,
+      displayChartPercentages: suite.displayChartPercentages,
+      plainDescription,
+      customStyle: suite.customStyle || '',
+      logo: logoPathName,
+    };
+
+    // Calculate Top 5 Slowest Scenarios across all features
+    const allScenarios: Array<{
+      name: string;
+      featureName: string;
+      status: string;
+      duration: number;
+      time: string;
+    }> = [];
+
+    for (const feature of suite.features) {
+      for (const scenario of feature.elements || []) {
+        if (scenario.type === 'background') continue;
+
+        let status = 'passed';
+        if (scenario.failed > 0) {
+          status = 'failed';
+        } else if (scenario.ambiguous > 0) {
+          status = 'ambiguous';
+        } else if (scenario.notDefined > 0) {
+          status = 'undefined';
+        } else if (scenario.pending > 0) {
+          status = 'pending';
+        } else if (scenario.skipped > 0) {
+          status = 'skipped';
+        }
+
+        allScenarios.push({
+          name: scenario.name,
+          featureName: feature.name,
+          status,
+          duration: scenario.duration || 0,
+          time: scenario.time || '00:00:00.000',
+        });
+      }
+    }
+
+    const slowestScenarios = allScenarios.sort((a, b) => b.duration - a.duration).slice(0, 5);
+
+    // Read bundled main stylesheet for embedding. Font Awesome is loaded from
+    // the CDN in the email template so its font files resolve correctly.
+    let inlineCss = '';
+    const cssPath = path.join(templatesDir, 'assets', 'css', 'styles.min.css');
+    if (await fs.pathExists(cssPath)) {
+      inlineCss = await fs.readFile(cssPath, 'utf-8');
+    }
+
+    const data = {
+      summary: suite.featureCount,
+      features: suite.features,
+      scenarios: suite.scenarios,
+      slowestScenarios,
+      report,
+      inlineCss,
+    };
+
+    const html = await engine.renderFile('email', {
+      data,
+      base_url: '.',
+    });
+
+    await fs.writeFile(emailReportFile, html);
+    logger.debug('Wrote emailable report page.', { file: emailReportFile });
   }
 
   /**

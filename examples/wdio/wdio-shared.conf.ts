@@ -327,6 +327,7 @@ export const config: WebdriverIO.Config = {
       saveCollectedJSON: true,
       displayReportTime: true,
       durationInMS: false,
+      emailReport: true,
       displayDuration: true,
       displayChartPercentages: true,
       pageTitle: 'My WDIO Typescript Sample',

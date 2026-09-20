@@ -152,6 +152,11 @@ export interface Options {
    * the original behavior, which showed no such caption.
    */
   modalShowContext?: boolean;
+  /**
+   * Generate a standalone emailable HTML report with high-level feature and scenario stats.
+   * Saved to `<reportPath>/email-report.html`.
+   */
+  emailReport?: boolean;
 }
 
 export interface Hook {

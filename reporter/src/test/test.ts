@@ -117,3 +117,24 @@ test.generate({
     release: '1.0.0',
   },
 });
+
+/**
+ * Generate an emailable HTML report (email-report.html)
+ */
+test.generate({
+  saveCollectedJSON: true,
+  jsonDir: './src/test/unit/data/json/',
+  reportPath: './.tmp/email-report/',
+  reportName: 'You can adjust this report name',
+  emailReport: true,
+  displayDuration: true,
+  durationInMS: true,
+  customData: {
+    projectName: 'Custom project',
+    release: '1.2.3',
+    testCycle: 'B11221.34321',
+    buildNumber: 'CI-001',
+    environment: 'staging',
+    ciPipeline: 'GitHub Actions',
+  },
+});
