@@ -78,7 +78,7 @@ function printHelp(): void {
     config file is found.
 
   MORE INFO
-    https://multiple-cucumber-html-reporter.vercel.app/
+    https://multiple-cucumber-html-reporter.com/
 `);
 }
 

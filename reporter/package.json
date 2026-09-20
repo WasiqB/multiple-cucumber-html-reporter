@@ -57,7 +57,7 @@
   "engines": {
     "node": ">=22"
   },
-  "homepage": "https://multiple-cucumber-html-reporter.vercel.app/",
+  "homepage": "https://multiple-cucumber-html-reporter.com/",
   "dependencies": {
     "@clack/prompts": "^1.8.1",
     "env-interpolation": "^1.1.1",
