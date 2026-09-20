@@ -1,0 +1,81 @@
+title: "[Show and tell] "
+labels: ["showcase"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Show and tell
+        Share what you've built, how you're using this project, or something cool you've discovered.
+        Screenshots, links, and code samples are very welcome!
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: A short, descriptive title for your showcase.
+      placeholder: e.g. Custom HTML report theme for Cucumber
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What are you sharing?
+      description: Describe your project, setup, or discovery and how it relates to this module.
+    validations:
+      required: true
+
+  - type: textarea
+    id: how-it-works
+    attributes:
+      label: How does it work?
+      description: Briefly explain the setup, approach, or configuration behind it. Include code if relevant.
+      render: javascript
+    validations:
+      required: false
+
+  - type: input
+    id: repo-link
+    attributes:
+      label: Link to repository / demo (optional)
+      description: Share a link to your repo, demo, blog post, or screenshot.
+      placeholder: https://github.com/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or media (optional)
+      description: Drag and drop images here, or paste links to videos/screenshots.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Environment (optional, if relevant to your showcase)
+
+  - type: input
+    id: reporter-version
+    attributes:
+      label: multiple-cucumber-html-reporter version
+      placeholder: e.g. 1.10.0
+    validations:
+      required: false
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: e.g. 8.9.1
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing discussions to make sure this hasn't already been shared.
+          required: true

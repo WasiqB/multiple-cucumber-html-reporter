@@ -1,0 +1,32 @@
+name: ":notebook: Documentation"
+description: Suggest improvements or report missing / unclear documentation.
+title: "[Docs]: "
+labels: ["documentation"]
+assignees: ["WasiqB"]
+body:
+  - type: checkboxes
+    id: pre-check
+    attributes:
+      label: Pre-check
+      options:
+        - label: I'm aware that I can [edit the docs](https://github.com/WasiqB/multiple-cucumber-html-reporter-plugin) and submit a pull request
+          required: true
+
+  - type: checkboxes
+    id: improvement-type
+    attributes:
+      label: Describe the improvement
+      description: I'd like to report
+      options:
+        - label: Unclear documentation
+        - label: A typo
+        - label: Missing documentation
+        - label: Other
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the improvement / report
+      description: A clear and concise description.
+    validations:
+      required: true

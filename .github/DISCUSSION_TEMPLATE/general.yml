@@ -1,0 +1,33 @@
+title: "[General] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Welcome!
+        Use this space for general questions, ideas, feedback, or conversations about the project.
+        Please be respectful and search existing discussions before posting.
+
+  - type: textarea
+    id: topic
+    attributes:
+      label: What would you like to discuss?
+      description: A clear and concise description of your topic or question.
+      placeholder: Share your thoughts, question, or idea here...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context (optional)
+      description: Add any other context, links, or screenshots that may help.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing discussions and this is not a duplicate.
+          required: true

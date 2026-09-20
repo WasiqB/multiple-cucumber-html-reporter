@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Want to discuss anything else?
+    url: https://github.com/WasiqB/multiple-cucumber-html-reporter/discussions/new
+    about: Create a discussion about it.
+  - name: You can also join our Discord server
+    url: https://discord.gg/d6rfHkSDjc
+    about: Join our Discord server.

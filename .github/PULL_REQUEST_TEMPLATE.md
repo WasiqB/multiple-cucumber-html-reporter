@@ -1,21 +1,37 @@
+<!--
+  Thanks for contributing! Please fill out this template as completely as possible.
+  Fields marked with * are required. Delete sections that don't apply.
+-->
+
 ## Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+<!--
+  Provide a clear and concise summary of the change, including:
+  - What the change does and why it's needed (motivation / context)
+  - Which issue it fixes (use a closing keyword, e.g. "Fixes #123")
+  - Any dependencies required for this change
+-->
 
 Fixes #(issue-no)
 
 ## Type of change
 
-Please delete options that are not relevant.
+<!-- Please delete options that are not relevant. -->
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+- [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
+- [ ] ✨ New feature (non-breaking change which adds functionality)
+- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] 📝 Documentation update
+- [ ] ♻️ Refactor (no functional change)
+- [ ] ⚡ Performance improvement
+- [ ] 🔧 Chore / build / CI change
 
 ## How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration.
+<!--
+  Describe the tests you ran to verify your changes and how a reviewer can reproduce them.
+  Include relevant details for your test configuration.
+-->
 
 - [ ] Unit Test
 - [ ] Integration Test
@@ -23,14 +39,22 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 **Test Configuration**:
 
-* Firmware version:
-* Hardware:
-* SDK:
+| Field             | Value |
+| ----------------- | ----- |
+| Report version    |       |
+| Node.js version   |       |
+| OS / Platform     |       |
 
-## Checklist:
+**Test steps / reproduction**:
+
+1.
+2.
+3.
+
+## Checklist
 
 > [!IMPORTANT]
-> Ensure that you have checked all the below checklist before submitting the pull request.
+> Ensure you have checked **all** the items below before submitting the pull request.
 
 - [ ] My code follows the style guidelines of this project (linted with Biome)
 - [ ] I have performed a self-review of my own code
@@ -40,7 +64,28 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] I have linked the relevant issue(s) above
 
-## Screenshots (if applicable)
+## Breaking Changes
 
-If your changes include UI updates, please attach screenshots here.
+<!--
+  If this is a breaking change, describe:
+  - What breaks
+  - Who is affected
+  - The migration path for users
+  Delete this section if not applicable.
+-->
+
+## Screenshots / Recordings (if applicable)
+
+<!--
+  If your changes include UI updates, attach before/after screenshots or a short recording here.
+-->
+
+| Before | After |
+| ------ | ----- |
+|        |       |
+
+## Additional Notes
+
+<!-- Anything else reviewers should know: trade-offs, open questions, follow-up work, etc. -->

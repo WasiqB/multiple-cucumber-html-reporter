@@ -1,0 +1,56 @@
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for your feedback!
+        Please fill out the form below so we can better understand your experience.
+
+  - type: dropdown
+    id: feedback-type
+    attributes:
+      label: What kind of feedback is this?
+      options:
+        - General feedback
+        - Usability / UX
+        - Documentation
+        - Performance
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: feedback-details
+    attributes:
+      label: Describe your feedback
+      description: A clear and concise description of what you'd like to share.
+      placeholder: |
+        Tell us what's on your mind — what worked well, what didn't, and any suggestions you have.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version / environment (optional)
+      description: If your feedback is about a specific version or setup, share it here.
+      placeholder: e.g. multiple-cucumber-html-reporter 3.10.0 on Node.js 22.0.0
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context (optional)
+      description: Add any other context, screenshots, or links here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing discussions and this is not a duplicate.
+          required: true

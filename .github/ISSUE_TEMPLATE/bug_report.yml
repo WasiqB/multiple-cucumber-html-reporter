@@ -1,0 +1,109 @@
+name: ":bug: Bug report"
+description: Create a report to help us improve.
+title: "[Bug]: "
+labels: ["bug"]
+assignees: ["WasiqB"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Environment (please complete the following information)
+
+  - type: input
+    id: reporter-version
+    attributes:
+      label: multiple-cucumber-html-reporter
+      description: The version of multiple-cucumber-html-reporter you are using
+      placeholder: e.g. 4.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: e.g. 8.9.1
+    validations:
+      required: true
+
+  - type: input
+    id: npm-version
+    attributes:
+      label: NPM version
+      placeholder: e.g. 5.8.0
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform name and version
+      placeholder: e.g. Windows 10
+    validations:
+      required: true
+
+  - type: input
+    id: cucumber-version
+    attributes:
+      label: Cucumber version
+      placeholder: e.g. 4.2.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Config of multiple-cucumber-html-reporter
+      description: An example of how you configured the reporter in your config.
+      placeholder: |
+        Paste the relevant part of your reporter configuration here
+      render: javascript
+    validations:
+      required: false
+
+  - type: textarea
+    id: describe-bug
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior. Include code or an example repository that can easily be set up.
+      placeholder: |
+        1. Go to '...'
+        2. Run '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: |
+        If applicable, add logs to help explain your problem. If you don't have logs,
+        enable `logging: 'debug'` in the config and paste the log here.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
