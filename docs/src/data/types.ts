@@ -26,6 +26,7 @@ export interface ImageLinks {
   reportHeader: string;
   reportFooter: string;
   legacyAttachment: string;
+  emailableReport: string;
 }
 
 export interface StatItem {

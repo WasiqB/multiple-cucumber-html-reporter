@@ -8,6 +8,7 @@ durationAggregation: 'wallClock'
 displayChartPercentages: true
 durationInMS: false
 displayDuration: true
+emailReport: true
 pageTitle: 'My Playwright Typescript Sample'
 reportName: 'Cucumber JS Report'
 metadata:

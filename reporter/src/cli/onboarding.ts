@@ -40,6 +40,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
           placeholder: './reports/html',
           validate: (v) => (!v?.trim() ? 'Report output path is required.' : undefined),
         }),
+      emailReport: () => p.confirm({ message: 'Generate emailable HTML report?', initialValue: false }),
     },
     {
       onCancel: () => {
@@ -74,6 +75,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
   const options: Options = {
     jsonDir: (required.jsonDir as string).trim(),
     reportPath: (required.reportPath as string).trim(),
+    emailReport: required.emailReport as boolean,
   };
 
   // Report meta

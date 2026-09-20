@@ -85,7 +85,12 @@ Following are the allowed options in the command line tool:
       description: 'Changes the log level of the report generation logging',
       type: 'silent, error, warn, info, debug, or trace',
       typeDescription: 'silent, error, warn, info, debug, or trace',
-      default: 'info'
+      default: 'silent'
+    },
+    '--email': {
+      description: 'Generates a standalone emailable HTML report summary (email-report.html)',
+      type: 'boolean',
+      typeDescription: 'boolean'
     },
     '--version': {
       description: 'Prints the reporter version',
@@ -232,6 +237,20 @@ In case if you are having config file in JSON / YAML format, then you can use th
   "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
 }
 ```
+
+## Generate Emailable Report
+
+To generate a standalone emailable HTML report summary, you can use the `--email` flag with the `mchr` command:
+
+```shell
+mchr --email
+```
+
+<Callout title='Alternaate option' type='idea'>
+You can skip the `--email` option by adding this option in the options file.
+</Callout>
+
+This will generate a standalone emailable HTML report summary in the `./<report-path>/email-report.html` file based on your config file.
 
 ## Configure in CI / CD Pipeline
 

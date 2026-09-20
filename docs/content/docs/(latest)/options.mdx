@@ -30,6 +30,17 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       default: false,
       typeDescription: 'boolean'
     },
+    emailReporter: {
+      description: <>If <code>true</code>, the email reporter will be generated along with the HTML report, else no email reporter will be generated.
+      
+      <Callout title='Email Reporter' type='info'>
+        If this option is disabled, you can still generate the email reporter by passing the <code>--email</code> flag to the CLI tool.
+      </Callout>
+      </>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    }
   }}
 />
 
@@ -77,7 +88,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
         LogLevel: <code>silent</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code>
       </>,
       type: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }',
-      default: 'info',
+      default: 'silent',
       typeDescription: 'boolean | LogLevel | { level: LogLevel; enabled: boolean }'
     }
   }}

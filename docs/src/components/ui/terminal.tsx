@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn"
 
 const KEY_SOUNDS_DOWN: Record<string, [number, number]> = {
   A: [31542, 85],
@@ -441,7 +441,7 @@ export function Terminal({
               {username} — bash
             </span>
           </div>
-          <div className="w-[52px]" />
+          <div className="w-13" />
         </div>
 
         {/* Terminal Content */}

@@ -59,6 +59,7 @@ const config = {
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,
+  emailReport: true,
   metadataFilePath: './.run/reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',
@@ -86,6 +87,7 @@ const config: Option = {
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,
+  emailReport: true,
   metadataFilePath: './.run/reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',
@@ -110,6 +112,7 @@ jsonDir: './.run/reports/json/'
 reportPath: './.run/html-report/'
 openReportInBrowser: true
 useCDN: true
+emailReport: true
 metadataFilePath: './.run/reports/json/metadata.json'
 customData:
   projectName: 'Cypress sample project'
@@ -131,6 +134,7 @@ displayReportTime: true`,
   "reportPath": "./.run/html-report/",
   "openReportInBrowser": true,
   "useCDN": true,
+  "emailReporter": true,
   "metadataFilePath": "./.run/reports/json/metadata.json",
   "customData": {
     "projectName": "Cypress sample project",
@@ -163,7 +167,9 @@ displayReportTime: true`,
 │
 ◇  Report generated successfully!
 │
-└  Report ready: /Users/wasiqbhamla/Developer/github/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html`,
+└   Report ready:
+  - Main Report:  /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html
+  - Email Report: /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/email-report.html`,
         },
       ],
     },

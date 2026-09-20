@@ -44,6 +44,7 @@ function printHelp(): void {
   OPTIONS
     --help, -h                 Show this help message and exit
     --version, -v              Print the version number and exit
+    --email                    Generate an emailable HTML report summary (email-report.html)
     --log-level <level>        Set logging level: silent, error, warn, info,
                                debug, or trace
     --silent, --no-logging     Hide reporter logging completely
@@ -77,7 +78,7 @@ function printHelp(): void {
     config file is found.
 
   MORE INFO
-    https://multiple-cucumber-html-reporter.vercel.app/
+    https://multiple-cucumber-html-reporter.com/
 `);
 }
 
@@ -92,9 +93,12 @@ function applyCliOptions(options: Options, args: string[]): Options {
   for (let index = 0; index < args.length; index++) {
     const arg = args[index];
 
-    if (silentAliases.has(arg)) {
+    if (arg === '--email') {
+      nextOptions.emailReport = true;
+    }
+
+    if (silentAliases.has(arg) || !nextOptions.logging) {
       nextOptions.logging = 'silent';
-      continue;
     }
 
     if (arg === '--log-level') {
@@ -104,7 +108,6 @@ function applyCliOptions(options: Options, args: string[]): Options {
       }
       nextOptions.logging = level;
       index++;
-      continue;
     }
 
     if (arg.startsWith('--log-level=')) {
@@ -178,7 +181,12 @@ async function main(): Promise<void> {
     spinner.stop('Report generated successfully!');
 
     const reportIndex = path.join(path.resolve(cwd, configResult.options.reportPath), 'index.html');
-    p.outro(`Report ready: ${reportIndex}`);
+    if (configResult.options.emailReport) {
+      const emailReportPath = path.join(path.resolve(cwd, configResult.options.reportPath), 'email-report.html');
+      p.outro(`Report ready:\n  - Main Report:  ${reportIndex}\n  - Email Report: ${emailReportPath}`);
+    } else {
+      p.outro(`Report ready: ${reportIndex}`);
+    }
     process.exit(0);
   } catch (error: unknown) {
     spinner.stop(`Report generation failed.`);

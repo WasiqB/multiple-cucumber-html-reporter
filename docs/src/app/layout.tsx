@@ -7,9 +7,9 @@ import type { Metadata } from 'next';
 import { Geist, Inter } from 'next/font/google';
 import { Suspense } from 'react';
 import analytics from '@/data/analytics.json';
+import { cn } from '@/lib/cn';
 import { baseUrl, createMetadata } from '@/lib/metadata';
 import { isProd } from '@/lib/shared';
-import { cn } from '@/lib/utils';
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 

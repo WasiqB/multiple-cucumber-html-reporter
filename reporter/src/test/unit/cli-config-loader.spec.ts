@@ -117,4 +117,18 @@ export default config;
       reportName: 'TS Report',
     });
   });
+
+  it('should support emailReport in options config', async () => {
+    const configPath = path.join(tempDir, '.multiple-cucumber-html-reporter.json');
+    const mockConfig = {
+      jsonDir: './json-dir',
+      reportPath: './report-path',
+      emailReport: true,
+    };
+    await fs.writeJson(configPath, mockConfig);
+
+    const loaded = await loadConfig(tempDir);
+    expect(loaded).not.toBeNull();
+    expect(loaded?.options.emailReport).toBeTrue();
+  });
 });

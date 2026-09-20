@@ -7,7 +7,7 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://multiple-cucumber-html-reporter.vercel.app/',
+      url: 'https://multiple-cucumber-html-reporter.com/',
       images: '/banner.png',
       siteName: 'Multiple Cucumber HTML Reporter',
       ...override.openGraph,
