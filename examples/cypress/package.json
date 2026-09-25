@@ -19,7 +19,7 @@
     "@types/node": "^26.6.2",
     "cypress": "^16.1.0",
     "multiple-cucumber-html-reporter": "workspace:*",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
   "dependencies": {

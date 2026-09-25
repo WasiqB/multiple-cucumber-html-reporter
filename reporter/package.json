@@ -71,7 +71,7 @@
     "luxon": "^3.7.2",
     "open": "^11.0.4",
     "stream-chain": "^4.2.5",
-    "stream-json": "^3.6.0",
+    "stream-json": "^3.7.0",
     "uuid": "^14.0.2"
   },
   "devDependencies": {
@@ -87,7 +87,7 @@
     "c8": "^12.0.0",
     "jasmine": "^7.0.0",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }
