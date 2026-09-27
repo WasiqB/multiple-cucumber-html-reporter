@@ -51,6 +51,8 @@
     // Report-wide UI config (opt-in features toggled from the reporter options)
     window.ReportConfig = Object.assign({}, window.ReportConfig, {
         displayChartPercentages: {{ data.report.displayChartPercentages | json }},
+        displayDuration: {{ data.report.displayDuration | json }},
+        durationColumnTitle: {{ data.report.durationColumnTitle | default: 'Duration' | json }},
         modalBackdrop: {{ data.report.modalBackdrop | json }},
         modalDraggable: {{ data.report.modalDraggable | json }},
         modalResizable: {{ data.report.modalResizable | json }},

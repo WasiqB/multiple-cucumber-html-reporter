@@ -150,6 +150,7 @@ export const config: WebdriverIO.Config = {
       displayReportTime: true,
       emailReport: true,
       durationInMS: false,
+      humanReadableDuration: true,
       displayDuration: true,
       displayChartPercentages: true,
       pageTitle: 'My WDIO Typescript Sample',

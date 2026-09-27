@@ -85,7 +85,7 @@ export interface Options {
    */
   customScript?: string;
   /**
-   * Controls reporter logging. Defaults to `info`.
+   * Controls reporter logging. Defaults to `silent`.
    *
    * Examples:
    * - `logging: 'warn'`
@@ -103,6 +103,12 @@ export interface Options {
   displayReportTime?: boolean;
   displayChartPercentages?: boolean;
   durationInMS?: boolean;
+  /**
+   * When `true`, durations are rendered in a compact human-readable format
+   * such as "3h 40m 23s" instead of the default "hh:mm:ss.SSS" format.
+   * @default false
+   */
+  humanReadableDuration?: boolean;
   durationAggregation?: 'wallClock' | 'sum';
   hideMetadata?: boolean;
   pageTitle?: string;
@@ -289,6 +295,7 @@ export interface Suite {
   hideMetadata: boolean;
   displayReportTime: boolean;
   displayDuration: boolean;
+  humanReadableDuration: boolean;
   displayChartPercentages: boolean;
   durationAggregation: 'wallClock' | 'sum';
   durationColumnTitle: string;

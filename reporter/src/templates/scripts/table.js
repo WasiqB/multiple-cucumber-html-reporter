@@ -16,6 +16,8 @@ window.ReportTable = {
 
     if (!tableBody || !data.features) return;
 
+    const displayDuration = !!(window.ReportConfig && window.ReportConfig.displayDuration);
+
     let filteredFeatures = [...data.features];
     let currentPage = 1;
     let pageSize = parseInt(pageSizeSelect?.value || '10', 10);
@@ -157,6 +159,13 @@ window.ReportTable = {
                   <span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">${passPercentage}%</span>
                 </div>
               </td>
+              ${displayDuration ? `
+              <td class="px-6 py-4 text-right whitespace-nowrap">
+                <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
+                  <i class="fa-regular fa-clock"></i>
+                  ${feature.time || '\u2014'}
+                </span>
+              </td>` : ''}
             </tr>
           `;
         })
@@ -209,6 +218,12 @@ window.ReportTable = {
           case 3:
             valA = totalA > 0 ? a.passed / totalA : 0;
             valB = totalB > 0 ? b.passed / totalB : 0;
+            break;
+          case 4:
+            // Sort by raw duration (numeric) so the order is correct regardless
+            // of whether the displayed format is human-readable or hh:mm:ss.
+            valA = a.duration || 0;
+            valB = b.duration || 0;
             break;
           default:
             return 0;
@@ -269,7 +284,7 @@ window.ReportTable = {
     // Events
     const headers = tableContainer.querySelectorAll('thead th');
     headers.forEach((th, idx) => {
-      if (idx === 0 || idx === 2 || idx === 3) th.addEventListener('click', () => handleSort(idx));
+      if (idx === 0 || idx === 2 || idx === 3 || (displayDuration && idx === 4)) th.addEventListener('click', () => handleSort(idx));
     });
 
     searchInput?.addEventListener('input', (e) => {

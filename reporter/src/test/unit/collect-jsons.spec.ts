@@ -152,6 +152,7 @@ describe('collect-jsons.js', () => {
       await collectJSONS({
         jsonDir: './src/test/unit/data/no-jsons',
         reportPath: reportPath,
+        logging: 'warn',
       });
       expect(console.warn).toHaveBeenCalledOnceWith(
         jasmine.stringMatching(

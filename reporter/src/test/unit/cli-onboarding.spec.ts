@@ -104,6 +104,7 @@ describe('CLI Onboarding', () => {
       if (prompts.displayDuration) {
         return {
           displayDuration: true,
+          humanReadableDuration: true,
           displayReportTime: true,
           durationInMS: false,
           durationAggregation: 'wallClock',
@@ -132,6 +133,7 @@ describe('CLI Onboarding', () => {
     expect(result.options.brandLogo).toBe('logo.png');
     expect(result.options.pageTitle).toBe('Page Title');
     expect(result.options.displayDuration).toBeTrue();
+    expect(result.options.humanReadableDuration).toBeTrue();
     expect(result.options.displayReportTime).toBeTrue();
     expect(result.options.durationInMS).toBeFalse();
     expect(result.options.durationAggregation).toBe('wallClock');

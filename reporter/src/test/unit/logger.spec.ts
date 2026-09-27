@@ -6,7 +6,7 @@ describe('logger.js', () => {
   });
 
   it('should normalize logging options and preserve disableLog as a silent alias', () => {
-    expect(normalizeLogLevel(undefined, undefined)).toBe('info');
+    expect(normalizeLogLevel(undefined, undefined)).toBe('silent');
     expect(normalizeLogLevel('debug', undefined)).toBe('debug');
     expect(normalizeLogLevel(false, undefined)).toBe('silent');
     expect(normalizeLogLevel({ enabled: false }, undefined)).toBe('silent');

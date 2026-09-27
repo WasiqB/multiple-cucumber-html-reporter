@@ -1,0 +1,36 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "a long nanosecond scenario",
+        "description": "",
+        "id": "human-readable-duration;a-long-nanosecond-scenario",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 13223000000000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "a step lasting three hours, forty minutes and twenty-three seconds",
+            "match": {
+              "location": "step.js:1"
+            },
+            "keyword": "Given "
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "name": "Human-readable duration feature",
+    "description": "",
+    "id": "human-readable-duration",
+    "keyword": "Feature",
+    "uri": "features/human-readable-duration.feature",
+    "tags": []
+  }
+]
