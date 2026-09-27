@@ -1,0 +1,29 @@
+[
+  {
+    "id": "day-duration",
+    "keyword": "Feature",
+    "name": "Day duration",
+    "line": 1,
+    "tags": [],
+    "uri": "features/day-duration.feature",
+    "elements": [
+      {
+        "id": "day-duration;long-running-scenario",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "A long-running scenario",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a step lasting more than one day",
+            "match": { "location": "src/steps.js:1" },
+            "result": { "status": "passed", "duration": 93784000000000 }
+          }
+        ]
+      }
+    ]
+  }
+]

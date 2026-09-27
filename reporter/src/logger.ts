@@ -51,7 +51,7 @@ export function normalizeLogLevel(
     return logging.level;
   }
 
-  return 'info';
+  return 'silent';
 }
 
 export function createLogger(logging: LoggingOptions | undefined, disableLog?: boolean): Logger {

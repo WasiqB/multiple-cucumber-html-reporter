@@ -67,6 +67,14 @@
               <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
             </div>
           </th>
+          {% if data.report.displayDuration %}
+          <th class="px-4 md:px-6 py-3 text-right cursor-pointer hover:text-foreground transition-colors group">
+            <div class="flex items-center justify-end gap-1.5">
+              {{ data.report.durationColumnTitle | default: 'Duration' }}
+              <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
+            </div>
+          </th>
+          {% endif %}
         </tr>
       </thead>
       <tbody id="features-table-body" class="divide-y divide-border">
@@ -212,6 +220,14 @@
                 >
               </div>
             </td>
+            {% if data.report.displayDuration %}
+            <td class="px-6 py-4 text-right whitespace-nowrap">
+              <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
+                <i class="fa-regular fa-clock"></i>
+                {{ feature.time | default: '—' }}
+              </span>
+            </td>
+            {% endif %}
           </tr>
         {% endfor %}
       </tbody>

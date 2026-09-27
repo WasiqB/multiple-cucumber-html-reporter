@@ -133,6 +133,7 @@ async function generateReport(options: Options) {
   const displayReportTime = !!options.displayReportTime;
   const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
+  const humanReadableDuration = !!options.humanReadableDuration;
   /**
    * A millisecond duration for a single step realistically rarely reaches
    * 1,000,000 ms (which is ~16.6 minutes). Nanosecond durations, on the other
@@ -230,6 +231,7 @@ async function generateReport(options: Options) {
     hideMetadata,
     displayReportTime,
     displayDuration,
+    humanReadableDuration,
     displayChartPercentages,
     durationAggregation,
     durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
@@ -417,7 +419,7 @@ async function generateReport(options: Options) {
       total: 0,
     };
     feature.duration = 0;
-    feature.time = '00:00:00.000';
+    feature.time = formatDuration(0);
     feature.isFailed = false;
     feature.isAmbiguous = false;
     feature.isSkipped = false;
@@ -565,7 +567,7 @@ async function generateReport(options: Options) {
 
     feature.elements.forEach((scenario: Scenario) => {
       scenario.duration = 0;
-      scenario.time = '00:00:00.000';
+      scenario.time = formatDuration(0);
       scenario.passed = 0;
       scenario.failed = 0;
       scenario.notDefined = 0;
@@ -821,7 +823,9 @@ async function generateReport(options: Options) {
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
       displayDuration: suite.displayDuration,
+      humanReadableDuration: suite.humanReadableDuration,
       displayChartPercentages: suite.displayChartPercentages,
+      durationColumnTitle: suite.durationColumnTitle,
       plainDescription,
       customStyle: suite.customStyle || '',
       customScript: suite.customScript,
@@ -880,7 +884,9 @@ async function generateReport(options: Options) {
       hideMetadata: suite.hideMetadata,
       displayReportTime: suite.displayReportTime,
       displayDuration: suite.displayDuration,
+      humanReadableDuration: suite.humanReadableDuration,
       displayChartPercentages: suite.displayChartPercentages,
+      durationColumnTitle: suite.durationColumnTitle,
       plainDescription,
       customStyle: suite.customStyle || '',
       logo: logoPathName,
@@ -917,7 +923,7 @@ async function generateReport(options: Options) {
           featureName: feature.name,
           status,
           duration: scenario.duration || 0,
-          time: scenario.time || '00:00:00.000',
+          time: scenario.time || formatDuration(0),
         });
       }
     }
@@ -1139,7 +1145,16 @@ async function generateReport(options: Options) {
   }
 
   /**
-   * Formats the duration to HH:mm:ss.SSS.
+   * Formats the duration to a human-readable string.
+   *
+   * When `humanReadableDuration` is enabled the output is compact, e.g.
+   * "3h 40m 23s". Parts that are zero are omitted, except that at minimum
+   * "0s" is returned for zero-length durations. Durations shorter than one
+   * second are displayed in milliseconds (for example, "40ms") so they are
+   * not incorrectly reported as zero.
+   *
+   * When `humanReadableDuration` is disabled the output uses the legacy
+   * fixed-width format "hh:mm:ss.SSS".
    *
    * @param {number} duration a time duration usually in ns form; it can be
    * possible to interpret the value as ms, see the option {durationInMS}.
@@ -1148,7 +1163,31 @@ async function generateReport(options: Options) {
    */
   function formatDuration(duration: number): string {
     const treatAsMillis = durationInMS && !isAlreadyNanoseconds(duration);
-    return Duration.fromMillis(treatAsMillis ? duration : duration / 1000000).toFormat('hh:mm:ss.SSS');
+    const millis = treatAsMillis ? duration : duration / 1000000;
+
+    if (!humanReadableDuration) {
+      return Duration.fromMillis(millis).toFormat('hh:mm:ss.SSS');
+    }
+
+    if (millis > 0 && millis < 1000) {
+      const roundedMillis = Math.round(millis);
+      return roundedMillis > 0 ? `${roundedMillis}ms` : '<1ms';
+    }
+
+    // Human-readable format: "3h 40m 23s" or "1d 2h 3m 4s". Days prevent
+    // long-running reports from displaying an unwieldy total hour count.
+    const totalSeconds = Math.floor(millis / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const parts: string[] = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+    return parts.join(' ');
   }
 
   /**

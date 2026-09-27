@@ -101,6 +101,7 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
   "pageTitle": "My Project Report",
   "reportName": "My Project",
   "displayDuration": true,
+  "humanReadableDuration": true,
   "displayReportTime": true
 }
 ```

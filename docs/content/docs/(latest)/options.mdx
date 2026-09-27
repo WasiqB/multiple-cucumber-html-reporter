@@ -83,7 +83,7 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
     },
     logging: {
       description: <>
-        Controls reporter logging.
+        Controls reporter logging. Logging is silent unless this option is explicitly set.
 
         LogLevel: <code>silent</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code>
       </>,
@@ -205,6 +205,14 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
           </Callout>
         </>
       ),
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
+    humanReadableDuration: {
+      description: <>
+        If set to <code>true</code>, durations use a compact format such as <code>3h 40m 23s</code>, <code>1d 2h</code>, or <code>40ms</code> for sub-second durations. The default is the fixed-width <code>hh:mm:ss.SSS</code> format. This applies to the main report, feature pages, and emailable report.
+      </>,
       type: 'boolean',
       default: false,
       typeDescription: 'boolean'

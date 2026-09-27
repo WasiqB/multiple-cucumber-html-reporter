@@ -108,6 +108,11 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
   if (selected.includes('durations')) {
     const dur = await p.group({
       displayDuration: () => p.confirm({ message: 'Show scenario duration column in the report?', initialValue: true }),
+      humanReadableDuration: () =>
+        p.confirm({
+          message: 'Format durations as human-readable values (for example, 3h 40m 23s)?',
+          initialValue: false,
+        }),
       displayReportTime: () => p.confirm({ message: 'Show report generation time?', initialValue: true }),
       durationInMS: () =>
         p.confirm({
@@ -127,6 +132,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       return cancelOnboarding();
     }
     options.displayDuration = dur.displayDuration as boolean;
+    options.humanReadableDuration = dur.humanReadableDuration as boolean;
     options.displayReportTime = dur.displayReportTime as boolean;
     options.durationInMS = dur.durationInMS as boolean;
     options.durationAggregation = dur.durationAggregation as 'sum' | 'wallClock';
@@ -170,12 +176,12 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     const logging = await p.select<LogLevel>({
       message: 'Which reporter log level should be used?',
       options: [
-        { value: 'info', label: 'info', hint: 'default' },
+        { value: 'silent', label: 'silent', hint: 'default; hide reporter logs' },
+        { value: 'info', label: 'info' },
         { value: 'warn', label: 'warn' },
         { value: 'error', label: 'error' },
         { value: 'debug', label: 'debug' },
         { value: 'trace', label: 'trace' },
-        { value: 'silent', label: 'silent', hint: 'hide reporter logs' },
       ],
     });
     if (p.isCancel(logging)) {
