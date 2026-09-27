@@ -3,6 +3,30 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.4.0 (2026-09-27)
+
+#### :rocket: New Feature
+
+- [#621](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/621) feat: :sparkles: added human readable duration feature with toggle ([@WasiqB](https://github.com/WasiqB))
+- [#617](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/617) feat: :sparkles: implemented Emailable report ([@WasiqB](https://github.com/WasiqB))
+- [#616](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/616) feat: :sparkles: updated docs and upgraded dependencies ([@WasiqB](https://github.com/WasiqB))
+
+#### :nail_care: Polish
+
+- [#620](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/620) chore(deps): bump the dependencies group with 14 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#614](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/614) chore(deps): bump the dependencies group with 20 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#613](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/613) chore(deps): bump github/codeql-action from 4.37.3 to 4.37.9 in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#612](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/612) chore(deps): bump the dependencies group with 11 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### :memo: Documentation
+
+- [#619](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/619) docs: :memo: updated the issues and discussions templates ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.3.0 (2026-08-23)
 
 #### :rocket: New Feature
