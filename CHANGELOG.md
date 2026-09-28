@@ -3,6 +3,9 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.4.1-beta.0 (2026-09-28)
+
+
 ## 4.4.0 (2026-09-27)
 
 #### :rocket: New Feature
