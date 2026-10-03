@@ -23,10 +23,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
 
-      - name: Setup Node.js v24
+      - name: Setup Node.js v22
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 22
           cache: "pnpm"
 
       - name: Install Root Dependencies

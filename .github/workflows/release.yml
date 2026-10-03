@@ -24,20 +24,27 @@ env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
-  dry-run:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout Code
+        uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v6
+      - name: Cache Build
+        id: build-cache
+        uses: actions/cache@v8
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 22
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
@@ -45,6 +52,63 @@ jobs:
       - name: Build Project
         run: pnpm build
         working-directory: reporter
+
+  dry-run:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+
+      - name: Restore cached Build
+        id: cache-build-restore
+        uses: actions/cache/restore@v8
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
+      - name: List files in dist folder
+        working-directory: reporter
+        run: ls -la dist/
+
+      - name: Assert required release assets exist
+        working-directory: reporter
+        run: |
+          REQUIRED_FILES=(
+            "dist/collect-jsons.d.ts"
+            "dist/collect-jsons.d.ts.map"
+            "dist/collect-jsons.js"
+            "dist/collect-jsons.js.map"
+            "dist/generate-report.d.ts"
+            "dist/generate-report.d.ts.map"
+            "dist/generate-report.js"
+            "dist/generate-report.js.map"
+            "dist/cli/config-loader.d.ts"
+            "dist/cli/config-loader.d.ts.map"
+            "dist/cli/config-loader.js"
+            "dist/cli/config-loader.js.map"
+            "dist/cli/index.d.ts"
+            "dist/cli/index.d.ts.map"
+            "dist/cli/index.js"
+            "dist/cli/index.js.map"
+            "dist/cli/onboarding.d.ts"
+            "dist/cli/onboarding.d.ts.map"
+            "dist/cli/onboarding.js"
+            "dist/cli/onboarding.js.map"
+            "dist/cli/prompts.d.ts"
+            "dist/cli/prompts.d.ts.map"
+            "dist/cli/prompts.js"
+            "dist/cli/prompts.js.map"
+          )
+
+          for FILE in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$FILE" ]; then
+              echo "❌ Error: Required file '$FILE' was not found!"
+              exit 1
+            fi
+            echo "✅ Verified: $FILE"
+          done
 
       - name: Release
         if: ${{ ! inputs.pre-release }}
@@ -68,6 +132,13 @@ jobs:
           fetch-depth: 0
           token: ${{ env.PUSH_TOKEN }}
 
+      - name: Restore cached Build
+        id: cache-build-restore
+        uses: actions/cache/restore@v8
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v7
         with:
@@ -87,21 +158,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 22
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Build Project
-        run: pnpm build
-        working-directory: reporter
 
       - name: Upgrade NPM
         run: |
           npm install -g npm
           npm -v
+
+      - name: List files in dist folder
+        working-directory: reporter
+        run: ls -la dist/
 
       - name: Release
         if: ${{ ! inputs.pre-release }}
