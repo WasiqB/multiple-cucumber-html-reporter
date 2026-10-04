@@ -55,7 +55,7 @@ jobs:
 
       - name: Restore cached Build
         id: cache-build-restore
-        uses: actions/cache/restore@v8
+        uses: actions/cache/restore@v6
         with:
           path: reporter/dist
           key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
