@@ -75,7 +75,8 @@
     "open": "^11.0.4",
     "stream-chain": "^4.2.6",
     "stream-json": "^3.7.0",
-    "uuid": "^14.0.2"
+    "uuid": "^14.0.2",
+    "yargs": "^18.2.0"
   },
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
@@ -87,6 +88,7 @@
     "@types/lodash": "^4.17.25",
     "@types/luxon": "^3.7.6",
     "@types/node": "^26.6.4",
+    "@types/yargs": "^17.0.35",
     "c8": "^12.0.0",
     "jasmine": "^7.0.0",
     "tailwindcss": "^4.3.3",
