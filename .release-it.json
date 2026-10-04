@@ -6,7 +6,7 @@
       "prettier": true
     },
     "@release-it/bumper": {
-      "out": ["reporter/package.json"]
+      "out": ["reporter/package.json", "docs/package.json"]
     }
   },
   "hooks": {

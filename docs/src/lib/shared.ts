@@ -1,3 +1,16 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+export function getReporterVersion(): string {
+  try {
+    const pkgPath = path.resolve(process.cwd(), './package.json');
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8')) as { version: string };
+    return pkg.version;
+  } catch {
+    return 'unknown';
+  }
+}
+
 export const appName = 'Multiple CucumberHTML Reporter';
 export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';

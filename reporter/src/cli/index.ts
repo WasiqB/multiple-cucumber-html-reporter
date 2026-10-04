@@ -15,6 +15,8 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as p from '@clack/prompts';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 import { generate } from '../generate-report.js';
 import { LOG_LEVELS } from '../logger.js';
 import type { LogLevel, Options } from '../types.js';
@@ -34,111 +36,69 @@ function readVersion(): string {
   }
 }
 
-function printHelp(): void {
-  console.log(`
-  mchr — Multiple Cucumber HTML Reporter CLI v${readVersion()}
-
-  USAGE
-    mchr [options]
-
-  OPTIONS
-    --help, -h                 Show this help message and exit
-    --version, -v              Print the version number and exit
-    --email                    Generate an emailable HTML report summary (email-report.html)
-    --log-level <level>        Set logging level: silent, error, warn, info,
-                               debug, or trace
-    --silent, --no-logging     Hide reporter logging completely
-
-  CONFIG FILES
-    The CLI looks for a config file in the current working directory in this
-    priority order:
-
-      .multiple-cucumber-html-reporterrc      (JSON, default)
-      .multiple-cucumber-html-reporter.json
-      .multiple-cucumber-html-reporter.js     (ESM / CJS)
-      .multiple-cucumber-html-reporter.ts     (TypeScript)
-      .multiple-cucumber-html-reporter.yaml
-
-    The config file must export / contain an object that matches the Options
-    type from the multiple-cucumber-html-reporter package.
-
-  EXAMPLE CONFIG (.multiple-cucumber-html-reporter.json)
-    {
-      "jsonDir": "./reports",
-      "reportPath": "./reports/html",
-      "reportName": "My Test Report",
-      "logging": "warn",
-      "displayDuration": true,
-      "displayChartPercentages": true
-    }
-
-  CI PIPELINES
-    When the CI environment variable is set to "true", the interactive
-    onboarding flow is disabled. The CLI will exit with a non-zero code if no
-    config file is found.
-
-  MORE INFO
-    https://multiple-cucumber-html-reporter.com/
-`);
-}
-
 function isCI(): boolean {
   return process.env.CI === 'true' || process.env.CI === '1';
 }
 
-function applyCliOptions(options: Options, args: string[]): Options {
-  const nextOptions = { ...options };
-  const silentAliases = new Set(['--silent', '--no-logging']);
-
-  for (let index = 0; index < args.length; index++) {
-    const arg = args[index];
-
-    if (arg === '--email') {
-      nextOptions.emailReport = true;
-    }
-
-    if (silentAliases.has(arg) || !nextOptions.logging) {
-      nextOptions.logging = 'silent';
-    }
-
-    if (arg === '--log-level') {
-      const level = args[index + 1];
-      if (!level || !isLogLevel(level)) {
-        throw new Error(`Invalid --log-level value. Expected one of: ${LOG_LEVELS.join(', ')}.`);
-      }
-      nextOptions.logging = level;
-      index++;
-    }
-
-    if (arg.startsWith('--log-level=')) {
-      const level = arg.slice('--log-level='.length);
-      if (!isLogLevel(level)) {
-        throw new Error(`Invalid --log-level value. Expected one of: ${LOG_LEVELS.join(', ')}.`);
-      }
-      nextOptions.logging = level;
-    }
-  }
-
-  return nextOptions;
-}
-
-function isLogLevel(value: string): value is LogLevel {
-  return LOG_LEVELS.includes(value as LogLevel);
-}
-
 async function main(): Promise<void> {
-  const args = process.argv.slice(2);
-
-  // Handle --help / --version early, before any Clack output
-  if (args.includes('--help') || args.includes('-h')) {
-    printHelp();
-    process.exit(0);
-  }
-
-  if (args.includes('--version') || args.includes('-v')) {
-    console.log(readVersion());
-    process.exit(0);
-  }
+  const argv = await yargs(hideBin(process.argv))
+    .scriptName('mchr')
+    .version(readVersion())
+    .alias('v', 'version')
+    .help()
+    .alias('h', 'help')
+    .usage('$0 [options]\n\nMultiple Cucumber HTML Reporter CLI')
+    .option('email', {
+      alias: 'e',
+      type: 'boolean',
+      default: false,
+      description: 'Generate an emailable HTML report summary (email-report.html)',
+    })
+    .option('log-level', {
+      alias: 'l',
+      type: 'string',
+      description: `Set logging level (${LOG_LEVELS.join(', ')})`,
+      choices: LOG_LEVELS as unknown as string[],
+    })
+    .option('silent', {
+      type: 'boolean',
+      default: false,
+      description: 'Hide reporter logging completely (alias: --no-logging)',
+      alias: 'no-logging',
+    })
+    .epilog(
+      [
+        'CONFIG FILES',
+        '  The CLI looks for a config file in the current working directory in this',
+        '  priority order:',
+        '',
+        '    .multiple-cucumber-html-reporterrc      (JSON, default)',
+        '    .multiple-cucumber-html-reporter.json',
+        '    .multiple-cucumber-html-reporter.js     (ESM / CJS)',
+        '    .multiple-cucumber-html-reporter.ts     (TypeScript)',
+        '    .multiple-cucumber-html-reporter.yaml',
+        '',
+        'EXAMPLE CONFIG (.multiple-cucumber-html-reporter.json)',
+        '  {',
+        '    "jsonDir": "./reports",',
+        '    "reportPath": "./reports/html",',
+        '    "reportName": "My Test Report",',
+        '    "logging": "warn",',
+        '    "displayDuration": true,',
+        '    "displayChartPercentages": true',
+        '  }',
+        '',
+        'CI PIPELINES',
+        '  When the CI environment variable is set to "true", the interactive',
+        '  onboarding flow is disabled. The CLI will exit with a non-zero code if no',
+        '  config file is found.',
+        '',
+        'MORE INFO',
+        '  https://multiple-cucumber-html-reporter.com/',
+      ].join('\n'),
+    )
+    .strict()
+    .parseAsync();
 
   const cwd = process.cwd();
 
@@ -164,13 +124,23 @@ async function main(): Promise<void> {
     console.log(`  Config: ${path.relative(cwd, configResult.filePath)}`);
   }
 
-  try {
-    configResult.options = applyCliOptions(configResult.options, args);
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
-    p.log.error(message);
-    process.exit(1);
+  // ── Apply CLI overrides on top of file config
+  const options: Options = { ...configResult.options };
+
+  if (argv.email) {
+    options.emailReport = true;
   }
+
+  if (argv.silent) {
+    options.logging = 'silent';
+  }
+
+  const rawLogLevel = argv['log-level'] as LogLevel | undefined;
+  if (rawLogLevel) {
+    options.logging = rawLogLevel;
+  }
+
+  configResult.options = options;
 
   // ── 3. Generate the report
   const spinner = p.spinner();
@@ -191,8 +161,7 @@ async function main(): Promise<void> {
   } catch (error: unknown) {
     spinner.stop(`Report generation failed.`);
     if (error instanceof Error) {
-      const message = error.message;
-      p.log.error(message);
+      p.log.error(error.message);
     } else {
       p.log.error(String(error));
     }
