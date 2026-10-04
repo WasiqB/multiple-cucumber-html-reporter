@@ -68,6 +68,14 @@ jobs:
           path: reporter/dist
           key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
 
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "pnpm"
+
       - name: List files in dist folder
         working-directory: reporter
         run: ls -la dist/
