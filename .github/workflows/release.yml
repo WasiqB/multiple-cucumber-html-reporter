@@ -86,7 +86,7 @@ jobs:
             dist/run-build.{d.ts,d.ts.map,js,js.map}
             dist/types.{d.ts,d.ts.map,js,js.map}
             dist/cli/{config-loader,index,onboarding,prompts}.{d.ts,d.ts.map,js,js.map}
-            dist/streaming/{json-stream}.{d.ts,d.ts.map,js,js.map}
+            dist/streaming/json-stream.{d.ts,d.ts.map,js,js.map}
           )
 
           missing=()
