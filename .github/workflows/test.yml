@@ -19,7 +19,7 @@ jobs:
 
       - name: Cache Build
         id: build-cache
-        uses: actions/cache@v8
+        uses: actions/cache@v6
         with:
           path: reporter/dist
           key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
