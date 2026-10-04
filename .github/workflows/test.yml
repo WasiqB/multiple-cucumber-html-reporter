@@ -17,9 +17,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v7
 
+      - name: Cache Build
+        id: build-cache
+        uses: actions/cache@v8
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
       - uses: pnpm/action-setup@v6
 
-      - name: Setup Node.js v24
+      - name: Setup Node.js v22
         uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -46,9 +53,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v7
 
+      - name: Restore cached Build
+        id: cache-build-restore
+        uses: actions/cache/restore@v8
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
       - uses: pnpm/action-setup@v6
 
-      - name: Setup Node.js v24
+      - name: Setup Node.js v22
         uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -57,13 +71,39 @@ jobs:
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Project
-        run: pnpm build
-        working-directory: reporter
-
       - name: List files in dist folder
         working-directory: reporter
         run: ls -la dist/
+
+      - name: Assert required release assets exist
+        working-directory: reporter
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required=(
+            dist/collect-jsons.{d.ts,d.ts.map,js,js.map}
+            dist/generate-report.{d.ts,d.ts.map,js,js.map}
+            dist/logger.{d.ts,d.ts.map,js,js.map}
+            dist/report-helpers.{d.ts,d.ts.map,js,js.map}
+            dist/run-build.{d.ts,d.ts.map,js,js.map}
+            dist/types.{d.ts,d.ts.map,js,js.map}
+            dist/cli/{config-loader,index,onboarding,prompts}.{d.ts,d.ts.map,js,js.map}
+            dist/streaming/{json-stream}.{d.ts,d.ts.map,js,js.map}
+          )
+
+          missing=()
+          for file in "${required[@]}"; do
+            [[ -f "$file" ]] || missing+=("$file")
+          done
+
+          if (( ${#missing[@]} > 0 )); then
+            printf '❌ Missing required release assets:\n'
+            printf '  - %s\n' "${missing[@]}"
+            exit 1
+          fi
+
+          printf '✅ All %d required release assets exist.\n' "${#required[@]}"
 
       - name: Run Unit Tests and generate coverage report
         run: pnpm unit.test.coverage

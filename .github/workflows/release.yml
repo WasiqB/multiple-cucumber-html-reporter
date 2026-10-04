@@ -74,41 +74,33 @@ jobs:
 
       - name: Assert required release assets exist
         working-directory: reporter
+        shell: bash
         run: |
-          REQUIRED_FILES=(
-            "dist/collect-jsons.d.ts"
-            "dist/collect-jsons.d.ts.map"
-            "dist/collect-jsons.js"
-            "dist/collect-jsons.js.map"
-            "dist/generate-report.d.ts"
-            "dist/generate-report.d.ts.map"
-            "dist/generate-report.js"
-            "dist/generate-report.js.map"
-            "dist/cli/config-loader.d.ts"
-            "dist/cli/config-loader.d.ts.map"
-            "dist/cli/config-loader.js"
-            "dist/cli/config-loader.js.map"
-            "dist/cli/index.d.ts"
-            "dist/cli/index.d.ts.map"
-            "dist/cli/index.js"
-            "dist/cli/index.js.map"
-            "dist/cli/onboarding.d.ts"
-            "dist/cli/onboarding.d.ts.map"
-            "dist/cli/onboarding.js"
-            "dist/cli/onboarding.js.map"
-            "dist/cli/prompts.d.ts"
-            "dist/cli/prompts.d.ts.map"
-            "dist/cli/prompts.js"
-            "dist/cli/prompts.js.map"
+          set -euo pipefail
+
+          required=(
+            dist/collect-jsons.{d.ts,d.ts.map,js,js.map}
+            dist/generate-report.{d.ts,d.ts.map,js,js.map}
+            dist/logger.{d.ts,d.ts.map,js,js.map}
+            dist/report-helpers.{d.ts,d.ts.map,js,js.map}
+            dist/run-build.{d.ts,d.ts.map,js,js.map}
+            dist/types.{d.ts,d.ts.map,js,js.map}
+            dist/cli/{config-loader,index,onboarding,prompts}.{d.ts,d.ts.map,js,js.map}
+            dist/streaming/{json-stream}.{d.ts,d.ts.map,js,js.map}
           )
 
-          for FILE in "${REQUIRED_FILES[@]}"; do
-            if [ ! -f "$FILE" ]; then
-              echo "❌ Error: Required file '$FILE' was not found!"
-              exit 1
-            fi
-            echo "✅ Verified: $FILE"
+          missing=()
+          for file in "${required[@]}"; do
+            [[ -f "$file" ]] || missing+=("$file")
           done
+
+          if (( ${#missing[@]} > 0 )); then
+            printf '❌ Missing required release assets:\n'
+            printf '  - %s\n' "${missing[@]}"
+            exit 1
+          fi
+
+          printf '✅ All %d required release assets exist.\n' "${#required[@]}"
 
       - name: Release
         if: ${{ ! inputs.pre-release }}
