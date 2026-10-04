@@ -24,20 +24,27 @@ env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
-  dry-run:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout Code
+        uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v6
+      - name: Cache Build
+        id: build-cache
+        uses: actions/cache@v6
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 22
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
@@ -45,6 +52,55 @@ jobs:
       - name: Build Project
         run: pnpm build
         working-directory: reporter
+
+  dry-run:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+
+      - name: Restore cached Build
+        id: cache-build-restore
+        uses: actions/cache/restore@v6
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
+      - name: List files in dist folder
+        working-directory: reporter
+        run: ls -la dist/
+
+      - name: Assert required release assets exist
+        working-directory: reporter
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          required=(
+            dist/collect-jsons.{d.ts,d.ts.map,js,js.map}
+            dist/generate-report.{d.ts,d.ts.map,js,js.map}
+            dist/logger.{d.ts,d.ts.map,js,js.map}
+            dist/report-helpers.{d.ts,d.ts.map,js,js.map}
+            dist/run-build.{d.ts,d.ts.map,js,js.map}
+            dist/types.{d.ts,d.ts.map,js,js.map}
+            dist/cli/{config-loader,index,onboarding,prompts}.{d.ts,d.ts.map,js,js.map}
+            dist/streaming/json-stream.{d.ts,d.ts.map,js,js.map}
+          )
+
+          missing=()
+          for file in "${required[@]}"; do
+            [[ -f "$file" ]] || missing+=("$file")
+          done
+
+          if (( ${#missing[@]} > 0 )); then
+            printf '❌ Missing required release assets:\n'
+            printf '  - %s\n' "${missing[@]}"
+            exit 1
+          fi
+
+          printf '✅ All %d required release assets exist.\n' "${#required[@]}"
 
       - name: Release
         if: ${{ ! inputs.pre-release }}
@@ -68,6 +124,13 @@ jobs:
           fetch-depth: 0
           token: ${{ env.PUSH_TOKEN }}
 
+      - name: Restore cached Build
+        id: cache-build-restore
+        uses: actions/cache/restore@v6
+        with:
+          path: reporter/dist
+          key: mchr-${{ runner.os }}-${{ github.run_id }}-${{ github.run_number }}
+
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v7
         with:
@@ -87,21 +150,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 22
           cache: "pnpm"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Install Root Dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Build Project
-        run: pnpm build
-        working-directory: reporter
 
       - name: Upgrade NPM
         run: |
           npm install -g npm
           npm -v
+
+      - name: List files in dist folder
+        working-directory: reporter
+        run: ls -la dist/
 
       - name: Release
         if: ${{ ! inputs.pre-release }}
