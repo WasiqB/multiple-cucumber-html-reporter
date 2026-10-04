@@ -3,6 +3,22 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.4.1 (2026-10-04)
+
+#### :bug: Bug Fix
+
+- [#627](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/627) fix: :bug: fixing missing module issue in latest release ([@WasiqB](https://github.com/WasiqB))
+
+#### :nail_care: Polish
+
+- [#626](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/626) chore(deps): bump the dependencies group with 10 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#625](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/625) chore(deps): bump github/codeql-action from 4.37.9 to 4.38.2 in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.4.1-beta.0 (2026-09-28)
 
 
