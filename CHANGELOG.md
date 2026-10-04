@@ -3,6 +3,17 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.4.2 (2026-10-04)
+
+#### :bug: Bug Fix
+
+- [#629](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/629) fix: 🐛 fixed issue with published files ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.4.1 (2026-10-04)
 
 #### :bug: Bug Fix
