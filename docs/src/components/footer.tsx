@@ -18,7 +18,15 @@ export function Footer({ className }: { className?: string }) {
             </span>
           </div>
           <p className='text-sm text-zinc-500'>
-            © {new Date().getFullYear()} Wasiq Bhamla. Open source under MIT License.
+            © {new Date().getFullYear()}{' '}
+            <Link
+              href='https://www.wasiqbhamla.com/'
+              target='_blank'
+              className='hover:text-emerald-500 transition-colors'
+            >
+              Wasiq Bhamla
+            </Link>
+            . Open source under MIT License.
           </p>
         </div>
         <div className='flex flex-wrap justify-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400'>

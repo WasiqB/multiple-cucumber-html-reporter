@@ -75,7 +75,7 @@
     "open": "^11.0.4",
     "stream-chain": "^4.2.6",
     "stream-json": "^3.7.0",
-    "uuid": "^14.0.2",
+    "uuid": "^14.0.3",
     "yargs": "^18.2.0"
   },
   "devDependencies": {
@@ -85,9 +85,9 @@
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^7.0.0",
     "@types/jsonfile": "^6.1.4",
-    "@types/lodash": "^4.17.25",
+    "@types/lodash": "^4.17.26",
     "@types/luxon": "^3.7.6",
-    "@types/node": "^26.6.4",
+    "@types/node": "^26.6.5",
     "@types/yargs": "^17.0.35",
     "c8": "^12.0.0",
     "jasmine": "^7.0.0",

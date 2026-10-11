@@ -20,11 +20,30 @@ const inter = Inter({
 export const metadata: Metadata = createMetadata({
   title: {
     template: '%s | Multiple Cucumber HTML Reporter',
-    default: 'Multiple Cucumber HTML Reporter',
+    default: 'Multiple Cucumber HTML Reporter: Beautiful, interactive HTML test reports',
   },
+  applicationName: 'Multiple Cucumber HTML Reporter',
   description:
     'Multiple Cucumber HTML Reporter is a feature-rich, fast, and highly configurable HTML reporter for CucumberJS reports, optimized for performance and user experience.',
   metadataBase: baseUrl,
+  keywords: [
+    'Multiple Cucumber HTML Reporter',
+    'cucumber html reporter',
+    'cucumberjs report',
+    'bdd reporting',
+    'cucumber test report',
+    'cucumber html report',
+    'playwright cucumber reporter',
+    'webdriverio cucumber reporter',
+    'cypress cucumber reporter',
+    'mchr',
+  ],
+  authors: [{ name: 'Wasiq Bhamla', url: 'https://www.wasiqbhamla.com' }],
+  creator: 'Wasiq Bhamla',
+  publisher: 'Wasiq Bhamla',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/images/logo.png',
   },
