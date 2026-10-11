@@ -59,6 +59,21 @@ export interface ShowcaseHero {
   image: string;
 }
 
+export type ShowcaseType = 'company' | 'user';
+
+export interface ShowcaseEntity {
+  name: string;
+  type: ShowcaseType;
+  description: string;
+  url?: string;
+  website?: string;
+  linkedin?: string;
+  github?: string;
+  logo?: string;
+  role?: string;
+  featured?: boolean;
+}
+
 export interface ShowcaseProject {
   icon: string;
   name: string;
@@ -73,6 +88,9 @@ export interface ShowcaseProject {
 
 export interface ShowcaseData {
   hero: ShowcaseHero;
-  filters: string[];
-  projects: ShowcaseProject[];
+  applyLink?: LinkData;
+  companies: ShowcaseEntity[];
+  users: ShowcaseEntity[];
+  filters?: string[];
+  projects?: ShowcaseProject[];
 }

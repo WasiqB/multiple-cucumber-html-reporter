@@ -190,35 +190,35 @@ export default function SponsorsPage() {
     (curators?.individuals?.length ?? 0) > 0;
 
   return (
-    <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
+    <main className='flex flex-col gap-16 md:gap-24 pb-16 md:pb-20 overflow-x-hidden m-2 sm:m-4 md:m-8 lg:m-10'>
       {/* Hero Section */}
       {hero && (
-        <section className='pt-20 md:pt-32 px-6 flex flex-col items-center text-center'>
+        <section className='pt-10 sm:pt-16 md:pt-28 lg:pt-32 px-3 sm:px-6 flex flex-col items-center text-center'>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className='max-w-3xl'
           >
-            <h1 className='text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6'>
+            <h1 className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-6 text-balance'>
               {hero.titleLine1 || 'Support the future of'}{' '}
               {hero.titleLine2 && (
                 <span className='text-emerald-600 dark:text-emerald-500'>
-                  <br />
+                  <br className='hidden sm:block' />
                   {hero.titleLine2}
                 </span>
               )}
             </h1>
-            <p className='text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10 max-w-2xl text-balance'>
+            <p className='text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8 sm:mb-10 max-w-2xl text-balance'>
               {hero.description}
             </p>
             {hero.action && (
-              <div className='flex flex-wrap justify-center gap-4'>
+              <div className='flex flex-wrap justify-center gap-4 w-full sm:w-auto'>
                 <Link
                   href={hero.action.href || '#'}
                   className={cn(
                     buttonVariants({ size: 'default' }),
-                    'bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-8 h-12 text-base font-bold transition-all shadow-lg',
+                    'bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-6 sm:px-8 h-11 sm:h-12 text-sm sm:text-base font-bold transition-all shadow-lg w-full sm:w-auto justify-center',
                   )}
                 >
                   <FaGithub className='mr-2 h-5 w-5' /> {hero.action.text}
@@ -231,14 +231,14 @@ export default function SponsorsPage() {
 
       {/* Benefits Section */}
       {benefits && benefits.length > 0 && (
-        <section className='container mx-auto px-6 max-w-6xl'>
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <section className='container mx-auto px-3 sm:px-6 max-w-6xl'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
                 className={cn(
-                  'rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all flex flex-col items-start border',
+                  'rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm hover:shadow-xl transition-all flex flex-col items-start border',
                   benefit.type === 'green'
                     ? 'bg-emerald-400 dark:bg-emerald-500 border-emerald-300 dark:border-emerald-600 text-emerald-950'
                     : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800',
@@ -246,7 +246,7 @@ export default function SponsorsPage() {
               >
                 <div
                   className={cn(
-                    'w-12 h-12 rounded-xl flex items-center justify-center mb-6',
+                    'w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-4 sm:mb-6',
                     benefit.type === 'green'
                       ? 'bg-emerald-500/20 dark:bg-emerald-900/30 text-emerald-900'
                       : 'text-emerald-600',
@@ -254,10 +254,10 @@ export default function SponsorsPage() {
                 >
                   {benefit.icon ? iconMap[benefit.icon] : <Rocket className='h-6 w-6' />}
                 </div>
-                <h3 className='text-xl font-bold mb-3'>{benefit.title}</h3>
+                <h3 className='text-lg sm:text-xl font-bold mb-2 sm:mb-3'>{benefit.title}</h3>
                 <p
                   className={cn(
-                    'text-sm leading-relaxed mb-2',
+                    'text-xs sm:text-sm leading-relaxed mb-2',
                     benefit.type === 'green' ? 'text-emerald-900/80' : 'text-zinc-600 dark:text-zinc-400',
                   )}
                 >
@@ -271,19 +271,21 @@ export default function SponsorsPage() {
 
       {/* Tiers Section */}
       {tiers && (
-        <section className='container mx-auto px-6 text-center py-12'>
-          <div className='mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-4'>{tiers.title}</h2>
-            <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>{tiers.description}</p>
+        <section className='container mx-auto px-3 sm:px-6 text-center py-8 sm:py-12'>
+          <div className='mb-8 sm:mb-12'>
+            <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4'>{tiers.title}</h2>
+            <p className='text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>
+              {tiers.description}
+            </p>
           </div>
 
           {tiers.items && tiers.items.length > 0 && (
-            <div className='flex flex-wrap justify-center items-end gap-x-4 gap-y-8'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-center items-stretch max-w-7xl mx-auto'>
               {tiers.items.map((tier, index) => (
                 <div
                   key={index}
                   className={cn(
-                    'rounded-3xl border p-8 flex flex-col items-center shadow-sm w-full md:w-64 transition-transform hover:-translate-y-2 relative',
+                    'rounded-2xl sm:rounded-3xl border p-5 sm:p-8 flex flex-col items-center shadow-sm w-full transition-transform hover:-translate-y-2 relative',
                     tier.type === 'primary' &&
                       'bg-emerald-800 dark:bg-emerald-900 border-emerald-700 text-white shadow-xl',
                     tier.type === 'outline' && 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800',
@@ -291,12 +293,14 @@ export default function SponsorsPage() {
                     tier.type === 'dark' && 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800',
                   )}
                 >
-                  <div className='text-sm font-bold uppercase tracking-widest mb-4 opacity-80'>{tier.name}</div>
-                  <div className='text-4xl md:text-5xl font-extrabold mb-1'>{tier.price}</div>
-                  <div className='text-xs opacity-60 mb-8'>{tier.period}</div>
+                  <div className='text-xs sm:text-sm font-bold uppercase tracking-widest mb-3 sm:mb-4 opacity-80'>
+                    {tier.name}
+                  </div>
+                  <div className='text-3xl sm:text-4xl md:text-5xl font-extrabold mb-1'>{tier.price}</div>
+                  <div className='text-xs opacity-60 mb-6 sm:mb-8'>{tier.period}</div>
 
                   {tier.features && tier.features.length > 0 && (
-                    <div className='flex flex-col gap-4 text-sm font-medium mb-10 w-full'>
+                    <div className='flex flex-col gap-3 sm:gap-4 text-xs sm:text-sm font-medium mb-8 sm:mb-10 w-full text-center'>
                       {tier.features.map((feature, idx) => (
                         <div key={idx} className='opacity-80'>
                           {feature}
@@ -310,7 +314,7 @@ export default function SponsorsPage() {
                     target='_blank'
                     className={cn(
                       buttonVariants({ size: 'default' }),
-                      'mt-auto w-full rounded-2xl font-bold',
+                      'mt-auto w-full rounded-xl sm:rounded-2xl font-bold py-2.5 sm:py-3 text-sm sm:text-base',
                       tier.type === 'primary' && 'bg-white text-emerald-900 hover:bg-zinc-100 hover:text-emerald-900',
                       tier.type === 'solid' && 'bg-emerald-700 text-white hover:bg-emerald-800 hover:text-white',
                       tier.type === 'dark' && 'bg-zinc-700 text-white hover:bg-zinc-800 hover:text-white',
@@ -329,20 +333,20 @@ export default function SponsorsPage() {
 
       {/* Curators */}
       {curators && (
-        <section className='container mx-auto px-6 max-w-4xl py-12'>
-          <div className='flex flex-col gap-12'>
+        <section className='container mx-auto px-3 sm:px-6 max-w-4xl py-8 sm:py-12'>
+          <div className='flex flex-col gap-8 sm:gap-12'>
             {!hasSponsors ? (
-              <div className='bg-zinc-50 dark:bg-zinc-900 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-[2rem] p-6 text-center flex flex-col items-center gap-6'>
+              <div className='bg-zinc-50 dark:bg-zinc-900 border border-dashed border-zinc-200 dark:border-zinc-800 rounded-2xl sm:rounded-[2rem] p-6 sm:p-10 text-center flex flex-col items-center gap-4 sm:gap-6'>
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
                 >
-                  <Heart className='h-12 w-12 text-rose-500' />
+                  <Heart className='h-10 w-10 sm:h-12 sm:w-12 text-rose-500' />
                 </motion.div>
                 <div>
-                  <h3 className='text-2xl font-bold mb-2'>Be the First Sponsor!</h3>
-                  <p className='text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto'>
+                  <h3 className='text-xl sm:text-2xl font-bold mb-2'>Be the First Sponsor!</h3>
+                  <p className='text-xs sm:text-sm md:text-base text-zinc-600 dark:text-zinc-400 max-w-lg mx-auto'>
                     Your support directly funds independent development, ensuring the ecosystem remains modern, secure,
                     and sustainable. Join our community of supporters today and help us build the future of Reporting.
                   </p>
@@ -351,7 +355,7 @@ export default function SponsorsPage() {
                   href='https://github.com/sponsors/WasiqB'
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-rose-500 hover:bg-rose-600 text-white hover:text-white rounded-full',
+                    'bg-rose-500 hover:bg-rose-600 text-white hover:text-white rounded-full px-6 sm:px-8 text-sm sm:text-base w-full sm:w-auto justify-center',
                   )}
                 >
                   Become a Sponsor
@@ -359,17 +363,17 @@ export default function SponsorsPage() {
               </div>
             ) : (
               <>
-                <div className='mb-12 flex flex-col items-start'>
-                  <h2 className='text-3xl md:text-4xl font-bold mb-4'>{curators.title}</h2>
-                  <p className='text-zinc-600 dark:text-zinc-400'>{curators.description}</p>
+                <div className='mb-8 sm:mb-12 flex flex-col items-start'>
+                  <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4'>{curators.title}</h2>
+                  <p className='text-sm sm:text-base text-zinc-600 dark:text-zinc-400'>{curators.description}</p>
                 </div>
-                <div className='flex flex-col gap-12'>
+                <div className='flex flex-col gap-8 sm:gap-12'>
                   {curators.goldSponsors && curators.goldSponsors.length > 0 && (
                     <div>
-                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-4 sm:mb-6'>
                         Gold Sponsors and above
                       </h3>
-                      <div className='flex flex-wrap gap-6'>
+                      <div className='flex flex-wrap gap-4 sm:gap-6'>
                         {curators.goldSponsors.map((s, idx) => (
                           <Link
                             key={idx}
@@ -377,7 +381,7 @@ export default function SponsorsPage() {
                             target='_blank'
                             className='group flex flex-col items-center transition-transform hover:scale-105'
                           >
-                            <div className='w-24 h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-3'>
+                            <div className='w-20 h-20 sm:w-24 sm:h-24 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-xl overflow-hidden mb-2 sm:mb-3'>
                               {s.image ? (
                                 <Image
                                   src={s.image}
@@ -387,10 +391,10 @@ export default function SponsorsPage() {
                                   className='w-full h-full object-cover'
                                 />
                               ) : (
-                                <div className='text-xl font-bold text-emerald-600'>{s.name[0]}</div>
+                                <div className='text-lg sm:text-xl font-bold text-emerald-600'>{s.name[0]}</div>
                               )}
                             </div>
-                            <span className='text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-500'>
+                            <span className='text-xs sm:text-sm font-bold text-zinc-700 dark:text-zinc-300 group-hover:text-emerald-500'>
                               {s.name}
                             </span>
                           </Link>
@@ -400,11 +404,11 @@ export default function SponsorsPage() {
                   )}
 
                   {curators.silverAndBronze && curators.silverAndBronze.length > 0 && (
-                    <div className='border-zinc-200 dark:border-zinc-800 pt-8'>
-                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                    <div className='border-zinc-200 dark:border-zinc-800 pt-6 sm:pt-8'>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-4 sm:mb-6'>
                         Silver & Bronze
                       </h3>
-                      <div className='flex flex-wrap gap-4'>
+                      <div className='flex flex-wrap gap-3 sm:gap-4'>
                         {curators.silverAndBronze.map((s, idx) => (
                           <Link
                             key={idx}
@@ -412,7 +416,7 @@ export default function SponsorsPage() {
                             target='_blank'
                             className='group flex flex-col items-center transition-transform hover:scale-105'
                           >
-                            <div className='w-16 h-16 bg-white dark:bg-zinc-900 border border-emerald-500/50 rounded-full flex items-center justify-center shadow-md overflow-hidden mb-2'>
+                            <div className='w-14 h-14 sm:w-16 sm:h-16 bg-white dark:bg-zinc-900 border border-emerald-500/50 rounded-full flex items-center justify-center shadow-md overflow-hidden mb-1.5 sm:mb-2'>
                               {s.image ? (
                                 <Image
                                   src={s.image}
@@ -422,10 +426,10 @@ export default function SponsorsPage() {
                                   className='w-full h-full object-cover'
                                 />
                               ) : (
-                                <div className='text-lg font-bold text-emerald-600'>{s.name[0]}</div>
+                                <div className='text-base sm:text-lg font-bold text-emerald-600'>{s.name[0]}</div>
                               )}
                             </div>
-                            <span className='text-xs font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500'>
+                            <span className='text-[11px] sm:text-xs font-semibold text-zinc-600 dark:text-zinc-400 group-hover:text-emerald-500'>
                               {s.name}
                             </span>
                           </Link>
@@ -435,17 +439,17 @@ export default function SponsorsPage() {
                   )}
 
                   {curators.individuals && curators.individuals.length > 0 && (
-                    <div className='border-t border-zinc-200 dark:border-zinc-800 pt-8'>
-                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-6'>
+                    <div className='border-t border-zinc-200 dark:border-zinc-800 pt-6 sm:pt-8'>
+                      <h3 className='text-xs font-bold text-zinc-400 tracking-widest uppercase mb-4 sm:mb-6'>
                         Individual Backers
                       </h3>
-                      <div className='flex flex-wrap gap-3'>
+                      <div className='flex flex-wrap gap-2.5 sm:gap-3'>
                         {curators.individuals.map((s, idx) => (
                           <Link
                             key={idx}
                             href={s.url || '#'}
                             target='_blank'
-                            className='w-10 h-10 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center shadow-xs hover:border-emerald-500 transition-all overflow-hidden'
+                            className='w-9 h-9 sm:w-10 sm:h-10 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center shadow-xs hover:border-emerald-500 transition-all overflow-hidden'
                             title={s.name}
                           >
                             {s.image ? (
@@ -473,22 +477,28 @@ export default function SponsorsPage() {
 
       {/* Software Licenses Section */}
       {licenses?.items && licenses.items.length > 0 && (
-        <section className='container mx-auto px-6 max-w-4xl py-12 border-t border-zinc-200 dark:border-zinc-800'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold mb-4'>{licenses.title}</h2>
-            <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>{licenses.description}</p>
+        <section className='container mx-auto px-3 sm:px-6 max-w-4xl py-8 sm:py-12 border-t border-zinc-200 dark:border-zinc-800'>
+          <div className='text-center mb-8 sm:mb-12'>
+            <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4'>{licenses.title}</h2>
+            <p className='text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>
+              {licenses.description}
+            </p>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6'>
             {licenses.items.map((item, idx) => (
-              <Link href={item.url || '#'} target='_blank' className='mb-6 block transition-transform hover:scale-105'>
+              <Link
+                href={item.url || '#'}
+                key={idx}
+                target='_blank'
+                className='block transition-transform hover:scale-105'
+              >
                 <motion.div
-                  key={idx}
                   whileHover={{ y: -4 }}
-                  className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all'
+                  className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all'
                 >
                   {item.image && (
-                    <div className='w-20 h-20 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-lg overflow-hidden p-0.5'>
+                    <div className='w-16 h-16 sm:w-20 sm:h-20 bg-white dark:bg-zinc-900 border-2 border-emerald-500 rounded-full flex items-center justify-center shadow-lg overflow-hidden p-0.5 mb-3 sm:mb-4'>
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -498,8 +508,8 @@ export default function SponsorsPage() {
                       />
                     </div>
                   )}
-                  <h3 className='text-xl font-bold mb-2'>{item.name}</h3>
-                  <p className='text-sm text-emerald-600 dark:text-emerald-400 font-semibold leading-relaxed'>
+                  <h3 className='text-lg sm:text-xl font-bold mb-1.5 sm:mb-2'>{item.name}</h3>
+                  <p className='text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 font-semibold leading-relaxed'>
                     {item.license}
                   </p>
                 </motion.div>
@@ -511,13 +521,13 @@ export default function SponsorsPage() {
 
       {/* FAQ */}
       {faq?.items && faq.items.length > 0 && (
-        <section className='container mx-auto px-6 max-w-3xl py-12 border-t border-zinc-200 dark:border-zinc-800'>
-          <h2 className='text-3xl md:text-4xl font-bold text-center mb-12'>{faq.title}</h2>
-          <div className='flex flex-col gap-8'>
+        <section className='container mx-auto px-3 sm:px-6 max-w-3xl py-8 sm:py-12 border-t border-zinc-200 dark:border-zinc-800'>
+          <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12'>{faq.title}</h2>
+          <div className='flex flex-col gap-6 sm:gap-8'>
             {faq.items.map((item, idx) => (
-              <div key={idx} className='flex flex-col gap-2'>
-                <h3 className='text-xl font-bold'>{item.question}</h3>
-                <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{item.answer}</p>
+              <div key={idx} className='flex flex-col gap-1.5 sm:gap-2'>
+                <h3 className='text-lg sm:text-xl font-bold'>{item.question}</h3>
+                <p className='text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed'>{item.answer}</p>
               </div>
             ))}
           </div>
@@ -526,17 +536,19 @@ export default function SponsorsPage() {
 
       {/* CTA */}
       {cta && (
-        <section className='container mx-auto px-6 max-w-4xl'>
-          <div className='bg-emerald-900 rounded-[3rem] p-12 text-center flex flex-col items-center shadow-2xl relative overflow-hidden'>
+        <section className='container mx-auto px-3 sm:px-6 max-w-4xl'>
+          <div className='bg-emerald-900 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-12 text-center flex flex-col items-center shadow-2xl relative overflow-hidden'>
             <div className='absolute -top-32 -right-32 w-96 h-96 bg-emerald-500/20 blur-3xl rounded-full' />
-            <h2 className='text-3xl md:text-5xl font-extrabold text-white mb-8 relative z-10'>{cta.title}</h2>
-            <div className='flex flex-wrap justify-center gap-4 relative z-10'>
+            <h2 className='text-2xl sm:text-3xl md:text-5xl font-extrabold text-white mb-6 sm:mb-8 relative z-10'>
+              {cta.title}
+            </h2>
+            <div className='flex flex-wrap justify-center gap-4 relative z-10 w-full sm:w-auto'>
               {cta.primaryLink && (
                 <Link
                   href={cta.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-8 shadow-lg',
+                    'bg-emerald-400 hover:bg-emerald-300 text-emerald-950 hover:text-emerald-950 rounded-full font-bold px-6 sm:px-8 h-11 sm:h-12 text-sm sm:text-base shadow-lg w-full sm:w-auto justify-center',
                   )}
                 >
                   {cta.primaryLink.label}

@@ -231,18 +231,18 @@ export default function HowItWorksPage() {
   const image = (imageDataJson as ImageLinks)[analysis.image];
 
   return (
-    <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
+    <main className='flex flex-col gap-16 md:gap-24 pb-16 md:pb-20 overflow-x-hidden m-2 sm:m-4 md:m-8 lg:m-10'>
       {/* Header Section */}
       {hero && (
-        <section className='pt-20 md:pt-32 pb-16 px-6 text-center max-w-4xl mx-auto'>
+        <section className='pt-10 sm:pt-16 md:pt-28 lg:pt-32 pb-8 sm:pb-16 px-3 sm:px-6 text-center max-w-4xl mx-auto'>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className='text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 text-balance'>
+            <h1 className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-6 text-balance'>
               {hero.titleLine1}{' '}
               <span className='bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent italic'>
                 {hero.titleLine2}
               </span>
             </h1>
-            <p className='text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto'>
+            <p className='text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto'>
               {hero.description}
             </p>
           </motion.div>
@@ -250,7 +250,7 @@ export default function HowItWorksPage() {
       )}
 
       {/* Steps Content */}
-      <div className='flex flex-col gap-24 container mx-auto px-6 max-w-5xl'>
+      <div className='flex flex-col gap-16 md:gap-24 container mx-auto px-3 sm:px-6 max-w-5xl'>
         {steps &&
           Array.isArray(steps) &&
           steps.map((step, idx) => {
@@ -259,20 +259,22 @@ export default function HowItWorksPage() {
             const isReversed = idx % 2 !== 0;
 
             return (
-              <section key={idx} className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center'>
+              <section key={idx} className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-center'>
                 <motion.div
                   initial={{ opacity: 0, x: isReversed ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className={cn('flex flex-col gap-6', isReversed && 'lg:order-2')}
+                  className={cn('flex flex-col gap-4 sm:gap-6', isReversed && 'lg:order-2')}
                 >
                   <StepNumber number={step.number} />
-                  <h2 className='text-3xl md:text-4xl font-bold text-balance'>{step.title}</h2>
-                  <p className='text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed'>{step.description}</p>
+                  <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-balance'>{step.title}</h2>
+                  <p className='text-zinc-600 dark:text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed'>
+                    {step.description}
+                  </p>
 
                   {step.badges && (
-                    <div className='flex flex-wrap gap-3 mt-2'>
+                    <div className='flex flex-wrap gap-2 sm:gap-3 mt-1 sm:mt-2'>
                       {step.badges.map((b, i) => (
                         <Badge key={i}>{b}</Badge>
                       ))}
@@ -280,13 +282,13 @@ export default function HowItWorksPage() {
                   )}
 
                   {step.checklist && (
-                    <div className='flex flex-col gap-3 mt-2'>
+                    <div className='flex flex-col gap-2.5 sm:gap-3 mt-1 sm:mt-2'>
                       {step.checklist.map((item, i) => (
-                        <div key={i} className='flex items-center gap-3'>
+                        <div key={i} className='flex items-center gap-2.5 sm:gap-3'>
                           <div className='flex-none rounded-full bg-emerald-500/10 p-1'>
-                            <CheckCircle2 className='text-emerald-500 h-4 w-4' />
+                            <CheckCircle2 className='text-emerald-500 h-3.5 w-3.5 sm:h-4 sm:w-4' />
                           </div>
-                          <span className='text-zinc-700 dark:text-zinc-300'>{item}</span>
+                          <span className='text-sm sm:text-base text-zinc-700 dark:text-zinc-300'>{item}</span>
                         </div>
                       ))}
                     </div>
@@ -298,11 +300,11 @@ export default function HowItWorksPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className={cn('w-full', isReversed && 'lg:order-1')}
+                  className={cn('w-full min-w-0 overflow-hidden', isReversed && 'lg:order-1')}
                 >
                   {step.commands?.map((command: Command, i) => {
                     return (
-                      <div key={i}>
+                      <div key={i} className='w-full overflow-hidden'>
                         {command.output && (
                           <Terminal
                             commands={[command.command]}
@@ -311,6 +313,7 @@ export default function HowItWorksPage() {
                             enableSound
                             initialDelay={3}
                             delayBetweenCommands={1000}
+                            className='px-0 max-w-full'
                           />
                         )}
                       </div>
@@ -318,26 +321,34 @@ export default function HowItWorksPage() {
                   })}
 
                   {(step.commands?.filter((command: Command) => !command.output).length ?? 0) > 0 && (
-                    <div className='relative group'>
+                    <div className='relative group w-full overflow-hidden'>
                       <div className='absolute -inset-1 bg-linear-to-r from-emerald-500/20 to-sky-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none' />
-                      <Tabs
-                        items={step.commands
-                          ?.filter((c: Command) => !c.output)
-                          .map((command: Command) => command.tabValue ?? '')}
-                      >
-                        {step.commands
-                          ?.filter((c: Command) => !c.output)
-                          .map((command: Command, i) => {
-                            if (command.tabValue) {
+                      <div className='overflow-x-auto max-w-full'>
+                        <Tabs
+                          items={step.commands
+                            ?.filter((c: Command) => !c.output)
+                            .map((command: Command) => command.tabValue ?? '')}
+                        >
+                          {step.commands
+                            ?.filter((c: Command) => !c.output)
+                            .map((command: Command, i) => {
+                              if (command.tabValue) {
+                                return (
+                                  <Tab key={i} value={command.tabValue}>
+                                    <div className='overflow-x-auto max-w-full'>
+                                      <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
+                                    </div>
+                                  </Tab>
+                                );
+                              }
                               return (
-                                <Tab key={i} value={command.tabValue}>
+                                <div key={i} className='overflow-x-auto max-w-full'>
                                   <DynamicCodeBlock code={command.command} lang={step.lang || 'js'} />
-                                </Tab>
+                                </div>
                               );
-                            }
-                            return <DynamicCodeBlock key={i} code={command.command} lang={step.lang || 'js'} />;
-                          })}
-                      </Tabs>
+                            })}
+                        </Tabs>
+                      </div>
                     </div>
                   )}
                 </motion.div>
@@ -347,15 +358,17 @@ export default function HowItWorksPage() {
 
         {/* Step 4: Interactive Analysis */}
         {analysis && (
-          <section className='pt-12 text-center'>
-            <div className='flex flex-col items-center gap-6 mb-16 max-w-3xl mx-auto'>
+          <section className='pt-8 sm:pt-12 text-center'>
+            <div className='flex flex-col items-center gap-4 sm:gap-6 mb-10 sm:mb-16 max-w-3xl mx-auto'>
               <StepNumber number={analysis.stepNumber || 4} />
-              <h2 className='text-3xl md:text-4xl font-bold'>{analysis.title}</h2>
-              <p className='text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed'>{analysis.description}</p>
+              <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold'>{analysis.title}</h2>
+              <p className='text-zinc-600 dark:text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed'>
+                {analysis.description}
+              </p>
             </div>
 
             {analysis.cards && analysis.cards.length > 0 && (
-              <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left'>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 text-left'>
                 {analysis.cards.map((card, idx) => (
                   <InfoCard
                     key={idx}
@@ -372,14 +385,14 @@ export default function HowItWorksPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className='relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950 p-2 shadow-2xl overflow-hidden'
+              className='relative rounded-xl sm:rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-950 p-1.5 sm:p-2 shadow-2xl overflow-hidden'
             >
               <Image
                 src={image}
                 alt='Cucumber Report Dashboard'
                 width={1200}
                 height={600}
-                className='rounded-xl object-cover w-full h-auto opacity-90'
+                className='rounded-lg sm:rounded-xl object-cover w-full h-auto opacity-90'
               />
             </motion.div>
           </section>
@@ -387,23 +400,26 @@ export default function HowItWorksPage() {
 
         {/* Step 5: CI/CD Ready */}
         {cicd && (
-          <section className='mt-12'>
+          <section className='mt-8 sm:mt-12'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className='bg-emerald-100/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-3xl p-12 text-center flex flex-col items-center shadow-lg'
+              className='bg-emerald-100/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 text-center flex flex-col items-center shadow-lg'
             >
               <StepNumber number={cicd.stepNumber || 5} />
-              <h2 className='text-3xl md:text-4xl font-bold mt-6 mb-4'>{cicd.title}</h2>
-              <p className='text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed max-w-2xl mb-12'>
+              <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mt-4 sm:mt-6 mb-3 sm:mb-4'>{cicd.title}</h2>
+              <p className='text-zinc-700 dark:text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-12'>
                 {cicd.description}
               </p>
 
               {cicd.platforms && cicd.platforms.length > 0 && (
-                <div className='flex flex-wrap justify-center gap-8 md:gap-16'>
+                <div className='flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-16'>
                   {cicd.platforms.map((platform, idx) => (
-                    <div key={idx} className='flex items-center gap-2 font-bold text-zinc-700 dark:text-zinc-300'>
+                    <div
+                      key={idx}
+                      className='flex items-center gap-2 font-bold text-sm sm:text-base text-zinc-700 dark:text-zinc-300'
+                    >
                       {platformIconMap[platform]} {platform}
                     </div>
                   ))}
@@ -419,7 +435,7 @@ export default function HowItWorksPage() {
 
 function StepNumber({ number }: { number: number }) {
   return (
-    <div className='flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-600 text-white font-bold text-lg shadow-lg shadow-emerald-500/20 z-10'>
+    <div className='flex items-center justify-center size-8 sm:size-10 rounded-lg bg-emerald-600 text-white font-bold text-base sm:text-lg shadow-lg shadow-emerald-500/20 z-10'>
       {number}
     </div>
   );
@@ -427,7 +443,7 @@ function StepNumber({ number }: { number: number }) {
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className='px-3 py-1 bg-emerald-100 dark:bg-emerald-500/10 text-emerald-800 dark:text-emerald-400 text-xs font-semibold rounded-full border border-emerald-200 dark:border-emerald-500/20 w-fit'>
+    <span className='px-2.5 sm:px-3 py-0.5 sm:py-1 bg-emerald-100 dark:bg-emerald-500/10 text-emerald-800 dark:text-emerald-400 text-[11px] sm:text-xs font-semibold rounded-full border border-emerald-200 dark:border-emerald-500/20 w-fit'>
       {children}
     </span>
   );
@@ -447,11 +463,15 @@ function InfoCard({
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all'
+      className='bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-xl transition-all'
     >
-      <div className={cn('w-12 h-12 rounded-full flex items-center justify-center mb-6', iconBg)}>{icon}</div>
-      <h3 className='text-xl font-bold mb-3'>{title}</h3>
-      <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{description}</p>
+      <div
+        className={cn('w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mb-4 sm:mb-6', iconBg)}
+      >
+        {icon}
+      </div>
+      <h3 className='text-lg sm:text-xl font-bold mb-2 sm:mb-3'>{title}</h3>
+      <p className='text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed'>{description}</p>
     </motion.div>
   );
 }

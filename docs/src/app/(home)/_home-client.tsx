@@ -177,15 +177,15 @@ customData:
   const heroImage = (imagesDataJson as ImageLinks)[heroData.image];
 
   return (
-    <main className='flex flex-col gap-24 pb-20 overflow-x-hidden m-10'>
+    <main className='flex flex-col gap-16 md:gap-24 pb-16 md:pb-20 overflow-x-hidden m-2 sm:m-4 md:m-8 lg:m-10'>
       {/* Hero Section */}
-      <section className='relative pt-20 md:pt-32 px-6'>
-        <div className='container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+      <section className='relative pt-10 sm:pt-16 md:pt-28 lg:pt-32 px-3 sm:px-6'>
+        <div className='container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center'>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className='flex flex-col gap-6'
+            className='flex flex-col gap-5 sm:gap-6'
           >
             {heroData.badge && (
               <motion.div
@@ -199,7 +199,7 @@ customData:
               </motion.div>
             )}
 
-            <h1 className='text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-balance'>
+            <h1 className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight text-balance'>
               {heroData.titleLine1} <br />
               {heroData.titleLine2 && (
                 <span className='bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent'>
@@ -209,12 +209,12 @@ customData:
             </h1>
 
             {heroData.description && (
-              <p className='text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed'>
+              <p className='text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-xl leading-relaxed'>
                 {heroData.description}
               </p>
             )}
 
-            <div className='w-full max-w-xl mt-2'>
+            <div className='w-full max-w-xl mt-1 sm:mt-2 overflow-x-auto'>
               <DynamicCodeBlock
                 lang='bash'
                 code={heroData.installCommands.code}
@@ -227,13 +227,13 @@ customData:
               />
             </div>
 
-            <div className='flex flex-wrap gap-4 mt-2'>
+            <div className='flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-2'>
               {heroData.primaryLink && (
                 <Link
                   href={heroData.primaryLink.url}
                   className={cn(
                     buttonVariants({ size: 'default' }),
-                    'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-full px-8 h-12 text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98]',
+                    'bg-emerald-600 shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 text-white hover:text-white rounded-full px-6 sm:px-8 h-11 sm:h-12 text-sm sm:text-base font-bold transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto justify-center',
                   )}
                 >
                   {heroData.primaryLink.label}
@@ -244,7 +244,7 @@ customData:
                   href={heroData.secondaryLink.url}
                   className={cn(
                     buttonVariants({ variant: 'ghost', size: 'default' }),
-                    'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-8 h-12 text-base font-semibold group',
+                    'bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-6 sm:px-8 h-11 sm:h-12 text-sm sm:text-base font-semibold group w-full sm:w-auto justify-center',
                   )}
                 >
                   <FaGithub className='mr-2 h-5 w-5 transition-transform group-hover:scale-110' />
@@ -276,8 +276,8 @@ customData:
 
       {/* Stats Section */}
       {stats && (
-        <section className='container mx-auto px-6'>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-[2rem] px-8 md:px-16'>
+        <section className='container mx-auto px-3 sm:px-6'>
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 py-8 sm:py-12 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 rounded-2xl sm:rounded-[2rem] px-4 sm:px-8 md:px-16'>
             {stats.map((stat, idx) => (
               <motion.div
                 key={idx}
@@ -285,19 +285,19 @@ customData:
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className='flex flex-col items-center md:items-start text-center md:text-left gap-2'
+                className='flex flex-col items-center md:items-start text-center md:text-left gap-1 sm:gap-2'
               >
-                <div className='flex items-center gap-3 mb-1'>
+                <div className='flex items-center gap-2 sm:gap-3 mb-1'>
                   {stat.icon && (
-                    <div className='p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'>
+                    <div className='p-1.5 sm:p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400'>
                       {iconMap[stat.icon === 'Star' ? 'StarFill' : stat.icon] || iconMap.Activity}
                     </div>
                   )}
-                  <div className='text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-500'>
+                  <div className='text-2xl sm:text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-500'>
                     {stat.value}
                   </div>
                 </div>
-                <div className='text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>
+                <div className='text-xs sm:text-sm font-bold text-zinc-500 uppercase tracking-widest leading-tight'>
                   {stat.label}
                 </div>
               </motion.div>
@@ -307,14 +307,16 @@ customData:
       )}
 
       {/* Features Section */}
-      <section id='features' className='container mx-auto px-6'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-5xl font-bold mb-4'>{featuresData.title}</h2>
-          <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>{featuresData.description}</p>
+      <section id='features' className='container mx-auto px-3 sm:px-6'>
+        <div className='text-center mb-10 sm:mb-16'>
+          <h2 className='text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4'>{featuresData.title}</h2>
+          <p className='text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>
+            {featuresData.description}
+          </p>
         </div>
 
         {featuresData.items && featuresData.items.length > 0 && (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'>
             {featuresData.items.map((feature, idx) => (
               <FeatureCard
                 key={idx}
@@ -328,45 +330,51 @@ customData:
       </section>
 
       {/* Accordion Usage Steps Section */}
-      <section className='container mx-auto px-6 max-w-5xl'>
-        <div className='text-center mb-12'>
-          <h2 className='text-3xl md:text-5xl font-bold mb-4'>
+      <section className='container mx-auto px-3 sm:px-6 max-w-5xl'>
+        <div className='text-center mb-8 sm:mb-12'>
+          <h2 className='text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4'>
             {setupData.titleLine1} {setupData.titleLine2}
           </h2>
-          <p className='text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto text-lg'>{setupData.description}</p>
+          <p className='text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto'>
+            {setupData.description}
+          </p>
         </div>
 
-        <Accordion type='single' collapsible className='w-full space-y-4' defaultValue='step-0'>
+        <Accordion type='single' collapsible className='w-full space-y-3 sm:space-y-4' defaultValue='step-0'>
           {setupData.steps.map((step, idx) => (
             <AccordionItem
               key={idx}
               value={`step-${idx}`}
-              className='border border-zinc-200 dark:border-zinc-800 rounded-3xl overflow-hidden px-2 data-[state=open]:bg-emerald-50/30 dark:data-[state=open]:bg-emerald-950/10 transition-all duration-300'
+              className='border border-zinc-200 dark:border-zinc-800 rounded-2xl sm:rounded-3xl overflow-hidden px-1 sm:px-2 data-[state=open]:bg-emerald-50/30 dark:data-[state=open]:bg-emerald-950/10 transition-all duration-300'
             >
-              <AccordionTrigger className='hover:no-underline py-6 px-4 md:px-8 group'>
-                <div className='flex items-center gap-4 text-left'>
-                  <span className='flex size-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-bold shrink-0'>
+              <AccordionTrigger className='hover:no-underline py-4 sm:py-6 px-3 sm:px-6 md:px-8 group'>
+                <div className='flex items-center gap-3 sm:gap-4 text-left'>
+                  <span className='flex size-7 sm:size-8 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-bold shrink-0'>
                     {step.stepNumber}
                   </span>
-                  <h3 className='text-xl md:text-2xl font-bold group-data-[state=open]:text-emerald-600 dark:group-data-[state=open]:text-emerald-400 transition-colors'>
+                  <h3 className='text-lg sm:text-xl md:text-2xl font-bold group-data-[state=open]:text-emerald-600 dark:group-data-[state=open]:text-emerald-400 transition-colors'>
                     {step.title}
                   </h3>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className='px-4 md:px-8 pb-8'>
+              <AccordionContent className='px-3 sm:px-6 md:px-8 pb-6 sm:pb-8'>
                 <div className='flex flex-col gap-4'>
-                  <p className='text-zinc-600 dark:text-zinc-400 text-base leading-relaxed'>{step.description}</p>
+                  <p className='text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed'>
+                    {step.description}
+                  </p>
                   {step.code && (
-                    <DynamicCodeBlock
-                      lang={step.lang || 'ts'}
-                      code={step.code}
-                      options={{
-                        themes: {
-                          light: 'github-light',
-                          dark: 'github-dark',
-                        },
-                      }}
-                    />
+                    <div className='overflow-x-auto max-w-full'>
+                      <DynamicCodeBlock
+                        lang={step.lang || 'ts'}
+                        code={step.code}
+                        options={{
+                          themes: {
+                            light: 'github-light',
+                            dark: 'github-dark',
+                          },
+                        }}
+                      />
+                    </div>
                   )}
                 </div>
               </AccordionContent>
@@ -375,10 +383,10 @@ customData:
         </Accordion>
 
         {setupData.link && (
-          <div className='flex justify-center mt-8'>
+          <div className='flex justify-center mt-6 sm:mt-8'>
             <Link
               href={setupData.link.url}
-              className='text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 hover:gap-3 transition-all'
+              className='text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 hover:gap-3 transition-all text-sm sm:text-base'
             >
               {setupData.link.label} <span>→</span>
             </Link>
@@ -387,13 +395,13 @@ customData:
       </section>
 
       {/* Community / Support Section */}
-      <section id='community' className='container mx-auto px-6 mb-12'>
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-5xl font-bold mb-4'>{communityData.title}</h2>
+      <section id='community' className='container mx-auto px-3 sm:px-6 mb-8 sm:mb-12'>
+        <div className='text-center mb-10 sm:mb-16'>
+          <h2 className='text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4'>{communityData.title}</h2>
         </div>
 
         {communityData.items && communityData.items.length > 0 && (
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8'>
             {communityData.items.map((item, idx) => (
               <SupportCard
                 key={idx}
@@ -411,12 +419,12 @@ customData:
 
       {/* Trusted By / Logos Section */}
       {trustedByData.companies.length > 0 && (
-        <section className='border-t border-zinc-200 dark:border-zinc-800 pt-20 px-6'>
+        <section className='border-t border-zinc-200 dark:border-zinc-800 pt-12 sm:pt-20 px-3 sm:px-6'>
           <div className='container mx-auto'>
-            <p className='text-center text-sm font-bold tracking-widest text-zinc-500 dark:text-zinc-500 uppercase mb-12'>
+            <p className='text-center text-xs sm:text-sm font-bold tracking-widest text-zinc-500 dark:text-zinc-500 uppercase mb-8 sm:mb-12'>
               {trustedByData.title}
             </p>
-            <div className='flex flex-wrap justify-center gap-x-16 gap-y-10 opacity-50 grayscale contrast-125 dark:invert'>
+            <div className='flex flex-wrap justify-center gap-x-8 sm:gap-x-16 gap-y-6 sm:gap-y-10 opacity-50 grayscale contrast-125 dark:invert'>
               {trustedByData.companies.map((company: { name: string; className?: string }, idx) => (
                 <span key={idx} className={company.className || ''}>
                   {company.name}
@@ -434,11 +442,11 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className='p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-white dark:hover:bg-zinc-900 transition-all shadow-sm hover:shadow-xl group'
+      className='p-5 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-white dark:hover:bg-zinc-900 transition-all shadow-sm hover:shadow-xl group'
     >
-      <div className='mb-4 group-hover:scale-110 transition-transform'>{icon}</div>
-      <h3 className='text-xl font-bold mb-2'>{title}</h3>
-      <p className='text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed'>{description}</p>
+      <div className='mb-3 sm:mb-4 group-hover:scale-110 transition-transform'>{icon}</div>
+      <h3 className='text-lg sm:text-xl font-bold mb-2'>{title}</h3>
+      <p className='text-zinc-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed'>{description}</p>
     </motion.div>
   );
 }
@@ -467,15 +475,15 @@ function SupportCard({
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className='flex flex-col items-center text-center p-10 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-2xl transition-all'
+      className='flex flex-col items-center text-center p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-2xl transition-all'
     >
-      <div className='mb-6'>{icon}</div>
-      <h3 className='text-2xl font-bold mb-4'>{title}</h3>
-      <p className='text-zinc-600 dark:text-zinc-400 mb-8 text-sm leading-relaxed'>{description}</p>
+      <div className='mb-4 sm:mb-6'>{icon}</div>
+      <h3 className='text-xl sm:text-2xl font-bold mb-3 sm:mb-4'>{title}</h3>
+      <p className='text-zinc-600 dark:text-zinc-400 mb-6 sm:mb-8 text-xs sm:text-sm leading-relaxed'>{description}</p>
       <Link
         href={href}
         className={cn(
-          'w-full py-4 rounded-xl border font-bold transition-all hover:text-white shadow-lg',
+          'w-full py-3 sm:py-4 rounded-xl border text-sm sm:text-base font-bold transition-all hover:text-white shadow-lg',
           colorMap[color as keyof typeof colorMap] || colorMap.emerald,
         )}
       >

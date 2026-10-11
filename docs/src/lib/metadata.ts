@@ -7,8 +7,8 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://multiple-cucumber-html-reporter.com/',
-      images: '/banner.png',
+      url: baseUrl.toString(),
+      images: '/images/multiple-cucumber-html-reporter-banner.png',
       siteName: 'Multiple Cucumber HTML Reporter',
       ...override.openGraph,
     },
@@ -17,18 +17,10 @@ export function createMetadata(override: Metadata): Metadata {
       creator: '@wasiqbhamla',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: '/banner.png',
+      images: '/images/multiple-cucumber-html-reporter-banner.png',
       ...override.twitter,
     },
     alternates: {
-      //   types: {
-      //     'application/rss+xml': [
-      //       {
-      //         title: 'Fumadocs Blog',
-      //         url: 'https://fumadocs.dev/blog/rss.xml',
-      //       },
-      //     ],
-      //   },
       ...override.alternates,
     },
   };
