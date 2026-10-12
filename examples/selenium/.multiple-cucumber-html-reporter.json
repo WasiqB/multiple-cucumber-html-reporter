@@ -1,0 +1,22 @@
+{
+  "jsonDir": "./reports/json",
+  "reportPath": "./reports/html",
+  "emailReport": true,
+  "openReportInBrowser": true,
+  "useCDN": true,
+  "pageTitle": "My Selenium Java Sample",
+  "reportName": "Cucumber JS Report",
+  "customData": {
+    "projectName": "Selenium Java Example",
+    "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
+    "buildNumber": "${GITHUB_RUN_NUMBER:'Build 1'}",
+    "environment": "production",
+    "ciPipeline": "GitHub Actions"
+  },
+  "metadata": {
+    "browser": {
+      "name": "chrome",
+      "version": "latest"
+    }
+  }
+}
