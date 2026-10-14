@@ -134,7 +134,7 @@ displayReportTime: true`,
   "reportPath": "./.run/html-report/",
   "openReportInBrowser": true,
   "useCDN": true,
-  "emailReporter": true,
+  "emailReport": true,
   "metadataFilePath": "./.run/reports/json/metadata.json",
   "customData": {
     "projectName": "Cypress sample project",
