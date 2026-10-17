@@ -15,6 +15,9 @@ on:
       - examples/selenium/*
       - reporter/**
 
+permissions:
+  contents: read
+
 jobs:
   test:
     strategy:

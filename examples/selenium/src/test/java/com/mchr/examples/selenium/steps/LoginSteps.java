@@ -1,5 +1,6 @@
 package com.mchr.examples.selenium.steps;
 
+import static java.lang.System.getenv;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -15,6 +16,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class LoginSteps {
     private WebDriver driver;
@@ -50,7 +52,11 @@ public class LoginSteps {
 
     @Before
     public void setup () {
-        this.driver = new ChromeDriver ();
+        final var options = new ChromeOptions ();
+        if (getenv ("CI").equals ("true")) {
+            options.addArguments ("--headless");
+        }
+        this.driver = new ChromeDriver (options);
         this.driver.manage ()
             .window ()
             .maximize ();

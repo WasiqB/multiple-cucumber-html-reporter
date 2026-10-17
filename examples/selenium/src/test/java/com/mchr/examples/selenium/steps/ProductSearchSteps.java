@@ -5,11 +5,7 @@ import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -19,6 +15,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -29,21 +26,6 @@ public class ProductSearchSteps {
 
     private       RemoteWebDriver driver;
     private final By              searchBox = cssSelector ("#main-header input[name='search']");
-    private       String          status    = "failed";
-
-    public ChromeOptions getChromeOptions () {
-        final var browserOptions = new ChromeOptions ();
-        browserOptions.setPlatformName ("Windows 11");
-        browserOptions.setBrowserVersion ("latest");
-        final Map<String, Object> ltOptions = new HashMap<> ();
-        ltOptions.put ("project", "Cucumber Gherkin Demo");
-        ltOptions.put ("build", "LambdaTest E-Commerce Playground Demo");
-        ltOptions.put ("name", "Automation tests using Cucumber BDD");
-        ltOptions.put ("w3c", true);
-        ltOptions.put ("plugin", "java-testNG");
-        browserOptions.setCapability ("LT:Options", ltOptions);
-        return browserOptions;
-    }
 
     @Given ("I am on the LambdaTest E-Commerce Playground home page")
     public void i_am_on_the_lambda_test_e_commerce_playground_home_page () {
@@ -66,20 +48,21 @@ public class ProductSearchSteps {
 
     @Before
     public void setup () {
-        try {
-            this.driver = new RemoteWebDriver (new URL ("https://" + LT_USERNAME + ":" + LT_ACCESS_KEY + GRID_URL),
-                getChromeOptions ());
-        } catch (final MalformedURLException e) {
-            System.out.println ("Could not start the remote session on LambdaTest cloud grid");
-            this.driver.manage ()
-                .timeouts ()
-                .implicitlyWait (Duration.ofSeconds (20));
+        final var options = new ChromeOptions ();
+        if (getenv ("CI").equals ("true")) {
+            options.addArguments ("--headless");
         }
+        this.driver = new ChromeDriver (options);
+        this.driver.manage ()
+            .window ()
+            .maximize ();
+        this.driver.manage ()
+            .timeouts ()
+            .implicitlyWait (Duration.ofSeconds (30));
     }
 
     @After
     public void tearDown () {
-        this.driver.executeScript ("lambda-status=" + this.status);
         this.driver.quit ();
     }
 
@@ -88,6 +71,5 @@ public class ProductSearchSteps {
         final String headerText = this.driver.findElement (cssSelector ("#product-search h1"))
             .getText ();
         assertEquals (headerText, "Search - " + productName);
-        this.status = "passed";
     }
 }
