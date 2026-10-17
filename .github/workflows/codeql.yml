@@ -43,6 +43,7 @@ jobs:
           languages: ${{ matrix.language }}
 
       - name: Auto build typescript
+        if: ${{ matrix.language == 'typescript' }}
         uses: github/codeql-action/autobuild@v4.38.2
 
       - name: Build Java Project
