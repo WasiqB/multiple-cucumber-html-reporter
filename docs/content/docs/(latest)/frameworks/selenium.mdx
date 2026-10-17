@@ -1,0 +1,104 @@
+---
+title: Selenium WebDriver
+description: How to use Multiple Cucumber HTML Reporter with Selenium WebDriver + Cucumber in Java.
+---
+
+Multiple Cucumber HTML Reporter is now language independent, which means you are no longer tied to a specific language in order to generate the Cucumber Report.
+
+All you need is a Cucumber formatter for JSON configured in your project and the Multiple Cucumber HTML Reporter CLI installed on your machine.
+
+In this guide, you will learn how to configure the Selenium WebDriver + Cucumber Java project to generate Cucumber JSON report and convert it to beautiful HTML report using Multiple Cucumber HTML Reporer.
+
+<Callout title='Tip' type='idea'>
+
+- Check out the example project under `examples/selenium` folder in the [reporter repository](https://github.com/WasiqB/multiple-cucumber-html-reporter).
+- You can also refer to the [GitHub Actions workflow](https://github.com/WasiqB/multiple-cucumber-html-reporter/actions/workflows/test-selenium.yml) for Selenium WebDriver along with the generated reports attached as artifact.
+
+</Callout>
+
+## Steps to generate Multiple Cucumber HTML reporter
+
+### Generate Cucumber JSON reports [step]
+
+The multiple cucumber HTML reporter requires the Cucumber JSON report files in order to generate the beautiful HTML reports.
+
+We have used the following dependencies to generate the Cucumber JSON report files:
+
+- `io.cucumber / cucumber-java`
+- `io.cucumber / cucumber-junit-platform-engine`
+- `org.junit.platform / junit-platform-suite`
+- `tools.jackson.core / jackson-databind`
+
+### Cucumber configuration [step]
+
+Add the following config properties file in `src/test/resources` folder.
+
+```properties
+# junit-platform.properties
+# Specify package containing step definitions
+cucumber.glue=com.mchr.examples.selenium.steps
+# Declare plugins for console output and generating the JSON report
+cucumber.plugin=pretty, json:reports/json/cucumber.json  # [!code highlight]
+# Equivalent to monochrome = true
+cucumber.ansi-colors.disabled=false
+```
+
+### Reporter configuration file [step]
+
+Run the `mchr` command in the project root folder and complete onboarding flow to create the config file.
+
+By default, JSON based config file will be created in the folder.
+
+Update the config file as per your requirements.
+
+```json
+// .multiple-cucumber-html-reporter.json
+{
+  "jsonDir": "./reports/json",
+  "reportPath": "./reports/html",
+  "emailReport": true,
+  "openReportInBrowser": true,
+  "useCDN": true,
+  "pageTitle": "My Selenium Java Sample",
+  "reportName": "Cucumber JS Report",
+  "customData": {
+    "projectName": "Selenium Java Example",
+    "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
+    "buildNumber": "${GITHUB_RUN_NUMBER:'Build 1'}",
+    "environment": "production",
+    "ciPipeline": "GitHub Actions"
+  },
+  "metadata": {
+    "browser": {
+      "name": "chrome",
+      "version": "latest"
+    }
+  }
+}
+```
+
+### Install the dependencies [step]
+
+Install the dependencies by running the following command:
+
+```shell
+mvn install
+```
+
+### Run the Tests [step]
+
+Execute your test cases by running the following command in the terminal:
+
+```shell
+mvn test
+```
+
+This command will execute all your test cases.
+
+### Generate the report [step]
+
+Execute the following command to generate the report:
+
+```shell
+mchr
+```

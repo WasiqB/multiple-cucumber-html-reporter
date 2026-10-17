@@ -64,6 +64,13 @@ Here are common issues and solutions while setting up or using the reporter.
   <Accordion title="Is it compatible with Protractor?">
     If you are using Protractor, we recommend using the dedicated `protractor-multiple-cucumber-html-reporter-plugin` for a more seamless experience.
   </Accordion>
+  <Accordion title="Can I generate Emailable Report version of the main report?">
+    Yes, when you enable option `emailReport` in the config file, an emailable report will be created along with the main report.
+
+    You can the simply copy the self-cpntained `email-report.html` file from the report path and send it to the project stakeholders.
+
+    If you haven't set this option in the config, you can still generate the Email report by using `--email` flag in `mchr` command.
+  </Accordion>
 </Accordions>
 
 ---

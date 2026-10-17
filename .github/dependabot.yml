@@ -6,8 +6,8 @@ updates:
     versioning-strategy: increase
     open-pull-requests-limit: 100
     labels:
-      - ':house: pr: internal'
-      - 'typescript'
+      - ":house: pr: internal"
+      - "typescript"
     schedule:
       interval: "weekly"
       timezone: "Asia/Calcutta"
@@ -15,14 +15,28 @@ updates:
       dependencies:
         update-types: ["major", "minor", "patch"]
 
+  - package-ecosystem: "maven"
+    directory: "/examples/selenium"
+    target-branch: "main"
+    open-pull-requests-limit: 100
+    labels:
+      - ":house: pr: internal"
+      - "java"
+    schedule:
+      interval: "weekly"
+      timezone: "Asia/Calcutta"
+    groups:
+      dependencies:
+        dependency-type: "production"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
       timezone: "Asia/Calcutta"
     labels:
-      - ':house: pr: internal'
-      - 'github_actions'
+      - ":house: pr: internal"
+      - "github_actions"
     groups:
       dependencies:
         dependency-type: "production"

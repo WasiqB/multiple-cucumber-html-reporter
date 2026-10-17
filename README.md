@@ -67,6 +67,7 @@
 -   🌓 **Dark Mode Support**: Built-in support for light and dark themes for better accessibility.
 -   📬 **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
 -   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
+-   🤝 **Language independent**: Generate Cucumber report using any Cucucmber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
 -   🎨 **Fully Customizable**: Add custom data blocks, brand colors, logo, footer, and additional CSS styles.

@@ -1,0 +1,78 @@
+name: Test Selenium Java Example
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - examples/selenium/*
+      - reporter/**
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - examples/selenium/*
+      - reporter/**
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v6
+        with:
+          java-version: 17
+          distribution: "temurin"
+          cache: "maven"
+          check-latest: true
+
+      - name: Install Root Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        working-directory: reporter
+
+      - name: Run Selenium Java
+        working-directory: examples/selenium
+        run: mvn clean install
+        env:
+          CI: true
+        continue-on-error: true
+
+      - name: Link the CLI Globally
+        run: pnpm add --global ./reporter
+
+      - name: Sanity check CLI command
+        working-directory: examples/selenium
+        run: mchr --version
+
+      - name: Generate Report
+        working-directory: examples/selenium
+        run: mchr
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v7
+        with:
+          name: selenium-report-${{ matrix.os }}
+          path: examples/selenium/reports
