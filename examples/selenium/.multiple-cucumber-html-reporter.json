@@ -5,7 +5,7 @@
   "openReportInBrowser": true,
   "useCDN": true,
   "pageTitle": "My Selenium Java Sample",
-  "reportName": "Cucumber JS Report",
+  "reportName": "Cucumber Java Report",
   "customData": {
     "projectName": "Selenium Java Example",
     "testCycle": "${GITHUB_RUN_ID:'Cycle 1'}",
