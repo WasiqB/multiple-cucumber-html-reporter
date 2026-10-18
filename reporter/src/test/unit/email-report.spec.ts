@@ -67,6 +67,9 @@ describe('Emailable Report', () => {
     // webfonts from a pinned CDN stylesheet.
     expect(content).toContain('<style>');
     expect(content).toContain('tailwindcss');
+    expect(content).toContain('.email-container');
+    expect(content).toContain('margin-left: auto');
+    expect(content).toContain('margin-right: auto');
     expect(content).toContain('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css');
     expect(content).not.toContain('src:url(../webfonts/');
 
@@ -92,5 +95,7 @@ describe('Emailable Report', () => {
     expect(emailReport).toContain('الملخص التنفيذي');
     expect(emailReport).toContain('ملخص الميزات');
     expect(emailReport).not.toContain('Features Summary');
+    expect(emailReport).toContain('margin-left: auto');
+    expect(emailReport).toContain('margin-right: auto');
   });
 });
