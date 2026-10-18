@@ -3,6 +3,29 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.5.0 (2026-10-18)
+
+#### :rocket: New Feature
+
+- [#640](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/640) feat: ✨ Added support for different languages ([@WasiqB](https://github.com/WasiqB))
+- [#637](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/637) feat: :sparkles: added example for selenium webdriver with java ([@WasiqB](https://github.com/WasiqB))
+- [#632](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/632) feat: :sparkles: used yargs for guiding cli flow ([@WasiqB](https://github.com/WasiqB))
+
+#### :nail_care: Polish
+
+- [#639](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/639) chore(deps): bump org.seleniumhq.selenium:selenium-java from 4.50.0 to 4.51.0 in /examples/selenium in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#638](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/638) chore(deps): bump the dependencies group with 13 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#633](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/633) chore(deps): bump the dependencies group with 20 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### :memo: Documentation
+
+- [#635](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/635) docs: :memo: updated docs SEO and made it mobile responsive ([@WasiqB](https://github.com/WasiqB))
+
+#### Committers: 1
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.4.2 (2026-10-04)
 
 #### :bug: Bug Fix
