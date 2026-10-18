@@ -1,6 +1,8 @@
 <div class="rounded-xl border bg-card text-card-foreground shadow overflow-hidden" id="features-table-container">
   <div class="px-6 py-4 border-b flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <h3 class="text-lg font-semibold whitespace-nowrap">Features Overview</h3>
+    <h3 class="text-lg font-semibold whitespace-nowrap">
+      {{ data.locale.dashboard.featuresOverview | default: 'Features Overview' }}
+    </h3>
     <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
       <div class="relative flex-1 md:w-64">
         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
@@ -9,7 +11,7 @@
         <input
           type="text"
           id="feature-search"
-          placeholder="Search features..."
+          placeholder="{{ data.locale.dashboard.searchFeaturesPlaceholder | default: 'Search features...' }}"
           class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-shadow shadow-sm"
         >
       </div>
@@ -20,7 +22,9 @@
           id="feature-tag-filter-button"
           class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer"
         >
-          <span class="truncate text-muted-foreground text-xs" id="feature-tag-filter-label">Filter by tags...</span>
+          <span class="truncate text-muted-foreground text-xs" id="feature-tag-filter-label">
+            {{- data.locale.dashboard.filterByTags | default: 'Filter by tags...' -}}
+          </span>
           <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
         </button>
         <div
@@ -31,7 +35,9 @@
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <span class="text-xs font-medium text-muted-foreground whitespace-nowrap">Show:</span>
+        <span class="text-xs font-medium text-muted-foreground whitespace-nowrap">
+          {{- data.locale.dashboard.show | default: 'Show:' -}}
+        </span>
         <select
           id="records-per-page"
           class="h-9 px-2 rounded-md border border-input bg-background text-xs ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm min-w-17.5"
@@ -50,30 +56,30 @@
         <tr>
           <th class="px-4 md:px-6 py-3 cursor-pointer hover:text-foreground transition-colors group">
             <div class="flex items-center gap-1.5">
-              Feature Name
+              {{ data.locale.dashboard.featureName | default: 'Feature Name' }}
               <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
             </div>
           </th>
-          <th class="px-4 md:px-6 py-3">Environment</th>
+          <th class="px-4 md:px-6 py-3">{{ data.locale.dashboard.environment | default: 'Environment' }}</th>
           <th class="px-4 md:px-6 py-3 cursor-pointer hover:text-foreground transition-colors group">
             <div class="flex items-center gap-1.5">
-              Steps status
+              {{ data.locale.dashboard.stepsStatusCol | default: 'Steps status' }}
               <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
             </div>
           </th>
           <th class="px-4 md:px-6 py-3 text-right cursor-pointer hover:text-foreground transition-colors group">
             <div class="flex items-center justify-end gap-1.5">
-              Pass %
+              {{ data.locale.dashboard.passPercentCol | default: 'Pass %' }}
               <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
             </div>
           </th>
           {% if data.report.displayDuration %}
-          <th class="px-4 md:px-6 py-3 text-right cursor-pointer hover:text-foreground transition-colors group">
-            <div class="flex items-center justify-end gap-1.5">
-              {{ data.report.durationColumnTitle | default: 'Duration' }}
-              <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
-            </div>
-          </th>
+            <th class="px-4 md:px-6 py-3 text-right cursor-pointer hover:text-foreground transition-colors group">
+              <div class="flex items-center justify-end gap-1.5">
+                {{ data.report.durationColumnTitle | default: data.locale.dashboard.durationCol | default: 'Duration' }}
+                <i class="fa-solid fa-sort opacity-30 group-hover:opacity-100 text-[10px]"></i>
+              </div>
+            </th>
           {% endif %}
         </tr>
       </thead>
@@ -101,7 +107,7 @@
 
               <div class="flex items-center gap-2.5 text-muted-foreground">
                 {% comment %} Device icon {% endcomment %}
-                <span title="{{ feature.device | default: 'Desktop' }}">
+                <span title="{{ feature.device | default: data.locale.runInfo.desktop | default: 'Desktop' }}">
                   <i
                     class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %} text-base"
                   ></i>
@@ -180,18 +186,36 @@
                 {% endif %}
               </div>
               <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
-                <span class="text-status-passed">{{ feature.passed }} Passed</span>
-                <span class="text-status-failed">{{ feature.failed }} Failed</span>
+                <span class="text-status-passed">
+                  {{- feature.passed }}
+                  {{ data.locale.status.passed | default: 'Passed' -}}
+                </span>
+                <span class="text-status-failed">
+                  {{- feature.failed }}
+                  {{ data.locale.status.failed | default: 'Failed' -}}
+                </span>
                 {% if feature.ambiguous > 0 -%}
-                  <span class="text-status-ambiguous">{{ feature.ambiguous }} Ambiguous</span>
+                  <span class="text-status-ambiguous">
+                    {{- feature.ambiguous }}
+                    {{ data.locale.status.ambiguous | default: 'Ambiguous' -}}
+                  </span>
                 {%- endif %}
                 {% if feature.notDefined > 0 -%}
-                  <span class="text-status-undefined">{{ feature.notDefined }} Not Defined</span>
+                  <span class="text-status-undefined">
+                    {{- feature.notDefined }}
+                    {{ data.locale.status.notDefined | default: 'Not Defined' -}}
+                  </span>
                 {%- endif %}
                 {% if feature.pending > 0 -%}
-                  <span class="text-status-pending">{{ feature.pending }} Pending</span>
+                  <span class="text-status-pending">
+                    {{- feature.pending }}
+                    {{ data.locale.status.pending | default: 'Pending' -}}
+                  </span>
                 {%- endif %}
-                <span class="text-status-skipped">{{ feature.skipped }} Skipped</span>
+                <span class="text-status-skipped">
+                  {{- feature.skipped }}
+                  {{ data.locale.status.skipped | default: 'Skipped' -}}
+                </span>
               </div>
             </td>
             <td class="px-6 py-4 text-right">
@@ -221,12 +245,12 @@
               </div>
             </td>
             {% if data.report.displayDuration %}
-            <td class="px-6 py-4 text-right whitespace-nowrap">
-              <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
-                <i class="fa-regular fa-clock"></i>
-                {{ feature.time | default: '—' }}
-              </span>
-            </td>
+              <td class="px-6 py-4 text-right whitespace-nowrap">
+                <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
+                  <i class="fa-regular fa-clock"></i>
+                  {{ feature.time | default: '—' }}
+                </span>
+              </td>
             {% endif %}
           </tr>
         {% endfor %}
@@ -238,16 +262,22 @@
     <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
       <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
     </div>
-    <h4 class="text-sm font-semibold text-foreground">No feature found</h4>
-    <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
+    <h4 class="text-sm font-semibold text-foreground">
+      {{ data.locale.dashboard.noFeatureFound | default: 'No feature found' }}
+    </h4>
+    <p class="text-xs text-muted-foreground mt-1">
+      {{ data.locale.dashboard.adjustFilters | default: 'Try adjusting your filters or search terms.' }}
+    </p>
   </div>
 
   <!-- Pagination -->
   <div class="px-6 py-4 border-t flex items-center justify-between text-xs text-muted-foreground bg-muted/20">
     <div>
-      Showing <span id="showing-start" class="font-bold text-foreground">1</span> to
-      <span id="showing-end" class="font-bold text-foreground">10</span> of
-      <span id="total-records" class="font-bold text-foreground">{{ data.features.size }}</span> entries
+      {{ data.locale.dashboard.showing | default: 'Showing' }}
+      <span id="showing-start" class="font-bold text-foreground">1</span> {{ data.locale.dashboard.to | default: 'to' }}
+      <span id="showing-end" class="font-bold text-foreground">10</span> {{ data.locale.dashboard.of | default: 'of' }}
+      <span id="total-records" class="font-bold text-foreground">{{ data.features.size }}</span>
+      {{ data.locale.dashboard.entries | default: 'entries' }}
     </div>
     <div class="flex items-center gap-1" id="pagination-controls">
       <button

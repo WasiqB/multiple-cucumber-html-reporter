@@ -92,6 +92,12 @@ Following are the allowed options in the command line tool:
       type: 'boolean',
       typeDescription: 'boolean'
     },
+    '--language <language>': {
+      description: <>Sets the report language. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), and <code>ar</code> (Arabic). The <code>--lang</code> alias is also available.</>,
+      type: 'en | es | fr | ar',
+      typeDescription: 'en | es | fr | ar',
+      default: 'en'
+    },
     '--version': {
       description: 'Prints the reporter version',
       type: 'boolean',
@@ -127,6 +133,7 @@ This is how the sample configuration file for the CLI tool looks like:
       },
       "pageTitle": "Cypress Sample",
       "reportName": "Cypress Sample",
+      "language": "en",
       "displayDuration": true,
       "displayReportTime": true,
     }
@@ -148,6 +155,7 @@ This is how the sample configuration file for the CLI tool looks like:
       ciPipeline: 'GitHub Actions'
     pageTitle: 'Cypress Sample'
     reportName: 'Cypress Sample'
+    language: 'en'
     displayDuration: true
     displayReportTime: true
     ```
@@ -172,6 +180,7 @@ This is how the sample configuration file for the CLI tool looks like:
       },
       pageTitle: 'Cypress Sample',
       reportName: 'Cypress Sample',
+      language: 'en',
       displayDuration: true,
       displayReportTime: true,
     };
@@ -197,6 +206,7 @@ This is how the sample configuration file for the CLI tool looks like:
       },
       pageTitle: 'Cypress Sample',
       reportName: 'Cypress Sample',
+      language: 'en',
       displayDuration: true,
       displayReportTime: true,
     };

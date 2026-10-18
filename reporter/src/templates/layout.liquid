@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ data.locale.htmlLang | default: 'en' }}" dir="{{ data.locale.direction | default: 'ltr' }}">
   <head>
     {% render 'includes/meta_head.liquid', base_url: base_url, report: data.report %}
     <script>
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Media Modal -->
-    {% render 'includes/media_modal.liquid', base_url: base_url, report: data.report %}
+    {% render 'includes/media_modal.liquid', base_url: base_url, report: data.report, locale: data.locale %}
 
     {% render 'includes/scripts.liquid', base_url: base_url, report: data.report %}
   </body>

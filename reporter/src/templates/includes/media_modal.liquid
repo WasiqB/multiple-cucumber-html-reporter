@@ -23,7 +23,9 @@
     >
       <!-- Header -->
       <div class="flex items-center justify-between border-b p-4 text-card-foreground">
-        <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
+        <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">
+          {{ locale.modal.attachment | default: 'Attachment' }}
+        </h2>
         <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -51,7 +53,9 @@
       id="modal-drag-handle"
       class="flex items-center justify-between border-b p-4 text-card-foreground select-none shrink-0{% if report.modalDraggable %} cursor-move{% endif %}"
     >
-      <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">Attachment</h2>
+      <h2 id="modal-title" class="text-lg font-semibold truncate mr-4">
+        {{ locale.modal.attachment | default: 'Attachment' }}
+      </h2>
       <button onclick="closeModal()" class="rounded-lg p-1 hover:bg-muted transition-colors">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>

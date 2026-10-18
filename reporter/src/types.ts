@@ -163,7 +163,15 @@ export interface Options {
    * Saved to `<reportPath>/email-report.html`.
    */
   emailReport?: boolean;
+  /**
+   * Preferred language for report labels and messages.
+   * Supported values: `'en'` (English, default), `'es'` (Spanish), `'fr'` (French), `'ar'` (Arabic).
+   * @default 'en'
+   */
+  language?: SupportedLanguage;
 }
+
+export type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar';
 
 export interface Hook {
   arguments: any[];

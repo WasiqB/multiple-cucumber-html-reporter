@@ -8,15 +8,21 @@
     <!-- Top row - Key metrics status -->
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Features Status</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.featuresStatus | default: 'Features Status' }}
+        </h3>
         <div id="features-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Scenarios Status</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.scenariosStatus | default: 'Scenarios Status' }}
+        </h3>
         <div id="scenarios-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Steps Status</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.stepsStatus | default: 'Steps Status' }}
+        </h3>
         <div id="steps-status-chart" class="h-64"></div>
       </div>
     </div>
@@ -24,22 +30,30 @@
     <!-- Analytics Charts -->
     <div class="grid gap-6 lg:grid-cols-3">
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Device & OS</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.deviceOs | default: 'Device & OS' }}
+        </h3>
         <div id="device-os-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Browsers</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.browsers | default: 'Browsers' }}
+        </h3>
         <div id="browser-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Tags</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.top10Tags | default: 'Top 10 Tags' }}
+        </h3>
         <div id="tag-distribution-chart" class="h-64"></div>
       </div>
     </div>
 
     <!-- Status Trend -->
     <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Features Status Trend</h3>
+      <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+        {{ data.locale.dashboard.featuresStatusTrend | default: 'Features Status Trend' }}
+      </h3>
       <div id="status-trend-chart" class="h-80 w-full"></div>
     </div>
 
@@ -48,11 +62,14 @@
   </div>
 
   <script>
+    // Embedded locale for UI components
+    window.ReportLocale = {{ data.locale | json }};
+
     // Report-wide UI config (opt-in features toggled from the reporter options)
     window.ReportConfig = Object.assign({}, window.ReportConfig, {
         displayChartPercentages: {{ data.report.displayChartPercentages | json }},
         displayDuration: {{ data.report.displayDuration | json }},
-        durationColumnTitle: {{ data.report.durationColumnTitle | default: 'Duration' | json }},
+        durationColumnTitle: {{ data.report.durationColumnTitle | default: data.locale.dashboard.durationCol | default: 'Duration' | json }},
         modalBackdrop: {{ data.report.modalBackdrop | json }},
         modalDraggable: {{ data.report.modalDraggable | json }},
         modalResizable: {{ data.report.modalResizable | json }},

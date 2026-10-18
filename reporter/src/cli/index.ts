@@ -18,8 +18,9 @@ import * as p from '@clack/prompts';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { generate } from '../generate-report.js';
+import { SUPPORTED_LANGUAGES } from '../locale.js';
 import { LOG_LEVELS } from '../logger.js';
-import type { LogLevel, Options } from '../types.js';
+import type { LogLevel, Options, SupportedLanguage } from '../types.js';
 import { loadConfig } from './config-loader.js';
 import { runOnboarding } from './onboarding.js';
 
@@ -66,6 +67,12 @@ async function main(): Promise<void> {
       description: 'Hide reporter logging completely (alias: --no-logging)',
       alias: 'no-logging',
     })
+    .option('language', {
+      alias: 'lang',
+      type: 'string',
+      description: `Report language (${SUPPORTED_LANGUAGES.join(', ')})`,
+      choices: [...SUPPORTED_LANGUAGES],
+    })
     .epilog(
       [
         'CONFIG FILES',
@@ -84,6 +91,7 @@ async function main(): Promise<void> {
         '    "reportPath": "./reports/html",',
         '    "reportName": "My Test Report",',
         '    "logging": "warn",',
+        '    "language": "en",',
         '    "displayDuration": true,',
         '    "displayChartPercentages": true',
         '  }',
@@ -138,6 +146,11 @@ async function main(): Promise<void> {
   const rawLogLevel = argv['log-level'] as LogLevel | undefined;
   if (rawLogLevel) {
     options.logging = rawLogLevel;
+  }
+
+  const rawLanguage = argv['language'] as SupportedLanguage | undefined;
+  if (rawLanguage) {
+    options.language = rawLanguage;
   }
 
   configResult.options = options;

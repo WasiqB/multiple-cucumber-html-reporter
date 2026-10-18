@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ data.locale.htmlLang | default: 'en' }}" dir="{{ data.locale.direction | default: 'ltr' }}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
       {{ data.report.reportName | default: 'Multiple Cucumber HTML Reporter' }}
-      - Executive Summary
+      - {{ data.locale.email.executiveSummary | default: 'Executive Summary' }}
     </title>
     <link
       rel="stylesheet"
@@ -64,8 +64,11 @@
         -webkit-font-smoothing: antialiased;
       }
       .email-container {
+        box-sizing: border-box;
+        width: 100%;
         max-width: 960px;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
         padding: 24px 16px 8px;
       }
       .email-header {
@@ -334,7 +337,7 @@
         <div class="email-header-logo">
           <div class="email-header-icon">
             {% if data.report.logo %}
-              <img src="{{ base_url | default: '.' }}/assets/{{ data.report.logo }}" alt="Logo">
+              <img src="{{ base_url | default: '.' }}/assets/{{ data.report.logo }}" alt="{{ data.locale.header.reportName | default: 'Report logo' }}">
             {% else %}
               <i class="fa-solid fa-vial-circle-check"></i>
             {% endif %}
@@ -351,9 +354,9 @@
         <div>
           <span class="status-pill {% if data.summary.failed > 0 or data.scenarios.failed > 0 %}badge-failed{% else %}badge-passed{% endif %}">
             {% if data.summary.failed > 0 or data.scenarios.failed > 0 %}
-              <i class="fa-solid fa-circle-xmark"></i> FAILED
+              <i class="fa-solid fa-circle-xmark"></i> {{ data.locale.status.failed | upcase | default: 'FAILED' }}
             {% else %}
-              <i class="fa-solid fa-circle-check"></i> PASSED
+              <i class="fa-solid fa-circle-check"></i> {{ data.locale.status.passed | upcase | default: 'PASSED' }}
             {% endif %}
           </span>
         </div>
@@ -363,7 +366,7 @@
       <div class="meta-bar">
         {% if data.report.projectName %}
           <div class="meta-item">
-            <span class="meta-label">Project</span>
+            <span class="meta-label">{{ data.locale.runInfo.project | default: 'Project' }}</span>
             <span class="meta-value">
               {{- data.report.projectName -}}
               {%- if data.report.release %}
@@ -375,42 +378,42 @@
           </div>
         {% elsif data.report.release %}
           <div class="meta-item">
-            <span class="meta-label">Release</span>
+            <span class="meta-label">{{ data.locale.runInfo.release | default: 'Release' }}</span>
             <span class="meta-value">v{{ data.report.release }}</span>
           </div>
         {% endif %}
         {% if data.report.environment %}
           <div class="meta-item">
-            <span class="meta-label">Environment</span>
+            <span class="meta-label">{{ data.locale.runInfo.environment | default: 'Environment' }}</span>
             <span class="meta-value">{{ data.report.environment }}</span>
           </div>
         {% endif %}
         {% if data.report.testCycle %}
           <div class="meta-item">
-            <span class="meta-label">Test Cycle</span>
+            <span class="meta-label">{{ data.locale.runInfo.testCycle | default: 'Test Cycle' }}</span>
             <span class="meta-value">{{ data.report.testCycle }}</span>
           </div>
         {% endif %}
         {% if data.report.ciPipeline %}
           <div class="meta-item">
-            <span class="meta-label">CI Pipeline</span>
+            <span class="meta-label">{{ data.locale.runInfo.ciPipeline | default: 'CI Pipeline' }}</span>
             <span class="meta-value">{{ data.report.ciPipeline }}</span>
           </div>
         {% endif %}
         {% if data.report.buildNumber %}
           <div class="meta-item">
-            <span class="meta-label">Build</span>
+            <span class="meta-label">{{ data.locale.runInfo.build | default: 'Build' }}</span>
             <span class="meta-value">{{ data.report.buildNumber }}</span>
           </div>
         {% endif %}
         <div class="meta-item">
-          <span class="meta-label">Execution Date</span>
+          <span class="meta-label">{{ data.locale.email.executionDate | default: 'Execution Date' }}</span>
           <span class="meta-value" style="font-family:ui-monospace,monospace;font-size:11px;">
             {{- data.report.executionPeriod -}}
           </span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Total Duration</span>
+          <span class="meta-label">{{ data.locale.email.totalDuration | default: 'Total Duration' }}</span>
           <span class="meta-value" style="font-family:ui-monospace,monospace;font-size:11px;">
             {{- data.report.executionEndTime -}}
           </span>
@@ -422,24 +425,24 @@
         <!-- Features KPI Card -->
         <div class="email-card" style="margin-bottom:0;">
           <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="email-card-section-title">Features Summary</span>
-            <span style="font-size:14px;font-weight:700;color:#16a34a;">{{ data.summary.passedPercentage }}% Pass</span>
+            <span class="email-card-section-title">{{ data.locale.email.featuresSummary | default: 'Features Summary' }}</span>
+            <span style="font-size:14px;font-weight:700;color:#16a34a;">{{ data.summary.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' }}</span>
           </div>
           <div class="email-card-body">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;">
               <div class="metric-box metric-box-total">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.total }}</span>
                 <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
-                  >Total</span
+                  >{{ data.locale.status.total | default: 'Total' }}</span
                 >
               </div>
               <div class="metric-box badge-passed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.passed }}</span>
-                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">Passed</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.passed | default: 'Passed' }}</span>
               </div>
               <div class="metric-box badge-failed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.failed }}</span>
-                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">Failed</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.failed | default: 'Failed' }}</span>
               </div>
             </div>
             <div class="progress-bar-container" style="margin-top:16px;">
@@ -459,9 +462,9 @@
         <!-- Scenarios KPI Card -->
         <div class="email-card" style="margin-bottom:0;">
           <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="email-card-section-title">Scenarios Summary</span>
+            <span class="email-card-section-title">{{ data.locale.email.scenariosSummary | default: 'Scenarios Summary' }}</span>
             <span style="font-size:14px;font-weight:700;color:#16a34a;">
-              {{- data.scenarios.passedPercentage }}% Pass</span
+              {{- data.scenarios.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' }}</span
             >
           </div>
           <div class="email-card-body">
@@ -469,16 +472,16 @@
               <div class="metric-box metric-box-total">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.total }}</span>
                 <span style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
-                  >Total</span
+                  >{{ data.locale.status.total | default: 'Total' }}</span
                 >
               </div>
               <div class="metric-box badge-passed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.passed }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Passed</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.passed | default: 'Passed' }}</span>
               </div>
               <div class="metric-box badge-failed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.failed }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Failed</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.failed | default: 'Failed' }}</span>
               </div>
               <div class="metric-box badge-skipped">
                 {% assign others = data.scenarios.skipped
@@ -487,7 +490,7 @@
                   | plus: data.scenarios.pending
                 %}
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ others }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">Other</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.other | default: 'Other' }}</span>
               </div>
             </div>
             <div class="progress-bar-container" style="margin-top:16px;">
@@ -510,21 +513,21 @@
         <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
           <h2 class="email-card-section-title">
             <i class="fa-solid fa-list-check" style="margin-right:6px;color:var(--primary,#2563eb);"></i>
-            Features &amp; Scenario Statistics ({{ data.features.size }})
+            {{ data.locale.email.featuresAndScenarioStatistics | replace: '&', '&amp;' | default: 'Features &amp; Scenario Statistics' }} ({{ data.features.size }})
           </h2>
         </div>
         <div style="overflow-x:auto;">
           <table class="data-table">
             <thead>
               <tr>
-                <th style="min-width:180px;">Feature</th>
-                <th>Environment</th>
-                <th style="text-align:center;">Total</th>
-                <th style="text-align:center;">Passed</th>
-                <th style="text-align:center;">Failed</th>
-                <th style="text-align:center;">Other</th>
-                <th style="min-width:150px;">Progress</th>
-                <th style="text-align:right;min-width:90px;">{{ data.report.durationColumnTitle | default: 'Duration' }}</th>
+                <th style="min-width:180px;">{{ data.locale.email.featureCol | default: 'Feature' }}</th>
+                <th>{{ data.locale.runInfo.environment | default: 'Environment' }}</th>
+                <th style="text-align:center;">{{ data.locale.status.total | default: 'Total' }}</th>
+                <th style="text-align:center;">{{ data.locale.status.passed | default: 'Passed' }}</th>
+                <th style="text-align:center;">{{ data.locale.status.failed | default: 'Failed' }}</th>
+                <th style="text-align:center;">{{ data.locale.status.other | default: 'Other' }}</th>
+                <th style="min-width:150px;">{{ data.locale.email.progress | default: 'Progress' }}</th>
+                <th style="text-align:right;min-width:90px;">{{ data.report.durationColumnTitle | default: data.locale.email.duration | default: 'Duration' }}</th>
               </tr>
             </thead>
             <tbody>
@@ -557,7 +560,7 @@
                     %}
                     {% assign exec_platform = feature.executionPlatform | default: 'local' %}
                     <div class="env-icons">
-                      <span title="{{ feature.device | default: 'Desktop' }}">
+                      <span title="{{ feature.device | default: data.locale.runInfo.desktop | default: 'Desktop' }}">
                         <i
                           class="{% if device contains 'iphone' or device contains 'android' or device contains 'mobile' %}fa-solid fa-mobile-screen-button{% elsif device contains 'tablet' or device contains 'ipad' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-desktop{% endif %}"
                         ></i>
@@ -583,7 +586,7 @@
                           <span title="TestMu AI"><i class="fa-solid fa-cloud"></i></span>
                         {% endif %}
                       {% else %}
-                        <span title="Local machine"><i class="fa-solid fa-computer"></i></span>
+                        <span title="{{ data.locale.runInfo.localMachine | default: 'Local machine' }}"><i class="fa-solid fa-computer"></i></span>
                       {% endif %}
                     </div>
                   </td>
@@ -657,7 +660,7 @@
           <div class="email-card-header">
             <h2 class="email-card-section-title">
               <i class="fa-solid fa-stopwatch" style="margin-right:6px;color:#f97316;"></i>
-              Top 5 Slowest Scenarios
+              {{ data.locale.email.top5SlowestScenarios | default: 'Top 5 Slowest Scenarios' }}
             </h2>
           </div>
           <div style="overflow-x:auto;">
@@ -665,10 +668,10 @@
               <thead>
                 <tr>
                   <th style="width:40px;text-align:center;">#</th>
-                  <th>Scenario</th>
-                  <th>Feature</th>
-                  <th style="text-align:center;width:120px;">Status</th>
-                  <th style="text-align:right;width:120px;">Duration</th>
+                  <th>{{ data.locale.email.scenario | default: 'Scenario' }}</th>
+                  <th>{{ data.locale.email.feature | default: 'Feature' }}</th>
+                  <th style="text-align:center;width:120px;">{{ data.locale.email.status | default: 'Status' }}</th>
+                  <th style="text-align:right;width:120px;">{{ data.locale.email.duration | default: 'Duration' }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -683,21 +686,21 @@
                     <td style="color:var(--muted-foreground,#64748b);font-size:12px;">{{ scenario.featureName }}</td>
                     <td style="text-align:center;">
                       {% if scenario.status == 'passed' -%}
-                        <span class="status-pill badge-passed"><i class="fa-solid fa-circle-check"></i> Passed</span>
+                        <span class="status-pill badge-passed"><i class="fa-solid fa-circle-check"></i> {{ data.locale.status.passed | default: 'Passed' }}</span>
                       {% elsif scenario.status == 'failed' -%}
-                        <span class="status-pill badge-failed"><i class="fa-solid fa-circle-xmark"></i> Failed</span>
+                        <span class="status-pill badge-failed"><i class="fa-solid fa-circle-xmark"></i> {{ data.locale.status.failed | default: 'Failed' }}</span>
                       {% elsif scenario.status == 'ambiguous' -%}
                         <span class="status-pill badge-ambiguous"
-                          ><i class="fa-solid fa-circle-exclamation"></i> Ambiguous</span
+                          ><i class="fa-solid fa-circle-exclamation"></i> {{ data.locale.status.ambiguous | default: 'Ambiguous' }}</span
                         >
                       {% elsif scenario.status == 'undefined' -%}
                         <span class="status-pill badge-undefined"
-                          ><i class="fa-solid fa-circle-question"></i> Undefined</span
+                          ><i class="fa-solid fa-circle-question"></i> {{ data.locale.status.notDefined | default: 'Undefined' }}</span
                         >
                       {% elsif scenario.status == 'pending' -%}
-                        <span class="status-pill badge-pending"><i class="fa-solid fa-clock"></i> Pending</span>
+                        <span class="status-pill badge-pending"><i class="fa-solid fa-clock"></i> {{ data.locale.status.pending | default: 'Pending' }}</span>
                       {% else -%}
-                        <span class="status-pill badge-skipped"><i class="fa-solid fa-forward"></i> Skipped</span>
+                        <span class="status-pill badge-skipped"><i class="fa-solid fa-forward"></i> {{ data.locale.status.skipped | default: 'Skipped' }}</span>
                       {% endif %}
                     </td>
                     <td style="text-align:right;font-family:ui-monospace,monospace;font-size:12px;font-weight:600;color:var(--foreground,#1e293b);white-space:nowrap;">
@@ -717,11 +720,11 @@
           {{ data.report.pageFooter }}
         {% else %}
           <p>
-            Generated by
+            {{ data.locale.footer.generatedBy | default: 'Generated by' }}
             <a href="https://multiple-cucumber-html-reporter.com/" target="_blank">Multiple Cucumber HTML Reporter</a>
           </p>
           <p>
-            Built with &#x2764;&#xFE0F; by
+            {{ data.locale.footer.builtWith | default: 'Built with ❤️ by' }}
             <a href="https://wasiqbhamla.com/" target="_blank">Wasiq Bhamla</a>
             <span class="sep">•</span>
             <a

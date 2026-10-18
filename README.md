@@ -65,6 +65,7 @@
 
 -   📊 **Interactive Dashboard**: Scored overview of all tested features and scenarios.
 -   🌓 **Dark Mode Support**: Built-in support for light and dark themes for better accessibility.
+-   🌍 **Localized Reports**: Display report labels in English, Spanish, French, or Arabic, with right-to-left layout for Arabic.
 -   📬 **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
 -   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
 -   🤝 **Language independent**: Generate Cucumber report using any Cucucmber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
@@ -101,6 +102,7 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
   "reportPath": "./path-where-the-report-needs-to-be/",
   "pageTitle": "My Project Report",
   "reportName": "My Project",
+  "language": "fr",
   "displayDuration": true,
   "humanReadableDuration": true,
   "displayReportTime": true
@@ -119,6 +121,12 @@ mchr --email
 ```
 
 That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.com/docs/cli) for all available config options.
+
+Set `language` to `en` (default), `es`, `fr`, or `ar` to choose the language for static report labels. Arabic reports use a right-to-left layout. The same option is available in the programmatic API, and the CLI accepts `--language` (or `--lang`) to override the configured language.
+
+```shell
+mchr --language es
+```
 
 ---
 
@@ -174,6 +182,12 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 ---
 
 ## 🖼️ Feature Showcase
+
+### Localized Reports
+
+Report labels can be displayed in English, Spanish, French, or Arabic. Arabic uses a right-to-left layout. See the [language option documentation](https://multiple-cucumber-html-reporter.com/docs/options#main-options) for configuration details.
+
+See the [localized report screenshots](https://multiple-cucumber-html-reporter.com/docs#report-languages) in the documentation for examples.
 
 ### Feature List Page
 

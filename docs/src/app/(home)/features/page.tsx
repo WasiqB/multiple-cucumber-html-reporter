@@ -90,6 +90,21 @@ const accordionData = {
       pointers: ['Generate Emailable Report', 'Send report to stakeholders directly'],
       images: ['emailableReport'] as (keyof ImageLinks)[],
     },
+    {
+      title: 'Localized Reports',
+      pointers: [
+        'Choose English (default), Spanish, French, or Arabic for report labels',
+        'Arabic reports use a right-to-left layout',
+        'The language setting applies to both the main report and the emailable report',
+      ],
+      images: [
+        'featureListPage',
+        'featureListPageEs',
+        'featureListPageFr',
+        'featureListPageAr',
+      ] as (keyof ImageLinks)[],
+      imageLabels: ['English', 'Spanish', 'French', 'Arabic'],
+    },
   ],
 };
 
@@ -259,7 +274,7 @@ export default function FeaturesPage() {
                                 >
                                   <Image
                                     src={images[img]}
-                                    alt={`${item.title} - ${imgIdx + 1}`}
+                                    alt={`${item.title} - ${item.imageLabels?.[imgIdx] ?? imgIdx + 1}`}
                                     fill
                                     className='object-cover transition-transform duration-500 group-hover/img:scale-105'
                                   />
@@ -282,6 +297,11 @@ export default function FeaturesPage() {
                                 </div>
                               </DialogContent>
                             </Dialog>
+                            {item.imageLabels?.[imgIdx] && (
+                              <p className='mt-2 text-center text-xs font-medium text-zinc-500 dark:text-zinc-400'>
+                                {item.imageLabels[imgIdx]}
+                              </p>
+                            )}
                           </CarouselItem>
                         ))}
                       </CarouselContent>

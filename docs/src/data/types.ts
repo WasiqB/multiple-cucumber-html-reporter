@@ -27,6 +27,9 @@ export interface ImageLinks {
   reportFooter: string;
   legacyAttachment: string;
   emailableReport: string;
+  featureListPageEs: string;
+  featureListPageFr: string;
+  featureListPageAr: string;
 }
 
 export interface StatItem {

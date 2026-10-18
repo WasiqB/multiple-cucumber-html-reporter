@@ -39,6 +39,15 @@ function runBuild(): void {
       console.warn(`Warning: Templates folder not found at ${srcTemplatesDir}`);
     }
 
+    const srcLocalesDir = join('src', 'locales');
+    const distLocalesDir = join('dist', 'locales');
+
+    if (existsSync(srcLocalesDir)) {
+      cpSync(srcLocalesDir, distLocalesDir, { recursive: true });
+    } else {
+      console.warn(`Warning: Locales folder not found at ${srcLocalesDir}`);
+    }
+
     console.log('Build steps completed successfully.');
   } catch (error) {
     console.error('Error executing build steps:', error);

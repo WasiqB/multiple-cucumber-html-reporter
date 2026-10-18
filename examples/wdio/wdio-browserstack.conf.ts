@@ -149,6 +149,7 @@ export const config: WebdriverIO.Config = {
       saveCollectedJSON: true,
       displayReportTime: true,
       emailReport: true,
+      language: 'fr',
       durationInMS: false,
       humanReadableDuration: true,
       displayDuration: true,

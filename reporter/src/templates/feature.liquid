@@ -5,9 +5,13 @@
   <div class="space-y-6">
     <!-- Back Button & Breadcrumbs -->
     <div class="flex items-center gap-2 text-sm text-muted-foreground">
-      <a href="../index.html" class="hover:text-foreground transition-colors">Dashboard</a>
+      <a href="../index.html" class="hover:text-foreground transition-colors">
+        {{- data.locale.feature.dashboardBreadcrumb | default: 'Dashboard' -}}
+      </a>
       <span>/</span>
-      <span class="text-foreground font-medium">Feature Detail</span>
+      <span class="text-foreground font-medium">
+        {{- data.locale.feature.featureDetailBreadcrumb | default: 'Feature Detail' -}}
+      </span>
     </div>
 
     <!-- Feature Header -->
@@ -43,7 +47,7 @@
               {{ data.feature.passed | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-passed/70 dark:text-status-passed/30 mt-1 tracking-wider">
-              Passed
+              {{ data.locale.status.passed | default: 'Passed' }}
             </div>
           </div>
           <div class="flex flex-col items-center justify-center bg-status-failed/10 rounded-xl py-3 px-3 border border-status-failed/20 w-full">
@@ -51,7 +55,7 @@
               {{ data.feature.failed | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-failed/70 dark:text-status-failed/30 mt-1 tracking-wider">
-              Failed
+              {{ data.locale.status.failed | default: 'Failed' }}
             </div>
           </div>
           <div class="flex flex-col items-center justify-center bg-status-ambiguous/10 rounded-xl py-3 px-3 border border-status-ambiguous/20 w-full">
@@ -59,7 +63,7 @@
               {{ data.feature.ambiguous | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-ambiguous/70 dark:text-status-ambiguous/30 mt-1 tracking-wider">
-              Ambiguous
+              {{ data.locale.status.ambiguous | default: 'Ambiguous' }}
             </div>
           </div>
           <div class="flex flex-col items-center justify-center bg-status-undefined/10 rounded-xl py-3 px-3 border border-status-undefined/20 w-full">
@@ -67,7 +71,7 @@
               {{ data.feature.notDefined | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-undefined/70 dark:text-status-undefined/30 mt-1 tracking-wider">
-              Not Defined
+              {{ data.locale.status.notDefined | default: 'Not Defined' }}
             </div>
           </div>
           <div class="flex flex-col items-center justify-center bg-status-pending/10 rounded-xl py-3 px-3 border border-status-pending/20 w-full">
@@ -75,7 +79,7 @@
               {{ data.feature.pending | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-pending/70 dark:text-status-pending/30 mt-1 tracking-wider">
-              Pending
+              {{ data.locale.status.pending | default: 'Pending' }}
             </div>
           </div>
           <div class="flex flex-col items-center justify-center bg-status-skipped/10 rounded-xl py-3 px-3 border border-status-skipped/20 w-full">
@@ -83,7 +87,7 @@
               {{ data.feature.skipped | default: 0 }}
             </div>
             <div class="text-[9px] md:text-[10px] uppercase font-bold text-status-skipped/70 dark:text-status-skipped/30 mt-1 tracking-wider">
-              Skipped
+              {{ data.locale.status.skipped | default: 'Skipped' }}
             </div>
           </div>
         </div>
@@ -93,31 +97,41 @@
     <!-- Charts Rows -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Scenario Distribution</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.feature.scenarioDistribution | default: 'Scenario Distribution' }}
+        </h3>
         <div id="feature-scenarios-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
         <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
-          Top 10 Slowest Scenarios
+          {{ data.locale.feature.top10SlowestScenarios | default: 'Top 10 Slowest Scenarios' }}
         </h3>
         <div id="slowest-scenarios-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Slowest Steps</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.feature.top10SlowestSteps | default: 'Top 10 Slowest Steps' }}
+        </h3>
         <div id="slowest-steps-chart" class="h-64"></div>
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Step Status Breakdown</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.feature.stepStatusBreakdown | default: 'Step Status Breakdown' }}
+        </h3>
         <div id="feature-step-status-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Steps per Scenarios</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.feature.stepsPerScenarios | default: 'Steps per Scenarios' }}
+        </h3>
         <div id="feature-steps-per-scenario-chart" class="h-64"></div>
       </div>
       <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">Top 10 Tags</h3>
+        <h3 class="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+          {{ data.locale.dashboard.top10Tags | default: 'Top 10 Tags' }}
+        </h3>
         <div id="tag-distribution-chart" class="h-64"></div>
       </div>
     </div>
@@ -125,7 +139,7 @@
     <!-- Scenarios -->
     <div class="space-y-4">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <h3 class="text-xl font-bold text-foreground">Scenarios</h3>
+        <h3 class="text-xl font-bold text-foreground">{{ data.locale.feature.scenarios | default: 'Scenarios' }}</h3>
         <div class="flex flex-col md:flex-row items-center gap-3 w-full md:w-auto">
           <div class="relative w-full md:w-64">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
@@ -134,7 +148,7 @@
             <input
               type="text"
               id="scenario-search"
-              placeholder="Search scenarios..."
+              placeholder="{{ data.locale.feature.searchScenariosPlaceholder | default: 'Search scenarios...' }}"
               class="w-full h-9 pl-9 pr-4 rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm"
             >
           </div>
@@ -145,9 +159,9 @@
               id="scenario-tag-filter-button"
               class="flex items-center justify-between w-full h-9 px-3 rounded-md border border-input bg-background text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-shadow shadow-sm cursor-pointer"
             >
-              <span class="truncate text-muted-foreground text-xs" id="scenario-tag-filter-label"
-                >Filter by tags...</span
-              >
+              <span class="truncate text-muted-foreground text-xs" id="scenario-tag-filter-label">
+                {{- data.locale.dashboard.filterByTags | default: 'Filter by tags...' -}}
+              </span>
               <i class="fa-solid fa-chevron-down text-[10px] text-muted-foreground ml-2"></i>
             </button>
             <div
@@ -162,43 +176,43 @@
               class="status-filter cursor-pointer active bg-background shadow-sm border border-primary ring-2 ring-primary/20 px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm"
               data-status="all"
             >
-              ALL
+              {{ data.locale.status.all | default: 'All' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-passed dark:text-status-passed"
               data-status="passed"
             >
-              PASSED
+              {{ data.locale.status.passed | default: 'Passed' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-failed dark:text-status-failed"
               data-status="failed"
             >
-              FAILED
+              {{ data.locale.status.failed | default: 'Failed' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-ambiguous dark:text-status-ambiguous"
               data-status="ambiguous"
             >
-              AMBIGUOUS
+              {{ data.locale.status.ambiguous | default: 'Ambiguous' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-undefined dark:text-status-undefined"
               data-status="undefined"
             >
-              NOT DEFINED
+              {{ data.locale.status.notDefined | default: 'Not Defined' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-pending dark:text-status-pending"
               data-status="pending"
             >
-              PENDING
+              {{ data.locale.status.pending | default: 'Pending' | upcase }}
             </button>
             <button
               class="status-filter cursor-pointer border border-transparent px-4 py-1.5 rounded-md text-[10px] md:text-xs font-bold transition-all hover:bg-background hover:shadow-sm text-status-skipped dark:text-status-skipped"
               data-status="skipped"
             >
-              SKIPPED
+              {{ data.locale.status.skipped | default: 'Skipped' | upcase }}
             </button>
           </div>
         </div>
@@ -207,15 +221,20 @@
         <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted mb-4">
           <i class="fa-solid fa-magnifying-glass text-muted-foreground"></i>
         </div>
-        <h4 class="text-sm font-semibold text-foreground">No scenario found</h4>
-        <p class="text-xs text-muted-foreground mt-1">Try adjusting your filters or search terms.</p>
+        <h4 class="text-sm font-semibold text-foreground">
+          {{ data.locale.feature.noScenarioFound | default: 'No scenario found' }}
+        </h4>
+        <p class="text-xs text-muted-foreground mt-1">
+          {{ data.locale.dashboard.adjustFilters | default: 'Try adjusting your filters or search terms.' }}
+        </p>
       </div>
       <div id="scenarios-container" class="space-y-4">
         {% for scenario in data.feature.elements %}
           {% render 'includes/scenario_card.liquid',
             scenario: scenario,
             report: data.report,
-            scenario_index: forloop.index0
+            scenario_index: forloop.index0,
+            locale: data.locale
           %}
         {% endfor %}
       </div>
@@ -223,6 +242,9 @@
   </div>
 
   <script>
+    // Embedded locale for UI components
+    window.ReportLocale = {{ data.locale | json }};
+
     // Report-wide UI config (opt-in features toggled from the reporter options)
     window.ReportConfig = Object.assign({}, window.ReportConfig, {
         displayChartPercentages: {{ data.report.displayChartPercentages | json }},

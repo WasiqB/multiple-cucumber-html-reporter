@@ -1,6 +1,24 @@
 /**
  * Features table logic: search, sort, pagination
  */
+
+// Locale helper — reads from window.ReportLocale set in the page's inline
+// <script> and falls back to the English string when the key is absent.
+function _loc(path, fallback) {
+  try {
+    const locale = window.ReportLocale || {};
+    const parts = path.split('.');
+    let val = locale;
+    for (const p of parts) {
+      val = val[p];
+      if (val === undefined) return fallback;
+    }
+    return typeof val === 'string' ? val : fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
 window.ReportTable = {
   init: (data) => {
     const tableContainer = document.getElementById('features-table-container');
@@ -83,7 +101,7 @@ window.ReportTable = {
       if (platform === 'testmu') {
         return '<span title="TestMu AI"><i class="fa-solid fa-cloud text-base"></i></span>';
       }
-      return '<span title="Local machine"><i class="fa-solid fa-computer text-base"></i></span>';
+      return `<span title="${_loc('runInfo.localMachine', 'Local machine')}"><i class="fa-solid fa-computer text-base"></i></span>`;
     };
 
     const renderTable = () => {
@@ -96,7 +114,7 @@ window.ReportTable = {
           const total = (feature.passed || 0) + (feature.failed || 0) + (feature.ambiguous || 0) + (feature.notDefined || 0) + (feature.pending || 0) + (feature.skipped || 0);
           const passPercentage = total > 0 ? Math.round((feature.passed / total) * 100) : 0;
 
-          const device = feature.device || 'Desktop';
+          const device = feature.device || _loc('runInfo.desktop', 'Desktop');
           const os = feature.os || '';
           const browser = feature.browser || '';
           const deviceIcon = iconForDevice(device);
@@ -139,12 +157,12 @@ window.ReportTable = {
                   ${feature.skipped > 0 ? `<div class="h-full bg-status-skipped" style="width: ${(feature.skipped / total) * 100}%"></div>` : ''}
                 </div>
                 <div class="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px] font-medium uppercase">
-                  <span class="text-status-passed">${feature.passed} Passed</span>
-                  <span class="text-status-failed">${feature.failed} Failed</span>
-                  ${feature.ambiguous > 0 ? `<span class="text-status-ambiguous">${feature.ambiguous} Ambiguous</span>` : ''}
-                  ${feature.notDefined > 0 ? `<span class="text-status-undefined">${feature.notDefined} Not Defined</span>` : ''}
-                  ${feature.pending > 0 ? `<span class="text-status-pending">${feature.pending} Pending</span>` : ''}
-                  <span class="text-status-skipped">${feature.skipped} Skipped</span>
+                  <span class="text-status-passed">${feature.passed} ${_loc('status.passed', 'Passed')}</span>
+                  <span class="text-status-failed">${feature.failed} ${_loc('status.failed', 'Failed')}</span>
+                  ${feature.ambiguous > 0 ? `<span class="text-status-ambiguous">${feature.ambiguous} ${_loc('status.ambiguous', 'Ambiguous')}</span>` : ''}
+                  ${feature.notDefined > 0 ? `<span class="text-status-undefined">${feature.notDefined} ${_loc('status.notDefined', 'Not Defined')}</span>` : ''}
+                  ${feature.pending > 0 ? `<span class="text-status-pending">${feature.pending} ${_loc('status.pending', 'Pending')}</span>` : ''}
+                  <span class="text-status-skipped">${feature.skipped} ${_loc('status.skipped', 'Skipped')}</span>
                 </div>
               </td>
               <td class="px-4 md:px-6 py-4 text-right whitespace-nowrap">
@@ -313,12 +331,12 @@ window.ReportTable = {
 
       const titleSpan = document.createElement('span');
       titleSpan.className = 'text-[10px] font-bold text-muted-foreground uppercase px-1';
-      titleSpan.textContent = 'Tags';
+      titleSpan.textContent = _loc('dashboard.tags', 'Tags');
 
       const clearBtn = document.createElement('button');
       clearBtn.type = 'button';
       clearBtn.className = 'clear-tags-btn text-[10px] font-bold text-primary hover:underline px-1 cursor-pointer';
-      clearBtn.textContent = 'Clear';
+      clearBtn.textContent = _loc('dashboard.clear', 'Clear');
 
       headerDiv.appendChild(titleSpan);
       headerDiv.appendChild(clearBtn);
@@ -365,7 +383,7 @@ window.ReportTable = {
           cb.checked = false;
         });
         selectedTags = [];
-        filterLabel.textContent = 'Filter by tags...';
+        filterLabel.textContent = _loc('dashboard.filterByTags', 'Filter by tags...');
         filterLabel.classList.add('text-muted-foreground');
         applyAllFilters();
       });
@@ -375,7 +393,7 @@ window.ReportTable = {
         selectedTags = Array.from(checkedBoxes).map((cb) => cb.value);
 
         if (selectedTags.length === 0) {
-          filterLabel.textContent = 'Filter by tags...';
+          filterLabel.textContent = _loc('dashboard.filterByTags', 'Filter by tags...');
           filterLabel.classList.add('text-muted-foreground');
         } else {
           filterLabel.textContent = selectedTags.join(', ');

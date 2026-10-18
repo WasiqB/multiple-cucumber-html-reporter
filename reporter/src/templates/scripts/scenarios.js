@@ -1,3 +1,20 @@
+// Locale helper — reads from window.ReportLocale set in the page's inline
+// <script> and falls back to the English string when the key is absent.
+function _locScenarios(path, fallback) {
+  try {
+    const locale = window.ReportLocale || {};
+    const parts = path.split('.');
+    let val = locale;
+    for (const p of parts) {
+      val = val[p];
+      if (val === undefined) return fallback;
+    }
+    return typeof val === 'string' ? val : fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
 window.ReportScenarios = {
   init: (featureData) => {
     const filters = document.querySelectorAll('.status-filter');
@@ -89,12 +106,12 @@ window.ReportScenarios = {
 
       const titleSpan = document.createElement('span');
       titleSpan.className = 'text-[10px] font-bold text-muted-foreground uppercase px-1';
-      titleSpan.textContent = 'Tags';
+      titleSpan.textContent = _locScenarios('dashboard.tags', 'Tags');
 
       const clearBtn = document.createElement('button');
       clearBtn.type = 'button';
       clearBtn.className = 'clear-tags-btn text-[10px] font-bold text-primary hover:underline px-1 cursor-pointer';
-      clearBtn.textContent = 'Clear';
+      clearBtn.textContent = _locScenarios('dashboard.clear', 'Clear');
 
       headerDiv.appendChild(titleSpan);
       headerDiv.appendChild(clearBtn);
@@ -141,7 +158,7 @@ window.ReportScenarios = {
           cb.checked = false;
         });
         selectedTags = [];
-        filterLabel.textContent = 'Filter by tags...';
+        filterLabel.textContent = _locScenarios('dashboard.filterByTags', 'Filter by tags...');
         filterLabel.classList.add('text-muted-foreground');
         applyFilters();
       });
@@ -151,7 +168,7 @@ window.ReportScenarios = {
         selectedTags = Array.from(checkedBoxes).map((cb) => cb.value);
 
         if (selectedTags.length === 0) {
-          filterLabel.textContent = 'Filter by tags...';
+          filterLabel.textContent = _locScenarios('dashboard.filterByTags', 'Filter by tags...');
           filterLabel.classList.add('text-muted-foreground');
         } else {
           filterLabel.textContent = selectedTags.join(', ');
