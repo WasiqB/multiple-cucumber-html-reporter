@@ -239,11 +239,11 @@
                   >
                     <object
                       class="w-full h-96 border border-border rounded"
-                      type="{{ attachment.type }}"
-                      data="{{ attachment.data }}"
+                      type="{{ attachment.type | escape }}"
+                      data="{{ attachment.data | escape }}"
                     >
                       {{ locale.feature.previewNotAvailable | default: 'Preview not available.' }}
-                      <a href="{{ attachment.data }}" download class="text-primary hover:underline">
+                      <a href="{{ attachment.data | escape }}" download class="text-primary hover:underline">
                         {{- locale.feature.download | default: 'Download' -}}
                       </a>
                     </object>
@@ -341,7 +341,8 @@
                             {%- if att_name -%}
                               {{- att_name | escape -}}
                             {%- else -%}
-                              {{ locale.feature.screenshotName | default: 'Screenshot' }} {{ forloop.index -}}
+                              {{ locale.feature.screenshotName | default: 'Screenshot' }}
+                              {{ forloop.index -}}
                             {%- endif -%}
                           </span>
                         </div>
@@ -429,7 +430,8 @@
                             {%- if att_name -%}
                               {{- att_name | escape -}}
                             {%- elsif is_video_html -%}
-                              {{ locale.feature.videoName | default: 'Video' }}{% if step.html.size > 1 %} {{ forloop.index }}{% endif -%}
+                              {{ locale.feature.videoName | default: 'Video' -}}
+                              {%- if step.html.size > 1 %} {{ forloop.index }}{% endif -%}
                             {%- else -%}
                               HTML {{ forloop.index -}}
                             {%- endif -%}
