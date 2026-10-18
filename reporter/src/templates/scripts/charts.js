@@ -1,6 +1,24 @@
 /**
  * Chart initialization and rendering
  */
+
+// Locale helper — reads from window.ReportLocale (set in the page's inline
+// <script>) and falls back to the English string when the key is absent.
+function _loc(path, fallback) {
+  try {
+    const locale = window.ReportLocale || {};
+    const parts = path.split('.');
+    let val = locale;
+    for (const p of parts) {
+      val = val[p];
+      if (val === undefined) return fallback;
+    }
+    return typeof val === 'string' ? val : fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
 window.ReportCharts = {
   // Shared options
   getCommonOptions: () => {
@@ -100,7 +118,7 @@ window.ReportCharts = {
     if (hasFeatures) {
       new ApexCharts(document.querySelector('#features-chart'), {
         series: featuresSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        labels: [_loc('status.passed','Passed'), _loc('status.failed','Failed'), _loc('status.ambiguous','Ambiguous'), _loc('status.notDefined','Not Defined'), _loc('status.pending','Pending'), _loc('status.skipped','Skipped')],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         ...donutOpts,
@@ -111,7 +129,7 @@ window.ReportCharts = {
               size: '66%',
               labels: {
                 show: true,
-                total: { show: true, label: 'Features', color: textColor, fontSize: '12px' },
+                total: { show: true, label: _loc('status.features','Features'), color: textColor, fontSize: '12px' },
                 value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
               },
             },
@@ -136,7 +154,7 @@ window.ReportCharts = {
     if (hasScenarios) {
       new ApexCharts(document.querySelector('#scenarios-chart'), {
         series: scenariosSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        labels: [_loc('status.passed','Passed'), _loc('status.failed','Failed'), _loc('status.ambiguous','Ambiguous'), _loc('status.notDefined','Not Defined'), _loc('status.pending','Pending'), _loc('status.skipped','Skipped')],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         ...donutOpts,
@@ -147,7 +165,7 @@ window.ReportCharts = {
               size: '66%',
               labels: {
                 show: true,
-                total: { show: true, label: 'Scenarios', color: textColor, fontSize: '12px' },
+                total: { show: true, label: _loc('status.scenarios','Scenarios'), color: textColor, fontSize: '12px' },
                 value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
               },
             },
@@ -161,7 +179,7 @@ window.ReportCharts = {
     clear('#device-os-chart');
     const devices = {};
     data.features.forEach((f) => {
-      const key = [f.device, f.os].filter(Boolean).join(' - ') || 'N/A';
+      const key = [f.device, f.os].filter(Boolean).join(' - ') || _loc('status.notAvailable', 'N/A');
       if (!devices[key]) devices[key] = { passed: 0, failed: 0, ambiguous: 0, undefined: 0, pending: 0, skipped: 0 };
       devices[key].passed += f.scenarios?.passed || f.passed || 0;
       devices[key].failed += f.scenarios?.failed || f.failed || 0;
@@ -176,12 +194,12 @@ window.ReportCharts = {
     if (hasDevices) {
       new ApexCharts(document.querySelector('#device-os-chart'), {
         series: [
-          { name: 'Passed', data: deviceKeys.map((k) => devices[k].passed) },
-          { name: 'Failed', data: deviceKeys.map((k) => devices[k].failed) },
-          { name: 'Ambiguous', data: deviceKeys.map((k) => devices[k].ambiguous) },
-          { name: 'Not Defined', data: deviceKeys.map((k) => devices[k].undefined) },
-          { name: 'Pending', data: deviceKeys.map((k) => devices[k].pending) },
-          { name: 'Skipped', data: deviceKeys.map((k) => devices[k].skipped) },
+          { name: _loc('status.passed','Passed'), data: deviceKeys.map((k) => devices[k].passed) },
+          { name: _loc('status.failed','Failed'), data: deviceKeys.map((k) => devices[k].failed) },
+          { name: _loc('status.ambiguous','Ambiguous'), data: deviceKeys.map((k) => devices[k].ambiguous) },
+          { name: _loc('status.notDefined','Not Defined'), data: deviceKeys.map((k) => devices[k].undefined) },
+          { name: _loc('status.pending','Pending'), data: deviceKeys.map((k) => devices[k].pending) },
+          { name: _loc('status.skipped','Skipped'), data: deviceKeys.map((k) => devices[k].skipped) },
         ],
         chart: { type: 'bar', height: 250, stacked: true, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: { categories: deviceKeys, labels: { style: { colors: textColor } } },
@@ -198,7 +216,7 @@ window.ReportCharts = {
     clear('#browser-chart');
     const browsers = {};
     data.features.forEach((f) => {
-      const key = f.browser || 'N/A';
+      const key = f.browser || _loc('status.notAvailable', 'N/A');
       if (!browsers[key]) browsers[key] = { passed: 0, failed: 0, ambiguous: 0, undefined: 0, pending: 0, skipped: 0 };
       browsers[key].passed += f.scenarios?.passed || f.passed || 0;
       browsers[key].failed += f.scenarios?.failed || f.failed || 0;
@@ -213,12 +231,12 @@ window.ReportCharts = {
     if (hasBrowsers) {
       new ApexCharts(document.querySelector('#browser-chart'), {
         series: [
-          { name: 'Passed', data: browserKeys.map((k) => browsers[k].passed) },
-          { name: 'Failed', data: browserKeys.map((k) => browsers[k].failed) },
-          { name: 'Ambiguous', data: browserKeys.map((k) => browsers[k].ambiguous) },
-          { name: 'Not Defined', data: browserKeys.map((k) => browsers[k].undefined) },
-          { name: 'Pending', data: browserKeys.map((k) => browsers[k].pending) },
-          { name: 'Skipped', data: browserKeys.map((k) => browsers[k].skipped) },
+          { name: _loc('status.passed','Passed'), data: browserKeys.map((k) => browsers[k].passed) },
+          { name: _loc('status.failed','Failed'), data: browserKeys.map((k) => browsers[k].failed) },
+          { name: _loc('status.ambiguous','Ambiguous'), data: browserKeys.map((k) => browsers[k].ambiguous) },
+          { name: _loc('status.notDefined','Not Defined'), data: browserKeys.map((k) => browsers[k].undefined) },
+          { name: _loc('status.pending','Pending'), data: browserKeys.map((k) => browsers[k].pending) },
+          { name: _loc('status.skipped','Skipped'), data: browserKeys.map((k) => browsers[k].skipped) },
         ],
         chart: { type: 'bar', height: 250, stacked: true, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: { categories: browserKeys, labels: { style: { colors: textColor } } },
@@ -265,7 +283,7 @@ window.ReportCharts = {
     if (hasSteps) {
       new ApexCharts(document.querySelector('#steps-status-chart'), {
         series: stepsSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        labels: [_loc('status.passed','Passed'), _loc('status.failed','Failed'), _loc('status.ambiguous','Ambiguous'), _loc('status.notDefined','Not Defined'), _loc('status.pending','Pending'), _loc('status.skipped','Skipped')],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         ...donutOpts,
@@ -276,7 +294,7 @@ window.ReportCharts = {
               size: '66%',
               labels: {
                 show: true,
-                total: { show: true, label: 'Steps', color: textColor, fontSize: '12px' },
+                total: { show: true, label: _loc('status.steps','Steps'), color: textColor, fontSize: '12px' },
                 value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
               },
             },
@@ -293,12 +311,12 @@ window.ReportCharts = {
     if (hasTrend) {
       new ApexCharts(document.querySelector('#status-trend-chart'), {
         series: [
-          { name: 'Passed', data: data.features.map((f) => f.scenarios?.passed || f.passed || 0) },
-          { name: 'Failed', data: data.features.map((f) => f.scenarios?.failed || f.failed || 0) },
-          { name: 'Ambiguous', data: data.features.map((f) => f.scenarios?.ambiguous || f.ambiguous || 0) },
-          { name: 'Not Defined', data: data.features.map((f) => f.scenarios?.notDefined || f.notDefined || 0) },
-          { name: 'Pending', data: data.features.map((f) => f.scenarios?.pending || f.pending || 0) },
-          { name: 'Skipped', data: data.features.map((f) => f.scenarios?.skipped || f.skipped || 0) },
+          { name: _loc('status.passed','Passed'), data: data.features.map((f) => f.scenarios?.passed || f.passed || 0) },
+          { name: _loc('status.failed','Failed'), data: data.features.map((f) => f.scenarios?.failed || f.failed || 0) },
+          { name: _loc('status.ambiguous','Ambiguous'), data: data.features.map((f) => f.scenarios?.ambiguous || f.ambiguous || 0) },
+          { name: _loc('status.notDefined','Not Defined'), data: data.features.map((f) => f.scenarios?.notDefined || f.notDefined || 0) },
+          { name: _loc('status.pending','Pending'), data: data.features.map((f) => f.scenarios?.pending || f.pending || 0) },
+          { name: _loc('status.skipped','Skipped'), data: data.features.map((f) => f.scenarios?.skipped || f.skipped || 0) },
         ],
         chart: { type: 'bar', height: 320, stacked: true, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: {
@@ -329,7 +347,7 @@ window.ReportCharts = {
     toggleChart('#tag-distribution-chart', hasTags);
     if (hasTags) {
       new ApexCharts(document.querySelector('#tag-distribution-chart'), {
-        series: [{ name: 'Features', data: tagKeys.map((k) => tags[k]) }],
+        series: [{ name: _loc('status.features','Features'), data: tagKeys.map((k) => tags[k]) }],
         chart: { type: 'bar', height: 250, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: { categories: tagKeys, labels: { style: { colors: textColor } } },
         yaxis: { labels: { style: { colors: textColor } } },
@@ -373,7 +391,7 @@ window.ReportCharts = {
     if (hasScenarios) {
       new ApexCharts(document.querySelector('#feature-scenarios-chart'), {
         series: scenarioSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        labels: [_loc('status.passed','Passed'), _loc('status.failed','Failed'), _loc('status.ambiguous','Ambiguous'), _loc('status.notDefined','Not Defined'), _loc('status.pending','Pending'), _loc('status.skipped','Skipped')],
         chart: { type: 'donut', height: 250, animations: { enabled: false } },
         colors: colors,
         ...donutOpts,
@@ -384,7 +402,7 @@ window.ReportCharts = {
               size: '66%',
               labels: {
                 show: true,
-                total: { show: true, label: 'Total', color: textColor, fontSize: '12px' },
+                total: { show: true, label: _loc('status.total','Total'), color: textColor, fontSize: '12px' },
                 value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
               },
             },
@@ -405,7 +423,7 @@ window.ReportCharts = {
     toggleChart('#slowest-scenarios-chart', hasSlowestScenarios);
     if (hasSlowestScenarios) {
       new ApexCharts(document.querySelector('#slowest-scenarios-chart'), {
-        series: [{ name: 'Duration', data: allScenarios.map((s) => s.duration) }],
+        series: [{ name: _loc('email.duration','Duration'), data: allScenarios.map((s) => s.duration) }],
         chart: {
           type: 'bar',
           height: 250,
@@ -491,7 +509,7 @@ window.ReportCharts = {
     toggleChart('#slowest-steps-chart', hasSlowSteps);
     if (hasSlowSteps) {
       new ApexCharts(document.querySelector('#slowest-steps-chart'), {
-        series: [{ name: 'Duration', data: slowestSteps.map((s) => s.duration) }],
+        series: [{ name: _loc('email.duration','Duration'), data: slowestSteps.map((s) => s.duration) }],
         chart: {
           type: 'bar',
           height: 250,
@@ -587,7 +605,7 @@ window.ReportCharts = {
     if (hasStepStatus) {
       new ApexCharts(document.querySelector('#feature-step-status-chart'), {
         series: stepStatusSeries,
-        labels: ['Passed', 'Failed', 'Ambiguous', 'Not Defined', 'Pending', 'Skipped'],
+        labels: [_loc('status.passed','Passed'), _loc('status.failed','Failed'), _loc('status.ambiguous','Ambiguous'), _loc('status.notDefined','Not Defined'), _loc('status.pending','Pending'), _loc('status.skipped','Skipped')],
         chart: { type: 'donut', height: 250, animations: { enabled: false }, toolbar: { show: false } },
         colors: colors,
         ...donutOpts,
@@ -598,7 +616,7 @@ window.ReportCharts = {
               size: '66%',
               labels: {
                 show: true,
-                total: { show: true, label: 'Steps', color: textColor, fontSize: '12px' },
+                total: { show: true, label: _loc('status.steps','Steps'), color: textColor, fontSize: '12px' },
                 value: { show: true, color: textColor, fontSize: '20px', fontWeight: 'bold' },
               },
             },
@@ -615,7 +633,7 @@ window.ReportCharts = {
     toggleChart('#feature-steps-per-scenario-chart', hasStepCounts);
     if (hasStepCounts) {
       new ApexCharts(document.querySelector('#feature-steps-per-scenario-chart'), {
-        series: [{ name: 'Steps', data: stepCounts }],
+        series: [{ name: _loc('status.steps','Steps'), data: stepCounts }],
         chart: { type: 'bar', height: 250, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: {
           categories: (feature.elements || []).map((s) => s.name.substring(0, 15) + '...'),
@@ -650,7 +668,7 @@ window.ReportCharts = {
     toggleChart('#tag-distribution-chart', hasTags);
     if (hasTags) {
       new ApexCharts(document.querySelector('#tag-distribution-chart'), {
-        series: [{ name: 'Scenarios', data: tagKeys.map((k) => tags[k]) }],
+        series: [{ name: _loc('status.scenarios','Scenarios'), data: tagKeys.map((k) => tags[k]) }],
         chart: { type: 'bar', height: 250, toolbar: { show: false }, animations: { enabled: false } },
         xaxis: { categories: tagKeys, labels: { style: { colors: textColor } } },
         yaxis: { labels: { style: { colors: textColor } } },

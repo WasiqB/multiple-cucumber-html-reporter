@@ -9,6 +9,7 @@ import { DateTime, Duration } from 'luxon';
 import open from 'open';
 import { v4 as uuid } from 'uuid';
 import collectJSONS, { listJsonFiles } from './collect-jsons.js';
+import { type LocaleTranslations, loadLocale } from './locale.js';
 import { createLogger } from './logger.js';
 import { applyMetadataAndHooks, enrichStepEmbeddings, escapeHtml, type MediaFileWriter } from './report-helpers.js';
 import {
@@ -26,6 +27,7 @@ import type {
   Scenario,
   Step,
   Suite,
+  SupportedLanguage,
 } from './types.js';
 
 const { size } = _;
@@ -49,8 +51,6 @@ const RESULT_STATUS = {
   notDefined: 'undefined',
   ambiguous: 'ambiguous',
 };
-const DEFAULT_REPORT_NAME = 'Multiple Cucumber HTML Reporter';
-
 const projectRoot = path.resolve(__dirname);
 const templatesDir = path.join(projectRoot, 'templates');
 const packageJson = fs.readJsonSync(resolve(__dirname, '../package.json'));
@@ -126,7 +126,6 @@ async function generateReport(options: Options) {
   const customStyle = options.customStyle;
   const customScript = options.customScript;
   const openReportInBrowser = !!options.openReportInBrowser;
-  const reportName = options.reportName || DEFAULT_REPORT_NAME;
   const reportPath = resolve(process.cwd(), options.reportPath);
   const saveCollectedJSON = !!options.saveCollectedJSON;
   const displayDuration = !!options.displayDuration;
@@ -159,13 +158,16 @@ async function generateReport(options: Options) {
 
   const durationAggregation = options.durationAggregation === 'wallClock' ? 'wallClock' : 'sum';
   const hideMetadata = !!options.hideMetadata;
-  const pageTitle = options.pageTitle || DEFAULT_REPORT_NAME;
   const pageFooter = options.pageFooter || null;
   const useCDN = !!options.useCDN;
   const staticFilePath = !!options.staticFilePath;
   const externalizeMedia = !!options.externalizeMedia;
   const emailReport = !!options.emailReport;
   const brandLogo = options.brandLogo;
+  const locale = loadLocale(options.language, logger);
+  const reportName = options.reportName || locale.header.reportName;
+  const pageTitle = options.pageTitle || locale.header.insightsSubtitle;
+  logger.debug('Loaded report locale.', { language: locale.htmlLang, direction: locale.direction });
 
   let logoPathName: string | undefined;
   if (brandLogo) {
@@ -234,7 +236,10 @@ async function generateReport(options: Options) {
     humanReadableDuration,
     displayChartPercentages,
     durationAggregation,
-    durationColumnTitle: durationAggregation === 'wallClock' ? 'Duration (wall clock)' : 'Duration',
+    durationColumnTitle:
+      durationAggregation === 'wallClock'
+        ? `${locale.dashboard.durationCol} (${locale.dashboard.wallClock})`
+        : locale.dashboard.durationCol,
     browser: 0,
     name: '',
     version: 'version',
@@ -841,6 +846,7 @@ async function generateReport(options: Options) {
       features: suite.features,
       scenarios: suite.scenarios,
       report,
+      locale,
     };
 
     const html = await engine.renderFile('index', {
@@ -945,6 +951,7 @@ async function generateReport(options: Options) {
       slowestScenarios,
       report,
       inlineCss,
+      locale,
     };
 
     const html = await engine.renderFile('email', {
@@ -1057,6 +1064,7 @@ async function generateReport(options: Options) {
             ...feature,
             elements: feature.elements,
           },
+          locale,
         };
 
         const htmlStream = await engine.renderFileToNodeStream('feature', {
@@ -1246,4 +1254,4 @@ async function loadMetadataFile(filePath: string): Promise<
 }
 
 export const generate = generateReport;
-export type { CustomData, LoggingOptions, LogLevel, Metadata, Options };
+export type { CustomData, LocaleTranslations, LoggingOptions, LogLevel, Metadata, Options, SupportedLanguage };

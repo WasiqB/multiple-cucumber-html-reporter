@@ -9,7 +9,7 @@
           </div>
           <div class="truncate">
             <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
-              Project &amp; Release
+              {{ data.locale.runInfo.projectAndRelease | default: 'Project &amp; Release' }}
             </p>
             <p class="text-sm font-bold text-foreground truncate">
               {{ data.report.projectName }}
@@ -25,7 +25,9 @@
             <i class="fa-solid fa-tag text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Release</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.release | default: 'Release' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">v{{ data.report.release }}</p>
           </div>
         </div>
@@ -37,7 +39,9 @@
             <i class="fa-solid fa-rotate text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Test Cycle</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.testCycle | default: 'Test Cycle' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.testCycle }}</p>
           </div>
         </div>
@@ -49,7 +53,9 @@
             <i class="fa-solid fa-hammer text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Build</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.build | default: 'Build' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.buildNumber }}</p>
           </div>
         </div>
@@ -61,7 +67,9 @@
             <i class="fa-solid fa-server text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Environment</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.environment | default: 'Environment' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.environment }}</p>
           </div>
         </div>
@@ -73,7 +81,9 @@
             <i class="fa-solid fa-gears text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">CI Pipeline</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.ciPipeline | default: 'CI Pipeline' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.ciPipeline }}</p>
           </div>
         </div>
@@ -85,10 +95,14 @@
           <i class="fa-solid fa-clock text-sm"></i>
         </div>
         <div class="truncate text-xs">
-          <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Execution Period</p>
+          <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+            {{ data.locale.runInfo.executionPeriod | default: 'Execution Period' }}
+          </p>
           <div class="font-medium text-foreground flex items-center gap-2">
             <span>{{ data.report.executionPeriod }}</span>
-            <span class="opacity-40 italic font-normal ml-2">Duration:</span>
+            <span class="opacity-40 italic font-normal ml-2">
+              {{- data.locale.runInfo.duration | default: 'Duration:' -}}
+            </span>
             <span>{{ data.report.executionEndTime }}</span>
           </div>
         </div>
@@ -102,7 +116,9 @@
             <i class="fa-solid fa-user text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Username</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.username | default: 'Username' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.username }}</p>
           </div>
         </div>
@@ -114,7 +130,9 @@
             <i class="fa-brands fa-node-js text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Node Version</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.nodeVersion | default: 'Node Version' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.nodeVersion }}</p>
           </div>
         </div>
@@ -126,7 +144,9 @@
             <i class="fa-solid fa-code-branch text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Report Version</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.reportVersion | default: 'Report Version' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.reportVersion }}</p>
           </div>
         </div>
@@ -138,7 +158,9 @@
             <i class="fa-solid fa-network-wired text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Hostname</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.hostname | default: 'Hostname' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.hostname }}</p>
           </div>
         </div>
@@ -150,7 +172,9 @@
             <i class="fa-solid fa-microchip text-sm"></i>
           </div>
           <div class="truncate">
-            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">Machine Arch</p>
+            <p class="text-[9px] text-muted-foreground uppercase font-bold tracking-wider mb-0.5">
+              {{ data.locale.runInfo.machineArch | default: 'Machine Arch' }}
+            </p>
             <p class="text-sm font-bold text-foreground truncate">{{ data.report.architecture }}</p>
           </div>
         </div>

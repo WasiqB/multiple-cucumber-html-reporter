@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { LogLevel, Options } from '@/types.js';
+import type { LogLevel, Options, SupportedLanguage } from '@/types.js';
 import { prompts as p } from './prompts.js';
 
 export type OnboardingResult = {
@@ -61,6 +61,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       { value: 'metadata', label: 'Execution metadata (browser, platform, device)' },
       { value: 'cdn', label: 'Load assets from CDN (faster for CI)' },
       { value: 'logging', label: 'Reporter logging level' },
+      { value: 'language', label: 'Report language (English, Spanish, French, Arabic)' },
     ],
     required: false,
   });
@@ -213,6 +214,22 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     if (Object.keys(customData).length > 0) {
       options.customData = customData;
     }
+  }
+
+  if (selected.includes('language')) {
+    const lang = await p.select<SupportedLanguage>({
+      message: 'Select the report language',
+      options: [
+        { value: 'en', label: 'English', hint: 'default' },
+        { value: 'es', label: 'Spanish (Español)' },
+        { value: 'fr', label: 'French (Français)' },
+        { value: 'ar', label: 'Arabic (العربية)' },
+      ],
+    });
+    if (p.isCancel(lang)) {
+      return cancelOnboarding();
+    }
+    options.language = lang as SupportedLanguage;
   }
 
   if (selected.includes('metadataFilePath')) {

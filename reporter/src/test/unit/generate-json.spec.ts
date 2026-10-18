@@ -564,7 +564,7 @@ describe('generate-report.js', () => {
       const featureFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
       const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
       expect(featureHtml).toContain('modal-trigger');
-      expect(featureHtml).not.toContain('+ Show Info');
+      expect(featureHtml).not.toMatch(/>\s*\+ Show Info\s*<\/button>/);
     });
   });
 
@@ -610,7 +610,7 @@ describe('generate-report.js', () => {
       const featureHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'features', featureFiles[0]), 'utf8');
       expect(featureHtml).toContain('+ Video');
       expect(featureHtml).toContain('+ Show Info');
-      expect(featureHtml).toContain('Recording of: A recorded scenario');
+      expect(featureHtml).toMatch(/Recording of:\s*A recorded scenario/);
     });
   });
 

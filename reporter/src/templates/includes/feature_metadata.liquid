@@ -30,13 +30,13 @@
     </span>
   {% endif %}
   {% if feature.metadata.nodeVersion %}
-    <span class="flex items-center gap-1.5" title="Node {{ feature.metadata.nodeVersion }}">
+    <span class="flex items-center gap-1.5" title="{{ data.locale.runInfo.nodeVersion | default: 'Node Version' }} {{ feature.metadata.nodeVersion }}">
       <i class="fa-brands fa-node-js text-primary text-base"></i>
       <span class="text-xs text-foreground font-medium">{{ feature.metadata.nodeVersion }}</span>
     </span>
   {% endif %}
   {% if feature.metadata.reportVersion %}
-    <span class="flex items-center gap-1.5" title="Reporter {{ feature.metadata.reportVersion }}">
+    <span class="flex items-center gap-1.5" title="{{ data.locale.runInfo.reportVersion | default: 'Report Version' }} {{ feature.metadata.reportVersion }}">
       <i class="fa-solid fa-code-branch text-primary text-base"></i>
       <span class="text-xs text-foreground font-medium">{{ feature.metadata.reportVersion }}</span>
     </span>
@@ -51,15 +51,24 @@
   {% comment %} Cloud / Local platform badge {% endcomment %}
   {% assign exec_platform = feature.executionPlatform | default: 'local' %}
   {% if exec_platform == 'browserstack' %}
-    <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on BrowserStack">
+    <span
+      class="flex items-center gap-1.5 rounded-full px-2.5 py-1"
+      title="{{ data.locale.runInfo.runningOnBrowserStack | default: 'Running on BrowserStack' }}"
+    >
       <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
   {% elsif exec_platform == 'testmu' %}
-    <span class="flex items-center gap-1.5 rounded-full px-2.5 py-1" title="Running on TestMu AI">
+    <span
+      class="flex items-center gap-1.5 rounded-full px-2.5 py-1"
+      title="{{ data.locale.runInfo.runningOnTestMu | default: 'Running on TestMu AI' }}"
+    >
       <i class="fa-solid fa-cloud text-primary text-sm"></i>
     </span>
   {% else %}
-    <span class="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1" title="Running locally">
+    <span
+      class="flex items-center gap-1.5 rounded-full bg-muted/50 px-2.5 py-1"
+      title="{{ data.locale.runInfo.runningLocally | default: 'Running locally' }}"
+    >
       <i class="fa-solid fa-computer text-primary text-sm"></i>
     </span>
   {% endif %}

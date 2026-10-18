@@ -10,6 +10,7 @@ durationInMS: false
 displayDuration: true
 humanReadableDuration: true
 emailReport: true
+language: 'es'
 pageTitle: 'My Playwright Typescript Sample'
 reportName: 'Cucumber JS Report'
 metadata:

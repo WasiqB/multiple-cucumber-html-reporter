@@ -16,6 +16,7 @@ const config: Options = {
     environment: 'production',
     ciPipeline: 'GitHub Actions',
   },
+  language: 'ar',
   pageTitle: 'Cypress Sample',
   reportName: 'Cypress Sample',
   displayDuration: true,
