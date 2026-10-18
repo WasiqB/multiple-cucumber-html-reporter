@@ -140,7 +140,7 @@
                     </span>
                   {% endif %}
                 {% else %}
-                  <span title="Local machine">
+                  <span title="{{ data.locale.runInfo.localMachine | default: 'Local machine' }}">
                     <i class="fa-solid fa-computer text-base"></i>
                   </span>
                 {% endif %}

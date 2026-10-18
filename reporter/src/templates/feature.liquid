@@ -37,7 +37,11 @@
           </div>
 
           <div class="pt-2 border-t lg:border-t-0">
-            {% render 'includes/feature_metadata.liquid', feature: data.feature %}
+            {% comment %}
+              `render` isolates scope. The tooltips read `data.locale`, so `data`
+              has to be passed in or they fall back to the English defaults.
+            {% endcomment %}
+            {% render 'includes/feature_metadata.liquid', feature: data.feature, data: data %}
           </div>
         </div>
 

@@ -93,7 +93,7 @@ const accordionData = {
     {
       title: 'Localized Reports',
       pointers: [
-        'Choose English (default), Spanish, French, or Arabic for report labels',
+        'Choose English (default), Spanish, French, Portuguese, or Arabic for report labels',
         'Arabic reports use a right-to-left layout',
         'The language setting applies to both the main report and the emailable report',
       ],

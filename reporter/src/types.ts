@@ -165,13 +165,15 @@ export interface Options {
   emailReport?: boolean;
   /**
    * Preferred language for report labels and messages.
-   * Supported values: `'en'` (English, default), `'es'` (Spanish), `'fr'` (French), `'ar'` (Arabic).
+   * Supported values: `'en'` (English, default), `'es'` (Spanish), `'fr'` (French),
+   * `'pt'` (Portuguese, Brazilian wording), `'ar'` (Arabic).
+   * A regional tag such as `pt-BR` or `pt-PT` is narrowed to `pt`.
    * @default 'en'
    */
   language?: SupportedLanguage;
 }
 
-export type SupportedLanguage = 'en' | 'es' | 'fr' | 'ar';
+export type SupportedLanguage = 'en' | 'es' | 'fr' | 'pt' | 'ar';
 
 export interface Hook {
   arguments: any[];

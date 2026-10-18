@@ -61,7 +61,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       { value: 'metadata', label: 'Execution metadata (browser, platform, device)' },
       { value: 'cdn', label: 'Load assets from CDN (faster for CI)' },
       { value: 'logging', label: 'Reporter logging level' },
-      { value: 'language', label: 'Report language (English, Spanish, French, Arabic)' },
+      { value: 'language', label: 'Report language (English, Spanish, French, Portuguese, Arabic)' },
     ],
     required: false,
   });
@@ -223,6 +223,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
         { value: 'en', label: 'English', hint: 'default' },
         { value: 'es', label: 'Spanish (Español)' },
         { value: 'fr', label: 'French (Français)' },
+        { value: 'pt', label: 'Portuguese (Português)' },
         { value: 'ar', label: 'Arabic (العربية)' },
       ],
     });
