@@ -341,8 +341,7 @@
                             {%- if att_name -%}
                               {{- att_name | escape -}}
                             {%- else -%}
-                              {{ locale.feature.screenshotName | default: 'Screenshot' }}
-                              {{ forloop.index -}}
+                              {{ locale.feature.screenshotName | default: 'Screenshot' | append: ' ' | append: forloop.index -}}
                             {%- endif -%}
                           </span>
                         </div>
