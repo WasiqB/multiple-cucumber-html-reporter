@@ -15,6 +15,9 @@ on:
       - examples/wdio/*
       - reporter/**
 
+permissions:
+  contents: read
+
 jobs:
   test-formatter:
     runs-on: ubuntu-latest
