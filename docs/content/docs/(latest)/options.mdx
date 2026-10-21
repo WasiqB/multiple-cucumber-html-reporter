@@ -42,10 +42,10 @@ Multiple Cucumber HTML Reporter offers a wide range of configuration options to 
       typeDescription: 'boolean'
     },
     language: {
-      description: <>Language used for static labels in the main and emailable reports. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), and <code>ar</code> (Arabic). Arabic reports use right-to-left text direction.</>,
-      type: "'en' | 'es' | 'fr' | 'ar'",
+      description: <>Language used for static labels in the main and emailable reports. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), <code>pt</code> (Portuguese, Brazilian wording), and <code>ar</code> (Arabic). A regional tag such as <code>pt-BR</code> is narrowed to its base language, so <code>pt-BR</code> and <code>pt-PT</code> both use <code>pt</code>. Arabic reports use right-to-left text direction.</>,
+      type: "'en' | 'es' | 'fr' | 'pt' | 'ar'",
       default: 'en',
-      typeDescription: "'en' | 'es' | 'fr' | 'ar'"
+      typeDescription: "'en' | 'es' | 'fr' | 'pt' | 'ar'"
     }
   }}
 />

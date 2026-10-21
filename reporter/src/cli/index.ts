@@ -18,7 +18,7 @@ import * as p from '@clack/prompts';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { generate } from '../generate-report.js';
-import { SUPPORTED_LANGUAGES } from '../locale.js';
+import { parseLanguage, SUPPORTED_LANGUAGES } from '../locale.js';
 import { LOG_LEVELS } from '../logger.js';
 import type { LogLevel, Options, SupportedLanguage } from '../types.js';
 import { loadConfig } from './config-loader.js';
@@ -70,8 +70,10 @@ async function main(): Promise<void> {
     .option('language', {
       alias: 'lang',
       type: 'string',
-      description: `Report language (${SUPPORTED_LANGUAGES.join(', ')})`,
-      choices: [...SUPPORTED_LANGUAGES],
+      description: `Report language (${SUPPORTED_LANGUAGES.join(', ')}); regional tags such as pt-BR are accepted`,
+      // Not `choices`: yargs matches those exactly, so it rejected `pt-BR` and `PT`
+      // although the API and config file accept them.
+      coerce: parseLanguage,
     })
     .epilog(
       [

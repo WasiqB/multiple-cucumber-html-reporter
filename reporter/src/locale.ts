@@ -153,7 +153,12 @@ export interface LocaleTranslations {
   footer: LocaleFooter;
 }
 
-export const SUPPORTED_LANGUAGES: readonly SupportedLanguage[] = ['en', 'es', 'fr', 'ar'] as const;
+/**
+ * `pt` is Brazilian Portuguese. `normalizeLanguage` keeps only the base tag,
+ * so `pt-BR` and `pt-PT` both resolve to this catalog. A separate European
+ * Portuguese file cannot be selected until that narrowing is changed.
+ */
+export const SUPPORTED_LANGUAGES: readonly SupportedLanguage[] = ['en', 'es', 'fr', 'pt', 'ar'] as const;
 
 /**
  * Normalizes user-supplied language code to a supported language code,
@@ -168,6 +173,21 @@ export function normalizeLanguage(lang?: string): SupportedLanguage | undefined 
     return clean as SupportedLanguage;
   }
   return undefined;
+}
+
+/**
+ * Like {@link normalizeLanguage}, but throws for a value that matches nothing.
+ *
+ * Used for the `--language` flag so it follows the same rule as the API and config
+ * file (case-insensitive, `pt-BR` narrows to `pt`) while a typo still fails loudly
+ * instead of silently producing an English report.
+ */
+export function parseLanguage(value: string): SupportedLanguage {
+  const language = normalizeLanguage(value);
+  if (!language) {
+    throw new Error(`Unsupported language "${value}". Supported languages: ${SUPPORTED_LANGUAGES.join(', ')}.`);
+  }
+  return language;
 }
 
 /**

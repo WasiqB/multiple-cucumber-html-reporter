@@ -63,7 +63,8 @@ export default function HomePageClient({ version }: { version: string }) {
       {
         icon: 'Languages',
         title: 'Localized Reports',
-        description: 'Choose English, Spanish, French, or Arabic report labels, with right-to-left layout for Arabic.',
+        description:
+          'Choose English, Spanish, French, Portuguese, or Arabic report labels, with right-to-left layout for Arabic.',
       },
     ],
   };

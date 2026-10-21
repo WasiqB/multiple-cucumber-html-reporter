@@ -93,9 +93,9 @@ Following are the allowed options in the command line tool:
       typeDescription: 'boolean'
     },
     '--language <language>': {
-      description: <>Sets the report language. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), and <code>ar</code> (Arabic). The <code>--lang</code> alias is also available.</>,
-      type: 'en | es | fr | ar',
-      typeDescription: 'en | es | fr | ar',
+      description: <>Sets the report language. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), <code>pt</code> (Portuguese), and <code>ar</code> (Arabic). Regional tags such as <code>pt-BR</code> are accepted and narrowed to their base language, and an unsupported value stops the run. The <code>--lang</code> alias is also available.</>,
+      type: 'en | es | fr | pt | ar',
+      typeDescription: 'en | es | fr | pt | ar',
       default: 'en'
     },
     '--version': {
