@@ -10,4 +10,5 @@ export const prompts = {
   note: clackPrompts.note,
   select: clackPrompts.select,
   text: clackPrompts.text,
+  spinner: clackPrompts.spinner,
 };
