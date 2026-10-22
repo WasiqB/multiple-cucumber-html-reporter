@@ -31,14 +31,16 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       jsonDir: () =>
         p.text({
           message: 'Where are your Cucumber JSON report files?',
-          placeholder: './reports',
+          placeholder: './reports/json',
           validate: (v) => (!v?.trim() ? 'JSON directory is required.' : undefined),
+          initialValue: './reports/json',
         }),
       reportPath: () =>
         p.text({
           message: 'Where should the HTML report be generated?',
           placeholder: './reports/html',
           validate: (v) => (!v?.trim() ? 'Report output path is required.' : undefined),
+          initialValue: './reports/html',
         }),
       emailReport: () => p.confirm({ message: 'Generate emailable HTML report?', initialValue: false }),
     },
@@ -246,6 +248,8 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     }
   }
 
+  const spinner = p.spinner();
+
   if (selected.includes('metadata') && !options.metadataFilePath) {
     p.note('Leave any field blank to skip it.', 'Execution metadata');
     const md = await p.group({
@@ -280,11 +284,14 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     }
   }
 
+  spinner.start('Creating configuration file...');
+
   const configFileName = '.multiple-cucumber-html-reporter.json';
   const configPath = path.join(cwd, configFileName);
   const { writeFile } = await import('node:fs/promises');
   await writeFile(configPath, JSON.stringify(options, null, 2), 'utf-8');
 
+  spinner.stop('Config created successfully!');
   p.note(`Config saved to: ${configPath}`, '✔ Config created');
 
   return { options, configPath };
