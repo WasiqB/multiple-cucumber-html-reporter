@@ -21,34 +21,57 @@ export function baseOptions(): BaseLayoutProps {
     },
     links: [
       {
-        text: 'Features',
-        url: '/features',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Learn',
+        items: [
+          {
+            text: 'Features',
+            description: 'Explore what the reporter can do',
+            url: '/features',
+          },
+          {
+            text: 'How it Works',
+            description: 'Understand the internals step by step',
+            url: '/how-it-works',
+          },
+          {
+            text: 'Showcase',
+            description: 'See real-world report examples',
+            url: '/showcase',
+          },
+        ],
       },
       {
-        text: 'How it Works',
-        url: '/how-it-works',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Docs',
+        items: [
+          {
+            text: 'Documentation',
+            description: 'Full API reference and guides',
+            url: '/docs',
+          },
+          {
+            text: 'Config Builder',
+            description: 'Visually build your config file',
+            url: '/config-builder',
+          },
+        ],
       },
       {
-        text: 'Documentation',
-        url: '/docs',
-        active: 'nested-url',
-      },
-      {
-        text: 'Showcase',
-        url: '/showcase',
-        active: 'nested-url',
-      },
-      {
-        text: 'Sponsors',
-        url: '/sponsors',
-        active: 'nested-url',
-      },
-      {
-        text: 'Community',
-        url: '/community',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Connect',
+        items: [
+          {
+            text: 'Sponsors',
+            description: 'Support the project',
+            url: '/sponsors',
+          },
+          {
+            text: 'Community',
+            description: 'Join the conversation',
+            url: '/community',
+          },
+        ],
       },
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
