@@ -111,6 +111,7 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
 
 > [!TIP]
 > Run `mchr` for the first time without a config file to launch an interactive onboarding wizard that creates the config file for you.
+> (supports JSON, YAML, JavaScript, and TypeScript formats)
 
 #### 3. Generate the report
 

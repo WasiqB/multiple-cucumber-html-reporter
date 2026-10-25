@@ -478,9 +478,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .-rotate-90 {
-    rotate: calc(90deg * -1);
-  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
@@ -858,6 +855,9 @@
   }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .fill-current {
+    fill: currentcolor;
   }
   .object-cover {
     object-fit: cover;

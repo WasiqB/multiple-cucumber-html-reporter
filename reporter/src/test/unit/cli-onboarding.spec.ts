@@ -31,6 +31,7 @@ describe('CLI Onboarding', () => {
       return {};
     }) as any);
 
+    spyOn(p, 'select').and.resolveTo('json' as any);
     spyOn(p, 'multiselect').and.resolveTo(['metadataFilePath', 'metadata'] as any);
     spyOn(p, 'text').and.resolveTo('./custom-metadata.json' as any);
 
@@ -75,6 +76,7 @@ describe('CLI Onboarding', () => {
       return {};
     }) as any);
 
+    spyOn(p, 'select').and.resolveTo('json' as any);
     spyOn(p, 'multiselect').and.resolveTo(['metadata'] as any);
 
     const result = await runOnboarding(tempDir);
@@ -125,7 +127,11 @@ describe('CLI Onboarding', () => {
 
     spyOn(p, 'multiselect').and.resolveTo(['reportMeta', 'durations', 'charts', 'browser', 'customData', 'cdn'] as any);
     spyOn(p, 'confirm').and.resolveTo(true as any);
-    spyOn(p, 'select').and.resolveTo('wallClock' as any);
+    spyOn(p, 'select').and.callFake((async (opts: any) => {
+      if (opts.message.includes('duration')) return 'wallClock';
+      if (opts.message.includes('format')) return 'json';
+      return 'json';
+    }) as any);
 
     const result = await runOnboarding(tempDir);
 
@@ -163,7 +169,11 @@ describe('CLI Onboarding', () => {
     }) as any);
 
     spyOn(p, 'multiselect').and.resolveTo(['logging'] as any);
-    spyOn(p, 'select').and.resolveTo('debug' as any);
+    spyOn(p, 'select').and.callFake((async (opts: any) => {
+      if (opts.message.includes('log level')) return 'debug';
+      if (opts.message.includes('format')) return 'json';
+      return 'debug';
+    }) as any);
 
     const result = await runOnboarding(tempDir);
 
@@ -190,11 +200,87 @@ describe('CLI Onboarding', () => {
     expect(exitSpy).toHaveBeenCalledWith(0);
   });
 
+  it('should exit when the format prompt is cancelled', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    const exitSpy = spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './reports', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo([] as any);
+    spyOn(p, 'select').and.resolveTo(Symbol('cancel') as any);
+    spyOn(p, 'isCancel').and.callFake(((val: any) => typeof val === 'symbol') as any);
+
+    await runOnboarding(tempDir);
+
+    expect(p.cancel).toHaveBeenCalledWith('Setup cancelled.');
+    expect(exitSpy).toHaveBeenCalledWith(0);
+  });
+
+  it('should generate YAML config when yaml format is selected', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    spyOn(p, 'isCancel').and.returnValue(false);
+    spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './reports', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo([] as any);
+    spyOn(p, 'select').and.resolveTo('yaml' as any);
+
+    const result = await runOnboarding(tempDir);
+
+    expect(result.configPath).toBe(path.join(tempDir, '.multiple-cucumber-html-reporter.yml'));
+    const content = await fs.readFile(result.configPath, 'utf-8');
+    expect(content).toContain('jsonDir: ./reports');
+    expect(content).toContain('reportPath: ./html');
+  });
+
+  it('should generate JavaScript (ESM) config when js format is selected', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    spyOn(p, 'isCancel').and.returnValue(false);
+    spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './reports', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo([] as any);
+    spyOn(p, 'select').and.resolveTo('js' as any);
+
+    const result = await runOnboarding(tempDir);
+
+    expect(result.configPath).toBe(path.join(tempDir, '.multiple-cucumber-html-reporter.js'));
+    const content = await fs.readFile(result.configPath, 'utf-8');
+    expect(content).toContain("/** @type {import('multiple-cucumber-html-reporter').Options} */");
+    expect(content).toContain('export default {');
+  });
+
+  it('should generate TypeScript config when ts format is selected', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    spyOn(p, 'isCancel').and.returnValue(false);
+    spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './reports', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo([] as any);
+    spyOn(p, 'select').and.resolveTo('ts' as any);
+
+    const result = await runOnboarding(tempDir);
+
+    expect(result.configPath).toBe(path.join(tempDir, '.multiple-cucumber-html-reporter.ts'));
+    const content = await fs.readFile(result.configPath, 'utf-8');
+    expect(content).toContain("import type { Options } from 'multiple-cucumber-html-reporter';");
+    expect(content).toContain('const config: Options = {');
+    expect(content).toContain('export default config;');
+  });
+
   it('should validate jsonDir and reportPath text prompts', async () => {
     spyOn(p, 'intro');
     spyOn(p, 'note');
     spyOn(p, 'isCancel').and.returnValue(false);
     spyOn(p, 'text').and.callFake(((options: any) => options) as any);
+    spyOn(p, 'select').and.resolveTo('json' as any);
     spyOn(process, 'exit').and.callFake((() => {}) as any);
 
     let jsonDirValidator: ((v?: string) => string | undefined) | undefined;

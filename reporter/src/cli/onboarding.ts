@@ -2,6 +2,8 @@ import path from 'node:path';
 import type { LogLevel, Options, SupportedLanguage } from '@/types.js';
 import { prompts as p } from './prompts.js';
 
+export type ConfigFormat = 'json' | 'yaml' | 'js' | 'ts';
+
 export type OnboardingResult = {
   options: Options;
   configPath: string;
@@ -13,8 +15,44 @@ function cancelOnboarding(): never {
 }
 
 /**
+ * Serializes options into the appropriate file content and file name based on format.
+ */
+export async function serializeConfig(
+  options: Options,
+  format: ConfigFormat,
+): Promise<{ fileName: string; content: string }> {
+  switch (format) {
+    case 'yaml': {
+      const { dump } = await import('js-yaml');
+      return {
+        fileName: '.multiple-cucumber-html-reporter.yml',
+        content: dump(options, { indent: 2 }),
+      };
+    }
+    case 'js': {
+      return {
+        fileName: '.multiple-cucumber-html-reporter.js',
+        content: `/** @type {import('multiple-cucumber-html-reporter').Options} */\nexport default ${JSON.stringify(options, null, 2)};\n`,
+      };
+    }
+    case 'ts': {
+      return {
+        fileName: '.multiple-cucumber-html-reporter.ts',
+        content: `import type { Options } from 'multiple-cucumber-html-reporter';\n\nconst config: Options = ${JSON.stringify(options, null, 2)};\n\nexport default config;\n`,
+      };
+    }
+    default: {
+      return {
+        fileName: '.multiple-cucumber-html-reporter.json',
+        content: `${JSON.stringify(options, null, 2)}\n`,
+      };
+    }
+  }
+}
+
+/**
  * Runs the interactive Clack onboarding flow to collect reporter options
- * from the user, writes the resulting config as JSON to `cwd`, and returns
+ * from the user, writes the resulting config in the chosen format to `cwd`, and returns
  * both the options and the path of the created config file.
  *
  * @param cwd Directory where the config file should be written.
@@ -78,7 +116,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
   const options: Options = {
     jsonDir: (required.jsonDir as string).trim(),
     reportPath: (required.reportPath as string).trim(),
-    emailReport: required.emailReport as boolean,
+    ...(required.emailReport !== undefined ? { emailReport: required.emailReport as boolean } : {}),
   };
 
   // Report meta
@@ -248,8 +286,6 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     }
   }
 
-  const spinner = p.spinner();
-
   if (selected.includes('metadata') && !options.metadataFilePath) {
     p.note('Leave any field blank to skip it.', 'Execution metadata');
     const md = await p.group({
@@ -284,14 +320,25 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     }
   }
 
-  spinner.start('Creating configuration file...');
+  const format = await p.select<ConfigFormat>({
+    message: 'Which format would you like to save your configuration in?',
+    options: [
+      { value: 'json', label: 'JSON (.multiple-cucumber-html-reporter.json)', hint: 'default' },
+      { value: 'yaml', label: 'YAML (.multiple-cucumber-html-reporter.yml)' },
+      { value: 'js', label: 'JavaScript (.multiple-cucumber-html-reporter.js)' },
+      { value: 'ts', label: 'TypeScript (.multiple-cucumber-html-reporter.ts)' },
+    ],
+  });
 
-  const configFileName = '.multiple-cucumber-html-reporter.json';
-  const configPath = path.join(cwd, configFileName);
+  if (p.isCancel(format)) {
+    return cancelOnboarding();
+  }
+
+  const { fileName, content } = await serializeConfig(options, format as ConfigFormat);
+  const configPath = path.join(cwd, fileName);
   const { writeFile } = await import('node:fs/promises');
-  await writeFile(configPath, JSON.stringify(options, null, 2), 'utf-8');
+  await writeFile(configPath, content, 'utf-8');
 
-  spinner.stop('Config created successfully!');
   p.note(`Config saved to: ${configPath}`, '✔ Config created');
 
   return { options, configPath };

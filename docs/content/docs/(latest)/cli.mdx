@@ -42,7 +42,7 @@ mchr
 
 This command will do the following:
 
-- When run for the first time, the CLI will start interactive onboarding process where it will ask you some questions, when you answer these questions, it will then create the JSON format config file named `.multiple-cucumber-html-reporter.json`.
+- When run for the first time, the CLI will start interactive onboarding process where it will ask you some questions, when you answer these questions, it will then create the config file in any of the supported format which you select. Config file is named as `.multiple-cucumber-html-reporter.<json|yml|js|ts>`.
 - In preceding execution will not trigger onboarding if there is already a configuration file available in the project directory.
 - Next, if will use this configuration file to generate the report, provided that there is Cucucmber JSON reports already generated.
 - The CLI will also print some informative logs while generating the report. You can turn off this info logs by passing the flag `--silent` or `--no-logging` with the command.
@@ -51,12 +51,6 @@ This command will do the following:
 If the Cucumber generated JSON file is not generated, then the report would still be generated but it will be empty.
 
 So, it is better to generate the Cucumber JSON report first and then generate the HTML report by using the `mchr` command.
-</Callout>
-
-<Callout title="Tip" type='idea'>
-The CLI command will default generate the config file in JSON format.
-
-You can later change the format to `.yml` or `.js` format as per your preference.
 </Callout>
 
 <Callout title='Important' type='warning'>
