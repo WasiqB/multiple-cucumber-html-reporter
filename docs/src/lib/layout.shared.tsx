@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { BookOpen, Heart, MonitorPlay, Sparkles, Users, Workflow, Wrench } from 'lucide-react';
 import { gitConfig } from './shared';
 
 export function baseOptions(): BaseLayoutProps {
@@ -22,38 +23,43 @@ export function baseOptions(): BaseLayoutProps {
     links: [
       {
         type: 'menu',
-        text: 'Learn',
+        text: 'Explore',
         items: [
           {
             text: 'Features',
             description: 'Explore what the reporter can do',
             url: '/features',
+            icon: <Sparkles />,
           },
           {
             text: 'How it Works',
-            description: 'Understand the internals step by step',
+            description: 'Understand the basic usage step by step',
             url: '/how-it-works',
+            icon: <Workflow />,
           },
           {
             text: 'Showcase',
-            description: 'See real-world report examples',
+            description: 'See real-world report users',
             url: '/showcase',
+            icon: <MonitorPlay />,
           },
         ],
       },
       {
         type: 'menu',
-        text: 'Docs',
+        text: 'Build',
         items: [
           {
-            text: 'Documentation',
-            description: 'Full API reference and guides',
+            text: 'Get Started',
+            description: 'Full reporter documentation guides',
             url: '/docs',
+            icon: <BookOpen />,
           },
           {
             text: 'Config Builder',
             description: 'Visually build your config file',
             url: '/config-builder',
+            icon: <Wrench />,
           },
         ],
       },
@@ -65,11 +71,13 @@ export function baseOptions(): BaseLayoutProps {
             text: 'Sponsors',
             description: 'Support the project',
             url: '/sponsors',
+            icon: <Heart />,
           },
           {
             text: 'Community',
             description: 'Join the conversation',
             url: '/community',
+            icon: <Users />,
           },
         ],
       },
