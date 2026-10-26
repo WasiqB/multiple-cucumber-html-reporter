@@ -5,7 +5,9 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { CheckCircle2, ChevronDown, FileJson, PieChart } from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaGithub, FaGitlab, FaJenkins } from 'react-icons/fa6';
+import { buttonVariants } from '@/components/ui/button';
 import { Terminal } from '@/components/ui/terminal';
 import imageDataJson from '@/data/image-links.json';
 import type { ImageLinks } from '@/data/types';
@@ -291,6 +293,20 @@ export default function HowItWorksPage() {
                           <span className='text-sm sm:text-base text-zinc-700 dark:text-zinc-300'>{item}</span>
                         </div>
                       ))}
+                    </div>
+                  )}
+
+                  {step.number === 2 && (
+                    <div className='pt-2'>
+                      <Link
+                        href='/config-builder'
+                        className={cn(
+                          buttonVariants({ variant: 'default', size: 'sm' }),
+                          'bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-xs',
+                        )}
+                      >
+                        Launch Interactive Config Builder →
+                      </Link>
                     </div>
                   )}
                 </motion.div>

@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { BookOpen, Heart, MonitorPlay, Sparkles, Users, Workflow, Wrench } from 'lucide-react';
 import { gitConfig } from './shared';
 
 export function baseOptions(): BaseLayoutProps {
@@ -21,34 +22,64 @@ export function baseOptions(): BaseLayoutProps {
     },
     links: [
       {
-        text: 'Features',
-        url: '/features',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Explore',
+        items: [
+          {
+            text: 'Features',
+            description: 'Explore what the reporter can do',
+            url: '/features',
+            icon: <Sparkles />,
+          },
+          {
+            text: 'How it Works',
+            description: 'Understand the basic usage step by step',
+            url: '/how-it-works',
+            icon: <Workflow />,
+          },
+          {
+            text: 'Showcase',
+            description: 'See real-world report users',
+            url: '/showcase',
+            icon: <MonitorPlay />,
+          },
+        ],
       },
       {
-        text: 'How it Works',
-        url: '/how-it-works',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Build',
+        items: [
+          {
+            text: 'Get Started',
+            description: 'Full reporter documentation guides',
+            url: '/docs',
+            icon: <BookOpen />,
+          },
+          {
+            text: 'Config Builder',
+            description: 'Visually build your config file',
+            url: '/config-builder',
+            icon: <Wrench />,
+          },
+        ],
       },
       {
-        text: 'Documentation',
-        url: '/docs',
-        active: 'nested-url',
-      },
-      {
-        text: 'Showcase',
-        url: '/showcase',
-        active: 'nested-url',
-      },
-      {
-        text: 'Sponsors',
-        url: '/sponsors',
-        active: 'nested-url',
-      },
-      {
-        text: 'Community',
-        url: '/community',
-        active: 'nested-url',
+        type: 'menu',
+        text: 'Connect',
+        items: [
+          {
+            text: 'Sponsors',
+            description: 'Support the project',
+            url: '/sponsors',
+            icon: <Heart />,
+          },
+          {
+            text: 'Community',
+            description: 'Join the conversation',
+            url: '/community',
+            icon: <Users />,
+          },
+        ],
       },
     ],
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,

@@ -85,6 +85,7 @@ async function main(): Promise<void> {
         '    .multiple-cucumber-html-reporter.json',
         '    .multiple-cucumber-html-reporter.js     (ESM / CJS)',
         '    .multiple-cucumber-html-reporter.ts     (TypeScript)',
+        '    .multiple-cucumber-html-reporter.yml    (YAML)',
         '    .multiple-cucumber-html-reporter.yaml',
         '',
         'EXAMPLE CONFIG (.multiple-cucumber-html-reporter.json)',
