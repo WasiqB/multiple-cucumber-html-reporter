@@ -12,6 +12,10 @@
   - Any dependencies required for this change
 -->
 
+> [!IMPORTANT]
+> Ensure you have checked the [Contributing guide](https://multiple-cucumber-html-reporter.com/docs/contributing) before opening the PR.
+> It will help you to create the PR seamlessly without any issue of your PR being rejected due to incorrect steps followed in your PR.
+
 Fixes #(issue-no)
 
 ## Type of change

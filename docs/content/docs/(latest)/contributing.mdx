@@ -81,12 +81,10 @@ pnpm build
 
 #### Setup Command line tool locally [step]
 
-For debugging the reporter, you need to setup the CLI tool locally by running the following commands from the root folder of the repository:
+For debugging the reporter, you need to setup the CLI tool locally by running the following commands from the `reporter` folder:
 
 ```bash
-pnpm link --global ./reporter
-
-pnpm install
+pnpm add --global ./
 ```
 
 ### Pre-commit Git Hooks (Linting & Formatting)
@@ -107,13 +105,14 @@ Understanding the workspace organization:
 
 ```text
 multiple-cucumber-html-reporter/
-├── .github/          # GitHub Actions workflows and templates
-├── docs/             # Documentation site (Fumadocs / Next.js)
+├── .github/            # GitHub Actions workflows and templates
+├── docs/               # Documentation site (Fumadocs / Next.js)
 │   └── content/docs/
-│       ├── (beta)/   # Documentation for upcoming / unreleased beta features
-│       └── latest/   # Documentation for stable releases
-├── examples/         # Sample projects for debugging & manual testing
-└── reporter/         # Core reporter package source code
+│       ├── (latest)/   # Documentation for stable and new features
+│       └── v3/         # Documentation for deprecated v3 
+├── examples/           # Sample projects for debugging purpose of your changes
+|-- package/tsconfig    # Common TS config files
+└── reporter/           # Core reporter package source code
 ```
 
 ## Development & Debugging [step]
@@ -150,8 +149,7 @@ Update files under `.github/workflows/` only when:
 ## Updating Documentation [step]
 
 When adding new features, fixing bugs, or changing APIs, update the docs in `docs/content/docs/`:
-- **`docs/content/docs/(beta)/`**: Add or update documentation for upcoming / beta features.
-- **`docs/content/docs/`**: Update documentation applicable to current stable releases.
+- **`docs/content/docs/(latest)/`**: Add or update documentation for all the new features.
 
 ### Building the documentation site
 
@@ -233,8 +231,12 @@ Fill out the PR template with details of the changes and link related issues.
 
 For contributors who wants to get recognized and get showcase on our [Community page](/community), you must have any one of the following eligibility:
 
-- Get 3 PRs merged to `main` branch.
+- Get 3 PRs merged to `main` branch within last 12 months.
 - Get 1 critical PR with important feature merged to `main` branch.
+
+<Callout type='warning' title='Important!'>
+Previous contributors who do not contribute for more than 12 months will be moved to the Alumni section of contributors.
+</Callout>
 
 ## Conclusion
 
