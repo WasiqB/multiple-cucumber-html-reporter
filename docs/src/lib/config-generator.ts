@@ -28,6 +28,7 @@ export interface ConfigFormState {
   jsonDir: string;
   reportPath: string;
   language: 'en' | 'es' | 'fr' | 'pt' | 'ar';
+  useCucumberMessages: boolean;
   emailReport: boolean;
   staticFilePath: boolean;
 
@@ -91,6 +92,7 @@ export const DEFAULT_CONFIG_STATE: ConfigFormState = {
   jsonDir: './reports/json',
   reportPath: './reports/html',
   language: 'en',
+  useCucumberMessages: false,
   emailReport: false,
   staticFilePath: false,
 
@@ -192,6 +194,7 @@ export const PRESETS: Record<string, { label: string; description: string; state
       jsonDir: './reports/json',
       reportPath: './reports/html',
       language: 'en',
+      useCucumberMessages: false,
       emailReport: false,
       staticFilePath: false,
       openReportInBrowser: false,
@@ -222,6 +225,9 @@ export function buildReporterOptions(state: ConfigFormState): Record<string, any
 
   if (state.language && state.language !== 'en') {
     options.language = state.language;
+  }
+  if (state.useCucumberMessages) {
+    options.useCucumberMessages = true;
   }
   if (state.emailReport) {
     options.emailReport = true;

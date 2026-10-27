@@ -1,0 +1,7 @@
+{"gherkinDocument":{"uri":"features/messages.feature","feature":{"location":{"line":1},"language":"en","keyword":"Feature","name":"Messages feature","description":"Generated from NDJSON","children":[{"scenario":{"id":"scenario-1","location":{"line":3},"keyword":"Scenario","name":"passes","description":"","steps":[{"id":"step-1","location":{"line":4},"keyword":"Given ","text":"a message"}],"examples":[]}}]}}}
+{"pickle":{"id":"pickle-1","uri":"features/messages.feature","location":{"line":3},"name":"passes","language":"en","steps":[{"id":"pickle-step-1","astNodeIds":["step-1"],"text":"a message"}],"astNodeIds":["scenario-1"],"tags":[]}}
+{"testCase":{"id":"case-1","pickleId":"pickle-1","testSteps":[{"id":"test-step-1","pickleStepId":"pickle-step-1"}]}}
+{"testCaseStarted":{"id":"started-1","testCaseId":"case-1","attempt":0,"timestamp":{"seconds":1700000000,"nanos":0}}}
+{"attachment":{"testCaseStartedId":"started-1","testStepId":"test-step-1","body":"aGVsbG8=","contentEncoding":"BASE64","mediaType":"text/plain","fileName":"note.txt"}}
+{"testStepFinished":{"testCaseStartedId":"started-1","testStepId":"test-step-1","testStepResult":{"status":"PASSED","duration":{"seconds":1,"nanos":0}},"timestamp":{"seconds":1700000001,"nanos":0}}}
+{"testCaseFinished":{"testCaseStartedId":"started-1","timestamp":{"seconds":1700000001,"nanos":0},"willBeRetried":false}}

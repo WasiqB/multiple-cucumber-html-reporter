@@ -11,6 +11,7 @@ import { v4 as uuid } from 'uuid';
 import collectJSONS, { listJsonFiles } from './collect-jsons.js';
 import { type LocaleTranslations, loadLocale } from './locale.js';
 import { createLogger } from './logger.js';
+import { streamFeaturesFromMessagesFile } from './messages-ndjson.js';
 import { applyMetadataAndHooks, enrichStepEmbeddings, escapeHtml, type MediaFileWriter } from './report-helpers.js';
 import {
   createJsonArrayFileWriter,
@@ -1027,7 +1028,10 @@ async function generateReport(options: Options) {
     for (const file of files) {
       const reportTime = fs.statSync(file).birthtime;
 
-      for await (const rawFeature of streamFeaturesFromFile(file, { keepEmbeddingData: true })) {
+      const features = options.useCucumberMessages
+        ? streamFeaturesFromMessagesFile(file, { keepEmbeddingData: true })
+        : streamFeaturesFromFile(file, { keepEmbeddingData: true });
+      for await (const rawFeature of features) {
         const feature = applyMetadataAndHooks(rawFeature, options, reportTime);
 
         // merged-output.json mirrors merged/hook-flattened but otherwise raw
