@@ -319,8 +319,9 @@ export const config: WebdriverIO.Config = {
    * @param {<Object>} _results object containing test results
    */
   onComplete: async (_exitCode, _config, _capabilities, _results) => {
+    const reportFolder = process.env.MESSAGES ?? 'json';
     await generate({
-      jsonDir: 'reports/json/',
+      jsonDir: `reports/${reportFolder}/`,
       reportPath: 'reports/report/',
       useCDN: false,
       openReportInBrowser: true,

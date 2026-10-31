@@ -11,8 +11,9 @@ import { createRelativeLink } from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/components/mdx';
+import { createMetadata, getPageImageUrl } from '@/lib/metadata';
 import { baseUrl, gitConfig } from '@/lib/shared';
-import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
+import { getPageMarkdownUrl, source } from '@/lib/source';
 
 export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -83,11 +84,20 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): Promise<Metadata> {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+  const { slug = [] } = await props.params;
+  const page = source.getPage(slug);
+  if (!page) {
+    return createMetadata({
+      title: 'Not Found',
+    });
+  }
 
   const canonicalUrl = new URL(page.url, baseUrl).toString();
+  const image = {
+    url: getPageImageUrl(page).url,
+    width: 1200,
+    height: 630,
+  };
 
   return {
     title: page.data.title,
@@ -99,7 +109,10 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
       title: `${page.data.title} | Multiple Cucumber HTML Reporter`,
       description: page.data.description,
       url: canonicalUrl,
-      images: getPageImage(page).url,
+      images: [image],
+    },
+    twitter: {
+      images: [image],
     },
   };
 }

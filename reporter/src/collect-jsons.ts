@@ -21,21 +21,30 @@ export function listJsonFiles(options: Options): string[] {
   let files: string[];
   const jsonDir = resolve(process.cwd(), options.jsonDir);
 
-  logger.debug('Collecting Cucumber JSON files.', { jsonDir });
+  // Some formatters (notably Cypress's Cucumber preprocessor) write NDJSON
+  // content to a `.json` filename. In Messages mode the contents, not the
+  // suffix, determine the format, so support both conventional extensions.
+  const extension = options.useCucumberMessages ? /\.(?:ndjson|json)$/ : /\.json$/;
+  const format = options.useCucumberMessages ? 'Messages NDJSON' : 'Cucumber JSON';
+  logger.debug(`Collecting ${format} files.`, { jsonDir });
 
   try {
-    files = fileSync(/\.json$/, jsonDir);
+    files = fileSync(extension, jsonDir);
   } catch (error) {
-    logger.error('Failed to read Cucumber JSON files.', { jsonDir: options.jsonDir, resolvedJsonDir: jsonDir });
+    logger.error(`Failed to read ${format} files.`, { jsonDir: options.jsonDir, resolvedJsonDir: jsonDir });
     logger.debug('JSON directory read error details.', { error });
-    throw new Error(`There were issues reading JSON-files from '${options.jsonDir}'.`);
+    throw new Error(
+      options.useCucumberMessages
+        ? `There were issues reading Messages NDJSON files from '${options.jsonDir}'.`
+        : `There were issues reading JSON-files from '${options.jsonDir}'.`,
+    );
   }
 
   const metadataFilePath = options.metadataFilePath ? resolve(options.metadataFilePath) : null;
   const jsonFiles = metadataFilePath ? files.filter((file) => resolve(file) !== metadataFilePath) : files;
 
   if (jsonFiles.length > 0) {
-    logger.info('Found Cucumber JSON files.', { count: jsonFiles.length, jsonDir: options.jsonDir });
+    logger.info(`Found ${format} files.`, { count: jsonFiles.length, jsonDir: options.jsonDir });
     if (metadataFilePath) {
       logger.debug('Metadata file will be skipped during JSON collection.', { metadataFilePath });
     }
@@ -74,7 +83,10 @@ export default async function collectJSONS(options: Options): Promise<Feature[]>
   for (const file of files) {
     const reportTime = statSync(file).birthtime;
 
-    for await (const rawFeature of streamFeaturesFromFile(file, { keepEmbeddingData: false })) {
+    const features = options.useCucumberMessages
+      ? (await import('./messages-ndjson.js')).streamFeaturesFromMessagesFile(file, { keepEmbeddingData: false })
+      : streamFeaturesFromFile(file, { keepEmbeddingData: false });
+    for await (const rawFeature of features) {
       const feature = applyMetadataAndHooks(rawFeature, options, reportTime);
       jsonOutput.push(feature);
     }

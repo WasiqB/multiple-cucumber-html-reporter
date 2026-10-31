@@ -183,6 +183,24 @@ describe('CLI Onboarding', () => {
     expect(writtenConfig.logging).toBe('debug');
   });
 
+  it('should configure Cucumber Messages NDJSON input', async () => {
+    spyOn(p, 'intro');
+    spyOn(p, 'note');
+    spyOn(p, 'cancel');
+    spyOn(p, 'isCancel').and.returnValue(false);
+    spyOn(process, 'exit').and.callFake((() => {}) as any);
+
+    spyOn(p, 'group').and.resolveTo({ jsonDir: './messages', reportPath: './html' } as any);
+    spyOn(p, 'multiselect').and.resolveTo(['messages'] as any);
+    spyOn(p, 'confirm').and.resolveTo(true as any);
+    spyOn(p, 'select').and.resolveTo('json' as any);
+
+    const result = await runOnboarding(tempDir);
+
+    expect(result.options.useCucumberMessages).toBeTrue();
+    expect((await fs.readJson(result.configPath)).useCucumberMessages).toBeTrue();
+  });
+
   it('should exit when the logging prompt is cancelled', async () => {
     spyOn(p, 'intro');
     spyOn(p, 'note');

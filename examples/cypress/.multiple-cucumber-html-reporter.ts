@@ -1,7 +1,9 @@
 import type { Options } from 'multiple-cucumber-html-reporter';
 
+const reportFolder = process.env.MESSAGES ?? 'json';
+
 const config: Options = {
-  jsonDir: './.run/reports/json/',
+  jsonDir: `./.run/reports/${reportFolder}/`,
   reportPath: './.run/html-report/',
   openReportInBrowser: true,
   useCDN: true,

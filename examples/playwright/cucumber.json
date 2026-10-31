@@ -2,6 +2,6 @@
   "default": {
     "import": ["src/steps/*.steps.ts"],
     "paths": ["src/features/*.feature"],
-    "format": ["progress", "json:reports/cucumber-report.json"]
+    "format": ["progress", "json:reports/json/cucumber-report.json", "message:reports/messages/cucumber-report.ndjson"]
   }
 }

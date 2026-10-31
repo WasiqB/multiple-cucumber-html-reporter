@@ -7,7 +7,7 @@
   "scripts": {
     "pretest": "tsx src/utils/prepare-run.ts",
     "test": "node --import tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js",
-    "report": "mchr --silent"
+    "report": "mchr"
   },
   "keywords": [
     "Playwright"
@@ -18,7 +18,7 @@
     "@cucumber/cucumber": "^13.3.0",
     "@mchr/tsconfig": "workspace:*",
     "@playwright/test": "^1.64.1",
-    "@types/node": "^26.6.5",
+    "@types/node": "^26.6.6",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }

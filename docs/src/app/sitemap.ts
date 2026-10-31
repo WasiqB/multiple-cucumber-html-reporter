@@ -13,45 +13,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: url(page.url),
         lastModified,
         changeFrequency: 'weekly',
-        priority: 0.5,
+        priority: 0.7,
       } as MetadataRoute.Sitemap[number];
     }),
   );
   return [
     {
       url: url('/'),
-      changeFrequency: 'monthly',
+      changeFrequency: 'daily',
       priority: 1,
     },
     {
       url: url('/features'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
       url: url('/how-it-works'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
       url: url('/config-builder'),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
       url: url('/community'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
       url: url('/sponsors'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
       url: url('/showcase'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     ...items.filter((v) => v !== undefined),
   ];
