@@ -7,7 +7,7 @@ export const config: WebdriverIO.Config = {
     format: [
       'progress',
       `json:reports/json/cucumber-report-${process.env.WDIO_WORKER_ID || '0-0'}.json`,
-      `message:reports/message/cucumber-message-${process.env.WDIO_WORKER_ID || '0-0'}.ndjson`,
+      `message:reports/messages/cucumber-message-${process.env.WDIO_WORKER_ID || '0-0'}.ndjson`,
     ],
   },
 };

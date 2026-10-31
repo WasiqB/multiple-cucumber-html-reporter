@@ -23,8 +23,12 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
+        message-format: [messages, json]
 
     runs-on: ${{ matrix.os }}
+
+    env:
+      MESSAGES: ${{ matrix.message-format }}
 
     steps:
       - name: Checkout Repository
@@ -67,12 +71,18 @@ jobs:
         working-directory: examples/selenium
         run: mchr --version
 
-      - name: Generate Report
+      - name: Generate Report using ND-JSON files
+        if: ${{ matrix.message-format == 'messages' }}
+        working-directory: examples/selenium
+        run: mchr -m
+
+      - name: Generate Report using JSON files
+        if: ${{ matrix.message-format == 'json' }}
         working-directory: examples/selenium
         run: mchr
 
       - name: Upload Report
         uses: actions/upload-artifact@v7
         with:
-          name: selenium-report-${{ matrix.os }}
+          name: selenium-report-${{ matrix.os }}-${{ matrix.message-format }}
           path: examples/selenium/reports

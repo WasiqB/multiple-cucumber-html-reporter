@@ -23,8 +23,12 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
+        message-format: [messages, json]
 
     runs-on: ${{ matrix.os }}
+
+    env:
+      MESSAGES: ${{ matrix.message-format }}
 
     steps:
       - name: Checkout Repository
@@ -61,12 +65,18 @@ jobs:
         working-directory: examples/cypress
         run: mchr --version
 
-      - name: Generate Report
+      - name: Generate Report with ND-JSON files
+        if: ${{ matrix.message-format == 'messages' }}
+        working-directory: examples/cypress
+        run: pnpm report -m
+
+      - name: Generate Report with Legacy JSON files
+        if: ${{ matrix.message-format == 'json' }}
         working-directory: examples/cypress
         run: pnpm report
 
       - name: Upload Report
         uses: actions/upload-artifact@v7
         with:
-          name: cypress-report-${{ matrix.os }}
+          name: cypress-report-${{ matrix.os }}-${{ matrix.message-format }}
           path: examples/cypress/.run/html-report

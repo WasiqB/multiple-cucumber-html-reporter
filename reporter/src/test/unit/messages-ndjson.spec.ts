@@ -9,7 +9,7 @@ const INPUT = './src/test/unit/data/messages-ndjson/happy.ndjson';
 describe('Cucumber Messages NDJSON input', () => {
   it('recognizes Messages streams saved with a .json filename', () => {
     const files = listJsonFiles({
-      jsonDir: '../examples/cypress/.run/reports/messages',
+      jsonDir: './src/test/unit/data/messages-json',
       reportPath: REPORT_PATH,
       useCucumberMessages: true,
     });
