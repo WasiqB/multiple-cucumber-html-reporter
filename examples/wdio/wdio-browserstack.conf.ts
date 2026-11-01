@@ -1,6 +1,5 @@
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { generate, type Metadata } from 'multiple-cucumber-html-reporter';
+import type { Metadata } from 'multiple-cucumber-html-reporter';
+import { saveMetadata } from '@/libs/metadata-parser';
 import { config as sharedConfig } from './wdio-cc-formatter.conf';
 
 export const config: WebdriverIO.Config = {
@@ -38,19 +37,15 @@ export const config: WebdriverIO.Config = {
         },
         args: ['--disable-popup-blocking', '--disable-notifications', '--disable-infobars', '--no-sandbox'],
       },
-      'cjson:metadata': {
+      metadata: {
         browser: {
           name: 'chrome',
           version: process.env.WDIO_CHROME_VERSION || '148',
         },
         device: 'BrowserStack Mac Machine',
         executionPlatform: 'browserstack',
-        platform: {
-          name: 'osx',
-          version: '26.5.1',
-        },
       },
-    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
+    } as WebdriverIO.Capabilities & { metadata: Metadata },
     {
       browserName: 'firefox',
       browserVersion: 'latest',
@@ -59,19 +54,15 @@ export const config: WebdriverIO.Config = {
         osVersion: '11',
         sessionName: 'Saucedemo Test - Firefox Windows',
       },
-      'cjson:metadata': {
+      metadata: {
         browser: {
           name: 'firefox',
           version: 'latest',
         },
         device: 'BrowserStack Windows Machine',
         executionPlatform: 'browserstack',
-        platform: {
-          name: 'windows',
-          version: '11',
-        },
       },
-    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
+    } as WebdriverIO.Capabilities & { metadata: Metadata },
   ],
   /**
    * Gets executed after all tests are done. You still have access to all global variables from
@@ -108,63 +99,6 @@ export const config: WebdriverIO.Config = {
     capabilities: WebdriverIO.Capabilities[],
     _results: any,
   ) => {
-    const jsonDir = './reports/json/';
-    const files = readdirSync(jsonDir).filter((file) => file.endsWith('.json'));
-
-    const customMetadata: Record<string, Metadata> = {};
-
-    files.forEach((file, index) => {
-      const filePath = join(jsonDir, file);
-      const rawData = readFileSync(filePath, 'utf-8');
-      const capability = capabilities[index] as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata };
-      const reportMetadata = capability['cjson:metadata'];
-      const browserName = capability.browserName || 'chrome';
-
-      if (!rawData.trim()) return;
-
-      const suiteData = JSON.parse(rawData);
-
-      suiteData.forEach((feature: any) => {
-        const originalName = feature.name;
-        feature.name = `${originalName} [${browserName.toUpperCase()}]`;
-        feature.id = `${feature.id}-${browserName}`;
-        const fileName = feature.uri as string;
-        feature.uri = fileName.replace('.feature', `-${browserName}.feature`);
-
-        const metaKey = (feature.uri as string).split('/').pop();
-        if (metaKey) {
-          customMetadata[metaKey] = reportMetadata;
-        }
-      });
-
-      writeFileSync(filePath, JSON.stringify(suiteData, null, 2));
-    });
-
-    await generate({
-      jsonDir: 'reports/json/',
-      reportPath: 'reports/report/',
-      useCDN: false,
-      brandLogo: '../../docs/public/images/logo.png',
-      openReportInBrowser: true,
-      saveCollectedJSON: true,
-      displayReportTime: true,
-      emailReport: true,
-      language: 'fr',
-      durationInMS: false,
-      humanReadableDuration: true,
-      displayDuration: true,
-      displayChartPercentages: true,
-      pageTitle: 'My WDIO Typescript Sample',
-      reportName: 'WDIO Cucumber JS Report',
-      metadata: customMetadata,
-      customData: {
-        projectName: 'WebDriverIO sample project',
-        release: '1.2.0',
-        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
-        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
-        environment: 'production',
-        ciPipeline: 'GitHub Actions',
-      },
-    });
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { metadata: Metadata }[]);
   },
 };

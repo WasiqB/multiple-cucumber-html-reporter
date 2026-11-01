@@ -20,7 +20,14 @@ permissions:
 
 jobs:
   test-formatter:
+    strategy:
+      matrix:
+        message-format: [messages, json]
+
     runs-on: ubuntu-latest
+
+    env:
+      MESSAGES: ${{ matrix.message-format }}
 
     steps:
       - name: Checkout Repository
@@ -58,11 +65,21 @@ jobs:
           WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
+      - name: Generate Report using ND-JSON files
+        if: ${{ matrix.message-format == 'messages' }}
+        working-directory: examples/wdio
+        run: mchr -m
+
+      - name: Generate Report using JSON files
+        if: ${{ matrix.message-format == 'json' }}
+        working-directory: examples/wdio
+        run: mchr
+
       - name: Upload Report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: wdio-report-formatter
+          name: wdio-report-formatter-${{ matrix.message-format }}
           if-no-files-found: error
           path: |
             examples/wdio/reports
@@ -107,18 +124,29 @@ jobs:
           WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
+      - name: Generate Report using JSON files
+        working-directory: examples/wdio
+        run: mchr
+
       - name: Upload Report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: wdio-report-reporter
+          name: wdio-report-reporter-json
           if-no-files-found: error
           path: |
             examples/wdio/reports
             examples/wdio/logs
 
   test-browserstack:
+    strategy:
+      matrix:
+        message-format: [messages, json]
+
     runs-on: ubuntu-latest
+
+    env:
+      MESSAGES: ${{ matrix.message-format }}
 
     steps:
       - name: Checkout Repository
@@ -158,11 +186,21 @@ jobs:
           WDIO_CHROME_VERSION: ${{ steps.setup-chrome.outputs.chrome-version }}
         continue-on-error: true
 
+      - name: Generate Report using ND-JSON files
+        if: ${{ matrix.message-format == 'messages' }}
+        working-directory: examples/wdio
+        run: mchr -m
+
+      - name: Generate Report using JSON files
+        if: ${{ matrix.message-format == 'json' }}
+        working-directory: examples/wdio
+        run: mchr
+
       - name: Upload Report
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: wdio-report-bs-reporter
+          name: wdio-report-bs-reporter-${{ matrix.message-format }}
           if-no-files-found: error
           path: |
             examples/wdio/reports
