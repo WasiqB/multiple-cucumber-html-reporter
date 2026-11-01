@@ -15,14 +15,14 @@ export const config: WebdriverIO.Config = {
         binary: process.env.WDIO_CHROME_PATH || undefined,
         args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
       },
-      metadata: {
+      'cjson:metadata': {
         browser: {
           name: 'chrome',
           version: process.env.WDIO_CHROME_VERSION || '148',
         },
         device: 'Local Machine',
       },
-    } as WebdriverIO.Capabilities & { metadata: Metadata },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
   reporters: [
     'spec',
@@ -39,6 +39,6 @@ export const config: WebdriverIO.Config = {
     capabilities: WebdriverIO.Capabilities[],
     _results: any,
   ) => {
-    saveMetadata(capabilities as WebdriverIO.Capabilities & { metadata: Metadata }[]);
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[]);
   },
 };

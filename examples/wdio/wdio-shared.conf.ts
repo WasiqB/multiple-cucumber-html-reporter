@@ -68,14 +68,14 @@ export const config: WebdriverIO.Config = {
         binary: process.env.WDIO_CHROME_PATH || undefined,
         args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
       },
-      metadata: {
+      'cjson:metadata': {
         browser: {
           name: 'chrome',
           version: process.env.WDIO_CHROME_VERSION || '148',
         },
         device: 'Local Machine',
       },
-    } as WebdriverIO.Capabilities & { metadata: Metadata },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
 
   //
@@ -326,44 +326,7 @@ export const config: WebdriverIO.Config = {
    * @param {<Object>} _results object containing test results
    */
   onComplete: async (_exitCode, _config, capabilities: WebdriverIO.Capabilities[], _results) => {
-    saveMetadata(capabilities as WebdriverIO.Capabilities & { metadata: Metadata }[]);
-
-    //   const reportFolder = process.env.MESSAGES ?? 'json';
-    //   await generate({
-    //     jsonDir: `reports/${reportFolder}/`,
-    //     reportPath: 'reports/report/',
-    //     useCDN: false,
-    //     openReportInBrowser: true,
-    //     saveCollectedJSON: true,
-    //     displayReportTime: true,
-    //     durationInMS: false,
-    //     humanReadableDuration: true,
-    //     emailReport: true,
-    //     displayDuration: true,
-    //     displayChartPercentages: true,
-    //     pageTitle: 'My WDIO Typescript Sample',
-    //     reportName: 'WDIO Cucumber JS Report',
-    //     metadata: {
-    //       browser: {
-    //         name: 'chrome',
-    //         version: process.env.WDIO_CHROME_VERSION || '148',
-    //       },
-    //       device: 'MacBook Pro',
-    //       executionPlatform: 'local',
-    //       platform: {
-    //         name: os.platform().trim(),
-    //         version: os.release().trim(),
-    //       },
-    //     },
-    //     customData: {
-    //       projectName: 'WebDriverIO sample project',
-    //       release: '1.2.0',
-    //       testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
-    //       buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
-    //       environment: 'production',
-    //       ciPipeline: 'GitHub Actions',
-    //     },
-    //   });
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[]);
   },
   /**
    * Gets executed when a refresh happens.

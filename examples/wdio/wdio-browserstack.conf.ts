@@ -37,7 +37,7 @@ export const config: WebdriverIO.Config = {
         },
         args: ['--disable-popup-blocking', '--disable-notifications', '--disable-infobars', '--no-sandbox'],
       },
-      metadata: {
+      'cjson:metadata': {
         browser: {
           name: 'chrome',
           version: process.env.WDIO_CHROME_VERSION || '148',
@@ -45,7 +45,7 @@ export const config: WebdriverIO.Config = {
         device: 'BrowserStack Mac Machine',
         executionPlatform: 'browserstack',
       },
-    } as WebdriverIO.Capabilities & { metadata: Metadata },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
     {
       browserName: 'firefox',
       browserVersion: 'latest',
@@ -54,7 +54,7 @@ export const config: WebdriverIO.Config = {
         osVersion: '11',
         sessionName: 'Saucedemo Test - Firefox Windows',
       },
-      metadata: {
+      'cjson:metadata': {
         browser: {
           name: 'firefox',
           version: 'latest',
@@ -62,7 +62,7 @@ export const config: WebdriverIO.Config = {
         device: 'BrowserStack Windows Machine',
         executionPlatform: 'browserstack',
       },
-    } as WebdriverIO.Capabilities & { metadata: Metadata },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
   /**
    * Gets executed after all tests are done. You still have access to all global variables from
@@ -99,6 +99,6 @@ export const config: WebdriverIO.Config = {
     capabilities: WebdriverIO.Capabilities[],
     _results: any,
   ) => {
-    saveMetadata(capabilities as WebdriverIO.Capabilities & { metadata: Metadata }[]);
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[]);
   },
 };

@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Metadata } from 'multiple-cucumber-html-reporter';
 
-export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { metadata: Metadata })[]): void {
+export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:metadata': Metadata })[]): void {
   const formatterFolder = process.env.MESSAGES || 'json';
   const formatterExt = formatterFolder === 'messages' ? '.ndjson' : '.json';
   const jsonDir = `./reports/${formatterFolder}/`;
@@ -14,7 +14,7 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { metadat
     const filePath = join(jsonDir, file);
     const rawData = readFileSync(filePath, 'utf-8');
     const capability = capabilities[index];
-    const metadata = capability.metadata;
+    const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
 
     if (!rawData.trim()) return;
