@@ -68,12 +68,12 @@ jobs:
       - name: Generate Report using ND-JSON files
         if: ${{ matrix.message-format == 'messages' }}
         working-directory: examples/wdio
-        run: mchr -m
+        run: pnpm mchr -m
 
       - name: Generate Report using JSON files
         if: ${{ matrix.message-format == 'json' }}
         working-directory: examples/wdio
-        run: mchr
+        run: pnpm mchr
 
       - name: Upload Report
         if: always()
@@ -95,7 +95,7 @@ jobs:
       - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: "pnpm"
@@ -126,7 +126,7 @@ jobs:
 
       - name: Generate Report using JSON files
         working-directory: examples/wdio
-        run: mchr
+        run: pnpm mchr
 
       - name: Upload Report
         if: always()
@@ -155,7 +155,7 @@ jobs:
       - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: "pnpm"
@@ -189,12 +189,12 @@ jobs:
       - name: Generate Report using ND-JSON files
         if: ${{ matrix.message-format == 'messages' }}
         working-directory: examples/wdio
-        run: mchr -m
+        run: pnpm mchr -m
 
       - name: Generate Report using JSON files
         if: ${{ matrix.message-format == 'json' }}
         working-directory: examples/wdio
-        run: mchr
+        run: pnpm mchr
 
       - name: Upload Report
         if: always()
