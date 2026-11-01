@@ -3,13 +3,10 @@ import { join } from 'node:path';
 import type { Metadata } from 'multiple-cucumber-html-reporter';
 
 export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:metadata': Metadata })[]): void {
-  console.log('Saving metadata file...');
   const formatterFolder = process.env.MESSAGES || 'json';
   const formatterExt = formatterFolder === 'messages' ? '.ndjson' : '.json';
   const jsonDir = `./reports/${formatterFolder}/`;
   const files = readdirSync(jsonDir).filter((file) => file.endsWith(formatterExt));
-
-  console.log({ formatterFolder, formatterExt, jsonDir, files });
 
   const customMetadata: Record<string, Metadata> = {};
 
@@ -19,8 +16,6 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
     const capability = capabilities[index];
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
-
-    console.log({ filePath, metadata, browserName });
 
     if (!rawData.trim()) return;
 
@@ -58,7 +53,6 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
       });
 
       writeFileSync(filePath, updatedLines.join('\n'));
-      console.log(`File ${filePath} saved successfully...`);
     } else {
       const suiteData = JSON.parse(rawData);
 
@@ -76,10 +70,8 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
       });
 
       writeFileSync(filePath, JSON.stringify(suiteData, null, 2));
-      console.log(`File ${filePath} saved successfully...`);
     }
   });
 
   writeFileSync(join(process.cwd(), 'reports', 'metadata.json'), JSON.stringify(customMetadata, null, 2), 'utf8');
-  console.log(`Saved metadata file successfully...`);
 }
