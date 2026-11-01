@@ -112,6 +112,8 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
       images: [image],
     },
     twitter: {
+      card: 'summary_large_image',
+      creator: '@wasiqbhamla',
       images: [image],
     },
   };

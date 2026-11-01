@@ -9,7 +9,7 @@ const config: Options = {
   useCDN: true,
   emailReport: true,
   humanReadableDuration: true,
-  metadataFilePath: './.run/reports/json/metadata.json',
+  metadataFilePath: `./.run/reports/metadata.json`,
   customData: {
     projectName: 'Cypress sample project',
     release: '1.2.0',

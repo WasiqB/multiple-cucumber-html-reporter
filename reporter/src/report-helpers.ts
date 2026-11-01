@@ -153,6 +153,7 @@ export function parseFeatureHooks(data: any[], keyword: string): Step[] {
  * derive identical feature/scenario/step shapes from the same raw JSON.
  */
 export function applyMetadataAndHooks(json: Feature, options: Options, reportTime: Date | undefined): Feature {
+  console.log({ json, options });
   const optionsMeta = resolveOptionsMetadata(options.metadata, json.uri);
   const baseMeta = json.metadata || optionsMeta;
 

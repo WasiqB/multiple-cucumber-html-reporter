@@ -3,10 +3,13 @@ import { join } from 'node:path';
 import type { Metadata } from 'multiple-cucumber-html-reporter';
 
 export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:metadata': Metadata })[]): void {
+  console.log('Saving metadata file...');
   const formatterFolder = process.env.MESSAGES || 'json';
   const formatterExt = formatterFolder === 'messages' ? '.ndjson' : '.json';
   const jsonDir = `./reports/${formatterFolder}/`;
   const files = readdirSync(jsonDir).filter((file) => file.endsWith(formatterExt));
+
+  console.log({ formatterFolder, formatterExt, jsonDir, files });
 
   const customMetadata: Record<string, Metadata> = {};
 
@@ -17,25 +20,66 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
 
+    console.log({ filePath, metadata, browserName });
+
     if (!rawData.trim()) return;
 
-    const suiteData = JSON.parse(rawData);
+    if (formatterFolder === 'messages') {
+      const lines = rawData.split('\n');
+      const updatedLines = lines.map((line) => {
+        if (!line.trim()) return line;
+        try {
+          const envelope = JSON.parse(line);
+          const updateUri = (uri: string): string => uri.replace('.feature', `-${browserName}.feature`);
 
-    suiteData.forEach((feature: any) => {
-      const originalName = feature.name;
-      feature.name = `${originalName} [${browserName.toUpperCase()}]`;
-      feature.id = `${feature.id}-${browserName}`;
-      const fileName = feature.uri as string;
-      feature.uri = fileName.replace('.feature', `-${browserName}.feature`);
+          if (envelope.source?.uri) {
+            envelope.source.uri = updateUri(envelope.source.uri);
+          }
+          if (envelope.gherkinDocument) {
+            if (envelope.gherkinDocument.uri) {
+              envelope.gherkinDocument.uri = updateUri(envelope.gherkinDocument.uri);
+            }
+            if (envelope.gherkinDocument.feature) {
+              const originalName = envelope.gherkinDocument.feature.name;
+              envelope.gherkinDocument.feature.name = `${originalName} [${browserName.toUpperCase()}]`;
+            }
+            const metaKey = envelope.gherkinDocument.uri?.split('/').pop();
+            if (metaKey) {
+              customMetadata[metaKey] = metadata;
+            }
+          }
+          if (envelope.pickle?.uri) {
+            envelope.pickle.uri = updateUri(envelope.pickle.uri);
+          }
+          return JSON.stringify(envelope);
+        } catch {
+          return line;
+        }
+      });
 
-      const metaKey = (feature.uri as string).split('/').pop();
-      if (metaKey) {
-        customMetadata[metaKey] = metadata;
-      }
-    });
+      writeFileSync(filePath, updatedLines.join('\n'));
+      console.log(`File ${filePath} saved successfully...`);
+    } else {
+      const suiteData = JSON.parse(rawData);
 
-    writeFileSync(filePath, JSON.stringify(suiteData, null, 2));
+      suiteData.forEach((feature: any) => {
+        const originalName = feature.name;
+        feature.name = `${originalName} [${browserName.toUpperCase()}]`;
+        feature.id = `${feature.id}-${browserName}`;
+        const fileName = feature.uri as string;
+        feature.uri = fileName.replace('.feature', `-${browserName}.feature`);
+
+        const metaKey = (feature.uri as string).split('/').pop();
+        if (metaKey) {
+          customMetadata[metaKey] = metadata;
+        }
+      });
+
+      writeFileSync(filePath, JSON.stringify(suiteData, null, 2));
+      console.log(`File ${filePath} saved successfully...`);
+    }
   });
 
   writeFileSync(join(process.cwd(), 'reports', 'metadata.json'), JSON.stringify(customMetadata, null, 2), 'utf8');
+  console.log(`Saved metadata file successfully...`);
 }

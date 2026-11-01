@@ -68,8 +68,8 @@ export const metadata: Metadata = createMetadata({
     images: [
       {
         url: '/images/logo.png',
-        width: 1200,
-        height: 630,
+        width: 500,
+        height: 500,
         alt: 'Multiple Cucumber HTML Reporter Dashboard Preview',
       },
     ],
