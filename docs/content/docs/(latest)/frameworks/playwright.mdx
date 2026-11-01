@@ -22,13 +22,19 @@ We have used `@cucumber/cucumber` dependency to generate the Cucumber JSON repor
 
 ### Cucumber configuration [step]
 
+You can configure Cucumber to emit legacy JSON, Cucumber Messages NDJSON, or both:
+
 ```json
 // cucumber.json
 {
   "default": {
     "import": ["src/steps/*.steps.ts"],
     "paths": ["src/features/*.feature"],
-    "format": ["progress", "json:reports/cucumber-report.json"]  // [!code highlight]
+    "format": [
+      "progress",
+      "json:reports/json/cucumber-report.json", // [!code highlight]
+      "message:reports/messages/cucumber-report.ndjson" // [!code highlight]
+    ]
   }
 }
 ```
@@ -44,18 +50,19 @@ import { mkdir, rm } from 'node:fs/promises';
 await rm('reports', { recursive: true, force: true });
 await rm('test-results', { recursive: true, force: true });
 
-await mkdir('reports', { recursive: true });
+await mkdir('reports/json', { recursive: true });
+await mkdir('reports/messages', { recursive: true });
 await mkdir('test-results/screenshots', { recursive: true });
 await mkdir('test-results/trace', { recursive: true });
 ```
 
 ### Reporter configuration file [step]
 
-Create a Yaml reporter config file at the root of the project as shown below:
+Create a Yaml reporter config file at the root of the project as shown below. By using `${MESSAGES:"json"}`, the report dynamically targets `./reports/json/` by default or `./reports/messages/` when `MESSAGES=messages` is passed:
 
 ```yaml
 # .multiple-cucumber-html-reporter.yml
-jsonDir: 'reports/'
+jsonDir: 'reports/${MESSAGES:"json"}'
 reportPath: 'reports/report/'
 useCDN: false
 openReportInBrowser: true
@@ -126,6 +133,17 @@ This command will execute all your test cases.
 
 Execute the following command to generate the report:
 
-```shell
-pnpm report
-```
+<Tabs groupId='report-type' items={['Legacy JSON', 'Cucumber Messages (NDJSON)']}>
+  <Tab value="Legacy JSON">
+  ```shell
+  pnpm report
+  ```
+  </Tab>
+  <Tab value="Cucumber Messages (NDJSON)">
+  ```shell
+  MESSAGES=messages pnpm report --messages
+  # or shorthand:
+  MESSAGES=messages mchr -m
+  ```
+  </Tab>
+</Tabs>

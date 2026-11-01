@@ -68,6 +68,7 @@
 -   🌍 **Localized Reports**: Display report labels in English, Spanish, French, Portuguese, or Arabic, with right-to-left layout for Arabic.
 -   📬 **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
 -   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
+-   📨 **Cucumber Messages NDJSON Support**: Ingest standard Cucumber Messages NDJSON format line-by-line via the `useCucumberMessages` option or the CLI `--messages` (`-m`) flag.
 -   🤝 **Language independent**: Generate Cucumber report using any Cucucmber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
@@ -119,6 +120,9 @@ Create a `.multiple-cucumber-html-reporter.json` file in your project root:
 mchr
 # OR, generate report with Emailable report
 mchr --email
+# OR, read Cucumber Messages NDJSON files instead of legacy JSON format
+mchr --messages
+# (or shorthand: mchr -m)
 ```
 
 That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.com/docs/cli) for all available config options.
@@ -146,6 +150,7 @@ import { generate } from 'multiple-cucumber-html-reporter';
 generate({
   jsonDir: "./path-to-your-json-output/",
   reportPath: "./path-where-the-report-needs-to-be/",
+  useCucumberMessages: false, // Set to true to ingest Cucumber Messages NDJSON (*.ndjson)
   emailReport: true,
   metadata: {
     browser: {
