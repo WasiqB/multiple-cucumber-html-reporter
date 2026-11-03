@@ -10,10 +10,11 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
 
   const customMetadata: Record<string, Metadata> = {};
 
-  files.forEach((file, index) => {
+  files.forEach((file) => {
     const filePath = join(jsonDir, file);
     const rawData = readFileSync(filePath, 'utf-8');
-    const capability = capabilities[index];
+    const workerId = file.match(/-(\d+)-\d+\.[^.]+$/);
+    const capability = workerId ? capabilities[Number(workerId[1])] : undefined;
     if (!capability) return;
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';

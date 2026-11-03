@@ -374,6 +374,7 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
     const filePath = join(jsonDir, file);
     const rawData = readFileSync(filePath, 'utf-8');
     const capability = capabilities[index];
+    if (!capability) return;
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
 
