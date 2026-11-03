@@ -39,6 +39,6 @@ export const config: WebdriverIO.Config = {
     capabilities: WebdriverIO.Capabilities[],
     _results: any,
   ) => {
-    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[]);
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[], true);
   },
 };

@@ -2,7 +2,10 @@ import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Metadata } from 'multiple-cucumber-html-reporter';
 
-export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:metadata': Metadata })[]): void {
+export function saveMetadata(
+  capabilities: (WebdriverIO.Capabilities & { 'cjson:metadata': Metadata })[],
+  useIndex: boolean = false,
+): void {
   const formatterFolder = process.env.MESSAGES || 'json';
   const formatterExt = formatterFolder === 'messages' ? '.ndjson' : '.json';
   const jsonDir = `./reports/${formatterFolder}/`;
@@ -10,11 +13,11 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
 
   const customMetadata: Record<string, Metadata> = {};
 
-  files.forEach((file) => {
+  files.forEach((file, index) => {
     const filePath = join(jsonDir, file);
     const rawData = readFileSync(filePath, 'utf-8');
     const workerId = file.match(/-(\d+)-\d+\.[^.]+$/);
-    const capability = workerId ? capabilities[Number(workerId[1])] : undefined;
+    const capability = !useIndex && workerId ? capabilities[Number(workerId[1])] : capabilities[index];
     if (!capability) return;
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
