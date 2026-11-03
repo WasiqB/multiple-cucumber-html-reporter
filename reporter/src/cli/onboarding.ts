@@ -102,6 +102,7 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       { value: 'cdn', label: 'Load assets from CDN (faster for CI)' },
       { value: 'logging', label: 'Reporter logging level' },
       { value: 'language', label: 'Report language (English, Spanish, French, Portuguese, Arabic)' },
+      { value: 'messages', label: 'Cucumber Messages NDJSON input' },
     ],
     required: false,
   });
@@ -200,6 +201,17 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
       return cancelOnboarding();
     }
     options.openReportInBrowser = openBrowser as boolean;
+  }
+
+  if (selected.includes('messages')) {
+    const useCucumberMessages = await p.confirm({
+      message: 'Read Cucumber Messages NDJSON (*.ndjson) files instead of legacy Cucumber JSON files?',
+      initialValue: false,
+    });
+    if (p.isCancel(useCucumberMessages)) {
+      return cancelOnboarding();
+    }
+    options.useCucumberMessages = useCucumberMessages as boolean;
   }
 
   if (selected.includes('cdn')) {

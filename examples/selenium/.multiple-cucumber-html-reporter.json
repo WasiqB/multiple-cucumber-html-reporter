@@ -1,5 +1,5 @@
 {
-  "jsonDir": "./reports/json",
+  "jsonDir": "./reports/${MESSAGES:'json'}",
   "reportPath": "./reports/html",
   "emailReport": true,
   "openReportInBrowser": true,

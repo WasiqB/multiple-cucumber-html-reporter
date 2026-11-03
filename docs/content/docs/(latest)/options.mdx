@@ -22,6 +22,12 @@ Need help assembling your options? Use the interactive [Config Builder](/config-
       required: true,
       typeDescription: 'string',
     },
+    useCucumberMessages: {
+      description: <>Read the latest Cucumber Messages NDJSON files from <code>jsonDir</code> instead of legacy JSON formatter files. Both <code>.ndjson</code> and Messages streams saved with a <code>.json</code> filename are supported. The input is read line-by-line, which avoids loading a large NDJSON file as one string. Defaults to <code>false</code>, preserving existing JSON behavior.</>,
+      type: 'boolean',
+      default: false,
+      typeDescription: 'boolean'
+    },
     reportPath: {
       description: 'The directory in which the final report needs to be saved. Both jsonDir and reportPath are relative from where the script is started',
       type: 'string',

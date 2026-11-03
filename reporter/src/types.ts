@@ -56,6 +56,13 @@ export type LoggingOptions =
 export interface Options {
   jsonDir: string;
   reportPath: string;
+  /**
+   * Read Cucumber Messages NDJSON from `jsonDir` instead of the legacy
+   * Cucumber JSON formatter output. Both `.ndjson` and the `.json` filenames
+   * emitted by some Messages formatters are supported. Disabled by default so
+   * existing configurations continue to behave exactly as before.
+   */
+  useCucumberMessages?: boolean;
   customData?: CustomData;
   /**
    * Metadata to attach to features.

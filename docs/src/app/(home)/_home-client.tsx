@@ -1,7 +1,18 @@
 'use client';
 
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
-import { Activity, BarChart3, Heart, Languages, Layers, Mail, MessageSquare, Star, Zap } from 'lucide-react';
+import {
+  Activity,
+  BarChart3,
+  CurlyBraces,
+  Heart,
+  Languages,
+  Layers,
+  Mail,
+  MessageSquare,
+  Star,
+  Zap,
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -65,6 +76,11 @@ export default function HomePageClient({ version }: { version: string }) {
         title: 'Localized Reports',
         description:
           'Choose English, Spanish, French, Portuguese, or Arabic report labels, with right-to-left layout for Arabic.',
+      },
+      {
+        description: 'Supports Cucumber Messages NDJSON format and Cucumber JSON format.',
+        title: 'Supports Cucumber Messages & JSON',
+        icon: 'CurlyBraces',
       },
     ],
   };
@@ -178,6 +194,7 @@ customData:
     StarFill: <Star className='h-6 w-6 text-emerald-500' />,
     Mail: <Mail className='h-6 w-6 text-emerald-500' />,
     Languages: <Languages className='h-6 w-6 text-emerald-500' />,
+    CurlyBraces: <CurlyBraces className='h-6 w-6 text-emerald-500' />,
   };
 
   const { stats } = statsDataJson as ProjectStats;

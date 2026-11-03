@@ -1,4 +1,4 @@
-jsonDir: 'reports/'
+jsonDir: 'reports/${MESSAGES:"json"}'
 reportPath: 'reports/report/'
 useCDN: false
 openReportInBrowser: true

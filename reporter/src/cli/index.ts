@@ -55,6 +55,11 @@ async function main(): Promise<void> {
       default: false,
       description: 'Generate an emailable HTML report summary (email-report.html)',
     })
+    .option('messages', {
+      alias: 'm',
+      type: 'boolean',
+      description: 'Read Cucumber Messages NDJSON (*.ndjson) files instead of legacy JSON formatter files',
+    })
     .option('log-level', {
       alias: 'l',
       type: 'string',
@@ -140,6 +145,10 @@ async function main(): Promise<void> {
 
   if (argv.email) {
     options.emailReport = true;
+  }
+
+  if (argv.messages) {
+    options.useCucumberMessages = true;
   }
 
   if (argv.silent) {

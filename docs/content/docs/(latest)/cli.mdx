@@ -88,6 +88,12 @@ Following are the allowed options in the command line tool:
       type: 'boolean',
       typeDescription: 'boolean'
     },
+    '--messages': {
+      description: <>Reads Cucumber Messages NDJSON (<code>*.ndjson</code>) files instead of legacy Cucumber JSON files. The <code>-m</code> alias is also available.</>,
+      type: 'boolean',
+      typeDescription: 'boolean',
+      default: false
+    },
     '--language <language>': {
       description: <>Sets the report language. Supported values are <code>en</code> (English, default), <code>es</code> (Spanish), <code>fr</code> (French), <code>pt</code> (Portuguese), and <code>ar</code> (Arabic). Regional tags such as <code>pt-BR</code> are accepted and narrowed to their base language, and an unsupported value stops the run. The <code>--lang</code> alias is also available.</>,
       type: 'en | es | fr | pt | ar',

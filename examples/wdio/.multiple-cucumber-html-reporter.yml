@@ -1,0 +1,20 @@
+jsonDir: ./reports/${MESSAGES:'json'}
+reportPath: ./reports/html
+emailReport: true
+openReportInBrowser: true
+displayDuration: true
+humanReadableDuration: true
+displayReportTime: true
+durationInMS: true
+brandLogo: '../../docs/public/images/logo.png'
+durationAggregation: sum
+pageTitle: 'My WDIO Typescript Sample'
+reportName: 'WDIO Cucumber JS Report'
+metadataFilePath: ./reports/metadata.json
+customData: 
+  projectName: 'WebDriverIO sample project'
+  release: '1.2.0'
+  testCycle: ${GITHUB_RUN_ID:'Cycle 1'}
+  buildNumber: ${GITHUB_RUN_NUMBER:'Build 1'}
+  environment: 'production'
+  ciPipeline: 'GitHub Actions'

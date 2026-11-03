@@ -131,4 +131,16 @@ export default config;
     expect(loaded).not.toBeNull();
     expect(loaded?.options.emailReport).toBeTrue();
   });
+
+  it('should support Cucumber Messages NDJSON input in options config', async () => {
+    const configPath = path.join(tempDir, '.multiple-cucumber-html-reporter.json');
+    await fs.writeJson(configPath, {
+      jsonDir: './messages',
+      reportPath: './report-path',
+      useCucumberMessages: true,
+    });
+
+    const loaded = await loadConfig(tempDir);
+    expect(loaded?.options.useCucumberMessages).toBeTrue();
+  });
 });

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { baseUrl } from './shared';
-import type { Page } from './source';
 
 export function createMetadata(override: Metadata): Metadata {
   return {
@@ -24,15 +23,6 @@ export function createMetadata(override: Metadata): Metadata {
     alternates: {
       ...override.alternates,
     },
-  };
-}
-
-export function getPageImage(page: Page) {
-  const segments = [...page.slugs, 'image.webp'];
-
-  return {
-    segments,
-    url: `/og/${segments.join('/')}`,
   };
 }
 

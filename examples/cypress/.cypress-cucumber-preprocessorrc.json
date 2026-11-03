@@ -5,7 +5,7 @@
   },
   "messages": {
     "enabled": true,
-    "output": ".run/reports/messages/cucumber-report.json"
+    "output": ".run/reports/messages/cucumber-report.ndjson"
   },
   "stepDefinitions": ["src/steps/*.steps.{js,ts}"]
 }

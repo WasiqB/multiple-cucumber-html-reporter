@@ -31,30 +31,28 @@ We have used the following dependencies to generate the Cucumber JSON report fil
 
 ### Cucumber configuration [step]
 
-Add the following config properties file in `src/test/resources` folder.
+Add the following config properties file in `src/test/resources` folder. You can configure plugins for both legacy JSON format and Cucumber Messages NDJSON format:
 
 ```properties
 # junit-platform.properties
 # Specify package containing step definitions
 cucumber.glue=com.mchr.examples.selenium.steps
-# Declare plugins for console output and generating the JSON report
-cucumber.plugin=pretty, json:reports/json/cucumber.json  # [!code highlight]
+# Declare plugins for console output and generating both JSON and NDJSON reports
+cucumber.plugin=pretty, json:reports/json/cucumber.json, message:reports/messages/cucumber-report.ndjson  # [!code highlight]
 # Equivalent to monochrome = true
 cucumber.ansi-colors.disabled=false
 ```
 
 ### Reporter configuration file [step]
 
-Run the `mchr` command in the project root folder and complete onboarding flow to create the config file.
+Run the `mchr` command in the project root folder and complete onboarding flow to create the config file, or create `.multiple-cucumber-html-reporter.json` manually.
 
-By default, JSON based config file will be created in the folder.
-
-Update the config file as per your requirements.
+By using `${MESSAGES:'json'}` in `jsonDir`, the reporter dynamically picks up either the JSON directory (`./reports/json`) or the Cucumber Messages directory (`./reports/messages`):
 
 ```json
 // .multiple-cucumber-html-reporter.json
 {
-  "jsonDir": "./reports/json",
+  "jsonDir": "./reports/${MESSAGES:'json'}", // [!code highlight]
   "reportPath": "./reports/html",
   "emailReport": true,
   "openReportInBrowser": true,
@@ -97,8 +95,19 @@ This command will execute all your test cases.
 
 ### Generate the report [step]
 
-Execute the following command to generate the report:
+Execute the report generation command in your preferred format:
 
-```shell
-mchr
-```
+<Tabs groupId='report-type' items={['Legacy JSON', 'Cucumber Messages (NDJSON)']}>
+  <Tab value="Legacy JSON">
+  ```shell
+  mchr
+  ```
+  </Tab>
+  <Tab value="Cucumber Messages (NDJSON)">
+  ```shell
+  MESSAGES=messages mchr --messages
+  # or shorthand:
+  MESSAGES=messages mchr -m
+  ```
+  </Tab>
+</Tabs>

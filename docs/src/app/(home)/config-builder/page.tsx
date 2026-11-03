@@ -383,6 +383,23 @@ export default function ConfigBuilderPage() {
                       <div className='divide-y divide-border/40 rounded-xl border border-border/60 bg-muted/20 px-4 py-2 mt-4'>
                         <div className='flex items-center justify-between py-3'>
                           <div className='space-y-0.5 pr-4'>
+                            <Label htmlFor='useCucumberMessages' className='text-sm font-medium cursor-pointer'>
+                              Read Cucumber Messages NDJSON
+                            </Label>
+                            <p className='text-[11px] text-muted-foreground'>
+                              Uses line-delimited Messages files (<code>.ndjson</code> or compatible <code>.json</code>
+                              names) from the input directory instead of legacy Cucumber JSON formatter files.
+                            </p>
+                          </div>
+                          <Switch
+                            id='useCucumberMessages'
+                            checked={state.useCucumberMessages}
+                            onCheckedChange={(val) => handleUpdate('useCucumberMessages', val)}
+                          />
+                        </div>
+
+                        <div className='flex items-center justify-between py-3'>
+                          <div className='space-y-0.5 pr-4'>
                             <Label htmlFor='emailReport' className='text-sm font-medium cursor-pointer'>
                               Generate Emailable HTML Report
                             </Label>

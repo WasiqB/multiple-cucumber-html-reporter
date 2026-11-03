@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
-import os from 'node:os';
-import { generate } from 'multiple-cucumber-html-reporter';
+import type { Metadata } from 'multiple-cucumber-html-reporter';
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
+import { saveMetadata } from '@/libs/metadata-parser';
 
 export const isCI = !!process.env.CI;
 
@@ -68,7 +68,14 @@ export const config: WebdriverIO.Config = {
         binary: process.env.WDIO_CHROME_PATH || undefined,
         args: isCI ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [],
       },
-    },
+      'cjson:metadata': {
+        browser: {
+          name: 'chrome',
+          version: process.env.WDIO_CHROME_VERSION || '148',
+        },
+        device: 'Local Machine',
+      },
+    } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],
 
   //
@@ -318,42 +325,8 @@ export const config: WebdriverIO.Config = {
    * @param {Array.<Object>} _capabilities list of capabilities details
    * @param {<Object>} _results object containing test results
    */
-  onComplete: async (_exitCode, _config, _capabilities, _results) => {
-    await generate({
-      jsonDir: 'reports/json/',
-      reportPath: 'reports/report/',
-      useCDN: false,
-      openReportInBrowser: true,
-      saveCollectedJSON: true,
-      displayReportTime: true,
-      durationInMS: false,
-      humanReadableDuration: true,
-      emailReport: true,
-      displayDuration: true,
-      displayChartPercentages: true,
-      pageTitle: 'My WDIO Typescript Sample',
-      reportName: 'WDIO Cucumber JS Report',
-      metadata: {
-        browser: {
-          name: 'chrome',
-          version: process.env.WDIO_CHROME_VERSION || '148',
-        },
-        device: 'MacBook Pro',
-        executionPlatform: 'local',
-        platform: {
-          name: os.platform().trim(),
-          version: os.release().trim(),
-        },
-      },
-      customData: {
-        projectName: 'WebDriverIO sample project',
-        release: '1.2.0',
-        testCycle: process.env.GITHUB_RUN_ID || 'Cycle 1',
-        buildNumber: process.env.GITHUB_RUN_NUMBER || 'Build 1',
-        environment: 'production',
-        ciPipeline: 'GitHub Actions',
-      },
-    });
+  onComplete: async (_exitCode, _config, capabilities: WebdriverIO.Capabilities[], _results) => {
+    saveMetadata(capabilities as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata }[]);
   },
   /**
    * Gets executed when a refresh happens.
