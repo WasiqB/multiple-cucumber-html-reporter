@@ -44,6 +44,10 @@ export const config: WebdriverIO.Config = {
         },
         device: 'BrowserStack Mac Machine',
         executionPlatform: 'browserstack',
+        platform: {
+          name: 'osx',
+          version: '26.5.1',
+        },
       },
     } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
     {
@@ -61,6 +65,10 @@ export const config: WebdriverIO.Config = {
         },
         device: 'BrowserStack Windows Machine',
         executionPlatform: 'browserstack',
+        platform: {
+          name: 'windows',
+          version: '11',
+        },
       },
     } as WebdriverIO.Capabilities & { 'cjson:metadata': Metadata },
   ],

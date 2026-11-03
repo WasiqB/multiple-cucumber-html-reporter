@@ -61,15 +61,31 @@ export async function* streamFeaturesFromMessagesFile(
         attachments.set(attachment.testCaseStartedId, list);
       }
       if (envelope.testCaseFinished) {
-        const testCaseStarted = started.get(envelope.testCaseFinished.testCaseStartedId);
-        if (!testCaseStarted) continue;
+        const testCaseStartedId = envelope.testCaseFinished.testCaseStartedId;
+        const testCaseStarted = started.get(testCaseStartedId);
+        if (!testCaseStarted) {
+          throw new Error(
+            `Missing testCaseStarted record '${testCaseStartedId}' in Cucumber Messages NDJSON '${filePath}'.`,
+          );
+        }
         const testCase = testCases.get(testCaseStarted.testCaseId);
-        const pickle = testCase && pickles.get(testCase.pickleId);
-        if (!testCase || !pickle) continue;
+        if (!testCase) {
+          throw new Error(
+            `Missing testCase record '${testCaseStarted.testCaseId}' in Cucumber Messages NDJSON '${filePath}'.`,
+          );
+        }
+        const pickle = pickles.get(testCase.pickleId);
+        if (!pickle) {
+          throw new Error(`Missing pickle record '${testCase.pickleId}' in Cucumber Messages NDJSON '${filePath}'.`);
+        }
 
         const document = documents.get(pickle.uri ?? '');
         const featureDocument = document?.feature;
-        if (!featureDocument) continue;
+        if (!featureDocument) {
+          throw new Error(
+            `Missing gherkinDocument record for URI '${pickle.uri ?? ''}' in Cucumber Messages NDJSON '${filePath}'.`,
+          );
+        }
         const key = pickle.uri ?? featureDocument.name;
         let feature = features.get(key);
         if (!feature) {
@@ -99,7 +115,6 @@ export async function* streamFeaturesFromMessagesFile(
         );
         started.delete(testCaseStarted.id);
         attachments.delete(testCaseStarted.id);
-        testCases.delete(testCase.id);
       }
     }
 

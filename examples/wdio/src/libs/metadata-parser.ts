@@ -14,6 +14,7 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
     const filePath = join(jsonDir, file);
     const rawData = readFileSync(filePath, 'utf-8');
     const capability = capabilities[index];
+    if (!capability) return;
     const metadata = capability['cjson:metadata'];
     const browserName = capability.browserName || 'chrome';
 
@@ -60,7 +61,7 @@ export function saveMetadata(capabilities: (WebdriverIO.Capabilities & { 'cjson:
         const originalName = feature.name;
         feature.name = `${originalName} [${browserName.toUpperCase()}]`;
         feature.id = `${feature.id}-${browserName}`;
-        const fileName = feature.uri as string;
+        const fileName = (feature?.uri as string) || '';
         feature.uri = fileName.replace('.feature', `-${browserName}.feature`);
 
         const metaKey = (feature.uri as string).split('/').pop();
