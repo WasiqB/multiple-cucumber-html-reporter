@@ -59,22 +59,22 @@
 
 ## 🌟 Why this reporter?
 
-**Multiple Cucumber HTML Reporter** is a robust reporting module that transforms standard Cucumber JSON output into stunning, feature-rich HTML reports. Unlike generic reporters, it is designed for scale and clarity.
+**Multiple Cucumber HTML Reporter** is a robust reporting module that transforms standard Cucumber Messages NDJSON output and JSON output into stunning, feature-rich HTML reports. Unlike generic reporters, it is designed for scale and clarity.
 
 ### ✨ Key Features
 
 -   📊 **Interactive Dashboard**: Scored overview of all tested features and scenarios.
 -   🌓 **Dark Mode Support**: Built-in support for light and dark themes for better accessibility.
--   🌍 **Localized Reports**: Display report labels in English, Spanish, French, Portuguese, or Arabic, with right-to-left layout for Arabic.
--   📬 **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
--   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
+-   🖥️ **CLI Tool** *(new since v4.2.0)*: Generate reports instantly with the `mchr` CLI — no scripting required.
+-   🌍 **Localized Reports**: Display report labels in *English, Spanish, French, Portuguese, or Arabic*, with right-to-left layout for Arabic.
 -   📨 **Cucumber Messages NDJSON Support**: Ingest standard Cucumber Messages NDJSON format line-by-line via the `useCucumberMessages` option or the CLI `--messages` (`-m`) flag.
--   🤝 **Language independent**: Generate Cucumber report using any Cucucmber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
+-   🤝 **Language independent**: Generate Cucumber report using any Cucumber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
+-   📬 **Email-able Report**: Generate a separate Email-able report which you can send to the stakeholders.
+-   🔄 **Multiple Runs**: Consolidate multiple runs of the same feature (e.g., across different browsers or devices).
 -   📱 **Rich Metadata**: Automatically display browser, device, platform, and app version details.
 -   🔍 **Advanced Filtering**: Easily search, filter, and sort through large test suites.
 -   🎨 **Fully Customizable**: Add custom data blocks, brand colors, logo, footer, and additional CSS styles.
 -   ⚡ **Built for Scale**: Streams report generation, so suites with heavy screenshot/video attachments don't run out of memory.
--   🖥️ **CLI Tool** *(new in v4.2.0)*: Generate reports instantly with the `mchr` CLI — no scripting required.
 
 ---
 
@@ -241,7 +241,7 @@ Following are the awesome supporters to the project who has sponsored their appl
 
 ## 💗 Repo Activity
 
-![Multiple Cucumber HTML Reporter Repo activity](https://repobeats.axiom.co/api/embed/b0964ed36e8c350255ca9b3f357459af82d712a4.svg "Repobeats analytics image")
+![Multiple Cucumber HTML Reporter Repo activity](https://repobeats.axiom.co/api/embed/b0964ed36e8c350255ca9b3f357459af82d712a4.svg "Repo beats analytics image")
 
 ## ⚖️ License
 

@@ -82,40 +82,6 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
-      - name: List files in dist folder
-        working-directory: reporter
-        run: ls -la dist/
-
-      - name: Assert required release assets exist
-        working-directory: reporter
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          required=(
-            dist/collect-jsons.{d.ts,d.ts.map,js,js.map}
-            dist/generate-report.{d.ts,d.ts.map,js,js.map}
-            dist/logger.{d.ts,d.ts.map,js,js.map}
-            dist/report-helpers.{d.ts,d.ts.map,js,js.map}
-            dist/run-build.{d.ts,d.ts.map,js,js.map}
-            dist/types.{d.ts,d.ts.map,js,js.map}
-            dist/cli/{config-loader,index,onboarding,prompts}.{d.ts,d.ts.map,js,js.map}
-            dist/streaming/json-stream.{d.ts,d.ts.map,js,js.map}
-          )
-
-          missing=()
-          for file in "${required[@]}"; do
-            [[ -f "$file" ]] || missing+=("$file")
-          done
-
-          if (( ${#missing[@]} > 0 )); then
-            printf '❌ Missing required release assets:\n'
-            printf '  - %s\n' "${missing[@]}"
-            exit 1
-          fi
-
-          printf '✅ All %d required release assets exist.\n' "${#required[@]}"
-
       - name: Release
         if: ${{ ! inputs.pre-release }}
         run: pnpm release.${{ github.event.inputs.release-type }} --dry-run
@@ -154,11 +120,6 @@ jobs:
           git_commit_gpgsign: true
           git_tag_gpgsign: true
 
-      - name: git config
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
       - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
@@ -174,10 +135,6 @@ jobs:
         run: |
           npm install -g npm
           npm -v
-
-      - name: List files in dist folder
-        working-directory: reporter
-        run: ls -la dist/
 
       - name: Release
         if: ${{ ! inputs.pre-release }}

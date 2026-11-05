@@ -4,29 +4,29 @@ description: Multiple Cucumber HTML Reporter is a reporting module for Cucumber 
 icon: Compass
 ---
 
-Multiple Cucumber HTML Reporter is a powerful reporting module for Cucumber that transforms standard JSON output into a beautiful, interactive, and highly detailed HTML report.
+Multiple Cucumber HTML Reporter is a powerful reporting module for Cucumber that transforms standard Messages NDJSON output and JSON output into a beautiful, interactive, and highly detailed HTML report.
 
 Unlike many other reporting modules, this module provides:
 
 - **Quick Overview**: A high-level summary of all tested features and scenarios.
 - **Command line tool**: Generate report quickly using command line tool.
+- **Cucumber Messages Support**: Direct support for modern Cucumber Messages NDJSON format via streaming, toggle-able with the `useCucumberMessages` option or `--messages` CLI flag.
+- **Language independent**: Generate Cucumber report using any Cucumber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
+- **Email-able Report**: Generate a separate Email-able report which you can send to the stakeholders.
+- **Localized Reports**: Display report labels in English, Spanish, French, Portuguese, or Arabic. Arabic reports use a right-to-left layout.
 - **Multiple Runs Support**: Ability to hold multiple runs of the same feature or runs Across different browsers and devices.
-- **Cucumber Messages Support**: Direct support for modern Cucumber Messages NDJSON format via streaming, toggleable with the `useCucumberMessages` option or `--messages` CLI flag.
-- **Language independent**: Generate Cucumber report using any Cucucmber language binding with any frameworks like Selenium WebDriver, Playwright, WebDriverIO, etc using Java, Typescript, Javascript, and other languages.
 - **Charts**: Visual representation of test results.
 - **Interactive Search**: Easily search, filter, and sort through your features and results.
 - **Metadata Rich**: Detailed insights into the browser, version, platform, and device used for each test run.
 - **Dark Mode Support**: Beautifully designed UI with native support for dark mode.
-- **Customisable Report**: Add your organisation brand logo, title, footer to customise the report as per your requirement.
+- **Customizable Report**: Add your organization brand logo, title, footer to customize the report as per your requirement.
 - **Built for Scale**: Streams report generation, so suites with heavy screenshot/video attachments don't run out of memory.
-- **Emailable Report**: Generate a separate Emailable report which you can send to the stakeholders.
-- **Localized Reports**: Display report labels in English, Spanish, French, Portuguese, or Arabic. Arabic reports use a right-to-left layout.
 
 ## Feature Highlights
 
 ### Report Languages
 
-Choose the language for static labels in both the main report and the emailable report with the `language` option. English (`en`) is the default; Spanish (`es`), French (`fr`), Portuguese (`pt`), and Arabic (`ar`) are also supported. Portuguese uses Brazilian wording, and `pt-BR` or `pt-PT` both resolve to `pt`. Arabic reports use a right-to-left layout. Feature, scenario, and other test-provided content remains as written in the source test results.
+Choose the language for static labels in both the main report and the email-able report with the `language` option. English (`en`) is the default; Spanish (`es`), French (`fr`), Portuguese (`pt`), and Arabic (`ar`) are also supported. Portuguese uses Brazilian wording, and `pt-BR` or `pt-PT` both resolve to `pt`. Arabic reports use a right-to-left layout. Feature, scenario, and other test-provided content remains as written in the source test results.
 
 ### Features List Page
 
@@ -66,4 +66,4 @@ Choose the language for static labels in both the main report and the emailable 
 4. **Detailed Scenarios**: Drill down into specific steps, attachments, and error messages.
 5. **Charts**: Visual representation of test results.
 6. **Scalable**: Generate report for large test suites with heavy attachments.
-7. **Email Report**: Generate Emailable report version which you can share with project stakeholders.
+7. **Email Report**: Generate Email-able report version which you can share with project stakeholders.
