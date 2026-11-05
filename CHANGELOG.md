@@ -3,6 +3,27 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.6.0 (2026-11-05)
+
+#### :rocket: New Feature
+
+- [#648](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/648) feat: :sparkles: added Cucumber messages ndjson file support ([@WasiqB](https://github.com/WasiqB))
+- [#647](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/647) feat: :sparkles: updated cli to add option for config file format ([@WasiqB](https://github.com/WasiqB))
+- [#645](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/645) feat: :sparkles: added initial values for CLI onboarding flow ([@WasiqB](https://github.com/WasiqB))
+- [#642](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/642) feat: :sparkles: add Portuguese and keep translated tooltips on feature ([@siva90144](https://github.com/siva90144))
+
+#### :nail_care: Polish
+
+- [#650](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/650) chore(deps): bump the dependencies group with 5 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#649](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/649) chore(deps-dev): bump org.apache.maven.plugins:maven-surefire-plugin from 3.6.0 to 3.6.1 in /examples/selenium ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#646](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/646) chore(deps): bump tools.jackson.core:jackson-databind from 3.2.3 to 3.2.4 in /examples/selenium in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 2
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+- [@siva90144](https://github.com/siva90144)
+
+
 ## 4.5.0 (2026-10-18)
 
 #### :rocket: New Feature
