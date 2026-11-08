@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const formatterFolder = process.env.MESSAGES || 'json';
 const formatterExt = formatterFolder === 'messages' ? '.ndjson' : '.json';
-const rawReportDir = join(__dirname, `.run/reports/${formatterFolder}`);
+const rawReportDir = join(__dirname, `reports/${formatterFolder}`);
 
 function updateFeatureFileNameByBrowser(filePath: string, browser: string): Record<string, Metadata> {
   const metadata: Metadata = {
@@ -122,7 +122,7 @@ async function executeCrossBrowserTests() {
       console.log(`✅ Saved browser report to: ${targetedReportPath}`);
     }
   }
-  writeFileSync(join(__dirname, '.run/reports/metadata.json'), JSON.stringify(metadata, null, 2), 'utf8');
+  writeFileSync(join(__dirname, 'reports/metadata.json'), JSON.stringify(metadata, null, 2), 'utf8');
 }
 
 executeCrossBrowserTests().catch(console.error);

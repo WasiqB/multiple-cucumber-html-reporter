@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf dist .run",
+    "clean": "rm -rf dist reports",
     "build": "pnpm clean && tsc",
     "test": "pnpm build && tsx cypress-runner.ts",
     "report": "mchr"

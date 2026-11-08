@@ -57,12 +57,12 @@ const howItWorksData = {
         {
           command: `// .multiple-cucumber-html-reporter.js
 const config = {
-  jsonDir: './.run/reports/json/',
-  reportPath: './.run/html-report/',
+  jsonDir: './reports/json/',
+  reportPath: './html-report/',
   openReportInBrowser: true,
   useCDN: true,
   emailReport: true,
-  metadataFilePath: './.run/reports/json/metadata.json',
+  metadataFilePath: './reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',
     release: '1.2.0',
@@ -85,12 +85,12 @@ module.exports = config;`,
 import type { Options } from 'multiple-cucumber-html-reporter';
 
 const config: Option = {
-  jsonDir: './.run/reports/json/',
-  reportPath: './.run/html-report/',
+  jsonDir: './reports/json/',
+  reportPath: './html-report/',
   openReportInBrowser: true,
   useCDN: true,
   emailReport: true,
-  metadataFilePath: './.run/reports/json/metadata.json',
+  metadataFilePath: './reports/json/metadata.json',
   customData: {
     projectName: 'Cypress sample project',
     release: '1.2.0',
@@ -110,12 +110,12 @@ export default config;`,
         },
         {
           command: `// .multiple-cucumber-html-reporter.yml
-jsonDir: './.run/reports/json/'
-reportPath: './.run/html-report/'
+jsonDir: './reports/json/'
+reportPath: './html-report/'
 openReportInBrowser: true
 useCDN: true
 emailReport: true
-metadataFilePath: './.run/reports/json/metadata.json'
+metadataFilePath: './reports/json/metadata.json'
 customData:
   projectName: 'Cypress sample project'
   release: '1.2.0'
@@ -132,12 +132,12 @@ displayReportTime: true`,
         {
           command: `// .multiple-cucumber-html-reporter.json
 {
-  "jsonDir": "./.run/reports/json/",
-  "reportPath": "./.run/html-report/",
+  "jsonDir": "./reports/json/",
+  "reportPath": "./html-report/",
   "openReportInBrowser": true,
   "useCDN": true,
   "emailReport": true,
-  "metadataFilePath": "./.run/reports/json/metadata.json",
+  "metadataFilePath": "./reports/json/metadata.json",
   "customData": {
     "projectName": "Cypress sample project",
     "release": "1.2.0",
@@ -170,8 +170,8 @@ displayReportTime: true`,
 ◇  Report generated successfully!
 │
 └   Report ready:
-  - Main Report:  /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/index.html
-  - Email Report: /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/.run/html-report/email-report.html`,
+  - Main Report:  /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/html-report/index.html
+  - Email Report: /Users/wasiqbhamla/multiple-cucumber-html-reporter/examples/cypress/html-report/email-report.html`,
         },
       ],
     },
