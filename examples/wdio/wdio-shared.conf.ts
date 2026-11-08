@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
+import cucumberJson from '@wdio/cucumberjs-json-reporter';
 import type { Metadata } from 'multiple-cucumber-html-reporter';
-import cucumberJson from 'wdio-cucumberjs-json-reporter';
 import { saveMetadata } from '@/libs/metadata-parser';
 
 export const isCI = !!process.env.CI;

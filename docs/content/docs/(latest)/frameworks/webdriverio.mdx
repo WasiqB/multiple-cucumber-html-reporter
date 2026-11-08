@@ -22,29 +22,29 @@ There are two approaches which you can use to generate beautiful reports using m
 ### Using WebDriverIO Cucumber JSON Reporter
 
 <Callout title="Idea" type="idea">
-When you are setting up WebDriverIO or you already have an existing project for WebDriverIO, you need to use their community reporter i.e., `wdio-cucumberjs-json-reporter` to generate the JSON report files, which will be used by the `multiple-cucumber-html-reporter` to generate the HTML report.
+When you are setting up WebDriverIO or you already have an existing project for WebDriverIO, you need to use their community reporter i.e., `@wdio/cucumberjs-json-reporter` to generate the JSON report files, which will be used by the `multiple-cucumber-html-reporter` to generate the HTML report.
 
 Checkout [WebdriverIO Cucumber JSON reporter](https://webdriver.io/docs/wdio-cucumberjs-json-reporter).
 </Callout>
 
 #### Add WebDriverIO Reporter Dependency [step]
 
-First, install `wdio-cucumberjs-json-reporter` as a dev dependency in your project:
+First, install `@wdio/cucumberjs-json-reporter` as a dev dependency in your project:
 
 <Tabs groupId='node' items={['npm', 'yarn', 'pnpm']} persist>
   <Tab value="npm">
   ```bash
-  npm install -D wdio-cucumberjs-json-reporter
+  npm install -D @wdio/cucumberjs-json-reporter
   ```
   </Tab>
   <Tab value="yarn">
   ```bash
-  yarn add -D wdio-cucumberjs-json-reporter
+  yarn add -D @wdio/cucumberjs-json-reporter
   ```
   </Tab>
   <Tab value="pnpm">
   ```bash
-  pnpm add -D wdio-cucumberjs-json-reporter
+  pnpm add -D @wdio/cucumberjs-json-reporter
   ```
   </Tab>
 </Tabs>
@@ -103,7 +103,7 @@ To automatically capture screenshots and attach them on failure globally:
 
 ```typescript
 // wdio.conf.ts
-import cucumberJson from 'wdio-cucumberjs-json-reporter';
+import cucumberJson from '@wdio/cucumberjs-json-reporter';
 
 export const config: WebdriverIO.Config = {
   //. . .

@@ -8,7 +8,7 @@ This is a sample project for WebDriverIO and Cucumber with Multiple HTML Cucumbe
 
 The multiple cucumber HTML reporter requires the Cucumber JSON report files in order to generate the beautiful HTML reports.
 
-We have used `wdio-cucumberjs-json-reporter` dependency to generate the Cucumber JSON report files.
+We have used `@wdio/cucumberjs-json-reporter` dependency to generate the Cucumber JSON report files.
 
 #### WebDriverIO Configuration
 
@@ -18,7 +18,7 @@ Following is the key configuration changes required for generating Cucumber JSON
 // wdio.conf.ts
 import { rm } from 'node:fs/promises';
 import { generate } from 'multiple-cucumber-html-reporter';
-import cucumberJson from 'wdio-cucumberjs-json-reporter';
+import cucumberJson from '@wdio/cucumberjs-json-reporter';
 
 export const config: WebdriverIO.Config = {
   . . .
