@@ -106,7 +106,7 @@ import { After } from '@wdio/cucumber-framework';
 import { browser } from '@wdio/globals';
 
 After(async function ({ result }) {
-  if (result?.status !== 'PASSED') {
+  if (result?.status === 'FAILED') {
     const screenshot = await browser.takeScreenshot();
     this.attach(Buffer.from(screenshot, 'base64'), 'image/png');
   }
