@@ -79,4 +79,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: cypress-report-${{ matrix.os }}-${{ matrix.message-format }}
-          path: examples/cypress/.run/html-report
+          path: examples/cypress/.run

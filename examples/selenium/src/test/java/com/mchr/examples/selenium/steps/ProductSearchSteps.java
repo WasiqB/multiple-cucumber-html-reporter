@@ -1,6 +1,7 @@
 package com.mchr.examples.selenium.steps;
 
 import static java.lang.System.getenv;
+import static java.util.Objects.isNull;
 import static org.openqa.selenium.By.cssSelector;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -49,7 +50,8 @@ public class ProductSearchSteps {
     @Before
     public void setup () {
         final var options = new ChromeOptions ();
-        if (getenv ("CI").equals ("true")) {
+        final var isCI = getenv ("CI");
+        if (!isNull (isCI) && isCI.equals ("true")) {
             options.addArguments ("--headless");
         }
         this.driver = new ChromeDriver (options);
