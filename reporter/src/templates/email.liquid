@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
       {{ data.report.reportName | default: 'Multiple Cucumber HTML Reporter' }}
-      - {{ data.locale.email.executiveSummary | default: 'Executive Summary' }}
+      -
+      {{ data.locale.email.executiveSummary | default: 'Executive Summary' }}
     </title>
     <link
       rel="stylesheet"
@@ -337,7 +338,10 @@
         <div class="email-header-logo">
           <div class="email-header-icon">
             {% if data.report.logo %}
-              <img src="{{ base_url | default: '.' }}/assets/{{ data.report.logo }}" alt="{{ data.locale.header.reportName | default: 'Report logo' }}">
+              <img
+                src="{{ base_url | default: '.' }}/assets/{{ data.report.logo }}"
+                alt="{{ data.locale.header.reportName | default: 'Report logo' }}"
+              >
             {% else %}
               <i class="fa-solid fa-vial-circle-check"></i>
             {% endif %}
@@ -348,6 +352,9 @@
             </h1>
             <p class="email-header-subtitle">
               {{ data.report.pageTitle | default: 'Automated Execution Insights' }}
+              {% if data.report.reportDate %}
+                &bull; {{ data.report.reportDate }}
+              {% endif %}
             </p>
           </div>
         </div>
@@ -425,24 +432,32 @@
         <!-- Features KPI Card -->
         <div class="email-card" style="margin-bottom:0;">
           <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="email-card-section-title">{{ data.locale.email.featuresSummary | default: 'Features Summary' }}</span>
-            <span style="font-size:14px;font-weight:700;color:#16a34a;">{{ data.summary.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' }}</span>
+            <span class="email-card-section-title">
+              {{- data.locale.email.featuresSummary | default: 'Features Summary' -}}
+            </span>
+            <span style="font-size:14px;font-weight:700;color:#16a34a;">
+              {{- data.summary.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' -}}
+            </span>
           </div>
           <div class="email-card-body">
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;">
               <div class="metric-box metric-box-total">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.total }}</span>
-                <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
-                  >{{ data.locale.status.total | default: 'Total' }}</span
-                >
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;">
+                  {{- data.locale.status.total | default: 'Total' -}}
+                </span>
               </div>
               <div class="metric-box badge-passed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.passed }}</span>
-                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.passed | default: 'Passed' }}</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">
+                  {{- data.locale.status.passed | default: 'Passed' -}}
+                </span>
               </div>
               <div class="metric-box badge-failed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.summary.failed }}</span>
-                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.failed | default: 'Failed' }}</span>
+                <span style="font-size:10px;font-weight:700;text-transform:uppercase;margin-top:4px;">
+                  {{- data.locale.status.failed | default: 'Failed' -}}
+                </span>
               </div>
             </div>
             <div class="progress-bar-container" style="margin-top:16px;">
@@ -462,26 +477,32 @@
         <!-- Scenarios KPI Card -->
         <div class="email-card" style="margin-bottom:0;">
           <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
-            <span class="email-card-section-title">{{ data.locale.email.scenariosSummary | default: 'Scenarios Summary' }}</span>
+            <span class="email-card-section-title">
+              {{- data.locale.email.scenariosSummary | default: 'Scenarios Summary' -}}
+            </span>
             <span style="font-size:14px;font-weight:700;color:#16a34a;">
-              {{- data.scenarios.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' }}</span
-            >
+              {{- data.scenarios.passedPercentage }}% {{ data.locale.email.pass | default: 'Pass' -}}
+            </span>
           </div>
           <div class="email-card-body">
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">
               <div class="metric-box metric-box-total">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.total }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;"
-                  >{{ data.locale.status.total | default: 'Total' }}</span
-                >
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--muted-foreground,#64748b);margin-top:4px;">
+                  {{- data.locale.status.total | default: 'Total' -}}
+                </span>
               </div>
               <div class="metric-box badge-passed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.passed }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.passed | default: 'Passed' }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">
+                  {{- data.locale.status.passed | default: 'Passed' -}}
+                </span>
               </div>
               <div class="metric-box badge-failed">
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ data.scenarios.failed }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.failed | default: 'Failed' }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">
+                  {{- data.locale.status.failed | default: 'Failed' -}}
+                </span>
               </div>
               <div class="metric-box badge-skipped">
                 {% assign others = data.scenarios.skipped
@@ -490,7 +511,9 @@
                   | plus: data.scenarios.pending
                 %}
                 <span style="font-size:24px;font-weight:800;line-height:1;">{{ others }}</span>
-                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">{{ data.locale.status.other | default: 'Other' }}</span>
+                <span style="font-size:9px;font-weight:700;text-transform:uppercase;margin-top:4px;">
+                  {{- data.locale.status.other | default: 'Other' -}}
+                </span>
               </div>
             </div>
             <div class="progress-bar-container" style="margin-top:16px;">
@@ -513,7 +536,12 @@
         <div class="email-card-header" style="display:flex;align-items:center;justify-content:space-between;">
           <h2 class="email-card-section-title">
             <i class="fa-solid fa-list-check" style="margin-right:6px;color:var(--primary,#2563eb);"></i>
-            {{ data.locale.email.featuresAndScenarioStatistics | replace: '&', '&amp;' | default: 'Features &amp; Scenario Statistics' }} ({{ data.features.size }})
+            {{
+              data.locale.email.featuresAndScenarioStatistics
+              | replace: '&', '&amp;'
+              | default: 'Features &amp; Scenario Statistics'
+            }}
+            ({{ data.features.size }})
           </h2>
         </div>
         <div style="overflow-x:auto;">
@@ -527,7 +555,9 @@
                 <th style="text-align:center;">{{ data.locale.status.failed | default: 'Failed' }}</th>
                 <th style="text-align:center;">{{ data.locale.status.other | default: 'Other' }}</th>
                 <th style="min-width:150px;">{{ data.locale.email.progress | default: 'Progress' }}</th>
-                <th style="text-align:right;min-width:90px;">{{ data.report.durationColumnTitle | default: data.locale.email.duration | default: 'Duration' }}</th>
+                <th style="text-align:right;min-width:90px;">
+                  {{ data.report.durationColumnTitle | default: data.locale.email.duration | default: 'Duration' }}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -586,7 +616,9 @@
                           <span title="TestMu AI"><i class="fa-solid fa-cloud"></i></span>
                         {% endif %}
                       {% else %}
-                        <span title="{{ data.locale.runInfo.localMachine | default: 'Local machine' }}"><i class="fa-solid fa-computer"></i></span>
+                        <span title="{{ data.locale.runInfo.localMachine | default: 'Local machine' }}"
+                          ><i class="fa-solid fa-computer"></i
+                        ></span>
                       {% endif %}
                     </div>
                   </td>
@@ -645,6 +677,11 @@
                     </div>
                   </td>
                   <td style="text-align:right;font-family:ui-monospace,monospace;font-size:12px;color:var(--muted-foreground,#64748b);white-space:nowrap;">
+                    {% if feature.startTime and feature.endTime %}
+                      <div style="font-size:10px;color:var(--muted-foreground,#94a3b8);margin-bottom:2px;">
+                        {{ feature.startTime }} - {{ feature.endTime }}
+                      </div>
+                    {% endif %}
                     {{ feature.time }}
                   </td>
                 </tr>
@@ -686,21 +723,31 @@
                     <td style="color:var(--muted-foreground,#64748b);font-size:12px;">{{ scenario.featureName }}</td>
                     <td style="text-align:center;">
                       {% if scenario.status == 'passed' -%}
-                        <span class="status-pill badge-passed"><i class="fa-solid fa-circle-check"></i> {{ data.locale.status.passed | default: 'Passed' }}</span>
+                        <span class="status-pill badge-passed"
+                          ><i class="fa-solid fa-circle-check"></i> {{ data.locale.status.passed | default: 'Passed' -}}
+                        </span>
                       {% elsif scenario.status == 'failed' -%}
-                        <span class="status-pill badge-failed"><i class="fa-solid fa-circle-xmark"></i> {{ data.locale.status.failed | default: 'Failed' }}</span>
+                        <span class="status-pill badge-failed"
+                          ><i class="fa-solid fa-circle-xmark"></i> {{ data.locale.status.failed | default: 'Failed' -}}
+                        </span>
                       {% elsif scenario.status == 'ambiguous' -%}
                         <span class="status-pill badge-ambiguous"
-                          ><i class="fa-solid fa-circle-exclamation"></i> {{ data.locale.status.ambiguous | default: 'Ambiguous' }}</span
-                        >
+                          ><i class="fa-solid fa-circle-exclamation"></i>
+                          {{ data.locale.status.ambiguous | default: 'Ambiguous' -}}
+                        </span>
                       {% elsif scenario.status == 'undefined' -%}
                         <span class="status-pill badge-undefined"
-                          ><i class="fa-solid fa-circle-question"></i> {{ data.locale.status.notDefined | default: 'Undefined' }}</span
-                        >
+                          ><i class="fa-solid fa-circle-question"></i>
+                          {{ data.locale.status.notDefined | default: 'Undefined' -}}
+                        </span>
                       {% elsif scenario.status == 'pending' -%}
-                        <span class="status-pill badge-pending"><i class="fa-solid fa-clock"></i> {{ data.locale.status.pending | default: 'Pending' }}</span>
+                        <span class="status-pill badge-pending"
+                          ><i class="fa-solid fa-clock"></i> {{ data.locale.status.pending | default: 'Pending' -}}
+                        </span>
                       {% else -%}
-                        <span class="status-pill badge-skipped"><i class="fa-solid fa-forward"></i> {{ data.locale.status.skipped | default: 'Skipped' }}</span>
+                        <span class="status-pill badge-skipped"
+                          ><i class="fa-solid fa-forward"></i> {{ data.locale.status.skipped | default: 'Skipped' -}}
+                        </span>
                       {% endif %}
                     </td>
                     <td style="text-align:right;font-family:ui-monospace,monospace;font-size:12px;font-weight:600;color:var(--foreground,#1e293b);white-space:nowrap;">

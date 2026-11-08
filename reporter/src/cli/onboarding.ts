@@ -156,6 +156,18 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
           initialValue: false,
         }),
       displayReportTime: () => p.confirm({ message: 'Show report generation time?', initialValue: true }),
+      dateFormat: () =>
+        p.text({
+          message: 'Date format tokens (Luxon format, e.g. yyyy/MM/dd)',
+          placeholder: 'yyyy/MM/dd',
+          initialValue: 'yyyy/MM/dd',
+        }),
+      timeFormat: () =>
+        p.text({
+          message: 'Time format tokens (Luxon format, e.g. HH:mm:ss)',
+          placeholder: 'HH:mm:ss',
+          initialValue: 'HH:mm:ss',
+        }),
       durationInMS: () =>
         p.confirm({
           message: 'Are your Cucumber JSON durations in milliseconds? (default is nanoseconds)',
@@ -176,6 +188,8 @@ export async function runOnboarding(cwd: string = process.cwd()): Promise<Onboar
     options.displayDuration = dur.displayDuration as boolean;
     options.humanReadableDuration = dur.humanReadableDuration as boolean;
     options.displayReportTime = dur.displayReportTime as boolean;
+    if (((dur.dateFormat as string) || '').trim()) options.dateFormat = (dur.dateFormat as string).trim();
+    if (((dur.timeFormat as string) || '').trim()) options.timeFormat = (dur.timeFormat as string).trim();
     options.durationInMS = dur.durationInMS as boolean;
     options.durationAggregation = dur.durationAggregation as 'sum' | 'wallClock';
   }

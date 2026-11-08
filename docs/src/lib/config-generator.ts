@@ -62,6 +62,8 @@ export interface ConfigFormState {
   durationInMS: boolean;
   durationAggregation: 'sum' | 'wallClock';
   displayReportTime: boolean;
+  dateFormat: string;
+  timeFormat: string;
   displayChartPercentages: boolean;
 
   // Metadata
@@ -126,6 +128,8 @@ export const DEFAULT_CONFIG_STATE: ConfigFormState = {
   durationInMS: false,
   durationAggregation: 'sum',
   displayReportTime: false,
+  dateFormat: '',
+  timeFormat: '',
   displayChartPercentages: false,
 
   // Metadata
@@ -313,6 +317,12 @@ export function buildReporterOptions(state: ConfigFormState): Record<string, any
   }
   if (state.displayReportTime) {
     options.displayReportTime = true;
+  }
+  if (state.dateFormat.trim()) {
+    options.dateFormat = state.dateFormat.trim();
+  }
+  if (state.timeFormat.trim()) {
+    options.timeFormat = state.timeFormat.trim();
   }
   if (state.displayChartPercentages) {
     options.displayChartPercentages = true;

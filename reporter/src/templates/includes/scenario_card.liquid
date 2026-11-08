@@ -58,6 +58,12 @@
       </div>
     </div>
     <div class="flex items-center gap-2 md:gap-4 shrink-0 ml-2">
+      {% if scenario.startTime and scenario.endTime %}
+        <span class="hidden sm:inline-flex items-center gap-1 font-mono text-[10px] md:text-xs text-muted-foreground/80">
+          <i class="fa-regular fa-clock text-[9px] md:text-[10px]"></i>
+          <span>{{ scenario.startTime }} - {{ scenario.endTime }}</span>
+        </span>
+      {% endif %}
       <span class="font-mono text-[10px] md:text-xs text-muted-foreground">{{ scenario.time }}</span>
       <svg class="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -341,7 +347,12 @@
                             {%- if att_name -%}
                               {{- att_name | escape -}}
                             {%- else -%}
-                              {{ locale.feature.screenshotName | default: 'Screenshot' | append: ' ' | append: forloop.index -}}
+                              {{
+                                locale.feature.screenshotName
+                                | default: 'Screenshot'
+                                | append: ' '
+                                | append: forloop.index
+                              -}}
                             {%- endif -%}
                           </span>
                         </div>

@@ -42,6 +42,11 @@ describe('Cucumber Messages NDJSON input', () => {
     expect(report).toContain('Messages feature');
     const text = enriched.features[0].elements[0].steps[0].text[0];
     expect(Buffer.from(text.data).toString()).toBe('hello');
+    const scenario = enriched.features[0].elements[0];
+    expect(scenario.start_timestamp).toBeDefined();
+    expect(scenario.end_timestamp).toBeDefined();
+    expect(scenario.startTime).toBeDefined();
+    expect(scenario.endTime).toBeDefined();
   });
 
   describe('missing envelope handling on testCaseFinished', () => {

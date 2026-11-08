@@ -131,6 +131,8 @@ async function generateReport(options: Options) {
   const saveCollectedJSON = !!options.saveCollectedJSON;
   const displayDuration = !!options.displayDuration;
   const displayReportTime = !!options.displayReportTime;
+  const dateFormat = options.dateFormat || 'yyyy/MM/dd';
+  const timeFormat = options.timeFormat || 'HH:mm:ss';
   const displayChartPercentages = !!options.displayChartPercentages;
   const durationInMS = !!options.durationInMS;
   const humanReadableDuration = !!options.humanReadableDuration;
@@ -587,16 +589,19 @@ async function generateReport(options: Options) {
         scenarioWithDurationCount++;
         feature.duration += scenario.duration;
         scenario.time = formatDuration(scenario.duration);
+      }
 
-        if (durationAggregation === 'wallClock') {
-          const scenarioStart = parseScenarioStartTime(scenario);
-          if (scenarioStart !== null) {
-            scenarioWithStartTimestampCount++;
-            const scenarioEnd = scenarioStart + toMillis(scenario.duration);
-            earliestScenarioStart = Math.min(earliestScenarioStart, scenarioStart);
-            latestScenarioEnd = Math.max(latestScenarioEnd, scenarioEnd);
-          }
-        }
+      const scenarioStart = parseScenarioStartTime(scenario);
+      if (scenarioStart !== null) {
+        scenarioWithStartTimestampCount++;
+        const scenarioEnd =
+          (scenario.end_timestamp ? Date.parse(scenario.end_timestamp) : Number.NaN) ||
+          scenarioStart + toMillis(scenario.duration);
+        earliestScenarioStart = Math.min(earliestScenarioStart, scenarioStart);
+        latestScenarioEnd = Math.max(latestScenarioEnd, scenarioEnd);
+
+        scenario.startTime = DateTime.fromMillis(scenarioStart).toLocal().toFormat(timeFormat);
+        scenario.endTime = DateTime.fromMillis(scenarioEnd).toLocal().toFormat(timeFormat);
       }
 
       scenario.duration = toMillis(scenario.duration) / 1000;
@@ -699,6 +704,11 @@ async function generateReport(options: Options) {
       latestScenarioEnd > earliestScenarioStart
     ) {
       feature.duration = fromMillis(latestScenarioEnd - earliestScenarioStart);
+    }
+
+    if (scenarioWithStartTimestampCount > 0 && latestScenarioEnd >= earliestScenarioStart) {
+      feature.startTime = DateTime.fromMillis(earliestScenarioStart).toLocal().toFormat(timeFormat);
+      feature.endTime = DateTime.fromMillis(latestScenarioEnd).toLocal().toFormat(timeFormat);
     }
 
     feature.isPending = feature.scenarios.total === feature.scenarios.pending;
@@ -807,10 +817,41 @@ async function generateReport(options: Options) {
     const runtimeMetadata = getReportRuntimeMetadata(suite);
     logger.trace('Rendering overview template.', { file: featuresOverviewIndex });
 
+    const suiteTimeMillis = suite.time.getTime();
+    let earliestSuiteStart = Number.POSITIVE_INFINITY;
+    let latestSuiteEnd = 0;
+    let hasScenarioTimestamps = false;
+
+    for (const feature of suite.features) {
+      for (const scenario of feature.elements || []) {
+        const start = parseScenarioStartTime(scenario);
+        if (start !== null) {
+          hasScenarioTimestamps = true;
+          const end =
+            (scenario.end_timestamp ? Date.parse(scenario.end_timestamp) : Number.NaN) ||
+            start + toMillis(scenario.duration);
+          earliestSuiteStart = Math.min(earliestSuiteStart, start);
+          latestSuiteEnd = Math.max(latestSuiteEnd, end);
+        }
+      }
+    }
+
+    const reportDate = DateTime.fromMillis(
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) ? earliestSuiteStart : suiteTimeMillis,
+    )
+      .toLocal()
+      .toFormat(dateFormat);
+
+    const executionPeriod =
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) && latestSuiteEnd >= earliestSuiteStart
+        ? `${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(dateFormat)} ${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(timeFormat)} - ${DateTime.fromMillis(latestSuiteEnd).toLocal().toFormat(timeFormat)}`
+        : `${DateTime.fromJSDate(suite.time).toLocal().toFormat(dateFormat)} ${DateTime.fromJSDate(suite.time).toLocal().toFormat(timeFormat)}`;
+
     const report = {
       reportName: suite.reportName,
       pageTitle: pageTitle,
       pageFooter: pageFooter,
+      reportDate,
       projectName: customData?.projectName,
       release: customData?.release,
       testCycle: customData?.testCycle,
@@ -819,7 +860,7 @@ async function generateReport(options: Options) {
       ciPipeline: customData?.ciPipeline,
       customDataItems,
       executionEndTime: formatDuration(suite.totalTime),
-      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      executionPeriod,
       username: customData?.username ?? runtimeMetadata.username,
       nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
       reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
@@ -869,10 +910,41 @@ async function generateReport(options: Options) {
     const runtimeMetadata = getReportRuntimeMetadata(suite);
     logger.trace('Rendering emailable report template.', { file: emailReportFile });
 
+    const suiteTimeMillis = suite.time.getTime();
+    let earliestSuiteStart = Number.POSITIVE_INFINITY;
+    let latestSuiteEnd = 0;
+    let hasScenarioTimestamps = false;
+
+    for (const feature of suite.features) {
+      for (const scenario of feature.elements || []) {
+        const start = parseScenarioStartTime(scenario);
+        if (start !== null) {
+          hasScenarioTimestamps = true;
+          const end =
+            (scenario.end_timestamp ? Date.parse(scenario.end_timestamp) : Number.NaN) ||
+            start + toMillis(scenario.duration);
+          earliestSuiteStart = Math.min(earliestSuiteStart, start);
+          latestSuiteEnd = Math.max(latestSuiteEnd, end);
+        }
+      }
+    }
+
+    const reportDate = DateTime.fromMillis(
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) ? earliestSuiteStart : suiteTimeMillis,
+    )
+      .toLocal()
+      .toFormat(dateFormat);
+
+    const executionPeriod =
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) && latestSuiteEnd >= earliestSuiteStart
+        ? `${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(dateFormat)} ${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(timeFormat)} - ${DateTime.fromMillis(latestSuiteEnd).toLocal().toFormat(timeFormat)}`
+        : `${DateTime.fromJSDate(suite.time).toLocal().toFormat(dateFormat)} ${DateTime.fromJSDate(suite.time).toLocal().toFormat(timeFormat)}`;
+
     const report = {
       reportName: suite.reportName,
       pageTitle: pageTitle,
       pageFooter: pageFooter,
+      reportDate,
       projectName: customData?.projectName,
       release: customData?.release,
       testCycle: customData?.testCycle,
@@ -881,7 +953,7 @@ async function generateReport(options: Options) {
       ciPipeline: customData?.ciPipeline,
       customDataItems,
       executionEndTime: formatDuration(suite.totalTime),
-      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      executionPeriod,
       username: customData?.username ?? runtimeMetadata.username,
       nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
       reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,
@@ -972,10 +1044,41 @@ async function generateReport(options: Options) {
   async function _createFeatureIndexPages(suite: Suite) {
     const runtimeMetadata = getReportRuntimeMetadata(suite);
 
+    const suiteTimeMillis = suite.time.getTime();
+    let earliestSuiteStart = Number.POSITIVE_INFINITY;
+    let latestSuiteEnd = 0;
+    let hasScenarioTimestamps = false;
+
+    for (const feature of suite.features) {
+      for (const scenario of feature.elements || []) {
+        const start = parseScenarioStartTime(scenario);
+        if (start !== null) {
+          hasScenarioTimestamps = true;
+          const end =
+            (scenario.end_timestamp ? Date.parse(scenario.end_timestamp) : Number.NaN) ||
+            start + toMillis(scenario.duration);
+          earliestSuiteStart = Math.min(earliestSuiteStart, start);
+          latestSuiteEnd = Math.max(latestSuiteEnd, end);
+        }
+      }
+    }
+
+    const reportDate = DateTime.fromMillis(
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) ? earliestSuiteStart : suiteTimeMillis,
+    )
+      .toLocal()
+      .toFormat(dateFormat);
+
+    const executionPeriod =
+      hasScenarioTimestamps && Number.isFinite(earliestSuiteStart) && latestSuiteEnd >= earliestSuiteStart
+        ? `${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(dateFormat)} ${DateTime.fromMillis(earliestSuiteStart).toLocal().toFormat(timeFormat)} - ${DateTime.fromMillis(latestSuiteEnd).toLocal().toFormat(timeFormat)}`
+        : `${DateTime.fromJSDate(suite.time).toLocal().toFormat(dateFormat)} ${DateTime.fromJSDate(suite.time).toLocal().toFormat(timeFormat)}`;
+
     const report = {
       reportName: suite.reportName,
       pageTitle: pageTitle,
       pageFooter: pageFooter,
+      reportDate,
       projectName: customData?.projectName,
       release: customData?.release,
       testCycle: customData?.testCycle,
@@ -984,7 +1087,7 @@ async function generateReport(options: Options) {
       ciPipeline: customData?.ciPipeline,
       customDataItems,
       executionEndTime: formatDuration(suite.totalTime),
-      executionPeriod: DateTime.fromJSDate(suite.time).toFormat('yyyy/MM/dd HH:mm:ss'),
+      executionPeriod,
       username: customData?.username ?? runtimeMetadata.username,
       nodeVersion: customData?.nodeVersion ?? runtimeMetadata.nodeVersion,
       reportVersion: customData?.reportVersion ?? runtimeMetadata.reportVersion,

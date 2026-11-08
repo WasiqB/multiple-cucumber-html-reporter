@@ -248,6 +248,11 @@
             </td>
             {% if data.report.displayDuration %}
               <td class="px-6 py-4 text-right whitespace-nowrap">
+                {% if feature.startTime and feature.endTime %}
+                  <div class="text-[11px] font-mono text-muted-foreground/80 mb-0.5">
+                    {{ feature.startTime }} - {{ feature.endTime }}
+                  </div>
+                {% endif %}
                 <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
                   <i class="fa-regular fa-clock"></i>
                   {{ feature.time | default: '—' }}

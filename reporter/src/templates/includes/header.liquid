@@ -22,6 +22,9 @@
             | default: data.locale.header.insightsSubtitle
             | default: 'Automated Execution Insights'
           }}
+          {% if data.report.reportDate %}
+            &bull; {{ data.report.reportDate }}
+          {% endif %}
         </p>
       </div>
     </div>

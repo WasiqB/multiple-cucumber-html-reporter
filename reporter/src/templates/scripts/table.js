@@ -181,6 +181,10 @@ window.ReportTable = {
               </td>
               ${displayDuration ? `
               <td class="px-6 py-4 text-right whitespace-nowrap">
+                ${feature.startTime && feature.endTime ? `
+                  <div class="text-[11px] font-mono text-muted-foreground/80 mb-0.5">
+                    ${feature.startTime} - ${feature.endTime}
+                  </div>` : ''}
                 <span class="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground">
                   <i class="fa-regular fa-clock"></i>
                   ${feature.time || '\u2014'}
