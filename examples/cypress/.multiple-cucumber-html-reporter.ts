@@ -4,7 +4,7 @@ const reportFolder = process.env.MESSAGES ?? 'json';
 
 const config: Options = {
   jsonDir: `./reports/${reportFolder}/`,
-  reportPath: './html-report/',
+  reportPath: './reports/html-report/',
   openReportInBrowser: true,
   useCDN: true,
   emailReport: true,
