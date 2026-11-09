@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./",
+    "module": "esnext",
     "types": ["node"]
   },
   "include": [".multiple-cucumber-html-reporter.ts", "cypress.config.ts", "src/**/*.ts"]

@@ -33,7 +33,7 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@release-it-plugins/lerna-changelog": "^9.0.0",
@@ -54,5 +54,5 @@
       "pnpm lint"
     ]
   },
-  "packageManager": "pnpm@12.16.1"
+  "packageManager": "pnpm@12.18.0"
 }

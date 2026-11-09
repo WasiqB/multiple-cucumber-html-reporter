@@ -152,5 +152,35 @@ describe('generate-report.js duration handling', () => {
       // must be left unchanged.
       expect(step.result.duration).toEqual(5000);
     });
+
+    it('formats feature and scenario startTime and endTime with custom dateFormat and timeFormat when timestamps are present', async () => {
+      fs.removeSync(REPORT_PATH);
+      await multiCucumberHTMLReporter.generate({
+        jsonDir: './src/test/unit/data/messages-ndjson',
+        reportPath: REPORT_PATH,
+        useCucumberMessages: true,
+        dateFormat: 'yyyy-MM-dd',
+        timeFormat: 'HH:mm:ss',
+        saveCollectedJSON: true,
+      });
+
+      const enriched = fs.readJsonSync(path.join(process.cwd(), REPORT_PATH, 'enriched-output.json'));
+      const feature = enriched.features[0];
+      const scenario = feature.elements[0];
+      expect(feature.startTime).toMatch(/^\d{2}:\d{2}:\d{2}$/);
+      expect(feature.endTime).toMatch(/^\d{2}:\d{2}:\d{2}$/);
+      expect(scenario.startTime).toMatch(/^\d{2}:\d{2}:\d{2}$/);
+      expect(scenario.endTime).toMatch(/^\d{2}:\d{2}:\d{2}$/);
+
+      const indexHtml = fs.readFileSync(path.join(process.cwd(), REPORT_PATH, 'index.html'), 'utf8');
+      expect(indexHtml).toContain(`${feature.startTime} - ${feature.endTime}`);
+
+      const featureHtmlFiles = fs.readdirSync(path.join(process.cwd(), REPORT_PATH, 'features'));
+      const featureHtml = fs.readFileSync(
+        path.join(process.cwd(), REPORT_PATH, 'features', featureHtmlFiles[0]),
+        'utf8',
+      );
+      expect(featureHtml).toContain(`${scenario.startTime} - ${scenario.endTime}`);
+    });
   });
 });

@@ -260,6 +260,26 @@ Need help assembling your options? Use the interactive [Config Builder](/config-
       type: 'boolean',
       default: false,
       typeDescription: 'boolean'
+    },
+    dateFormat: {
+      description: (
+        <>
+          Luxon date format tokens used across report dates (such as report title/subtitle and execution dates in local timezone). Defaults to <code>yyyy/MM/dd</code>.
+        </>
+      ),
+      type: 'string',
+      default: 'yyyy/MM/dd',
+      typeDescription: 'string'
+    },
+    timeFormat: {
+      description: (
+        <>
+          Luxon time format tokens used across feature and scenario start / end times in local timezone. Defaults to <code>HH:mm:ss</code>.
+        </>
+      ),
+      type: 'string',
+      default: 'HH:mm:ss',
+      typeDescription: 'string'
     }
   }}
 />

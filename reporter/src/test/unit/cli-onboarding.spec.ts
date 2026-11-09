@@ -108,6 +108,8 @@ describe('CLI Onboarding', () => {
           displayDuration: true,
           humanReadableDuration: true,
           displayReportTime: true,
+          dateFormat: 'yyyy/MM/dd',
+          timeFormat: 'HH:mm:ss',
           durationInMS: false,
           durationAggregation: 'wallClock',
         };
@@ -141,6 +143,8 @@ describe('CLI Onboarding', () => {
     expect(result.options.displayDuration).toBeTrue();
     expect(result.options.humanReadableDuration).toBeTrue();
     expect(result.options.displayReportTime).toBeTrue();
+    expect(result.options.dateFormat).toBe('yyyy/MM/dd');
+    expect(result.options.timeFormat).toBe('HH:mm:ss');
     expect(result.options.durationInMS).toBeFalse();
     expect(result.options.durationAggregation).toBe('wallClock');
     expect(result.options.displayChartPercentages).toBeTrue();

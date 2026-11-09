@@ -643,6 +643,39 @@ export default function ConfigBuilderPage() {
                         />
                       </div>
 
+                      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 py-3'>
+                        <div className='space-y-1.5'>
+                          <Label htmlFor='dateFormat' className='text-xs font-semibold'>
+                            Date Format
+                          </Label>
+                          <Input
+                            id='dateFormat'
+                            placeholder='yyyy/MM/dd'
+                            value={state.dateFormat}
+                            onChange={(e) => handleUpdate('dateFormat', e.target.value)}
+                            className='h-8 text-xs font-mono'
+                          />
+                          <p className='text-[10px] text-muted-foreground'>
+                            Luxon tokens (default: <code>yyyy/MM/dd</code>)
+                          </p>
+                        </div>
+                        <div className='space-y-1.5'>
+                          <Label htmlFor='timeFormat' className='text-xs font-semibold'>
+                            Time Format
+                          </Label>
+                          <Input
+                            id='timeFormat'
+                            placeholder='HH:mm:ss'
+                            value={state.timeFormat}
+                            onChange={(e) => handleUpdate('timeFormat', e.target.value)}
+                            className='h-8 text-xs font-mono'
+                          />
+                          <p className='text-[10px] text-muted-foreground'>
+                            Luxon tokens (default: <code>HH:mm:ss</code>)
+                          </p>
+                        </div>
+                      </div>
+
                       <div className='flex items-center justify-between py-3'>
                         <div className='space-y-0.5 pr-4'>
                           <Label htmlFor='displayChartPercentages' className='text-sm font-medium cursor-pointer'>

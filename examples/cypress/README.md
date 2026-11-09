@@ -37,7 +37,7 @@ async function setupNodeEvents(
     async (results: CypressCommandLine.CypressRunResult | CypressCommandLine.CypressFailedRunResult): Promise<void> => {
       if (results) {
         await afterRunHandler(config, results);
-        writeFileSync('.run/results.json', JSON.stringify(results));
+        writeFileSync('reports/results.json', JSON.stringify(results));
       }
     },
   );
@@ -68,11 +68,11 @@ export default defineConfig({
 {
   "json": {
     "enabled": true,
-    "output": ".run/reports/json/cucumber-report.json"
+    "output": "reports/json/cucumber-report.json"
   },
   "messages": {
     "enabled": true,
-    "output": ".run/reports/messages/cucumber-report.json"
+    "output": "reports/messages/cucumber-report.json"
   },
   "stepDefinitions": [
     "src/steps/saucedemo.steps.ts"

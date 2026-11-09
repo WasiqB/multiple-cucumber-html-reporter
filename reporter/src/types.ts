@@ -108,6 +108,20 @@ export interface Options {
   saveCollectedJSON?: boolean;
   displayDuration?: boolean;
   displayReportTime?: boolean;
+  /**
+   * Date format tokens (using Luxon format syntax, e.g. "yyyy/MM/dd" or "yyyy-MM-dd")
+   * used across report date displays (such as report title/subtitle and execution dates).
+   * Rendered in the local timezone.
+   * @default 'yyyy/MM/dd'
+   */
+  dateFormat?: string;
+  /**
+   * Time format tokens (using Luxon format syntax, e.g. "HH:mm:ss" or "HH:mm:ss.SSS")
+   * used for feature and scenario start/end times.
+   * Rendered in the local timezone.
+   * @default 'HH:mm:ss'
+   */
+  timeFormat?: string;
   displayChartPercentages?: boolean;
   durationInMS?: boolean;
   /**
@@ -252,6 +266,9 @@ export interface Scenario {
   duration: number;
   time: string;
   start_timestamp?: string;
+  end_timestamp?: string;
+  startTime?: string;
+  endTime?: string;
 }
 
 export interface Feature {
@@ -264,6 +281,8 @@ export interface Feature {
   elements: Scenario[];
   executionPlatform: 'browserstack' | 'testmu' | 'local';
   metadata: Metadata | { name: string; value: string }[];
+  startTime?: string;
+  endTime?: string;
   scenarios: {
     passed: number;
     failed: number;

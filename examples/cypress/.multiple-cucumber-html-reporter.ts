@@ -3,13 +3,13 @@ import type { Options } from 'multiple-cucumber-html-reporter';
 const reportFolder = process.env.MESSAGES ?? 'json';
 
 const config: Options = {
-  jsonDir: `./.run/reports/${reportFolder}/`,
-  reportPath: './.run/html-report/',
+  jsonDir: `./reports/${reportFolder}/`,
+  reportPath: './reports/html-report/',
   openReportInBrowser: true,
   useCDN: true,
   emailReport: true,
   humanReadableDuration: true,
-  metadataFilePath: `./.run/reports/metadata.json`,
+  metadataFilePath: `./reports/metadata.json`,
   customData: {
     projectName: 'Cypress sample project',
     release: '1.2.0',

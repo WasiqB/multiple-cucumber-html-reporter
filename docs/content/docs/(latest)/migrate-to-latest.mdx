@@ -31,8 +31,8 @@ In the older approach, you had to:
 const report = require('multiple-cucumber-html-reporter');
 
 report.generate({
-  jsonDir: './.run/reports/json/',
-  reportPath: './.run/html-report/',
+  jsonDir: './reports/json/',
+  reportPath: './html-report/',
   openReportInBrowser: true,
   useCDN: true,
   pageTitle: 'My Project Report',
@@ -55,7 +55,7 @@ report.generate({
 ```json
 {
   "scripts": {
-    "test": "cucumber-js -f json:./.run/reports/json/report.json",
+    "test": "cucumber-js -f json:./reports/json/report.json",
     "generate-report": "node ./generate-report.js"
   }
 }
@@ -99,8 +99,8 @@ Replace the contents of your old `generate-report.js` with a config file in the 
   <Tab value="JSON">
     ```json title=".multiple-cucumber-html-reporter.json"
     {
-      "jsonDir": "./.run/reports/json/",
-      "reportPath": "./.run/html-report/",
+      "jsonDir": "./reports/json/",
+      "reportPath": "./html-report/",
       "openReportInBrowser": true,
       "useCDN": true,
       "pageTitle": "My Project Report",
@@ -120,8 +120,8 @@ Replace the contents of your old `generate-report.js` with a config file in the 
   </Tab>
   <Tab value="YAML">
     ```yaml title=".multiple-cucumber-html-reporter.yml"
-    jsonDir: './.run/reports/json/'
-    reportPath: './.run/html-report/'
+    jsonDir: './reports/json/'
+    reportPath: './html-report/'
     openReportInBrowser: true
     useCDN: true
     pageTitle: 'My Project Report'
@@ -142,8 +142,8 @@ Replace the contents of your old `generate-report.js` with a config file in the 
     import type { Options } from 'multiple-cucumber-html-reporter';
 
     const config: Options = {
-      jsonDir: './.run/reports/json/',
-      reportPath: './.run/html-report/',
+      jsonDir: './reports/json/',
+      reportPath: './html-report/',
       openReportInBrowser: true,
       useCDN: true,
       pageTitle: 'My Project Report',
@@ -166,8 +166,8 @@ Replace the contents of your old `generate-report.js` with a config file in the 
   <Tab value="JavaScript">
     ```javascript title=".multiple-cucumber-html-reporter.js"
     const config = {
-      jsonDir: './.run/reports/json/',
-      reportPath: './.run/html-report/',
+      jsonDir: './reports/json/',
+      reportPath: './html-report/',
       openReportInBrowser: true,
       useCDN: true,
       pageTitle: 'My Project Report',
@@ -208,7 +208,7 @@ You can now remove your old `generate-report.js` script and the corresponding `g
 ```json
 {
   "scripts": {
-    "test": "cucumber-js -f json:./.run/reports/json/report.json",
+    "test": "cucumber-js -f json:./reports/json/report.json",
     "generate-report": "mchr"
   }
 }

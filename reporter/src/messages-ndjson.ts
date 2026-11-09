@@ -111,7 +111,7 @@ export async function* streamFeaturesFromMessagesFile(
         // pass bounded by one scenario's attachments, not the whole run.
         await appendFile(
           scenarioFile,
-          `${JSON.stringify(toScenario(testCase, pickle, featureDocument, testCaseStarted, finishedSteps, attachments, hooks))}\n`,
+          `${JSON.stringify(toScenario(testCase, pickle, featureDocument, testCaseStarted, envelope.testCaseFinished, finishedSteps, attachments, hooks))}\n`,
         );
         started.delete(testCaseStarted.id);
         attachments.delete(testCaseStarted.id);
@@ -145,6 +145,7 @@ function toScenario(
   pickle: Message,
   documentFeature: Message,
   testCaseStarted: Message,
+  testCaseFinished: Message,
   finishedSteps: Map<string, Message>,
   attachmentsByStarted: Map<string, Message[]>,
   hooks: Map<string, Message>,
@@ -170,6 +171,7 @@ function toScenario(
     duration: 0,
     time: '',
     start_timestamp: timestampToIso(testCaseStarted.timestamp),
+    end_timestamp: timestampToIso(testCaseFinished?.timestamp),
   };
 
   for (const testStep of testCase.testSteps ?? []) {
