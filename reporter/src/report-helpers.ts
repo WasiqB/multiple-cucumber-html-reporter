@@ -211,7 +211,7 @@ export function cleanErrorMessage(error: string | undefined): string | undefined
   if (!error) return error;
   const match = error.match(/^[ \t]*(?=\S)/gm);
   if (!match) return error.trim();
-  const minIndent = Math.min(...match.map((x) => x.length));
+  const minIndent = match.reduce((min, x) => Math.min(min, x.length), Infinity);
   if (minIndent === 0) return error.trim();
   const re = new RegExp(`^[ \\t]{${minIndent}}`, 'gm');
   return error.replace(re, '').trim();
