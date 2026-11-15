@@ -204,7 +204,7 @@
                     class="hidden mt-2 p-3 bg-muted/30 border border-border rounded-lg text-[11px] font-mono text-muted-foreground/80 whitespace-pre-wrap leading-relaxed overflow-x-auto"
                   >
                     {% for item in step.json %}
-                      <pre>{{ item | json }}</pre>
+                      <pre>{{ item | json: 2 }}</pre>
                     {% endfor %}
                   </div>
                 {% endif %}
@@ -494,7 +494,7 @@
                         class="flex items-center justify-between gap-2 bg-background p-2 rounded border border-muted/50 text-xs hover:border-primary/50 transition-colors cursor-pointer modal-trigger"
                         data-attachment-type="log"
                         data-attachment-name="{% if att_name %}{{ att_name | escape }}{% else %}{{ locale.feature.jsonName | default: 'JSON' }} - {{ forloop.index }}{% endif %}"
-                        data-attachment-content="{{ item | json | escape }}"
+                        data-attachment-content="{{ item | json: 2 | escape }}"
                       >
                         <div class="flex items-center gap-2">
                           <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
