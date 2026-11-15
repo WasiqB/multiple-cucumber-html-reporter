@@ -198,15 +198,7 @@ window.ReportModal = {
           <div class="flex-1 min-h-0 overflow-auto p-4 bg-white rounded-b">${content}</div>
         </div>`;
     } else if (type === 'log') {
-      let displayContent = content;
-      if (typeof content === 'string') {
-        try {
-          const parsed = JSON.parse(content);
-          if (parsed && typeof parsed === 'object') {
-            displayContent = JSON.stringify(parsed, null, 2);
-          }
-        } catch {}
-      }
+      const displayContent = content;
       html = `
         <div class="flex flex-col h-full overflow-hidden">
           <div class="shrink-0 flex flex-col gap-1 px-4 py-2 bg-slate-800 rounded-t border-b border-slate-700">
