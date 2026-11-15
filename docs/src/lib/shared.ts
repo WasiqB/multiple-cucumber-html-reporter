@@ -34,5 +34,5 @@ export const baseUrl = (() => {
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     return new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
   }
-  return new URL('https://multiple-cucumber-html-reporter.com');
+  return new URL('https://www.multiple-cucumber-html-reporter.com');
 })();

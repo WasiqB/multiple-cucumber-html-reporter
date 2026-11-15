@@ -8,7 +8,7 @@ on:
       - examples/wdio/*
       - reporter/**
 
-  pull_request:
+  pull_request_target:
     branches:
       - main
     paths:
