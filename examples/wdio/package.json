@@ -4,7 +4,7 @@
   "devDependencies": {
     "@mchr/tsconfig": "workspace:*",
     "@types/node": "^26.6.6",
-    "@wdio/browserstack-service": "^9.44.0",
+    "@wdio/browserstack-service": "^9.44.1",
     "@wdio/cli": "^10.2.0",
     "@wdio/cucumber-framework": "^10.2.0",
     "@wdio/cucumberjs-json-reporter": "^10.2.0",

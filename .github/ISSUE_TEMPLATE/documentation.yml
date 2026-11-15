@@ -3,6 +3,7 @@ description: Suggest improvements or report missing / unclear documentation.
 title: "[Docs]: "
 labels: ["documentation"]
 assignees: ["WasiqB"]
+type: 'Enhancement'
 body:
   - type: checkboxes
     id: pre-check

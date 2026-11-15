@@ -202,6 +202,22 @@ export function escapeHtml(string: any): string {
 }
 
 /**
+ * Strips leading indentation common to all non-empty lines in an error message.
+ *
+ * @param error Error message or stack trace
+ * @returns Cleaned error message with excessive indentation removed
+ */
+export function cleanErrorMessage(error: string | undefined): string | undefined {
+  if (!error) return error;
+  const match = error.match(/^[ \t]*(?=\S)/gm);
+  if (!match) return error.trim();
+  const minIndent = match.reduce((min, x) => Math.min(min, x.length), Infinity);
+  if (minIndent === 0) return error.trim();
+  const re = new RegExp(`^[ \\t]{${minIndent}}`, 'gm');
+  return error.replace(re, '').trim();
+}
+
+/**
  * Writes decoded image/video bytes to a file (instead of inlining them as a
  * `data:` URI) and returns the `src` to use in the rendered HTML. Implemented
  * per report run in generate-report.ts, where `reportPath` is known.

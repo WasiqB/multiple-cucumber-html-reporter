@@ -137,7 +137,13 @@ const sponsorsData = {
     title: 'Meet the Curators',
     description: 'The organizations and individuals keeping the project alive.',
     goldSponsors: [] as { name: string; image?: string; url?: string }[],
-    silverAndBronze: [] as { name: string; image?: string; url?: string }[],
+    silverAndBronze: [
+      {
+        name: 'TestMu AI',
+        url: 'https://github.com/LambdaTest-Inc',
+        image: 'https://avatars.githubusercontent.com/u/171592363?v=4',
+      },
+    ] as { name: string; image?: string; url?: string }[],
     individuals: [] as { name: string; image?: string; url?: string }[],
   },
   licenses: {

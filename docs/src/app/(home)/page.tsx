@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const version = getReporterVersion();
-  const siteUrl = baseUrl.toString();
+  const siteUrl = baseUrl.toString().replace(/\/+$/, '');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -32,7 +32,7 @@ export default function HomePage() {
         '@id': `${siteUrl}#organization`,
         name: 'Multiple Cucumber HTML Reporter',
         url: siteUrl,
-        logo: `${siteUrl}/images/logo.png`,
+        logo: new URL('/images/logo.png', baseUrl).toString(),
       },
       {
         '@type': 'ItemList',

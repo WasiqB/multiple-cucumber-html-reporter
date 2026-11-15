@@ -1,0 +1,76 @@
+{
+  "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+  "version": "v1.1.0",
+  "entity": {
+    "type": "individual",
+    "role": "owner",
+    "name": "Wasiq Bhamla",
+    "email": "wasiq.bhamla@gmail.com",
+    "phone": "",
+    "description": "Open source maintainer and creator of Multiple Cucumber HTML Reporter, focused on high-quality test automation tools and reporting frameworks.",
+    "webpageUrl": {
+      "url": "https://github.com/WasiqB",
+      "wellKnown": ""
+    }
+  },
+  "projects": [
+    {
+      "guid": "multiple-cucumber-html-reporter",
+      "name": "Multiple Cucumber HTML Reporter",
+      "description": "Multiple Cucumber HTML Reporter is a reporting library that generates rich, beautiful, and localized HTML reports for Cucumber test runs across multiple devices and browsers.",
+      "webpageUrl": {
+        "url": "https://www.multiple-cucumber-html-reporter.com",
+        "wellKnown": ""
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter",
+        "wellKnown": ""
+      },
+      "licenses": ["spdx:MIT"],
+      "tags": [
+        "cucumber",
+        "testing",
+        "html-reporter",
+        "test-reporting",
+        "bdd",
+        "playwright",
+        "cypress",
+        "webdriverio",
+        "javascript",
+        "typescript"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/WasiqB",
+        "description": "GitHub Sponsors for recurring or one-time contributions."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "maintenance-core",
+        "status": "active",
+        "name": "Core Maintenance & Framework Support",
+        "description": "Funding dedicated hours for framework maintenance, updating dependencies, bug fixes, and supporting modern Cucumber / test runner integrations.",
+        "amount": 10000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "general-support",
+        "status": "active",
+        "name": "General Project Support",
+        "description": "Support ongoing development, community support, and documentation improvements.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["github-sponsors"]
+      }
+    ]
+  }
+}

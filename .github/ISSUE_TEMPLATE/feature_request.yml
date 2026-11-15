@@ -3,6 +3,7 @@ description: Suggest an idea for this module.
 title: "[Feature]: "
 labels: ["enhancement"]
 assignees: ["WasiqB"]
+type: 'Enhancement'
 body:
   - type: textarea
     id: problem

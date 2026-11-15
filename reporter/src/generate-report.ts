@@ -12,7 +12,13 @@ import collectJSONS, { listJsonFiles } from './collect-jsons.js';
 import { type LocaleTranslations, loadLocale } from './locale.js';
 import { createLogger } from './logger.js';
 import { streamFeaturesFromMessagesFile } from './messages-ndjson.js';
-import { applyMetadataAndHooks, enrichStepEmbeddings, escapeHtml, type MediaFileWriter } from './report-helpers.js';
+import {
+  applyMetadataAndHooks,
+  cleanErrorMessage,
+  enrichStepEmbeddings,
+  escapeHtml,
+  type MediaFileWriter,
+} from './report-helpers.js';
 import {
   createJsonArrayFileWriter,
   createJsonSuiteFileWriter,
@@ -727,6 +733,10 @@ async function generateReport(options: Options) {
   function _parseSteps(scenario: Scenario, trackAggregates: boolean, mediaWriter?: MediaFileWriter): Scenario {
     scenario.steps.forEach((step: Step) => {
       enrichStepEmbeddings(step, mediaWriter);
+
+      if (step.result?.error_message) {
+        step.result.error_message = cleanErrorMessage(step.result.error_message);
+      }
 
       if (step.doc_string !== undefined) {
         step.id = `${uuid()}.${scenario.id}.${step.name}`.replace(/[^a-zA-Z0-9-_]/g, '-');
