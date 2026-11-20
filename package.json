@@ -33,7 +33,7 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.7",
+    "@biomejs/biome": "2.6.8",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@release-it-plugins/lerna-changelog": "^9.0.0",
@@ -41,7 +41,7 @@
     "@types/node": "^26.6.6",
     "husky": "^9.1.7",
     "lerna-changelog": "^2.2.0",
-    "lint-staged": "^17.6.0",
+    "lint-staged": "^17.6.1",
     "prettier": "^3.10.1",
     "release-it": "^20.2.1",
     "typescript": "^7.0.2"
