@@ -110,7 +110,7 @@ async function main(): Promise<void> {
         '  config file is found.',
         '',
         'MORE INFO',
-        '  https://multiple-cucumber-html-reporter.com/',
+        '  https://www.multiple-cucumber-html-reporter.com/',
       ].join('\n'),
     )
     .strict()

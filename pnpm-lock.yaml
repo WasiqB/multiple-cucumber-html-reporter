@@ -251,23 +251,23 @@ importers:
         specifier: ^8.6.0
         version: 8.6.0(react@19.3.1)
       fumadocs-core:
-        specifier: 16.19.4
-        version: 16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
+        specifier: 16.19.5
+        version: 16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
       fumadocs-mdx:
-        specifier: 15.6.3
-        version: 15.6.3(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.3.0)(fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(mdast-util-directive@3.1.0(supports-color@11.0.0))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)
+        specifier: 15.6.4
+        version: 15.6.4(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.3.0)(fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(mdast-util-directive@3.1.0(supports-color@11.0.0))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)
       fumadocs-typescript:
         specifier: ^5.6.2
-        version: 5.6.2(27844e642578122455002242b1ef69a3)
+        version: 5.6.2(0551442e326f477c8937bbd183a5554b)
       fumadocs-ui:
-        specifier: 16.19.4
-        version: 16.19.4(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1))
+        specifier: 16.19.5
+        version: 16.19.5(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1))
       js-yaml:
         specifier: ^5.5.0
         version: 5.5.0
       lucide-react:
-        specifier: ^1.74.0
-        version: 1.74.0(@types/react@19.3.0)(react@19.3.1)
+        specifier: ^1.77.0
+        version: 1.77.0(@types/react@19.3.0)(react@19.3.1)
       motion:
         specifier: ^14.14.0
         version: 14.14.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -302,8 +302,8 @@ importers:
         specifier: ^4.23.0
         version: 4.23.0(supports-color@11.0.0)
       tailwind-merge:
-        specifier: ^3.7.0
-        version: 3.7.0
+        specifier: ^3.7.1
+        version: 3.7.1
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
@@ -410,23 +410,23 @@ importers:
         specifier: ^26.6.6
         version: 26.6.6
       '@wdio/browserstack-service':
-        specifier: ^9.44.1
-        version: 9.44.1(@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.2)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0))(bare-buffer@3.7.2)(supports-color@8.1.1)
+        specifier: ^9.44.3
+        version: 9.44.3(@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.3)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0))(bare-buffer@3.7.3)(supports-color@8.1.1)
       '@wdio/cli':
         specifier: ^10.2.0
-        version: 10.2.0(@types/node@26.6.6)(bare-buffer@3.7.2)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)
+        version: 10.2.0(@types/node@26.6.6)(bare-buffer@3.7.3)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)
       '@wdio/cucumber-framework':
         specifier: ^10.2.0
         version: 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       '@wdio/cucumberjs-json-reporter':
         specifier: ^10.2.0
-        version: 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+        version: 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       '@wdio/globals':
         specifier: ^10.2.0
-        version: 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+        version: 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       '@wdio/local-runner':
         specifier: ^10.2.0
-        version: 10.2.0(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
+        version: 10.2.0(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
       '@wdio/spec-reporter':
         specifier: ^10.2.0
         version: 10.2.0
@@ -435,7 +435,7 @@ importers:
         version: 10.2.0
       expect-webdriverio:
         specifier: ^8.1.0
-        version: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+        version: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       multiple-cucumber-html-reporter:
         specifier: workspace:*
         version: link:../../reporter
@@ -444,7 +444,7 @@ importers:
         version: 3.1.1
       webdriverio:
         specifier: ^10.2.0
-        version: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+        version: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
 
   packages/tsconfig: {}
 
@@ -1883,12 +1883,12 @@ packages:
     resolution: {integrity: sha512-XVigKgAcXEerIch3Ufngac07gOH4KnfTDp/xyPujDyjvAZSWfIyIRnojmfbLEs2HnZEnmFFoEMX6ZB4Tk0SO/Q==}
     engines: {node: '>=14'}
 
-  '@percy/sdk-utils@1.32.12':
-    resolution: {integrity: sha512-UhbFtLe+xs6k+FnQO6w4JCBgr7rY8U8suxzKqfZ9fnXizQXfSVQqxkm+F/4oWjSAMN9arDWTVCh5D3PNe5Impw==}
-    engines: {node: '>=14'}
-
   '@percy/sdk-utils@1.32.3-beta.1':
     resolution: {integrity: sha512-/oD+82slu1tuV3nFkwrdBWUIZ3JdmPuh2ajlcWbumTxu0lu2hhZLKmCTE72Fc5N6UXoHl9tQzJPrkT0/W/aigQ==}
+    engines: {node: '>=14'}
+
+  '@percy/sdk-utils@1.33.1':
+    resolution: {integrity: sha512-sPNTXMcaYlfZ4ZoaBd7bhqQtadLWKyvkZDQPhkqsZnPM5M2Xtw1IlDYIBRxIDz9NxIndxo2FOSulRyebZiNieA==}
     engines: {node: '>=14'}
 
   '@percy/selenium-webdriver@2.2.8':
@@ -3371,8 +3371,8 @@ packages:
   '@vitest/utils@5.1.0':
     resolution: {integrity: sha512-V+qgCwkvVw+s1t1S5TaoBHsLi5Sz/YmohCMoOu0mZ8ZQst2bKhRYARAQucWpVg8D0mv0x5MHcWXY5QdOsoiGBQ==}
 
-  '@wdio/browserstack-service@9.44.1':
-    resolution: {integrity: sha512-9sQAL5Vn9kN0+sdMwJ8oPrXoy2aJOhrLOdRV72Z+J5X7R2bZE99pJqR0HbLZJ7XUGVCcyQRwL6jJ8NH6CRe7mQ==}
+  '@wdio/browserstack-service@9.44.3':
+    resolution: {integrity: sha512-08qju7LcVbMf/7qxMnYlIRbqXgiPg5jFikw0XnpmevULDzCKyjs+6EsFMUzlyIP1mGi5l+3uywNHBlLa3A2Haw==}
     engines: {node: '>=18.20.0'}
     peerDependencies:
       '@wdio/cli': ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -3753,8 +3753,8 @@ packages:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
 
-  bare-buffer@3.7.2:
-    resolution: {integrity: sha512-kI35SYpVg0JCk+a+gkUEJZY39mt+g71y1NRwBrEj7SbxLnwngYYMf0T/kouYIujlJwelvPZ9TTbBCbCSPw059Q==}
+  bare-buffer@3.7.3:
+    resolution: {integrity: sha512-77owW16RX6YgdOzddHtM0oGz8wsd0/F9k/0coz6TPmjUHnr/9FwWODVMNKwyYWM/a/ESdTum855nfQxnsKUygA==}
     engines: {bare: '>=1.20.0'}
 
   bare-events@2.9.2:
@@ -3765,8 +3765,8 @@ packages:
       bare-abort-controller:
         optional: true
 
-  bare-fs@4.8.4:
-    resolution: {integrity: sha512-MPC2eyrpbk3A873sK4y6rk+Iv4o2enxTjHZ8zH3HO0mjrpm5XjnguY2XmfidIsDV6vnjpbMBKUAJpV0ISD2SsQ==}
+  bare-fs@4.8.5:
+    resolution: {integrity: sha512-5gborbd4IEFpnyqAiwD0tl6sH9fvPvIaK2hdM8DXU+xAMxSB7B3D3D04CD21k4T5C6u5Oxw3iajkBQhNLxINKg==}
     engines: {bare: '>=1.28.0'}
     peerDependencies:
       bare-buffer: '*'
@@ -3791,8 +3791,8 @@ packages:
       bare-events:
         optional: true
 
-  bare-url@2.5.7:
-    resolution: {integrity: sha512-pWAiECRdNYPJAXYKVOb4HuTQedQyRjtGBUu86kO/vOt4GM7e45PghHXQ/Erm5NumaDSWNBzehIfpc768esW7gA==}
+  bare-url@2.5.8:
+    resolution: {integrity: sha512-G5KTe5Bj6z5pqIxcn3lWlIFIv0rkXbccx0T0Xuf7t4RapfSWvFlcVbrwYXxFZ00PC4lp57OCIk6uXP/r3GbpDw==}
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -3826,10 +3826,6 @@ packages:
 
   brace-expansion@2.1.8:
     resolution: {integrity: sha512-BnlDzDYQoplTsZSvPi86CNzmbcb07X8ufR8fk1zivaiEJlXJkiq1MQyDCVmlWcsWbj6aWXqHnrwwevbrm/Saig==}
-
-  brace-expansion@5.0.12:
-    resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
-    engines: {node: 20 || >=22}
 
   brace-expansion@5.0.13:
     resolution: {integrity: sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==}
@@ -4783,8 +4779,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  fumadocs-core@16.19.4:
-    resolution: {integrity: sha512-PRYjTrfIbp3clCIE4n0nhbkGnoDg61cDOQp0GNYtAMl7haBgVykaQhI5SRTS8/i6POfodSR6C5lJiAGBBH1eNA==}
+  fumadocs-core@16.19.5:
+    resolution: {integrity: sha512-Y7dZ02UF1AUda90EUwCOO5em+SuHqfsCfu8mqgrc55K8jbfH1TuZwky1msM+NR/bAjNwJSEZJ/dVONgg9m6nwQ==}
     peerDependencies:
       '@mdx-js/mdx': '*'
       '@mixedbread/sdk': 0.x.x
@@ -4851,8 +4847,8 @@ packages:
       zod:
         optional: true
 
-  fumadocs-mdx@15.6.3:
-    resolution: {integrity: sha512-MPuuZNfczeuYON3g+gWQB+jtD4gGIx0hEikYVDAb/GL/JO6SFyCBH6xASg0OuWrcLyLrhqaei65HXBZQMQCTRw==}
+  fumadocs-mdx@15.6.4:
+    resolution: {integrity: sha512-b5z5GjDxDzdc9K1/HwAL6X77xj0ddinJ5FJFXeIxYCRRQq2rqSFNTNAd2fo2UmQnr87jkuE25+o5iAV0mg48lw==}
     hasBin: true
     peerDependencies:
       '@fumadocs/satteri': 0.x.x
@@ -4914,12 +4910,12 @@ packages:
       fumadocs-ui:
         optional: true
 
-  fumadocs-ui@16.19.4:
-    resolution: {integrity: sha512-i2qeo1xVe8OcvxK5rpMqzajEZHGfV5eJtyDu/PqPWbnrMBMHS9ZEw65I9vv8svG1RL3UnFDz+6ztNfG4NeLz3w==}
+  fumadocs-ui@16.19.5:
+    resolution: {integrity: sha512-PQT5P4F5AS6JyFl0Q9AIL7ohiC40tWwRsRDzaP+KHAbjSXlhO/QLf9Zg8WWKxH/tGvuznUIwJVbdIWGvJiRdbA==}
     peerDependencies:
       '@types/mdx': '*'
       '@types/react': '*'
-      fumadocs-core: 16.19.4
+      fumadocs-core: 16.19.5
       next: 16.x.x
       react: ^19.2.0
       react-dom: ^19.2.0
@@ -5116,8 +5112,8 @@ packages:
   hast-util-to-estree@3.1.3:
     resolution: {integrity: sha512-48+B/rJWAp0jamNbAAf9M7Uf//UVqAoMmgXhBdxTDJLGKY+LRnZ99qcG+Qjl5HfMpYNzS5v4EAwVEF34LeAj7w==}
 
-  hast-util-to-html@9.0.6:
-    resolution: {integrity: sha512-1SZUxCN3TtJAE7e2BQN2MBHsoZ1gnmi9GoCP5Di59CSWptIezSAW09yDZyVbanb78V9eCwrKqdQsjtfVTxYHWA==}
+  hast-util-to-html@9.0.7:
+    resolution: {integrity: sha512-HYNDA3qdnzUPitY/LcQm1nWs8z0cWFNH1Nz09jdI/tXifAqF7h3+jrLl4S/b9Mi4VSjn0Dsn54ctuTV6zhBthA==}
 
   hast-util-to-jsx-runtime@2.3.7:
     resolution: {integrity: sha512-F7DNV2NMcTxA4GqPVHnXzX+mpoPHAIY9rJAVH3CZ1FdBZOcBUEjUuvMkMpHVs/sicEtznh9tMGj5WUR9S4E2rg==}
@@ -5790,10 +5786,6 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.5.2:
-    resolution: {integrity: sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==}
-    engines: {node: 20 || >=22}
-
   lru-cache@11.5.3:
     resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
     engines: {node: 20 || >=22}
@@ -5809,8 +5801,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  lucide-react@1.74.0:
-    resolution: {integrity: sha512-A1doIs/1fj1WnPbtIT7WRiM6Kvw5NUg+BtkoOh3Shpr4obwSDVt6WxCEcNH56EWprzuCoKle1OF0RqIkojwL1A==}
+  lucide-react@1.77.0:
+    resolution: {integrity: sha512-VS6sOi8ZUH1qm6swBL/tpI4xAhB6pFTdHvw3pfCJD+DaTJwpyynVzfOS6mdyMZ+OCdY/GMSQbqinOMOPbNSrQA==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -5851,8 +5843,8 @@ packages:
   mdast-util-directive@3.1.0:
     resolution: {integrity: sha512-I3fNFt+DHmpWCYAT7quoM6lHf9wuqtI+oCOfvILnoicNIqjh5E3dEJWiXuYME2gNe8vl1iMQwyUHa7bgFmak6Q==}
 
-  mdast-util-find-and-replace@3.0.4:
-    resolution: {integrity: sha512-z4B5c6jrnJ1ltOQemhWYPBSAo6y42Z8Gt2yEgfgNTMcLSU59B8bfj8Z8AnAlJrBGLnqkdAUZ7jdDEqQw3KuipQ==}
+  mdast-util-find-and-replace@3.0.5:
+    resolution: {integrity: sha512-of3wZLEBWpK8mSYy8wmKnwyxfUKjhCkXxGLz45DVBqfcahTP37LscCK+0oAZh+ReZ5OunPDkB2zdGMIxrojLhw==}
 
   mdast-util-from-markdown@2.0.3:
     resolution: {integrity: sha512-W4mAWTvSlKvf8L6J+VN9yLSqQ9AOAAvHuoDAmPkz4dHf553m5gVj2ejadHJhoJmcmxEnOv6Pa8XJhpxE93kb8Q==}
@@ -5860,8 +5852,8 @@ packages:
   mdast-util-from-markdown@2.1.0:
     resolution: {integrity: sha512-KRLgmPaP2H1ul2bpoJkOS+9pAcDAAj9Nu1mqLnh8NLeJG5tlvj42TH80PIGBpROWlRXLk0lDrWNuZCFy/tsB4A==}
 
-  mdast-util-gfm-autolink-literal@2.1.0:
-    resolution: {integrity: sha512-Jx6QSK8wDo558Bcf7q+1pe0v81g2PVs09Hlvu9xJHmCFRF3sAPW7vXFVIAwBncs3sde92WbsVqNxwdqViA2XnQ==}
+  mdast-util-gfm-autolink-literal@2.1.2:
+    resolution: {integrity: sha512-rAlbZBGZfv2YRr6lSFGHTN305KkNawOYRRlbldFyPHnTlHJZwlGdzVwyIDvr3fxbhRbmJOSZc06c8H5Fgfu8Ng==}
 
   mdast-util-gfm-footnote@2.1.0:
     resolution: {integrity: sha512-sqpDWlsHn7Ac9GNZQMeUzPQSMzR6Wv0WKRNvQRg0KqHh02fpTz69Qc1QSseNX29bhz1ROIyNyxExfawVKTm1GQ==}
@@ -5881,8 +5873,8 @@ packages:
   mdast-util-mdx-expression@2.0.1:
     resolution: {integrity: sha512-J6f+9hUp+ldTZqKRSg7Vw5V6MqjATc+3E4gf3CFNcuZNWD8XdyI6zQ8GqH7f8169MM6P7hMBRDVGnn7oHB9kXQ==}
 
-  mdast-util-mdx-jsx@3.2.1:
-    resolution: {integrity: sha512-oXp1GIa+E9IwIs3a106+tr3Bz2MlTTBvlXjOZMoIat11kk7vjqgmBnksB9WHmWv+gZh7k3IUgpAHlwHB7DH4GQ==}
+  mdast-util-mdx-jsx@3.2.2:
+    resolution: {integrity: sha512-/0FHaZMv2fSjIL3z/NYmXnQTSdzYyamPpI1BXpSCngTUqpSvMNIlERa26ABz+Z6UFQbrh3I5Yhzp448WZsPfMA==}
 
   mdast-util-mdx@3.0.0:
     resolution: {integrity: sha512-JfbYLAW7XnYTTbUsmpu0kdBUVe+yKVJZBItEjwyYJiDJuZ9w4eeaqks4HQO+R7objWgS2ymV60GYpI14Ug554w==}
@@ -5896,8 +5888,8 @@ packages:
   mdast-util-to-hast@13.2.2:
     resolution: {integrity: sha512-l2pnmOuqs+SGLVpTVXnRLQu5v1AzvDe181404fbXzzqObVxrAnnVxapAP27pUwzLBL/ABIkgUhGlPVU7QSvIFg==}
 
-  mdast-util-to-markdown@2.2.3:
-    resolution: {integrity: sha512-dImdB6VZRMRac1SwAW6o1c0ESk/7pFFAMCMuKM+9v7LpTSthMM5nzXpqKw4Mjo66aXVKhNkyrP4bMB9MurPyWg==}
+  mdast-util-to-markdown@2.2.4:
+    resolution: {integrity: sha512-aCsogoZ2Oz1EItAlC12A+/uGuzp+CWlDU0xZ3o5jbJaepLsOu2tlxpvHslnX5dRhspD1gxNVkBtYG0yMiIpXoQ==}
 
   mdast-util-to-string@4.0.0:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
@@ -6070,8 +6062,8 @@ packages:
     resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
     engines: {node: 18 || 20 || >=22}
 
-  minimatch@11.0.8:
-    resolution: {integrity: sha512-nFQuYSTVrGvysVBps5Ih+0BdnYFN/Cj3C816r6+p7yK+FHrVLGE4O4N9AFwykrlNlvM2HYt+Rad1Uiro6h88Ig==}
+  minimatch@11.0.9:
+    resolution: {integrity: sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==}
     engines: {node: 20 || >=22}
 
   minimatch@3.1.5:
@@ -6278,6 +6270,10 @@ packages:
 
   object-inspect@1.13.4:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
+    engines: {node: '>= 0.4'}
+
+  object-inspect@1.14.0:
+    resolution: {integrity: sha512-IVgHNlp/jwQX271+Xzoq9LZNTWXxZK+cEOrGBOBxXNbn7fapnZ+Ts6TVMgNOuAezwG2wdtnMX97tTPK6VEnuOQ==}
     engines: {node: '>= 0.4'}
 
   object-treeify@1.1.33:
@@ -7035,8 +7031,8 @@ packages:
     resolution: {integrity: sha512-fFlbMlfsXhK02ZB8aZY7Hwxh/IHBV9b1Oq9bvBk6tkFWXvdAxUgA0wbw/NYR5liU3Y5+KI6U4FH3kYJt9QYv0w==}
     engines: {node: '>= 14'}
 
-  socks@2.8.10:
-    resolution: {integrity: sha512-e0VyvkVTwVYViNovRkZ9aodhxVlyoMn7eJhVUPxZ+eK9P/7CBkxvvsBOHqFPEH416726W8tLXXXjKwqgTErrCQ==}
+  socks@2.8.11:
+    resolution: {integrity: sha512-2H/uQ7+SNP0hK16RorTak0mWrFoqo4AnAVGSUl2dT07obgWdWt9grml+VDl1LklgUOPWM4Abo0u86Cvp8vFjYw==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
 
   socks@2.8.9:
@@ -7157,8 +7153,8 @@ packages:
   string_decoder@1.3.0:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
 
-  stringify-entities@4.0.4:
-    resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
+  stringify-entities@4.0.5:
+    resolution: {integrity: sha512-jNuI2fNNw5ecxrWmgm90R3iH0Kc/94AQwoQWoSUYphWzvmUA2pjFG34H56Z7Z3FkvH3FpYwwewKAa97oQnPFhw==}
 
   stringify-object@5.0.0:
     resolution: {integrity: sha512-zaJYxz2FtcMb4f+g60KsRNFOpVMUyuJgA51Zi5Z1DOTC3S59+OQiVOzE9GZt0x72uBGWKsQIuBKeF9iusmKFsg==}
@@ -7238,8 +7234,8 @@ packages:
     resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
     engines: {node: '>=20'}
 
-  tailwind-merge@3.7.0:
-    resolution: {integrity: sha512-XPPUyAc+cvspz3lHTcR/QgPfW2A0lv/xQNIjX3HGhLR+Nq2lHaLq5MtTesHn8GUr3W3DguT2KT5x3NVgRtYwmA==}
+  tailwind-merge@3.7.1:
+    resolution: {integrity: sha512-v7y4BV4FUlO8exj/4M5UXKeoowDiuugVUg3tkMNIyOUCOHy5xp8+5aWQeXCtZ2491sUV1YPsVeM9EveZ6/xuZQ==}
 
   tailwindcss@4.3.5:
     resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
@@ -7361,9 +7357,6 @@ packages:
     resolution: {integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==}
     engines: {node: '>=6'}
 
-  tslib@2.8.1:
-    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-
   tslib@2.9.1:
     resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
 
@@ -7429,8 +7422,12 @@ packages:
     resolution: {integrity: sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==}
     engines: {node: '>=20.18.1'}
 
-  undici@8.12.4:
-    resolution: {integrity: sha512-8Mx+uNKKER2bA4AdtedkqRbwUCIJFr2nJckXRe5yrDqzePqwLP7VNcctN8/XdmDSbF7mS+jJKIszlL+vbam1VA==}
+  undici@7.30.2:
+    resolution: {integrity: sha512-mLyPQnHwUxaM/rideoK/+KL8DaAJLRl4aBCfmX444aCSLnIaomqPLtNRe2jdCYcsk5wZzXrDIQC8ZeYNRAYyIA==}
+    engines: {node: '>=20.18.1'}
+
+  undici@8.13.0:
+    resolution: {integrity: sha512-mxbeyRlRhHUTWE1zf/FwDOXTKMhE1vMQRz/o2oOir/5fIWsB79TeZrByMkj019EdDuxPg03jprCjFLxLkmxTCQ==}
     engines: {node: '>=22.19.0'}
 
   unicorn-magic@0.3.0:
@@ -9100,18 +9097,18 @@ snapshots:
 
   '@percy/appium-app@2.1.0(supports-color@8.1.1)':
     dependencies:
-      '@percy/sdk-utils': 1.32.12(supports-color@8.1.1)
+      '@percy/sdk-utils': 1.33.1(supports-color@8.1.1)
       tmp: 0.2.7
     transitivePeerDependencies:
       - supports-color
 
-  '@percy/sdk-utils@1.32.12(supports-color@8.1.1)':
+  '@percy/sdk-utils@1.32.3-beta.1(supports-color@8.1.1)':
     dependencies:
       pac-proxy-agent: 7.2.0(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@percy/sdk-utils@1.32.3-beta.1(supports-color@8.1.1)':
+  '@percy/sdk-utils@1.33.1(supports-color@8.1.1)':
     dependencies:
       pac-proxy-agent: 7.2.0(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -9124,10 +9121,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@percy/webdriverio@3.3.5(supports-color@8.1.1)(webdriverio@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1))':
+  '@percy/webdriverio@3.3.5(supports-color@8.1.1)(webdriverio@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1))':
     dependencies:
-      '@percy/sdk-utils': 1.32.12(supports-color@8.1.1)
-      webdriverio: 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@percy/sdk-utils': 1.33.1(supports-color@8.1.1)
+      webdriverio: 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -9164,14 +9161,14 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@puppeteer/browsers@2.13.2(bare-buffer@3.7.2)(supports-color@8.1.1)':
+  '@puppeteer/browsers@2.13.2(bare-buffer@3.7.3)(supports-color@8.1.1)':
     dependencies:
       debug: 4.4.3(supports-color@8.1.1)
       extract-zip: 2.0.1(supports-color@8.1.1)
       progress: 2.0.3
       proxy-agent: 6.5.0(supports-color@8.1.1)
       semver: 7.8.6
-      tar-fs: 3.1.3(bare-buffer@3.7.2)
+      tar-fs: 3.1.3(bare-buffer@3.7.3)
       yargs: 17.7.3
     transitivePeerDependencies:
       - bare-abort-controller
@@ -10003,7 +10000,7 @@ snapshots:
       '@shikijs/types': 4.6.0
       '@shikijs/vscode-textmate': 10.1.0
       '@types/hast': 3.0.5
-      hast-util-to-html: 9.0.6
+      hast-util-to-html: 9.0.7
 
   '@shikijs/engine-javascript@4.6.0':
     dependencies:
@@ -10486,15 +10483,15 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.2.0
 
-  '@wdio/browserstack-service@9.44.1(@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.2)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0))(bare-buffer@3.7.2)(supports-color@8.1.1)':
+  '@wdio/browserstack-service@9.44.3(@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.3)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0))(bare-buffer@3.7.3)(supports-color@8.1.1)':
     dependencies:
       '@bufbuild/protobuf': 2.17.0
       '@grpc/grpc-js': 1.13.7
       '@percy/appium-app': 2.1.0(supports-color@8.1.1)
       '@percy/selenium-webdriver': 2.2.8(supports-color@8.1.1)
-      '@percy/webdriverio': 3.3.5(supports-color@8.1.1)(webdriverio@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1))
+      '@percy/webdriverio': 3.3.5(supports-color@8.1.1)(webdriverio@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1))
       '@types/gitconfiglocal': 2.0.3
-      '@wdio/cli': 10.2.0(@types/node@26.6.6)(bare-buffer@3.7.2)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)
+      '@wdio/cli': 10.2.0(@types/node@26.6.6)(bare-buffer@3.7.3)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)
       '@wdio/logger': 9.33.1
       '@wdio/reporter': 9.33.1
       '@wdio/types': 9.33.1
@@ -10507,7 +10504,7 @@ snapshots:
       tar: 7.5.23
       undici: 6.29.1
       uuid: 11.1.1
-      webdriverio: 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      webdriverio: 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
       winston-transport: 4.9.0
       yauzl: 3.4.0
     transitivePeerDependencies:
@@ -10519,14 +10516,14 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.2)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)':
+  '@wdio/cli@10.2.0(@types/node@26.6.6)(bare-buffer@3.7.3)(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(yauzl@3.4.0)':
     dependencies:
       '@vitest/snapshot': 5.1.0
       '@wdio/config': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
-      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       '@wdio/logger': 10.2.0
       '@wdio/protocols': 10.2.0
-      '@wdio/session': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
+      '@wdio/session': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
       '@wdio/types': 10.2.0
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       async-exit-hook: 2.0.1
@@ -10538,10 +10535,10 @@ snapshots:
       lodash.flattendeep: 4.4.0
       lodash.pickby: 4.6.0
       lodash.union: 4.6.0
-      minimatch: 11.0.8
+      minimatch: 11.0.9
       read-package-up: 12.0.0
       tsx: 4.23.15
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
       yargs: 18.2.0
     transitivePeerDependencies:
       - '@types/node'
@@ -10574,11 +10571,11 @@ snapshots:
       - supports-color
       - yauzl
 
-  '@wdio/config@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)':
+  '@wdio/config@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)':
     dependencies:
       '@wdio/logger': 9.33.1
       '@wdio/types': 9.33.1
-      '@wdio/utils': 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@wdio/utils': 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
       deepmerge-ts: 8.0.2
       glob: 10.5.0
       import-meta-resolve: 4.2.0
@@ -10606,10 +10603,10 @@ snapshots:
       - supports-color
       - yauzl
 
-  '@wdio/cucumberjs-json-reporter@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))':
+  '@wdio/cucumberjs-json-reporter@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))':
     dependencies:
       '@cucumber/gherkin': 42.0.1
-      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       '@wdio/logger': 10.2.0
       '@wdio/reporter': 10.2.0
       '@wdio/types': 10.2.0
@@ -10629,22 +10626,22 @@ snapshots:
       '@wdio/types': 10.2.0
       chalk: 6.0.1
 
-  '@wdio/globals@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))':
+  '@wdio/globals@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))':
     dependencies:
-      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
 
-  '@wdio/local-runner@10.2.0(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
+  '@wdio/local-runner@10.2.0(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
     dependencies:
       '@types/node': 22.20.5
       '@types/split2': 4.2.3
       '@wdio/display-server': 10.2.0
       '@wdio/logger': 10.2.0
       '@wdio/repl': 10.2.0
-      '@wdio/runner': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
+      '@wdio/runner': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
       '@wdio/types': 10.2.0
       exit-hook: 5.1.0
-      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       split2: 4.2.0
       stream-buffers: 3.0.3
     transitivePeerDependencies:
@@ -10693,7 +10690,7 @@ snapshots:
       '@types/node': 22.20.5
       '@wdio/types': 10.2.0
       diff: 9.0.0
-      object-inspect: 1.13.4
+      object-inspect: 1.14.0
 
   '@wdio/reporter@9.33.1':
     dependencies:
@@ -10701,22 +10698,22 @@ snapshots:
       '@wdio/logger': 9.33.1
       '@wdio/types': 9.33.1
       diff: 8.0.4
-      object-inspect: 1.13.4
+      object-inspect: 1.14.0
 
-  '@wdio/runner@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
+  '@wdio/runner@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
     dependencies:
       '@types/node': 22.20.5
       '@wdio/config': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       '@wdio/dot-reporter': 10.2.0
-      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      '@wdio/globals': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       '@wdio/logger': 10.2.0
-      '@wdio/session': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
+      '@wdio/session': 10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
       '@wdio/types': 10.2.0
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       deepmerge-ts: 8.0.2
-      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       webdriver: 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
     transitivePeerDependencies:
       - '@wdio/electron-service'
       - '@wdio/visual-service'
@@ -10729,13 +10726,13 @@ snapshots:
       - utf-8-validate
       - yauzl
 
-  '@wdio/session@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
+  '@wdio/session@10.2.0(expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)))(supports-color@8.1.1)(tsx@4.23.15)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
     dependencies:
       '@types/node': 22.20.5
       '@wdio/config': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       '@wdio/display-server': 10.2.0
       '@wdio/logger': 10.2.0
-      '@wdio/snapshot': 10.2.0(supports-color@8.1.1)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
+      '@wdio/snapshot': 10.2.0(supports-color@8.1.1)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)
       '@wdio/types': 10.2.0
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       acorn: 8.19.0
@@ -10743,20 +10740,20 @@ snapshots:
       image-size: 2.1.0
       picomatch: 4.0.7
       semver: 7.8.6
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
       yargs: 18.2.0
     optionalDependencies:
-      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))
+      expect-webdriverio: 8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))
       tsx: 4.23.15
     transitivePeerDependencies:
       - proxy-agent
       - supports-color
       - yauzl
 
-  '@wdio/snapshot@10.2.0(supports-color@8.1.1)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
+  '@wdio/snapshot@10.2.0(supports-color@8.1.1)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0))(yauzl@3.4.0)':
     dependencies:
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
     transitivePeerDependencies:
       - proxy-agent
       - supports-color
@@ -10802,9 +10799,9 @@ snapshots:
       - supports-color
       - yauzl
 
-  '@wdio/utils@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)':
+  '@wdio/utils@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)':
     dependencies:
-      '@puppeteer/browsers': 2.13.2(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@puppeteer/browsers': 2.13.2(bare-buffer@3.7.3)(supports-color@8.1.1)
       '@wdio/logger': 9.33.1
       '@wdio/types': 9.33.1
       decamelize: 6.0.1
@@ -10936,7 +10933,7 @@ snapshots:
 
   arch@3.0.0: {}
 
-  archiver@8.0.0(bare-buffer@3.7.2):
+  archiver@8.0.0(bare-buffer@3.7.3):
     dependencies:
       async: 3.2.6
       buffer-crc32: 1.0.0
@@ -10945,7 +10942,7 @@ snapshots:
       normalize-path: 3.0.0
       readable-stream: 4.8.0
       readdir-glob: 3.0.0
-      tar-stream: 3.2.2(bare-buffer@3.7.2)
+      tar-stream: 3.2.2(bare-buffer@3.7.3)
       zip-stream: 7.0.5
     transitivePeerDependencies:
       - bare-abort-controller
@@ -10978,7 +10975,7 @@ snapshots:
 
   ast-types@0.13.4:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   ast-types@0.16.3:
     dependencies:
@@ -11012,39 +11009,39 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  bare-buffer@3.7.2: {}
+  bare-buffer@3.7.3: {}
 
   bare-events@2.9.2: {}
 
-  bare-fs@4.8.4(bare-buffer@3.7.2):
+  bare-fs@4.8.5(bare-buffer@3.7.3):
     dependencies:
       bare-events: 2.9.2
       bare-path: 3.1.3
-      bare-stream: 2.13.4(bare-buffer@3.7.2)(bare-events@2.9.2)
-      bare-url: 2.5.7
+      bare-stream: 2.13.4(bare-buffer@3.7.3)(bare-events@2.9.2)
+      bare-url: 2.5.8
       fast-fifo: 1.3.2
     optionalDependencies:
-      bare-buffer: 3.7.2
+      bare-buffer: 3.7.3
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
   bare-path@3.1.3: {}
 
-  bare-stream@2.13.4(bare-buffer@3.7.2)(bare-events@2.9.2):
+  bare-stream@2.13.4(bare-buffer@3.7.3)(bare-events@2.9.2):
     dependencies:
       b4a: 1.9.0
       streamx: 2.28.1
       teex: 1.0.1
     optionalDependencies:
-      bare-buffer: 3.7.2
+      bare-buffer: 3.7.3
       bare-events: 2.9.2
     transitivePeerDependencies:
       - react-native-b4a
 
-  bare-url@2.5.7:
+  bare-url@2.5.8:
     dependencies:
-      bare-buffer: 3.7.2
+      bare-buffer: 3.7.3
       bare-path: 3.1.3
 
   base64-js@1.5.1: {}
@@ -11073,10 +11070,6 @@ snapshots:
   brace-expansion@2.1.8:
     dependencies:
       balanced-match: 1.0.2
-
-  brace-expansion@5.0.12:
-    dependencies:
-      balanced-match: 4.0.4
 
   brace-expansion@5.0.13:
     dependencies:
@@ -11236,7 +11229,7 @@ snapshots:
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.30.1
+      undici: 7.30.2
       whatwg-mimetype: 4.0.0
 
   chokidar@5.0.0:
@@ -11712,7 +11705,7 @@ snapshots:
       '@wdio/logger': 10.2.0
       '@zip.js/zip.js': 2.25.0
       decamelize: 6.0.1
-      undici: 8.12.4
+      undici: 8.13.0
 
   ejs@7.0.2: {}
 
@@ -11977,13 +11970,13 @@ snapshots:
 
   exit-hook@5.1.0: {}
 
-  expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)):
+  expect-webdriverio@8.1.0(@wdio/types@10.2.0)(webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)):
     dependencies:
       '@vitest/snapshot': 5.1.0
       '@wdio/types': 10.2.0
       expect: 30.5.2
       jest-matcher-utils: 30.5.2
-      webdriverio: 10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0)
+      webdriverio: 10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0)
 
   expect@30.5.2:
     dependencies:
@@ -12127,7 +12120,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7):
+  fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7):
     dependencies:
       '@fumari/image-size': 0.1.1
       acorn: 8.19.0
@@ -12157,7 +12150,7 @@ snapshots:
       '@types/hast': 3.0.5
       '@types/mdast': 4.0.4
       '@types/react': 19.3.0
-      lucide-react: 1.74.0(@types/react@19.3.0)(react@19.3.1)
+      lucide-react: 1.77.0(@types/react@19.3.0)(react@19.3.1)
       next: 16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
@@ -12165,7 +12158,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-mdx@15.6.3(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.3.0)(fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(mdast-util-directive@3.1.0(supports-color@11.0.0))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(supports-color@11.0.0):
+  fumadocs-mdx@15.6.4(@types/mdast@4.0.4)(@types/mdx@2.0.14)(@types/react@19.3.0)(fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(mdast-util-directive@3.1.0(supports-color@11.0.0))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)(supports-color@11.0.0):
     dependencies:
       '@mdx-js/mdx': 3.1.1(supports-color@11.0.0)
       '@standard-schema/spec': 1.1.0
@@ -12174,7 +12167,7 @@ snapshots:
       chokidar: 6.0.0
       esbuild: 0.28.2
       estree-util-value-to-estree: 3.5.0
-      fumadocs-core: 16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
+      fumadocs-core: 16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
       github-slugger: 2.0.0
       magic-string: 1.4.5
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
@@ -12200,10 +12193,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-typescript@5.6.2(27844e642578122455002242b1ef69a3):
+  fumadocs-typescript@5.6.2(0551442e326f477c8937bbd183a5554b):
     dependencies:
       estree-util-value-to-estree: 3.5.0
-      fumadocs-core: 16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
+      fumadocs-core: 16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
       hast-util-to-estree: 3.1.3(supports-color@11.0.0)
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
@@ -12217,11 +12210,11 @@ snapshots:
       '@types/hast': 3.0.5
       '@types/mdast': 4.0.4
       '@types/react': 19.3.0
-      fumadocs-ui: 16.19.4(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1))
+      fumadocs-ui: 16.19.5(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1))
     transitivePeerDependencies:
       - supports-color
 
-  fumadocs-ui@16.19.4(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1)):
+  fumadocs-ui@16.19.5(@types/mdx@2.0.14)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(fumadocs-core@16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(tailwindcss@4.3.5)(takumi-js@2.13.7(csstype@3.2.3)(react@19.3.1)):
     dependencies:
       '@fuma-translate/react': 1.0.2(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@fumadocs/tailwind': 0.1.5(tailwindcss@4.3.5)
@@ -12237,8 +12230,8 @@ snapshots:
       '@radix-ui/react-tabs': 1.2.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       class-variance-authority: 0.7.1
       cn: 0.5.2
-      fumadocs-core: 16.19.4(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
-      lucide-react: 1.74.0(@types/react@19.3.0)(react@19.3.1)
+      fumadocs-core: 16.19.5(@mdx-js/mdx@3.1.1(supports-color@11.0.0))(@modelcontextprotocol/server@2.4.0)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.6(@babel/core@7.29.7(supports-color@11.0.0))(@playwright/test@1.65.1)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@11.0.0)(zod@4.6.7)
+      lucide-react: 1.77.0(@types/react@19.3.0)(react@19.3.1)
       motion: 14.14.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       next-themes: 0.4.6(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
@@ -12277,7 +12270,7 @@ snapshots:
       '@zip.js/zip.js': 2.25.0
       decamelize: 6.0.1
       modern-tar: 0.8.6
-      undici: 8.12.4
+      undici: 8.13.0
 
   gensync@1.0.0-beta.2: {}
 
@@ -12398,7 +12391,7 @@ snapshots:
 
   glob@14.0.6:
     dependencies:
-      minimatch: 11.0.8
+      minimatch: 11.0.9
       minipass: 7.1.3
       path-scurry: 3.0.0
 
@@ -12473,7 +12466,7 @@ snapshots:
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
       mdast-util-mdx-expression: 2.0.1(supports-color@11.0.0)
-      mdast-util-mdx-jsx: 3.2.1(supports-color@11.0.0)
+      mdast-util-mdx-jsx: 3.2.2(supports-color@11.0.0)
       mdast-util-mdxjs-esm: 2.0.1(supports-color@11.0.0)
       property-information: 7.2.0
       space-separated-tokens: 2.0.2
@@ -12483,7 +12476,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  hast-util-to-html@9.0.6:
+  hast-util-to-html@9.0.7:
     dependencies:
       '@types/hast': 3.0.5
       '@types/unist': 3.0.3
@@ -12494,7 +12487,7 @@ snapshots:
       mdast-util-to-hast: 13.2.2
       property-information: 7.2.0
       space-separated-tokens: 2.0.2
-      stringify-entities: 4.0.4
+      stringify-entities: 4.0.5
       zwitch: 2.0.4
 
   hast-util-to-jsx-runtime@2.3.7(supports-color@11.0.0):
@@ -12507,7 +12500,7 @@ snapshots:
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
       mdast-util-mdx-expression: 2.0.1(supports-color@11.0.0)
-      mdast-util-mdx-jsx: 3.2.1(supports-color@11.0.0)
+      mdast-util-mdx-jsx: 3.2.2(supports-color@11.0.0)
       mdast-util-mdxjs-esm: 2.0.1(supports-color@11.0.0)
       property-information: 7.2.0
       space-separated-tokens: 2.0.2
@@ -12545,7 +12538,7 @@ snapshots:
 
   hosted-git-info@9.0.3:
     dependencies:
-      lru-cache: 11.5.2
+      lru-cache: 11.5.3
 
   html-escaper@2.0.2: {}
 
@@ -13145,8 +13138,6 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.5.2: {}
-
   lru-cache@11.5.3: {}
 
   lru-cache@5.1.1:
@@ -13159,7 +13150,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lucide-react@1.74.0(@types/react@19.3.0)(react@19.3.1):
+  lucide-react@1.77.0(@types/react@19.3.0)(react@19.3.1):
     dependencies:
       react: 19.3.1
     optionalDependencies:
@@ -13212,15 +13203,15 @@ snapshots:
       ccount: 2.0.1
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
       parse-entities: 4.0.2
-      stringify-entities: 4.0.4
+      stringify-entities: 4.0.5
       unist-util-visit-parents: 6.1.0
     transitivePeerDependencies:
       - supports-color
     optional: true
 
-  mdast-util-find-and-replace@3.0.4:
+  mdast-util-find-and-replace@3.0.5:
     dependencies:
       '@types/mdast': 4.0.4
       escape-string-regexp: 5.0.0
@@ -13261,12 +13252,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-autolink-literal@2.1.0:
+  mdast-util-gfm-autolink-literal@2.1.2:
     dependencies:
       '@types/mdast': 4.0.4
       ccount: 2.0.1
       devlop: 1.1.0
-      mdast-util-find-and-replace: 3.0.4
+      mdast-util-find-and-replace: 3.0.5
       micromark-util-character: 2.1.1
 
   mdast-util-gfm-footnote@2.1.0(supports-color@11.0.0):
@@ -13274,7 +13265,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
       micromark-util-normalize-identifier: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -13283,7 +13274,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
@@ -13293,7 +13284,7 @@ snapshots:
       devlop: 1.1.0
       markdown-table: 3.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
       mdast-util-to-string: 4.0.0
       unist-util-visit: 5.2.0
     transitivePeerDependencies:
@@ -13304,19 +13295,19 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
   mdast-util-gfm@3.1.0(supports-color@11.0.0):
     dependencies:
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-gfm-autolink-literal: 2.1.0
+      mdast-util-gfm-autolink-literal: 2.1.2
       mdast-util-gfm-footnote: 2.1.0(supports-color@11.0.0)
       mdast-util-gfm-strikethrough: 2.0.1(supports-color@11.0.0)
       mdast-util-gfm-table: 2.0.1(supports-color@11.0.0)
       mdast-util-gfm-task-list-item: 2.0.1(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
@@ -13327,11 +13318,11 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-mdx-jsx@3.2.1(supports-color@11.0.0):
+  mdast-util-mdx-jsx@3.2.2(supports-color@11.0.0):
     dependencies:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.5
@@ -13340,9 +13331,9 @@ snapshots:
       ccount: 2.0.1
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
       parse-entities: 4.0.2
-      stringify-entities: 4.0.4
+      stringify-entities: 4.0.5
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.4
     transitivePeerDependencies:
@@ -13352,9 +13343,9 @@ snapshots:
     dependencies:
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
       mdast-util-mdx-expression: 2.0.1(supports-color@11.0.0)
-      mdast-util-mdx-jsx: 3.2.1(supports-color@11.0.0)
+      mdast-util-mdx-jsx: 3.2.2(supports-color@11.0.0)
       mdast-util-mdxjs-esm: 2.0.1(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
@@ -13365,7 +13356,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       mdast-util-from-markdown: 2.1.0(supports-color@11.0.0)
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
     transitivePeerDependencies:
       - supports-color
 
@@ -13386,7 +13377,7 @@ snapshots:
       unist-util-visit: 5.2.0
       vfile: 6.0.3
 
-  mdast-util-to-markdown@2.2.3:
+  mdast-util-to-markdown@2.2.4:
     dependencies:
       '@types/mdast': 4.0.4
       '@types/unist': 3.0.3
@@ -13753,9 +13744,9 @@ snapshots:
 
   minimatch@10.2.6:
     dependencies:
-      brace-expansion: 5.0.12
+      brace-expansion: 5.0.13
 
-  minimatch@11.0.8:
+  minimatch@11.0.9:
     dependencies:
       '@isaacs/nonrecursive-glob-match': 1.1.0
       brace-expansion: 5.0.13
@@ -13925,7 +13916,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.3
-      semver: 7.8.5
+      semver: 7.8.6
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@9.0.0:
@@ -13960,6 +13951,8 @@ snapshots:
   object-assign@4.1.1: {}
 
   object-inspect@1.13.4: {}
+
+  object-inspect@1.14.0: {}
 
   object-treeify@1.1.33: {}
 
@@ -14666,7 +14659,7 @@ snapshots:
   remark-stringify@11.0.0:
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-to-markdown: 2.2.3
+      mdast-util-to-markdown: 2.2.4
       unified: 11.0.5
 
   remark@15.0.1(supports-color@11.0.0):
@@ -14927,7 +14920,7 @@ snapshots:
     dependencies:
       agent-base: 7.1.4
       debug: 4.4.3(supports-color@8.1.1)
-      socks: 2.8.10
+      socks: 2.8.11
     transitivePeerDependencies:
       - supports-color
 
@@ -14939,7 +14932,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  socks@2.8.10:
+  socks@2.8.11:
     dependencies:
       ip-address: 10.7.6
       smart-buffer: 4.2.0
@@ -15069,7 +15062,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  stringify-entities@4.0.4:
+  stringify-entities@4.0.5:
     dependencies:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
@@ -15131,7 +15124,7 @@ snapshots:
 
   tagged-tag@1.0.0: {}
 
-  tailwind-merge@3.7.0: {}
+  tailwind-merge@3.7.1: {}
 
   tailwindcss@4.3.5: {}
 
@@ -15148,22 +15141,22 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  tar-fs@3.1.3(bare-buffer@3.7.2):
+  tar-fs@3.1.3(bare-buffer@3.7.3):
     dependencies:
       pump: 3.0.4
-      tar-stream: 3.2.2(bare-buffer@3.7.2)
+      tar-stream: 3.2.2(bare-buffer@3.7.3)
     optionalDependencies:
-      bare-fs: 4.8.4(bare-buffer@3.7.2)
+      bare-fs: 4.8.5(bare-buffer@3.7.3)
       bare-path: 3.1.3
     transitivePeerDependencies:
       - bare-abort-controller
       - bare-buffer
       - react-native-b4a
 
-  tar-stream@3.2.2(bare-buffer@3.7.2):
+  tar-stream@3.2.2(bare-buffer@3.7.3):
     dependencies:
       b4a: 1.9.0
-      bare-fs: 4.8.4(bare-buffer@3.7.2)
+      bare-fs: 4.8.5(bare-buffer@3.7.3)
       fast-fifo: 1.3.2
       streamx: 2.28.1
     transitivePeerDependencies:
@@ -15278,8 +15271,6 @@ snapshots:
       minimist: 1.2.8
       strip-bom: 3.0.0
 
-  tslib@2.8.1: {}
-
   tslib@2.9.1: {}
 
   tsx@4.23.15:
@@ -15365,7 +15356,9 @@ snapshots:
 
   undici@7.30.1: {}
 
-  undici@8.12.4: {}
+  undici@7.30.2: {}
+
+  undici@8.13.0: {}
 
   unicorn-magic@0.3.0: {}
 
@@ -15526,7 +15519,7 @@ snapshots:
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
       deepmerge-ts: 8.0.2
       https-proxy-agent: 9.1.0(supports-color@8.1.1)
-      undici: 8.12.4
+      undici: 8.13.0
       ws: 8.23.0
     transitivePeerDependencies:
       - bufferutil
@@ -15536,15 +15529,15 @@ snapshots:
       - utf-8-validate
       - yauzl
 
-  webdriver@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1):
+  webdriver@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1):
     dependencies:
       '@types/node': 20.19.43
       '@types/ws': 8.18.2
-      '@wdio/config': 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@wdio/config': 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
       '@wdio/logger': 9.33.1
       '@wdio/protocols': 9.33.1
       '@wdio/types': 9.33.1
-      '@wdio/utils': 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@wdio/utils': 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
       deepmerge-ts: 8.0.2
       https-proxy-agent: 7.0.6(supports-color@8.1.1)
       undici: 6.29.1
@@ -15557,7 +15550,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  webdriverio@10.2.0(bare-buffer@3.7.2)(supports-color@8.1.1)(yauzl@3.4.0):
+  webdriverio@10.2.0(bare-buffer@3.7.3)(supports-color@8.1.1)(yauzl@3.4.0):
     dependencies:
       '@types/node': 22.20.5
       '@types/sinonjs__fake-timers': 15.0.1
@@ -15567,7 +15560,7 @@ snapshots:
       '@wdio/repl': 10.2.0
       '@wdio/types': 10.2.0
       '@wdio/utils': 10.2.0(supports-color@8.1.1)(yauzl@3.4.0)
-      archiver: 8.0.0(bare-buffer@3.7.2)
+      archiver: 8.0.0(bare-buffer@3.7.3)
       aria-query: 5.3.2
       cheerio: 1.2.0
       css-shorthand-properties: 1.1.2
@@ -15593,17 +15586,17 @@ snapshots:
       - utf-8-validate
       - yauzl
 
-  webdriverio@9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1):
+  webdriverio@9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1):
     dependencies:
       '@types/node': 20.19.43
       '@types/sinonjs__fake-timers': 8.1.5
-      '@wdio/config': 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      '@wdio/config': 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
       '@wdio/logger': 9.33.1
       '@wdio/protocols': 9.33.1
       '@wdio/repl': 9.33.1
       '@wdio/types': 9.33.1
-      '@wdio/utils': 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
-      archiver: 8.0.0(bare-buffer@3.7.2)
+      '@wdio/utils': 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
+      archiver: 8.0.0(bare-buffer@3.7.3)
       aria-query: 5.3.2
       cheerio: 1.2.0
       css-shorthand-properties: 1.1.2
@@ -15619,7 +15612,7 @@ snapshots:
       rgb2hex: 0.2.5
       serialize-error: 12.0.0
       urlpattern-polyfill: 10.1.0
-      webdriver: 9.33.1(bare-buffer@3.7.2)(supports-color@8.1.1)
+      webdriver: 9.33.1(bare-buffer@3.7.3)(supports-color@8.1.1)
     transitivePeerDependencies:
       - bare-abort-controller
       - bare-buffer
@@ -15739,7 +15732,7 @@ snapshots:
       cliui: 9.0.1
       escalade: 3.2.0
       get-caller-file: 2.0.5
-      string-width: 8.2.2
+      string-width: 8.3.0
       y18n: 5.0.8
       yargs-parser: 22.0.0
 

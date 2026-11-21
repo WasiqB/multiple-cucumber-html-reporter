@@ -125,7 +125,7 @@ mchr --messages
 # (or shorthand: mchr -m)
 ```
 
-That's it! No separate script needed. See the [CLI documentation](https://multiple-cucumber-html-reporter.com/docs/cli) for all available config options.
+That's it! No separate script needed. See the [CLI documentation](https://www.multiple-cucumber-html-reporter.com/docs/cli) for all available config options.
 
 Set `language` to `en` (default), `es`, `fr`, or `ar` to choose the language for static report labels. Arabic reports use a right-to-left layout. The same option is available in the programmatic API, and the CLI accepts `--language` (or `--lang`) to override the configured language.
 
@@ -183,7 +183,7 @@ Check out the [examples](./examples) folder for integration with frameworks like
 
 Looking for advanced configurations, framework integrations (WebdriverIO, Cypress, etc.), or FAQs? Visit our comprehensive documentation site:
 
-### [👉 Read the Full Documentation](https://multiple-cucumber-html-reporter.com/docs)
+### [👉 Read the Full Documentation](https://www.multiple-cucumber-html-reporter.com/docs)
 
 ---
 
@@ -191,9 +191,9 @@ Looking for advanced configurations, framework integrations (WebdriverIO, Cypres
 
 ### Localized Reports
 
-Report labels can be displayed in English, Spanish, French, Portuguese, or Arabic. Arabic uses a right-to-left layout. See the [language option documentation](https://multiple-cucumber-html-reporter.com/docs/options#main-options) for configuration details.
+Report labels can be displayed in English, Spanish, French, Portuguese, or Arabic. Arabic uses a right-to-left layout. See the [language option documentation](https://www.multiple-cucumber-html-reporter.com/docs/options#main-options) for configuration details.
 
-See the [localized report screenshots](https://multiple-cucumber-html-reporter.com/docs#report-languages) in the documentation for examples.
+See the [localized report screenshots](https://www.multiple-cucumber-html-reporter.com/docs#report-languages) in the documentation for examples.
 
 ### Feature List Page
 
@@ -213,7 +213,7 @@ See the [localized report screenshots](https://multiple-cucumber-html-reporter.c
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create.
 
-- **Contributing**: Read our [Contributing Guide](https://multiple-cucumber-html-reporter.com/docs/contributing) to get started.
+- **Contributing**: Read our [Contributing Guide](https://www.multiple-cucumber-html-reporter.com/docs/contributing) to get started.
 - **Security**: Please report vulnerabilities via our [Security Policy](./.github/SECURITY.md).
 - **Code of Conduct**: We expect all contributors to follow our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 
@@ -228,6 +228,18 @@ Contributions are what make the open source community such an amazing place to l
 ## ❤️ Support the project
 
 If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB). Your support helps keep the project maintained and improved!
+
+## 💎 Sponsors
+
+### Silver & Bronze
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+  <a href="https://github.com/LambdaTest-Inc" target="_blank">
+    <img alt="TestMu AI" src="https://avatars.githubusercontent.com/u/171592363?v=4" width="64" height="64" style="border-radius: 50%;" />
+    <br/>
+    <strong>TestMu AI</strong>
+  </a>
+</div>
 
 ## 🙏🏻 Open Source Supporter
 
