@@ -3,6 +3,31 @@
 > [!NOTE]
 > Find all the changes on the [releases page.](https://github.com/WasiqB/multiple-cucumber-html-reporter/releases)
 
+## 4.7.0 (2026-11-22)
+
+#### :rocket: New Feature
+
+- `tsconfig`
+  - [#654](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/654) feat: :sparkles: added report date and feature, scenario start and end times ([@WasiqB](https://github.com/WasiqB))
+
+#### :bug: Bug Fix
+
+- [#658](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/658) fix: :bug: fixed attachments and error message issues ([@WasiqB](https://github.com/WasiqB))
+
+#### :nail_care: Polish
+
+- [#661](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/661) chore(deps): bump the dependencies group with 8 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#660](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/660) chore(deps): bump cucumber-java.version from 8.0.4 to 8.1.0 in /examples/selenium ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#656](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/656) chore(deps): bump the dependencies group with 12 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#655](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/655) chore(deps): bump tools.jackson.core:jackson-databind from 3.2.4 to 3.3.0 in /examples/selenium in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#653](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/653) chore(deps): bump org.seleniumhq.selenium:selenium-java from 4.51.0 to 4.52.0 in /examples/selenium in the dependencies group ([@dependabot[bot]](https://github.com/apps/dependabot))
+- [#651](https://github.com/WasiqB/multiple-cucumber-html-reporter/pull/651) chore(deps): bump the npm_and_yarn group across 1 directory with 7 updates ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+
+- Wasiq Bhamla ([@WasiqB](https://github.com/WasiqB))
+
+
 ## 4.6.0 (2026-11-05)
 
 #### :rocket: New Feature
