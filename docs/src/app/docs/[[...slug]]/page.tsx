@@ -10,14 +10,23 @@ import {
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import { getMDXComponents } from '@/components/mdx';
 import { createMetadata } from '@/lib/metadata';
 import { baseUrl, gitConfig } from '@/lib/shared';
 import { getPageImage, getPageMarkdownUrl, source } from '@/lib/source';
 
-export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
+export default function Page(props: PageProps<'/docs/[[...slug]]'>) {
+  return (
+    <Suspense fallback={<DocsArticleSkeleton />}>
+      <DocsArticle params={props.params} />
+    </Suspense>
+  );
+}
+
+async function DocsArticle({ params }: { params: PageProps<'/docs/[[...slug]]'>['params'] }) {
+  const resolved = await params;
+  const page = source.getPage(resolved.slug);
   if (!page) notFound();
 
   const { body: MDX, lastModified } = page.data;
@@ -76,6 +85,20 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       </DocsBody>
       {lastModified && <PageLastUpdate date={lastModified} />}
     </DocsPage>
+  );
+}
+
+function DocsArticleSkeleton() {
+  return (
+    <div className='flex flex-col gap-4 py-8' role='status' aria-label='Loading documentation'>
+      <div className='h-9 w-2/3 max-w-md animate-pulse rounded-md bg-fd-muted' />
+      <div className='h-4 w-full max-w-xl animate-pulse rounded-md bg-fd-muted/80' />
+      <div className='mt-6 space-y-3'>
+        <div className='h-4 w-full animate-pulse rounded-md bg-fd-muted/70' />
+        <div className='h-4 w-11/12 animate-pulse rounded-md bg-fd-muted/70' />
+        <div className='h-4 w-4/5 animate-pulse rounded-md bg-fd-muted/70' />
+      </div>
+    </div>
   );
 }
 
