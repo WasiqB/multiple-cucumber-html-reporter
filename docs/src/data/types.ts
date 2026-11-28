@@ -32,17 +32,6 @@ export interface ImageLinks {
   featureListPageAr: string;
 }
 
-export interface StatItem {
-  label: string;
-  value: string;
-  description?: string;
-  icon?: string;
-}
-
-export interface ProjectStats {
-  stats: StatItem[];
-}
-
 // ----------------------------------
 // Showcase Data
 // ----------------------------------

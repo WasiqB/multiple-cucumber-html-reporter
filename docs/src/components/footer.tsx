@@ -1,7 +1,15 @@
+import { cacheLife } from 'next/cache';
 import Link from 'next/link';
 import { cn } from '@/lib/cn';
 
-export function Footer({ className }: { className?: string }) {
+async function copyrightYear(): Promise<number> {
+  'use cache';
+  cacheLife('max');
+  return new Date().getFullYear();
+}
+
+export async function Footer({ className }: { className?: string }) {
+  const year = await copyrightYear();
   return (
     <footer className={cn('border-t border-zinc-200 dark:border-zinc-800 pt-12 pb-10 px-6', className)}>
       <div className='container mx-auto flex flex-col md:flex-row justify-between items-center gap-8'>
@@ -18,7 +26,7 @@ export function Footer({ className }: { className?: string }) {
             </span>
           </div>
           <p className='text-sm text-zinc-500'>
-            © {new Date().getFullYear()}{' '}
+            © {year}{' '}
             <Link
               href='https://www.wasiqbhamla.com/'
               target='_blank'

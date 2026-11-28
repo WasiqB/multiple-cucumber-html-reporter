@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ProjectStatsSection } from '@/components/project-stats-section';
 import { baseUrl, getReporterVersion } from '@/lib/shared';
 import HomePageClient from './_home-client';
 
@@ -105,7 +106,7 @@ export default function HomePage() {
   return (
     <>
       <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <HomePageClient version={version} />
+      <HomePageClient version={version} stats={<ProjectStatsSection />} />
     </>
   );
 }

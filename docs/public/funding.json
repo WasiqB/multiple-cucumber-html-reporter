@@ -9,8 +9,8 @@
     "phone": "",
     "description": "Open source maintainer and creator of Multiple Cucumber HTML Reporter, focused on high-quality test automation tools and reporting frameworks.",
     "webpageUrl": {
-      "url": "https://github.com/WasiqB",
-      "wellKnown": ""
+      "url": "https://www.multiple-cucumber-html-reporter.com/",
+      "wellKnown": "https://www.multiple-cucumber-html-reporter.com/.well-known/funding-manifest-urls"
     }
   },
   "projects": [
@@ -20,7 +20,7 @@
       "description": "Multiple Cucumber HTML Reporter is a reporting library that generates rich, beautiful, and localized HTML reports for Cucumber test runs across multiple devices and browsers.",
       "webpageUrl": {
         "url": "https://www.multiple-cucumber-html-reporter.com",
-        "wellKnown": ""
+        "wellKnown": "https://www.multiple-cucumber-html-reporter.com/.well-known/funding-manifest-urls"
       },
       "repositoryUrl": {
         "url": "https://github.com/WasiqB/multiple-cucumber-html-reporter",
@@ -48,6 +48,12 @@
         "type": "payment-provider",
         "address": "https://github.com/sponsors/WasiqB",
         "description": "GitHub Sponsors for recurring or one-time contributions."
+      },
+      {
+        "guid": "thanks-dev",
+        "type": "payment-provider",
+        "address": "https://thanks.dev/u/gh/wasiqb",
+        "description": "thanks.dev for dependency-fund contributions, including Open Source Pledge payments."
       }
     ],
     "plans": [
@@ -59,7 +65,7 @@
         "amount": 10000,
         "currency": "USD",
         "frequency": "yearly",
-        "channels": ["github-sponsors"]
+        "channels": ["github-sponsors", "thanks-dev"]
       },
       {
         "guid": "general-support",
@@ -69,7 +75,7 @@
         "amount": 0,
         "currency": "USD",
         "frequency": "one-time",
-        "channels": ["github-sponsors"]
+        "channels": ["github-sponsors", "thanks-dev"]
       }
     ]
   }

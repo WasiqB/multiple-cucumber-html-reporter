@@ -52,6 +52,9 @@
         <img alt="GitHub Sponsors" src="https://www.shieldcn.dev/badge/Sponsor-GitHub-ea4aaa.svg?logo=githubsponsors&amp;variant=secondary&amp;size=sm&amp;mode=light">
       </picture>
     </a>
+    <a href="https://scorecard.dev/viewer/?uri=github.com/WasiqB/multiple-cucumber-html-reporter" target="_blank">
+      <img alt="OpenSSF Scorecard" src="https://api.scorecard.dev/projects/github.com/WasiqB/multiple-cucumber-html-reporter/badge">
+    </a>
   </p>
 </div>
 
@@ -215,6 +218,7 @@ Contributions are what make the open source community such an amazing place to l
 
 - **Contributing**: Read our [Contributing Guide](https://www.multiple-cucumber-html-reporter.com/docs/contributing) to get started.
 - **Security**: Please report vulnerabilities via our [Security Policy](./.github/SECURITY.md).
+- **Governance**: Project leadership and decision-making are described in [GOVERNANCE.md](./GOVERNANCE.md).
 - **Code of Conduct**: We expect all contributors to follow our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 
 ### 💬 Support & Talk
@@ -227,7 +231,7 @@ Contributions are what make the open source community such an amazing place to l
 
 ## ❤️ Support the project
 
-If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB). Your support helps keep the project maintained and improved!
+If you find this project useful, please consider [sponsoring the maintainer](https://github.com/sponsors/WasiqB) or supporting the project on [thanks.dev](https://thanks.dev/u/gh/wasiqb). Your support helps keep the project maintained and improved!
 
 ## 💎 Sponsors
 

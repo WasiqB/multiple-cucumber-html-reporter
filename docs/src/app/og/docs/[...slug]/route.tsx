@@ -3,8 +3,6 @@ import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { getPageImage, source } from '@/lib/source';
 
-export const revalidate = false;
-
 export async function GET(_req: Request, { params }: RouteContext<'/og/docs/[...slug]'>) {
   const { slug } = await params;
   const page = source.getPage(slug.slice(0, -1));
