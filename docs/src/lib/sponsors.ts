@@ -22,7 +22,7 @@ const SPONSORS_QUERY = `
       sponsorshipsAsMaintainer(first: 100, after: $cursor, activeOnly: true, includePrivate: false) {
         pageInfo { hasNextPage endCursor }
         nodes {
-          tier { monthlyPriceInDollars }
+          tier { name monthlyPriceInDollars }
           sponsorEntity {
             __typename
             ... on User { login name avatarUrl url }
@@ -47,13 +47,25 @@ interface SponsorsResponse {
       sponsorshipsAsMaintainer?: {
         pageInfo?: { hasNextPage?: boolean; endCursor?: string | null };
         nodes?: Array<{
-          tier?: { monthlyPriceInDollars?: number | null } | null;
+          tier?: { name?: string | null; monthlyPriceInDollars?: number | null } | null;
           sponsorEntity?: SponsorEntity | null;
         } | null>;
       } | null;
     } | null;
   };
   errors?: unknown[];
+}
+
+type TokenSource = 'GITHUB_TOKEN' | 'GH_TOKEN' | 'gh-cli' | 'none';
+
+/** Temporary preview-only logs. Remove after the sponsor tier debug. */
+function debugSponsors(event: string, details: Record<string, unknown>): void {
+  if (process.env.VERCEL_ENV !== 'preview') return;
+  console.info(`[sponsors-debug] ${event}`, details);
+}
+
+function sponsorSummary(sponsors: GitHubSponsor[]): Array<{ login: string; monthlyPrice: number | null }> {
+  return sponsors.map((sponsor) => ({ login: sponsor.login, monthlyPrice: sponsor.monthlyPrice }));
 }
 
 function githubHeaders(token?: string): HeadersInit {
@@ -65,17 +77,17 @@ function githubHeaders(token?: string): HeadersInit {
   return headers;
 }
 
-async function readGitHubToken(): Promise<string | undefined> {
-  const fromEnv = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
-  if (fromEnv) return fromEnv;
-  if (process.env.VERCEL || process.env.CI) return undefined;
+async function readGitHubToken(): Promise<{ token?: string; source: TokenSource }> {
+  if (process.env.GITHUB_TOKEN) return { token: process.env.GITHUB_TOKEN, source: 'GITHUB_TOKEN' };
+  if (process.env.GH_TOKEN) return { token: process.env.GH_TOKEN, source: 'GH_TOKEN' };
+  if (process.env.VERCEL || process.env.CI) return { source: 'none' };
 
   try {
     const { stdout } = await execFileAsync('gh', ['auth', 'token'], { timeout: 4000 });
     const token = stdout.trim();
-    return token || undefined;
+    return token ? { token, source: 'gh-cli' } : { source: 'none' };
   } catch {
-    return undefined;
+    return { source: 'none' };
   }
 }
 
@@ -105,12 +117,26 @@ async function loadSponsorsFromGraphQL(token: string): Promise<GitHubSponsor[]> 
       cache: 'no-store',
       signal: AbortSignal.timeout(12_000),
     });
-    if (!response.ok) throw new Error(`GitHub sponsors request failed (${response.status})`);
+    if (!response.ok) {
+      const body = (await response.text()).slice(0, 500);
+      debugSponsors('graphql-http-error', { status: response.status, body });
+      throw new Error(`GitHub sponsors request failed (${response.status})`);
+    }
 
     const payload = (await response.json()) as SponsorsResponse;
+    const connection = payload.data?.user?.sponsorshipsAsMaintainer;
+    debugSponsors('graphql-response', {
+      status: response.status,
+      errors: payload.errors ?? null,
+      user: payload.data?.user ? 'present' : 'missing',
+      sponsors: (connection?.nodes ?? []).map((node) => ({
+        login: node?.sponsorEntity?.login ?? null,
+        tierName: node?.tier?.name ?? null,
+        monthlyPriceInDollars: node?.tier?.monthlyPriceInDollars ?? null,
+      })),
+    });
     if (payload.errors?.length) throw new Error('GitHub sponsors query failed');
 
-    const connection = payload.data?.user?.sponsorshipsAsMaintainer;
     for (const node of connection?.nodes ?? []) {
       const sponsor = node?.sponsorEntity
         ? toSponsor(node.sponsorEntity, node.tier?.monthlyPriceInDollars ?? null)
@@ -186,15 +212,30 @@ async function loadPublicSponsors(token?: string): Promise<GitHubSponsor[]> {
 }
 
 async function loadSponsors(): Promise<GitHubSponsor[]> {
-  const token = await readGitHubToken();
+  const { token, source } = await readGitHubToken();
+  debugSponsors('token', {
+    source,
+    present: Boolean(token),
+    length: token?.length ?? 0,
+    hasSurroundingWhitespace: Boolean(token && token !== token.trim()),
+  });
   if (token) {
     try {
-      return await loadSponsorsFromGraphQL(token);
-    } catch {
-      return loadPublicSponsors(token);
+      const sponsors = await loadSponsorsFromGraphQL(token);
+      debugSponsors('graphql-ok', { sponsors: sponsorSummary(sponsors) });
+      return sponsors;
+    } catch (error) {
+      debugSponsors('graphql-failed', {
+        message: error instanceof Error ? error.message : 'unknown',
+      });
+      const sponsors = await loadPublicSponsors(token);
+      debugSponsors('public-fallback', { sponsors: sponsorSummary(sponsors) });
+      return sponsors;
     }
   }
-  return loadPublicSponsors();
+  const sponsors = await loadPublicSponsors();
+  debugSponsors('public-only', { sponsors: sponsorSummary(sponsors) });
+  return sponsors;
 }
 
 async function getCachedSponsors(): Promise<GitHubSponsor[]> {
@@ -213,8 +254,14 @@ function compareSponsors(left: GitHubSponsor, right: GitHubSponsor): number {
 /** Current public GitHub Sponsors. Cached for one day. */
 export async function getSponsors(): Promise<GitHubSponsor[]> {
   try {
-    return await getCachedSponsors();
-  } catch {
+    const sponsors = await getCachedSponsors();
+    debugSponsors('served', { source: 'cache', sponsors: sponsorSummary(sponsors) });
+    return sponsors;
+  } catch (error) {
+    debugSponsors('served', {
+      source: 'hardcoded-fallback',
+      message: error instanceof Error ? error.message : 'unknown',
+    });
     return FALLBACK_SPONSORS;
   }
 }
